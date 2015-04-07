@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.aug</groupId>
+	<artifactId>AugHrSystem</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>AugHrSystem</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<servlet.port>8080</servlet.port>
+
+		<servlet.api.version>2.5</servlet.api.version>
+		<jsp.api.version>2.0</jsp.api.version>
+		<jstl.version>1.1.2</jstl.version>
+		<struts.version>2.3.16.2</struts.version>
+		<spring.version>3.2.3.RELEASE</spring.version>
+		<hibernate.version>3.5.6-Final</hibernate.version>
+		<hibernate.annatotion.version>3.5.6-Final</hibernate.annatotion.version>
+		<javassist.version>3.18.1-GA</javassist.version>
+		<mysql.connector.java.version>5.1.30</mysql.connector.java.version>
+		<junit.version>4.11</junit.version>
+		<hamcrest.version>1.3</hamcrest.version>
+		<mockito.version>1.9.5</mockito.version>
+		<hsqldb.version>2.2.9</hsqldb.version>
+		<slf4j.version>1.7.7</slf4j.version>
+		<dom4j.version>1.6.1</dom4j.version>
+		<xml.apis.version>1.4.01</xml.apis.version>
+		<selenium.java.version>2.41.0</selenium.java.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<displaytag.version>1.2</displaytag.version>
+
+	</properties>
+
+	<dependencies>
+
+
+
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.17</version>
+					<configuration>
+						<additionalClasspathElements>
+							<additionalClasspathElement>test/resources</additionalClasspathElement>
+						</additionalClasspathElements>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.0</version>
+					<configuration>
+						<path>/${project.build.finalName}</path>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+		<finalName>aughr</finalName>
+	</build>
+</project>
