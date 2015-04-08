@@ -31,7 +31,11 @@
 		<selenium.java.version>2.41.0</selenium.java.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<displaytag.version>1.2</displaytag.version>
-
+		<plugin.surfire.version>2.17</plugin.surfire.version>
+		<plugin.compiler.version>3.1</plugin.compiler.version>
+		<plugin.war.version>2.4</plugin.war.version>
+		<plugin.tomcat7.version>2.2</plugin.tomcat7.version>
+		<java.version>1.7</java.version>
 	</properties>
 
 	<dependencies>
@@ -43,10 +47,11 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.17</version>
+					<version>${plugin.surfire.version}</version>
 					<configuration>
 						<additionalClasspathElements>
 							<additionalClasspathElement>test/resources</additionalClasspathElement>
@@ -54,16 +59,31 @@
 					</configuration>
 				</plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${plugin.compiler.version}</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.tomcat.maven</groupId>
 					<artifactId>tomcat7-maven-plugin</artifactId>
-					<version>2.0</version>
+					<version>2.2</version>
 					<configuration>
 						<path>/${project.build.finalName}</path>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${plugin.war.version}</version>
+				</plugin>
+
 
 			</plugins>
 		</pluginManagement>
-		<finalName>aughr</finalName>
+		<finalName>AugHrSystem</finalName>
 	</build>
 </project>
