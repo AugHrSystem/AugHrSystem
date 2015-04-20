@@ -162,6 +162,8 @@ ADD CONSTRAINT `Emp_Abi_Id`
 CREATE TABLE `mas_joblevel` (
 `Mas_Job_Id` int(11) NOT NULL AUTO_INCREMENT,
 `Mas_Job_Name` varchar(45) NOT NULL,
-PRIMARY KEY (`Mas_Job_Id`)
+Emp_Id INT(5) NOT NULL,
+PRIMARY KEY (`Mas_Job_Id`),
+FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
 
