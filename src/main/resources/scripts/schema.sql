@@ -117,7 +117,7 @@ ADD CONSTRAINT `Emp_Abi_Id`
 
 /*Education*/
 CREATE TABLE `emp_education` (
-  `Emp_Ed_Id` int(11) NOT NULL auto_increment,
+  `Emp_Ed_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Emp_Ed_University` varchar(100) NOT NULL,
   `Emp_Ed_Date` date NOT NULL,
   `Emp_Ed_GPA` char(4) NOT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE `emp_education` (
 
 /*Division*/
 CREATE TABLE `mas_division` (
-  `Mas_Div_Id` int(11) NOT NULL auto_increment,
+  `Mas_Div_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Mas_Div_Name` varchar(45) NOT NULL,
   `Mas_Div_Code` varchar(45) NOT NULL,
   PRIMARY KEY (`Mas_Div_Id`)
@@ -140,7 +140,7 @@ CREATE TABLE `mas_division` (
 
 
 CREATE TABLE `Reference` (
-  `ref_id` int(11) NOT NULL,
+  `ref_id` int(11) NOT NULL AUTO_INCREMENT,
   `ref_name` varchar(45) NOT NULL,
   `ref_address` varchar(200) NOT NULL,
   `ref_tel` varchar(10) NOT NULL,
@@ -150,7 +150,7 @@ CREATE TABLE `Reference` (
 
 
 CREATE TABLE `Specialty` (
-  `spi_id` int(11) NOT NULL,
+  `spi_id` int(11) NOT NULL AUTO_INCREMENT,
   `spi_name` varchar(45) NOT NULL,
   `spi_code` varchar(45) NOT NULL,
   PRIMARY KEY (`spi_id`)
