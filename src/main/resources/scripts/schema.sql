@@ -20,7 +20,7 @@ Emp_Exp_Supervisor varchar (100),
 Emp_Exp_Description varchar (200),
 Emp_Id int(5) NOT NULL, 
 PRIMARY KEY (Emp_Exp_Id),
-FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
+FOREIGN KEY (Emp_Id) REFERENCES emp_employee(Emp_Id) 
 );
 
 /* Ability */
@@ -38,10 +38,6 @@ ADD CONSTRAINT `Mas_Spe_Id`
   REFERENCES `hris_system`.`specialty` (`spi_id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE;
-
-
-
-
 
 /*Employee*/
 CREATE TABLE hris_system.emp_employee 
@@ -139,5 +135,3 @@ CREATE TABLE `mas_joblevel` (
 `Mas_Job_Name` varchar(45) NOT NULL,
 PRIMARY KEY (`Mas_Job_Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-
