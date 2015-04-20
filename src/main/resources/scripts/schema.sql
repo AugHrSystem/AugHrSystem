@@ -116,3 +116,11 @@ CREATE TABLE `mas_employment` (
   PRIMARY KEY (`Mas_Em_TypeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+/*Mas_Joblevel*/
+CREATE TABLE `mas_joblevel` (
+`Mas_Job_Id` int(11) NOT NULL AUTO_INCREMENT,
+`Mas_Job_Name` varchar(45) NOT NULL,
+PRIMARY KEY (`Mas_Job_Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+
