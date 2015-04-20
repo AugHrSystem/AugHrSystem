@@ -107,3 +107,5 @@ value
 ('Web Logic','code'),
 ('WPF','code'),
 ('Zend','code');
+
+insert into employee_type(Mas_Emp_TypeName) values ('Permanent'),('Contract');
