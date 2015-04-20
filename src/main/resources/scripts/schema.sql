@@ -56,6 +56,24 @@ CREATE TABLE `hris_system`.`emp_ability`
     
   ON UPDATE CASCADE);
 
+   /*edit*/
+  ALTER TABLE `hris_system`.`emp_ability` 
+
+  DROP FOREIGN KEY `Emp_Id`;
+
+  ALTER TABLE `hris_system`.`emp_ability` 
+
+  CHANGE COLUMN `Emp_ID` `Emp_Id` INT(11) NOT NULL ;
+
+  ALTER TABLE `hris_system`.`emp_ability` 
+
+  ADD CONSTRAINT `Emp_Id`
+  FOREIGN KEY (`Emp_Id`)
+  
+  REFERENCES `hris_system`.`emp_employee` (`Emp_Id`)
+ 
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 /*Employee*/
 CREATE TABLE emp_employee 
