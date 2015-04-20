@@ -19,3 +19,34 @@ insert into Mas_CoreSkill(Mas_Core_Name,Mas_Core_Code,Mas_Core_isActive) values
 ('Solution Architect','CoreSK_SR',1),
 ('System Analyst','CoreSK_SA',1),
 ('Transformation','CoreSK_TS',1);
+
+/*Insert master joblevel*/
+insert into mas_joblevel(Mas_Job_Name) 
+
+values('Account Execute'),
+
+('Account Manager'),
+
+('Business Division Director'),
+
+('Consultant'),
+
+('Manager'),
+
+('Managing Consultant'),
+
+('Partner'),
+
+('Principal Consultant'),
+
+('Professional'),
+
+('Senior Account Manager'),
+
+('Senior Consultant'),
+
+('Senior Manager'),
+
+('Senior Professional'),
+
+('Support Division Director');

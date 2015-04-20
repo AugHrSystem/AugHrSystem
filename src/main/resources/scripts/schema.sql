@@ -26,6 +26,17 @@ FOREIGN KEY (Emp_Id) REFERENCES emp_employee(Emp_Id)
 CREATE TABLE emp_abiility (
 `Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`Emp_Abi_id`));
+ALTER TABLE `hris_system`.`emp_abiility` 
+DROP FOREIGN KEY `Mas_Spe_Id`;
+ALTER TABLE `hris_system`.`emp_abiility` 
+ADD COLUMN `Mas_Spe_Id` INT NULL AFTER `Emp_Abi_id`,
+ADD INDEX `Mas_Spe_Id_idx` (`Mas_Spe_Id` ASC);
+ALTER TABLE `hris_system`.`emp_abiility` 
+ADD CONSTRAINT `Mas_Spe_Id`
+  FOREIGN KEY (`Mas_Spe_Id`)
+  REFERENCES `hris_system`.`specialty` (`spi_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 /*Employee*/
 CREATE TABLE hris_system.emp_employee 
@@ -116,3 +127,9 @@ CREATE TABLE `mas_employment` (
   PRIMARY KEY (`Mas_Em_TypeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+/*Mas_Joblevel*/
+CREATE TABLE `mas_joblevel` (
+`Mas_Job_Id` int(11) NOT NULL AUTO_INCREMENT,
+`Mas_Job_Name` varchar(45) NOT NULL,
+PRIMARY KEY (`Mas_Job_Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
