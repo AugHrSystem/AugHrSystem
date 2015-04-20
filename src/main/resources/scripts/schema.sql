@@ -22,3 +22,9 @@ PRIMARY KEY (Emp_Exp_Id),
 FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
 
+
+/* Ability */
+CREATE TABLE emp_abiility (
+`Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Emp_Abi_id`));
+
