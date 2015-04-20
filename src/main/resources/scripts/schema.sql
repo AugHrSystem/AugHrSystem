@@ -17,18 +17,30 @@ Emp_Exp_Address varchar (200),
 Emp_Exp_Business varchar (50) not null,
 Emp_Exp_Position varchar (50) not null,
 Emp_Exp_Supervisor varchar (100),
-Emp_Exp_Description varchar (200), 
+Emp_Exp_Description varchar (200),
+Emp_Id int(5) NOT NULL, 
 PRIMARY KEY (Emp_Exp_Id),
-FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
+FOREIGN KEY (Emp_Id) REFERENCES emp_employee(Emp_Id) 
 );
 
 /* Ability */
 CREATE TABLE emp_abiility (
 `Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`Emp_Abi_id`));
+ALTER TABLE `hris_system`.`emp_abiility` 
+DROP FOREIGN KEY `Mas_Spe_Id`;
+ALTER TABLE `hris_system`.`emp_abiility` 
+ADD COLUMN `Mas_Spe_Id` INT NULL AFTER `Emp_Abi_id`,
+ADD INDEX `Mas_Spe_Id_idx` (`Mas_Spe_Id` ASC);
+ALTER TABLE `hris_system`.`emp_abiility` 
+ADD CONSTRAINT `Mas_Spe_Id`
+  FOREIGN KEY (`Mas_Spe_Id`)
+  REFERENCES `hris_system`.`specialty` (`spi_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 /*Employee*/
-CREATE TABLE hris_system.emp_employee 
+CREATE TABLE emp_employee 
 (
 Emp_Id INT(5) NOT NULL,
   
@@ -64,10 +76,7 @@ Emp_Qualificationl VARCHAR(15) NULL,
   
 Emp_Code VARCHAR(10) NOT NULL,
   
-PRIMARY KEY (Emp_Id))
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+PRIMARY KEY (Emp_Id));
 
 /*Education*/
 CREATE TABLE `emp_education` (
@@ -78,6 +87,7 @@ CREATE TABLE `emp_education` (
   `Emp_Ed_Faculty` varchar(45) NOT NULL,
   `Emp_Ed_Major` varchar(45) NOT NULL,
   `Emp_Ed_Degree` varchar(45) NOT NULL,
+  Emp_Id INT(5) NOT NULL,
   PRIMARY KEY (`Emp_Ed_Id`),
   FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
@@ -86,7 +96,7 @@ CREATE TABLE `emp_education` (
 CREATE TABLE `mas_division` (
   `Mas_Div_Id` int(11) NOT NULL auto_increment,
   `Mas_Div_Name` varchar(45) NOT NULL,
-  `Mas_Div_Code` int(11) NOT NULL,
+  `Mas_Div_Code` varchar(45) NOT NULL,
   PRIMARY KEY (`Mas_Div_Id`)
 );
 
@@ -141,3 +151,11 @@ ADD CONSTRAINT `Emp_Abi_Id`
   REFERENCES `hris_system`.`emp_abiility` (`Emp_Abi_id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+/*Mas_Joblevel*/
+CREATE TABLE `mas_joblevel` (
+`Mas_Job_Id` int(11) NOT NULL AUTO_INCREMENT,
+`Mas_Job_Name` varchar(45) NOT NULL,
+PRIMARY KEY (`Mas_Job_Id`)
+);
+
