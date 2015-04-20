@@ -17,8 +17,10 @@
 		<jstl.version>1.1.2</jstl.version>
 		<struts.version>2.3.16.2</struts.version>
 		<spring.version>3.2.3.RELEASE</spring.version>
-		<hibernate.version>3.5.6-Final</hibernate.version>
-		<hibernate.annatotion.version>3.5.6-Final</hibernate.annatotion.version>
+		<hibernate.version>3.6.10.Final</hibernate.version>
+		<hibernate.validator.version>4.1.0.Final</hibernate.validator.version>
+		<hibernate.annotations.version>3.4.0.GA</hibernate.annotations.version>
+		<ejb3.persistence.version>1.0.2.GA</ejb3.persistence.version>
 		<javassist.version>3.18.1-GA</javassist.version>
 		<mysql.connector.java.version>5.1.30</mysql.connector.java.version>
 		<junit.version>4.11</junit.version>
@@ -35,12 +37,42 @@
 		<plugin.compiler.version>3.1</plugin.compiler.version>
 		<plugin.war.version>2.4</plugin.war.version>
 		<plugin.tomcat7.version>2.2</plugin.tomcat7.version>
+		<plugin.sql.version>1.5</plugin.sql.version>
+		<mysql.driver.version>5.1.25</mysql.driver.version>
 		<java.version>1.7</java.version>
 	</properties>
 
 	<dependencies>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>ejb3-persistence</artifactId>
+			<version>${ejb3.persistence.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>${hibernate.annotations.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.java.version}</version>
+		</dependency>
 
 	</dependencies>
 
@@ -81,6 +113,61 @@
 					<version>${plugin.war.version}</version>
 				</plugin>
 
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>hibernate3-maven-plugin</artifactId>
+					<version>3.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>mysql</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+							<version>${mysql.connector.java.version}</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<hibernatetool destdir="${project.basedir}/src/main/resources/scripts/">
+							<classpath>
+								<path location="${project.basedir}/src/main/java" />
+							</classpath>
+							<configuration configurationfile="${project.basedir}/src/main/resources/hibernate.cfg.xml" />
+							<jdbcconfiguration packagename="com.aug.hr"/>
+							<hbm2ddl create="true" drop="true" export="true" outputfilename="create-schema.sql" format="true" console="true" />
+
+						</hibernatetool>
+					</configuration>
+				</plugin>
+
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sql-maven-plugin</artifactId>
+					<version>${plugin.sql.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>mysql</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+							<version>${mysql.driver.version}</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<driver>com.mysql.jdbc.Driver</driver>
+						<url>jdbc:mysql://localhost:3306/hris_system</url>
+						<username>root</username>
+						<password></password>
+						<autocommit>true</autocommit>
+						<sqlCommand>
+						/*DROP DATABASE IF EXISTS hris_system;
+						CREATE DATABASE
+						hris_system;
+						USE hris_system;*/
+					</sqlCommand>
+						<srcFiles>
+							<!--<srcFile>${project.build.outputDirectory}/scripts/create-schema.sql</srcFile>-->
+							<srcFile>${project.build.outputDirectory}/scripts/init-data.sql</srcFile>
+						</srcFiles>
+					</configuration>
+				</plugin>
 
 			</plugins>
 		</pluginManagement>
