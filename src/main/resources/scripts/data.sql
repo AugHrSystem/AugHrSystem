@@ -108,7 +108,9 @@ value
 ('WPF','code'),
 ('Zend','code');
 
-insert into employee_type(Mas_Emp_TypeName) values ('Permanent'),('Contract');
+
+
+insert into mas_employment(Mas_Emp_TypeName) values ('Permanent'),('Contract');
 
 
 
@@ -118,5 +120,4 @@ values('.Net'),
 ('Java'),
 ('PHP'),
 ('SAP');
-
 
