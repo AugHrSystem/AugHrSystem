@@ -87,7 +87,7 @@ CREATE TABLE `emp_education` (
   `Emp_Ed_Faculty` varchar(45) NOT NULL,
   `Emp_Ed_Major` varchar(45) NOT NULL,
   `Emp_Ed_Degree` varchar(45) NOT NULL,
-  Emp_Id INT(5) NOT NULL,
+  `Emp_Id` INT(5) NOT NULL,
   PRIMARY KEY (`Emp_Ed_Id`),
   FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
@@ -103,7 +103,7 @@ CREATE TABLE `mas_division` (
 
 
 CREATE TABLE `Reference` (
-  `ref_id` int(11) NOT NULL,
+  `ref_id` int(11) NOT NULL auto_increment,
   `ref_name` varchar(45) NOT NULL,
   `ref_address` varchar(200) NOT NULL,
   `ref_tel` varchar(10) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE `Reference` (
 
 
 CREATE TABLE `Specialty` (
-  `spi_id` int(11) NOT NULL,
+  `spi_id` int(11) NOT NULL auto_increment,
   `spi_name` varchar(45) NOT NULL,
   `spi_code` varchar(45) NOT NULL,
   PRIMARY KEY (`spi_id`)
