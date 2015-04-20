@@ -24,26 +24,37 @@ FOREIGN KEY (Emp_Id) REFERENCES emp_employee(Emp_Id)
 );
 
 /* Ability */
-CREATE TABLE emp_abiility (
-`Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`Emp_Abi_Id`));
-ALTER TABLE `hris_system`.`emp_abiility` 
+CREATE TABLE `hris_system`.`emp_ability` 
+(
+  `Emp_Abi_Id` INT NOT NULL AUTO_INCREMENT,
 
-ADD COLUMN `Emp_Id` INT NOT NULL AFTER `Mas_Spe_Id`,
+  `Emp_ID` INT NOT NULL,
 
-ADD INDEX `Emp_Id_idx` (`Emp_Id` ASC);
+  `Emp_Spe_Id` INT NOT NULL,
 
-ALTER TABLE `hris_system`.`emp_abiility` 
+  PRIMARY KEY (`Emp_Abi_Id`),
 
-ADD CONSTRAINT `Emp_Id`
+  INDEX `Emp_Code_idx` (`Emp_ID` ASC),
+
+  INDEX `Mas_Spe_Id_idx` (`Emp_Spe_Id` ASC),
+
+  CONSTRAINT `Emp_Id`
+    FOREIGN KEY (`Emp_ID`)
+
+  REFERENCES `hris_system`.`emp_employee` (`Emp_Id`)
+    
+  ON DELETE CASCADE
+ 
+  ON UPDATE CASCADE,
+  CONSTRAINT `Mas_Spe_Id`
   
-FOREIGN KEY (`Emp_Id`)
-  
-REFERENCES `hris_system`.`emp_employee` (`Emp_Id`)
-  
-ON DELETE CASCADE
-  
-ON UPDATE CASCADE;
+  FOREIGN KEY (`Emp_Spe_Id`)
+    
+  REFERENCES `hris_system`.`specialty` (`spi_id`)
+   
+  ON DELETE CASCADE
+    
+  ON UPDATE CASCADE);
 
 
 /*Employee*/
@@ -94,7 +105,7 @@ CREATE TABLE `emp_education` (
   `Emp_Ed_Faculty` varchar(45) NOT NULL,
   `Emp_Ed_Major` varchar(45) NOT NULL,
   `Emp_Ed_Degree` varchar(45) NOT NULL,
-  `Emp_Id` INT(5) NOT NULL,
+  Emp_Id INT(5) NOT NULL,
   PRIMARY KEY (`Emp_Ed_Id`),
   FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
@@ -110,7 +121,7 @@ CREATE TABLE `mas_division` (
 
 
 CREATE TABLE `Reference` (
-  `ref_id` int(11) NOT NULL auto_increment,
+  `ref_id` int(11) NOT NULL,
   `ref_name` varchar(45) NOT NULL,
   `ref_address` varchar(200) NOT NULL,
   `ref_tel` varchar(10) NOT NULL,
@@ -120,7 +131,7 @@ CREATE TABLE `Reference` (
 
 
 CREATE TABLE `Specialty` (
-  `spi_id` int(11) NOT NULL auto_increment,
+  `spi_id` int(11) NOT NULL,
   `spi_name` varchar(45) NOT NULL,
   `spi_code` varchar(45) NOT NULL,
   PRIMARY KEY (`spi_id`)
@@ -133,8 +144,9 @@ CREATE TABLE `mas_employment` (
   PRIMARY KEY (`Mas_Em_TypeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-/*Mas_Employee*/
+*Mas_Employee*/
 ALTER TABLE `hris_system`.`emp_employee` 
+,
 CHANGE COLUMN `Emp_Code` `Emp_Code` INT NOT NULL ;
 ALTER TABLE `hris_system`.`emp_employee` 
 ADD CONSTRAINT `Mas_Em_TypeId`
@@ -162,8 +174,6 @@ ADD CONSTRAINT `Emp_Abi_Id`
 CREATE TABLE `mas_joblevel` (
 `Mas_Job_Id` int(11) NOT NULL AUTO_INCREMENT,
 `Mas_Job_Name` varchar(45) NOT NULL,
-Emp_Id INT(5) NOT NULL,
-PRIMARY KEY (`Mas_Job_Id`),
-FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
+PRIMARY KEY (`Mas_Job_Id`)
 );
 
