@@ -66,7 +66,7 @@ COLLATE = utf8_general_ci;
 
 /*Education*/
 CREATE TABLE `emp_education` (
-  `Emp_Ed_Id` int(11) NOT NULL,
+  `Emp_Ed_Id` int(11) NOT NULL auto_increment,
   `Emp_Ed_University` varchar(100) NOT NULL,
   `Emp_Ed_Date` date NOT NULL,
   `Emp_Ed_GPA` char(4) NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE `emp_education` (
 
 /*Division*/
 CREATE TABLE `mas_division` (
-  `Mas_Div_Id` int(11) NOT NULL,
+  `Mas_Div_Id` int(11) NOT NULL auto_increment,
   `Mas_Div_Name` varchar(45) NOT NULL,
   `Mas_Div_Code` int(11) NOT NULL,
   PRIMARY KEY (`Mas_Div_Id`)
@@ -103,3 +103,10 @@ CREATE TABLE `Specialty` (
   `spi_code` varchar(45) NOT NULL,
   PRIMARY KEY (`spi_id`)
 );
+
+/*Mas_Employment*/
+CREATE TABLE `mas_employment` (
+  `Mas_Em_TypeId` int(11) NOT NULL AUTO_INCREMENT,
+  `Mas_TypeName` varchar(45) NOT NULL,
+  PRIMARY KEY (`Mas_Em_TypeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
