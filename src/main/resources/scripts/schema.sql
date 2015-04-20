@@ -17,7 +17,8 @@ Emp_Exp_Address varchar (200),
 Emp_Exp_Business varchar (50) not null,
 Emp_Exp_Position varchar (50) not null,
 Emp_Exp_Supervisor varchar (100),
-Emp_Exp_Description varchar (200), 
+Emp_Exp_Description varchar (200),
+Emp_Id int(5) NOT NULL, 
 PRIMARY KEY (Emp_Exp_Id),
 FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
@@ -78,6 +79,7 @@ CREATE TABLE `emp_education` (
   `Emp_Ed_Faculty` varchar(45) NOT NULL,
   `Emp_Ed_Major` varchar(45) NOT NULL,
   `Emp_Ed_Degree` varchar(45) NOT NULL,
+  `Emp_Id` int(5) NOT NULL,
   PRIMARY KEY (`Emp_Ed_Id`),
   FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
