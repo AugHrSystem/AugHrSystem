@@ -22,3 +22,45 @@ PRIMARY KEY (Emp_Exp_Id),
 FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
 
+/*Employee*/
+CREATE TABLE hris_system.emp_employee 
+(
+Emp_Id INT(5) NOT NULL,
+  
+Emp_Name VARCHAR(15) NOT NULL,
+  
+Emp_Address VARCHAR(50) NOT NULL,
+ 
+Emp_Tel VARCHAR(10) NOT NULL,
+ 
+Emp_Salary FLOAT(10) NOT NULL,
+  
+Emp_DOB DATE NOT NULL,
+  
+Emp_Age INT(2) NOT NULL,
+  
+Emp_Religion VARCHAR(15) NOT NULL,
+  
+Emp_PlaceDOB VARCHAR(15) NOT NULL,
+  
+Emp_IdCard VARCHAR(13) NOT NULL,
+  
+Emp_Heigh VARCHAR(15) NOT NULL,
+  
+Emp_Weigth VARCHAR(15) NOT NULL,
+  
+Emp_Gender CHAR(1) NOT NULL,
+  
+Emp_Status VARCHAR(15) NOT NULL,
+  
+Emp_Military VARCHAR(15) NULL,
+  
+Emp_Qualificationl VARCHAR(15) NULL,
+  
+Emp_Code VARCHAR(10) NOT NULL,
+  
+PRIMARY KEY (Emp_Id))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
