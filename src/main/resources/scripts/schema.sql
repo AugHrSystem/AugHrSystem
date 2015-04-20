@@ -26,18 +26,25 @@ FOREIGN KEY (Emp_Id) REFERENCES emp_employee(Emp_Id)
 /* Ability */
 CREATE TABLE emp_abiility (
 `Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`Emp_Abi_id`));
+  PRIMARY KEY (`Emp_Abi_Id`));
 ALTER TABLE `hris_system`.`emp_abiility` 
-DROP FOREIGN KEY `Mas_Spe_Id`;
+
+ADD COLUMN `Emp_Id` INT NOT NULL AFTER `Mas_Spe_Id`,
+
+ADD INDEX `Emp_Id_idx` (`Emp_Id` ASC);
+
 ALTER TABLE `hris_system`.`emp_abiility` 
-ADD COLUMN `Mas_Spe_Id` INT NULL AFTER `Emp_Abi_id`,
-ADD INDEX `Mas_Spe_Id_idx` (`Mas_Spe_Id` ASC);
-ALTER TABLE `hris_system`.`emp_abiility` 
-ADD CONSTRAINT `Mas_Spe_Id`
-  FOREIGN KEY (`Mas_Spe_Id`)
-  REFERENCES `hris_system`.`specialty` (`spi_id`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
+
+ADD CONSTRAINT `Emp_Id`
+  
+FOREIGN KEY (`Emp_Id`)
+  
+REFERENCES `hris_system`.`emp_employee` (`Emp_Id`)
+  
+ON DELETE CASCADE
+  
+ON UPDATE CASCADE;
+
 
 /*Employee*/
 CREATE TABLE emp_employee 
@@ -126,9 +133,36 @@ CREATE TABLE `mas_employment` (
   PRIMARY KEY (`Mas_Em_TypeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+*Mas_Employee*/
+ALTER TABLE `hris_system`.`emp_employee` 
+,
+CHANGE COLUMN `Emp_Code` `Emp_Code` INT NOT NULL ;
+ALTER TABLE `hris_system`.`emp_employee` 
+ADD CONSTRAINT `Mas_Em_TypeId`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`mas_employment` (`Mas_Em_TypeId`)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `Mas_Core_Id`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`mas_coreskill` (`Mas_Core_Id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `Mas_Div_Id`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`mas_division` (`Mas_Div_Id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `Emp_Abi_Id`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`emp_abiility` (`Emp_Abi_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 /*Mas_Joblevel*/
 CREATE TABLE `mas_joblevel` (
 `Mas_Job_Id` int(11) NOT NULL AUTO_INCREMENT,
 `Mas_Job_Name` varchar(45) NOT NULL,
 PRIMARY KEY (`Mas_Job_Id`)
 );
+
