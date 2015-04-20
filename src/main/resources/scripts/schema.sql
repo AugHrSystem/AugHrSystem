@@ -95,6 +95,25 @@ Emp_Qualificationl VARCHAR(15) NULL,
 Emp_Code VARCHAR(10) NOT NULL,
   
 PRIMARY KEY (Emp_Id));
+ 
+/*Employee_edit*/
+ALTER TABLE `hris_system`.`emp_employee` 
+CHANGE COLUMN `Emp_Code` `Emp_Code` VARCHAR(45) NOT NULL ;
+
+
+ALTER TABLE `hris_system`.`emp_employee` 
+CHANGE COLUMN `Emp_Heigh` `Emp_Heigh` INT NOT NULL ,
+CHANGE COLUMN `Emp_Weigth` `Emp_Weigth` INT NOT NULL ;
+
+ALTER TABLE `hris_system`.`emp_employee` 
+DROP FOREIGN KEY `Emp_Abi_Id`;
+ALTER TABLE `hris_system`.`emp_employee` 
+ADD CONSTRAINT `Emp_Abi_Id`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`emp_abiility` (`Emp_Abi_id`)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION;
+
 
 /*Education*/
 CREATE TABLE `emp_education` (
