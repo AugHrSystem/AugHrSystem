@@ -64,3 +64,23 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
+/*Education*/
+CREATE TABLE `emp_education` (
+  `Emp_Ed_Id` int(11) NOT NULL,
+  `Emp_Ed_University` varchar(100) NOT NULL,
+  `Emp_Ed_Date` date NOT NULL,
+  `Emp_Ed_GPA` char(4) NOT NULL,
+  `Emp_Ed_Faculty` varchar(45) NOT NULL,
+  `Emp_Ed_Major` varchar(45) NOT NULL,
+  `Emp_Ed_Degree` varchar(45) NOT NULL,
+  PRIMARY KEY (`Emp_Ed_Id`)
+  FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
+);
+
+/*Division*/
+CREATE TABLE `mas_division` (
+  `Mas_Div_Id` int(11) NOT NULL,
+  `Mas_Div_Name` varchar(45) NOT NULL,
+  `Mas_Div_Code` int(11) NOT NULL,
+  PRIMARY KEY (`Mas_Div_Id`)
+);
