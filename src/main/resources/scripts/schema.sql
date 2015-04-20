@@ -22,6 +22,11 @@ PRIMARY KEY (Emp_Exp_Id),
 FOREIGN KEY (Emp_Id) REFERENCES emp_employee(Emp_Id) 
 );
 
+/* Ability */
+CREATE TABLE emp_abiility (
+`Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Emp_Abi_id`));
+
 /*Employee*/
 CREATE TABLE hris_system.emp_employee 
 (
@@ -63,4 +68,51 @@ PRIMARY KEY (Emp_Id))
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+/*Education*/
+CREATE TABLE `emp_education` (
+  `Emp_Ed_Id` int(11) NOT NULL auto_increment,
+  `Emp_Ed_University` varchar(100) NOT NULL,
+  `Emp_Ed_Date` date NOT NULL,
+  `Emp_Ed_GPA` char(4) NOT NULL,
+  `Emp_Ed_Faculty` varchar(45) NOT NULL,
+  `Emp_Ed_Major` varchar(45) NOT NULL,
+  `Emp_Ed_Degree` varchar(45) NOT NULL,
+  PRIMARY KEY (`Emp_Ed_Id`),
+  FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
+);
+
+/*Division*/
+CREATE TABLE `mas_division` (
+  `Mas_Div_Id` int(11) NOT NULL auto_increment,
+  `Mas_Div_Name` varchar(45) NOT NULL,
+  `Mas_Div_Code` int(11) NOT NULL,
+  PRIMARY KEY (`Mas_Div_Id`)
+);
+
+
+
+CREATE TABLE `Reference` (
+  `ref_id` int(11) NOT NULL,
+  `ref_name` varchar(45) NOT NULL,
+  `ref_address` varchar(200) NOT NULL,
+  `ref_tel` varchar(10) NOT NULL,
+  `ref_occupation` varchar(45) NOT NULL,
+  PRIMARY KEY (`ref_id`)
+) ;
+
+
+CREATE TABLE `Specialty` (
+  `spi_id` int(11) NOT NULL,
+  `spi_name` varchar(45) NOT NULL,
+  `spi_code` varchar(45) NOT NULL,
+  PRIMARY KEY (`spi_id`)
+);
+
+/*Mas_Employment*/
+CREATE TABLE `mas_employment` (
+  `Mas_Em_TypeId` int(11) NOT NULL AUTO_INCREMENT,
+  `Mas_TypeName` varchar(45) NOT NULL,
+  PRIMARY KEY (`Mas_Em_TypeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
