@@ -96,7 +96,7 @@ CREATE TABLE `emp_education` (
 CREATE TABLE `mas_division` (
   `Mas_Div_Id` int(11) NOT NULL auto_increment,
   `Mas_Div_Name` varchar(45) NOT NULL,
-  `Mas_Div_Code` int(11) NOT NULL,
+  `Mas_Div_Code` varchar(45) NOT NULL,
   PRIMARY KEY (`Mas_Div_Id`)
 );
 
