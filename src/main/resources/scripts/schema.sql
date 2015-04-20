@@ -75,6 +75,15 @@ CREATE TABLE `hris_system`.`emp_ability`
   ON DELETE CASCADE
   ON UPDATE CASCADE;
 
+ALTER TABLE `hris_system`.`emp_ability`
+ 
+DROP FOREIGN KEY `Emp_Id`;
+
+ ALTER TABLE `hris_system`.`emp_ability` 
+
+ DROP COLUMN `Emp_Id`,
+DROP INDEX `Emp_Code_idx` ;
+
 /*Employee*/
 CREATE TABLE emp_employee 
 (
