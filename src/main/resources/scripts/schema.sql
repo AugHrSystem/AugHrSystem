@@ -27,6 +27,21 @@ FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id)
 CREATE TABLE emp_abiility (
 `Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`Emp_Abi_id`));
+ALTER TABLE `hris_system`.`emp_abiility` 
+DROP FOREIGN KEY `Mas_Spe_Id`;
+ALTER TABLE `hris_system`.`emp_abiility` 
+ADD COLUMN `Mas_Spe_Id` INT NULL AFTER `Emp_Abi_id`,
+ADD INDEX `Mas_Spe_Id_idx` (`Mas_Spe_Id` ASC);
+ALTER TABLE `hris_system`.`emp_abiility` 
+ADD CONSTRAINT `Mas_Spe_Id`
+  FOREIGN KEY (`Mas_Spe_Id`)
+  REFERENCES `hris_system`.`specialty` (`spi_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+
+
 
 /*Employee*/
 CREATE TABLE hris_system.emp_employee 
