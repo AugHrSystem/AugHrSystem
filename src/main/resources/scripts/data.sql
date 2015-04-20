@@ -50,3 +50,13 @@ values('Account Execute'),
 ('Senior Professional'),
 
 ('Support Division Director');
+
+/* Insert Division */
+insert into mas_division(Mas_Div_Name,Mas_Div_Code) values
+('CEO Office of CEO','CEO'),
+('F&A Finance & Administration','FA'),
+('ITS Integrated Technology Services','ITS'),
+('MKT Marketing','MKT'),
+('MoH Ministry of Happiness','MoH'),
+('SAP SAP Services','SAP'),
+('TXM Transformation','TXM');

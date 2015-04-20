@@ -40,7 +40,7 @@ ADD CONSTRAINT `Mas_Spe_Id`
   ON UPDATE CASCADE;
 
 /*Employee*/
-CREATE TABLE hris_system.emp_employee 
+CREATE TABLE emp_employee 
 (
 Emp_Id INT(5) NOT NULL,
   
@@ -76,10 +76,7 @@ Emp_Qualificationl VARCHAR(15) NULL,
   
 Emp_Code VARCHAR(10) NOT NULL,
   
-PRIMARY KEY (Emp_Id))
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+PRIMARY KEY (Emp_Id));
 
 /*Education*/
 CREATE TABLE `emp_education` (
@@ -90,7 +87,7 @@ CREATE TABLE `emp_education` (
   `Emp_Ed_Faculty` varchar(45) NOT NULL,
   `Emp_Ed_Major` varchar(45) NOT NULL,
   `Emp_Ed_Degree` varchar(45) NOT NULL,
-  `Emp_Id` int(5) NOT NULL,
+  Emp_Id INT(5) NOT NULL,
   PRIMARY KEY (`Emp_Ed_Id`),
   FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
@@ -99,7 +96,7 @@ CREATE TABLE `emp_education` (
 CREATE TABLE `mas_division` (
   `Mas_Div_Id` int(11) NOT NULL auto_increment,
   `Mas_Div_Name` varchar(45) NOT NULL,
-  `Mas_Div_Code` int(11) NOT NULL,
+  `Mas_Div_Code` varchar(45) NOT NULL,
   PRIMARY KEY (`Mas_Div_Id`)
 );
 
@@ -134,4 +131,4 @@ CREATE TABLE `mas_joblevel` (
 `Mas_Job_Id` int(11) NOT NULL AUTO_INCREMENT,
 `Mas_Job_Name` varchar(45) NOT NULL,
 PRIMARY KEY (`Mas_Job_Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+);
