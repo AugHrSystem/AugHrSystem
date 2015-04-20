@@ -26,7 +26,7 @@ FOREIGN KEY (Emp_Id) REFERENCES emp_employee(Emp_Id)
 /* Ability */
 CREATE TABLE emp_abiility (
 `Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`Emp_Abi_id`));
+  PRIMARY KEY (`Emp_Abi_Id`));
 ALTER TABLE `hris_system`.`emp_abiility` 
 
 ADD COLUMN `Emp_Id` INT NOT NULL AFTER `Mas_Spe_Id`,
