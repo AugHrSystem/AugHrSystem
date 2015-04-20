@@ -116,3 +116,28 @@ CREATE TABLE `mas_employment` (
   PRIMARY KEY (`Mas_Em_TypeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+*Mas_Employee*/
+ALTER TABLE `hris_system`.`emp_employee` 
+,
+CHANGE COLUMN `Emp_Code` `Emp_Code` INT NOT NULL ;
+ALTER TABLE `hris_system`.`emp_employee` 
+ADD CONSTRAINT `Mas_Em_TypeId`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`mas_employment` (`Mas_Em_TypeId`)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `Mas_Core_Id`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`mas_coreskill` (`Mas_Core_Id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `Mas_Div_Id`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`mas_division` (`Mas_Div_Id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `Emp_Abi_Id`
+  FOREIGN KEY (`Emp_Id`)
+  REFERENCES `hris_system`.`emp_abiility` (`Emp_Abi_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
