@@ -109,3 +109,14 @@ value
 ('Zend','code');
 
 insert into employee_type(Mas_Emp_TypeName) values ('Permanent'),('Contract');
+
+
+
+insert into mas_technology(Mas_Tec_Name)
+values('.Net'),
+('COBOL'),
+('Java'),
+('PHP'),
+('SAP');
+
+

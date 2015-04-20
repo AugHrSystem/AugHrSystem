@@ -196,3 +196,74 @@ CREATE TABLE `mas_joblevel` (
 PRIMARY KEY (`Mas_Job_Id`)
 );
 
+
+
+
+
+
+
+/*mas_technology*/
+create table IF NOT EXISTS mas_technology(
+Mas_Tec_Id int(6) primary key AUTO_INCREMENT not null,
+Mas_Tec_Name varchar(10)
+);
+
+
+/*emp_family*/
+create table IF NOT EXISTS emp_family(
+Emp_Fam_Id int(6) primary key AUTO_INCREMENT not null,
+Emp_Fam_FirstName Varchar(50) not null,
+Emp_Fam_LastName Varchar(50) not null,
+Emp_Fam_Age int(3) not null,
+Emp_Fam_Gender Varchar(10) not null,
+Emp_Fam_Occupation Varchar(255),
+Emp_Fam_Position Varchar(255),
+Emp_Fam_Address Varchar(255) ,
+Emp_Fam_Relation Varchar(40) not null,
+Emp_Id int(6) not null
+);
+
+
+/*technologyemp*/
+create table if not exists technologyemp(
+TechnologyEmp_Id int(6) primary key AUTO_INCREMENT not null,
+Emp_Id int(6) not null,
+Mas_Tec_Id int(6) not null
+);
+
+
+alter table emp_family
+ADD constraint fk_empfamily
+foreign key (Emp_Id) 
+REFERENCES emp_employee(Emp_Id);
+
+
+alter table technologyemp
+ADD constraint fk_emp_technologyemp
+foreign key (Emp_Id) 
+REFERENCES emp_employee(Emp_Id);
+
+
+alter table technologyemp
+ADD constraint fk_masfamily_technologyemp
+foreign key (Mas_Tec_Id) 
+REFERENCES mas_technology(Mas_Tec_Id);
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
