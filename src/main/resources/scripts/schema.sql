@@ -22,6 +22,11 @@ PRIMARY KEY (Emp_Exp_Id),
 FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
 
+/* Ability */
+CREATE TABLE emp_abiility (
+`Emp_Abi_id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Emp_Abi_id`));
+
 /*Employee*/
 CREATE TABLE hris_system.emp_employee 
 (
@@ -110,3 +115,4 @@ CREATE TABLE `mas_employment` (
   `Mas_TypeName` varchar(45) NOT NULL,
   PRIMARY KEY (`Mas_Em_TypeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
