@@ -19,7 +19,7 @@ Emp_Exp_Position varchar (50) not null,
 Emp_Exp_Supervisor varchar (100),
 Emp_Exp_Description varchar (200), 
 PRIMARY KEY (Emp_Exp_Id),
-FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
+FOREIGN KEY (Emp_Id) REFERENCES emp_employee(Emp_Id) 
 );
 
 /*Employee*/
