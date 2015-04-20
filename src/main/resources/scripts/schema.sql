@@ -73,7 +73,7 @@ CREATE TABLE `emp_education` (
   `Emp_Ed_Faculty` varchar(45) NOT NULL,
   `Emp_Ed_Major` varchar(45) NOT NULL,
   `Emp_Ed_Degree` varchar(45) NOT NULL,
-  PRIMARY KEY (`Emp_Ed_Id`)
+  PRIMARY KEY (`Emp_Ed_Id`),
   FOREIGN KEY (Emp_Id) REFERENCES Emp_Employee(Emp_Id) 
 );
 
@@ -83,4 +83,23 @@ CREATE TABLE `mas_division` (
   `Mas_Div_Name` varchar(45) NOT NULL,
   `Mas_Div_Code` int(11) NOT NULL,
   PRIMARY KEY (`Mas_Div_Id`)
+);
+
+
+
+CREATE TABLE `Reference` (
+  `ref_id` int(11) NOT NULL,
+  `ref_name` varchar(45) NOT NULL,
+  `ref_address` varchar(200) NOT NULL,
+  `ref_tel` varchar(10) NOT NULL,
+  `ref_occupation` varchar(45) NOT NULL,
+  PRIMARY KEY (`ref_id`)
+) ;
+
+
+CREATE TABLE `Specialty` (
+  `spi_id` int(11) NOT NULL,
+  `spi_name` varchar(45) NOT NULL,
+  `spi_code` varchar(45) NOT NULL,
+  PRIMARY KEY (`spi_id`)
 );
