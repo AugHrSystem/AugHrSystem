@@ -1,6 +1,11 @@
 Gold Project - Augmentis HR System
 ==================================
 
+
+
+
+2
+
 How to run generate schema
 
     mvn hibernate3:hbm2ddl sql:execute
