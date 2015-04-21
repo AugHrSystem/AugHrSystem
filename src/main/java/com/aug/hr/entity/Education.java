@@ -21,27 +21,27 @@ import org.springframework.stereotype.Repository;
 public class Education extends BaseEntity{
 	
 	@Id
-	@Column(name = "EDU_ID")
+	@Column(name = "ID")
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name = "EDU_UNIVERSITY" ,nullable = false)
+	@Column(name = "UNIVERSITY" ,nullable = false)
 	private String university;
 	
-	@Column(name = "EDU_GPA" ,nullable =false)
-	private String gpa;
+	@Column(name = "GPA" ,nullable =false)
+	private Float gpa;
 	
-	@Column(name = "EDU_FACULTY" ,nullable =false)
+	@Column(name = "FACULTY" ,nullable =false)
 	private String faculty;
 	
-	@Column(name = "EDU_MAJOR" ,nullable =false)
+	@Column(name = "MAJOR" ,nullable =false)
 	private String major;
 	
-	@Column(name = "EDU_DEGREE" ,nullable =false)
+	@Column(name = "DEGREE" ,nullable =false)
 	private String degree;
 	
 	@ManyToOne
-	@JoinColumn(name = "EMP_ID" ,referencedColumnName="id")
+	@JoinColumn(name = "EMP_ID" ,referencedColumnName="ID")
 	private Employee employee;
 
 	/*---------------------- getter / setter ----------------------*/
