@@ -1,24 +1,17 @@
 
+    alter table EDUCATION 
+        drop 
+        foreign key FK94C37788264515AF;
+
     alter table EMPLOYEE 
         drop 
         foreign key FK75C8D6AE9137778B;
 
-    alter table Education 
-        drop 
-        foreign key FK661D8788264515AF;
+    drop table if exists EDUCATION;
 
     drop table if exists EMPLOYEE;
 
-    drop table if exists Education;
-
-    create table EMPLOYEE (
-        ID bigint not null auto_increment,
-        NAME varchar(255),
-        EDUCATION_ID integer,
-        primary key (ID)
-    );
-
-    create table Education (
+    create table EDUCATION (
         ID integer not null auto_increment,
         auditFlag varchar(255),
         createdBy integer,
@@ -34,14 +27,21 @@
         primary key (ID)
     );
 
+    create table EMPLOYEE (
+        ID bigint not null auto_increment,
+        NAME varchar(255),
+        EDUCATION_ID integer,
+        primary key (ID)
+    );
+
+    alter table EDUCATION 
+        add index FK94C37788264515AF (EMP_ID), 
+        add constraint FK94C37788264515AF 
+        foreign key (EMP_ID) 
+        references EMPLOYEE (ID);
+
     alter table EMPLOYEE 
         add index FK75C8D6AE9137778B (EDUCATION_ID), 
         add constraint FK75C8D6AE9137778B 
         foreign key (EDUCATION_ID) 
-        references Education (ID);
-
-    alter table Education 
-        add index FK661D8788264515AF (EMP_ID), 
-        add constraint FK661D8788264515AF 
-        foreign key (EMP_ID) 
-        references EMPLOYEE (ID);
+        references EDUCATION (ID);

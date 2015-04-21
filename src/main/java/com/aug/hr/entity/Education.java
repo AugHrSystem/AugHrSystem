@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Repository;
 
 @Entity
-@Table(name = "Education")
+@Table(name = "EDUCATION")
 @Repository
 public class Education extends BaseEntity{
 	
