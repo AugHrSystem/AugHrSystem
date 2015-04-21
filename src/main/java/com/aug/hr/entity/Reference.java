@@ -13,13 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-
 
 
 @Entity
-@Table(name = "Reference")
-@Repository
+@Table(name = "REFERENCE")
 public class Reference {
 	
 	
@@ -28,25 +25,25 @@ public class Reference {
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name = "Ref_Name" ,nullable = false)
+	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
 	
-	@Column(name = "Ref_Address" ,nullable = false)
+	@Column(name = "ADDRESS" ,nullable = false)
 	private String address;
 	
 	
-	@Column(name = "Ref_Tel" ,nullable = false)
+	@Column(name = "TEL" ,nullable = false)
 	private String tel;
 	
 	
-	@Column(name = "Ref_Oocupation" ,nullable = false)
+	@Column(name = "OCCUPATION" ,nullable = false)
 	private String oocupation;
 
 	
 
 	@ManyToOne
-	@JoinColumn(name = "EMP_ID" ,referencedColumnName="ID")
+	@JoinColumn(name = "EMP_ID")
 	private Employee employee;
 
 

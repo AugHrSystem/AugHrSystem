@@ -13,11 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-
 @Entity
 @Table(name = "EDUCATION")
-@Repository
 public class Education extends BaseEntity{
 	
 	@Id
@@ -42,7 +39,7 @@ public class Education extends BaseEntity{
 	private String degree;
 	
 	@ManyToOne
-	@JoinColumn(name = "EMP_ID" ,referencedColumnName="ID")
+	@JoinColumn(name = "EMP_ID")
 	private Employee employee;
 
 	/*---------------------- getter / setter ----------------------*/
