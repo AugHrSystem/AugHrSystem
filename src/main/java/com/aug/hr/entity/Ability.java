@@ -6,6 +6,7 @@
 package com.aug.hr.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +19,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.mapping.Set;
+
+
 import org.springframework.stereotype.Repository;
 
 @Entity
@@ -38,8 +40,8 @@ public class Ability extends BaseEntity implements Serializable {
 	@JoinColumn(name = "Emp_ID" ,referencedColumnName="ID")
 	private Employee employee;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Special", cascade=CascadeType.ALL, orphanRemoval=true)
-	private Set<Special> specials;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Ability", cascade=CascadeType.ALL, orphanRemoval=true)
+	private Set<Specialty> Specialtys;
 
 	
 
@@ -52,12 +54,15 @@ public class Ability extends BaseEntity implements Serializable {
 	}
 
 	
-	public Set<Special> getSpecials() {
-		return specials;
+	
+
+
+	public Set<Specialty> getSpecialtys() {
+		return Specialtys;
 	}
 
-	public void setSpecials(Set<Special> specials) {
-		this.specials = specials;
+	public void setSpecialtys(Set<Specialty> specialtys) {
+		Specialtys = specialtys;
 	}
 
 	public Employee getEmployee() {
