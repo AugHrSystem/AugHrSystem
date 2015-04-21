@@ -12,13 +12,13 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<servlet.port>8080</servlet.port>
 
-		<servlet.api.version>2.5</servlet.api.version>
+		<servlet.api.version>2.5</servlet.api.version><!-- 2.5 -->
 		<jsp.api.version>2.0</jsp.api.version>
 		<jstl.version>1.1.2</jstl.version>
 		<struts.version>2.3.16.2</struts.version>
-		<spring.version>3.2.3.RELEASE</spring.version>
-		<hibernate.version>3.5.6-Final</hibernate.version>
-		<hibernate.annatotion.version>3.5.6-Final</hibernate.annatotion.version>
+		<spring.version>4.1.1.RELEASE</spring.version>	<!-- 3.2.3.RELEASE,4.1.0.RELEASE -->
+		<hibernate.version>4.2.2.Final</hibernate.version>	<!-- 3.5.6-Final,3.6.10.Final -->
+		<hibernate.annatotion.version>3.5.6-Final</hibernate.annatotion.version>	<!--3.5.6-Final -->
 		<javassist.version>3.18.1-GA</javassist.version>
 		<mysql.connector.java.version>5.1.30</mysql.connector.java.version>
 		<junit.version>4.11</junit.version>
@@ -60,7 +60,8 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency><!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
+		</dependency>
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
 			<version>3.5.6-Final</version> </dependency> -->
 		<dependency>
 			<groupId>org.hibernate.common</groupId>
@@ -127,7 +128,9 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
 			<version>1.8.1.RELEASE</version>
-		</dependency><!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
+		</dependency>
+
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
 			<version>${spring.version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -178,8 +181,11 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.7</version>
-		</dependency><!-- <dependency> <groupId>javax.transaction</groupId> <artifactId>jta</artifactId> 
+		</dependency>
+
+		<!--<dependency> <groupId>javax.transaction</groupId> <artifactId>jta</artifactId> 
 			<version>1.1</version> </dependency> -->
+
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -224,7 +230,9 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io}</version>
-		</dependency><!-- Spring Security 3.2 dependencies -->
+		</dependency>
+
+		<!-- Spring Security 3.2 dependencies -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
