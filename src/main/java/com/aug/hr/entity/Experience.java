@@ -1,22 +1,18 @@
 package com.aug.hr.entity;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-
 @Entity
-@Table(name = "experience")
-@Repository
+@Table(name = "EXPERIENCE")
 public class Experience extends BaseEntity {
 	
 	@Id
@@ -40,7 +36,9 @@ public class Experience extends BaseEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	private Set<Employee> employees = new HashSet<Employee>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="EXPERIENCE_ID", referencedColumnName="ID")
+	private Employee employee;
 	
 	public Integer getId() {
 		return id;
@@ -96,13 +94,11 @@ public class Experience extends BaseEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "experience")
-	public Set<Employee> getEmployees() {
-		return employees;
+	public Employee getEmployee() {
+		return employee;
 	}
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
-	}
-	
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}	
 	
 }

@@ -1,20 +1,16 @@
 package com.aug.hr.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-
-import java.util.Set;
-
 @Entity
-@Table(name = "coreSkill")
-@Repository
+@Table(name = "CORESKILL")
 public class CoreSkill extends BaseEntity {
 	
 	@Id
@@ -25,10 +21,12 @@ public class CoreSkill extends BaseEntity {
 	private String name;
 	@Column(name = "CODE")
 	private String code;
-	@Column(name = "isActive")
+	@Column(name = "ISACTIVE")
 	private Boolean isActive;
-	@OneToMany(mappedBy = "coreSkill",cascade = CascadeType.REMOVE)
-	private Set<Employee> employees;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="CORESKILL_ID", referencedColumnName="ID")
+	private Employee employee;
 	
 	public Integer getId() {
 		return id;
@@ -54,12 +52,11 @@ public class CoreSkill extends BaseEntity {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	public Set<Employee> getEmployees() {
-		return employees;
+	public Employee getEmployee() {
+		return employee;
 	}
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
-	
 	
 }
