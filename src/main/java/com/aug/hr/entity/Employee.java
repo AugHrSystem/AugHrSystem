@@ -112,6 +112,10 @@ public class Employee extends BaseEntity implements Serializable {
 		@JoinColumn(name="Ability_Id",referencedColumnName="Id")
 		private Ability ability;
 		
+		/*@ManyToOne(fetch=FetchType.EAGER)
+		@JoinColumn(name="Reference_Id",referencedColumnName="Id")
+		private Reference reference;*/
+		
 	
 		public Integer getId() {
 			return Id;
