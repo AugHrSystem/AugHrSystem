@@ -12,7 +12,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<servlet.port>8080</servlet.port>
 
-		<servlet.api.version>2.5</servlet.api.version><!-- 2.5 -->
+		<servlet.api.version>3.5</servlet.api.version><!-- 3.5 -->
 		<jsp.api.version>2.0</jsp.api.version>
 		<jstl.version>1.1.2</jstl.version>
 		<struts.version>2.3.16.2</struts.version>
@@ -58,11 +58,14 @@
 
 	<dependencies>
 
+		<!-- Servlet API 3.0 -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${servlet.api.version}</version>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.servlet</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -115,11 +118,8 @@
 			<artifactId>javassist</artifactId>
 			<version>${javassist.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.connector.java.version}</version>
-		</dependency><!--Spring -->
+
+		<!--Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
