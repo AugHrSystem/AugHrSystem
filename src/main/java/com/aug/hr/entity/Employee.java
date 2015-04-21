@@ -22,10 +22,13 @@ public class Employee {
     @JoinColumn(name = "EDUCATION_ID")
     private Education education;
 
-
     @ManyToOne
-    @JoinColumn(name = "coreSkill")
+    @JoinColumn(name = "CORESKILL_ID")
     private CoreSkill coreSkill;
+    
+    @ManyToOne
+    @JoinColumn(name= "EXPERIENCE_ID")
+    private Experience experience;
 
     public Long getId() {
         return id;
@@ -46,5 +49,25 @@ public class Employee {
     public Education getEducation() {
         return education;
     }
+
+	public CoreSkill getCoreSkill() {
+		return coreSkill;
+	}
+
+	public void setCoreSkill(CoreSkill coreSkill) {
+		this.coreSkill = coreSkill;
+	}
+
+	public Experience getExperience() {
+		return experience;
+	}
+
+	public void setExperience(Experience experience) {
+		this.experience = experience;
+	}
+
+	public void setEducation(Education education) {
+		this.education = education;
+	}
 
 }
