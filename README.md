@@ -1,10 +1,8 @@
 Gold Project - Augmentis HR System
 ==================================
 
-
-
-
 2
+1
 
 How to run generate schema
 
