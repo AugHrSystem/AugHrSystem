@@ -16,11 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-
 @Entity
-@Table(name = "Division")
-@Repository
+@Table(name = "DIVISION")
 public class Division extends BaseEntity{
 	
 	@Id
@@ -34,7 +31,7 @@ public class Division extends BaseEntity{
 	@Column(name = "CODE" ,nullable =false)
 	private String code;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "division", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "division")
 	private Set<Employee> employees;
 	
 	/*---------------------- getter / setter ----------------------*/

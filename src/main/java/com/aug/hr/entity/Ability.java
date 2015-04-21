@@ -7,7 +7,6 @@ package com.aug.hr.entity;
 
 import java.io.Serializable;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -19,31 +18,27 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
-import org.springframework.stereotype.Repository;
-
 @Entity
-@Table(name="Ability")
-@Repository
+@Table(name = "ABILITY")
 public class Ability extends BaseEntity implements Serializable {
-	
-	public Ability() {}
-	
+	public Ability() {
+	}
+
 	@Id
-	@Column(name="ID",unique=true,length=10)
+	@Column(name = "ID", unique = true, length = 10)
 	@GeneratedValue
 	private Integer id;
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "Emp_ID" ,referencedColumnName="ID")
-	private Employee employee;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Ability", cascade=CascadeType.ALL, orphanRemoval=true)
-	private Set<Specialty> Specialtys;
 
-	
+	@ManyToOne
+	@JoinColumn(name = "EMP_ID")
+	private Employee employee;
+
+	@Column(name = "RANK")
+	private Integer rank;
+
+	@ManyToOne
+	@JoinColumn(name = "SPEC_ID")
+	private Specialty specialty;
 
 	public Integer getId() {
 		return id;
@@ -53,16 +48,12 @@ public class Ability extends BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	
-	
-
-
-	public Set<Specialty> getSpecialtys() {
-		return Specialtys;
+	public Specialty getSpecialty() {
+		return specialty;
 	}
 
-	public void setSpecialtys(Set<Specialty> specialtys) {
-		Specialtys = specialtys;
+	public void setSpecialty(Specialty specialty) {
+		this.specialty = specialty;
 	}
 
 	public Employee getEmployee() {
@@ -72,8 +63,13 @@ public class Ability extends BaseEntity implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
- 
-	
-	
+
+	public Integer getRank() {
+		return rank;
+	}
+
+	public void setRank(Integer rank) {
+		this.rank = rank;
+	}
 
 }
