@@ -29,32 +29,35 @@ public class Ability extends BaseEntity implements Serializable {
 	public Ability() {}
 	
 	@Id
-	@Column(name="Id",unique=true,length=10)
+	@Column(name="ID",unique=true,length=10)
 	@GeneratedValue
-	private Integer Id;
+	private Integer id;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "Emp_Id" ,referencedColumnName="Id")
+	@JoinColumn(name = "Emp_ID" ,referencedColumnName="ID")
 	private Employee employee;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Special", cascade=CascadeType.ALL, orphanRemoval=true)
-	private Set<Special> specails;
+	private Set<Special> specials;
+
+	
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
-	public Set<Special> getSpecail() {
-		return specail;
+	
+	public Set<Special> getSpecials() {
+		return specials;
 	}
 
-	public void setSpecail(Set<Special> specail) {
-		this.specail = specail;
+	public void setSpecials(Set<Special> specials) {
+		this.specials = specials;
 	}
 
 	public Employee getEmployee() {
