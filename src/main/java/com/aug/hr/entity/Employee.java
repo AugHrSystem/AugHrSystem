@@ -22,6 +22,11 @@ public class Employee {
     @JoinColumn(name = "EDUCATION_ID")
     private Education education;
 
+
+    @ManyToOne
+    @JoinColumn(name = "coreSkill")
+    private CoreSkill coreSkill;
+
     public Long getId() {
         return id;
     }

@@ -17,5 +17,6 @@
 
         <mapping class="com.aug.hr.entity.Employee"/>
         <mapping class="com.aug.hr.entity.Education"/>
+        <mapping class="com.aug.hr.entity.CoreSkill"/>
     </session-factory>
 </hibernate-configuration>
