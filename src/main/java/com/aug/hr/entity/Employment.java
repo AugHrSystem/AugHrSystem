@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Entity
-@Table(name = "employment")
+@Table(name = "EMPLOYMENT")
 @Repository
 public class Employment extends BaseEntity implements Serializable{
 	
