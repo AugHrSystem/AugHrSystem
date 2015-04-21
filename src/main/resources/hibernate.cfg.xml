@@ -26,6 +26,9 @@
 		<mapping class="com.aug.hr.entity.Reference" />
 		<mapping class="com.aug.hr.entity.Specialty" />
 		<mapping class="com.aug.hr.entity.Experience" />
+		<mapping class="com.aug.hr.entity.MasTechnology" />
+		<mapping class="com.aug.hr.entity.TechnologyEmp" />
+		<mapping class="com.aug.hr.entity.EmpFamily" />
 
 	</session-factory>
 </hibernate-configuration>
