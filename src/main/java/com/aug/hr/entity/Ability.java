@@ -24,7 +24,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Repository;
 
 @Entity
-@Table(name="Ability")
+@Table(name="ABILITY")
 @Repository
 public class Ability extends BaseEntity implements Serializable {
 	
@@ -40,7 +40,7 @@ public class Ability extends BaseEntity implements Serializable {
 	@JoinColumn(name = "Emp_ID" ,referencedColumnName="ID")
 	private Employee employee;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Ability", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ABILITY", cascade=CascadeType.ALL, orphanRemoval=true)
 	private Set<Specialty> Specialtys;
 
 	
