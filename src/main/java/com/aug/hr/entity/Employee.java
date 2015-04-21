@@ -42,7 +42,4 @@ public class Employee {
         return education;
     }
 
-    public void setEducation(Education education) {
-        this.education = education;
-    }
 }

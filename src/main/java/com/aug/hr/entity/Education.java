@@ -29,7 +29,8 @@ public class Education extends BaseEntity{
 	private String university;
 	
 	@Column(name = "GPA" ,nullable =false)
-	private String gpa;
+	private Double  gpa;
+
 	
 	@Column(name = "FACULTY" ,nullable =false)
 	private String faculty;
@@ -41,7 +42,7 @@ public class Education extends BaseEntity{
 	private String degree;
 	
 	@ManyToOne
-	@JoinColumn(name = "EMP_ID" ,referencedColumnName="id")
+	@JoinColumn(name = "EMP_ID" ,referencedColumnName="ID")
 	private Employee employee;
 
 	/*---------------------- getter / setter ----------------------*/
@@ -62,13 +63,6 @@ public class Education extends BaseEntity{
 		this.university = university;
 	}
 
-	public String getGpa() {
-		return gpa;
-	}
-
-	public void setGpa(String gpa) {
-		this.gpa = gpa;
-	}
 
 	public String getFaculty() {
 		return faculty;

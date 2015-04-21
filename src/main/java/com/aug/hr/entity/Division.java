@@ -24,14 +24,14 @@ import org.springframework.stereotype.Repository;
 public class Division extends BaseEntity{
 	
 	@Id
-	@Column(name = "DIV_ID")
+	@Column(name = "ID")
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name = "DIV_Name" ,nullable = false)
+	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
-	@Column(name = "DIV_CODE" ,nullable =false)
+	@Column(name = "CODE" ,nullable =false)
 	private String code;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "division", cascade=CascadeType.ALL, orphanRemoval=true)
