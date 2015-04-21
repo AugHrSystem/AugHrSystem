@@ -15,7 +15,7 @@
         <!--<property name="hbm2ddl.auto">update</property>-->
 
 
-        <mapping class="com.aug.hr.entities.Employee"/>
-        <mapping class="com.aug.hr.entities.Education"/>
+        <mapping class="com.aug.hr.entity.Employee"/>
+        <mapping class="com.aug.hr.entity.Education"/>
     </session-factory>
 </hibernate-configuration>

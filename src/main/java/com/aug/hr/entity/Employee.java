@@ -1,4 +1,5 @@
-package com.aug.hr.entities;
+package com.aug.hr.entity;
+
 
 import javax.persistence.*;
 
