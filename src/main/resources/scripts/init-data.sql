@@ -6,10 +6,13 @@ INSERT INTO EDUCATION (UNIVERSITY, GPA, FACULTY, MAJOR, DEGREE) VALUES ("RANGSIT
 INSERT INTO EMPLOYEE (NAME, EDUCATION_ID) VALUES ('Employee1', 1);
 INSERT INTO EMPLOYEE (NAME, EDUCATION_ID) VALUES ('Employee2', 2);
 
-INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy) VALUES ('.Net','C',NOW(),0);
-INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy) VALUES ('COBOL','C',NOW(),0);
-INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy) VALUES ('Java','C',NOW(),0);
-INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy) VALUES ('PHP','C',NOW(),0);
-INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy) VALUES ('SAP','C',NOW(),0);
+
+INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CODE) VALUES ('.Net','C',NOW(),0,true,1);
+INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CODE) VALUES ('COBOL','C',NOW(),0,true,1);
+INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CODE) VALUES ('Java','C',NOW(),0,true,1);
+INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CODE) VALUES ('PHP','C',NOW(),0,true,1);
+INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CODE) VALUES ('SAP','C',NOW(),0,true,1);
+
+
 
 

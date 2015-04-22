@@ -16,6 +16,7 @@
         <!--<property name="hbm2ddl.auto">update</property>-->
 
 
+
 		<mapping class="com.aug.hr.entity.Employee" />
 		<mapping class="com.aug.hr.entity.Education" />
 		<mapping class="com.aug.hr.entity.Ability" />
@@ -29,6 +30,7 @@
 		<mapping class="com.aug.hr.entity.MasTechnology" />
 		<mapping class="com.aug.hr.entity.TechnologyEmp" />
 		<mapping class="com.aug.hr.entity.EmpFamily" />
-
-	</session-factory>
+        <mapping class="com.aug.hr.entity.Login"/>
+        
+    </session-factory>
 </hibernate-configuration>
