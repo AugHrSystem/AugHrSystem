@@ -15,9 +15,20 @@
         <!--<property name="hbm2ddl.auto">update</property>-->
 
 
-        <mapping class="com.aug.hr.entity.Employee"/>
-        <mapping class="com.aug.hr.entity.Education"/>
-        <mapping class="com.aug.hr.entity.CoreSkill"/>
-        <mapping class="com.aug.hr.entity.Experience"/>
+        <mapping class="com.aug.hr.entity.Employee" />
+		<mapping class="com.aug.hr.entity.Education" />
+		<mapping class="com.aug.hr.entity.Ability" />
+		<mapping class="com.aug.hr.entity.CoreSkill" />
+		<mapping class="com.aug.hr.entity.Division" />
+		<mapping class="com.aug.hr.entity.Joblevel" />
+		<mapping class="com.aug.hr.entity.Employment" />
+		<mapping class="com.aug.hr.entity.Reference" />
+		<mapping class="com.aug.hr.entity.Specialty" />
+		<mapping class="com.aug.hr.entity.Experience" />
+		<mapping class="com.aug.hr.entity.MasTechnology" />
+		<mapping class="com.aug.hr.entity.TechnologyEmp" />
+		<mapping class="com.aug.hr.entity.EmpFamily" />
+        <mapping class="com.aug.hr.entity.Login"/>
+        
     </session-factory>
 </hibernate-configuration>
