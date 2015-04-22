@@ -19,8 +19,10 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
 @Entity
-@Table(name = "ABILITY")
+@Table(name="ABILITY")
 public class Ability extends BaseEntity implements Serializable {
 	public Ability() {
 	}
@@ -29,6 +31,7 @@ public class Ability extends BaseEntity implements Serializable {
 	@Column(name = "ID", unique = true, length = 10)
 	@GeneratedValue
 	private Integer id;
+
 
 	@ManyToOne
 	@JoinColumn(name = "EMP_ID")
@@ -68,6 +71,7 @@ public class Ability extends BaseEntity implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
 
 	public Integer getRank() {
 		return rank;

@@ -29,7 +29,7 @@ public class BaseEnityMasterData {
 	private Integer createdBy;
 	private Date updatedTimeStamp;
 	private Integer updatedBy;
-	private Integer isActive;
+	private Boolean isActive;
 	private String code;
 
 	
@@ -81,12 +81,12 @@ public class BaseEnityMasterData {
 	}
 	
 	
-	@Column(name = "ISACTIVE", nullable = false, length = 1)
-	public Integer getIsActive() {
+	@Column(name = "ISACTIVE", nullable = false)
+	public Boolean getIsActive() {
 		return isActive;
 	}
 
-	public void setIsActive(Integer isActive) {
+	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
 
