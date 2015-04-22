@@ -11,12 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
 
 
 @Entity
-@Table(name = "Specialty")
-@Repository
+@Table(name = "SPECIALTY")
 public class Specialty extends BaseEntity{
 	
 	@Id
@@ -25,7 +23,7 @@ public class Specialty extends BaseEntity{
 	private Integer id;
 
 	
-	@Column(name = "Spec_Name" ,nullable = false)
+	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
 	

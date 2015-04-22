@@ -36,8 +36,8 @@ public class Experience extends BaseEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="EXPERIENCE_ID", referencedColumnName="ID")
+	@ManyToOne
+	@JoinColumn(name="EXPERIENCE_ID")
 	private Employee employee;
 	
 	public Integer getId() {

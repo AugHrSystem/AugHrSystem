@@ -7,20 +7,15 @@ package com.aug.hr.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-
 @Entity
-@Table(name = "Division")
-@Repository
+@Table(name = "DIVISION")
 public class Division extends BaseEntity{
 	
 	@Id
@@ -34,7 +29,10 @@ public class Division extends BaseEntity{
 	@Column(name = "CODE" ,nullable =false)
 	private String code;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "division", cascade=CascadeType.ALL, orphanRemoval=true)
+	@Column(name = "ISACTIVE" ,nullable =false)
+	private Integer isActive;
+	
+	@OneToMany(mappedBy = "division")
 	private Set<Employee> employees;
 	
 	/*---------------------- getter / setter ----------------------*/
