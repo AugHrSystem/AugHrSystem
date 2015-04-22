@@ -40,6 +40,10 @@ public class Education extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name = "EMP_ID")
 	private Employee employee;
+	
+	@ManyToOne
+	@JoinColumn(name = "DEGREE_ID")
+	private Degreetype degreetype;
 
 	/*---------------------- getter / setter ----------------------*/
 	
@@ -91,5 +95,22 @@ public class Education extends BaseEntity{
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
+	public Double getGpa() {
+		return gpa;
+	}
+
+	public void setGpa(Double gpa) {
+		this.gpa = gpa;
+	}
+
+	public Degreetype getDegreetype() {
+		return degreetype;
+	}
+
+	public void setDegreetype(Degreetype degreetype) {
+		this.degreetype = degreetype;
+	}
+	
 	
 }
