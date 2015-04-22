@@ -1,7 +1,7 @@
 /**
  *
  * @author Pranrajit
- * @date 21 เม.ย. 2558
+ * @date 22 เม.ย. 2558
  */
 package com.aug.hr.entity;
 
@@ -15,8 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-
 
 @Entity
 @Table(name = "DEGREETYPE")
@@ -36,8 +34,8 @@ public class Degreetype {
 	@Column(name = "ISACTIVE" ,nullable =false)
 	private String isactive;
 	
-	@OneToMany(mappedBy = "DEGREETYPE")
-	private Set<Division> devistions;
+	@OneToMany(mappedBy = "degreetype")
+	private Set<Education> educations;
 
 	public Integer getId() {
 		return Id;
@@ -71,14 +69,14 @@ public class Degreetype {
 		this.isactive = isactive;
 	}
 
-	public Set<Division> getDevistions() {
-		return devistions;
+	public Set<Education> getEducations() {
+		return educations;
 	}
 
-	public void setDevistions(Set<Division> devistions) {
-		this.devistions = devistions;
+	public void setEducations(Set<Education> educations) {
+		this.educations = educations;
 	}
+
 	
 	
-	  
 }
