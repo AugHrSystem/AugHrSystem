@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MOCKHTML</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css"/>
+  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.css"/>
+  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.min.css"/>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../bootstrap/js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+   <div class="row">
+     <div class="col-md-3"><h3><label>ข้อมูลครอบครัว</label></h3></div>
+  </div>
+
+  <br/>
+
+  <form class="form-horizontal" method="post" action="">
+
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">First Name</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="firstname" placeholder="First Name">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastname" class="col-sm-2 control-label">Last Name</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+      </div>
+    </div>
+
+    <div class="form-group">
+
+    <label class="col-sm-2 control-label">Gender</label>
+
+    <div class="col-sm-4">
+      <div class="radio-inline">
+        <label>
+          <input type="radio" name="gender" id="male" value="male" checked> Male
+        </label>
+      </div>
+      <div class="radio-inline">
+        <label>
+          <input type="radio" name="gender" id="female" value="female"> FeMale
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+      <label for="age" class="col-sm-2 control-label">age</label>
+      <div class="col-sm-4">
+        <input type="number" class="form-control" id="age" placeholder="Age">
+      </div>
+  </div>
+
+
+  <div class="form-group">
+      <label for="address" class="col-sm-2 control-label">Address</label>
+      <div class="col-sm-4">
+        <textarea rows="3" id="address" class="form-control" placeholder="Address"></textarea>
+      </div>
+    </div>
+
+
+
+  <div class="form-group">
+      <label for="occupation" class="col-sm-2 control-label">Occupation</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="occupation" placeholder="Occupation">
+      </div>
+  </div>
+
+
+  <div class="form-group">
+      <label for="position" class="col-sm-2 control-label">Position</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="position" placeholder="Position">
+      </div>
+  </div>
+
+
+    <div class="form-group">
+        <label for="relation" class="col-sm-2 control-label">Relation</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="relation" placeholder="Relation">
+        </div>
+    </div>
+
+    
+   <br/>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-4">
+        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+      </div>
+    </div>
+
+
+  </form>
+
+
+</div>
+
+
+
+</body>
+</html>
