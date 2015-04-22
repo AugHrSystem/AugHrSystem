@@ -71,9 +71,8 @@ public class Employee {
 	@OneToMany(mappedBy = "employee")
 	private Set<Education> educations = new HashSet<Education>();
 
-    @ManyToOne
-    @JoinColumn(name = "CORESKILL_ID")
-    private CoreSkill coreSkill;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
+    private Set<CoreSkill> coreSkill = new HashSet<CoreSkill>();
     
     @ManyToOne
     @JoinColumn(name= "EMPLOYMENT_ID")
@@ -122,12 +121,11 @@ public class Employee {
         this.name = name;
     }
 
-
-	public CoreSkill getCoreSkill() {
+	public Set<CoreSkill> getCoreSkill() {
 		return coreSkill;
 	}
 
-	public void setCoreSkill(CoreSkill coreSkill) {
+	public void setCoreSkill(Set<CoreSkill> coreSkill) {
 		this.coreSkill = coreSkill;
 	}
 
@@ -298,5 +296,22 @@ public class Employee {
 	public void setExperiences(Set<Experience> experiences) {
 		this.experiences = experiences;
 	}
+
+	public TechnologyEmp getTechnology() {
+		return technology;
+	}
+
+	public void setTechnology(TechnologyEmp technology) {
+		this.technology = technology;
+	}
+
+	public Set<EmpFamily> getFamilies() {
+		return families;
+	}
+
+	public void setFamilies(Set<EmpFamily> families) {
+		this.families = families;
+	}
+	
 
 }
