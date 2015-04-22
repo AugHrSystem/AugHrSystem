@@ -33,7 +33,7 @@ public class EmpFamily extends BaseEntity implements Serializable {
 	private String empFamilyOccupation;
 	private String empFamilyPosition;
 	private String empFamilyRelation;
-	private Employee emp;
+	private Employee employee;
 	
 	
 	
@@ -144,18 +144,21 @@ public class EmpFamily extends BaseEntity implements Serializable {
 		this.empFamilyRelation = empFamilyRelation;
 	}
 
-	
-	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="EMP_ID",nullable=false)
-	public Employee getEmp() {
-		return emp;
+	
+	public Employee getEmployee() {
+		return employee;
 	}
 
 
-	public void setEmp(Employee emp) {
-		this.emp = emp;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
+
+	
+	
+	
 	
 	
 	
