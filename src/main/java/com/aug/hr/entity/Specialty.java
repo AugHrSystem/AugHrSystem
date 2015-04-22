@@ -38,7 +38,7 @@ public class Specialty extends BaseEntity{
 	
 	
 	
-	@OneToMany(mappedBy = "Ability")
+	@OneToMany(mappedBy = "specialty")
 	private Set<Ability> abilities = new HashSet<Ability>();
 
 
