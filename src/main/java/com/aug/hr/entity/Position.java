@@ -24,7 +24,7 @@ public class Position extends BaseEnityMasterData {
 	@Column(name = "ISACTIVE",nullable=false)
 	private Boolean isActive;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="POSITION_ID",nullable=false)
+	@JoinColumn(name="EXPERIENCE_ID",nullable=false)
 	private Experience experience;
 	public Integer getId() {
 		return id;
