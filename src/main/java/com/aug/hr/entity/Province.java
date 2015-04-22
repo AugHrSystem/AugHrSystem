@@ -1,8 +1,9 @@
 /**
  *
- * @author Preeyaporn
- * @date 21 เม.ย. 2558
+ * @author natechanok
+ * @date Apr 22, 2015
  */
+
 package com.aug.hr.entity;
 
 import java.util.Set;
@@ -15,27 +16,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DIVISION")
-public class Division extends BaseEntity{
-	
+@Table(name = "PROVINCE")
+public class Province extends BaseEntity {
 	@Id
-	@Column(name = "ID")
 	@GeneratedValue
+	@Column(name = "ID")
 	private Integer id;
-	
-	@Column(name = "NAME" ,nullable = false)
+	@Column(name = "NAME", nullable = false)
 	private String name;
-	
-	@Column(name = "CODE" ,nullable =true)
+	@Column(name = "CODE")
 	private String code;
-
-	@Column(name = "ISACTIVE" ,nullable =true)
-	private Integer isActive;
+	@Column(name = "ISACTIVE", nullable = false)
+	private Boolean isActive;
 	
-	@OneToMany(mappedBy = "division")
-	private Set<Employee> employees;
 	
-	/*---------------------- getter / setter ----------------------*/
+	@OneToMany(mappedBy = "province")
+	private Set<Address> addresss;
 
 	public Integer getId() {
 		return id;
@@ -61,13 +57,20 @@ public class Division extends BaseEntity{
 		this.code = code;
 	}
 
-	public Set<Employee> getEmployees() {
-		return employees;
+	public Boolean getIsActive() {
+		return isActive;
 	}
 
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
-	
 
+	public Set<Address> getAddresss() {
+		return addresss;
+	}
+
+	public void setAddresss(Set<Address> addresss) {
+		this.addresss = addresss;
+
+	}
 }
