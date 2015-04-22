@@ -21,11 +21,13 @@ import javax.persistence.Table;
 
 
 
+
+
 import org.springframework.stereotype.Repository;
 
 @Entity
 @Table(name="ABILITY")
-@Repository
+
 public class Ability extends BaseEntity implements Serializable {
 	
 	public Ability() {}
@@ -34,16 +36,20 @@ public class Ability extends BaseEntity implements Serializable {
 	@Column(name="ID",unique=true,length=10)
 	@GeneratedValue
 	private Integer id;
-	
+	 
 	
 	@ManyToOne
-	@JoinColumn(name = "Emp_ID" ,referencedColumnName="ID")
+	@JoinColumn(name = "Emp_ID")
 	private Employee employee;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ABILITY", cascade=CascadeType.ALL, orphanRemoval=true)
-	private Set<Specialty> Specialtys;
-
 	
+	 @Column(name = "RANK",nullable = false)
+	 private Integer rank;
+	 
+
+	@ManyToOne
+	@JoinColumn(name = "Spec_ID")
+	private Specialty specialty;
 
 	public Integer getId() {
 		return id;
@@ -56,13 +62,13 @@ public class Ability extends BaseEntity implements Serializable {
 	
 	
 
-
-	public Set<Specialty> getSpecialtys() {
-		return Specialtys;
+	
+	public Specialty getSpecialty() {
+		return specialty;
 	}
 
-	public void setSpecialtys(Set<Specialty> specialtys) {
-		Specialtys = specialtys;
+	public void setSpecialty(Specialty specialty) {
+		this.specialty = specialty;
 	}
 
 	public Employee getEmployee() {
@@ -71,6 +77,14 @@ public class Ability extends BaseEntity implements Serializable {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public Integer getRank() {
+		return rank;
+	}
+
+	public void setRank(Integer rank) {
+		this.rank = rank;
 	}
  
 	
