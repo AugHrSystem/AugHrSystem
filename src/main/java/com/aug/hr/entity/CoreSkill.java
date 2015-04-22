@@ -25,7 +25,7 @@ public class CoreSkill extends BaseEntity {
 	private Boolean isActive;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="CORESKILL_ID",nullable=false)
+	@JoinColumn(name="EMPLOYEE_ID",nullable=false)
 	private Employee employee;
 	
 	public Integer getId() {

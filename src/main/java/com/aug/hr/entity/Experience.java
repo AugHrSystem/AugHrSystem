@@ -39,7 +39,7 @@ public class Experience extends BaseEntity {
 	private String description;
 	
 	@ManyToOne
-	@JoinColumn(name="EXPERIENCE_ID")
+	@JoinColumn(name="EMPLOYEE_ID")
 	private Employee employee;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "experience", cascade=CascadeType.ALL, orphanRemoval=true)
