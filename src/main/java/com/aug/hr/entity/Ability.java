@@ -7,6 +7,7 @@ package com.aug.hr.entity;
 
 import java.io.Serializable;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -35,7 +36,11 @@ public class Ability extends BaseEntity implements Serializable {
 
 	@Column(name = "RANK")
 	private Integer rank;
-
+	@Column(name = "CODE")
+	private String code;
+	@Column(name = "ISACTIVE")
+	private Boolean isActive;
+	
 	@ManyToOne
 	@JoinColumn(name = "SPEC_ID")
 	private Specialty specialty;
@@ -72,4 +77,21 @@ public class Ability extends BaseEntity implements Serializable {
 		this.rank = rank;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	
 }
