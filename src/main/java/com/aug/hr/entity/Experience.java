@@ -1,7 +1,10 @@
 package com.aug.hr.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,8 +33,6 @@ public class Experience extends BaseEntity {
 	private String Address;
 	@Column(name = "BUSINESS")
 	private String business;
-	@Column(name = "POSITION")
-	private String position;
 	@Column(name = "SUPERVISOR")
 	private String superVisor;
 	@Column(name = "DESCRIPTION")
@@ -39,6 +41,9 @@ public class Experience extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name="EXPERIENCE_ID")
 	private Employee employee;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "experience", cascade=CascadeType.ALL, orphanRemoval=true)
+    private Set<Position> position = new HashSet<Position>();
 	
 	public Integer getId() {
 		return id;
@@ -76,12 +81,6 @@ public class Experience extends BaseEntity {
 	public void setBusiness(String business) {
 		this.business = business;
 	}
-	public String getPosition() {
-		return position;
-	}
-	public void setPosition(String position) {
-		this.position = position;
-	}
 	public String getSuperVisor() {
 		return superVisor;
 	}
@@ -99,6 +98,12 @@ public class Experience extends BaseEntity {
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+	public Set<Position> getPosition() {
+		return position;
+	}
+	public void setPosition(Set<Position> position) {
+		this.position = position;
 	}	
 	
 }
