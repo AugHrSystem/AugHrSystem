@@ -3,21 +3,32 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
+
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hris_system</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.username">aug</property>
+        <property name="hibernate.connection.password">Aug@min</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
         <!--<property name="hbm2ddl.auto">create-drop</property>-->
         <!--<property name="hbm2ddl.auto">update</property>-->
 
 
-        <mapping class="com.aug.hr.entity.Employee"/>
-        <mapping class="com.aug.hr.entity.Education"/>
-        <mapping class="com.aug.hr.entity.CoreSkill"/>
-        <mapping class="com.aug.hr.entity.Experience"/>
-    </session-factory>
+		<mapping class="com.aug.hr.entity.Employee" />
+		<mapping class="com.aug.hr.entity.Education" />
+		<mapping class="com.aug.hr.entity.Ability" />
+		<mapping class="com.aug.hr.entity.CoreSkill" />
+		<mapping class="com.aug.hr.entity.Division" />
+		<mapping class="com.aug.hr.entity.Joblevel" />
+		<mapping class="com.aug.hr.entity.Employment" />
+		<mapping class="com.aug.hr.entity.Reference" />
+		<mapping class="com.aug.hr.entity.Specialty" />
+		<mapping class="com.aug.hr.entity.Experience" />
+		<mapping class="com.aug.hr.entity.MasTechnology" />
+		<mapping class="com.aug.hr.entity.TechnologyEmp" />
+		<mapping class="com.aug.hr.entity.EmpFamily" />
+
+	</session-factory>
 </hibernate-configuration>

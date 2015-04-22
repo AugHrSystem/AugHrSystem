@@ -32,7 +32,7 @@ public abstract class BaseEntity {
 	private Integer updatedBy;
 
 	
-	@Column(name = "auditFlag", nullable = false, length = 1)
+	@Column(name = "AUDITFLAG", nullable = false, length = 1)
 	public String getAuditFlag() {
 		return auditFlag;
 	}
@@ -42,7 +42,7 @@ public abstract class BaseEntity {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "createdTimeStamp", nullable = false)
+	@Column(name = "CREATEDTIMESTAMP", nullable = false)
 	public Date getCreatedTimeStamp() {
 		return createdTimeStamp;
 	}
@@ -51,7 +51,7 @@ public abstract class BaseEntity {
 		this.createdTimeStamp = createdTimeStamp;
 	}
 
-	@Column(name = "createdBy", nullable = false, length = 10)
+	@Column(name = "CREATEDBY", nullable = false, length = 10)
 	public Integer getCreatedBy() {
 		return createdBy;
 	}
@@ -59,7 +59,8 @@ public abstract class BaseEntity {
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-
+	
+	@Column(name="UPDATEDTIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getUpdatedTimeStamp() {
 		return updatedTimeStamp;
@@ -69,7 +70,7 @@ public abstract class BaseEntity {
 		this.updatedTimeStamp = updatedTimeStamp;
 	}
 
-	@Column(name = "updatedBy", nullable = true, length = 10)
+	@Column(name = "UPDATEDBY", nullable = true, length = 10)
 	public Integer getUpdatedBy() {
 		return updatedBy;
 	}

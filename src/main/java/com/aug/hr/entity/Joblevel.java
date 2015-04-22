@@ -13,23 +13,27 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-
 
 @Entity
-@Table(name="joblevel")
-@Repository
+@Table(name="JOBLEVEL")
 public class Joblevel extends BaseEntity implements Serializable {
 	
 	@Id
-	@Column(name="JoblevelId",nullable=false,unique=true)
+	@Column(name="ID",nullable=false,unique=true)
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name="JoblevelName",nullable = false,length= 50)
+	@Column(name="NAME",nullable = false,length= 50)
 	private String name;
 	
-	@OneToMany(mappedBy="employee",fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
+	@Column(name = "CODE")
+	private String code;
+	
+	@Column(name = "ISACTIVE")
+	private Boolean isActive;
+
+	
+	@OneToMany(mappedBy="joblevel")
 	private Set<Employee> employees = new HashSet<Employee>();
 
 	public Integer getId() {
@@ -55,6 +59,24 @@ public class Joblevel extends BaseEntity implements Serializable {
 	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
 	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+	
+	
 
 	
 	

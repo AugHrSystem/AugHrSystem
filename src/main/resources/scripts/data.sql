@@ -1,2 +1,0 @@
-INSERT INTO EMPLOYEE (name) VALUES ('Employee1');
-INSERT INTO EMPLOYEE (name) VALUES ('Employee2');

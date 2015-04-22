@@ -19,25 +19,29 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
 
 
 @Entity
-@Table(name = "employment")
-@Repository
+@Table(name = "EMPLOYMENT")
 public class Employment extends BaseEntity implements Serializable{
 	
 	@Id
-	@Column(name = "Id", length = 10)
+	@Column(name = "ID", length = 10)
 	@GeneratedValue
 	
 	private Integer Id;
 	
-	@Column(name = "Name", nullable = false, length = 200)
+	@Column(name = "NAME", nullable = false, length = 200)
 	private String Name;
+	
+	@Column(name = "CODE")
+	private String code;
+	
+	@Column(name = "ISACTIVE")
+	private Boolean isActive;
 
 	
-	@OneToMany(mappedBy = "employment", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(mappedBy = "employment")
 	private Set<Employee> employees = new HashSet<Employee>();
 	
 	public Integer getId() {
@@ -54,6 +58,30 @@ public class Employment extends BaseEntity implements Serializable{
 
 	public void setName(String name) {
 		Name = name;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public Set<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
 	
 	
