@@ -100,7 +100,7 @@ public class Employee {
     @JoinColumn(name= "TECHNOLOGY_ID")
     private TechnologyEmp technology;
     
-    @OneToMany(mappedBy = "emp", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<EmpFamily> families = new HashSet<EmpFamily>();
     
     
