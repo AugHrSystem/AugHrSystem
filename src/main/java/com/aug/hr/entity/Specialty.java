@@ -1,5 +1,8 @@
 package com.aug.hr.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,23 +29,89 @@ public class Specialty extends BaseEntity{
 	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
+	@Column(name = "CODE" ,nullable = false)
+	private String code;
+	
+	@Column(name = "ISACTIVE")
+	private Boolean isActive;
 	
 	
+	
+	
+	@OneToMany(mappedBy = "Ability")
+	private Set<Ability> abilities = new HashSet<Ability>();
+
+
+
+
 	public Integer getId() {
 		return id;
 	}
+
+
+
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+
+
+
 	public String getName() {
 		return name;
 	}
 
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+
+
+	public String getCode() {
+		return code;
+	}
+
+
+
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+
+
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+
+
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
+
+
+
+	public Set<Ability> getAbilities() {
+		return abilities;
+	}
+
+
+
+
+	public void setAbilities(Set<Ability> abilities) {
+		this.abilities = abilities;
+	}
+	
+	
 	
 	
 }
