@@ -29,6 +29,9 @@
 		<mapping class="com.aug.hr.entity.MasTechnology" />
 		<mapping class="com.aug.hr.entity.TechnologyEmp" />
 		<mapping class="com.aug.hr.entity.EmpFamily" />
+		<mapping class="com.aug.hr.entity.Address" />
+		<mapping class="com.aug.hr.entity.AddressType" />
+		<mapping class="com.aug.hr.entity.Province" />
 
 	</session-factory>
 </hibernate-configuration>
