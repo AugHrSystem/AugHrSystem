@@ -33,10 +33,10 @@
 		<mapping class="com.aug.hr.entity.Address" />
 		<mapping class="com.aug.hr.entity.AddressType" />
 		<mapping class="com.aug.hr.entity.Province" />
+		<mapping class="com.aug.hr.entity.Login"/>
+		<mapping class="com.aug.hr.entity.Position"/>		
 
 	</session-factory>
-
-        <mapping class="com.aug.hr.entity.Login"/>
         
     
 
