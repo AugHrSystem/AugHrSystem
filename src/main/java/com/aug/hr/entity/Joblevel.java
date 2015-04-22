@@ -26,6 +26,13 @@ public class Joblevel extends BaseEntity implements Serializable {
 	@Column(name="NAME",nullable = false,length= 50)
 	private String name;
 	
+	@Column(name = "CODE")
+	private String code;
+	
+	@Column(name = "ISACTIVE")
+	private Boolean isActive;
+
+	
 	@OneToMany(mappedBy="joblevel")
 	private Set<Employee> employees = new HashSet<Employee>();
 
@@ -52,6 +59,24 @@ public class Joblevel extends BaseEntity implements Serializable {
 	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
 	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+	
+	
 
 	
 	

@@ -97,12 +97,12 @@ public class Employee {
     private Set<Experience> experiences = new HashSet<Experience>();
     
  
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name= "TECHNOLOGY_ID")
-    private Technology technology;*/
+    private TechnologyEmp technology;
     
-/*    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
-    private Set<Family> families = new HashSet<Family>();*/
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+    private Set<EmpFamily> families = new HashSet<EmpFamily>();
     
     
 
