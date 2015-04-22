@@ -28,7 +28,7 @@ public class Address {
 	private String address1;
 	
 	@Column(name="ADDRESS2")
-	private String address;
+	private String address2;
 
 	public Integer getId() {
 		return id;
@@ -47,11 +47,11 @@ public class Address {
 	}
 
 	public String getAddress() {
-		return address;
+		return address2;
 	}
 
 	public void setAddress(String address) {
-		this.address = address;
+		this.address2 = address;
 	}
 	
 	

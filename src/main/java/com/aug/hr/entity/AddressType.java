@@ -68,7 +68,7 @@ public class AddressType {
 		this.code = code;
 	}
 	
-	 @OneToMany(mappedBy = "addresstype")
+	 @OneToMany(mappedBy = "addressType")
 	 private Set<Address> addresses = new HashSet<Address>();
 	
 	

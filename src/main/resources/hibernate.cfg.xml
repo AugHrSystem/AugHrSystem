@@ -34,7 +34,8 @@
 		<mapping class="com.aug.hr.entity.AddressType" />
 		<mapping class="com.aug.hr.entity.Province" />
 		<mapping class="com.aug.hr.entity.Login"/>
-		<mapping class="com.aug.hr.entity.Position"/>		
+		<mapping class="com.aug.hr.entity.Position"/>
+		<mapping class="com.aug.hr.entity.Degreetype"/>			
 
 	</session-factory>
         
