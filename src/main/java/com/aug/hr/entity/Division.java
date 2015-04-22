@@ -7,10 +7,8 @@ package com.aug.hr.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -31,6 +29,9 @@ public class Division extends BaseEntity{
 	@Column(name = "CODE" ,nullable =false)
 	private String code;
 
+	@Column(name = "ISACTIVE" ,nullable =false)
+	private Integer isActive;
+	
 	@OneToMany(mappedBy = "division")
 	private Set<Employee> employees;
 	

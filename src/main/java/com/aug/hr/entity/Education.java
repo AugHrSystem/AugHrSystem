@@ -27,7 +27,6 @@ public class Education extends BaseEntity{
 	
 	@Column(name = "GPA" ,nullable =false)
 	private Double  gpa;
-
 	
 	@Column(name = "FACULTY" ,nullable =false)
 	private String faculty;
