@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Entity
 @Table(name="MASTECHNOLOGY")
 @Repository
-public class MasTechnology extends BaseEntity implements Serializable{
+public class MasTechnology extends BaseEnityMasterData implements Serializable{
 	
 	/**
 	 * 
