@@ -17,15 +17,15 @@ public class CoreSkill extends BaseEntity {
 	@GeneratedValue
 	@Column(name = "ID")
 	private Integer id;
-	@Column(name = "NAME")
+	@Column(name = "NAME",nullable=false)
 	private String name;
 	@Column(name = "CODE")
 	private String code;
-	@Column(name = "ISACTIVE")
+	@Column(name = "ISACTIVE",nullable=false)
 	private Boolean isActive;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="CORESKILL_ID")
+	@JoinColumn(name="CORESKILL_ID",nullable=false)
 	private Employee employee;
 	
 	public Integer getId() {
