@@ -1,11 +1,12 @@
 package com.aug.hr.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,60 +17,46 @@ public class Position extends BaseEnityMasterData {
 	@GeneratedValue
 	@Column(name = "ID")
 	private Integer id;
-	@Column(name = "BUSINESS")
-	private String business;
-	@Column(name = "COMPANY_NAME")
-	private String company_name;
-	@Column(name = "DATE_FROM")
-	private Date date_form;
-	@Column(name = "DATE_TO")
-	private Date date_to;
-	@Column(name = "DESCRIPTION",nullable=false)
-	private String description;
-	@Column(name = "SUPERVISOR",nullable=false)
-	private String supervisor;
+	@Column(name = "NAME",nullable=false)
+	private String name;
+	@Column(name = "CODE",nullable=false)
+	private String code;
+	@Column(name = "ISACTIVE",nullable=false)
+	private Boolean isActive;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="POSITION_ID",nullable=false)
+	private Experience experience;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getBusiness() {
-		return business;
+	public String getName() {
+		return name;
 	}
-	public void setBusiness(String business) {
-		this.business = business;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCompany_name() {
-		return company_name;
+	public String getCode() {
+		return code;
 	}
-	public void setCompany_name(String company_name) {
-		this.company_name = company_name;
+	public void setCode(String code) {
+		this.code = code;
 	}
-	public Date getDate_form() {
-		return date_form;
+	public Boolean getIsActive() {
+		return isActive;
 	}
-	public void setDate_form(Date date_form) {
-		this.date_form = date_form;
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
-	public Date getDate_to() {
-		return date_to;
+	public Experience getExperience() {
+		return experience;
 	}
-	public void setDate_to(Date date_to) {
-		this.date_to = date_to;
+	public void setExperience(Experience experience) {
+		this.experience = experience;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getSupervisor() {
-		return supervisor;
-	}
-	public void setSupervisor(String supervisor) {
-		this.supervisor = supervisor;
-	}
-	
-	
+
+
+
 }

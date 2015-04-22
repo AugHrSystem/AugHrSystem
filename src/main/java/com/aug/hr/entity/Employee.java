@@ -70,7 +70,7 @@ public class Employee {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
     private Set<CoreSkill> coreSkill = new HashSet<CoreSkill>();
-    
+	  
     @ManyToOne
     @JoinColumn(name= "EMPLOYMENT_ID")
     private Employment employment;
@@ -311,6 +311,14 @@ public class Employee {
 
 	public void setFamilies(Set<EmpFamily> families) {
 		this.families = families;
+	}
+
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
 	}
 	
 
