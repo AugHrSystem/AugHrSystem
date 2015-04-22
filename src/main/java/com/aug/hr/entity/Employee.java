@@ -22,9 +22,6 @@ public class Employee {
     @Column(name = "NAME")
     private String name;
     
-   /* @Column(name = "ADDRESS", nullable = false,length= 100)
-    private String address;*/
-	
 	@Column(name = "TEL", nullable = false,length= 10)
     private String tel;
 	
@@ -102,6 +99,9 @@ public class Employee {
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<EmpFamily> families = new HashSet<EmpFamily>();
+    
+    @OneToMany(mappedBy = "employee")
+	private Set<Address> addresses = new HashSet<Address>();
     
     
 
