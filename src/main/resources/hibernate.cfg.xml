@@ -19,5 +19,10 @@
         <mapping class="com.aug.hr.entity.Education"/>
         <mapping class="com.aug.hr.entity.CoreSkill"/>
         <mapping class="com.aug.hr.entity.Experience"/>
+        <mapping class="com.aug.hr.entity.MasTechnology" />
+		<mapping class="com.aug.hr.entity.TechnologyEmp" />
+		<mapping class="com.aug.hr.entity.EmpFamily" />
+        <mapping class="com.aug.hr.entity.Login"/>
+        
     </session-factory>
 </hibernate-configuration>
