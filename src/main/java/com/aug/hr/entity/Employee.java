@@ -22,9 +22,6 @@ public class Employee {
     @Column(name = "NAME")
     private String name;
     
-   /* @Column(name = "ADDRESS", nullable = false,length= 100)
-    private String address;*/
-	
 	@Column(name = "TEL", nullable = false,length= 10)
     private String tel;
 	
@@ -73,7 +70,7 @@ public class Employee {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
     private Set<CoreSkill> coreSkill = new HashSet<CoreSkill>();
-    
+	  
     @ManyToOne
     @JoinColumn(name= "EMPLOYMENT_ID")
     private Employment employment;
@@ -100,8 +97,11 @@ public class Employee {
     @JoinColumn(name= "TECHNOLOGY_ID")
     private TechnologyEmp technology;
     
-    @OneToMany(mappedBy = "emp", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<EmpFamily> families = new HashSet<EmpFamily>();
+    
+    @OneToMany(mappedBy = "employee")
+	private Set<Address> addresses = new HashSet<Address>();
     
     
 
@@ -311,6 +311,14 @@ public class Employee {
 
 	public void setFamilies(Set<EmpFamily> families) {
 		this.families = families;
+	}
+
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
 	}
 	
 
