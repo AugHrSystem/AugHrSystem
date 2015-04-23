@@ -10,24 +10,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CORESKILL")
-public class CoreSkill extends BaseEntity {
-	
+@Table(name = "POSITION")
+public class Position extends BaseEnityMasterData {
+
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
 	private Integer id;
 	@Column(name = "NAME",nullable=false)
 	private String name;
-	@Column(name = "CODE")
+	@Column(name = "CODE",nullable=false)
 	private String code;
 	@Column(name = "ISACTIVE",nullable=false)
 	private Boolean isActive;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="EMPLOYEE_ID",nullable=false)
-	private Employee employee;
-	
+	@JoinColumn(name="EXPERIENCE_ID",nullable=false)
+	private Experience experience;
 	public Integer getId() {
 		return id;
 	}
@@ -52,11 +50,13 @@ public class CoreSkill extends BaseEntity {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	public Employee getEmployee() {
-		return employee;
+	public Experience getExperience() {
+		return experience;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setExperience(Experience experience) {
+		this.experience = experience;
 	}
-	
+
+
+
 }
