@@ -68,4 +68,21 @@ VALUES
 ('WPF','a',1),
 ('Zend','a',1);
 
+--INSERT JOBLEVEL
+
+insert into joblevel(name,code,isactive) 
+values('Account Execute','AE',1),
+('Account Manager','AM',1),
+('Business Division Director','BDD',1),
+('Consultant','C',1),
+('Manager','M',1),
+('Managing Consultant','MC',1),
+('Partner','P',1),
+('Principal Consultant','PC',1),
+('Professional','PF',1),
+('Senior Account Manager','SAM',1),
+('Senior Consultant','SC',1),
+('Senior Manager','SM',1),
+('Senior Professional','SP',1),
+('Support Division Director','SDD',1);
 
