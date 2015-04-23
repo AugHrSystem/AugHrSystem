@@ -182,7 +182,7 @@ VALUES
 
 
 --CORESKII
-insert into CORESKII (name,code,isActive)
+insert into CORESKILL (name,code,isActive)
 VALUES
 ('Administration','C001',1),
 ('Application Analyst','C002',1),
