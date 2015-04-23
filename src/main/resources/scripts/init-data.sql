@@ -89,3 +89,5 @@ values('Account Execute','AE',1),
 
 INSERT INTO employment(NAME,CODE,ISACTIVE) VALUES ('PERMANENT','A01',1),('CONTRACT','B02',1);
 
+INSERT INTO addresstype(NAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1);
+
