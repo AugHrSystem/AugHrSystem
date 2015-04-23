@@ -86,3 +86,6 @@ values('Account Execute','AE',1),
 ('Senior Professional','SP',1),
 ('Support Division Director','SDD',1);
 
+
+INSERT INTO employment(NAME,CODE,ISACTIVE) VALUES ('PERMANENT','A01',1),('CONTRACT','B02',1);
+
