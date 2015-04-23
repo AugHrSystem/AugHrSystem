@@ -69,3 +69,9 @@ VALUES
 ('Zend','a',1);
 
 
+insert into DEGREETYPE (name,code,isactive)
+VALUES
+('Bachelor','a',1)
+('Masters','a',1)
+('Ph.D.','a',1);
+
