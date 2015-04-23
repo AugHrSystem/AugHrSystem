@@ -24,7 +24,7 @@ public class Province extends BaseEntity {
 	private Integer id;
 	@Column(name = "NAME", nullable = false)
 	private String name;
-	@Column(name = "CODE")
+	@Column(name = "CODE",nullable = false)
 	private String code;
 	@Column(name = "ISACTIVE", nullable = false)
 	private Boolean isActive;
