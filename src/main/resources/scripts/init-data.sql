@@ -81,6 +81,12 @@ values('Account Execute','AE',1),
 ('Support Division Director','SDD',1);
 
 
+
+
+--ADDRESSTYPE
+INSERT INTO addresstype(NAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1);
+
+
 --DEGREETYPE
 insert into DEGREETYPE (name,code,isactive)
 VALUES
@@ -202,9 +208,4 @@ VALUES
 ('Solution Architect','C022',1),
 ('System Analyst','C023',1);
 ('Transformation','C024',1);
-
-
-
-
-
 
