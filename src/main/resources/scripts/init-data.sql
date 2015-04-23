@@ -86,9 +86,14 @@ values('Account Execute','AE',1),
 ('Senior Professional','SP',1),
 ('Support Division Director','SDD',1);
 
+<<<<<<< HEAD
 insert into DEGREETYPE (name,code,isactive)
 VALUES
 ('Bachelor','a',1)
 ('Masters','a',1)
 ('Ph.D.','a',1);
+=======
+
+INSERT INTO employment(NAME,CODE,ISACTIVE) VALUES ('PERMANENT','A01',1),('CONTRACT','B02',1);
+>>>>>>> 7aa3ea3bea278d19a5347292047ad1ce9a6516c0
 
