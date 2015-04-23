@@ -206,6 +206,6 @@ VALUES
 ('SAP','C020',1);
 ('Software Tester','C021',1),
 ('Solution Architect','C022',1),
-('System Analyst','C023',1);
+('System Analyst','C023',1)
 ('Transformation','C024',1);
 
