@@ -173,3 +173,38 @@ VALUES
 ('Songkhla','a',1),
 ('Satun','a',1),
 ('Surat Thani','a',1);
+
+
+--CORESKII
+insert into CORESKII (name,code,isactive)
+VALUES
+('Administration','C001',1),
+('Application Analyst','C002',1),
+('Business Analyst','C003',1),
+('Business Development','C004',1),
+('Data Base Administrator','C005',1),
+('Finance','C006',1),
+('Happiness','C007',1),
+('ITS','C008',1),
+('Marketing','C009',1),
+('Ministry of Happiness','C010',1),
+('Programmer','C011',1);
+('Project Coordinator','C012',1),
+('Project Manager','C013',1),
+('Recruitment','C014',1);
+('Lamphun','C015',1),
+('Uttaradit','C016',1),
+('Kalasin','C017',1);
+('Project Coordinator','C018',1),
+('Project Manager','C019',1),
+('SAP','C020',1);
+('Software Tester','C021',1),
+('Solution Architect','C022',1),
+('System Analyst','C023',1);
+('Transformation','C024',1);
+
+
+
+
+
+
