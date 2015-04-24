@@ -1,6 +1,4 @@
 
-<<<<<<< HEAD
-=======
     alter table ABILITY 
         drop 
         foreign key FKE33D410A264515AF;
@@ -9,27 +7,32 @@
         drop 
         foreign key FKE33D410A893C27EE;
 
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
+    alter table ADDRESS 
+        drop 
+        foreign key FKE66327D4264515AF;
+
+    alter table ADDRESS 
+        drop 
+        foreign key FKE66327D47DB7BEC9;
+
+    alter table ADDRESS 
+        drop 
+        foreign key FKE66327D44DE4BC5E;
+
     alter table CORESKILL 
         drop 
-        foreign key FK489815F2C3FB1C25;
+        foreign key FK489815F2AA332609;
 
     alter table EDUCATION 
         drop 
         foreign key FK94C37788264515AF;
 
-    alter table EMPLOYEE 
+    alter table EDUCATION 
         drop 
-<<<<<<< HEAD
-        foreign key FK75C8D6AE9137778B;
+        foreign key FK94C3778848538AC3;
 
     alter table EMPLOYEE 
         drop 
-        foreign key FK75C8D6AECFD0D4C9;
-
-    alter table EMPLOYEE 
-        drop 
-=======
         foreign key FK75C8D6AEA2AFAF69;
 
     alter table EMPLOYEE 
@@ -42,44 +45,73 @@
 
     alter table EMPLOYEE 
         drop 
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
-        foreign key FK75C8D6AE56F7F72B;
+        foreign key FK75C8D6AE78EF579B;
+
+    alter table EMPLOYEEFAMILY 
+        drop 
+        foreign key FKE4F7EB92264515AF;
 
     alter table EXPERIENCE 
         drop 
-        foreign key FK17D0456AEFB7E9CD;
+        foreign key FK17D0456AAA332609;
 
-<<<<<<< HEAD
-    drop table if exists CORESKILL;
-=======
+    alter table LOGIN 
+        drop 
+        foreign key FK453F749264515AF;
+
+    alter table POSITION 
+        drop 
+        foreign key FK5B388929CFD0D4C9;
+
     alter table REFERENCE 
         drop 
         foreign key FK6EF34F2B264515AF;
 
+    alter table TECHNOLOGYEMPLOYEE 
+        drop 
+        foreign key FKF5CE7BBA264515AF;
+
+    alter table TECHNOLOGYEMPLOYEE 
+        drop 
+        foreign key FKF5CE7BBAE5BED341;
+
     drop table if exists ABILITY;
+
+    drop table if exists ADDRESS;
+
+    drop table if exists ADDRESSTYPE;
 
     drop table if exists CORESKILL;
 
+    drop table if exists DEGREETYPE;
+
     drop table if exists DIVISION;
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
 
     drop table if exists EDUCATION;
 
     drop table if exists EMPLOYEE;
 
-<<<<<<< HEAD
-    drop table if exists EXPERIENCE;
+    drop table if exists EMPLOYEEFAMILY;
 
-=======
     drop table if exists EMPLOYMENT;
 
     drop table if exists EXPERIENCE;
 
     drop table if exists JOBLEVEL;
 
+    drop table if exists LOGIN;
+
+    drop table if exists MASTECHNOLOGY;
+
+    drop table if exists POSITION;
+
+    drop table if exists PROVINCE;
+
     drop table if exists REFERENCE;
 
     drop table if exists SPECIALTY;
+
+    drop table if exists TECHNOLOGYEMPLOYEE;
 
     create table ABILITY (
         ID integer not null auto_increment unique,
@@ -88,13 +120,33 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
+        CODE varchar(255),
+        ISACTIVE bit,
         RANK integer,
         EMP_ID bigint,
         SPEC_ID integer,
         primary key (ID)
     );
 
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
+    create table ADDRESS (
+        ID integer not null auto_increment,
+        ADDRESS1 varchar(255),
+        ADDRESS2 varchar(255),
+        ZIPCODE varchar(255),
+        ADDTYPE_ID integer,
+        EMP_ID bigint,
+        PROVINCE_ID integer,
+        primary key (ID)
+    );
+
+    create table ADDRESSTYPE (
+        ID integer not null auto_increment,
+        CODE varchar(255),
+        ISACTIVE varchar(255),
+        NAME varchar(255),
+        primary key (ID)
+    );
+
     create table CORESKILL (
         ID integer not null auto_increment,
         auditFlag varchar(255),
@@ -103,13 +155,19 @@
         updatedBy integer,
         updatedTimeStamp datetime,
         CODE varchar(255),
-        ISACTIVE bit,
-        NAME varchar(255),
-        CORESKILL_ID bigint,
+        ISACTIVE bit not null,
+        NAME varchar(255) not null,
+        EMPLOYEE_ID bigint not null,
         primary key (ID)
     );
-<<<<<<< HEAD
-=======
+
+    create table DEGREETYPE (
+        ID integer not null auto_increment,
+        NAME varchar(200) not null,
+        CODE varchar(255) not null,
+        ISACTIVE varchar(255) not null,
+        primary key (ID)
+    );
 
     create table DIVISION (
         ID integer not null auto_increment,
@@ -118,11 +176,11 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
-        CODE varchar(255) not null,
+        CODE varchar(255),
+        ISACTIVE integer,
         NAME varchar(255) not null,
         primary key (ID)
     );
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
 
     create table EDUCATION (
         ID integer not null auto_increment,
@@ -136,6 +194,7 @@
         GPA double precision not null,
         MAJOR varchar(255) not null,
         UNIVERSITY varchar(255) not null,
+        DEGREE_ID integer,
         EMP_ID bigint,
         primary key (ID)
     );
@@ -150,15 +209,6 @@
         IDCARD integer not null,
         MILITARY varchar(255) not null,
         NAME varchar(255),
-<<<<<<< HEAD
-        CORESKILL_ID integer,
-        EDUCATION_ID integer,
-        EXPERIENCE_ID integer,
-        primary key (ID)
-    );
-
-    create table EXPERIENCE (
-=======
         PLACEDOB varchar(50) not null,
         QUALIFICATION varchar(255) not null,
         RELIGION varchar(20) not null,
@@ -166,23 +216,39 @@
         STATUS varchar(255) not null,
         TEL varchar(10) not null,
         WEIGTH integer not null,
-        CORESKILL_ID integer,
         DIVISION_ID integer,
         EMPLOYMENT_ID integer,
         JOBLEVEL_ID integer,
+        TECHNOLOGY_ID integer,
+        primary key (ID)
+    );
+
+    create table EMPLOYEEFAMILY (
+        ID integer not null auto_increment,
+        AUDITFLAG varchar(1) not null,
+        CREATEDBY integer not null,
+        CREATEDTIMESTAMP datetime not null,
+        UPDATEDBY integer,
+        UPDATEDTIMESTAMP datetime,
+        ADDRESS varchar(255) not null,
+        AGE integer not null,
+        FIRSTNAME varchar(50) not null,
+        GENDER varchar(10) not null,
+        LASTNAME varchar(50) not null,
+        OCCUPATION varchar(255),
+        POSITION varchar(255),
+        RELATION varchar(40) not null,
+        EMP_ID bigint not null,
         primary key (ID)
     );
 
     create table EMPLOYMENT (
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
         ID integer not null auto_increment,
         auditFlag varchar(255),
         createdBy integer,
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
-<<<<<<< HEAD
-=======
         NAME varchar(200) not null,
         CODE varchar(255),
         ISACTIVE bit,
@@ -196,21 +262,14 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
         ADDRESS varchar(255),
         BUSINESS varchar(255),
         COMPANY_NAME varchar(255),
         DATE_FROM datetime,
         DATE_TO datetime,
         DESCRIPTION varchar(255),
-        POSITION varchar(255),
         SUPERVISOR varchar(255),
-        EXPERIENCE_ID bigint,
-<<<<<<< HEAD
-        primary key (ID)
-    );
-
-=======
+        EMPLOYEE_ID bigint,
         primary key (ID)
     );
 
@@ -221,7 +280,64 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
+        CODE varchar(255),
+        ISACTIVE bit,
         NAME varchar(50) not null,
+        primary key (ID)
+    );
+
+    create table LOGIN (
+        ID integer not null auto_increment,
+        AUDITFLAG varchar(1) not null,
+        CODE varchar(10) not null,
+        CREATEDBY integer not null,
+        CREATEDTIMESTAMP datetime not null,
+        ISACTIVE bit not null,
+        UPDATEDBY integer,
+        UPDATEDTIMESTAMP datetime,
+        PASSWORD varchar(13) not null,
+        USERNAME varchar(255) not null,
+        EMP_ID bigint,
+        primary key (ID)
+    );
+
+    create table MASTECHNOLOGY (
+        ID integer not null auto_increment,
+        AUDITFLAG varchar(1) not null,
+        CODE varchar(10) not null,
+        CREATEDBY integer not null,
+        CREATEDTIMESTAMP datetime not null,
+        ISACTIVE bit not null,
+        UPDATEDBY integer,
+        UPDATEDTIMESTAMP datetime,
+        NAME varchar(255) not null,
+        primary key (ID)
+    );
+
+    create table POSITION (
+        ID integer not null auto_increment,
+        auditFlag varchar(255),
+        code varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        isActive bit,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        NAME varchar(255) not null,
+        EXPERIENCE_ID integer not null,
+        primary key (ID)
+    );
+
+    create table PROVINCE (
+        ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        CODE varchar(255),
+        ISACTIVE bit not null,
+        NAME varchar(255) not null,
         primary key (ID)
     );
 
@@ -242,8 +358,22 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
+        CODE varchar(255) not null,
+        ISACTIVE bit,
         NAME varchar(255) not null,
         primary key (SPEC_ID)
+    );
+
+    create table TECHNOLOGYEMPLOYEE (
+        ID integer not null auto_increment,
+        AUDITFLAG varchar(1) not null,
+        CREATEDBY integer not null,
+        CREATEDTIMESTAMP datetime not null,
+        UPDATEDBY integer,
+        UPDATEDTIMESTAMP datetime,
+        EMP_ID bigint not null,
+        MASTECH_ID integer not null,
+        primary key (ID)
     );
 
     alter table ABILITY 
@@ -258,11 +388,28 @@
         foreign key (SPEC_ID) 
         references SPECIALTY (SPEC_ID);
 
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
+    alter table ADDRESS 
+        add index FKE66327D4264515AF (EMP_ID), 
+        add constraint FKE66327D4264515AF 
+        foreign key (EMP_ID) 
+        references EMPLOYEE (ID);
+
+    alter table ADDRESS 
+        add index FKE66327D47DB7BEC9 (PROVINCE_ID), 
+        add constraint FKE66327D47DB7BEC9 
+        foreign key (PROVINCE_ID) 
+        references PROVINCE (ID);
+
+    alter table ADDRESS 
+        add index FKE66327D44DE4BC5E (ADDTYPE_ID), 
+        add constraint FKE66327D44DE4BC5E 
+        foreign key (ADDTYPE_ID) 
+        references ADDRESSTYPE (ID);
+
     alter table CORESKILL 
-        add index FK489815F2C3FB1C25 (CORESKILL_ID), 
-        add constraint FK489815F2C3FB1C25 
-        foreign key (CORESKILL_ID) 
+        add index FK489815F2AA332609 (EMPLOYEE_ID), 
+        add constraint FK489815F2AA332609 
+        foreign key (EMPLOYEE_ID) 
         references EMPLOYEE (ID);
 
     alter table EDUCATION 
@@ -271,19 +418,13 @@
         foreign key (EMP_ID) 
         references EMPLOYEE (ID);
 
-    alter table EMPLOYEE 
-<<<<<<< HEAD
-        add index FK75C8D6AE9137778B (EDUCATION_ID), 
-        add constraint FK75C8D6AE9137778B 
-        foreign key (EDUCATION_ID) 
-        references EDUCATION (ID);
+    alter table EDUCATION 
+        add index FK94C3778848538AC3 (DEGREE_ID), 
+        add constraint FK94C3778848538AC3 
+        foreign key (DEGREE_ID) 
+        references DEGREETYPE (ID);
 
     alter table EMPLOYEE 
-        add index FK75C8D6AECFD0D4C9 (EXPERIENCE_ID), 
-        add constraint FK75C8D6AECFD0D4C9 
-        foreign key (EXPERIENCE_ID) 
-        references EXPERIENCE (ID);
-=======
         add index FK75C8D6AEA2AFAF69 (JOBLEVEL_ID), 
         add constraint FK75C8D6AEA2AFAF69 
         foreign key (JOBLEVEL_ID) 
@@ -300,25 +441,51 @@
         add constraint FK75C8D6AED9671A9 
         foreign key (DIVISION_ID) 
         references DIVISION (ID);
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
 
     alter table EMPLOYEE 
-        add index FK75C8D6AE56F7F72B (CORESKILL_ID), 
-        add constraint FK75C8D6AE56F7F72B 
-        foreign key (CORESKILL_ID) 
-        references CORESKILL (ID);
+        add index FK75C8D6AE78EF579B (TECHNOLOGY_ID), 
+        add constraint FK75C8D6AE78EF579B 
+        foreign key (TECHNOLOGY_ID) 
+        references TECHNOLOGYEMPLOYEE (ID);
+
+    alter table EMPLOYEEFAMILY 
+        add index FKE4F7EB92264515AF (EMP_ID), 
+        add constraint FKE4F7EB92264515AF 
+        foreign key (EMP_ID) 
+        references EMPLOYEE (ID);
 
     alter table EXPERIENCE 
-        add index FK17D0456AEFB7E9CD (EXPERIENCE_ID), 
-        add constraint FK17D0456AEFB7E9CD 
-        foreign key (EXPERIENCE_ID) 
+        add index FK17D0456AAA332609 (EMPLOYEE_ID), 
+        add constraint FK17D0456AAA332609 
+        foreign key (EMPLOYEE_ID) 
         references EMPLOYEE (ID);
-<<<<<<< HEAD
-=======
+
+    alter table LOGIN 
+        add index FK453F749264515AF (EMP_ID), 
+        add constraint FK453F749264515AF 
+        foreign key (EMP_ID) 
+        references EMPLOYEE (ID);
+
+    alter table POSITION 
+        add index FK5B388929CFD0D4C9 (EXPERIENCE_ID), 
+        add constraint FK5B388929CFD0D4C9 
+        foreign key (EXPERIENCE_ID) 
+        references EXPERIENCE (ID);
 
     alter table REFERENCE 
         add index FK6EF34F2B264515AF (EMP_ID), 
         add constraint FK6EF34F2B264515AF 
         foreign key (EMP_ID) 
         references EMPLOYEE (ID);
->>>>>>> 9306646bfcbe5b1e9afcfcf7aefd96f09008519e
+
+    alter table TECHNOLOGYEMPLOYEE 
+        add index FKF5CE7BBA264515AF (EMP_ID), 
+        add constraint FKF5CE7BBA264515AF 
+        foreign key (EMP_ID) 
+        references EMPLOYEE (ID);
+
+    alter table TECHNOLOGYEMPLOYEE 
+        add index FKF5CE7BBAE5BED341 (MASTECH_ID), 
+        add constraint FKF5CE7BBAE5BED341 
+        foreign key (MASTECH_ID) 
+        references MASTECHNOLOGY (ID);

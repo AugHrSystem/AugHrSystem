@@ -29,6 +29,9 @@ public class Address {
 	
 	@Column(name="ADDRESS2")
 	private String address2;
+	
+	@Column(name="ZIPCODE")
+	private String zipcode;
 
 	public Integer getId() {
 		return id;
