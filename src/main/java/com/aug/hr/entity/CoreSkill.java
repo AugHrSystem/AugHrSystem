@@ -21,11 +21,11 @@ public class CoreSkill extends BaseEntity {
 	private String name;
 	@Column(name = "CODE")
 	private String code;
-	@Column(name = "ISACTIVE",nullable=false)
+	@Column(name = "ISACTIVE",nullable=true)
 	private Boolean isActive;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="EMPLOYEE_ID",nullable=false)
+	@JoinColumn(name="EMPLOYEE_ID",nullable=true)
 	private Employee employee;
 	
 	public Integer getId() {

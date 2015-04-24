@@ -26,11 +26,11 @@ public class Division extends BaseEntity{
 	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
-	@Column(name = "CODE" ,nullable =true)
+	@Column(name = "CODE" ,nullable =false)
 	private String code;
 
-	@Column(name = "ISACTIVE" ,nullable =true)
-	private Integer isActive;
+	@Column(name = "ISACTIVE" ,nullable =false)
+	private Boolean isActive;
 	
 	@OneToMany(mappedBy = "division")
 	private Set<Employee> employees;
@@ -68,6 +68,13 @@ public class Division extends BaseEntity{
 	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
 	}
-	
 
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+	
 }

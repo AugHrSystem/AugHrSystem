@@ -1,11 +1,11 @@
 --DIVISION
-INSERT INTO DIVISION (NAME) VALUES ("CEO Office of CEO");
-INSERT INTO DIVISION (NAME) VALUES ("F&A Finance & Administration");
-INSERT INTO DIVISION (NAME) VALUES ("ITS Integrated Technology Services");
-INSERT INTO DIVISION (NAME) VALUES ("MKT Marketing");
-INSERT INTO DIVISION (NAME) VALUES ("MoH Ministry of Happiness");
-INSERT INTO DIVISION (NAME) VALUES ("SAP SAP Services");
-INSERT INTO DIVISION (NAME) VALUES ("TXM Transformation");
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('CEO Office of CEO','01',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('F&A Finance & Administration','02',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('ITS Integrated Technology Services','03',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('MKT Marketing','04',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('MoH Ministry of Happiness','05',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('SAP SAP Services','06',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('TXM Transformation','07',1);
 
 
 --MASTECHNOLOGY
@@ -19,48 +19,48 @@ INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CO
 --SPECIALTY
 insert into SPECIALTY (name,code,isactive)
 VALUES 
-('ABAP','a',1),
-('ASP.Net','a',1),
-('Basis','a',1),
-('BI','a',1),
-('BPC - B','a',1),
-('BPC - C','a',1),
-('BW','a',1),
-('C#','a',1),
-('C++.Netframework','a',1),
-('CO','a',1),
-('CRM','a',1),
-('CSS','a',1),
-('Eclipse','a',1),
-('FI','a',1),
-('Hibernate','a',1),
-('HTML','a',1),
-('J2EE','a',1),
-('Java Script','a',1),
-('JBOSS','a',1),
-('JQUERY SVN Respsoitry','a',1),
-('JSF','a',1),
-('MM','a',1),
-('Mobility','a',1),
-('MVC','a',1),
-('Oracle','a',1),
-('Oracle10g','a',1),
-('Oracle9i','a',1),
-('PI','a',1),
-('PL/SQL','a',1),
-('PM','a',1),
-('PP','a',1),
-('SD','a',1),
-('Security','a',1),
-('Spring','a',1),
-('SRM','a',1),
-('Symfony1,2','a',1),
-('TR','a',1),
-('VB.Net','a',1),
-('Web App','a',1),
-('Web Logic','a',1),
-('WPF','a',1),
-('Zend','a',1);
+('ABAP','01',1),
+('ASP.Net','02',1),
+('Basis','03',1),
+('BI','04',1),
+('BPC - B','05',1),
+('BPC - C','06',1),
+('BW','07',1),
+('C#','08',1),
+('C++.Netframework','09',1),
+('CO','10',1),
+('CRM','11',1),
+('CSS','12',1),
+('Eclipse','13',1),
+('FI','14',1),
+('Hibernate','15',1),
+('HTML','16',1),
+('J2EE','17',1),
+('Java Script','18',1),
+('JBOSS','19',1),
+('JQUERY SVN Respsoitry','20',1),
+('JSF','21',1),
+('MM','22',1),
+('Mobility','23',1),
+('MVC','24',1),
+('Oracle','25',1),
+('Oracle10g','26',1),
+('Oracle9i','27',1),
+('PI','28',1),
+('PL/SQL','29',1),
+('PM','30',1),
+('PP','31',1),
+('SD','32',1),
+('Security','33',1),
+('Spring','34',1),
+('SRM','35',1),
+('Symfony1,2','36',1),
+('TR','37',1),
+('VB.Net','38',1),
+('Web App','39',1),
+('Web Logic','40',1),
+('WPF','41',1),
+('Zend','42',1);
 
 
 --JOBLEVEL
@@ -180,5 +180,26 @@ VALUES
 ('Satun','a',1),
 ('Surat Thani','a',1);
 
+--CoreSkill
+INSERT INTO CORESKILL (NAME,CODE,ISACTIVE) VALUES 
+('Administration','AD',b'1'),
+('Application Analyst','AA',b'1'),
+('Business Analyst','BA',b'1'),
+('Business Development','BD',b'1'),
+('Data Base Administrator','DBA',b'1'),
+('Finance','FI',b'1'),
+('Happiness','HP',b'1'),
+('ITS','ITS',b'1'),
+('Marketing','MK',b'1'),
+('Ministry of Happiness','MHP',b'1'),
+('Programmer','PG',b'1'),
+('Project Coordinator','PC',b'1'),
+('Project Manager','PM',b'1'),
+('Recruitment','RC',b'1'),
+('SAP','SAP',b'1'),
+('Software Tester','ST',b'1'),
+('Solution Architect','SR',b'1'),
+('System Analyst','SA',b'1'),
+('Transformation','TR',b'1');
 
 
