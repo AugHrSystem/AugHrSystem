@@ -1,11 +1,11 @@
 --DIVISION
-INSERT INTO DIVISION (NAME) VALUES ("CEO Office of CEO","01","1");
-INSERT INTO DIVISION (NAME) VALUES ("F&A Finance & Administration","02","1");
-INSERT INTO DIVISION (NAME) VALUES ("ITS Integrated Technology Services","03","1");
-INSERT INTO DIVISION (NAME) VALUES ("MKT Marketing","04","1");
-INSERT INTO DIVISION (NAME) VALUES ("MoH Ministry of Happiness","05","1");
-INSERT INTO DIVISION (NAME) VALUES ("SAP SAP Services","06","1");
-INSERT INTO DIVISION (NAME) VALUES ("TXM Transformation","07","1");
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('CEO Office of CEO','01',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('F&A Finance & Administration','02',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('ITS Integrated Technology Services','03',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('MKT Marketing','04',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('MoH Ministry of Happiness','05',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('SAP SAP Services','06',1);
+INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('TXM Transformation','07',1);
 
 
 --MASTECHNOLOGY
@@ -180,5 +180,26 @@ VALUES
 ('Satun','a',1),
 ('Surat Thani','a',1);
 
+--CoreSkill
+INSERT INTO CORESKILL (NAME,CODE,ISACTIVE) VALUES 
+('Administration','AD',b'1'),
+('Application Analyst','AA',b'1'),
+('Business Analyst','BA',b'1'),
+('Business Development','BD',b'1'),
+('Data Base Administrator','DBA',b'1'),
+('Finance','FI',b'1'),
+('Happiness','HP',b'1'),
+('ITS','ITS',b'1'),
+('Marketing','MK',b'1'),
+('Ministry of Happiness','MHP',b'1'),
+('Programmer','PG',b'1'),
+('Project Coordinator','PC',b'1'),
+('Project Manager','PM',b'1'),
+('Recruitment','RC',b'1'),
+('SAP','SAP',b'1'),
+('Software Tester','ST',b'1'),
+('Solution Architect','SR',b'1'),
+('System Analyst','SA',b'1'),
+('Transformation','TR',b'1');
 
 
