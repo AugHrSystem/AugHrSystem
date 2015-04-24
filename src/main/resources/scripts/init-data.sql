@@ -180,5 +180,26 @@ VALUES
 ('Satun','a',1),
 ('Surat Thani','a',1);
 
+--CoreSkill
+INSERT INTO CORESKILL (NAME,CODE,ISACTIVE) VALUES 
+('Administration','AD',b'1'),
+('Application Analyst','AA',b'1'),
+('Business Analyst','BA',b'1'),
+('Business Development','BD',b'1'),
+('Data Base Administrator','DBA',b'1'),
+('Finance','FI',b'1'),
+('Happiness','HP',b'1'),
+('ITS','ITS',b'1'),
+('Marketing','MK',b'1'),
+('Ministry of Happiness','MHP',b'1'),
+('Programmer','PG',b'1'),
+('Project Coordinator','PC',b'1'),
+('Project Manager','PM',b'1'),
+('Recruitment','RC',b'1'),
+('SAP','SAP',b'1'),
+('Software Tester','ST',b'1'),
+('Solution Architect','SR',b'1'),
+('System Analyst','SA',b'1'),
+('Transformation','TR',b'1');
 
 
