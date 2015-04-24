@@ -34,10 +34,10 @@ public class Employment extends BaseEntity implements Serializable{
 	@Column(name = "NAME", nullable = false, length = 200)
 	private String Name;
 	
-	@Column(name = "CODE")
+	@Column(name = "CODE", nullable = false)
 	private String code;
 	
-	@Column(name = "ISACTIVE")
+	@Column(name = "ISACTIVE", nullable = false)
 	private Boolean isActive;
 
 	
