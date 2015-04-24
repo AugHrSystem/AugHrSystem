@@ -26,10 +26,10 @@ public class Division extends BaseEntity{
 	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
-	@Column(name = "CODE" ,nullable =true)
+	@Column(name = "CODE" ,nullable =false)
 	private String code;
 
-	@Column(name = "ISACTIVE" ,nullable =true)
+	@Column(name = "ISACTIVE" ,nullable =false)
 	private Integer isActive;
 	
 	@OneToMany(mappedBy = "division")
