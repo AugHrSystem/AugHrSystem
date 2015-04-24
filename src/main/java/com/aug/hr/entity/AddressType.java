@@ -27,13 +27,13 @@ public class AddressType {
 	@Column(name="ID")
 	private Integer id;
 	
-	@Column(name="NAME")
+	@Column(name="NAME",nullable = false)
 	private String name;
 	
-	@Column(name="ISACTIVE")
+	@Column(name="ISACTIVE", nullable = false)
 	private String isactive;
 	
-	@Column(name="CODE")
+	@Column(name="CODE",nullable = false)
 	private String code;
 
 	public Integer getId() {
