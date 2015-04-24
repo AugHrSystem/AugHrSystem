@@ -37,11 +37,11 @@ public class Ability extends BaseEntity implements Serializable {
 	@JoinColumn(name = "EMP_ID")
 	private Employee employee;
 
-	@Column(name = "RANK")
+	@Column(name = "RANK",nullable = false)
 	private Integer rank;
-	@Column(name = "CODE")
+	@Column(name = "CODE",nullable = false)
 	private String code;
-	@Column(name = "ISACTIVE")
+	@Column(name = "ISACTIVE",nullable = false)
 	private Boolean isActive;
 	
 	@ManyToOne
