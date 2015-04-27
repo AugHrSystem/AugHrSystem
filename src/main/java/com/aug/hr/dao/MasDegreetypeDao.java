@@ -5,8 +5,8 @@
  */
 package com.aug.hr.dao;
 
-import com.aug.hr.entity.Degreetype;
+import com.aug.hr.entity.MasDegreetype;
 
-public interface MasDegreetypeDao extends GenericDao<Degreetype,Integer>{
+public interface MasDegreetypeDao extends GenericDao<MasDegreetype,Integer>{
 
 }
