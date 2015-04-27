@@ -8,15 +8,14 @@
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hris_system</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.username">aug</property>
+        <property name="hibernate.connection.password">Aug@min</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
-        <!--<property name="hbm2ddl.auto">create-drop</property>-->
-        <!--<property name="hbm2ddl.auto">update</property>-->
-
-
-
+        <!-- <property name="hbm2ddl.auto">create-drop</property> -->
+        <property name="hbm2ddl.auto">update</property>
+        
+        
 		<mapping class="com.aug.hr.entity.Employee" />
 		<mapping class="com.aug.hr.entity.Education" />
 		<mapping class="com.aug.hr.entity.Ability" />
@@ -34,8 +33,9 @@
 		<mapping class="com.aug.hr.entity.AddressType" />
 		<mapping class="com.aug.hr.entity.Province" />
 		<mapping class="com.aug.hr.entity.Login"/>
-		<mapping class="com.aug.hr.entity.Position"/>
 		<mapping class="com.aug.hr.entity.Degreetype"/>			
+        
+
 
 	</session-factory>
         
