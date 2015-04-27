@@ -5,8 +5,8 @@
  */
 package com.aug.hr.dao;
 
-import com.aug.hr.entity.Province;
+import com.aug.hr.entity.MasProvince;
 
-public interface MasProvinceDao extends GenericDao<Province, Integer>{
+public interface MasProvinceDao extends GenericDao<MasProvince, Integer>{
 
 }

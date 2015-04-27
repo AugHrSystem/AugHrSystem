@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ADDRESSTYPE")
-public class AddressType {
+public class MasAddressType {
 	
 	
 	@Id

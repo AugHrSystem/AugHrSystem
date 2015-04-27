@@ -73,7 +73,7 @@ public class Employee {
 	  
     @ManyToOne
     @JoinColumn(name= "EMPLOYMENT_ID")
-    private Employment employment;
+    private MasEmployment employment;
     
     @OneToMany(mappedBy = "employee")
     private Set<Ability> abilities = new HashSet<Ability>();
@@ -249,11 +249,11 @@ public class Employee {
 		this.educations = educations;
 	}
 
-	public Employment getEmployment() {
+	public MasEmployment getEmployment() {
 		return employment;
 	}
 
-	public void setEmployment(Employment employment) {
+	public void setEmployment(MasEmployment employment) {
 		this.employment = employment;
 	}
 
