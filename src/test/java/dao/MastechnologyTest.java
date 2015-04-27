@@ -24,7 +24,7 @@ import com.aug.hr.entity.MasTechnology;
 public class MastechnologyTest {
 	
 	@Autowired
-	MasTechnologyDao masTechnologyDao;
+	private MasTechnologyDao masTechnologyDao;
 	
 	@Test
 	@Rollback(false)
@@ -96,6 +96,15 @@ public class MastechnologyTest {
 		
 	}
 	
+	
+	@Test
+	public void findByIdMasTechnology(){
+		
+		MasTechnology masTechnology = (MasTechnology) masTechnologyDao.getCurrentSession().get(MasTechnology.class, 1);		
+		int id = masTechnology.getMasTechnologyId();
+		Assert.assertEquals(1, id);
+		
+	}
 	
 
 }
