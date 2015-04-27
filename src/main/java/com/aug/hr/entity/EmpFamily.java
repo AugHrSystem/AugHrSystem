@@ -17,7 +17,6 @@ import org.springframework.stereotype.Repository;
 
 @Entity
 @Table(name="EMPLOYEEFAMILY")
-@Repository
 public class EmpFamily extends BaseEntity implements Serializable {
 	
 	/**
@@ -29,11 +28,13 @@ public class EmpFamily extends BaseEntity implements Serializable {
 	private String empFamilyLastName;
 	private String empFamilyGender;
 	private Integer empFamilyAge;
+	private String empFamilyMobile;
 	private String empFamilyAddress;
 	private String empFamilyOccupation;
 	private String empFamilyPosition;
 	private String empFamilyRelation;
 	private Employee employee;
+	
 	
 	
 	
@@ -99,6 +100,20 @@ public class EmpFamily extends BaseEntity implements Serializable {
 	}
 	
 	
+	
+	
+	@Column(name="TEL",length=10)
+	@NotNull
+	public String getEmpFamilyMobile() {
+		return empFamilyMobile;
+	}
+
+
+	public void setEmpFamilyMobile(String empFamilyMobile) {
+		this.empFamilyMobile = empFamilyMobile;
+	}
+
+
 	@Column(name="ADDRESS")
 	@NotNull
 	public String getEmpFamilyAddress() {
