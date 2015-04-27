@@ -42,8 +42,6 @@ public class Experience extends BaseEntity {
 	@JoinColumn(name="EMPLOYEE_ID")
 	private Employee employee;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "experience", cascade=CascadeType.ALL, orphanRemoval=true)
-    private Set<Position> position = new HashSet<Position>();
 	
 	public Integer getId() {
 		return id;
@@ -98,12 +96,6 @@ public class Experience extends BaseEntity {
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}
-	public Set<Position> getPosition() {
-		return position;
-	}
-	public void setPosition(Set<Position> position) {
-		this.position = position;
 	}	
 	
 }

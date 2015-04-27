@@ -59,10 +59,6 @@
         drop 
         foreign key FK453F749264515AF;
 
-    alter table POSITION 
-        drop 
-        foreign key FK5B388929CFD0D4C9;
-
     alter table REFERENCE 
         drop 
         foreign key FK6EF34F2B264515AF;
@@ -103,8 +99,6 @@
 
     drop table if exists MASTECHNOLOGY;
 
-    drop table if exists POSITION;
-
     drop table if exists PROVINCE;
 
     drop table if exists REFERENCE;
@@ -120,9 +114,9 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
-        CODE varchar(255),
-        ISACTIVE bit,
-        RANK integer,
+        CODE varchar(255) not null,
+        ISACTIVE bit not null,
+        RANK integer not null,
         EMP_ID bigint,
         SPEC_ID integer,
         primary key (ID)
@@ -141,9 +135,9 @@
 
     create table ADDRESSTYPE (
         ID integer not null auto_increment,
-        CODE varchar(255),
-        ISACTIVE varchar(255),
-        NAME varchar(255),
+        CODE varchar(255) not null,
+        ISACTIVE varchar(255) not null,
+        NAME varchar(255) not null,
         primary key (ID)
     );
 
@@ -155,9 +149,9 @@
         updatedBy integer,
         updatedTimeStamp datetime,
         CODE varchar(255),
-        ISACTIVE bit not null,
+        ISACTIVE bit,
         NAME varchar(255) not null,
-        EMPLOYEE_ID bigint not null,
+        EMPLOYEE_ID bigint,
         primary key (ID)
     );
 
@@ -176,8 +170,8 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
-        CODE varchar(255),
-        ISACTIVE integer,
+        CODE varchar(255) not null,
+        ISACTIVE bit not null,
         NAME varchar(255) not null,
         primary key (ID)
     );
@@ -235,6 +229,7 @@
         FIRSTNAME varchar(50) not null,
         GENDER varchar(10) not null,
         LASTNAME varchar(50) not null,
+        TEL varchar(10) not null,
         OCCUPATION varchar(255),
         POSITION varchar(255),
         RELATION varchar(40) not null,
@@ -250,8 +245,8 @@
         updatedBy integer,
         updatedTimeStamp datetime,
         NAME varchar(200) not null,
-        CODE varchar(255),
-        ISACTIVE bit,
+        CODE varchar(255) not null,
+        ISACTIVE bit not null,
         primary key (ID)
     );
 
@@ -314,20 +309,6 @@
         primary key (ID)
     );
 
-    create table POSITION (
-        ID integer not null auto_increment,
-        auditFlag varchar(255),
-        code varchar(255),
-        createdBy integer,
-        createdTimeStamp datetime,
-        isActive bit,
-        updatedBy integer,
-        updatedTimeStamp datetime,
-        NAME varchar(255) not null,
-        EXPERIENCE_ID integer not null,
-        primary key (ID)
-    );
-
     create table PROVINCE (
         ID integer not null auto_increment,
         auditFlag varchar(255),
@@ -335,7 +316,7 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
-        CODE varchar(255),
+        CODE varchar(255) not null,
         ISACTIVE bit not null,
         NAME varchar(255) not null,
         primary key (ID)
@@ -465,12 +446,6 @@
         add constraint FK453F749264515AF 
         foreign key (EMP_ID) 
         references EMPLOYEE (ID);
-
-    alter table POSITION 
-        add index FK5B388929CFD0D4C9 (EXPERIENCE_ID), 
-        add constraint FK5B388929CFD0D4C9 
-        foreign key (EXPERIENCE_ID) 
-        references EXPERIENCE (ID);
 
     alter table REFERENCE 
         add index FK6EF34F2B264515AF (EMP_ID), 
