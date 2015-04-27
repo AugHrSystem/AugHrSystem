@@ -1,4 +1,6 @@
 
+
+
 package com.aug.hr.constants;
 
 public class Constants {
@@ -32,3 +34,4 @@ public class Constants {
 	public static final String DOCTYPE_STOCK_COUNT  = "SC";
 	
 }
+
