@@ -87,7 +87,7 @@ public class TechnologyEmpService {
 	
 	@Test
 	@Rollback(false)
-	public void insertDataTechnologyEmp(){
+	public void createDataTechnologyEmp(){
 
 		getCurrentSessionEmp().save(emp);
 		
@@ -102,7 +102,7 @@ public class TechnologyEmpService {
 		techEmp.setCreatedBy(0);
 		Calendar cal = Calendar.getInstance();
 		techEmp.setCreatedTimeStamp(cal.getTime());
-		techEmpDao.getCurrentSession().save(techEmp);
+		techEmpDao.create(techEmp);
 		
 	}
 	
@@ -114,7 +114,7 @@ public class TechnologyEmpService {
 		TechnologyEmp techEmp = (TechnologyEmp) techEmpDao.getCurrentSession().get(TechnologyEmp.class, 8);
 		masTechnology.setMasTechnologyId(2);
 		techEmp.setMasTech(masTechnology);
-		techEmpDao.getCurrentSession().update(techEmp);
+		techEmpDao.update(techEmp);
 		
 	}
 	
@@ -123,8 +123,7 @@ public class TechnologyEmpService {
 	@Test
 	public void findAllDataTechnologyEmp(){
 		
-		 Criteria c =  techEmpDao.getCurrentSession().createCriteria(TechnologyEmp.class);
-		 List<TechnologyEmp> techEmpList = c.list();
+		 List<TechnologyEmp> techEmpList = techEmpDao.findAll();
 		 Assert.assertEquals(1, techEmpList.size());
 		
 	}
@@ -133,7 +132,7 @@ public class TechnologyEmpService {
 	@Test
 	public void findDataByIdTechnologyEmp(){
 		
-		TechnologyEmp technologyEmp =  (TechnologyEmp) techEmpDao.getCurrentSession().get(TechnologyEmp.class,8);
+		TechnologyEmp technologyEmp =  (TechnologyEmp) techEmpDao.find(8);
 		Assert.assertEquals(new Integer(8), technologyEmp.getTechnologyEmpId());
 		
 	}
@@ -142,8 +141,8 @@ public class TechnologyEmpService {
 	@Rollback(false)
 	public void deleteDataTechnologyEmp(){
 		
-		TechnologyEmp techEmp = (TechnologyEmp) techEmpDao.getCurrentSession().get(TechnologyEmp.class,9);
-		techEmpDao.getCurrentSession().delete(techEmp);
+		TechnologyEmp techEmp = (TechnologyEmp) techEmpDao.find(8);
+		techEmpDao.delete(techEmp);
 		
 	}
 	
