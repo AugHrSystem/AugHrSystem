@@ -8,14 +8,14 @@ package com.aug.hr.dao.impl;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.MasDegreetypeDao;
-import com.aug.hr.entity.Degreetype;
+import com.aug.hr.entity.MasDegreetype;
 
 
 @Repository
-public class MasDegreetypeDaoImpl extends GenericDaoImpl<Degreetype,Integer> implements MasDegreetypeDao{
+public class MasDegreetypeDaoImpl extends GenericDaoImpl<MasDegreetype,Integer> implements MasDegreetypeDao{
 
 	public MasDegreetypeDaoImpl() {
-		super(Degreetype.class);
+		super(MasDegreetype.class);
 		// TODO Auto-generated constructor stub
 	}
 
