@@ -6,41 +6,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 import com.aug.hr.dao.ReferenceDao;
+import com.aug.hr.entity.Reference;
 
 @Service
 @Transactional
-public class Reference {
-	
-	@Autowired private ReferenceDao referenceDao;
-	
+public class ReferenceService {
 
-	public List<Reference> findByCriteria(Reference reference) {
-		
-		return referenceDao.findByCriteria(reference);
-	}
+	@Autowired
+	private ReferenceDao referenceDao;
+	
+	
 
 	public void create(Reference reference) {
 		referenceDao.create(reference);
 	}
-	
+
 	public void update(Reference reference) {
 		referenceDao.update(reference);
 	}
-	
-	public Reference deleteById(Integer id) {
-	  return referenceDao.delete(id);
-		
-	}
-	/*public List<Product> findByselectId(Integer id) {
-		
-		return productDao.findByselectId(id);
-	}*/
 
-	public Reference find(Integer id) {
+	public void delete(Reference reference) {
+		referenceDao.delete(reference);
+
+	}
+		
+	public List<Reference> findAll() {
+		return referenceDao.findAll();
+	}
+
+
+	
+	public Reference findByID(int id) {
 		return referenceDao.find(id);
 	}
 
+	public List<Reference> findByCriteria(Reference reference) {
+
+		return referenceDao.findByCriteria(reference);
+	}
 }
