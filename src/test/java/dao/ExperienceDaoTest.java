@@ -78,4 +78,5 @@ public class ExperienceDaoTest {
 		List<Experience> experiences = c.list();
 		Assert.assertEquals(3, experiences.size());
 	}
+
 }
