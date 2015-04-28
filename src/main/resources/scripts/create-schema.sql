@@ -244,9 +244,9 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
-        NAME varchar(200) not null,
         CODE varchar(255) not null,
         ISACTIVE bit not null,
+        NAME varchar(200) not null,
         primary key (ID)
     );
 

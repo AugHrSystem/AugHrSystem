@@ -31,7 +31,7 @@ public class MasAddressType {
 	private String name;
 	
 	@Column(name="ISACTIVE", nullable = false)
-	private String isactive;
+	private String isActive;
 	
 	@Column(name="CODE",nullable = false)
 	private String code;
@@ -53,11 +53,11 @@ public class MasAddressType {
 	}
 
 	public String getIsactive() {
-		return isactive;
+		return isActive;
 	}
 
 	public void setIsactive(String isactive) {
-		this.isactive = isactive;
+		this.isActive = isactive;
 	}
 
 	public String getCode() {
