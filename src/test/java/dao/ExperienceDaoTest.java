@@ -76,6 +76,6 @@ public class ExperienceDaoTest {
 	public void findAllExperience(){
 		Criteria c = experienceDao.getCurrentSession().createCriteria(Experience.class);
 		List<Experience> experiences = c.list();
-		Assert.assertEquals(8, experiences.size());
+		Assert.assertEquals(3, experiences.size());
 	}
 }

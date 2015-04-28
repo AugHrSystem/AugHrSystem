@@ -87,7 +87,7 @@ INSERT INTO ADDRESS(ADDRESS1,ADDRESS2,ZIPCODE) VALUES ('200 MOO.6','BANGKOK','10
 ('2/3 MOO.1','SAMUTPAKARN','10600');
 
 --ADDRESSTYPE
-INSERT INTO addresstype(NAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1)
+INSERT INTO addresstype(NAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1),
 ('Permanent address','M02',1);
 
 
