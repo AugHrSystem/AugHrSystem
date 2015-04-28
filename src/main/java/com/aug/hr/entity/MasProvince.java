@@ -1,63 +1,52 @@
 /**
  *
  * @author natechanok
- * @date Apr 21, 2015
+ * @date Apr 22, 2015
  */
 
 package com.aug.hr.entity;
 
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name = "EMPLOYMENT")
-public class Employment extends BaseEntity implements Serializable{
-	
+@Table(name = "PROVINCE")
+public class MasProvince extends BaseEntity {
 	@Id
-	@Column(name = "ID", length = 10)
 	@GeneratedValue
-	
-	private Integer Id;
-	
-	@Column(name = "NAME", nullable = false, length = 200)
-	private String Name;
-	
-	@Column(name = "CODE", nullable = false)
+	@Column(name = "ID")
+	private Integer id;
+	@Column(name = "NAME", nullable = false)
+	private String name;
+	@Column(name = "CODE",nullable = false)
 	private String code;
-	
 	@Column(name = "ISACTIVE", nullable = false)
 	private Boolean isActive;
+	
+	
+	@OneToMany(mappedBy = "province")
+	private Set<Address> addresss;
 
-	
-	@OneToMany(mappedBy = "employment")
-	private Set<Employee> employees = new HashSet<Employee>();
-	
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getCode() {
@@ -76,14 +65,12 @@ public class Employment extends BaseEntity implements Serializable{
 		this.isActive = isActive;
 	}
 
-	public Set<Employee> getEmployees() {
-		return employees;
+	public Set<Address> getAddresss() {
+		return addresss;
 	}
 
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
-	}
-	
-	
+	public void setAddresss(Set<Address> addresss) {
+		this.addresss = addresss;
 
+	}
 }

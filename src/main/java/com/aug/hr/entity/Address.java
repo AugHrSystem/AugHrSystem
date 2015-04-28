@@ -65,11 +65,11 @@ public class Address {
 	
 	@ManyToOne
     @JoinColumn(name= "ADDTYPE_ID")
-    private AddressType addressType;
+    private MasAddressType addressType;
 	
 	@ManyToOne
     @JoinColumn(name= "PROVINCE_ID")
-    private Province province;
+    private MasProvince province;
 
 	
 	
