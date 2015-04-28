@@ -13,5 +13,6 @@ public interface EmpFamilyService {
 	public void delete(EmpFamily empFamily);
 	public EmpFamily find(Integer Id);
 	public List<EmpFamily> findAll();
+	public List<EmpFamily> findAllEmpAndEmp();
 
 }

@@ -48,5 +48,12 @@ public class EmpFamilyServiceImpl implements EmpFamilyService{
 		List<EmpFamily> empFamilyList = empFamilyDao.findAll();
 		return empFamilyList;
 	}
+
+	@Override
+	public List<EmpFamily> findAllEmpAndEmp() {
+		// TODO Auto-generated method stub
+		List<EmpFamily> empFamilyList = empFamilyDao.findAllEmpAndEmp();
+		return empFamilyList;
+	}
 	
 }
