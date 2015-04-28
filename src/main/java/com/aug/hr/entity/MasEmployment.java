@@ -1,52 +1,63 @@
 /**
  *
  * @author natechanok
- * @date Apr 22, 2015
+ * @date Apr 21, 2015
  */
 
 package com.aug.hr.entity;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
 @Entity
-@Table(name = "PROVINCE")
-public class Province extends BaseEntity {
+@Table(name = "EMPLOYMENT")
+public class MasEmployment extends BaseEntity implements Serializable{
+	
 	@Id
+	@Column(name = "ID", length = 10)
 	@GeneratedValue
-	@Column(name = "ID")
-	private Integer id;
-	@Column(name = "NAME", nullable = false)
-	private String name;
-	@Column(name = "CODE",nullable = false)
+	
+	private Integer Id;
+	
+	@Column(name = "NAME", nullable = false, length = 200)
+	private String Name;
+	
+	@Column(name = "CODE", nullable = false)
 	private String code;
+	
 	@Column(name = "ISACTIVE", nullable = false)
 	private Boolean isActive;
-	
-	
-	@OneToMany(mappedBy = "province")
-	private Set<Address> addresss;
 
+	
+	@OneToMany(mappedBy = "employment")
+	private Set<Employee> employees = new HashSet<Employee>();
+	
 	public Integer getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public String getName() {
-		return name;
+		return Name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		Name = name;
 	}
 
 	public String getCode() {
@@ -65,12 +76,14 @@ public class Province extends BaseEntity {
 		this.isActive = isActive;
 	}
 
-	public Set<Address> getAddresss() {
-		return addresss;
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
 
-	public void setAddresss(Set<Address> addresss) {
-		this.addresss = addresss;
-
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
+	
+	
+
 }

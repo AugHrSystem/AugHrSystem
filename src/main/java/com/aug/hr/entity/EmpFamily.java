@@ -171,6 +171,21 @@ public class EmpFamily extends BaseEntity implements Serializable {
 		this.employee = employee;
 	}
 
+
+	@Override
+	public String toString() {
+		return "EmpFamily [empFamilyId=" + empFamilyId
+				+ ", empFamilyFirstName=" + empFamilyFirstName
+				+ ", empFamilyLastName=" + empFamilyLastName
+				+ ", empFamilyGender=" + empFamilyGender + ", empFamilyAge="
+				+ empFamilyAge + ", empFamilyMobile=" + empFamilyMobile
+				+ ", empFamilyAddress=" + empFamilyAddress
+				+ ", empFamilyOccupation=" + empFamilyOccupation
+				+ ", empFamilyPosition=" + empFamilyPosition
+				+ ", empFamilyRelation=" + empFamilyRelation + ", employee="
+				+ employee + "]";
+	}
+
 	
 	
 	

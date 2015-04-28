@@ -8,14 +8,14 @@ package com.aug.hr.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.aug.hr.dao.AddressTypeDao;
-import com.aug.hr.entity.AddressType;
+import com.aug.hr.dao.MasAddressTypeDao;
+import com.aug.hr.entity.MasAddressType;
 
 @Repository
-public class AddressTypeDaoImpl extends GenericDaoImpl<AddressType, Integer> implements AddressTypeDao{
+public class AddressTypeDaoImpl extends GenericDaoImpl<MasAddressType, Integer> implements MasAddressTypeDao{
 
 	public AddressTypeDaoImpl() {
-		super(AddressType.class);
+		super(MasAddressType.class);
 		// TODO Auto-generated constructor stub
 	}
 
