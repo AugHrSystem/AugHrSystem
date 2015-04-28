@@ -3,7 +3,7 @@ package com.aug.hr.dao;
 import java.util.List;
 
 import com.aug.hr.entity.Specialty;
-import com.aug.hr.services.Reference;
+import com.aug.hr.services.ReferenceService;
 
 
 
