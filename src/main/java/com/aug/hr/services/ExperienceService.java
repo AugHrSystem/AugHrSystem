@@ -17,5 +17,4 @@ public interface ExperienceService {
 
 	public abstract void delete(Experience experience);
 	
-	public void delete(Integer id);
 }
