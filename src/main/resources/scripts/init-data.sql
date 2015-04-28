@@ -80,11 +80,15 @@ values('Account Execute','AE',1),
 ('Senior Professional','SP',1),
 ('Support Division Director','SDD',1);
 
-
-
+--ADDRESS
+INSERT INTO ADDRESS(ADDRESS1,ADDRESS2,ZIPCODE) VALUES ('200 MOO.6','BANGKOK','10800'),
+('100 MOO.1','CHAINGMAI','10700'),
+('50 MOO.5','CHAINGRAI','10500'),
+('2/3 MOO.1','SAMUTPAKARN','10600');
 
 --ADDRESSTYPE
-INSERT INTO addresstype(NAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1);
+INSERT INTO addresstype(NAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1)
+('Permanent address','M02',1);
 
 
 --DEGREETYPE
@@ -202,4 +206,20 @@ INSERT INTO CORESKILL (NAME,CODE,ISACTIVE) VALUES
 ('System Analyst','SA',b'1'),
 ('Transformation','TR',b'1');
 
+--Ability
+insert into ABILITY (RANK,CODE,ISACTIVE)
+values
+(10,"01",true),
+(1,"02",true),
+(2,"03",true),
+(4,"04",true);
+
+--EDUCATION
+INSERT INTO EDUCATION (UNIVERSITY,GPA,FACULTY,MAJOR) VALUES 
+('Silpakorn',4.00,'SCIENCE','IT');
+
+--EMPLOYEE
+INSERT INTO EMPLOYEE (NAME,TEL,SALARY,AGE,RELIGION,PLACEDOB,IDCARD,HEIGH,WEIGTH,GENDER,STATUS,MILITARY,QUALIFICATION,CODE,DOB) VALUES 
+('NAME','1234567890',3000,12,'eiei','eiei',1234567890,180,90,'F','eiei','eiei','eiei','01',06/27/2007),
+('NAME1','1234567890',3000,12,'eiei','eiei',1234567890,180,90,'F','eiei','eiei','eiei','01',06/27/2007);
 

@@ -34,9 +34,6 @@ public class Education extends BaseEntity{
 	@Column(name = "MAJOR" ,nullable =false)
 	private String major;
 	
-	@Column(name = "DEGREE" ,nullable =false)
-	private String degree;
-	
 	@ManyToOne
 	@JoinColumn(name = "EMP_ID")
 	private Employee employee;
@@ -44,8 +41,9 @@ public class Education extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name = "DEGREE_ID")
 	private MasDegreetype degreetype;
-
+	
 	/*---------------------- getter / setter ----------------------*/
+
 	
 	public Integer getId() {
 		return id;
@@ -63,6 +61,13 @@ public class Education extends BaseEntity{
 		this.university = university;
 	}
 
+	public Double getGpa() {
+		return gpa;
+	}
+
+	public void setGpa(Double gpa) {
+		this.gpa = gpa;
+	}
 
 	public String getFaculty() {
 		return faculty;
@@ -80,28 +85,12 @@ public class Education extends BaseEntity{
 		this.major = major;
 	}
 
-	public String getDegree() {
-		return degree;
-	}
-
-	public void setDegree(String degree) {
-		this.degree = degree;
-	}
-
 	public Employee getEmployee() {
 		return employee;
 	}
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}
-
-	public Double getGpa() {
-		return gpa;
-	}
-
-	public void setGpa(Double gpa) {
-		this.gpa = gpa;
 	}
 
 	public MasDegreetype getDegreetype() {
@@ -111,6 +100,5 @@ public class Education extends BaseEntity{
 	public void setDegreetype(MasDegreetype degreetype) {
 		this.degreetype = degreetype;
 	}
-	
-	
+
 }

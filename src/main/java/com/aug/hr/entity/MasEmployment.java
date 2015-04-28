@@ -32,7 +32,7 @@ public class MasEmployment extends BaseEntity implements Serializable{
 	private Integer Id;
 	
 	@Column(name = "NAME", nullable = false, length = 200)
-	private String Name;
+	private String name;
 	
 	@Column(name = "CODE", nullable = false)
 	private String code;
@@ -53,11 +53,11 @@ public class MasEmployment extends BaseEntity implements Serializable{
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		name = name;
 	}
 
 	public String getCode() {
