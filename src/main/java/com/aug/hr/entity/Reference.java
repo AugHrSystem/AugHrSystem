@@ -1,5 +1,6 @@
 package com.aug.hr.entity;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -117,6 +118,8 @@ public class Reference {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
+
 	
 	
 	

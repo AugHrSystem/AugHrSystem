@@ -49,15 +49,19 @@ public class Address {
 		this.address1 = address1;
 	}
 
-	public String getAddress() {
-		return address2;
+	
+	
+	
+	public String getZipcode() {
+		return zipcode;
 	}
 
-	public void setAddress(String address) {
-		this.address2 = address;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
-	
-	
+
+
+
 	@ManyToOne
     @JoinColumn(name= "EMP_ID")
     private Employee employee;
@@ -65,12 +69,46 @@ public class Address {
 	
 	@ManyToOne
     @JoinColumn(name= "ADDTYPE_ID")
-    private AddressType addressType;
+    private MasAddressType addressType;
 	
 	@ManyToOne
     @JoinColumn(name= "PROVINCE_ID")
-    private Province province;
+    private MasProvince province;
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public MasAddressType getAddressType() {
+		return addressType;
+	}
+
+	public void setAddressType(MasAddressType addressType) {
+		this.addressType = addressType;
+	}
+
+	public MasProvince getProvince() {
+		return province;
+	}
+
+	public void setProvince(MasProvince province) {
+		this.province = province;
+	}
+
+	
+	
 	
 	
 

@@ -15,8 +15,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-
 import com.aug.hr.dao.ExperienceDao;
 import com.aug.hr.entity.CoreSkill;
 import com.aug.hr.entity.Employee;

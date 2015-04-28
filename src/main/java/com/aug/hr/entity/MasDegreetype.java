@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "DEGREETYPE")
-public class Degreetype {
+public class MasDegreetype {
 
 	@Id
 	@Column(name = "ID", length = 10)
