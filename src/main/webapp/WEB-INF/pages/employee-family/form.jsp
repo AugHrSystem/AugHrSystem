@@ -10,6 +10,8 @@
 <link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resources/bootstrap/js/bootstrap.js" />"></script>
 
+
+
  <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">ข้อมูลครอบครัว</h4>
@@ -31,8 +33,11 @@
 		    <div class="form-group">
 		      <label for="firstname" class="col-sm-2 control-label">First Name</label>
 		      <div class="col-sm-4">
-		        <f:input path="empFamilyFirstName" cssClass="form-control" />
-		       <!--  <input type="text" class="form-control" id="firstname" placeholder="First Name"> -->
+		         <c:set var="empFamilyFirstNameErrors"><f:errors path="empFamilyFirstName"/></c:set>
+				  <div ${not empty empFamilyFirstNameErrors?'class="has-error"':''}>
+		           <f:input path="empFamilyFirstName" cssClass="form-control" />
+		          </div>
+		          <f:errors path="empFamilyFirstName" cssClass="error" />
 		      </div>
 		    </div>
 		
