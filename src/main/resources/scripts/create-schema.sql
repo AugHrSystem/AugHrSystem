@@ -13,11 +13,11 @@
 
     alter table ADDRESS 
         drop 
-        foreign key FKE66327D47DB7BEC9;
+        foreign key FKE66327D4A94034CA;
 
     alter table ADDRESS 
         drop 
-        foreign key FKE66327D44DE4BC5E;
+        foreign key FKE66327D44B00FABD;
 
     alter table CORESKILL 
         drop 
@@ -29,7 +29,7 @@
 
     alter table EDUCATION 
         drop 
-        foreign key FK94C3778848538AC3;
+        foreign key FK94C37788B3968484;
 
     alter table EMPLOYEE 
         drop 
@@ -37,7 +37,7 @@
 
     alter table EMPLOYEE 
         drop 
-        foreign key FK75C8D6AE920FAD89;
+        foreign key FK75C8D6AEFD52A74A;
 
     alter table EMPLOYEE 
         drop 
@@ -197,7 +197,7 @@
         ID bigint not null auto_increment,
         AGE integer not null,
         CODE varchar(10) not null,
-        DOB date not null,
+        DOB datetime not null,
         GENDER varchar(255) not null,
         HEIGH integer not null,
         IDCARD integer not null,
@@ -376,14 +376,14 @@
         references EMPLOYEE (ID);
 
     alter table ADDRESS 
-        add index FKE66327D47DB7BEC9 (PROVINCE_ID), 
-        add constraint FKE66327D47DB7BEC9 
+        add index FKE66327D4A94034CA (PROVINCE_ID), 
+        add constraint FKE66327D4A94034CA 
         foreign key (PROVINCE_ID) 
         references PROVINCE (ID);
 
     alter table ADDRESS 
-        add index FKE66327D44DE4BC5E (ADDTYPE_ID), 
-        add constraint FKE66327D44DE4BC5E 
+        add index FKE66327D44B00FABD (ADDTYPE_ID), 
+        add constraint FKE66327D44B00FABD 
         foreign key (ADDTYPE_ID) 
         references ADDRESSTYPE (ID);
 
@@ -400,8 +400,8 @@
         references EMPLOYEE (ID);
 
     alter table EDUCATION 
-        add index FK94C3778848538AC3 (DEGREE_ID), 
-        add constraint FK94C3778848538AC3 
+        add index FK94C37788B3968484 (DEGREE_ID), 
+        add constraint FK94C37788B3968484 
         foreign key (DEGREE_ID) 
         references DEGREETYPE (ID);
 
@@ -412,8 +412,8 @@
         references JOBLEVEL (ID);
 
     alter table EMPLOYEE 
-        add index FK75C8D6AE920FAD89 (EMPLOYMENT_ID), 
-        add constraint FK75C8D6AE920FAD89 
+        add index FK75C8D6AEFD52A74A (EMPLOYMENT_ID), 
+        add constraint FK75C8D6AEFD52A74A 
         foreign key (EMPLOYMENT_ID) 
         references EMPLOYMENT (ID);
 
