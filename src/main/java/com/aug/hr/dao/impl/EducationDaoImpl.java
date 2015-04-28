@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.aug.hr.dao.EducationDao;
 import com.aug.hr.entity.Education;
 
-@Repository("educationDao")
+@Repository
 public class EducationDaoImpl extends GenericDaoImpl<Education, Integer> implements EducationDao{
 
 	public EducationDaoImpl() {

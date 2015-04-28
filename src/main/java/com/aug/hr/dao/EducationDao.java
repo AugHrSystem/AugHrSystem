@@ -9,4 +9,6 @@ import com.aug.hr.entity.Education;
 
 public interface EducationDao extends GenericDao<Education, Integer>{
 
+	
+
 }

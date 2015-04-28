@@ -37,4 +37,8 @@ public class EducationService {
     	educationDao.delete(education);
     }
 
+	public Education findById(Integer id) {
+		return educationDao.find(id);
+	}
+
 }
