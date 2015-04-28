@@ -11,15 +11,15 @@
  <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <title>Insert title here</title>
 
-<script src="<c:url value="/resources/bootstrap/js/jquery-1.11.2.min.js" />"></script>
-<link href="<c:url value="/resources/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/bootstrap/js/bootstrap.js" />"></script>
-<script src="<c:url value="/resources/dataTable/jquery.dataTables.min.js" />"></script>
-<link href="<c:url value="/resources/dataTable/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/dataTable/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/dataTable/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/dataTable/dataTables.bootstrap.js" />"></script>
+<script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.2.min.js" />"></script>
+<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resources/resource/bootstrap/js/bootstrap.js" />"></script>
+<script src="<c:url value="/resources/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resources/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
 <style type="text/css">
 #example {
