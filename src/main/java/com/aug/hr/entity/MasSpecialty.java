@@ -17,8 +17,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "SPECIALTY")
-public class Specialty extends BaseEntity{
+@Table(name = "MASSPECIALTY")
+public class MasSpecialty extends BaseEntity{
 	
 	@Id
 	@Column(name="SPEC_ID")

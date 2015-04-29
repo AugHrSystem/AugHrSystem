@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.SpecialtyDao;
 import com.aug.hr.entity.MasTechnology;
-import com.aug.hr.entity.Specialty;
+import com.aug.hr.entity.MasSpecialty;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

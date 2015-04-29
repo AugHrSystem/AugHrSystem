@@ -1,16 +1,16 @@
 package com.aug.hr.services;
 
 import java.util.List;
-import com.aug.hr.entity.Specialty;
+import com.aug.hr.entity.MasSpecialty;
 
 public interface SpecialtyService {
 	
-	public List<Specialty> findAll();
-	public void create(Specialty specialty);
-	public void update(Specialty specialty);
-	public void delete(Specialty specialty);
-	public Specialty findById(Integer id);
-	public List<Specialty> findByCriteria(Specialty specialty);
-	public Specialty deleteById(Integer id);
+	public List<MasSpecialty> findAll();
+	public void create(MasSpecialty specialty);
+	public void update(MasSpecialty specialty);
+	public void delete(MasSpecialty specialty);
+	public MasSpecialty findById(Integer id);
+	public List<MasSpecialty> findByCriteria(MasSpecialty specialty);
+	public MasSpecialty deleteById(Integer id);
 
 }

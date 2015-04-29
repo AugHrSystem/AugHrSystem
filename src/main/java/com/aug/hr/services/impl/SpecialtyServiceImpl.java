@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.SpecialtyDao;
 import com.aug.hr.entity.Education;
-import com.aug.hr.entity.Specialty;
+import com.aug.hr.entity.MasSpecialty;
 
 
 @Service
@@ -19,31 +19,31 @@ public class SpecialtyServiceImpl {
 	private SpecialtyDao specialtyDao;
 	
 	
-	public List<Specialty> findAll(){
+	public List<MasSpecialty> findAll(){
 		return specialtyDao.findAll();
 	}
 	
-    public void create(Specialty specialty){
+    public void create(MasSpecialty specialty){
     	specialtyDao.create(specialty);
     }
     
-    public void update(Specialty specialty){
+    public void update(MasSpecialty specialty){
     	specialtyDao.update(specialty);
     }
     
-    public void delete(Specialty specialty){
+    public void delete(MasSpecialty specialty){
     	specialtyDao.delete(specialty);
     }
 
-	public Specialty findById(Integer id) {
+	public MasSpecialty findById(Integer id) {
 		return specialtyDao.find(id);
 	}
 
-	public List<Specialty> findByCriteria(Specialty  specialty){
+	public List<MasSpecialty> findByCriteria(MasSpecialty  specialty){
 		return specialtyDao.findByCriteria(specialty);
 	}
 
-	public Specialty deleteById(Integer id){
+	public MasSpecialty deleteById(Integer id){
 		return specialtyDao.deleteById(id);
 	}
 

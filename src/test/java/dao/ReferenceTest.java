@@ -21,7 +21,7 @@ import com.aug.hr.entity.EmpFamily;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasTechnology;
 import com.aug.hr.entity.Reference;
-import com.aug.hr.entity.Specialty;
+import com.aug.hr.entity.MasSpecialty;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
