@@ -20,11 +20,11 @@
 		<mapping class="com.aug.hr.entity.Education" />
 		<mapping class="com.aug.hr.entity.Ability" />
 		<mapping class="com.aug.hr.entity.CoreSkill" />
-		<mapping class="com.aug.hr.entity.Division" />
+		<mapping class="com.aug.hr.entity.MasDivision" />
 		<mapping class="com.aug.hr.entity.Joblevel" />
 		<mapping class="com.aug.hr.entity.MasEmployment" />
 		<mapping class="com.aug.hr.entity.Reference" />
-		<mapping class="com.aug.hr.entity.Specialty" />
+		<mapping class="com.aug.hr.entity.MasSpecialty" />
 		<mapping class="com.aug.hr.entity.Experience" />
 		<mapping class="com.aug.hr.entity.MasTechnology" />
 		<mapping class="com.aug.hr.entity.TechnologyEmp" />

@@ -83,7 +83,7 @@ public class Employee {
     
     @ManyToOne
     @JoinColumn(name= "DIVISION_ID")
-    private Division division;
+    private MasDivision masDivision;
     
     @ManyToOne
     @JoinColumn(name= "JOBLEVEL_ID")
@@ -273,12 +273,12 @@ public class Employee {
 		this.references = references;
 	}
 
-	public Division getDivision() {
-		return division;
+	public MasDivision getDivision() {
+		return masDivision;
 	}
 
-	public void setDivision(Division division) {
-		this.division = division;
+	public void setDivision(MasDivision masDivision) {
+		this.masDivision = masDivision;
 	}
 
 	public Joblevel getJoblevel() {

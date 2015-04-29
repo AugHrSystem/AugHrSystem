@@ -35,7 +35,7 @@ public class EducationServiceTest {
 		education.setGpa(4.00);
 		education.setMajor("Com");
 		education.setEmployee(null);
-		education.setDegreetype(null);
+		education.setMasdegreetype(null);
 
 		educationServiceImpl.create(education);
 

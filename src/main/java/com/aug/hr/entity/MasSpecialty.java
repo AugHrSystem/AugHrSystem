@@ -1,80 +1,117 @@
-/**
- *
- * @author Preeyaporn
- * @date 21 เม.ย. 2558
- */
 package com.aug.hr.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
 @Entity
-@Table(name = "DIVISION")
-public class Division extends BaseEntity{
+@Table(name = "MASSPECIALTY")
+public class MasSpecialty extends BaseEntity{
 	
 	@Id
-	@Column(name = "ID")
+	@Column(name="SPEC_ID")
 	@GeneratedValue
 	private Integer id;
+
 	
 	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
-	@Column(name = "CODE" ,nullable =false)
+	@Column(name = "CODE" ,nullable = false)
 	private String code;
-
-	@Column(name = "ISACTIVE" ,nullable =false)
+	
+	@Column(name = "ISACTIVE")
 	private Boolean isActive;
 	
-	@OneToMany(mappedBy = "division")
-	private Set<Employee> employees;
 	
-	/*---------------------- getter / setter ----------------------*/
+	
+	
+	@OneToMany(mappedBy = "masspecialty")
+	private Set<Ability> abilities = new HashSet<Ability>();
+
+
+
 
 	public Integer getId() {
 		return id;
 	}
 
+
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
+
 
 	public String getName() {
 		return name;
 	}
 
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+
 
 	public String getCode() {
 		return code;
 	}
 
+
+
+
 	public void setCode(String code) {
 		this.code = code;
 	}
 
-	public Set<Employee> getEmployees() {
-		return employees;
-	}
 
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
-	}
+
 
 	public Boolean getIsActive() {
 		return isActive;
 	}
 
+
+
+
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+
+
+
+
+	public Set<Ability> getAbilities() {
+		return abilities;
+	}
+
+
+
+
+	public void setAbilities(Set<Ability> abilities) {
+		this.abilities = abilities;
+	}
+	
+	
+	
 	
 }
