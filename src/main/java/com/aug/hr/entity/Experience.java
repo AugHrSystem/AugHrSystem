@@ -32,7 +32,7 @@ public class Experience extends BaseEntity {
 	@Column(name = "DATE_TO")
 	private Date dateTo;
 	@Column(name = "ADDRESS")
-	private String Address;
+	private String address;
 	@Column(name = "BUSINESS")
 	private String business;
 	@Column(name = "POSITION")
@@ -72,10 +72,10 @@ public class Experience extends BaseEntity {
 		this.dateTo = dateTo;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		address = address;
 	}
 	public String getBusiness() {
 		return business;
