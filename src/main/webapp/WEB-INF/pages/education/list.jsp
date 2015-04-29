@@ -165,12 +165,12 @@
 			$.ajax({
 				url : "${pageContext.request.contextPath}/product/add",
 				data : JSON.stringify({
-					name : $("#Name").val(),
-					description :$("#Description").val(),
-					productCategory : {id:$("#ProductCategory").val(), name: $("#ProductCategory option:selected").text()},
-					unit : $("#Unit").val(),
-					price :$("#Price").val(),
-					
+					university : $("#university").val(),
+					gpa :$("#gpa").val(),
+					faculty :$("#faculty").val(),
+					major :$("#major").val(),
+					degreetype : {id:$("#degreetype").val(), name: $("#degreetype option:selected").text()},
+				
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -187,11 +187,11 @@
 						$("#Unit").val(),
 						$("#Price").val(),
 						$("#Description").val(), */
-						data.name,
-						data.description,
-						data.productCategory.name,
-						data.unit,
-						data.price,
+						data.university,
+						data.gpa,
+						data.faculty,
+						data.major,
+						data.degreetype.name,
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
