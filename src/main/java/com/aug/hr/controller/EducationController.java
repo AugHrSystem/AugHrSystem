@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.hr.entity.Education;
 import com.aug.hr.services.EducationService;
+import com.aug.hr.services.MasDegreetypeService;
 
 @Controller
 public class EducationController {
@@ -25,13 +26,15 @@ public class EducationController {
 	@Autowired
 	private EducationService educationService;
 
+	@Autowired
+	private MasDegreetypeService masDegreetypeService;
 
 	@RequestMapping(value = "/education", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String listEducation(ModelMap model) {
-//		model.addAttribute("degreetypeList",
-//				educationService.findAll());
-		return "/education/list";
+		model.addAttribute("masdegreetypeList",
+				masDegreetypeService.findAll());
+		return "/education/education";
 	}
 	
 	/*@RequestMapping(value = "/education/searchEducation", method = RequestMethod.POST)

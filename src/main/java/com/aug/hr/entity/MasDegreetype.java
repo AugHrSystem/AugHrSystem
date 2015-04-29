@@ -22,10 +22,10 @@ public class MasDegreetype {
 	@Id
 	@Column(name = "ID", length = 10)
 	@GeneratedValue
-	private Integer Id;
+	private Integer id;
 
 	@Column(name = "NAME", nullable = false, length = 200)
-	private String Name;
+	private String name;
 	
 	@Column(name = "CODE",nullable =false)
 	private String code;
@@ -33,23 +33,25 @@ public class MasDegreetype {
 	@Column(name = "ISACTIVE" ,nullable =false)
 	private String isactive;
 	
-	@OneToMany(mappedBy = "degreetype")
+	@OneToMany(mappedBy = "masdegreetype")
 	private Set<Education> educations;
 
+	
+
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getCode() {

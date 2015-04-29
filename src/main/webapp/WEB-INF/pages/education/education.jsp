@@ -54,7 +54,8 @@
 			<th>Faculty</th>
 			<th>Major</th>
 			<th>Degree</th>
-			<th>Action</th>
+			<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -105,10 +106,10 @@
 	    <label>Degree :</label>
 	    
 		<div class="form-group">
-		  <form:select path="degreetype" class="form-control"
-			id="degreetype">
-			<form:option value="-1" label="---Select Category---" />
-			<c:forEach var="obj" items="${ degreetypeList }">
+		  <form:select path="masdegreetype" class="form-control"
+			id="masdegreetype">
+			<form:option value="-1" label="---Select Degree---" />
+			<c:forEach var="obj" items="${ masdegreetypeList }">
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>
 		</form:select>
@@ -170,7 +171,7 @@
 					gpa :$("#gpa").val(),
 					faculty :$("#faculty").val(),
 					major :$("#major").val(),
-					degreetype : {id:$("#degreetype").val(), name: $("#degreetype option:selected").text()},
+					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
 				
 				}),
 				type : "POST",
@@ -192,7 +193,7 @@
 						data.gpa,
 						data.faculty,
 						data.major,
-						data.degreetype.name,
+						data.masdegreetype.name,
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'

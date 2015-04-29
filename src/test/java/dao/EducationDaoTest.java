@@ -36,7 +36,7 @@ public class EducationDaoTest {
 		education.setGpa(4.00);
 		education.setMajor("Com");
 		education.setEmployee(null);
-		education.setDegreetype(null);
+		education.setMasdegreetype(null);
 
 		educationDao.getCurrentSession().save(education);
 
