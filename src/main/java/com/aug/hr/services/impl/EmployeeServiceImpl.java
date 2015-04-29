@@ -58,6 +58,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		List<Employee> employee = employeeDao.findAll();
 		return employee;
 	}
+
+	@Override
+	public List<Employee> findByCriteria(String employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
