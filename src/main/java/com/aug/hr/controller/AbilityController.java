@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import com.aug.hr.dao.MasSpecialtyDao;
+import com.aug.hr.services.MasSpecialtyService;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.services.AbilityService;
