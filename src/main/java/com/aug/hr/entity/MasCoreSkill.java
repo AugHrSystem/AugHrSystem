@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CORESKILL")
-public class CoreSkill extends BaseEntity {
+@Table(name = "MASCORESKILL")
+public class MasCoreSkill extends BaseEntity {
 	
 	@Id
 	@GeneratedValue

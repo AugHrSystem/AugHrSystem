@@ -184,8 +184,8 @@ VALUES
 ('Satun','a',1),
 ('Surat Thani','a',1);
 
---CoreSkill
-INSERT INTO CORESKILL (NAME,CODE,ISACTIVE) VALUES 
+--MasCoreSkill
+INSERT INTO MASCORESKILL (NAME,CODE,ISACTIVE) VALUES 
 ('Administration','AD',b'1'),
 ('Application Analyst','AA',b'1'),
 ('Business Analyst','BA',b'1'),

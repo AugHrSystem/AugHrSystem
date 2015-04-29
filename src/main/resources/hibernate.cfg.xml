@@ -19,7 +19,7 @@
 		<mapping class="com.aug.hr.entity.Employee" />
 		<mapping class="com.aug.hr.entity.Education" />
 		<mapping class="com.aug.hr.entity.Ability" />
-		<mapping class="com.aug.hr.entity.CoreSkill" />
+		<mapping class="com.aug.hr.entity.MasCoreSkill" />
 		<mapping class="com.aug.hr.entity.MasDivision" />
 		<mapping class="com.aug.hr.entity.Joblevel" />
 		<mapping class="com.aug.hr.entity.MasEmployment" />

@@ -7,16 +7,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="<c:url value="/resources/bootstrap/js/jquery-1.11.2.min.js" />"></script>
-<link href="<c:url value="/resources/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/bootstrap/js/bootstrap.js" />"></script>
-<link href="<c:url value="/resources/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/datepicker/js/bootstrap-datepicker.js" />"></script>
-<script src="<c:url value="/resources/dataTable/jquery.dataTables.min.js" />"></script>
-<link href="<c:url value="/resources/dataTable/jquery.dataTables.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/dataTable/jquery.dataTables.themeroller.css" />"
-	rel="stylesheet">
+
+<!-- Bootstrap -->
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.min.js" />"></script>
+<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
+
+<!-- Date Picker -->
+<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
+<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+
+<!-- Data Table -->
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables.themeroller.css" />" rel="stylesheet">
+
 <title>Experience</title>
 <style>
 .datepicker{z-index:1151 !important;}
@@ -33,7 +39,7 @@
 		<h2>Experience</h2>
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
-			<table id="tdResult" class="table">
+			<table id="tdResult">
 			<thead>
 				<tr>
 					<th>Company Name</th>
@@ -105,10 +111,10 @@
   			<input type="text" class="form-control" id="supervisor" placeholder="Enter Supervisor Name">
   		</div>
         
-        <div class="form-group">
+		<!-- <div class="form-group">
   			<label>Employee ID :</label>
-  			<input type="text" class="form-control" id="employeeId" placeholder="Enter Employee Name">
-  		</div>  
+  			<input type="text" class="form-control" id="employeeId" placeholder="Enter Employee Id">
+  		</div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -156,9 +162,9 @@ var dt;
     					 dateTo: $("#dateTo").val(),
     					 description: $("#description").val(),
     					 superVisor: $("#supervisor").val(),
-    					 Address: $("#address").val(),
-    					 employee:{id: $("#employeeId").val() }
-    				 }),
+    					 address: $("#address").val(),
+    					 employee: {id: 2 }
+    					}),
     				 datatype: "json",
     				 contentType: "application/json",
     				success : function(data) {
@@ -166,7 +172,7 @@ var dt;
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					dt.fnClearTable();
     					dt.fnAddData([
-    					    data.id,
+    					    //data.id,
     						data.companyName,
     						data.business,
     						data.position,
@@ -174,8 +180,8 @@ var dt;
     						data.dateTo,
     						data.description,
     						data.superVisor,
-    						data.Address,
-    						data.employee.id,
+    						data.address,
+    						//data.employee.id,
     					'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
     					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
     					]);

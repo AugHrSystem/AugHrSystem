@@ -69,7 +69,7 @@ public class Employee {
 	private Set<Education> educations = new HashSet<Education>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
-    private Set<CoreSkill> coreSkill = new HashSet<CoreSkill>();
+    private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();
 	  
     @ManyToOne
     @JoinColumn(name= "EMPLOYMENT_ID")
@@ -121,12 +121,12 @@ public class Employee {
         this.name = name;
     }
 
-	public Set<CoreSkill> getCoreSkill() {
-		return coreSkill;
+	public Set<MasCoreSkill> getMasCoreSkill() {
+		return masCoreSkill;
 	}
 
-	public void setCoreSkill(Set<CoreSkill> coreSkill) {
-		this.coreSkill = coreSkill;
+	public void setMasCoreSkill(Set<MasCoreSkill> masCoreSkill) {
+		this.masCoreSkill = masCoreSkill;
 	}
 
 	public String getTel() {
