@@ -47,7 +47,7 @@ public class ReferenceController {
 	@RequestMapping(value = "/reference", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("referenceList", referenceService.findAll());
-		return "referenceform";
+		return "/reference/listreference";
 	}
 	
 	@RequestMapping(value = "/searchReference", method = RequestMethod.POST)
