@@ -69,7 +69,7 @@ public class ReferenceController {
 	
 	@RequestMapping(value = "/reference/findById", method = RequestMethod.POST)
 	public @ResponseBody Reference findById(@RequestParam Integer id) {
-		return referenceService.findById(id);
+		return referenceService.find(id);
 	}
 	
 	@RequestMapping(value = "/reference/delete", method = RequestMethod.POST)
