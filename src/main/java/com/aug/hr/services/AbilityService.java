@@ -8,6 +8,7 @@ package com.aug.hr.services;
 import java.util.List;
 
 import com.aug.hr.entity.Ability;
+import com.aug.hr.entity.Employee;
 
 
 public interface AbilityService {
@@ -18,6 +19,7 @@ public interface AbilityService {
 	public Ability find(Integer Id);
 	public List<Ability> findAll();
 	public List<Ability> findByCriteria(Ability ability);
-	public void deleteById(Integer id);
+	public Ability deleteById(Integer id);
+	List<Employee> findByCriteria(Employee employee);
 	
 }

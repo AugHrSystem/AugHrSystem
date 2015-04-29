@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.AbilityDao;
 import com.aug.hr.entity.Ability;
+import com.aug.hr.entity.Employee;
 import com.aug.hr.services.AbilityService;
 
 @Service("AbilityService")
@@ -52,15 +53,21 @@ public class AbilityServiceImpl implements AbilityService{
 	}
 
 	@Override
-	public List<Ability> findByCriteria(Ability ability) {
+	public List<Employee> findByCriteria(Employee employee) {
 		// TODO Auto-generated method stub
-		return null;
+		return abilityDao.findByCriteria(employee);
 	}
 
 	@Override
-	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+	public Ability deleteById(Integer id) {
+	return	 abilityDao.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Ability> findByCriteria(Ability ability) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 	
 

@@ -18,5 +18,5 @@ public interface MasDegreetypeService {
 	public MasDegreetype find(Integer id);
 	public List<MasDegreetype> findAll();
 	public List<MasDegreetype> findByCriteria(MasDegreetype masDegreetype);
-	public void deleteById(Integer id);
+	public MasDegreetype deleteById(Integer id);
 }

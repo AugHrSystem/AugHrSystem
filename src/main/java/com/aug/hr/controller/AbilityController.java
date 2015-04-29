@@ -31,7 +31,7 @@ import com.aug.hr.services.EmployeeService;
 public class AbilityController {
 	
 	@Autowired private AbilityService abilityService;
-//	@Autowired private EmployeeService employeeService;
+	@Autowired private EmployeeService employeeService;
 	
 	
 	
@@ -76,7 +76,7 @@ public class AbilityController {
 			return ability;
 	}
 	
-	@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
+	/*@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
 	public @ResponseBody Ability findById(@RequestParam Integer id)
 	{
 		
@@ -100,7 +100,7 @@ public class AbilityController {
 		return "{success:true}";
 	
 	
-	}
+	}*/
 	
 
 	@ModelAttribute("ability")

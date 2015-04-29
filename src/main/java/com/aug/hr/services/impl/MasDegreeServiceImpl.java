@@ -17,7 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 
+
 import com.aug.hr.dao.MasDegreetypeDao;
+import com.aug.hr.entity.Ability;
+import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasDegreetype;
 import com.aug.hr.services.MasDegreetypeService;
 
@@ -59,15 +62,18 @@ public class MasDegreeServiceImpl implements MasDegreetypeService{
 
 	@Override
 	public List<MasDegreetype> findByCriteria(MasDegreetype masDegreetype) {
-		
-		return null;
+		// TODO Auto-generated method stub
+		return masDegreetypeDao.findByCriteria(masDegreetype);
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+
+	public MasDegreetype deleteById(Integer id) {
+	return	 masDegreetypeDao.deleteById(id);
 		
-		return;
+
 	}
+
 
 	
 
