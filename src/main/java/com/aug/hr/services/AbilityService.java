@@ -17,5 +17,7 @@ public interface AbilityService {
 	public void delete(Ability Ability);
 	public Ability find(Integer Id);
 	public List<Ability> findAll();
+	public List<Ability> findByCriteria(Ability ability);
+	public void deleteById(Integer id);
 	
 }
