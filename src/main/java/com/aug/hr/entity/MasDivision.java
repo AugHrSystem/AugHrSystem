@@ -32,7 +32,7 @@ public class MasDivision extends BaseEntity{
 	@Column(name = "ISACTIVE" ,nullable =false)
 	private Boolean isActive;
 	
-	@OneToMany(mappedBy = "division")
+	@OneToMany(mappedBy = "masDivision")
 	private Set<Employee> employees;
 	
 	/*---------------------- getter / setter ----------------------*/
