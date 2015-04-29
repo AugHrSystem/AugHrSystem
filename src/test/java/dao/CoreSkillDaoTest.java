@@ -8,7 +8,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.test.annotation.Rollback;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,31 +41,32 @@ public class CoreSkillDaoTest {
 		coreSkillDao.getCurrentSession().save(coreSkill);		
 	}
 	
-//	@Test
-//	public void updateCoreSkill(){
-//		CoreSkill coreSkill = (CoreSkill) coreSkillDao.getCurrentSession().get(CoreSkill.class, 1);
-//		coreSkill.setIsActive(false);
-//		coreSkillDao.getCurrentSession().update(coreSkill);
-//	}
-//	
-//	@Test
-//	public void deleteCoreSkill(){
-//		CoreSkill coreSkill = (CoreSkill) coreSkillDao.getCurrentSession().get(CoreSkill.class, 1);
-//		coreSkillDao.getCurrentSession().delete(coreSkill);
-//	}
-//	
-//	@Test
-//	public void findCoreSkill(){
-//		CoreSkill coreSkill = (CoreSkill) coreSkillDao.getCurrentSession().get(CoreSkill.class, 1);
-//		int id = coreSkill.getId();
-//		Assert.assertEquals(1, id);
-//	}
-//	
-//	@Test
-//	public void findAllCoreSkill(){
-//		Criteria c = coreSkillDao.getCurrentSession().createCriteria(CoreSkill.class);
-//		List<CoreSkill> coreSkills = c.list();
-//		Assert.assertEquals(19, coreSkills.size());
-//	}
+	@Test
+	public void updateCoreSkill(){
+		CoreSkill coreSkill = (CoreSkill) coreSkillDao.getCurrentSession().get(CoreSkill.class, 1);
+		coreSkill.setIsActive(false);
+		coreSkillDao.getCurrentSession().update(coreSkill);
+	}
+	
+	@Test
+	public void deleteCoreSkill(){
+		CoreSkill coreSkill = (CoreSkill) coreSkillDao.getCurrentSession().get(CoreSkill.class, 1);
+		coreSkillDao.getCurrentSession().delete(coreSkill);
+	}
+	
+	@Test
+	public void findCoreSkill(){
+		CoreSkill coreSkill = (CoreSkill) coreSkillDao.getCurrentSession().get(CoreSkill.class, 1);
+		int id = coreSkill.getId();
+		Assert.assertEquals(1, id);
+	}
+	
+	@Test
+	public void findAllCoreSkill(){
+		Criteria c = coreSkillDao.getCurrentSession().createCriteria(CoreSkill.class);
+		List<CoreSkill> coreSkills = c.list();
+		Assert.assertEquals(19, coreSkills.size());
+	}
+
 
 }

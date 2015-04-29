@@ -16,7 +16,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.dao.ExperienceDao;
 import com.aug.hr.entity.CoreSkill;
 import com.aug.hr.entity.Employee;
@@ -29,8 +28,6 @@ public class ExperienceDaoTest {
 	
 	@Autowired
 	private ExperienceDao experienceDao;
-	@Autowired
-	private EmployeeDao employeeDao;
 	
 	@Test
 	public void createExperience(){
@@ -78,5 +75,4 @@ public class ExperienceDaoTest {
 		List<Experience> experiences = c.list();
 		Assert.assertEquals(3, experiences.size());
 	}
-
 }
