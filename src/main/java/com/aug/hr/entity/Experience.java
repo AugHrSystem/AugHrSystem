@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Repository;
+
 @Entity
 @Table(name = "EXPERIENCE")
 public class Experience extends BaseEntity {
@@ -33,6 +35,8 @@ public class Experience extends BaseEntity {
 	private String Address;
 	@Column(name = "BUSINESS")
 	private String business;
+	@Column(name = "POSITION")
+	private String position;
 	@Column(name = "SUPERVISOR")
 	private String superVisor;
 	@Column(name = "DESCRIPTION")
@@ -96,6 +100,13 @@ public class Experience extends BaseEntity {
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}	
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	
 	
 }
