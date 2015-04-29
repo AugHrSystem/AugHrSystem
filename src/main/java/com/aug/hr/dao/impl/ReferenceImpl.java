@@ -26,6 +26,12 @@ public class ReferenceImpl extends GenericDaoImpl<Reference, Integer> implements
 			// TODO Auto-generated method stub
 			return null;
 		}
+
+		@Override
+		public Reference deleteById(Integer id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 		
 		
 
