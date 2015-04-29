@@ -20,7 +20,7 @@ public class ReferenceEditor extends PropertyEditorSupport{
 	public void setAsText(String text) {
 		this.setValue(null);
 		if (!"".equals(text)) {
-			Reference rs = referenceService.findById(Integer.valueOf(text));
+			Reference rs = referenceService.find(Integer.valueOf(text));
 			this.setValue(rs);
 		}
 
