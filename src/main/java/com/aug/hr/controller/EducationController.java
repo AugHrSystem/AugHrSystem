@@ -30,16 +30,16 @@ public class EducationController {
 	@RequestMapping(value = "/education", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String listEducation(ModelMap model) {
-		model.addAttribute("educationList",
-				educationServiceImpl.findAll());
+//		model.addAttribute("degreetypeList",
+//				educationServiceImpl.findAll());
 		return "/education/list";
 	}
 	
-	@RequestMapping(value = "/education/searchEducation", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/education/searchEducation", method = RequestMethod.POST)
 	public @ResponseBody List<Education> searchEducation(
 			@RequestBody Education education) {
 		return educationServiceImpl.findByCriteria(education);
-	}
+	}*/
 
 	@RequestMapping(value = "/education/add", method = RequestMethod.POST)
 	public @ResponseBody Education addEducation(@RequestBody Education education) {
@@ -47,22 +47,22 @@ public class EducationController {
 		return education;
 	}
 
-	@RequestMapping(value = "/education/update", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/education/update", method = RequestMethod.POST)
 	public @ResponseBody Education updateEducation(@RequestBody Education education) {
 		educationServiceImpl.update(education);
 		return education;
-	}
+	}*/
 	
-	@RequestMapping(value = "/education/findById", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/education/findById", method = RequestMethod.POST)
 	public @ResponseBody Education findById(@RequestParam Integer id) {
 		return educationServiceImpl.findById(id);
-	}
+	}*/
 	
-	@RequestMapping(value = "/education/delete", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/education/delete", method = RequestMethod.POST)
 	public @ResponseBody String deleteEducation(@RequestParam Integer id) {
 		educationServiceImpl.deleteById(id);
 		return "{success:true}";
-	}
+	}*/
 
 	@ModelAttribute("education")
 	Education setupForm() {

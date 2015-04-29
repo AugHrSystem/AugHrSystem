@@ -6,6 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Education</title>
 
+<!-- Spring -->	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+
 <!-- jQuery -->
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -27,7 +33,8 @@
 </head>
 <body>
 <div class="container">
-<form >
+
+<form:form id ="listForm" method="post" commandName="education">
 
 <ol class="breadcrumb">
 	<li role="presentation" class="active"><a href="#">Home</a></li>
@@ -53,6 +60,10 @@
 </table>
 </div>
 
+</form:form>
+
+<form:form id ="addForm" method="post" commandName="education">
+
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Education</button> 
@@ -71,36 +82,35 @@
         
 	  <div class="form-group">
 	    <label>University :</label>
-	    <input type="text" class="form-control" id="university" placeholder="Enter University">
+	    <form:input path="university" type="text" class="form-control" id="university" placeholder="Enter University"/>
 	  </div>
 	  
 	  <div class="form-group">
 	    <label>GPA :</label>
-	    <input type="text" class="form-control" id="gpa" placeholder="Enter GPA">
+	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="Enter GPA"/>
 	  </div>
 	  
 	  <div class="form-group">
 	    <label>Faculty :</label>
-	    <input type="text" class="form-control" id="faculty" placeholder="Enter Faculty">
+	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
 	  </div>
 	  
 	  <div class="form-group">
 	    <label>Major :</label>
-	    <input type="text" class="form-control" id="major" placeholder="Enter Major">
+	    <form:input path="major" type="text" class="form-control" id="major" placeholder="Enter Major"/>
 	  </div>
 	  
 	  <div class="form-group">
 	    <label>Degree :</label>
 	    
-		<div class="btn-group">
-		  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-		    Degree <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu" role="menu">
-		 	<li><a href="#">Bachelor</a></li>
-	    	<li><a href="#">Master's degree</a></li>
-	    	<li><a href="#">Doctoral degree</a></li>
-		  </ul>
+		<div class="form-group">
+		  <form:select path="degreetype" class="form-control"
+			id="degreetype">
+			<form:option value="-1" label="---Select Category---" />
+			<c:forEach var="obj" items="${ degreetypeList }">
+				<option value="${obj.id }">${ obj.name}</option>
+			</c:forEach>
+		</form:select>
 		</div>
 	  </div>
 
@@ -108,7 +118,7 @@
       
       <div class="form-group" align="center">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+      	<button type="button" class="btn btn-info btnSave">Save</button>
       </div>
       
     </div>
@@ -117,7 +127,88 @@
  
 
 
-</form>
+</form:form>
+
 </div>
+
+<script type="text/javascript">
+
+	var dt;
+	
+	$(document).ready(function(){
+		dt = $('#tbResult').dataTable();
+		
+		/* --- addProduct,updateProduct --- */
+		$("#addModal").on("show.bs.modal",function(event) {
+			
+			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
+			var id = button.data("id") //Extract info from data-* attribute
+			
+			if(id != null){
+				getId(id);
+			}
+			
+			$(this).find(".btnSave").off("click").on("click",function() {
+				if(id != null){
+					updateEducation(button, id);
+				}else{
+					addEducation();
+				}
+				
+			});
+			
+		});
+		
+/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+
+		function addEducation(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/product/add",
+				data : JSON.stringify({
+					name : $("#Name").val(),
+					description :$("#Description").val(),
+					productCategory : {id:$("#ProductCategory").val(), name: $("#ProductCategory option:selected").text()},
+					unit : $("#Unit").val(),
+					price :$("#Price").val(),
+					
+				}),
+				type : "POST",
+				contentType : "application/json",
+				dataType: "json",
+				success : function(data) {
+					
+//	 				alert(JSON.stringify(data));
+						
+					dt.fnClearTable();
+					
+					dt.fnAddData([
+						/* $("#Name").val(),
+						$("#ProductCategory").val(),
+						$("#Unit").val(),
+						$("#Price").val(),
+						$("#Description").val(), */
+						data.name,
+						data.description,
+						data.productCategory.name,
+						data.unit,
+						data.price,
+						
+						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+					]);
+					
+					$('#addModal').modal('toggle');
+				},
+				error : function() {
+					alert("ERROR");
+				}
+			});
+		}
+		
+	});
+	
+</script>
+
 </body>
 </html>
+
