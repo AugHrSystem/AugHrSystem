@@ -84,13 +84,13 @@
 
 							<div class="col col-lg-4 col-md-5 col-sm-6 col-xs-12">
 								<label>Special :</label>
-								<f:select id="Special" path="Special"
-										cssClass="form-control">
+								 <form:select path="masSpecial" class="form-control"
+			id="masSpecial">
 										<option value="-1">--- Select Special ---</option>
 										<c:forEach var="obj" items="${SpecialList}">
 											<option value="${obj.id }">${ obj.name}</option>
 										</c:forEach>
-									<select>
+									</form:select>
 								<!-- <div class="dropdown">
 									<button class="btn btn-default dropdown-toggle" type="button"
 										id="Special" data-toggle="dropdown">
