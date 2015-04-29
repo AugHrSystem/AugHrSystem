@@ -54,14 +54,14 @@
 				<table id="tbResult" class=" table table-striped table-bordered">
 					<thead>
 						<tr class="info">
-						
-							<th></th>
-							<th></th>		
+								
 											
 							<th>NAME</th>
 							<th>ADDRESS</th>
 							<th>TEL</th>
 							<th>OCCUPATION</th>
+							<th></th>
+							<th></th>
 
 						</tr>
 					</thead>
@@ -96,26 +96,26 @@
 									
 					<div class="form-group " align="left">
 							<label for="name" >Name:</label>
-							<input type="text" class="form-control" id="name" placeholder="Name"></input>						
+							<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
 				    </div>
 				    
 				    <div class="form-group "  align="left">
 							<label for="address" >Address:</label>		
-							<textarea class="form-control" rows="1" id="address" placeholder="Address"></textarea>		
+							<form:textarea path="address" class="form-control" rows="1" id="address" placeholder="Address"/>		
 				    </div>
 				    
 				    <div class="form-group "  align="left">
 							<label for="tel" >Tel:</label>
-							<input type="text" class="form-control" id="tel" placeholder="Tel"></input>							
+							<form:input path="Tel" type="text" class="form-control" id="tel" placeholder="Tel"/>							
 				    </div>
 				    
 				    <div class="form-group "  align="left">
-							<label for="oocupatiob" >Occupation:</label>
-							<input type="text" class="form-control" id="oocupation" placeholder="Occupation"></input>							
+							<label for="oocupation" >Occupation:</label>
+							<form:input path="oocupation" type="text" class="form-control" id="oocupation" placeholder="Occupation"/>							
 				    </div>
 					
 					<div align="right">
-						<button type="button" class="btn btn-info">Save changes</button>
+						<button type="button" class="btn btn-info btnSave">Save changes</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 					</div>	
 				</div>
@@ -162,7 +162,7 @@
 
 		function addReference(){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/add",
+				url : "${pageContext.request.contextPath}/reference/add",
 				data : JSON.stringify({
 					name : $("#name").val(),
 					address :$("#address").val(),

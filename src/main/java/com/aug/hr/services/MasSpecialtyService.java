@@ -3,7 +3,7 @@ package com.aug.hr.services;
 import java.util.List;
 import com.aug.hr.entity.MasSpecialty;
 
-public interface SpecialtyService {
+public interface MasSpecialtyService {
 	
 	public List<MasSpecialty> findAll();
 	public void create(MasSpecialty specialty);

@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aug.hr.dao.SpecialtyDao;
+import com.aug.hr.dao.MasSpecialtyDao;
 import com.aug.hr.entity.Education;
 import com.aug.hr.entity.MasSpecialty;
 
 
 @Service
 @Transactional
-public class SpecialtyServiceImpl {
+public class MasSpecialtyServiceImpl {
 	
 	@Autowired
-	private SpecialtyDao specialtyDao;
+	private MasSpecialtyDao specialtyDao;
 	
 	
 	public List<MasSpecialty> findAll(){

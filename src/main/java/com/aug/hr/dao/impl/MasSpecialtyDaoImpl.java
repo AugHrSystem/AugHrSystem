@@ -5,15 +5,15 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import com.aug.hr.dao.SpecialtyDao;
+import com.aug.hr.dao.MasSpecialtyDao;
 import com.aug.hr.entity.MasSpecialty;
 import com.mysql.jdbc.StringUtils;
 
 
 @Repository("specialtyDao")
-public class SpecialtyDaoImpl extends GenericDaoImpl<MasSpecialty, Integer> implements SpecialtyDao{
+public class MasSpecialtyDaoImpl extends GenericDaoImpl<MasSpecialty, Integer> implements MasSpecialtyDao{
 
-			public SpecialtyDaoImpl(){
+			public MasSpecialtyDaoImpl(){
 				super(MasSpecialty.class);
 			}
 

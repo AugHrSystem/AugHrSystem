@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aug.hr.dao.SpecialtyDao;
+import com.aug.hr.dao.MasSpecialtyDao;
 import com.aug.hr.entity.MasTechnology;
 import com.aug.hr.entity.MasSpecialty;
 
@@ -25,7 +25,7 @@ import com.aug.hr.entity.MasSpecialty;
 public class SpecialtyTest {
 	
 	@Autowired
-	private SpecialtyDao specialtyDao;
+	private MasSpecialtyDao specialtyDao;
 	
 //	@Test
 //	@Rollback(false)

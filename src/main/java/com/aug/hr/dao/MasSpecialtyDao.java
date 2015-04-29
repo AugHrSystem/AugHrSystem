@@ -8,7 +8,7 @@ import com.aug.hr.services.ReferenceService;
 
 
 
-public interface SpecialtyDao extends GenericDao<MasSpecialty, Integer>{
+public interface MasSpecialtyDao extends GenericDao<MasSpecialty, Integer>{
 	
 	
 	public List<MasSpecialty> findByCriteria(MasSpecialty specialty);

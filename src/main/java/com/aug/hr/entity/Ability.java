@@ -47,7 +47,7 @@ public class Ability extends BaseEntity implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "SPEC_ID")
-	private Specialty specialty;
+	private MasSpecialty masspecialty;
 
 	public Integer getId() {
 		return id;
@@ -57,12 +57,12 @@ public class Ability extends BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	public Specialty getSpecialty() {
-		return specialty;
+	public MasSpecialty getMasSpecialty() {
+		return masspecialty;
 	}
 
-	public void setSpecialty(Specialty specialty) {
-		this.specialty = specialty;
+	public void setSpecialty(MasSpecialty masspecialty) {
+		this.masspecialty = masspecialty;
 	}
 
 	public Employee getEmployee() {
