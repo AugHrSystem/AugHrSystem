@@ -13,40 +13,50 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.EducationDao;
 import com.aug.hr.entity.Education;
+import com.aug.hr.services.EducationService;
 
-@Service
+@Service("EducationService")
 @Transactional
-public class EducationServiceImpl {
-	
+public class EducationServiceImpl implements EducationService{
+
 	@Autowired
 	private EducationDao educationDao;
 	
-	public List<Education> findAll(){
+	@Override
+	public List<Education> findAll() {
 		return educationDao.findAll();
 	}
-	
-    public void create(Education education){
-    	educationDao.create(education);
-    }
-    
-    public void update(Education education){
-    	educationDao.update(education);
-    }
-    
-    public void delete(Education education){
-    	educationDao.delete(education);
-    }
 
+	@Override
+	public void create(Education education) {
+		educationDao.create(education);
+	}
+
+	@Override
+	public void update(Education education) {
+		educationDao.update(education);
+	}
+
+	@Override
+	public void delete(Education education) {
+		educationDao.delete(education);
+	}
+
+	@Override
 	public Education findById(Integer id) {
 		return educationDao.find(id);
 	}
 
-	public List<Education> findByCriteria(Education education){
+	@Override
+	public List<Education> findByCriteria(Education education) {
 		return educationDao.findByCriteria(education);
 	}
 
-	public Education deleteById(Integer id){
+	@Override
+	public Education deleteById(Integer id) {
 		return educationDao.deleteById(id);
 	}
+	
+	
 
 }

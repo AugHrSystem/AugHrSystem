@@ -14,53 +14,52 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.hr.entity.Education;
-import com.aug.hr.services.impl.EducationServiceImpl;
+import com.aug.hr.services.EducationService;
 
 @Controller
 public class EducationController {
 
 	@Autowired
-	private EducationServiceImpl educationServiceImpl;
+	private EducationService educationService;
 
 
 	@RequestMapping(value = "/education", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String listEducation(ModelMap model) {
 //		model.addAttribute("degreetypeList",
-//				educationServiceImpl.findAll());
+//				educationService.findAll());
 		return "/education/list";
 	}
 	
 	/*@RequestMapping(value = "/education/searchEducation", method = RequestMethod.POST)
 	public @ResponseBody List<Education> searchEducation(
 			@RequestBody Education education) {
-		return educationServiceImpl.findByCriteria(education);
+		return educationService.findByCriteria(education);
 	}*/
 
 	@RequestMapping(value = "/education/add", method = RequestMethod.POST)
 	public @ResponseBody Education addEducation(@RequestBody Education education) {
-		educationServiceImpl.create(education);
+		educationService.create(education);
 		return education;
 	}
 
 	/*@RequestMapping(value = "/education/update", method = RequestMethod.POST)
 	public @ResponseBody Education updateEducation(@RequestBody Education education) {
-		educationServiceImpl.update(education);
+		educationService.update(education);
 		return education;
 	}*/
 	
 	/*@RequestMapping(value = "/education/findById", method = RequestMethod.POST)
 	public @ResponseBody Education findById(@RequestParam Integer id) {
-		return educationServiceImpl.findById(id);
+		return educationService.findById(id);
 	}*/
 	
 	/*@RequestMapping(value = "/education/delete", method = RequestMethod.POST)
 	public @ResponseBody String deleteEducation(@RequestParam Integer id) {
-		educationServiceImpl.deleteById(id);
+		educationService.deleteById(id);
 		return "{success:true}";
 	}*/
 

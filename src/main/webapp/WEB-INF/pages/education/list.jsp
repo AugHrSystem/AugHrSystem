@@ -11,24 +11,25 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
 <!-- jQuery -->
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
+<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
+<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <!-- jQuery dataTable -->
-<script src="../js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="../css/jquery.dataTables.css">
-<link rel="stylesheet" href="../css/jquery.dataTables.min.css">
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
 <!-- dataTable Bootstrap -->
-<script src="../js/dataTables.bootstrap.js"></script>
-<link rel="stylesheet" href="../css/dataTables.bootstrap.css">
+<link href="<c:url value="/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
 </head>
 <body>
@@ -141,19 +142,19 @@
 		/* --- addProduct,updateProduct --- */
 		$("#addModal").on("show.bs.modal",function(event) {
 			
-			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
+			/* var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var id = button.data("id") //Extract info from data-* attribute
 			
 			if(id != null){
 				getId(id);
-			}
+			} */
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
-				if(id != null){
+				/* if(id != null){
 					updateEducation(button, id);
-				}else{
+				}else{ */
 					addEducation();
-				}
+				/* } */
 				
 			});
 			
@@ -163,7 +164,7 @@
 
 		function addEducation(){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/product/add",
+				url : "${pageContext.request.contextPath}/education/add",
 				data : JSON.stringify({
 					university : $("#university").val(),
 					gpa :$("#gpa").val(),
