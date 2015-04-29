@@ -6,6 +6,7 @@
 package com.aug.hr.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -96,6 +97,8 @@ public class Ability extends BaseEntity implements Serializable {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+
+	
 
 	
 }

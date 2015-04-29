@@ -22,8 +22,8 @@ public class AbilityServiceImpl implements AbilityService{
 	@Autowired
 	private AbilityDao abilityDao;
 	@Override
-	public void create(Ability ability) {
-		abilityDao.create(ability);
+	public void create(Ability Ability) {
+		abilityDao.create(Ability);
 		
 	}
 
@@ -50,7 +50,18 @@ public class AbilityServiceImpl implements AbilityService{
 		
 		return abilityDao.findAll();
 	}
-	
+
+	@Override
+	public List<Ability> findByCriteria(Ability ability) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}	
 	
 
 }
