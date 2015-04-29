@@ -30,14 +30,17 @@ public class ReferenceService {
 		referenceDao.delete(reference);
 
 	}
+	
+	public Reference deleteById(Integer id) {
+		return referenceDao.deleteById(id);
+
+	}
 		
 	public List<Reference> findAll() {
 		return referenceDao.findAll();
 	}
-
-
 	
-	public Reference findByID(int id) {
+	public Reference findById(Integer id) {
 		return referenceDao.find(id);
 	}
 
@@ -45,4 +48,5 @@ public class ReferenceService {
 
 		return referenceDao.findByCriteria(reference);
 	}
+	
 }
