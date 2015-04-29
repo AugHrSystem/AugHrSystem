@@ -11,13 +11,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.entity.Education;
-import com.aug.hr.services.EducationService;
+import com.aug.hr.services.impl.EducationServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:applicationContext.xml" })
@@ -25,7 +24,7 @@ import com.aug.hr.services.EducationService;
 public class EducationServiceTest {
 
 	@Autowired
-	private EducationService educationService;
+	private EducationServiceImpl educationServiceImpl;
 
 	@Test
 	public void create() {
@@ -38,31 +37,31 @@ public class EducationServiceTest {
 		education.setEmployee(null);
 		education.setDegreetype(null);
 
-		educationService.create(education);
+		educationServiceImpl.create(education);
 
 	}
 
 	@Test
 	public void update() {
 
-		Education education = (Education)educationService.findById(1);
+		Education education = (Education)educationServiceImpl.findById(1);
 		education.setMajor("IT");
 
-		educationService.update(education);
+		educationServiceImpl.update(education);
 	}
 
 	@Test
 	public void Delete() {
 
-		Education education = (Education)educationService.findById(1);
+		Education education = (Education)educationServiceImpl.findById(1);
 
-		educationService.delete(education);
+		educationServiceImpl.delete(education);
 	}
 
 	@Test
 	public void findAll(){
 		
-		List<Education> educations = educationService.findAll();
+		List<Education> educations = educationServiceImpl.findAll();
 		Assert.assertEquals(1, educations.size());
 		
 	}
