@@ -43,7 +43,7 @@
 		<form:form id ="listForm" method="post" commandName="reference">
 		<ol class="breadcrumb">
 			<li role="presentation" class="active"><a href="#">Home</a></li>
-			<li role="presentation"><a href="‪#‎addModal‬" data-toggle="modal">Add Reference</a></li>
+			<li role="presentation"><a href="‪#‎myModal‬" data-toggle="modal">Add Reference</a></li>
 		</ol>
 		
 			<div style="padding-bottom: 10px">
@@ -74,12 +74,12 @@
 <form:form id ="addForm" method="post" commandName="reference">
 		<!-- Button trigger modal -->
 	<div class="form-group" align="right">
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Reference</button> 
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Reference</button> 
 	</div>
 	
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
 	
-		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
@@ -136,27 +136,38 @@
 		dt = $('#tbResult').dataTable();
 		
 		
-		$("#addModal").on("show.bs.modal",function(event) {
+		$("#myModal").on("show.bs.modal",function(event) {
 			
-			/* var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var id = button.data("id") //Extract info from data-* attribute
+			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
+			var referenceid = button.data("id") //Extract info from data-* attribute
 			
-			if(id != null){
-				getId(id);
-			} */
+			if(referenceid != null){
+				getId(referenceid);
+			} 
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
-				/* if(id != null){
-					updateReference(button, id);
-				}else{ */
+				 if(referenceid != null){
+					updateReference(button, referenceid);
+				}else{ 
 					addReference();
-				/* } */
+				 } 
 				
 			});
 			
 		});
 		
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+		function clearModal(){
+			$("#name").val(""),
+			$("#address").val("-1"),
+			$("#Unit").val(""),
+			$("#tel").val(""),
+			$("#oocupation").val("");
+		}
+
+
 
 		function addReference(){
 			$.ajax({
@@ -166,6 +177,7 @@
 					address :$("#address").val(),
 					tel :$("#tel").val(),
 					oocupation :$("#oocupation").val(),
+//					employee :{id:2},
 				
 				}),
 				type : "POST",
@@ -189,17 +201,61 @@
 						data.oocupation,
 						
 						
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 					]);
 					
-					$('#addModal').modal('toggle');
+					$('#myModal').modal('toggle');
 				},
 				error : function() {
 					alert("ERROR");
 				}
 			});
 		}
+		
+		
+		
+		
+
+		function updateReference(button, educationid){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/reference/update",
+				data : JSON.stringify({
+					id : id,
+					name : $("#name").val(),
+					address :$("#address").val(),
+					tel :$("#tel").val(),
+					oocupation :$("#oocupation").val(),
+
+					
+				}),
+				type : "POST",
+				contentType : "application/json",
+				dataType: "json",
+				success : function(data) {
+//	 					alert(JSON.stringify(data));
+					
+					var tr = button.closest("tr")
+					
+					dt.fnUpdate(data.name, tr ,0);
+					dt.fnUpdate(data.address, tr ,1);
+					dt.fnUpdate(data.tel, tr ,2);
+					dt.fnUpdate(data.oocupation, tr ,3);
+					
+					
+					$('#myModal').modal('toggle');
+				},
+				error : function() {
+					alert("ERROR");
+				}
+			});
+		}
+		
+		
+		
+		
+		
+		
 		
 	});
 	
