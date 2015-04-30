@@ -124,6 +124,25 @@
   </div>
 </div>
 
+
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="deleteModalLabel">Delete Experience</h4>
+      </div>
+      <div class="modal-body">
+      	Do you want to delete experience ?
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary yesButton">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 var dt;
 	$(document).ready(function() {
@@ -133,12 +152,12 @@ var dt;
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		var expId = button.data("id"); 
-/*     		if(expId != null){
+     		if(expId != null){
 				initEditExperience(expId);
 			}
 			else {
 				addExperience();
-			} */
+			} 
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(expId != null){
@@ -192,6 +211,98 @@ var dt;
     					}
     				});
     		}
+    		
+    		function editExperience() { 
+				$.ajax({
+					url : "${pageContext.request.contextPath}/experience/edit",
+					type : "POST",
+					data : JSON.stringify({
+						 companyName: $("#cName").val(),
+    					 business: $("#business").val(),
+    					 position: $("#position").val(),
+    					 dateFrom: $("#dateFrom").val(),
+    					 dateTo: $("#dateTo").val(),
+    					 description: $("#description").val(),
+    					 superVisor: $("#supervisor").val(),
+    					 address: $("#address").val(),
+    					 employee: {id: 2 }
+					 }),
+					datatype: "json",
+					contentType: "application/json",
+					success : function(data) {
+						$('#addModal').modal('toggle');
+						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+						dt.fnClearTable();
+						dt.fnAddData([
+							data.companyName,
+							data.business,
+							data.position,
+							data.dateFrom,
+							data.dateTo,
+							data.description,
+							data.superVisor,
+							data.address,
+						'<button type="button" class="btn btn-info btn-sm active" data-productId="' + data.productId + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-danger btn-sm active" ddata-productId="' + data.productId + '" data-target="#deleteModal" data-toggle="modal>Delete</button>'
+						]);
+					},
+					error : function(data,testStatus,jqXHR) {
+						$('#addModal').modal('toggle');
+						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+						}
+					});
+			}
+			
+			function initEditProduct(expId) {			
+				$.ajax({
+					url : "${pageContext.request.contextPath}/experiecnce/initEdit/"+expId,
+					type : "POST",
+					success : function(data) {
+						$("#cName").val(data.name);
+						$("#business").val(data.business);
+						$("#position").val(data.position);
+						$("#dataFrom").val(data.dateFrom);
+						$("#dateTo").val(data.dateTo);
+						$("#description").val(data.description);
+						$("#supervisor").val(data.superVisor);
+						$("#address").val(data.address);
+					},
+					error : function(data,testStatus,jqXHR) {
+						$('#addModal').modal('toggle');
+						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+						}
+					});
+			}
+			
+			});
+			
+			$("#deleteModal").on("show.bs.modal", function(event){
+				var button = $(event.relatedTarget);
+				var expId = button.data("id");
+				alert("delete "+expId);
+				$(this).find(".yesButton").off("click").on("click", function()
+						{
+							deleteExperience(button,expId);
+						});
+				
+				function deleteExperience(button,expId){
+					$.ajax({
+						url : "${pageContext.request.contextPath}/experience/delete/"
+							+ expId,
+						type : "POST",
+						success : function(data) {
+							$('#deleteModal').modal('toggle');
+							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+							
+							var del = button.closet("tr");
+							dt.fnDeleteRow(del);
+						},
+						error : function(data,testStatus,jqXHR) {
+							$('#deleteModal').modal('toggle');
+							$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+							}
+						});
+				}
     		
     		
       	});
