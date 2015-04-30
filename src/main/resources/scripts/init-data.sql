@@ -1,11 +1,11 @@
---DIVISION
-INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('CEO Office of CEO','01',1);
-INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('F&A Finance & Administration','02',1);
-INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('ITS Integrated Technology Services','03',1);
-INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('MKT Marketing','04',1);
-INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('MoH Ministry of Happiness','05',1);
-INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('SAP SAP Services','06',1);
-INSERT INTO DIVISION (NAME,CODE,ISACTIVE) VALUES ('TXM Transformation','07',1);
+--MASDIVISION
+INSERT INTO MASDIVISION (NAME,CODE,ISACTIVE) VALUES ('CEO Office of CEO','01',1);
+INSERT INTO MASDIVISION (NAME,CODE,ISACTIVE) VALUES ('F&A Finance & Administration','02',1);
+INSERT INTO MASDIVISION (NAME,CODE,ISACTIVE) VALUES ('ITS Integrated Technology Services','03',1);
+INSERT INTO MASDIVISION (NAME,CODE,ISACTIVE) VALUES ('MKT Marketing','04',1);
+INSERT INTO MASDIVISION (NAME,CODE,ISACTIVE) VALUES ('MoH Ministry of Happiness','05',1);
+INSERT INTO MASDIVISION (NAME,CODE,ISACTIVE) VALUES ('SAP SAP Services','06',1);
+INSERT INTO MASDIVISION (NAME,CODE,ISACTIVE) VALUES ('TXM Transformation','07',1);
 
 
 --MASTECHNOLOGY
@@ -16,8 +16,8 @@ INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CO
 INSERT INTO MASTECHNOLOGY (NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CODE) VALUES ('SAP','C',NOW(),0,true,1);
 
 
---SPECIALTY
-insert into SPECIALTY (name,code,isactive)
+--MASSPECIALTY
+insert into MASSPECIALTY (name,code,isactive)
 VALUES 
 ('ABAP','01',1),
 ('ASP.Net','02',1),
@@ -64,7 +64,7 @@ VALUES
 
 
 --JOBLEVEL
-insert into joblevel(name,code,isactive) 
+insert into JOBLEVEL(name,code,isactive) 
 values('Account Execute','AE',1),
 ('Account Manager','AM',1),
 ('Business Division Director','BDD',1),
@@ -86,25 +86,25 @@ INSERT INTO ADDRESS(ADDRESS1,ADDRESS2,ZIPCODE) VALUES ('200 MOO.6','BANGKOK','10
 ('50 MOO.5','CHAINGRAI','10500'),
 ('2/3 MOO.1','SAMUTPAKARN','10600');
 
---ADDRESSTYPE
-INSERT INTO addresstype(NAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1),
+--MASADDRESSTYPE
+INSERT INTO MASADDRESSTYPE(NAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1),
 ('Permanent address','M02',1);
 
 
---DEGREETYPE
-insert into DEGREETYPE (name,code,isactive)
+--MASDEGREETYPE
+insert into MASDEGREETYPE (name,code,isactive)
 VALUES
 ('Bachelor','a',1),
 ('Masters','a',1),
 ('Ph.D.','a',1);
 
 
---EMPLOYMENT
-INSERT INTO EMPLOYMENT(NAME,CODE,ISACTIVE) VALUES ('PERMANENT','A01',1),('CONTRACT','B02',1);
+--MASEMPLOYMENT
+INSERT INTO MASEMPLOYMENT(NAME,CODE,ISACTIVE) VALUES ('PERMANENT','A01',1),('CONTRACT','B02',1);
 
 
---PROVINCE
-insert into PROVINCE (name,code,isactive)
+--MASPROVINCE
+insert into MASPROVINCE (name,code,isactive)
 VALUES
 ('Bangkok','a',1),
 ('Chiang Rai','a',1),

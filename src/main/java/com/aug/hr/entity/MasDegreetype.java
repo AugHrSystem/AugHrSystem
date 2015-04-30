@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DEGREETYPE")
+@Table(name = "MASDEGREETYPE")
 public class MasDegreetype {
 
 	@Id

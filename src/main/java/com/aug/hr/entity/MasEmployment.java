@@ -22,7 +22,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "EMPLOYMENT")
+@Table(name = "MASEMPLOYMENT")
 public class MasEmployment extends BaseEntity implements Serializable{
 	
 	@Id

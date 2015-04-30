@@ -143,19 +143,19 @@
 		/* --- addProduct,updateProduct --- */
 		$("#addModal").on("show.bs.modal",function(event) {
 			
-			/* var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var id = button.data("id") //Extract info from data-* attribute
+			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
+			var educationid = button.data("id") //Extract info from data-* attribute
 			
-			if(id != null){
-				getId(id);
-			} */
+			if(educationid != null){
+				getId(educationid);
+			} 
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
-				/* if(id != null){
-					updateEducation(button, id);
-				}else{ */
+				if(educationid != null){
+					updateEducation(button, educationid);
+				}else{
 					addEducation();
-				/* } */
+				 }
 				
 			});
 			
@@ -163,6 +163,14 @@
 		
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
+		function clearModal(){
+			$("#Name").val(""),
+			$("#ProductCategory").val("-1"),
+			$("#Unit").val(""),
+			$("#Price").val(""),
+			$("#Description").val("");
+		}
+		
 		function addEducation(){
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/add",
@@ -201,6 +209,83 @@
 					
 					$('#addModal').modal('toggle');
 				},
+				error : function() {
+					alert("ERROR");
+				}
+			});
+		}
+		
+		function updateEducation(button, educationid){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/education/update",
+				data : JSON.stringify({
+					id : id,
+					university : $("#university").val(),
+					gpa :$("#gpa").val(),
+					faculty :$("#faculty").val(),
+					major :$("#major").val(),
+					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
+					
+				}),
+				type : "POST",
+				contentType : "application/json",
+				dataType: "json",
+				success : function(data) {
+//	 					alert(JSON.stringify(data));
+					
+					var tr = button.closest("tr")
+					
+					dt.fnUpdate(data.university, tr ,0);
+					dt.fnUpdate(data.gpa, tr ,1);
+					dt.fnUpdate(data.faculty, tr ,2);
+					dt.fnUpdate(data.major, tr ,3);
+					dt.fnUpdate(data.masdegreetype.name, tr ,4);
+					
+					$('#addModal').modal('toggle');
+				},
+				error : function() {
+					alert("ERROR");
+				}
+			});
+		}
+		
+		function getId(id){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/education/findById",
+				data : "id=" + educationid,
+				type : "POST",
+				success : function(data) {
+//	 				alert(JSON.stringify(data));
+					
+					$("#university").val(data.university),
+					$("#gpa").val(data.gpa),
+					$("#faculty").val(data.faculty),
+					$("#major").val(data.major),
+					$("#masdegreetype").val(data.masdegreetype.id);
+			
+				},
+				error : function() {
+					alert("ERROR");
+				}
+			});
+		}
+		
+		function deleteEducation(button, id){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/education/delete",
+				data : "id=" + id,
+				type : "POST",
+				success : function(data) {
+//	 					alert(JSON.stringify(data));
+					
+					var tr = button.closest("tr")
+					
+					dt.fnDeleteRow(tr);
+					
+					$('#deleteModal').modal('toggle');
+					
+				},
+				
 				error : function() {
 					alert("ERROR");
 				}
