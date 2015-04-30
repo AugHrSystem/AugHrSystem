@@ -39,31 +39,33 @@
 		<h2>Experience</h2>
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
-			<table id="tdResult">
+		<table id="tdResult">
 			<thead>
 				<tr>
+					<th>Id</th>
 					<th>Company Name</th>
 					<th>Business</th>
-					<th>Address</th>
 					<th>Position</th>
-					<th>Supervisor</th>
 					<th>Date From</th>
 					<th>Date To</th>
+					<th>Address</th>
 					<th>Description</th>
-					<th>Actions</th>
+					<th>Supervisor</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody></tbody>
 		</table>
-		</div>		
+		</div>
+</f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
 		<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#addModal">
  	 	Add
 		</button>
 	</div>
-</div>		
-</f:form>		
+</div>			
 		
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -99,7 +101,7 @@
   		
   		<div class="form-group">
   			<label>Address :</label>
-  			<input type="text" class="form-control" id="address" placeholder="Enter Description">
+  			<input type="text" class="form-control" id="address" placeholder="Enter Address">
   		</div>
   		
 		<div class="form-group">
@@ -137,7 +139,7 @@
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary yesButton">Yes</button>
+       <button type="button" class="btn btn-primary yesButton">Yes</button>
       </div>
     </div>
   </div>
@@ -149,15 +151,35 @@ var dt;
     	$( "#dateFrom" ).datepicker();
     	$( "#dateTo" ).datepicker();
     	dt=$("#tdResult").dataTable();
+    	
+/* 		$.ajax({
+			url : "${pageContext.request.contextPath}/experience/listAll",
+			type : "POST,GET",
+			success : function(data) {
+				dt.fnClearTable();
+			for (var i=0;i< data.length; i++) {
+				dt.fnAddData([data[i].id,data[i].companyName,data[i].business, 
+				              data[i].position,data[i].dateFrom,data[i].dateTo,
+				              data[i].description,data[i].superVisor,data[i].address,
+					'<button type="button" class="btn btn-info btn-sm active" data-productId="' + data[i].productId + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+					'<button type="button" class="btn btn-danger btn-sm active" data-productId="' + data[i].productId + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+		
+				}
+			},
+			error : function(data,testStatus,jqXHR) {
+				$("#outputajax").text(testStatus);
+				}
+			}); */
+		
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
-    		var expId = button.data("id"); 
-     		if(expId != null){
+    		var expId = button.data("expid"); 
+    		/* if(expId != null){
 				initEditExperience(expId);
 			}
-			else {
-				addExperience();
-			} 
+     		else {
+    			addExperience();
+    		}  */
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(expId != null){
@@ -191,15 +213,15 @@ var dt;
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					dt.fnClearTable();
     					dt.fnAddData([
-    					    //data.id,
+    					    data.id,
     						data.companyName,
     						data.business,
     						data.position,
     						data.dateFrom,
     						data.dateTo,
+    						data.address,
     						data.description,
     						data.superVisor,
-    						data.address,
     						//data.employee.id,
     					'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
     					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
@@ -212,11 +234,13 @@ var dt;
     				});
     		}
     		
-    		function editExperience() { 
+    		function editExperience() {
+    			alert(expId+" edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/edit",
 					type : "POST",
 					data : JSON.stringify({
+						 id: expId,
 						 companyName: $("#cName").val(),
     					 business: $("#business").val(),
     					 position: $("#position").val(),
@@ -234,6 +258,7 @@ var dt;
 						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 						dt.fnClearTable();
 						dt.fnAddData([
+						    data.id,
 							data.companyName,
 							data.business,
 							data.position,
@@ -242,8 +267,8 @@ var dt;
 							data.description,
 							data.superVisor,
 							data.address,
-						'<button type="button" class="btn btn-info btn-sm active" data-productId="' + data.productId + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-						'<button type="button" class="btn btn-danger btn-sm active" ddata-productId="' + data.productId + '" data-target="#deleteModal" data-toggle="modal>Delete</button>'
+						'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-danger btn-sm active" ddata-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal>Delete</button>'
 						]);
 					},
 					error : function(data,testStatus,jqXHR) {
@@ -253,7 +278,8 @@ var dt;
 					});
 			}
 			
-			function initEditProduct(expId) {			
+			function initEditExperience(expId) {
+				alert(expId+" Init edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experiecnce/initEdit/"+expId,
 					type : "POST",
@@ -266,6 +292,7 @@ var dt;
 						$("#description").val(data.description);
 						$("#supervisor").val(data.superVisor);
 						$("#address").val(data.address);
+						employee: {id: 2 };
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -278,7 +305,7 @@ var dt;
 			
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
-				var expId = button.data("id");
+				var expId = button.data("expid");
 				alert("delete "+expId);
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
@@ -303,8 +330,7 @@ var dt;
 							}
 						});
 				}
-    		
-    		
+    		   		
       	});
     	
   	});

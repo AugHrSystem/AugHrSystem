@@ -2,6 +2,7 @@ package com.aug.hr.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.hr.entity.Experience;
@@ -36,6 +38,11 @@ public class ExperienceController {
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         binder.registerCustomEditor(Date.class, editor);
     }	
+	
+	@RequestMapping(value ="/experience/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<Experience> listAll(){
+		return experienceService.findAll();
+	}
 	
 	@RequestMapping(value ="/experience/testAjax/{string}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody String testAjax(@PathVariable String string){
