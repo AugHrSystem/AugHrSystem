@@ -86,12 +86,10 @@
 					<div class="modal-header">
 				
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="myModalLabel">Reference Add</h4>
+       					 <h4 class="modal-title" id="myModalLabel">Add Reference</h4>
       					</div>
 							
-					<div class="modal-body">		
-					<h4 class="modal-title" style="padding-bottom: 10px" id="myModalLabel">Add Reference</h4>
-																				
+																									
 				<div class="col col-lg-12 " style="padding-top: 10px">	
 									
 					<div class="form-group " align="left">

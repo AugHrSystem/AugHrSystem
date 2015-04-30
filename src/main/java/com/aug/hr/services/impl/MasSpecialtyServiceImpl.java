@@ -9,11 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.hr.dao.MasSpecialtyDao;
 import com.aug.hr.entity.Education;
 import com.aug.hr.entity.MasSpecialty;
+import com.aug.hr.services.MasSpecialtyService;
 
 
 @Service
 @Transactional
-public class MasSpecialtyServiceImpl {
+public class MasSpecialtyServiceImpl implements MasSpecialtyService{
 	
 	@Autowired
 	private MasSpecialtyDao specialtyDao;
