@@ -126,8 +126,34 @@
     </div>
   </div>
 </div>
- 
 
+</form:form>
+
+<form:form id="deleteForm" commandName="education" method="post" class="form-horizontal">
+
+		<!-- Modal -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Delete Product</h4>
+					</div>
+					<div class="modal-body">
+						<h4>Are you sure?</h4>
+						<form:hidden path="id"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger btnYes">Yes</button>
+						<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 </form:form>
 
@@ -143,8 +169,10 @@
 		/* --- addProduct,updateProduct --- */
 		$("#addModal").on("show.bs.modal",function(event) {
 			
+			clearModal();
+			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var educationid = button.data("id") //Extract info from data-* attribute
+			var educationid = button.data("educationid") //Extract info from data-* attribute
 			
 			if(educationid != null){
 				getId(educationid);
@@ -161,14 +189,26 @@
 			
 		});
 		
+		/* --- DeleteName --- */
+		$("#deleteModal").on("show.bs.modal",function(event) {
+			
+			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
+			var educationid = button.data("id") //Extract info from data-* attribute
+			
+			$(this).find(".btnYes").off("click").on("click",function() {
+				deleteEducation(button, educationid);
+			});
+			
+		});
+		
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
 		function clearModal(){
-			$("#Name").val(""),
-			$("#ProductCategory").val("-1"),
-			$("#Unit").val(""),
-			$("#Price").val(""),
-			$("#Description").val("");
+			$("#university").val(""),
+			$("#gpa").val(""),
+			$("#faculty").val(""),
+			$("#major").val(""),
+			$("#masdegreetype").val("-1");
 		}
 		
 		function addEducation(){
@@ -203,8 +243,8 @@
 						data.major,
 						data.masdegreetype.name,
 						
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+						'<button type="button" class="btn btn-warning" data-educationid="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+						'<button type="button" class="btn btn-danger" data-educationid="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 					]);
 					
 					$('#addModal').modal('toggle');
@@ -219,7 +259,7 @@
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/update",
 				data : JSON.stringify({
-					id : id,
+					id : educationid,
 					university : $("#university").val(),
 					gpa :$("#gpa").val(),
 					faculty :$("#faculty").val(),
@@ -249,13 +289,13 @@
 			});
 		}
 		
-		function getId(id){
+		function getId(educationid){
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/findById",
-				data : "id=" + educationid,
+				data : "educationid=" + educationid,
 				type : "POST",
 				success : function(data) {
-//	 				alert(JSON.stringify(data));
+	 				//alert(JSON.stringify(data));
 					
 					$("#university").val(data.university),
 					$("#gpa").val(data.gpa),
@@ -270,10 +310,10 @@
 			});
 		}
 		
-		function deleteEducation(button, id){
+		function deleteEducation(button, educationid){
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/delete",
-				data : "id=" + id,
+				data : "educationid=" + educationid,
 				type : "POST",
 				success : function(data) {
 //	 					alert(JSON.stringify(data));

@@ -58,15 +58,15 @@ public class EducationController {
 	}
 	
 	@RequestMapping(value = "/education/findById", method = RequestMethod.POST)
-	public @ResponseBody Education findById(@RequestParam Integer id) {
-		return educationService.findById(id);
+	public @ResponseBody Education findById(@RequestParam Integer educationid) {
+		return educationService.findById(educationid);
 	}
 	
-	/*@RequestMapping(value = "/education/delete", method = RequestMethod.POST)
-	public @ResponseBody String deleteEducation(@RequestParam Integer id) {
-		educationService.deleteById(id);
+	@RequestMapping(value = "/education/delete", method = RequestMethod.POST)
+	public @ResponseBody String deleteEducation(@RequestParam Integer educationid) {
+		educationService.deleteById(educationid);
 		return "{success:true}";
-	}*/
+	}
 
 	@ModelAttribute("education")
 	Education setupForm() {
