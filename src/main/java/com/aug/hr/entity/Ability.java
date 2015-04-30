@@ -24,7 +24,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ABILITY")
-public class Ability extends BaseEntity implements Serializable {
+public class Ability extends BaseEntity  {
 	public Ability() {
 	}
 

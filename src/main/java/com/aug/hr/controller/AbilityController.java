@@ -32,12 +32,12 @@ public class AbilityController {
 	
 	@Autowired private AbilityService abilityService;
 	@Autowired private EmployeeService employeeService;
-	
+	@Autowired private MasSpecialtyService masSpecialtyService;
 	
 	
 	@RequestMapping(value = "/ability", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
-		model.addAttribute("abilityList", abilityService.findAll());
+		model.addAttribute("masspecialList", masSpecialtyService.findAll());
 		return "/ability/ability";
 		
 	}
