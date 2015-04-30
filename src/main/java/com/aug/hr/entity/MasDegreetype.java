@@ -17,10 +17,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "MASDEGREETYPE")
-public class MasDegreetype {
+public class MasDegreetype extends BaseEntity{
 
 	@Id
-	@Column(name = "ID", length = 10)
+	@Column(name = "ID")
 	@GeneratedValue
 	private Integer id;
 
@@ -37,7 +37,6 @@ public class MasDegreetype {
 	private Set<Education> educations;
 
 	
-
 	public Integer getId() {
 		return id;
 	}
@@ -78,6 +77,4 @@ public class MasDegreetype {
 		this.educations = educations;
 	}
 
-	
-	
 }

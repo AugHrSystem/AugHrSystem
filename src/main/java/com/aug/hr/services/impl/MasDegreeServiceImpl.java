@@ -46,9 +46,9 @@ public class MasDegreeServiceImpl implements MasDegreetypeService{
 	}
 
 	@Override
-	public MasDegreetype find(Integer Id) {
+	public MasDegreetype find(Integer id) {
 		
-		return masDegreetypeDao.find(Id);
+		return masDegreetypeDao.find(id);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class MasDegreeServiceImpl implements MasDegreetypeService{
 	@Override
 	public void deleteById(Integer id) {
 		
-		
+		return;
 	}
 
 	

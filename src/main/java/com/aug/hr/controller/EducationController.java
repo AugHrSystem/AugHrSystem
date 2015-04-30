@@ -35,7 +35,6 @@ public class EducationController {
 	public String listEducation(ModelMap model) {
 		model.addAttribute("masdegreetypeList",
 				masDegreetypeService.findAll());
-		educationService.findAll();
 		return "/education/education";
 	}
 	
@@ -59,6 +58,7 @@ public class EducationController {
 	
 	@RequestMapping(value = "/education/findById", method = RequestMethod.POST)
 	public @ResponseBody Education findById(@RequestParam Integer educationid) {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
 		return educationService.findById(educationid);
 	}
 	

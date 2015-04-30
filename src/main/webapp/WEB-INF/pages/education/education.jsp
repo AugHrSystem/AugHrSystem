@@ -172,7 +172,7 @@
 			clearModal();
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var educationid = button.data("educationid") //Extract info from data-* attribute
+			var educationid = button.data("id") //Extract info from data-* attribute
 			
 			if(educationid != null){
 				getId(educationid);
@@ -243,8 +243,8 @@
 						data.major,
 						data.masdegreetype.name,
 						
-						'<button type="button" class="btn btn-warning" data-educationid="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-						'<button type="button" class="btn btn-danger" data-educationid="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 					]);
 					
 					$('#addModal').modal('toggle');
@@ -295,13 +295,13 @@
 				data : "educationid=" + educationid,
 				type : "POST",
 				success : function(data) {
-	 				//alert(JSON.stringify(data));
+	 				alert(JSON.stringify(data));
 					
-					$("#university").val(data.university),
+					/* $("#university").val(data.university),
 					$("#gpa").val(data.gpa),
 					$("#faculty").val(data.faculty),
 					$("#major").val(data.major),
-					$("#masdegreetype").val(data.masdegreetype.id);
+					$("#masdegreetype").val(data.masdegreetype.id); */
 			
 				},
 				error : function() {
