@@ -41,10 +41,12 @@
 	<div class="container" style="padding-top: 5px"">
 
 		<form:form id ="listForm" method="post" commandName="reference">
+		<div>
 		<ol class="breadcrumb">
-			<li role="presentation" class="active"><a href="#">Home</a></li>
-			<li role="presentation"><a href="‪#‎myModal‬" data-toggle="modal">Add Reference</a></li>
+			<li role ="presentation" class="active"><a href="#">Home</a></li>
+			<li role ="presentation"><a href="‪#‎addModal‬" data-toggle="modal">Add Reference</a></li>
 		</ol>
+		
 		
 			<div style="padding-bottom: 10px">
 				<h2>Reference</h2>
@@ -74,19 +76,19 @@
 <form:form id ="addForm" method="post" commandName="reference">
 		<!-- Button trigger modal -->
 	<div class="form-group" align="right">
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Reference</button> 
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Reference</button> 
 	</div>
 	
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
 	
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
 			
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
 					<div class="modal-header">
 				
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="myModalLabel">Add Reference</h4>
+       					 <h4 class="modal-title" id="addModalLabel">Add Reference</h4>
       					</div>
 							
 																									
@@ -123,11 +125,36 @@
 				</div>			
 			</div>
 		</div>
-	  </div>
-</form:form>
+	  </div> 
+	  
+	  
+	  
+<!------------------------------------------Button  modal 2----------------------------------------------------->
 		
-	</div>
+		
+		<div class="modal fade" id="deleteModal" tabindex ="-1" role ="dialog" aria-labelledby ="myModalLabel" aria-hidden ="true">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-body">
+
+						<label >ARE YOU DELETE !!</label>
+
+					</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss ="modal"> NO </button>
+						  <button type="button" class="btn btn-primary DeleteButton"> Delete </button>
+					   </div>
+				</div>
+
+				
+			</div>
+		</div>
 	
+		   
+	  
+</form:form>
+
+		
 	<script type="text/javascript">
 
 	var dt;
@@ -136,16 +163,23 @@
 		dt = $('#tbResult').dataTable();
 		
 		
-		$("#myModal").on("show.bs.modal",function(event) {
+		$("#addModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var referenceid = button.data("id") //Extract info from data-* attribute
 			
-			if(referenceid != null){
-				getId(referenceid);
+			
+			clearModal();
+			 if(referenceid != null){				 
+				 getReferenceById(referenceid);
+			} 
+			
+			else{
+	
 			} 
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
+				
 				 if(referenceid != null){
 					updateReference(button, referenceid);
 				}else{ 
@@ -155,6 +189,31 @@
 			});
 			
 		});
+		
+		
+		
+		
+//		------------------------------------------------------------------------------------------------------------
+
+	 	$("#deleteModal").on("show.bs.modal", function (event) {
+				
+	 			var button = $(event.relatedTarget); // select การกระทำของปุ่ม
+	 			var referenceid = button.data("id"); //กดไอดีฝังในปุ่ม 
+				
+	 			
+					
+	 		$(this).find('.DeleteButton').off('click').on("click", function() {
+								
+	 					deleteById(button ,referenceid);
+	 			
+			
+	 				})
+					
+	 			})
+				
+				
+				
+			});
 		
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -201,11 +260,11 @@
 						data.oocupation,
 						
 						
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" > Edit</button>',
+						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 					]);
 					
-					$('#myModal').modal('toggle');
+					$('#addModal').modal('toggle');
 				},
 				error : function() {
 					alert("ERROR");
@@ -216,48 +275,94 @@
 		
 		
 		
-
-		function updateReference(button, educationid){
+		function updateReference(button,referenceid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/update",
-				data : JSON.stringify({
-					id : id,
-					name : $("#name").val(),
-					address :$("#address").val(),
-					tel :$("#tel").val(),
-					oocupation :$("#oocupation").val(),
-
+				url:'${pageContext.request.contextPath}/reference/update',
+				type:"POST",
+				contentType:"application/json",
+				datatype: "json",
+				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
 					
-				}),
-				type : "POST",
-				contentType : "application/json",
-				dataType: "json",
-				success : function(data) {
-//	 					alert(JSON.stringify(data));
+								id :referenceid,
+								name: $("#name").val(),	
+								address: $("#address").val(), 
+								tel :$("#tel").val(),
+								oocupation: $("#oocupation").val(),
+								
 					
-					var tr = button.closest("tr")
+					}),
 					
-					dt.fnUpdate(data.name, tr ,0);
-					dt.fnUpdate(data.address, tr ,1);
-					dt.fnUpdate(data.tel, tr ,2);
-					dt.fnUpdate(data.oocupation, tr ,3);
+					success : function(data) {
+						
+					var tr = button.closest("tr"); // หาเเถวจากปุ่ม
+						
 					
+					dt.fnUpdate(data.name, tr, 0),
+					dt.fnUpdate(data.address, tr, 1),
+					dt.fnUpdate(data.tel, tr, 2),
+					dt.fnUpdate(data.oocupation, tr, 3),
+					'<button class="btn btn-info btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
+					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
 					
-					$('#myModal').modal('toggle');
-				},
-				error : function() {
-					alert("ERROR");
-				}
+						
+						$('#addModal').modal('toggle');
+					},
+					error : function() {
+						alert("ERROR");
+					}
 			});
+			
+		}
+		
+		
+		function getReferenceById(referenceid) {
+			$.ajax({
+				url : "${pageContext.request.contextPath}/reference/findById",
+				data : "id=" +referenceid,
+				type : "POST", 
+				success : function(data) {
+					$("#name").val(data.name); 
+					$("#address").val(data.address);
+					$("#tel").val(data.tel);
+					$("#oocupation").val(data.oocupation);
+					
+					
+						},
+				error : function(jqXHR,	textStatus,	error) {
+					
+							alert(errorResponse.Message);
+									}
+							});
 		}
 		
 		
 		
 		
-		
-		
-		
-	});
+		function deleteById(button ,referenceid) {
+			$.ajax({
+				url : "${pageContext.request.contextPath}/reference/delete",
+				data : "id=" +referenceid,
+				type : "POST", 
+				
+				success : function(data) {
+					
+					var tr = button.closest("tr"); // หาเเถวจากปุ่ม
+											
+					dt.fnDeleteRow(tr);
+					
+						$('#deleteModal').modal('toggle');
+					},
+					
+						
+				error : function(jqXHR,	textStatus,	error) {
+					
+							alert("error ----");
+						}
+				});
+			
+			
+		}
+	
 	
 </script>
 	
