@@ -39,7 +39,7 @@ public class MasSpecialty extends BaseEntity{
 	
 	
 	@OneToMany(mappedBy = "masspecialty")
-	private Set<Ability> abilities = new HashSet<Ability>();
+	private Set<Ability> abilities;
 
 
 

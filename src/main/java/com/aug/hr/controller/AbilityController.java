@@ -5,12 +5,7 @@
  */
 package com.aug.hr.controller;
 
-import java.util.List;
-import java.util.Locale;
 
-import javax.servlet.http.HttpSession;
-
-import org.apache.poi.util.SystemOutLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,27 +13,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
+import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasSpecialtyService;
 import com.aug.hr.entity.Ability;
-import com.aug.hr.entity.Employee;
 import com.aug.hr.services.AbilityService;
-import com.aug.hr.services.EmployeeService;
+
 
 @Controller
 public class AbilityController {
 	
 	@Autowired private AbilityService abilityService;
-	@Autowired private EmployeeService employeeService;
+	//@Autowired private EmployeeService employeeService;
 	@Autowired private MasSpecialtyService masSpecialtyService;
 	
 	
 	@RequestMapping(value = "/ability", method = {RequestMethod.GET,RequestMethod.POST})
-    public String init(HttpSession session,Locale locale, ModelMap model) {
+    public String listAbility(ModelMap model) {
 		model.addAttribute("masspecialList", masSpecialtyService.findAll());
 //		model.addAttribute("employeeList", employeeService.findAll());
 		return "/ability/ability";
@@ -72,8 +64,8 @@ public class AbilityController {
 	
 	
 	//Add
-	@RequestMapping(value = "/ability/add", method = {RequestMethod.POST,RequestMethod.GET})
-	public @ResponseBody Ability Add(@RequestBody Ability ability) {
+	@RequestMapping(value = "/ability/add", method =RequestMethod.POST)
+	public @ResponseBody Ability addAbility(@RequestBody Ability ability) {
 			abilityService.create(ability);
 			System.out.print("*********************************************************************"
 					+ "***************************************************************************"
@@ -90,16 +82,14 @@ public class AbilityController {
 		return abilityService.find(id);
 	}
 	
-	@RequestMapping(value="/ability/update",method={ RequestMethod.POST})
-	public @ResponseBody Ability update(@RequestBody Ability ability){
-		
+	@RequestMapping(value="/ability/update",method={RequestMethod.POST})
+	public @ResponseBody Ability updateAbility(@RequestBody Ability ability){
 		abilityService.update(ability);
-		
 		return ability;
 	}
 	
 	@RequestMapping(value="/ability/delete",method={RequestMethod.POST})
-	public @ResponseBody String deleteById(@RequestParam Integer id){
+	public @ResponseBody String deleteAbility(@RequestParam Integer id){
 		
 		abilityService.deleteById(id);
 		

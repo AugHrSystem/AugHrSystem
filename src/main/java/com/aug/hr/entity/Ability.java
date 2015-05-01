@@ -5,19 +5,17 @@
  */
 package com.aug.hr.entity;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
+
+
 import javax.persistence.Column;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Id;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 
@@ -25,8 +23,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="ABILITY")
 public class Ability extends BaseEntity  {
-	public Ability() {
-	}
+	
 
 	@Id
 	@Column(name = "ID", unique = true, length = 10)
@@ -34,13 +31,13 @@ public class Ability extends BaseEntity  {
 	private Integer id;
 
 
+	@Column(name = "RANK",nullable = false)
+	private Integer rank;
+
+	
 	@ManyToOne
 	@JoinColumn(name = "EMP_ID")
 	private Employee employee;
-
-	@Column(name = "RANK",nullable = false)
-	private Integer rank;
-	
 	
 	@ManyToOne
 	@JoinColumn(name = "SPEC_ID")

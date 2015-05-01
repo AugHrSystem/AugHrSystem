@@ -248,6 +248,7 @@
 					]);
 					
 					$('#addModal').modal('toggle');
+					
 				},
 				error : function() {
 					alert("ERROR");
