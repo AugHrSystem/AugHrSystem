@@ -40,10 +40,7 @@ public class Ability extends BaseEntity  {
 
 	@Column(name = "RANK",nullable = false)
 	private Integer rank;
-	@Column(name = "CODE",nullable = false)
-	private String code;
-	@Column(name = "ISACTIVE",nullable = false)
-	private Boolean isActive;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "SPEC_ID")
@@ -82,21 +79,7 @@ public class Ability extends BaseEntity  {
 		this.rank = rank;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public Boolean getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
+	
 
 	
 

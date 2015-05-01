@@ -207,12 +207,12 @@ INSERT INTO MASCORESKILL (NAME,CODE,ISACTIVE) VALUES
 ('Transformation','TR',b'1');
 
 --Ability
-insert into ABILITY (RANK,CODE,ISACTIVE)
+insert into ABILITY (RANK)
 values
-(10,"01",true),
-(1,"02",true),
-(2,"03",true),
-(4,"04",true);
+(10),
+(1),
+(2),
+(4);
 
 --EDUCATION
 INSERT INTO EDUCATION (UNIVERSITY,GPA,FACULTY,MAJOR) VALUES 

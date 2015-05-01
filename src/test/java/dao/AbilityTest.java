@@ -37,16 +37,14 @@ public class AbilityTest {
 		Ability ability =new Ability();
 		ability.setEmployee(null);
 		ability.setRank(9);
-		ability.setCode("01");
-		ability.setIsActive(true);
+		
 		ability.setSpecialty(null);
 		abilityDao.getCurrentSession().save(ability);
 		
 		Ability ability1 =new Ability();
 		ability1.setEmployee(null);
 		ability1.setRank(5);
-		ability1.setCode("02");
-		ability1.setIsActive(true);
+		
 		ability1.setSpecialty(null);
 		abilityDao.getCurrentSession().save(ability);
 		

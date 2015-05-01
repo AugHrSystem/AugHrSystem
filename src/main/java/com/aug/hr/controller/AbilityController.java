@@ -10,6 +10,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.util.SystemOutLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 import com.aug.hr.services.MasSpecialtyService;
@@ -36,13 +38,14 @@ public class AbilityController {
 	
 	
 	@RequestMapping(value = "/ability", method = {RequestMethod.GET,RequestMethod.POST})
-    public String list(HttpSession session,Locale locale, ModelMap model) {
+    public String init(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("masspecialList", masSpecialtyService.findAll());
+//		model.addAttribute("employeeList", employeeService.findAll());
 		return "/ability/ability";
 		
 	}
 	
-	@RequestMapping(value = "/ability/search", method = {RequestMethod.GET,RequestMethod.POST})
+	/*@RequestMapping(value = "/ability/search", method = {RequestMethod.GET,RequestMethod.POST})
     public String searchProducts(@ModelAttribute(value="ability")  Ability ability, ModelMap map ,HttpSession session)
     {
 		session.setAttribute("searchCriteria", ability);
@@ -54,7 +57,7 @@ public class AbilityController {
         map.addAttribute("employeeList", page);
        
         return "/ability/ability";
-    }
+    }*/
 	
 	
 	
@@ -68,11 +71,14 @@ public class AbilityController {
 //	}
 	
 	
-	
-	@RequestMapping(value = "/ability/add", method = RequestMethod.POST)
+	//Add
+	@RequestMapping(value = "/ability/add", method = {RequestMethod.POST,RequestMethod.GET})
 	public @ResponseBody Ability Add(@RequestBody Ability ability) {
-			
 			abilityService.create(ability);
+			System.out.print("*********************************************************************"
+					+ "***************************************************************************"
+					+ "*******************************************************************************"
+					+ "*******************************************hello");
 			return ability;
 	}
 	

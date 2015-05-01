@@ -36,8 +36,6 @@ public class AbilityServiceTest {
 		Ability ability =new Ability();
 		ability.setEmployee(null);
 		ability.setRank(9);
-		ability.setCode("01");
-		ability.setIsActive(true);
 		ability.setSpecialty(null);
 		abilityService.create(ability);
 	}
