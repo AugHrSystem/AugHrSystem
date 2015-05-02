@@ -26,7 +26,7 @@ public class Ability extends BaseEntity  {
 	
 
 	@Id
-	@Column(name = "ID", unique = true, length = 10)
+	@Column(name = "ID")
 	@GeneratedValue
 	private Integer id;
 

@@ -65,7 +65,7 @@ public class Employee {
 	private String code;
 
 	
-	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
 	private Set<Education> educations = new HashSet<Education>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)

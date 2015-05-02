@@ -12,7 +12,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!-- jQuery -->
-<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="/resource/bootstrap/js/jquery-1.11.2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Bootstrap -->
@@ -129,7 +129,7 @@
 
 </form:form>
 
-<form:form id="deleteForm" commandName="education" method="post" class="form-horizontal">
+<form:form id="deleteForm" commandName="education" method="post">
 
 		<!-- Modal -->
 		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
@@ -296,13 +296,13 @@
 				data : "educationid=" + educationid,
 				type : "POST",
 				success : function(data) {
-	 				alert(JSON.stringify(data));
+	 				//alert(JSON.stringify(data));
 					
-					/* $("#university").val(data.university),
+					$("#university").val(data.university),
 					$("#gpa").val(data.gpa),
 					$("#faculty").val(data.faculty),
-					$("#major").val(data.major),
-					$("#masdegreetype").val(data.masdegreetype.id); */
+					$("#major").val(data.major);
+					//$("#masdegreetype").val(data.masdegreetype.id);
 			
 				},
 				error : function() {

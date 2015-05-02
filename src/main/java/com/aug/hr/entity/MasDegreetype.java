@@ -5,10 +5,10 @@
  */
 package com.aug.hr.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,8 +35,8 @@ public class MasDegreetype extends BaseEntity{
 	@Column(name = "ISACTIVE" ,nullable =false)
 	private String isactive;
 	
-	@OneToMany(mappedBy = "masdegreetype", fetch = FetchType.LAZY)
-	private Set<Education> educations;
+	@OneToMany(mappedBy = "masdegreetype", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
+	private Set<Education> educations = new HashSet<Education>();
 
 	
 	public Integer getId() {

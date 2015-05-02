@@ -34,7 +34,7 @@
 </head>
 <body>
 <div class="container">
-<form:form id ="listForm" method="POST" commandName="ability">
+<form:form id ="listForm" method="post" commandName="ability">
 
 <ol class="breadcrumb">
 	<li role="presentation" class="active"><a href="#">Home</a></li>
@@ -61,7 +61,7 @@
 
 </form:form>
 
-<form:form id ="addForm" method="POST" commandName="ability" >
+<form:form id ="addForm" method="post" commandName="ability" >
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
@@ -86,7 +86,7 @@
 	    <label>Specialty :</label>
 	    
 		<div class="form-group">
-		  <form:select path="" class="form-control"
+		  <form:select path="masspecialty" class="form-control"
 			id="masspecialty">
 			<form:option value="-1" label="---Select Specialty---" />
 			<c:forEach var="obj" items="${ masspecialtyList }">
@@ -163,7 +163,7 @@ $(document).ready(function(){
 		$.ajax({
 			url : "${pageContext.request.contextPath}/ability/add",
 			data : JSON.stringify({
-				masdegreetype : {id:$("#masspecialty").val(), name:$("#masspecialty option:selected").text()},
+				masspecialty : {id:$("#masspecialty").val(), name:$("#masspecialty option:selected").text()},
 				rank : $("#rank").val(),
 				employee : {id:2},
 			}),
@@ -172,7 +172,7 @@ $(document).ready(function(){
 			dataType: "json",
 			success : function(data) {
 				
-			alert(JSON.stringify(data));
+			//alert(JSON.stringify(data));
 					
 			
 				 dt.fnClearTable();
