@@ -10,9 +10,6 @@ import java.util.List;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Employee;
 
-
-
-
 public interface AbilityDao extends GenericDao<Ability, Integer> {
 
 	public List<Employee> findByCriteria(Employee employee);

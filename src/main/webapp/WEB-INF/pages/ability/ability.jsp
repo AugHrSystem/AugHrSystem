@@ -12,7 +12,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!-- jQuery -->
-<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/jquery-1.10.2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Bootstrap -->
@@ -34,182 +34,181 @@
 </head>
 <body>
 <div class="container">
+<form:form id ="listForm" method="POST" commandName="ability">
 
-		<form:form commandName="ability" id="listForm" method="post">
-		
-			<ol class="breadcrumb">
-				<li role="presentation" class="active"><a href="#">Home</a></li>
-				<li role="presentation"><a href="‪#‎addModal‬"
-					data-toggle="modal">Add Ability</a></li>
-			</ol>
-			<h2>Ability</h2>
-		
-		<!-- Table -->
+<ol class="breadcrumb">
+	<li role="presentation" class="active"><a href="#">Home</a></li>
+	<li role="presentation"><a href="#addModal" data-toggle="modal">Add Ability</a></li>
+</ol>
+
+<h2>Ability</h2> 
+ 
+<!-- Table -->
 <div class="form-group">
-			<table id="tbResult" class="table">
-				<thead>
-					<tr class="success">
-						<th>#</th>
-						<th>Special</th>
-						<th>Action</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
+<table id="tbResult" class="table">
+	<thead>
+		<tr>
+			<!-- <th>#</th> -->
+			<th>Specialty</th>
+			<th>Rank</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
 </div>
-		</form:form>
 
+</form:form>
 
-<form:form id ="addForm" method="post" commandName="ability">
+<form:form id ="addForm" method="POST" commandName="ability" >
 
-			<!-- Button trigger modal -->
-			<div class="form-group" align="right">
-				<button type="button" class="btn btn-info" data-toggle="modal"
-					data-target="#addModal">Add Ability</button>
-			</div>
+<!-- Button trigger modal -->
+<div class="form-group" align="right">
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Ability</button> 
+</div>
 
-			<!-- Modal -->
-			<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-							<h4 class="modal-title" id="myModalLabel">Ability Add</h4>
-						</div>
-
-						<div class="modal-body">
-						
-						
-						<div class="form-group">
-	    <label>Rank :</label>
-	    <form:input path="rank" type="text" class="form-control" id="rank" placeholder="Enter RANK"/>
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ability Add</h4>
+      </div>
+      
+      <div class="modal-body">
+        
+	  
+	 
+	  
+	  <div class="form-group">
+	    <label>Specialty :</label>
+	    
+		<div class="form-group">
+		  <form:select path="" class="form-control"
+			id="masspecialty">
+			<form:option value="-1" label="---Select Specialty---" />
+			<c:forEach var="obj" items="${ masspecialtyList }">
+				<option value="${obj.id }">${ obj.name}</option>
+			</c:forEach>
+		</form:select>
+		</div>
 	  </div>
-						
+	  
+	   <div class="form-group">
+	    <label>Rank :</label>
+	    <form:input path="rank" type="text" class="form-control" id="rank" placeholder="Enter Rank"/>
+	  </div>
+	  
 
-							<div class="form-group">
-								<label>Special :</label>
+      </div>
+      
+      <div class="form-group" align="center">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      	<button type="button" class="btn btn-info btnSave">Save</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
-								<div class="form-group">
-									<form:select path="" class="form-control"
-										id="masspecialty">
-										<form:option value="-1" label="---Select Special---" />
-										<c:forEach var="obj" items="${masspecialList}">
-											<option value="${obj.id}">${ obj.name}</option>
-										</c:forEach>
-									</form:select>
-								</div>
-							</div>
-
-
-
-
-							<div class="form-group" align="center">
-
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary btnSave">Save</button>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-
-
-		</form:form>
+</form:form>
 
 </div>
-	<script type="text/javascript">
+<script type="text/javascript">
+var dt;
 
-	var dt;
+$(document).ready(function(){
+	dt = $('#tbResult').dataTable();
 	
-	$(document).ready(function(){
-		dt = $('#tbResult').dataTable();
+	/* --- addProduct,updateProduct --- */
+	$("#addModal").on("show.bs.modal",function(event) {
 		
-		/* --- addProduct,updateProduct --- */
-		$("#addModal").on("show.bs.modal",function(event) {
-			
-			clearModal();
-			
-			
-			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var abiid = button.data("id") //Extract info from data-* attribute
-			
-			if(abiid != null){
-				getId(abiid);
-			} 
-			$(this).find(".btnSave").off("click").on("click",function() {
-				 /*  if(abiid != null){
-					updateAbility();
-				}else{ 
-					 */
-					 addAbility();
-					 
-				 /*  }   */
+		clearModal();
+		
+		var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
+		var abilityid = button.data("id") //Extract info from data-* attribute
+		/* 
+		if(abilityid != null){
+			getId(abilityid);
+		}  */
+		
+		$(this).find(".btnSave").off("click").on("click",function() {
+			/* if(abilityid != null){
+				updateAbility(button, abilityid);
+			}else{ */
 				
-			});
+				//alert("be");
+				addAbility();
+				//alert("af");
+			 /* } */
 			
 		});
 		
-/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
-		function clearModal(){
-			
-			$("#masspecialty").val("-1");
-		}
-		
-		
-		function addAbility(){
-			$.ajax({
-				url : "${pageContext.request.contextPath}/ability/add",
-				data : JSON.stringify({
-					masspecialty : {id:$("#masspecialty option:selected").val(), name: $("#masspecialty option:selected").text()},
-					//masspecialty:{id:2},
-					rank : $("#rank").val(),
-					employee : {id:2},
-				}),
-				type : "POST",
-				contentType : "application/json",
-				datatype: "json",
-				success : function(data) {
-					
-					dt.fnClearTable();
-					alert("fnadd");
-					dt.fnAddData([
-						data.rank,
-						data.masspecialty.name,
-						
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
-					]);
-					$('#addModal').modal('toggle');	
-					
-				},
-				
-				error : function() {
-					
-					alert("ERROR");
-				}
-			});
-		}
-		
 	});
 	
+	
+	
+	
+	/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
- 
+	function clearModal(){
+		
+		$("#masspecialty").val("-1"),
+		$("#rank").val("");
+	}
 	
+	function addAbility(){
+		$.ajax({
+			url : "${pageContext.request.contextPath}/ability/add",
+			data : JSON.stringify({
+				masdegreetype : {id:$("#masspecialty").val(), name:$("#masspecialty option:selected").text()},
+				rank : $("#rank").val(),
+				employee : {id:2},
+			}),
+			type : "POST",
+			contentType : "application/json",
+			dataType: "json",
+			success : function(data) {
+				
+			alert(JSON.stringify(data));
+					
+			
+				 dt.fnClearTable();
+				
+				dt.fnAddData([
+				
+					data.masspecialty.name,
+					data.rank,
+					
+					'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+					'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+				]);
+				 
+				$('#addModal').modal('toggle');
+				
+			},
+			error : function() {
+				alert("ERROR");
+			}
+		});
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+});
+
 </script>
-	
-	
-	
-	
-	
+
+
 </body>
 </html>

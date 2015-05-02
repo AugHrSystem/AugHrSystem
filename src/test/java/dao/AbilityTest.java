@@ -19,8 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.AbilityDao;
 import com.aug.hr.entity.Ability;
-import com.aug.hr.entity.MasDegreetype;
-import com.aug.hr.entity.MasProvince;
+
+
+
+
+
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,19 +36,16 @@ public class AbilityTest {
 	
 	@Test
 	public void createAbility(){
-		
-		Ability ability =new Ability();
+		Ability ability=new Ability();
 		ability.setEmployee(null);
 		ability.setRank(9);
-		
-		ability.setSpecialty(null);
+		ability.setMasspecialty(null);
 		abilityDao.getCurrentSession().save(ability);
 		
 		Ability ability1 =new Ability();
 		ability1.setEmployee(null);
 		ability1.setRank(5);
-		
-		ability1.setSpecialty(null);
+		ability1.setMasspecialty(null);
 		abilityDao.getCurrentSession().save(ability);
 		
 	}

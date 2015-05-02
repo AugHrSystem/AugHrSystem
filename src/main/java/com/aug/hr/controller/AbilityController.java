@@ -1,10 +1,14 @@
 /**
  *
  * @author Pranrajit
- * @date 28 เม.ย. 2558
+ * @date 1 พ.ค. 2558
  */
 package com.aug.hr.controller;
 
+import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,94 +19,74 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.services.EmployeeService;
-import com.aug.hr.services.MasSpecialtyService;
 import com.aug.hr.entity.Ability;
-import com.aug.hr.services.AbilityService;
 
+import com.aug.hr.services.AbilityService;
+import com.aug.hr.services.MasSpecialtyService;
 
 @Controller
 public class AbilityController {
+
+	@Autowired
+	private AbilityService abilityService;;
 	
-	@Autowired private AbilityService abilityService;
-	//@Autowired private EmployeeService employeeService;
-	@Autowired private MasSpecialtyService masSpecialtyService;
+	@Autowired 
+	private MasSpecialtyService masSpecialtyService;
 	
 	
-	@RequestMapping(value = "/ability", method = {RequestMethod.GET,RequestMethod.POST})
-    public String listAbility(ModelMap model) {
-		model.addAttribute("masspecialList", masSpecialtyService.findAll());
-//		model.addAttribute("employeeList", employeeService.findAll());
+
+	/*@RequestMapping(value = "/ability", method =RequestMethod.GET)
+    public String init(ModelMap model) {	
+		model.addAttribute("masspecialtyList",
+				masSpecialtyService.findAll());
+		return "ability/ability";
+	}*/
+	
+	
+	
+	@RequestMapping(value="/ability",method={RequestMethod.GET,
+			RequestMethod.POST})
+	public String listAbility(HttpSession session,Locale locale, ModelMap model){
+		System.out.print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+				+ "aaaaaaaaaaaaaaaaaaaaa"
+				+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaauuuuu"
+				+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+				+ "aaaaaaaaaaaaaaaaaaaaaa");
+		model.addAttribute("masspecialtyList",
+				masSpecialtyService.findAll());
+		
+		
+		System.out.print("ooooooooooooooooooooooooooooooooooooooooooo"
+				+ "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
+				+ "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
+				+ "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
+				+ "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
 		return "/ability/ability";
-		
 	}
 	
-	/*@RequestMapping(value = "/ability/search", method = {RequestMethod.GET,RequestMethod.POST})
-    public String searchProducts(@ModelAttribute(value="ability")  Ability ability, ModelMap map ,HttpSession session)
-    {
-		session.setAttribute("searchCriteria", ability);
-		
-		List <Ability> page = abilityService.findByCriteria(ability);
-		
-	
-        map.addAttribute("ability", ability);
-        map.addAttribute("employeeList", page);
-       
-        return "/ability/ability";
-    }*/
-	
-	
-	
-//	@RequestMapping(value="/ability/searchname",method=RequestMethod.POST)
-//	public @ResponseBody List<Employee> searchProductAjax(@RequestParam String employee)
-//	{
-//		Employee employee2 =new Employee();
-//		employee2.setName(employee);
-//		
-//		return employeeService.findByCriteria(employee);
-//	}
-	
-	
-	//Add
-	@RequestMapping(value = "/ability/add", method =RequestMethod.POST)
-	public @ResponseBody Ability addAbility(@RequestBody Ability ability) {
-			abilityService.create(ability);
-			System.out.print("*********************************************************************"
-					+ "***************************************************************************"
-					+ "*******************************************************************************"
-					+ "*******************************************hello");
-			return ability;
-	}
-	
-	/*@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
-	public @ResponseBody Ability findById(@RequestParam Integer id)
-	{
+	@RequestMapping(value="/ability/add",method=RequestMethod.POST)
+	public @ResponseBody Ability addAbility(@RequestBody Ability ability){
 		
 		
-		return abilityService.find(id);
-	}
-	
-	@RequestMapping(value="/ability/update",method={RequestMethod.POST})
-	public @ResponseBody Ability updateAbility(@RequestBody Ability ability){
-		abilityService.update(ability);
+		System.out.print("33333333333333333333333333333333333333333"
+				+ "3333333333333333333333333333333333333"
+				+ "3333333333333333333333333333"
+				+ "333333333333333333333333333333"
+				+ "3333333333333333333333333333333333333");
+		
+		abilityService.create(ability);
+		
+		
+		System.out.print("1111111111111111111111111111111"
+				+ "1111111111111111111111111111111111"
+				+ "1111111111111111111111111111111"
+				+ "11111111111111111111111111"
+				+ "111111111111111111111111111111");
 		return ability;
 	}
 	
-	@RequestMapping(value="/ability/delete",method={RequestMethod.POST})
-	public @ResponseBody String deleteAbility(@RequestParam Integer id){
-		
-		abilityService.deleteById(id);
-		
-		return "{success:true}";
-	
-	
-	}*/
-	
-
 	@ModelAttribute("ability")
-	Ability setupForm() {
-	return new Ability();
+	Ability setupForm(){
+		return new Ability();
 	}
-	
-	
 }

@@ -51,13 +51,9 @@ public class Ability extends BaseEntity  {
 		this.id = id;
 	}
 
-	public MasSpecialty getMasSpecialty() {
-		return masspecialty;
-	}
 
-	public void setSpecialty(MasSpecialty masspecialty) {
-		this.masspecialty = masspecialty;
-	}
+	
+
 
 	public Employee getEmployee() {
 		return employee;
@@ -72,10 +68,21 @@ public class Ability extends BaseEntity  {
 		return rank;
 	}
 
+
 	public void setRank(Integer rank) {
 		this.rank = rank;
 	}
 
+	public MasSpecialty getMasspecialty() {
+		return masspecialty;
+	}
+
+	public void setMasspecialty(MasSpecialty masspecialty) {
+		this.masspecialty = masspecialty;
+	}
+ 
+	
+	
 	
 
 	

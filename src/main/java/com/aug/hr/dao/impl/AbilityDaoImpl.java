@@ -40,6 +40,8 @@ public class AbilityDaoImpl extends GenericDaoImpl<Ability,Integer> implements A
 		getCurrentSession().delete(ability);
 		return ability;
 	}
+
+
 	}
 
 	

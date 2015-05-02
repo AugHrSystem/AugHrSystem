@@ -206,13 +206,6 @@ INSERT INTO MASCORESKILL (NAME,CODE,ISACTIVE) VALUES
 ('System Analyst','SA',b'1'),
 ('Transformation','TR',b'1');
 
---Ability
-insert into ABILITY (RANK)
-values
-(10),
-(1),
-(2),
-(4);
 
 --EDUCATION
 INSERT INTO EDUCATION (UNIVERSITY,GPA,FACULTY,MAJOR) VALUES 
@@ -223,3 +216,11 @@ INSERT INTO EMPLOYEE (NAME,TEL,SALARY,AGE,RELIGION,PLACEDOB,IDCARD,HEIGH,WEIGTH,
 ('NAME','1234567890',3000,12,'eiei','eiei',1234567890,180,90,'F','eiei','eiei','eiei','01',06/27/2007),
 ('NAME1','1234567890',3000,12,'eiei','eiei',1234567890,180,90,'F','eiei','eiei','eiei','01',06/27/2007);
 
+
+--Ability
+insert into ABILITY (RANK,SPEC_ID,EMP_ID)
+values
+(10,2,1),
+(1,5,1),
+(2,6,2),
+(4,8,2);
