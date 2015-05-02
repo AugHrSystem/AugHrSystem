@@ -64,15 +64,15 @@ public class ExperienceController {
 	
 	//edit
 	@RequestMapping(value = "/experience/edit", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody Experience EditProduct(@RequestBody Experience exp) {
+	public @ResponseBody Experience editExperience(@RequestBody Experience exp) {
 		experienceService.update(exp);
 		return exp;
 	}
 	
 	//delete
 	@RequestMapping("/experience/delete/{expId}")
-	public String deleteProduct(@PathVariable("expId") Experience exp) {
-		experienceService.delete(exp);
+	public String deleteExperience(@PathVariable("expId") Integer expId) {
+		experienceService.deleteById(expId);
 		return "redirect:/experience";
 	}
 	

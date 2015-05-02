@@ -44,4 +44,14 @@ public class ExperienceServiceImpl implements ExperienceService{
 		
 	}
 
+	@Override
+	public List<Experience> findByCriteria(Experience experience) {
+		return experienceDao.findByCriteria(experience);
+	}
+
+	@Override
+	public Experience deleteById(Integer id) {
+		return experienceDao.deleteById(id);
+	}
+
 }

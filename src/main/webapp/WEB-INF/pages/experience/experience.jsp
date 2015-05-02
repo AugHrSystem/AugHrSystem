@@ -92,7 +92,7 @@
 		</div>
 		
   		<div class="form-group">
-  			<p><label>Date From : <input type="text" id="dateFrom"></label></p>
+  			<p><label>Date From : <input type="text" id="dateFrom" path="dateFrom"></label></p>
   		</div>
   		  		
   		<div class="form-group">
@@ -139,7 +139,7 @@
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-       <button type="button" class="btn btn-primary yesButton">Yes</button>
+      <button type="button" class="btn btn-primary yesButton">Yes</button>
       </div>
     </div>
   </div>
@@ -148,10 +148,23 @@
 <script>
 var dt;
 	$(document).ready(function() {
-    	$( "#dateFrom" ).datepicker();
-    	$( "#dateTo" ).datepicker();
+    	var date1 = $( "#dateFrom" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+    	var date2 = $( "#dateTo" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
     	dt=$("#tdResult").dataTable();
-    	
 /* 		$.ajax({
 			url : "${pageContext.request.contextPath}/experience/listAll",
 			type : "POST,GET",
@@ -232,6 +245,7 @@ var dt;
     					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
     					}
     				});
+    			alert(date1);
     		}
     		
     		function editExperience() {
@@ -267,8 +281,8 @@ var dt;
 							data.description,
 							data.superVisor,
 							data.address,
-						'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-						'<button type="button" class="btn btn-danger btn-sm active" ddata-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal>Delete</button>'
+							'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+	    					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
 						]);
 					},
 					error : function(data,testStatus,jqXHR) {
@@ -314,13 +328,11 @@ var dt;
 				
 				function deleteExperience(button,expId){
 					$.ajax({
-						url : "${pageContext.request.contextPath}/experience/delete/"
-							+ expId,
+						url : "${pageContext.request.contextPath}/experience/delete/"+expId,
 						type : "POST",
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-							
+							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
 							var del = button.closet("tr");
 							dt.fnDeleteRow(del);
 						},

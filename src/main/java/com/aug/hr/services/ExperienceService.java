@@ -17,4 +17,8 @@ public interface ExperienceService {
 
 	public abstract void delete(Experience experience);
 	
+	public List<Experience> findByCriteria(Experience experience);
+	
+	public Experience deleteById(Integer id);
+	
 }
