@@ -8,8 +8,10 @@ package com.aug.hr.entity;
 import java.util.Set;
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -33,7 +35,7 @@ public class MasDegreetype extends BaseEntity{
 	@Column(name = "ISACTIVE" ,nullable =false)
 	private String isactive;
 	
-	@OneToMany(mappedBy = "masdegreetype")
+	@OneToMany(mappedBy = "masdegreetype", fetch = FetchType.LAZY)
 	private Set<Education> educations;
 
 	
