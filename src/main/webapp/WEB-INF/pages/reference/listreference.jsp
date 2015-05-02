@@ -220,7 +220,7 @@
 
 		function clearModal(){
 			$("#name").val(""),
-			$("#address").val("-1"),
+			$("#address").val(""),
 			$("#Unit").val(""),
 			$("#tel").val(""),
 			$("#oocupation").val("");

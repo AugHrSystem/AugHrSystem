@@ -36,9 +36,8 @@ public class ReferenceServiceImpl implements ReferenceService {
 	}
 
 	@Override
-	public Reference find(Integer Id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Reference findById(Integer id) {
+		return referenceDao.find(id);
 	}
 
 	@Override
@@ -52,8 +51,8 @@ public class ReferenceServiceImpl implements ReferenceService {
 	}
 
 	@Override
-	public void deleteById(Integer id) {
-		//return referenceDao.deleteById(id);
+	public Reference deleteById(Integer id) {
+		return referenceDao.deleteById(id);
 
 	}
 
