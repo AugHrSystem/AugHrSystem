@@ -14,10 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.MasAddressTypeDao;
 import com.aug.hr.entity.MasAddressType;
-import com.aug.hr.entity.MasEmployment;
 import com.aug.hr.services.MasAddressTypeService;
 
-@Service
+@Service("MasAddressTypeService")
 @Transactional
 public class MasAddressTypeServiceImpl implements MasAddressTypeService{
 	
@@ -26,36 +25,40 @@ public class MasAddressTypeServiceImpl implements MasAddressTypeService{
 
 	@Override
 	public void create(MasAddressType masAddressType) {
-		// TODO Auto-generated method stub
 		masAddressTypeDao.create(masAddressType);
 		
 	}
 
 	@Override
 	public void update(MasAddressType masAddressType) {
-		// TODO Auto-generated method stub
 		masAddressTypeDao.update(masAddressType);
 	}
 
 	@Override
 	public void delete(MasAddressType masAddressType) {
-		// TODO Auto-generated method stub
 		masAddressTypeDao.delete(masAddressType);
 		
 	}
 
-	@Override
-	public MasAddressType find(Integer Id) {
-		// TODO Auto-generated method stub
-		MasAddressType masAddressType = masAddressTypeDao.find(Id);
-		return masAddressType;
-	}
 
 	@Override
 	public List<MasAddressType> findAll() {
-		// TODO Auto-generated method stub
-		List<MasAddressType> masAddressType = masAddressTypeDao.findAll();
-		return masAddressType;
+		return masAddressTypeDao.findAll();
+	}
+
+	@Override
+	public MasAddressType findById(Integer Id) {
+		return masAddressTypeDao.find(Id);
+	}
+
+	@Override
+	public List<MasAddressType> findByCriteria(MasAddressType masAddressType) {
+		return masAddressTypeDao.findByCriteria(masAddressType);
+	}
+
+	@Override
+	public MasAddressType deleteById(Integer id) {
+		return masAddressTypeDao.deleteById(id);
 	}
 	
 

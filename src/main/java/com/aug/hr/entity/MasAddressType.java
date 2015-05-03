@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="MASADDRESSTYPE")
-public class MasAddressType {
+public class MasAddressType extends BaseEntity{
 	
 	
 	@Id

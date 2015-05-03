@@ -6,14 +6,12 @@
 
 package com.aug.hr.entity;
 
-import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -23,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "MASEMPLOYMENT")
-public class MasEmployment extends BaseEntity implements Serializable{
+public class MasEmployment extends BaseEntity {
 	
 	@Id
 	@Column(name = "ID", length = 10)
@@ -42,47 +40,63 @@ public class MasEmployment extends BaseEntity implements Serializable{
 
 	
 	@OneToMany(mappedBy = "employment")
-	private Set<Employee> employees = new HashSet<Employee>();
-	
+	private Set<Official> officials = new HashSet<Official>();
+
+
 	public Integer getId() {
 		return Id;
 	}
+
 
 	public void setId(Integer id) {
 		Id = id;
 	}
 
+
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
+
 
 	public String getCode() {
 		return code;
 	}
 
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 
 	public Boolean getIsActive() {
 		return isActive;
 	}
 
+
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
 
-	public Set<Employee> getEmployees() {
-		return employees;
+
+	public Set<Official> getOfficials() {
+		return officials;
 	}
 
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
+
+	public void setOfficials(Set<Official> officials) {
+		this.officials = officials;
 	}
+
+
+	
+	
+	
+	
 	
 	
 

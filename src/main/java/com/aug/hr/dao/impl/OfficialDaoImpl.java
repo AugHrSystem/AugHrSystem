@@ -13,7 +13,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.OfficialDao;
-import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Official;
 import com.mysql.jdbc.StringUtils;
 @Repository
@@ -30,8 +29,8 @@ public class OfficialDaoImpl extends GenericDaoImpl<Official, Integer> implement
 	public List<Official> findByCriteria(Official official){
 		
 		Criteria c = getCurrentSession().createCriteria(Official.class);
-		if (!StringUtils.isNullOrEmpty(official.getName())) {
-			c.add(Restrictions.like("name", "%" + official.getName() + "%"));
+		if (!StringUtils.isNullOrEmpty(official.getPositionAppliedFor())) {
+			c.add(Restrictions.like("name", "%" + official.getPositionAppliedFor() + "%"));
 		}
 		return c.list();
 		

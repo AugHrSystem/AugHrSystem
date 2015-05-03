@@ -17,7 +17,7 @@ import com.aug.hr.entity.MasEmployment;
 import com.aug.hr.services.MasEmploymentService;
 
 
-@Service
+@Service("MasEmploymentService")
 @Transactional
 public class MasEmploymentServiceImpl implements MasEmploymentService{
 
@@ -26,37 +26,40 @@ public class MasEmploymentServiceImpl implements MasEmploymentService{
 	
 	@Override
 	public void create(MasEmployment masEmployment) {
-		// TODO Auto-generated method stub
 		masEmploymentDao.create(masEmployment);
 		
 	}
 
 	@Override
 	public void update(MasEmployment masEmployment) {
-		// TODO Auto-generated method stub
 		masEmploymentDao.update(masEmployment);
 		
 	}
 
 	@Override
 	public void delete(MasEmployment masEmployment) {
-		// TODO Auto-generated method stub
 		masEmploymentDao.delete(masEmployment);
 		
 	}
 
 	@Override
-	public MasEmployment find(Integer Id) {
-		// TODO Auto-generated method stub
-		MasEmployment masEmployment = masEmploymentDao.find(Id);
-		return masEmployment;
+	public List<MasEmployment> findAll() {
+		return masEmploymentDao.findAll();
 	}
 
 	@Override
-	public List<MasEmployment> findAll() {
-		// TODO Auto-generated method stub
-		List<MasEmployment> masEmployment = masEmploymentDao.findAll();
-		return masEmployment;
+	public MasEmployment findById(Integer Id) {
+		return masEmploymentDao.find(Id);
+	}
+
+	@Override
+	public List<MasEmployment> findByCriteria(MasEmployment masEmployment) {
+		return masEmploymentDao.findByCriteria(masEmployment);
+	}
+
+	@Override
+	public MasEmployment deleteById(Integer id) {
+		return masEmploymentDao.deleteById(id);
 	}
 	
 	

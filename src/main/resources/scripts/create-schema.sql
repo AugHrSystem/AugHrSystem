@@ -5,7 +5,7 @@
 
     alter table ABILITY 
         drop 
-        foreign key FKE33D410A893C27EE;
+        foreign key FKE33D410ACEC2720D;
 
     alter table ADDRESS 
         drop 
@@ -18,10 +18,6 @@
     alter table ADDRESS 
         drop 
         foreign key FKE66327D44B00FABD;
-
-    alter table CORESKILL 
-        drop 
-        foreign key FK489815F2AA332609;
 
     alter table EDUCATION 
         drop 
@@ -41,7 +37,7 @@
 
     alter table EMPLOYEE 
         drop 
-        foreign key FK75C8D6AED9671A9;
+        foreign key FK75C8D6AE391EE7AA;
 
     alter table EMPLOYEE 
         drop 
@@ -59,6 +55,10 @@
         drop 
         foreign key FK453F749264515AF;
 
+    alter table MASCORESKILL 
+        drop 
+        foreign key FK9AE7E393AA332609;
+
     alter table REFERENCE 
         drop 
         foreign key FK6EF34F2B264515AF;
@@ -75,21 +75,11 @@
 
     drop table if exists ADDRESS;
 
-    drop table if exists ADDRESSTYPE;
-
-    drop table if exists CORESKILL;
-
-    drop table if exists DEGREETYPE;
-
-    drop table if exists DIVISION;
-
     drop table if exists EDUCATION;
 
     drop table if exists EMPLOYEE;
 
     drop table if exists EMPLOYEEFAMILY;
-
-    drop table if exists EMPLOYMENT;
 
     drop table if exists EXPERIENCE;
 
@@ -97,13 +87,23 @@
 
     drop table if exists LOGIN;
 
+    drop table if exists MASADDRESSTYPE;
+
+    drop table if exists MASCORESKILL;
+
+    drop table if exists MASDEGREETYPE;
+
+    drop table if exists MASDIVISION;
+
+    drop table if exists MASEMPLOYMENT;
+
+    drop table if exists MASPROVINCE;
+
+    drop table if exists MASSPECIALTY;
+
     drop table if exists MASTECHNOLOGY;
 
-    drop table if exists PROVINCE;
-
     drop table if exists REFERENCE;
-
-    drop table if exists SPECIALTY;
 
     drop table if exists TECHNOLOGYEMPLOYEE;
 
@@ -114,8 +114,6 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
-        CODE varchar(255) not null,
-        ISACTIVE bit not null,
         RANK integer not null,
         EMP_ID bigint,
         SPEC_ID integer,
@@ -133,49 +131,6 @@
         primary key (ID)
     );
 
-    create table ADDRESSTYPE (
-        ID integer not null auto_increment,
-        CODE varchar(255) not null,
-        ISACTIVE varchar(255) not null,
-        NAME varchar(255) not null,
-        primary key (ID)
-    );
-
-    create table CORESKILL (
-        ID integer not null auto_increment,
-        auditFlag varchar(255),
-        createdBy integer,
-        createdTimeStamp datetime,
-        updatedBy integer,
-        updatedTimeStamp datetime,
-        CODE varchar(255),
-        ISACTIVE bit,
-        NAME varchar(255) not null,
-        EMPLOYEE_ID bigint,
-        primary key (ID)
-    );
-
-    create table DEGREETYPE (
-        ID integer not null auto_increment,
-        NAME varchar(200) not null,
-        CODE varchar(255) not null,
-        ISACTIVE varchar(255) not null,
-        primary key (ID)
-    );
-
-    create table DIVISION (
-        ID integer not null auto_increment,
-        auditFlag varchar(255),
-        createdBy integer,
-        createdTimeStamp datetime,
-        updatedBy integer,
-        updatedTimeStamp datetime,
-        CODE varchar(255) not null,
-        ISACTIVE bit not null,
-        NAME varchar(255) not null,
-        primary key (ID)
-    );
-
     create table EDUCATION (
         ID integer not null auto_increment,
         auditFlag varchar(255),
@@ -183,13 +138,12 @@
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
-        DEGREE varchar(255) not null,
         FACULTY varchar(255) not null,
         GPA double precision not null,
         MAJOR varchar(255) not null,
         UNIVERSITY varchar(255) not null,
-        DEGREE_ID integer,
         EMP_ID bigint,
+        DEGREE_ID integer,
         primary key (ID)
     );
 
@@ -210,9 +164,9 @@
         STATUS varchar(255) not null,
         TEL varchar(10) not null,
         WEIGTH integer not null,
-        DIVISION_ID integer,
         EMPLOYMENT_ID integer,
         JOBLEVEL_ID integer,
+        DIVISION_ID integer,
         TECHNOLOGY_ID integer,
         primary key (ID)
     );
@@ -237,19 +191,6 @@
         primary key (ID)
     );
 
-    create table EMPLOYMENT (
-        ID integer not null auto_increment,
-        auditFlag varchar(255),
-        createdBy integer,
-        createdTimeStamp datetime,
-        updatedBy integer,
-        updatedTimeStamp datetime,
-        CODE varchar(255) not null,
-        ISACTIVE bit not null,
-        NAME varchar(200) not null,
-        primary key (ID)
-    );
-
     create table EXPERIENCE (
         ID integer not null auto_increment,
         auditFlag varchar(255),
@@ -263,6 +204,7 @@
         DATE_FROM datetime,
         DATE_TO datetime,
         DESCRIPTION varchar(255),
+        POSITION varchar(255),
         SUPERVISOR varchar(255),
         EMPLOYEE_ID bigint,
         primary key (ID)
@@ -296,6 +238,93 @@
         primary key (ID)
     );
 
+    create table MASADDRESSTYPE (
+        ID integer not null auto_increment,
+        CODE varchar(255) not null,
+        ISACTIVE varchar(255) not null,
+        NAME varchar(255) not null,
+        primary key (ID)
+    );
+
+    create table MASCORESKILL (
+        ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        CODE varchar(255),
+        ISACTIVE bit,
+        NAME varchar(255) not null,
+        EMPLOYEE_ID bigint,
+        primary key (ID)
+    );
+
+    create table MASDEGREETYPE (
+        ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        CODE varchar(255) not null,
+        ISACTIVE varchar(255) not null,
+        NAME varchar(200) not null,
+        primary key (ID)
+    );
+
+    create table MASDIVISION (
+        ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        CODE varchar(255) not null,
+        ISACTIVE bit not null,
+        NAME varchar(255) not null,
+        primary key (ID)
+    );
+
+    create table MASEMPLOYMENT (
+        ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        CODE varchar(255) not null,
+        ISACTIVE bit not null,
+        NAME varchar(200) not null,
+        primary key (ID)
+    );
+
+    create table MASPROVINCE (
+        ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        CODE varchar(255) not null,
+        ISACTIVE bit not null,
+        NAME varchar(255) not null,
+        primary key (ID)
+    );
+
+    create table MASSPECIALTY (
+        SPEC_ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        CODE varchar(255) not null,
+        ISACTIVE bit,
+        NAME varchar(255) not null,
+        primary key (SPEC_ID)
+    );
+
     create table MASTECHNOLOGY (
         ID integer not null auto_increment,
         AUDITFLAG varchar(1) not null,
@@ -309,19 +338,6 @@
         primary key (ID)
     );
 
-    create table PROVINCE (
-        ID integer not null auto_increment,
-        auditFlag varchar(255),
-        createdBy integer,
-        createdTimeStamp datetime,
-        updatedBy integer,
-        updatedTimeStamp datetime,
-        CODE varchar(255) not null,
-        ISACTIVE bit not null,
-        NAME varchar(255) not null,
-        primary key (ID)
-    );
-
     create table REFERENCE (
         REF_ID integer not null auto_increment,
         ADDRESS varchar(255) not null,
@@ -330,19 +346,6 @@
         TEL varchar(255) not null,
         EMP_ID bigint,
         primary key (REF_ID)
-    );
-
-    create table SPECIALTY (
-        SPEC_ID integer not null auto_increment,
-        auditFlag varchar(255),
-        createdBy integer,
-        createdTimeStamp datetime,
-        updatedBy integer,
-        updatedTimeStamp datetime,
-        CODE varchar(255) not null,
-        ISACTIVE bit,
-        NAME varchar(255) not null,
-        primary key (SPEC_ID)
     );
 
     create table TECHNOLOGYEMPLOYEE (
@@ -364,10 +367,10 @@
         references EMPLOYEE (ID);
 
     alter table ABILITY 
-        add index FKE33D410A893C27EE (SPEC_ID), 
-        add constraint FKE33D410A893C27EE 
+        add index FKE33D410ACEC2720D (SPEC_ID), 
+        add constraint FKE33D410ACEC2720D 
         foreign key (SPEC_ID) 
-        references SPECIALTY (SPEC_ID);
+        references MASSPECIALTY (SPEC_ID);
 
     alter table ADDRESS 
         add index FKE66327D4264515AF (EMP_ID), 
@@ -379,19 +382,13 @@
         add index FKE66327D4A94034CA (PROVINCE_ID), 
         add constraint FKE66327D4A94034CA 
         foreign key (PROVINCE_ID) 
-        references PROVINCE (ID);
+        references MASPROVINCE (ID);
 
     alter table ADDRESS 
         add index FKE66327D44B00FABD (ADDTYPE_ID), 
         add constraint FKE66327D44B00FABD 
         foreign key (ADDTYPE_ID) 
-        references ADDRESSTYPE (ID);
-
-    alter table CORESKILL 
-        add index FK489815F2AA332609 (EMPLOYEE_ID), 
-        add constraint FK489815F2AA332609 
-        foreign key (EMPLOYEE_ID) 
-        references EMPLOYEE (ID);
+        references MASADDRESSTYPE (ID);
 
     alter table EDUCATION 
         add index FK94C37788264515AF (EMP_ID), 
@@ -403,7 +400,7 @@
         add index FK94C37788B3968484 (DEGREE_ID), 
         add constraint FK94C37788B3968484 
         foreign key (DEGREE_ID) 
-        references DEGREETYPE (ID);
+        references MASDEGREETYPE (ID);
 
     alter table EMPLOYEE 
         add index FK75C8D6AEA2AFAF69 (JOBLEVEL_ID), 
@@ -415,13 +412,13 @@
         add index FK75C8D6AEFD52A74A (EMPLOYMENT_ID), 
         add constraint FK75C8D6AEFD52A74A 
         foreign key (EMPLOYMENT_ID) 
-        references EMPLOYMENT (ID);
+        references MASEMPLOYMENT (ID);
 
     alter table EMPLOYEE 
-        add index FK75C8D6AED9671A9 (DIVISION_ID), 
-        add constraint FK75C8D6AED9671A9 
+        add index FK75C8D6AE391EE7AA (DIVISION_ID), 
+        add constraint FK75C8D6AE391EE7AA 
         foreign key (DIVISION_ID) 
-        references DIVISION (ID);
+        references MASDIVISION (ID);
 
     alter table EMPLOYEE 
         add index FK75C8D6AE78EF579B (TECHNOLOGY_ID), 
@@ -445,6 +442,12 @@
         add index FK453F749264515AF (EMP_ID), 
         add constraint FK453F749264515AF 
         foreign key (EMP_ID) 
+        references EMPLOYEE (ID);
+
+    alter table MASCORESKILL 
+        add index FK9AE7E393AA332609 (EMPLOYEE_ID), 
+        add constraint FK9AE7E393AA332609 
+        foreign key (EMPLOYEE_ID) 
         references EMPLOYEE (ID);
 
     alter table REFERENCE 

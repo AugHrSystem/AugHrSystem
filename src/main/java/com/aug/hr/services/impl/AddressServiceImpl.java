@@ -16,7 +16,7 @@ import com.aug.hr.dao.AddressDao;
 import com.aug.hr.entity.Address;
 import com.aug.hr.services.AddressService;
 
-@Service
+@Service("AddressService")
 @Transactional
 public class AddressServiceImpl implements AddressService{
 
@@ -25,37 +25,41 @@ public class AddressServiceImpl implements AddressService{
 	
 	@Override
 	public void create(Address address) {
-		// TODO Auto-generated method stub
 		addressDao.create(address);
 		
 	}
 
 	@Override
 	public void update(Address address) {
-		// TODO Auto-generated method stub
 		addressDao.update(address);
 		
 	}
 
 	@Override
 	public void delete(Address address) {
-		// TODO Auto-generated method stub
 		addressDao.delete(address);
 		
 	}
 
-	@Override
-	public Address find(Integer Id) {
-		// TODO Auto-generated method stub
-		Address address = addressDao.find(Id);
-		return address;
-	}
 
 	@Override
 	public List<Address> findAll() {
-		// TODO Auto-generated method stub
-		List<Address> addressList = addressDao.findAll();
-		return addressList;
+		return addressDao.findAll();
+	}
+
+	@Override
+	public Address findById(Integer Id) {
+		return addressDao.find(Id);
+	}
+
+	@Override
+	public List<Address> findByCriteria(Address address) {
+		return addressDao.findByCriteria(address);
+	}
+
+	@Override
+	public Address deleteById(Integer id) {
+		return addressDao.deleteById(id);
 	}
 	
 

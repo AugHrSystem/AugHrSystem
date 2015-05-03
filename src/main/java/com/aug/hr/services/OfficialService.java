@@ -16,6 +16,7 @@ public interface OfficialService {
 	public void create(Official official);
 	public void update(Official official);
 	public void delete(Official official);
+	public Official findById(Integer id);
 	public List<Official> findAll();
 	public List<Official> findByCriteria(Official official);
 	public Official deleteById(Integer id);

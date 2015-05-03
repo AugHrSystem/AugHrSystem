@@ -17,6 +17,8 @@ public interface MasAddressTypeService {
 	public void create(MasAddressType masAddressType );
 	public void update(MasAddressType masAddressType);
 	public void delete(MasAddressType masAddressType);
-	public MasAddressType find(Integer Id);
+	public MasAddressType findById(Integer Id);
 	public List<MasAddressType> findAll();
+	public List<MasAddressType> findByCriteria(MasAddressType masAddressType);
+	public MasAddressType deleteById(Integer id);
 }

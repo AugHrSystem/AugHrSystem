@@ -2,7 +2,7 @@
  *
  * @author Pranrajit
  * @date 27 เม.ย. 2558
- */
+ *//*
 package dao;
 
 import java.util.List;
@@ -90,3 +90,4 @@ public void findByIdAbility(){
 	
 	
 }
+*/

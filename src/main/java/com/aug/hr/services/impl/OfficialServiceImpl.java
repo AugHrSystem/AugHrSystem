@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.OfficialDao;
-import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Official;
 import com.aug.hr.services.OfficialService;
-@Service
+
+@Service("OfficialService")
 @Transactional
 public class OfficialServiceImpl implements OfficialService{
 
@@ -38,7 +38,6 @@ public class OfficialServiceImpl implements OfficialService{
 
 	@Override
 	public void delete(Official official) {
-		// TODO Auto-generated method stub
 		officialDao.delete(official);
 	}
 
@@ -46,20 +45,22 @@ public class OfficialServiceImpl implements OfficialService{
 
 	@Override
 	public List<Official> findAll() {
-		List<Official> official = officialDao.findAll();
-		return official;
+		return officialDao.findAll();
 	}
 
 	@Override
 	public List<Official> findByCriteria(Official official) {
-		// TODO Auto-generated method stub
 		return officialDao.findByCriteria(official);
 	}
 
 	@Override
 	public Official deleteById(Integer id) {
-		// TODO Auto-generated method stub
 		return officialDao.deleteById(id);
+	}
+
+	@Override
+	public Official findById(Integer id) {
+		return officialDao.find(id);
 	}
 
 }

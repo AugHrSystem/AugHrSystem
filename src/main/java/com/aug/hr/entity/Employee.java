@@ -1,325 +1,781 @@
+/**
+ *
+ * @author natechanok
+ * @date May 2, 2015
+ */
+
 package com.aug.hr.entity;
 
-
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-/**
- * Created by amanurat on 4/20/15 AD.
- */
+
 @Entity
 @Table(name = "EMPLOYEE")
-public class Employee {
+public class Employee extends BaseEntity{
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "ID")
+	private Integer id;
+	
+	@Column(name = "EMPLOYEE_CODE")
+	private String employeeCode;
+	
+	@Column(name = "NAME_THAI")
+	private String nameThai;
+	
+	@Column(name = "SURNAME_THAI")
+	private String surnameThai;
+	
+	@Column(name = "NICKNAME_THAI")
+	private String nicknameThai;
+	
+	@Column(name = "NAME_ENG")
+	private String nameEng;
+	
+	@Column(name = "SURNAM_ENG")
+	private String surnameEng;
+	
+	@Column(name = "NICKNAME_ENG")
+	private String nicknameEng;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "ID")
-    private Long id;
-
-    @Column(name = "NAME")
-    private String name;
-    
-	@Column(name = "TEL", nullable = false,length= 10)
-    private String tel;
+	@Column(name = "TEL_HOME")
+	private Integer telHome;
 	
-	@Column(name = "SALARY", nullable = false)
-    private Float salary;
+	@Column(name = "TEL_MOBILE")
+	private Integer telMobile;
 	
-	@Column(name = "DOB", nullable = false)
-    private Date dob;
+	@Column(name = "TEL_FAX")
+	private Integer telFax;
 	
-	@Column(name = "AGE", nullable = false)
-    private Integer age;
+	@Column(name = "EMERGENCY_CONTACT")
+	private String emergencyContact;
 	
-	@Column(name = "RELIGION", nullable = false,length= 20)
-    private String religion;
+	@Column(name = "RELATIONSHIP_WITH_EMERGENCY_CONTACT")
+	private String relationshipWithEmergencyContact;
 	
-	@Column(name = "PLACEDOB", nullable = false,length= 50)
-    private String placedob;
+	@Column(name = "EMERGENCY_CONTACT_ADDRESS")
+	private String emergencyContactAddress;
 	
-	@Column(name = "IDCARD", nullable = false,length= 13)
-	private Integer idcard;
+	@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER")
+	private String emergencyContactPhoneNumber;
 	
-	@Column(name = "HEIGH", nullable = false)
-	private Integer heigh;
+	@Column(name = "DATEOFBIRTH")
+	private Date dateOfBirth;
 	
-	@Column(name = "WEIGTH", nullable = false)
+	@Column(name = "PLACEOFBIRTH")
+	private String placeOfBirth;
+	
+	@Column(name = "AGE")
+	private Integer age;
+	
+	@Column(name = "RELIGION")
+	private String religion;
+	
+	@Column(name = "ID_CARD")
+	private Integer idCard;
+	
+	@Column(name = "ISSUED_OFFICE")
+	private String issuedOffice;
+	
+	@Column(name = "EXPIRY_DATE")
+	private Date expiryDate;
+	
+	@Column(name = "HEIGHT")
+	private Integer height;
+	
+	@Column(name = "WEIGTH")
 	private Integer weigth;
 	
-	@Column(name = "GENDER", nullable = false)
-	private String gender;
+	@Column(name = "SEX")
+	private String sex;
 	
-	@Column(name = "STATUS", nullable = false)
-	private String status;
+	@Column(name = "MARITAL_STATUS")
+	private String maritalStatus;
 	
-	@Column(name = "MILITARY", nullable = false)
-	private String military;
+	@Column(name = "NUMBER_OF_CHILDREN")
+	private String numberOfChildren;
 	
-	@Column(name = "QUALIFICATION", nullable = false)
-	private String qualification;
+	@Column(name = "SPOUSE_NAME")
+	private String spouseName;
 	
-	@Column(name = "CODE", nullable = false,length= 10)
-	private String code;
-
+	@Column(name = "MARRIAGE_CERTIFICATE_NO")
+	private String marriageCertificateNo;
 	
-	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
-	private Set<Education> educations = new HashSet<Education>();
+	@Column(name = "ISSUED_OFFICE2")
+	private String issuedOffice2;
+	
+	@Column(name = "ADDRESS")
+	private String address;
+	
+	@Column(name = "OCCUPATION")
+	private String occupation;
+	
+	@Column(name = "KNOW_AUG_NEWSPAPER")
+	private String knowAugNewspaper;
+	
+	@Column(name = "DESCRIPTION_NEWSPAPER")
+	private String descriptionNewspaper;
+	
+	@Column(name = "KNOW_AUG_MAGAZINE")
+	private String knowAugMagazine;
+	
+	@Column(name = "DESCRIPTION_MAGAZINE")
+	private String descriptionMagazine;
+	
+	@Column(name = "KNOW_AUG_WEBSITE")
+	private String knowAugWebsite;
+	
+	@Column(name = "DESCRIPTION_WEBSITE")
+	private String descriptionWebsite;
+	
+	@Column(name = "KNOW_AUG_FRIEND")
+	private String knowAugFriend;
+	
+	@Column(name = "DESCRIPTION_FRIEND")
+	private String descriptionFriend;
+	
+	@Column(name = "KNOW_AUG_OTHER")
+	private String knowAugOther;
+	
+	@Column(name = "DESCRIPTION_OTHER")
+	private String descriptionOther;
+	
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
-    private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();
-	  
-    @ManyToOne
-    @JoinColumn(name= "EMPLOYMENT_ID")
-    private MasEmployment employment;
-    
-    @OneToMany(mappedBy = "employee")
-    private Set<Ability> abilities = new HashSet<Ability>();
-    
-    @OneToMany(mappedBy = "employee")
-    private Set<Reference> references = new HashSet<Reference>();
-    
-    @ManyToOne
-    @JoinColumn(name= "DIVISION_ID")
-    private MasDivision masDivision;
-    
-    @ManyToOne
-    @JoinColumn(name= "JOBLEVEL_ID")
-    private Joblevel joblevel;
-    
-    @OneToMany(mappedBy = "employee")
-    private Set<Experience> experiences = new HashSet<Experience>();
-    
- 
-    @ManyToOne
-    @JoinColumn(name= "TECHNOLOGY_ID")
-    private TechnologyEmp technology;
-    
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
-    private Set<EmpFamily> families = new HashSet<EmpFamily>();
-    
-    @OneToMany(mappedBy = "employee")
-	private Set<Address> addresses = new HashSet<Address>();
-    
-    
+	@Column(name = "KNOW_EMPLOYED_YES")
+	private String knowEmployedYes;
+	
+	@Column(name = "DESCRIPTION_YES")
+	private String descriptionYes;
+	
+	@Column(name = "KNOW_EMPLOYER_NO")
+	private String knowEmployerNo;
+	
+	@Column(name = "MILITARY_SERVICE_YES")
+	private String militaryServiceYes;
+	
+	@Column(name = "FROM_YEAR")
+	private Date fromYear;
+	
+	@Column(name = "TO_YEAR")
+	private Date toYear;
+	
+	@Column(name = "BRANCH_OF_SERVICE")
+	private String branchOfService;
+	
+	@Column(name = "MILITARY_SERVICE_NO")
+	private String militaryServiceNo;
+	
+	@Column(name = "REASONS_NO")
+	private String reasonsNo;
+	
+	@Column(name = "DATE_TO_BE_DRAFTED")
+	private Date dateToBeDrafted;
+	
+	@Column(name = "PREVIOUS_EMPLOYER_YES")
+	private String previousEmployerYes;
+	
+	@Column(name = "PREVIOUS_EMPLOYER_NO")
+	private String previousEmployerNo;
+	
+	@Column(name = "PREVIOUSEMP_REASONS_NO")
+	private String previousEmpreasonsNo;
+	
+	
+	 @OneToMany(mappedBy = "employee")
+		private Set<Address> addresses = new HashSet<Address>();
 
-    public Long getId() {
-        return id;
-    }
+	 
+	 @OneToOne(fetch=FetchType.LAZY)
+	 @JoinColumn(name = "OFFICIAL_ID")
+	 private Official official;
+	 
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	 //-------------------------------------- getter setter --------------------------------------------------//
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-	public Set<MasCoreSkill> getMasCoreSkill() {
-		return masCoreSkill;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setMasCoreSkill(Set<MasCoreSkill> masCoreSkill) {
-		this.masCoreSkill = masCoreSkill;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getTel() {
-		return tel;
+
+	public String getEmployeeCode() {
+		return employeeCode;
 	}
 
-	public void setTel(String tel) {
-		this.tel = tel;
+
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
 	}
 
-	public Float getSalary() {
-		return salary;
+
+	public String getNameThai() {
+		return nameThai;
 	}
 
-	public void setSalary(Float salary) {
-		this.salary = salary;
+
+	public void setNameThai(String nameThai) {
+		this.nameThai = nameThai;
 	}
 
-	public Date getDob() {
-		return dob;
+
+	public String getSurnameThai() {
+		return surnameThai;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
+
+	public void setSurnameThai(String surnameThai) {
+		this.surnameThai = surnameThai;
 	}
+
+
+	public String getNicknameThai() {
+		return nicknameThai;
+	}
+
+
+	public void setNicknameThai(String nicknameThai) {
+		this.nicknameThai = nicknameThai;
+	}
+
+
+	public String getNameEng() {
+		return nameEng;
+	}
+
+
+	public void setNameEng(String nameEng) {
+		this.nameEng = nameEng;
+	}
+
+
+	public String getSurnameEng() {
+		return surnameEng;
+	}
+
+
+	public void setSurnameEng(String surnameEng) {
+		this.surnameEng = surnameEng;
+	}
+
+
+	public String getNicknameEng() {
+		return nicknameEng;
+	}
+
+
+	public void setNicknameEng(String nicknameEng) {
+		this.nicknameEng = nicknameEng;
+	}
+
+
+	public Integer getTelHome() {
+		return telHome;
+	}
+
+
+	public void setTelHome(Integer telHome) {
+		this.telHome = telHome;
+	}
+
+
+	public Integer getTelMobile() {
+		return telMobile;
+	}
+
+
+	public void setTelMobile(Integer telMobile) {
+		this.telMobile = telMobile;
+	}
+
+
+	public Integer getTelFax() {
+		return telFax;
+	}
+
+
+	public void setTelFax(Integer telFax) {
+		this.telFax = telFax;
+	}
+
+
+	public String getEmergencyContact() {
+		return emergencyContact;
+	}
+
+
+	public void setEmergencyContact(String emergencyContact) {
+		this.emergencyContact = emergencyContact;
+	}
+
+
+	public String getRelationshipWithEmergencyContact() {
+		return relationshipWithEmergencyContact;
+	}
+
+
+	public void setRelationshipWithEmergencyContact(
+			String relationshipWithEmergencyContact) {
+		this.relationshipWithEmergencyContact = relationshipWithEmergencyContact;
+	}
+
+
+	public String getEmergencyContactAddress() {
+		return emergencyContactAddress;
+	}
+
+
+	public void setEmergencyContactAddress(String emergencyContactAddress) {
+		this.emergencyContactAddress = emergencyContactAddress;
+	}
+
+
+	public String getEmergencyContactPhoneNumber() {
+		return emergencyContactPhoneNumber;
+	}
+
+
+	public void setEmergencyContactPhoneNumber(String emergencyContactPhoneNumber) {
+		this.emergencyContactPhoneNumber = emergencyContactPhoneNumber;
+	}
+
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+
+	public String getPlaceOfBirth() {
+		return placeOfBirth;
+	}
+
+
+	public void setPlaceOfBirth(String placeOfBirth) {
+		this.placeOfBirth = placeOfBirth;
+	}
+
 
 	public Integer getAge() {
 		return age;
 	}
 
+
 	public void setAge(Integer age) {
 		this.age = age;
 	}
+
 
 	public String getReligion() {
 		return religion;
 	}
 
+
 	public void setReligion(String religion) {
 		this.religion = religion;
 	}
 
-	public String getPlacedob() {
-		return placedob;
+
+	public Integer getIdCard() {
+		return idCard;
 	}
 
-	public void setPlacedob(String placedob) {
-		this.placedob = placedob;
+
+	public void setIdCard(Integer idCard) {
+		this.idCard = idCard;
 	}
 
-	public Integer getIdcard() {
-		return idcard;
+
+	public String getIssuedOffice() {
+		return issuedOffice;
 	}
 
-	public void setIdcard(Integer idcard) {
-		this.idcard = idcard;
+
+	public void setIssuedOffice(String issuedOffice) {
+		this.issuedOffice = issuedOffice;
 	}
 
-	public Integer getHeigh() {
-		return heigh;
+
+	public Date getExpiryDate() {
+		return expiryDate;
 	}
 
-	public void setHeigh(Integer heigh) {
-		this.heigh = heigh;
+
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
 	}
+
+
+	public Integer getHeight() {
+		return height;
+	}
+
+
+	public void setHeight(Integer height) {
+		this.height = height;
+	}
+
 
 	public Integer getWeigth() {
 		return weigth;
 	}
 
+
 	public void setWeigth(Integer weigth) {
 		this.weigth = weigth;
 	}
 
-	public String getGender() {
-		return gender;
+
+	public String getSex() {
+		return sex;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
-	public String getStatus() {
-		return status;
+
+	public String getMaritalStatus() {
+		return maritalStatus;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
 	}
 
-	public String getMilitary() {
-		return military;
+
+	public String getNumberOfChildren() {
+		return numberOfChildren;
 	}
 
-	public void setMilitary(String military) {
-		this.military = military;
+
+	public void setNumberOfChildren(String numberOfChildren) {
+		this.numberOfChildren = numberOfChildren;
 	}
 
-	public String getQualification() {
-		return qualification;
+
+	public String getSpouseName() {
+		return spouseName;
 	}
 
-	public void setQualification(String qualification) {
-		this.qualification = qualification;
+
+	public void setSpouseName(String spouseName) {
+		this.spouseName = spouseName;
 	}
 
-	public String getCode() {
-		return code;
+
+	public String getMarriageCertificateNo() {
+		return marriageCertificateNo;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+
+	public void setMarriageCertificateNo(String marriageCertificateNo) {
+		this.marriageCertificateNo = marriageCertificateNo;
 	}
 
-	public Set<Education> getEducations() {
-		return educations;
+
+	public String getIssuedOffice2() {
+		return issuedOffice2;
 	}
 
-	public void setEducations(Set<Education> educations) {
-		this.educations = educations;
+
+	public void setIssuedOffice2(String issuedOffice2) {
+		this.issuedOffice2 = issuedOffice2;
 	}
 
-	public MasEmployment getEmployment() {
-		return employment;
+
+	public String getAddress() {
+		return address;
 	}
 
-	public void setEmployment(MasEmployment employment) {
-		this.employment = employment;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public Set<Ability> getAbilities() {
-		return abilities;
+
+	public String getOccupation() {
+		return occupation;
 	}
 
-	public void setAbilities(Set<Ability> abilities) {
-		this.abilities = abilities;
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
 	}
 
-	public Set<Reference> getReferences() {
-		return references;
+
+	public String getKnowAugNewspaper() {
+		return knowAugNewspaper;
 	}
 
-	public void setReferences(Set<Reference> references) {
-		this.references = references;
+
+	public void setKnowAugNewspaper(String knowAugNewspaper) {
+		this.knowAugNewspaper = knowAugNewspaper;
 	}
 
-	public MasDivision getDivision() {
-		return masDivision;
+
+	public String getDescriptionNewspaper() {
+		return descriptionNewspaper;
 	}
 
-	public void setDivision(MasDivision masDivision) {
-		this.masDivision = masDivision;
+
+	public void setDescriptionNewspaper(String descriptionNewspaper) {
+		this.descriptionNewspaper = descriptionNewspaper;
 	}
 
-	public Joblevel getJoblevel() {
-		return joblevel;
+
+	public String getKnowAugMagazine() {
+		return knowAugMagazine;
 	}
 
-	public void setJoblevel(Joblevel joblevel) {
-		this.joblevel = joblevel;
+
+	public void setKnowAugMagazine(String knowAugMagazine) {
+		this.knowAugMagazine = knowAugMagazine;
 	}
 
-	public Set<Experience> getExperiences() {
-		return experiences;
+
+	public String getDescriptionMagazine() {
+		return descriptionMagazine;
 	}
 
-	public void setExperiences(Set<Experience> experiences) {
-		this.experiences = experiences;
+
+	public void setDescriptionMagazine(String descriptionMagazine) {
+		this.descriptionMagazine = descriptionMagazine;
 	}
 
-	public TechnologyEmp getTechnology() {
-		return technology;
+
+	public String getKnowAugWebsite() {
+		return knowAugWebsite;
 	}
 
-	public void setTechnology(TechnologyEmp technology) {
-		this.technology = technology;
+
+	public void setKnowAugWebsite(String knowAugWebsite) {
+		this.knowAugWebsite = knowAugWebsite;
 	}
 
-	public Set<EmpFamily> getFamilies() {
-		return families;
+
+	public String getDescriptionWebsite() {
+		return descriptionWebsite;
 	}
 
-	public void setFamilies(Set<EmpFamily> families) {
-		this.families = families;
+
+	public void setDescriptionWebsite(String descriptionWebsite) {
+		this.descriptionWebsite = descriptionWebsite;
 	}
+
+
+	public String getKnowAugFriend() {
+		return knowAugFriend;
+	}
+
+
+	public void setKnowAugFriend(String knowAugFriend) {
+		this.knowAugFriend = knowAugFriend;
+	}
+
+
+	public String getDescriptionFriend() {
+		return descriptionFriend;
+	}
+
+
+	public void setDescriptionFriend(String descriptionFriend) {
+		this.descriptionFriend = descriptionFriend;
+	}
+
+
+	public String getKnowAugOther() {
+		return knowAugOther;
+	}
+
+
+	public void setKnowAugOther(String knowAugOther) {
+		this.knowAugOther = knowAugOther;
+	}
+
+
+	public String getDescriptionOther() {
+		return descriptionOther;
+	}
+
+
+	public void setDescriptionOther(String descriptionOther) {
+		this.descriptionOther = descriptionOther;
+	}
+
+
+	public String getKnowEmployedYes() {
+		return knowEmployedYes;
+	}
+
+
+	public void setKnowEmployedYes(String knowEmployedYes) {
+		this.knowEmployedYes = knowEmployedYes;
+	}
+
+
+	public String getDescriptionYes() {
+		return descriptionYes;
+	}
+
+
+	public void setDescriptionYes(String descriptionYes) {
+		this.descriptionYes = descriptionYes;
+	}
+
+
+	public String getKnowEmployerNo() {
+		return knowEmployerNo;
+	}
+
+
+	public void setKnowEmployerNo(String knowEmployerNo) {
+		this.knowEmployerNo = knowEmployerNo;
+	}
+
+
+	public String getMilitaryServiceYes() {
+		return militaryServiceYes;
+	}
+
+
+	public void setMilitaryServiceYes(String militaryServiceYes) {
+		this.militaryServiceYes = militaryServiceYes;
+	}
+
+
+	public Date getFromYear() {
+		return fromYear;
+	}
+
+
+	public void setFromYear(Date fromYear) {
+		this.fromYear = fromYear;
+	}
+
+
+	public Date getToYear() {
+		return toYear;
+	}
+
+
+	public void setToYear(Date toYear) {
+		this.toYear = toYear;
+	}
+
+
+	public String getBranchOfService() {
+		return branchOfService;
+	}
+
+
+	public void setBranchOfService(String branchOfService) {
+		this.branchOfService = branchOfService;
+	}
+
+
+	public String getMilitaryServiceNo() {
+		return militaryServiceNo;
+	}
+
+
+	public void setMilitaryServiceNo(String militaryServiceNo) {
+		this.militaryServiceNo = militaryServiceNo;
+	}
+
+
+	public String getReasonsNo() {
+		return reasonsNo;
+	}
+
+
+	public void setReasonsNo(String reasonsNo) {
+		this.reasonsNo = reasonsNo;
+	}
+
+
+	public Date getDateToBeDrafted() {
+		return dateToBeDrafted;
+	}
+
+
+	public void setDateToBeDrafted(Date dateToBeDrafted) {
+		this.dateToBeDrafted = dateToBeDrafted;
+	}
+
+
+	public String getPreviousEmployerYes() {
+		return previousEmployerYes;
+	}
+
+
+	public void setPreviousEmployerYes(String previousEmployerYes) {
+		this.previousEmployerYes = previousEmployerYes;
+	}
+
+
+	public String getPreviousEmployerNo() {
+		return previousEmployerNo;
+	}
+
+
+	public void setPreviousEmployerNo(String previousEmployerNo) {
+		this.previousEmployerNo = previousEmployerNo;
+	}
+
+
+	public String getPreviousEmpreasonsNo() {
+		return previousEmpreasonsNo;
+	}
+
+
+	public void setPreviousEmpreasonsNo(String previousEmpreasonsNo) {
+		this.previousEmpreasonsNo = previousEmpreasonsNo;
+	}
+
 
 	public Set<Address> getAddresses() {
 		return addresses;
 	}
 
+
 	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
 	}
-	
 
+
+	public Official getOfficial() {
+		return official;
+	}
+
+
+	public void setOfficial(Official official) {
+		this.official = official;
+	}
+	 
+	 
+	 
+	 
 }

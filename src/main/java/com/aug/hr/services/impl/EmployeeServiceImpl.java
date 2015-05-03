@@ -14,10 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.MasEmployment;
 import com.aug.hr.services.EmployeeService;
 
-@Service
+@Service("EmployeeService")
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -26,43 +25,43 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Override
 	public void create(Employee employee) {
-		// TODO Auto-generated method stub
 		employeeDao.create(employee);
 		
 	}
 
 	@Override
 	public void update(Employee employee) {
-		// TODO Auto-generated method stub
 		employeeDao.update(employee);
 		
 	}
 
 	@Override
 	public void delete(Employee employee) {
-		// TODO Auto-generated method stub
 		employeeDao.delete(employee);
 		
 	}
 
-	@Override
-	public Employee find(Integer Id) {
-		// TODO Auto-generated method stub
-		Employee employee = employeeDao.find(Id);
-		return employee;
-	}
 
 	@Override
 	public List<Employee> findAll() {
-		// TODO Auto-generated method stub
-		List<Employee> employee = employeeDao.findAll();
-		return employee;
+		return employeeDao.findAll();
+	}
+
+	
+
+	@Override
+	public Employee findById(Integer Id) {
+		return employeeDao.find(Id);
 	}
 
 	@Override
-	public List<Employee> findByCriteria(String employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee deleteById(Integer id) {
+		return employeeDao.deleteById(id);
+	}
+
+	@Override
+	public List<Employee> findByCriteria(Employee employee) {
+		return employeeDao.findByCriteria(employee);
 	}
 	
 
