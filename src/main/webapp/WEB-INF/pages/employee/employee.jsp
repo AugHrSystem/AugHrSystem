@@ -57,7 +57,7 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Name(Thai) :</label> <input type="text" class="form-control"
-									id="name" placeholder="name(thai)">
+									id="nameThai" placeholder="name(thai)">
 								</div>
 								<div class="col-md-3">
 									<label> SurName(Thai) :</label> <input type="text" class="form-control"
@@ -708,7 +708,7 @@ var dt;
     				url : "${pageContext.request.contextPath}/employee/add",
     				type : "POST",
     				 data : JSON.stringify({
-    					 name: $("#name").val(),
+    					 nameThai: $("#nameThai").val(),
     			
     					}),
     				 datatype: "json",
@@ -730,7 +730,7 @@ var dt;
 					type : "POST",
 					data : JSON.stringify({
 						 id: empId,
-						 name: $("#name").val(),
+						 nameThai: $("#nameThai").val(),
 					 }),
 					datatype: "json",
 					contentType: "application/json",
@@ -751,7 +751,7 @@ var dt;
 					url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,
 					type : "POST",
 					success : function(data) {
-						$("#name").val(data.name);
+						$("#nameThai").val(data.nameThai);
 		
 					},
 					error : function(data,testStatus,jqXHR) {

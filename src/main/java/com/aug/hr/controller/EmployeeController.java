@@ -54,7 +54,7 @@ public class EmployeeController {
 	//InitEdit
 	@RequestMapping(value = "/employee/initEdit/{empId}", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Employee initEditEmployee(@PathVariable("empId") Integer empId) {	
-		return employeeService.find(empId);
+		return employeeService.findById(empId);
 	}
 	
 	//edit

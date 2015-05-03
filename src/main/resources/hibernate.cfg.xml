@@ -34,7 +34,7 @@
 		<mapping class="com.aug.hr.entity.MasProvince" />
 		<mapping class="com.aug.hr.entity.Login"/>
 		<mapping class="com.aug.hr.entity.MasDegreetype"/>			
-        
+        <mapping class="com.aug.hr.entity.Official"/>
 
 
 	</session-factory>
