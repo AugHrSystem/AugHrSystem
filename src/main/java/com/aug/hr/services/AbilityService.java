@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.Reference;
 
 
 public interface AbilityService {
@@ -21,5 +22,6 @@ public interface AbilityService {
 	public List<Ability> findByCriteria(Ability ability);
 	public Ability deleteById(Integer id);
 	public List<Employee> findByCriteria(Employee employee);
+	
 	
 }

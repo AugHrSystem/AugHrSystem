@@ -9,13 +9,12 @@ package com.aug.hr.entity;
 
 
 import javax.persistence.Column;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Id;
 import javax.persistence.Entity;
-
 import javax.persistence.Table;
 
 
@@ -35,10 +34,15 @@ public class Ability extends BaseEntity  {
 	private Integer rank;
 
 	
-	@ManyToOne
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
+	 private Official official;
+	
+	/*@ManyToOne
 	@JoinColumn(name = "EMP_ID")
 	private Employee employee;
-	
+	*/
 	@ManyToOne
 	@JoinColumn(name = "SPEC_ID")
 	private MasSpecialty masspecialty;
@@ -55,14 +59,22 @@ public class Ability extends BaseEntity  {
 	
 
 
-	public Employee getEmployee() {
+/*	public Employee getEmployee() {
 		return employee;
 	}
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}*/
+
+
+	public Official getOfficial() {
+		return official;
 	}
 
+	public void setOfficial(Official official) {
+		this.official = official;
+	}
 
 	public Integer getRank() {
 		return rank;

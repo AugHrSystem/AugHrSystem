@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.AbilityDao;
 import com.aug.hr.entity.Ability;
-
 import com.aug.hr.entity.Employee;
 import com.mysql.jdbc.StringUtils;
 
@@ -40,6 +39,9 @@ public class AbilityDaoImpl extends GenericDaoImpl<Ability,Integer> implements A
 		getCurrentSession().delete(ability);
 		return ability;
 	}
+
+	
+
 
 
 	}

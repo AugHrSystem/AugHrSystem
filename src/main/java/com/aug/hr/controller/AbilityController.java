@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.entity.Ability;
 
+
+import com.aug.hr.entity.Ability;
 import com.aug.hr.services.AbilityService;
 import com.aug.hr.services.MasSpecialtyService;
 
@@ -47,42 +49,51 @@ public class AbilityController {
 	@RequestMapping(value="/ability",method={RequestMethod.GET,
 			RequestMethod.POST})
 	public String listAbility(HttpSession session,Locale locale, ModelMap model){
-		System.out.print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-				+ "aaaaaaaaaaaaaaaaaaaaa"
-				+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaauuuuu"
-				+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-				+ "aaaaaaaaaaaaaaaaaaaaaa");
 		model.addAttribute("masspecialtyList",
 				masSpecialtyService.findAll());
 		
-		
-		System.out.print("ooooooooooooooooooooooooooooooooooooooooooo"
-				+ "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
-				+ "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
-				+ "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
-				+ "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
 		return "/ability/ability";
 	}
 	
 	@RequestMapping(value="/ability/add",method=RequestMethod.POST)
 	public @ResponseBody Ability addAbility(@RequestBody Ability ability){
-		
-		
-		System.out.print("33333333333333333333333333333333333333333"
-				+ "3333333333333333333333333333333333333"
-				+ "3333333333333333333333333333"
-				+ "333333333333333333333333333333"
-				+ "3333333333333333333333333333333333333");
-		
 		abilityService.create(ability);
-		
-		
-		System.out.print("1111111111111111111111111111111"
-				+ "1111111111111111111111111111111111"
-				+ "1111111111111111111111111111111"
-				+ "11111111111111111111111111"
-				+ "111111111111111111111111111111");
 		return ability;
+	}
+	/*
+	@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
+	public @ResponseBody Ability findById(@RequestParam Integer id){
+		return abilityService.find(id);
+	}*/
+	
+	@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
+	public @ResponseBody Ability findById(@RequestParam Integer id)
+	{
+		return abilityService.find(id);
+	}
+	
+	@RequestMapping(value="/ability/update",method=RequestMethod.POST)
+	public @ResponseBody Ability ubdateAbility(@RequestBody Ability ability){
+			abilityService.update(ability);
+			return ability;
+	}
+	
+	/*@RequestMapping(value="/ability/delete",method=RequestMethod.POST)
+	public @ResponseBody String deleteAbility(@RequestParam Integer id){
+		abilityService.deleteById(id);
+		
+		return "{success:true}";
+	}*/
+	
+	
+	@RequestMapping(value="/ability/delete",method=RequestMethod.POST)
+	public @ResponseBody String deleteById(@RequestParam Integer id){
+		
+		abilityService.deleteById(id);
+		
+		return "{success:true}";
+	
+	
 	}
 	
 	@ModelAttribute("ability")

@@ -115,6 +115,36 @@
 
 </form:form>
 
+
+<form:form id="deleteForm" commandName="ability" method="post">
+
+		<!-- Modal -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Delete Spe</h4>
+					</div>
+					<div class="modal-body">
+						<h4>Are you sure?</h4>
+						<form:hidden path="id"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger btnYes">Yes</button>
+						<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</form:form>
+
+
 </div>
 <script type="text/javascript">
 var dt;
@@ -129,35 +159,40 @@ $(document).ready(function(){
 		
 		var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 		var abilityid = button.data("id") //Extract info from data-* attribute
-		/* 
+		 
 		if(abilityid != null){
 			getId(abilityid);
-		}  */
+		}  
 		
 		$(this).find(".btnSave").off("click").on("click",function() {
-			/* if(abilityid != null){
-				updateAbility(button, abilityid);
-			}else{ */
-				
-				//alert("be");
+			 if(abilityid != null){
+				/*  alert("be up"); */
+				updateAbility(button,abilityid);
+			}else{ 
 				addAbility();
-				//alert("af");
-			 /* } */
+				
+			  } 
 			
+		});
+		
+	});
+	
+	/* --- DeleteName --- */
+	$("#deleteModal").on("show.bs.modal",function(event) {
+		
+		var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
+		var abilityid = button.data("id") //Extract info from data-* attribute
+		
+		$(this).find(".btnYes").off("click").on("click",function() {
+			deleteAbility(button,abilityid);
 		});
 		
 	});
 	
 	
 	
-	
 	/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
-	function clearModal(){
-		
-		$("#masspecialty").val("-1"),
-		$("#rank").val("");
-	}
 	
 	function addAbility(){
 		$.ajax({
@@ -195,9 +230,96 @@ $(document).ready(function(){
 		});
 	}
 	
+function getId(abilityid){
+		
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath}/ability/findById",
+			data : "id=" + abilityid,
+			type : "POST",
+			success : function(data) {
+				//alert(JSON.stringify(data));
+				
+				$("#masspecialty").val(data.masspecialty.id);
+				$("#rank").val(data.rank);
+				
+			},
+			error : function(data, textStatus, jqXML) {
+				{
+					alert("error");
+				}
+				;
+			}
+
+		});
+	}
+	
+function updateAbility(button,abilityid) {
+/* alert("fn up"); */
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/ability/update",
+		data : JSON.stringify({
+			id: abilityid,
+			masspecialty : {
+				id : $("#masspecialty").val(),
+				name : $("#masspecialty option:selected").text()
+			},
+			rank : $("#rank").val(),
+			employee : {id:2},
+		}),
+
+		type : "POST",
+		contentType : "application/json",
+		dataType : "json",
+		success : function(data) {
+			//alert(abilityid);
+			//alert(JSON.stringify(data));
+			
+			var tr = button.closest("tr");
+			
+			dt.fnUpdate(data.masspecialty.name, tr, 0);
+			dt.fnUpdate(data.rank, tr, 1 );
+			
+			//alert(data.masspecialty.name);
+			$('#addModal').modal('toggle');
+
+		},
+		error : function() {
+			alert("ERROR");
+		}
+	});
+}
+	
+function deleteAbility(button,abilityid) {
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/ability/delete",
+		data :"id=" + abilityid,
+		type : "POST",
+		success : function(data) {
+			//alert(JSON.stringify(data));
+			
+			var tr = button.closest("tr");
+			
+			dt.fnDeleteRow( tr );
+			
+			$('#deleteModal').modal('toggle');
+		},
+		error : function() {
+			alert("ERROR");
+		}
+	
+		});
+}
 	
 	
-	
+function clearModal(){
+		
+		$("#masspecialty").val("-1"),
+		$("#rank").val("");
+	}
 	
 	
 	

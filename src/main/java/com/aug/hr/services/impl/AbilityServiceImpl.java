@@ -68,7 +68,10 @@ public class AbilityServiceImpl implements AbilityService{
 	public List<Ability> findByCriteria(Ability ability) {
 		// TODO Auto-generated method stub
 		return null;
-	}	
+	}
+
+	
+
 	
 
 }

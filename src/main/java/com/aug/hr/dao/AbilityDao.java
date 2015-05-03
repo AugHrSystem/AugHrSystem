@@ -9,11 +9,13 @@ import java.util.List;
 
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.Reference;
 
 public interface AbilityDao extends GenericDao<Ability, Integer> {
 
 	public List<Employee> findByCriteria(Employee employee);
-
+	
 	public Ability deleteById(Integer id);
 
+	
 }
