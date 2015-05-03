@@ -59,7 +59,7 @@ public class Employee extends BaseEntity{
 	
 	@Column(name = "TEL_FAX")
 	private Integer telFax;
-	
+
 	@Column(name = "EMERGENCY_CONTACT")
 	private String emergencyContact;
 	
@@ -101,7 +101,7 @@ public class Employee extends BaseEntity{
 	
 	@Column(name = "SEX")
 	private String sex;
-	
+
 	@Column(name = "MARITAL_STATUS")
 	private String maritalStatus;
 	
@@ -153,7 +153,6 @@ public class Employee extends BaseEntity{
 	@Column(name = "DESCRIPTION_OTHER")
 	private String descriptionOther;
 	
-
 	@Column(name = "KNOW_EMPLOYED_YES")
 	private String knowEmployedYes;
 	
@@ -181,6 +180,7 @@ public class Employee extends BaseEntity{
 	@Column(name = "REASONS_NO")
 	private String reasonsNo;
 	
+
 	@Column(name = "DATE_TO_BE_DRAFTED")
 	private Date dateToBeDrafted;
 	
@@ -208,6 +208,7 @@ public class Employee extends BaseEntity{
 	public Integer getId() {
 		return id;
 	}
+
 
 
 	public void setId(Integer id) {
@@ -398,6 +399,7 @@ public class Employee extends BaseEntity{
 
 	public Integer getIdCard() {
 		return idCard;
+
 	}
 
 
