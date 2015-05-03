@@ -42,8 +42,8 @@ public class Experience extends BaseEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@ManyToOne
-	@JoinColumn(name="EMPLOYEE_ID")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id")
 	private Employee employee;
 	
 	
@@ -75,7 +75,7 @@ public class Experience extends BaseEntity {
 		return address;
 	}
 	public void setAddress(String address) {
-		address = address;
+		this.address = address;
 	}
 	public String getBusiness() {
 		return business;

@@ -29,11 +29,12 @@ public class ExperienceDaoImpl extends GenericDaoImpl<Experience, Integer> imple
 	}
 	
 	@Override
-	public Experience deleteById(Integer id){
+	public void deleteById(Integer id){
 		
 		Experience experience =(Experience)getCurrentSession().load(Experience.class, id);
-		getCurrentSession().delete(experience);
-		return experience;
+		if(experience != null){
+			getCurrentSession().delete(experience);
+		}
 	}
 
 }

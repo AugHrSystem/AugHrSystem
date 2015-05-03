@@ -41,7 +41,9 @@ public class ExperienceController {
 	
 	@RequestMapping(value ="/experience/listAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<Experience> listAll(){
-		return experienceService.findAll();
+		Experience experience = new Experience();
+		experience.setAddress("");
+		return experienceService.findByCriteria(experience);
 	}
 	
 	@RequestMapping(value ="/experience/testAjax/{string}", method = {RequestMethod.GET, RequestMethod.POST})
@@ -70,7 +72,7 @@ public class ExperienceController {
 	}
 	
 	//delete
-	@RequestMapping("/experience/delete/{expId}")
+	@RequestMapping(value = "/experience/delete/{expId}", method = RequestMethod.POST )
 	public String deleteExperience(@PathVariable("expId") Integer expId) {
 		experienceService.deleteById(expId);
 		return "redirect:/experience";

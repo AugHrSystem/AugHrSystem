@@ -21,7 +21,7 @@
 <!-- Data Table -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.themeroller.css" />" rel="stylesheet">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
 
 <title>Experience</title>
 <style>
@@ -165,24 +165,7 @@ var dt;
 			todayHighlight : true
 		});
     	dt=$("#tdResult").dataTable();
-/* 		$.ajax({
-			url : "${pageContext.request.contextPath}/experience/listAll",
-			type : "POST,GET",
-			success : function(data) {
-				dt.fnClearTable();
-			for (var i=0;i< data.length; i++) {
-				dt.fnAddData([data[i].id,data[i].companyName,data[i].business, 
-				              data[i].position,data[i].dateFrom,data[i].dateTo,
-				              data[i].description,data[i].superVisor,data[i].address,
-					'<button type="button" class="btn btn-info btn-sm active" data-productId="' + data[i].productId + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-					'<button type="button" class="btn btn-danger btn-sm active" data-productId="' + data[i].productId + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
-		
-				}
-			},
-			error : function(data,testStatus,jqXHR) {
-				$("#outputajax").text(testStatus);
-				}
-			}); */
+ 		//listAll();
 		
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
@@ -324,9 +307,11 @@ var dt;
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteExperience(button,expId);
+							alert("go fn");
 						});
 				
 				function deleteExperience(button,expId){
+					alert("in fn");
 					$.ajax({
 						url : "${pageContext.request.contextPath}/experience/delete/"+expId,
 						type : "POST",
@@ -344,6 +329,27 @@ var dt;
 				}
     		   		
       	});
+			
+			function listAll(){
+				$.ajax({
+					url : "${pageContext.request.contextPath}/experience/listAll",
+					type : "POST",
+					success : function(data) {
+						dt.fnClearTable();
+					for (var i=0;i< data.length; i++) {
+						dt.fnAddData([data[i].id,data[i].companyName,data[i].business, 
+						              data[i].position,data[i].dateFrom,data[i].dateTo,
+						              data[i].description,data[i].superVisor,data[i].address,
+							'<button type="button" class="btn btn-info btn-sm active" data-productId="' + data[i].productId + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-danger btn-sm active" data-productId="' + data[i].productId + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+				
+						}
+					},
+					error : function(data,testStatus,jqXHR) {
+						$("#outputajax").text(testStatus);
+						}
+					}); 
+			}
     	
   	});
   

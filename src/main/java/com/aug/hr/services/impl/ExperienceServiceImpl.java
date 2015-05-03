@@ -50,8 +50,8 @@ public class ExperienceServiceImpl implements ExperienceService{
 	}
 
 	@Override
-	public Experience deleteById(Integer id) {
-		return experienceDao.deleteById(id);
+	public void deleteById(Integer id) {
+		experienceDao.deleteById(id);
 	}
 
 }

@@ -19,6 +19,6 @@ public interface ExperienceService {
 	
 	public List<Experience> findByCriteria(Experience experience);
 	
-	public Experience deleteById(Integer id);
+	public void deleteById(Integer id);
 	
 }
