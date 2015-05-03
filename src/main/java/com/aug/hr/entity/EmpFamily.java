@@ -159,7 +159,14 @@ public class EmpFamily extends BaseEntity implements Serializable {
 		this.empFamilyRelation = empFamilyRelation;
 	}
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	/*
+	@ManyToOne(fetch=FetchType.EAGER)
+	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
+	 private Official official;
+	
+	*/
+	
+	/*@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="EMP_ID",nullable=false)
 	
 	public Employee getEmployee() {
@@ -170,7 +177,17 @@ public class EmpFamily extends BaseEntity implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+*/
 
+	/*public Official getOfficial() {
+		return official;
+	}
+
+
+	public void setOfficial(Official official) {
+		this.official = official;
+	}
+*/
 
 	@Override
 	public String toString() {

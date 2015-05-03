@@ -72,9 +72,9 @@ public class Official {
 		    @JoinColumn(name= "TECHNOLOGY_ID")
 		    private TechnologyEmp technology;
 		    
-		    @OneToMany(mappedBy = "official", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+		   /* @OneToMany(mappedBy = "official", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
 		    private Set<EmpFamily> families = new HashSet<EmpFamily>();
-		    
+*/		    
 
 //---------------------------------------------- getter setter ---------------------------------------------//
 		 
@@ -208,15 +208,17 @@ public class Official {
 		}
 
 
-		public Set<EmpFamily> getFamilies() {
+		/*public Set<EmpFamily> getFamilies() {
 			return families;
 		}
 
 
 		public void setFamilies(Set<EmpFamily> families) {
 			this.families = families;
-		}
-		 
+		}*/
+
+
+		
 		 
 
 

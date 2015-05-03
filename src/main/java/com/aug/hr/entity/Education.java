@@ -35,9 +35,14 @@ public class Education extends BaseEntity{
 	@Column(name = "MAJOR" ,nullable =false)
 	private String major;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
+	 private Official official;
+	
+	/*@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EMP_ID")
-	private Employee employee;
+	private Employee employee;*/
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "DEGREE_ID")
@@ -84,13 +89,24 @@ public class Education extends BaseEntity{
 	public void setMajor(String major) {
 		this.major = major;
 	}
+	
+	
+	
 
-	public Employee getEmployee() {
+	/*public Employee getEmployee() {
 		return employee;
 	}
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}*/
+
+	public Official getOfficial() {
+		return official;
+	}
+
+	public void setOfficial(Official official) {
+		this.official = official;
 	}
 
 	public MasDegreetype getMasdegreetype() {

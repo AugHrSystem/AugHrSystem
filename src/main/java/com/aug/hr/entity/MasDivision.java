@@ -9,8 +9,11 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,8 +35,13 @@ public class MasDivision extends BaseEntity{
 	@Column(name = "ISACTIVE" ,nullable =false)
 	private Boolean isActive;
 	
-	@OneToMany(mappedBy = "masDivision")
-	private Set<Employee> employees;
+	
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
+	 private Official official;
+	/*@OneToMany(mappedBy = "masDivision")
+	private Set<Employee> employees;*/
 	
 	/*---------------------- getter / setter ----------------------*/
 
@@ -60,13 +68,23 @@ public class MasDivision extends BaseEntity{
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
+	
 
-	public Set<Employee> getEmployees() {
+	/*public Set<Employee> getEmployees() {
 		return employees;
 	}
 
 	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
+	}*/
+
+	public Official getOfficial() {
+		return official;
+	}
+
+	public void setOfficial(Official official) {
+		this.official = official;
 	}
 
 	public Boolean getIsActive() {

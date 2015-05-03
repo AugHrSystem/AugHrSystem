@@ -42,10 +42,14 @@ public class Reference {
 	private String oocupation;
 
 	
-
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
+	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
+	 private Official official;
+	
+	
+	/*@ManyToOne
 	@JoinColumn(name = "EMP_ID")
-	private Employee employee;
+	private Employee employee;*/
 
 
 
@@ -109,7 +113,19 @@ public class Reference {
 
 
 
-	public Employee getEmployee() {
+	public Official getOfficial() {
+		return official;
+	}
+
+
+
+	public void setOfficial(Official official) {
+		this.official = official;
+	}
+
+
+
+	/*public Employee getEmployee() {
 		return employee;
 	}
 
@@ -117,7 +133,7 @@ public class Reference {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}
+	}*/
 
 
 	

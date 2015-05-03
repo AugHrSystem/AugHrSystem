@@ -128,7 +128,7 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Delete Spe</h4>
+						<h4 class="modal-title" id="myModalLabel">Delete Specialty</h4>
 					</div>
 					<div class="modal-body">
 						<h4>Are you sure?</h4>
@@ -200,7 +200,7 @@ $(document).ready(function(){
 			data : JSON.stringify({
 				masspecialty : {id:$("#masspecialty").val(), name:$("#masspecialty option:selected").text()},
 				rank : $("#rank").val(),
-				employee : {id:2},
+				//employee : {id:2},
 			}),
 			type : "POST",
 			contentType : "application/json",
@@ -267,7 +267,7 @@ function updateAbility(button,abilityid) {
 				name : $("#masspecialty option:selected").text()
 			},
 			rank : $("#rank").val(),
-			employee : {id:2},
+			
 		}),
 
 		type : "POST",
