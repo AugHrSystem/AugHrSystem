@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,12 +57,18 @@ public class EducationController {
 		return education;
 	}
 	
-	@RequestMapping(value = "/education/findById", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/education/findById", method = RequestMethod.POST)
 	public @ResponseBody Education findById(@RequestParam Integer educationid) {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
 		return educationService.findById(educationid);
-	}
+	}*/
 	
+	//InitEdit
+		@RequestMapping(value = "/education/findById/{educationid}", method = { RequestMethod.GET, RequestMethod.POST })
+		public @ResponseBody Education findById(@PathVariable("educationid") Integer educationid) {	
+			return educationService.findById(educationid);
+		}
+		
 	@RequestMapping(value = "/education/delete", method = RequestMethod.POST)
 	public @ResponseBody String deleteEducation(@RequestParam Integer educationid) {
 		educationService.deleteById(educationid);

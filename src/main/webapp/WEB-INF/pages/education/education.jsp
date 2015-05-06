@@ -105,7 +105,6 @@
 	  <div class="form-group">
 	    <label>Degree :</label>
 	    
-		<div class="form-group">
 		  <form:select path="masdegreetype" class="form-control"
 			id="masdegreetype">
 			<form:option value="-1" label="---Select Degree---" />
@@ -113,7 +112,6 @@
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>
 		</form:select>
-		</div>
 	  </div>
 
       </div>
@@ -292,12 +290,12 @@
 		
 		function getId(educationid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/findById",
-				data : "educationid=" + educationid,
+				url : "${pageContext.request.contextPath}/education/findById/"+educationid,
+				//data : "educationid=" + educationid,
 				type : "POST",
 				success : function(data) {
 	 				//alert(JSON.stringify(data));
-					
+					alert("ok");
 					$("#university").val(data.university),
 					$("#gpa").val(data.gpa),
 					$("#faculty").val(data.faculty),
