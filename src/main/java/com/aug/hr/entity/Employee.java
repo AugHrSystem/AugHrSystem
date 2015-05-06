@@ -95,10 +95,10 @@ public class Employee {
  
     @ManyToOne
     @JoinColumn(name= "TECHNOLOGY_ID")
-    private TechnologyEmp technology;
+    private TechnologyEmployee technology;
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
-    private Set<EmpFamily> families = new HashSet<EmpFamily>();
+    private Set<Family> families = new HashSet<Family>();
     
     @OneToMany(mappedBy = "employee")
 	private Set<Address> addresses = new HashSet<Address>();
@@ -297,19 +297,19 @@ public class Employee {
 		this.experiences = experiences;
 	}
 
-	public TechnologyEmp getTechnology() {
+	public TechnologyEmployee getTechnology() {
 		return technology;
 	}
 
-	public void setTechnology(TechnologyEmp technology) {
+	public void setTechnology(TechnologyEmployee technology) {
 		this.technology = technology;
 	}
 
-	public Set<EmpFamily> getFamilies() {
+	public Set<Family> getFamilies() {
 		return families;
 	}
 
-	public void setFamilies(Set<EmpFamily> families) {
+	public void setFamilies(Set<Family> families) {
 		this.families = families;
 	}
 

@@ -14,18 +14,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aug.hr.entity.EmpFamily;
+import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
-import com.aug.hr.services.EmpFamilyService;
+import com.aug.hr.services.FamilyService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 @Transactional
-public class EmpFamilyServiceTest {
+public class FamilyServiceTest {
 	
 	@Autowired
-	private EmpFamilyService empFamilyService;
+	private FamilyService empFamilyService;
 	private Employee emp = new Employee();
 	
 	
@@ -33,37 +33,37 @@ public class EmpFamilyServiceTest {
 	@Rollback(false)
 	public void createDataEmpFamily(){
 		
-		EmpFamily empFamily = new EmpFamily();
-		empFamily.setEmpFamilyFirstName("augmentis");
-		empFamily.setEmpFamilyLastName("admin servicetest");
-		empFamily.setEmpFamilyMobile("0890851022");
-		empFamily.setEmpFamilyGender("Female");
-		empFamily.setEmpFamilyAddress("7/7 m.8 nongsamwong nongsua pathumtani");
-		empFamily.setEmpFamilyRelation("daughter");
-		empFamily.setEmpFamilyAge(24);
+		Family empFamily = new Family();
+		empFamily.setFirstName("augmentis");
+		empFamily.setLastName("admin servicetest");
+		empFamily.setMobile("0890851022");
+		empFamily.setGender("Female");
+		empFamily.setAddress("7/7 m.8 nongsamwong nongsua pathumtani");
+		empFamily.setRelation("daughter");
+		empFamily.setAge(24);
 		Calendar cal = Calendar.getInstance();
 		empFamily.setCreatedTimeStamp(cal.getTime());
 		empFamily.setCreatedBy(0);
 		empFamily.setAuditFlag("C");
-		emp.setId(1L);
+		emp.setId(7L);
 		empFamily.setEmployee(emp);
 		empFamilyService.create(empFamily);
 		
 		
 
-		EmpFamily empFamily1 = new EmpFamily();
-		empFamily1.setEmpFamilyFirstName("apiva kim");
-		empFamily1.setEmpFamilyLastName("test");
-		empFamily1.setEmpFamilyMobile("0890851022");
-		empFamily1.setEmpFamilyGender("Female");
-		empFamily1.setEmpFamilyAddress("7/7 m.8 nongsamwong nongsua pathumtani");
-		empFamily1.setEmpFamilyRelation("son");
-		empFamily1.setEmpFamilyAge(24);
+		Family empFamily1 = new Family();
+		empFamily1.setFirstName("apiva kim");
+		empFamily1.setLastName("test");
+		empFamily1.setMobile("0890851022");
+		empFamily1.setGender("Female");
+		empFamily1.setAddress("7/7 m.8 nongsamwong nongsua pathumtani");
+		empFamily1.setRelation("son");
+		empFamily1.setAge(24);
 		Calendar cal1 = Calendar.getInstance();
 		empFamily1.setCreatedTimeStamp(cal1.getTime());
 		empFamily1.setCreatedBy(0);
 		empFamily1.setAuditFlag("C");
-		emp.setId(2L);
+		emp.setId(7L);
 		empFamily1.setEmployee(emp);
 		empFamilyService.create(empFamily1);
 		
@@ -76,8 +76,8 @@ public class EmpFamilyServiceTest {
 	@Rollback(false)
 	public void updateDataEmpFamily(){
 		
-		EmpFamily empFamily = (EmpFamily)empFamilyService.find(5);
-		empFamily.setEmpFamilyFirstName("apiva va");
+		Family empFamily = (Family)empFamilyService.find(5);
+		empFamily.setFirstName("apiva va");
 		empFamilyService.update(empFamily);
 	}
 
@@ -87,7 +87,7 @@ public class EmpFamilyServiceTest {
 	@Rollback(false)
 	public void deleteDataEmpFamily(){
 		
-		EmpFamily empFamily = (EmpFamily)empFamilyService.find(6);
+		Family empFamily = (Family)empFamilyService.find(6);
 		empFamilyService.delete(empFamily);
 	}
 	
@@ -96,7 +96,7 @@ public class EmpFamilyServiceTest {
 	@Test
 	public void findAllDataEmpFamily(){
 		
-		List<EmpFamily> empFamilyList = empFamilyService.findAll();
+		List<Family> empFamilyList = empFamilyService.findAll();
 		Assert.assertEquals(2, empFamilyList.size());
 		
 		
@@ -107,8 +107,8 @@ public class EmpFamilyServiceTest {
 	@Test
 	public void findDataByIdEmpFamily(){
 		
-		EmpFamily empFamily = (EmpFamily)empFamilyService.find(5);	
-		int id = empFamily.getEmpFamilyId();
+		Family empFamily = (Family)empFamilyService.find(5);	
+		int id = empFamily.getId();
 		Assert.assertEquals(5,id);
 		
 		

@@ -21,7 +21,7 @@ import com.aug.hr.entity.MasTechnology;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 @Transactional
-public class MastechnologyTest {
+public class MastechnologyDaoTest {
 	
 	@Autowired
 	private MasTechnologyDao masTechnologyDao;

@@ -21,19 +21,19 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aug.hr.dao.TechnologyEmpDao;
+import com.aug.hr.dao.TechnologyEmployeeDao;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasTechnology;
-import com.aug.hr.entity.TechnologyEmp;
+import com.aug.hr.entity.TechnologyEmployee;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 @Transactional
-public class TechnologyEmpTest {
+public class TechnologyEmployeeDaoTest {
 	
 	@Autowired
-	private TechnologyEmpDao techEmpDao;
+	private TechnologyEmployeeDao techEmpDao;
 	private MasTechnology masTechnology ;
 	private Employee emp;
 	@Autowired
@@ -93,7 +93,7 @@ public class TechnologyEmpTest {
 		Employee employee = (Employee) getCurrentSessionEmp().get(Employee.class,1L);
 		
 		
-		TechnologyEmp techEmp = new TechnologyEmp();
+		TechnologyEmployee techEmp = new TechnologyEmployee();
 		techEmp.setEmployee(employee);
   	    masTechnology.setMasTechnologyId(1);
 		techEmp.setMasTech(masTechnology);
@@ -110,7 +110,7 @@ public class TechnologyEmpTest {
 	@Rollback(false)
 	public void updateDataTechnologyEmp(){
 		
-		TechnologyEmp techEmp = (TechnologyEmp) techEmpDao.getCurrentSession().get(TechnologyEmp.class, 7);
+		TechnologyEmployee techEmp = (TechnologyEmployee) techEmpDao.getCurrentSession().get(TechnologyEmployee.class, 7);
 		masTechnology.setMasTechnologyId(2);
 		techEmp.setMasTech(masTechnology);
 		techEmpDao.getCurrentSession().update(techEmp);
@@ -122,8 +122,8 @@ public class TechnologyEmpTest {
 	@Test
 	public void findAllDataTechnologyEmp(){
 		
-		 Criteria c =  techEmpDao.getCurrentSession().createCriteria(TechnologyEmp.class);
-		 List<TechnologyEmp> techEmpList = c.list();
+		 Criteria c =  techEmpDao.getCurrentSession().createCriteria(TechnologyEmployee.class);
+		 List<TechnologyEmployee> techEmpList = c.list();
 		 Assert.assertEquals(1, techEmpList.size());
 		
 	}
@@ -132,7 +132,7 @@ public class TechnologyEmpTest {
 	@Test
 	public void findDataByIdTechnologyEmp(){
 		
-		TechnologyEmp technologyEmp =  (TechnologyEmp) techEmpDao.getCurrentSession().get(TechnologyEmp.class,7);
+		TechnologyEmployee technologyEmp =  (TechnologyEmployee) techEmpDao.getCurrentSession().get(TechnologyEmployee.class,7);
 		Assert.assertEquals(new Integer(7), technologyEmp.getTechnologyEmpId());
 		
 	}
@@ -142,7 +142,7 @@ public class TechnologyEmpTest {
 	@Rollback(false)
 	public void deleteDataTechnologyEmp(){
 		
-		TechnologyEmp techEmp = (TechnologyEmp) techEmpDao.getCurrentSession().get(TechnologyEmp.class, 7);
+		TechnologyEmployee techEmp = (TechnologyEmployee) techEmpDao.getCurrentSession().get(TechnologyEmployee.class, 7);
 		techEmpDao.getCurrentSession().delete(techEmp);
 		
 	}

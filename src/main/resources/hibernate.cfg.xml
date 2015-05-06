@@ -27,8 +27,8 @@
 		<mapping class="com.aug.hr.entity.MasSpecialty" />
 		<mapping class="com.aug.hr.entity.Experience" />
 		<mapping class="com.aug.hr.entity.MasTechnology" />
-		<mapping class="com.aug.hr.entity.TechnologyEmp" />
-		<mapping class="com.aug.hr.entity.EmpFamily" />
+		<mapping class="com.aug.hr.entity.TechnologyEmployee" />
+		<mapping class="com.aug.hr.entity.Family" />
 		<mapping class="com.aug.hr.entity.Address" />
 		<mapping class="com.aug.hr.entity.MasAddressType" />
 		<mapping class="com.aug.hr.entity.MasProvince" />
