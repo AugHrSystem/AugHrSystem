@@ -14,23 +14,23 @@ import java.beans.PropertyEditorSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.aug.hr.entity.EmpFamily;
-import com.aug.hr.services.EmpFamilyService;
+import com.aug.hr.entity.Family;
+import com.aug.hr.services.FamilyService;
 
 
 
 
 @Component
-public class EmpFamilyEditor extends PropertyEditorSupport{
+public class FamilyEditor extends PropertyEditorSupport{
 
 	@Autowired
-	private EmpFamilyService empFamilyService;
+	private FamilyService empFamilyService;
 	
 	@Override
 	public void setAsText(String text) {
 		this.setValue(null);
 		if (!"".equals(text)) {
-			EmpFamily rs = empFamilyService.find(Integer.valueOf(text));
+			Family rs = empFamilyService.find(Integer.valueOf(text));
 			this.setValue(rs);
 		}
 
@@ -39,9 +39,9 @@ public class EmpFamilyEditor extends PropertyEditorSupport{
 	@Override
 	public String getAsText() {
 		String tx = "";
-		EmpFamily rs = (EmpFamily) this.getValue();
+		Family rs = (Family) this.getValue();
 		if (rs != null) {
-			tx = Integer.toString(rs.getEmpFamilyId());
+			tx = Integer.toString(rs.getId());
 		}
 		return tx;
 	}

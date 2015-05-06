@@ -52,8 +52,8 @@
 		<hibernate-jpa-2.0-api.version>1.0.1.Final</hibernate-jpa-2.0-api.version>
 		<mysql.driver.version>5.1.25</mysql.driver.version>
 		<database.url>jdbc:mysql://localhost:3306/hris_system</database.url>
-		<database.username>root</database.username>
-		<database.password>root</database.password>
+		<database.username>aug</database.username>
+		<database.password>Aug@min</database.password>
 
 
 	</properties>
@@ -306,7 +306,42 @@
 			<scope>compile</scope>
 		</dependency>
 
-
+        
+        <dependency>
+			<groupId>org.apache.sling</groupId>
+			<artifactId>org.apache.sling.commons.json</artifactId>
+			<version>2.0.10</version>
+		</dependency>
+		
+		
+			<dependency>
+			<groupId>org.apache.sling</groupId>
+			<artifactId>org.apache.sling.commons.json</artifactId>
+			<version>2.0.10</version>
+		</dependency>
+	
+	
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+	
+	
 
 	</dependencies>
 

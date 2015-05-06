@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 @Entity
 @Table(name="TECHNOLOGYEMPLOYEE")
-public class TechnologyEmp extends BaseEntity implements Serializable {
+public class TechnologyEmployee extends BaseEntity implements Serializable {
 
 	/**
 	 * 
@@ -23,7 +23,7 @@ public class TechnologyEmp extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = -8765152508545202607L;
 	private Integer technologyEmpId;
 	private MasTechnology masTech;
-	private Employee employee;
+	private Official official;
 	
 	
 	
@@ -53,14 +53,14 @@ public class TechnologyEmp extends BaseEntity implements Serializable {
 
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="EMP_ID",nullable=false)
-	public Employee getEmployee() {
-		return employee;
+	@JoinColumn(name="OFFICIAL_ID",nullable=false)
+	public Official getOfficial() {
+		return official;
 	}
 
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setOfficial(Official official) {
+		this.official = official;
 	}
 	
 	

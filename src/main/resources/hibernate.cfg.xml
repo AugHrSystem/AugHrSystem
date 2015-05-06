@@ -8,8 +8,8 @@
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hris_system</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.username">aug</property>
+        <property name="hibernate.connection.password">Aug@min</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
         <!-- <property name="hbm2ddl.auto">create-drop</property> -->
@@ -27,8 +27,8 @@
 		<mapping class="com.aug.hr.entity.MasSpecialty" />
 		<mapping class="com.aug.hr.entity.Experience" />
 		<mapping class="com.aug.hr.entity.MasTechnology" />
-		<mapping class="com.aug.hr.entity.TechnologyEmp" />
-		<mapping class="com.aug.hr.entity.EmpFamily" />
+		<mapping class="com.aug.hr.entity.TechnologyEmployee" />
+		<mapping class="com.aug.hr.entity.Family" />
 		<mapping class="com.aug.hr.entity.Address" />
 		<mapping class="com.aug.hr.entity.MasAddressType" />
 		<mapping class="com.aug.hr.entity.MasProvince" />

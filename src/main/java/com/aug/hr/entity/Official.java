@@ -68,13 +68,13 @@ public class Official {
 		    @OneToMany(mappedBy = "official")
 		    private Set<Experience> experiences = new HashSet<Experience>();
 		    
-		 	@ManyToOne
-		    @JoinColumn(name= "TECHNOLOGY_ID")
-		    private TechnologyEmp technology;
+		 
+		    @OneToMany(mappedBy = "official", fetch = FetchType.LAZY)
+		    private Set<TechnologyEmployee> technology = new HashSet<TechnologyEmployee>();
 		    
-		   /* @OneToMany(mappedBy = "official", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
-		    private Set<EmpFamily> families = new HashSet<EmpFamily>();
-*/		    
+		    @OneToMany(mappedBy = "official", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+		    private Set<Family> families = new HashSet<Family>();
+		    
 
 //---------------------------------------------- getter setter ---------------------------------------------//
 		 
@@ -198,24 +198,24 @@ public class Official {
 		}
 
 
-		public TechnologyEmp getTechnology() {
-			return technology;
-		}
-
-
-		public void setTechnology(TechnologyEmp technology) {
-			this.technology = technology;
-		}
-
-
-		/*public Set<EmpFamily> getFamilies() {
+		public Set<Family> getFamilies() {
 			return families;
 		}
 
 
-		public void setFamilies(Set<EmpFamily> families) {
+		public void setFamilies(Set<Family> families) {
 			this.families = families;
-		}*/
+		}
+
+
+		public Set<TechnologyEmployee> getTechnology() {
+			return technology;
+		}
+
+
+		public void setTechnology(Set<TechnologyEmployee> technology) {
+			this.technology = technology;
+		}
 
 
 		

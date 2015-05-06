@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.ReferenceDao;
-import com.aug.hr.entity.EmpFamily;
+import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasTechnology;
 import com.aug.hr.entity.Reference;

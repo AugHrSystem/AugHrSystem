@@ -21,22 +21,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aug.hr.dao.TechnologyEmpDao;
+import com.aug.hr.dao.TechnologyEmployeeDao;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasTechnology;
-import com.aug.hr.entity.TechnologyEmp;
+import com.aug.hr.entity.Official;
+import com.aug.hr.entity.TechnologyEmployee;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 @Transactional
-public class TechnologyEmpService {
+public class TechnologyEmployeeServiceTest {
 	
 	
 	@Autowired
-	private TechnologyEmpDao techEmpDao;
+	private TechnologyEmployeeDao techEmpDao;
 	private MasTechnology masTechnology ;
-	private Employee emp;
+	private Official official;
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -55,30 +56,36 @@ public class TechnologyEmpService {
 	@Before
 	public void Setup(){
 		masTechnology = new MasTechnology();
-		emp = new Employee();
-		emp.setId(2L);
-		emp.setTel("0890851022");
-		emp.setSalary(20000F);
+		official = new Official();
+		official.setId(1);
+		official.setSalaryExpected(20000D);
+		official.setPositionAppliedFor("Deverloper");
+		
+		Employee emp = new Employee();
+		emp.setId(1);
+		emp.setTelMobile(890851022);
 		emp.setAge(24);
 		emp.setReligion("thai");
-		emp.setIdcard(new Integer(11531090));
-		emp.setHeigh(142);
+		emp.setIdCard(new Integer(11531090));
+		emp.setHeight(142);
 		emp.setWeigth(32);
-		emp.setGender("Female");
-		emp.setStatus("Active");
-		emp.setMilitary("no");
-		emp.setQualification("apiva");
-		emp.setCode("001");
-		emp.setPlacedob("BKK");
+		emp.setSex("Female");
+		emp.setMilitaryServiceNo("no");
+		emp.setPlaceOfBirth("BKK");
 		String dateString = "06/27/2007";
 		DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
 		try {
 			Date dateDob = df.parse(dateString);
-			emp.setDob(dateDob);
+			emp.setDateOfBirth(dateDob);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		official.setEmpOfficial(emp);
+		
+		
 		
 	    
 		masTechnology.setMasTechnologyId(1);
@@ -89,13 +96,13 @@ public class TechnologyEmpService {
 	@Rollback(false)
 	public void createDataTechnologyEmp(){
 
-		getCurrentSessionEmp().save(emp);
+		getCurrentSessionEmp().save(official);
 		
-		Employee employee = (Employee) getCurrentSessionEmp().get(Employee.class,2L);
+		Official official = (Official) getCurrentSessionEmp().get(Official.class,1);
 		
 		
-		TechnologyEmp techEmp = new TechnologyEmp();
-		techEmp.setEmployee(employee);
+		TechnologyEmployee techEmp = new TechnologyEmployee();
+		techEmp.setOfficial(official);
   	    masTechnology.setMasTechnologyId(1);
 		techEmp.setMasTech(masTechnology);
 		techEmp.setAuditFlag("C");
@@ -111,7 +118,7 @@ public class TechnologyEmpService {
 	@Rollback(false)
 	public void updateDataTechnologyEmp(){
 		
-		TechnologyEmp techEmp = (TechnologyEmp) techEmpDao.getCurrentSession().get(TechnologyEmp.class, 8);
+		TechnologyEmployee techEmp = (TechnologyEmployee) techEmpDao.getCurrentSession().get(TechnologyEmployee.class, 8);
 		masTechnology.setMasTechnologyId(2);
 		techEmp.setMasTech(masTechnology);
 		techEmpDao.update(techEmp);
@@ -123,7 +130,7 @@ public class TechnologyEmpService {
 	@Test
 	public void findAllDataTechnologyEmp(){
 		
-		 List<TechnologyEmp> techEmpList = techEmpDao.findAll();
+		 List<TechnologyEmployee> techEmpList = techEmpDao.findAll();
 		 Assert.assertEquals(1, techEmpList.size());
 		
 	}
@@ -132,7 +139,7 @@ public class TechnologyEmpService {
 	@Test
 	public void findDataByIdTechnologyEmp(){
 		
-		TechnologyEmp technologyEmp =  (TechnologyEmp) techEmpDao.find(8);
+		TechnologyEmployee technologyEmp =  (TechnologyEmployee) techEmpDao.find(8);
 		Assert.assertEquals(new Integer(8), technologyEmp.getTechnologyEmpId());
 		
 	}
@@ -141,7 +148,7 @@ public class TechnologyEmpService {
 	@Rollback(false)
 	public void deleteDataTechnologyEmp(){
 		
-		TechnologyEmp techEmp = (TechnologyEmp) techEmpDao.find(8);
+		TechnologyEmployee techEmp = (TechnologyEmployee) techEmpDao.find(8);
 		techEmpDao.delete(techEmp);
 		
 	}
