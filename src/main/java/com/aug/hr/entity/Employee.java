@@ -30,167 +30,169 @@ public class Employee extends BaseEntity{
 	@Column(name = "ID")
 	private Integer id;
 	
-	@Column(name = "EMPLOYEE_CODE")
+	@Column(name = "EMPLOYEE_CODE",nullable = true)
 	private String employeeCode;
 	
-	@Column(name = "NAME_THAI")
+	@Column(name = "NAME_THAI",nullable = false)
 	private String nameThai;
 	
-	@Column(name = "SURNAME_THAI")
+	@Column(name = "SURNAME_THAI",nullable = true)
 	private String surnameThai;
 	
-	@Column(name = "NICKNAME_THAI")
+	@Column(name = "NICKNAME_THAI",nullable = true)
 	private String nicknameThai;
 	
-	@Column(name = "NAME_ENG")
+	@Column(name = "NAME_ENG",nullable = true)
 	private String nameEng;
 	
-	@Column(name = "SURNAM_ENG")
+	@Column(name = "SURNAM_ENG",nullable = true)
 	private String surnameEng;
 	
-	@Column(name = "NICKNAME_ENG")
+	@Column(name = "NICKNAME_ENG",nullable = true)
 	private String nicknameEng;
 
-	@Column(name = "TEL_HOME")
+	@Column(name = "TEL_HOME",nullable = true)
 	private Integer telHome;
 	
-	@Column(name = "TEL_MOBILE")
+	@Column(name = "TEL_MOBILE",nullable = true)
 	private Integer telMobile;
 	
-	@Column(name = "TEL_FAX")
+	@Column(name = "TEL_FAX",nullable = true)
 	private Integer telFax;
 
-	@Column(name = "EMERGENCY_CONTACT")
+	@Column(name = "EMERGENCY_CONTACT",nullable = true)
 	private String emergencyContact;
 	
-	@Column(name = "RELATIONSHIP_WITH_EMERGENCY_CONTACT")
+	@Column(name = "RELATIONSHIP_WITH_EMERGENCY_CONTACT",nullable = true)
 	private String relationshipWithEmergencyContact;
 	
-	@Column(name = "EMERGENCY_CONTACT_ADDRESS")
+	@Column(name = "EMERGENCY_CONTACT_ADDRESS",nullable = true)
 	private String emergencyContactAddress;
 	
-	@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER")
+	@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER",nullable = true)
 	private String emergencyContactPhoneNumber;
 	
-	@Column(name = "DATEOFBIRTH")
+	@Column(name = "DATEOFBIRTH",nullable = true)
 	private Date dateOfBirth;
 	
-	@Column(name = "PLACEOFBIRTH")
+	@Column(name = "PLACEOFBIRTH",nullable = true)
 	private String placeOfBirth;
 	
-	@Column(name = "AGE")
+	@Column(name = "AGE",nullable = true)
 	private Integer age;
 	
-	@Column(name = "RELIGION")
+	@Column(name = "RELIGION",nullable = true)
 	private String religion;
 	
-	@Column(name = "ID_CARD")
+	@Column(name = "ID_CARD",nullable = true)
 	private Integer idCard;
 	
-	@Column(name = "ISSUED_OFFICE")
+	@Column(name = "ISSUED_OFFICE",nullable = true)
 	private String issuedOffice;
 	
-	@Column(name = "EXPIRY_DATE")
+	@Column(name = "EXPIRY_DATE",nullable = true)
 	private Date expiryDate;
 	
-	@Column(name = "HEIGHT")
+	@Column(name = "HEIGHT",nullable = true)
 	private Integer height;
 	
-	@Column(name = "WEIGTH")
+	@Column(name = "WEIGTH",nullable = true)
 	private Integer weigth;
 	
-	@Column(name = "SEX")
+	@Column(name = "SEX",nullable = true)
 	private String sex;
 
-	@Column(name = "MARITAL_STATUS")
+	@Column(name = "MARITAL_STATUS",nullable = true)
 	private String maritalStatus;
 	
-	@Column(name = "NUMBER_OF_CHILDREN")
+	@Column(name = "NUMBER_OF_CHILDREN",nullable = true)
 	private String numberOfChildren;
 	
-	@Column(name = "SPOUSE_NAME")
+	@Column(name = "SPOUSE_NAME",nullable = true)
 	private String spouseName;
 	
-	@Column(name = "MARRIAGE_CERTIFICATE_NO")
+	@Column(name = "MARRIAGE_CERTIFICATE_NO",nullable = true)
 	private String marriageCertificateNo;
 	
-	@Column(name = "ISSUED_OFFICE2")
+	@Column(name = "ISSUED_OFFICE2",nullable = true)
 	private String issuedOffice2;
 	
-	@Column(name = "ADDRESS")
+	@Column(name = "ADDRESS",nullable = true)
 	private String address;
 	
-	@Column(name = "OCCUPATION")
+	@Column(name = "OCCUPATION",nullable = true)
 	private String occupation;
 	
-	@Column(name = "KNOW_AUG_NEWSPAPER")
+	@Column(name = "KNOW_AUG_NEWSPAPER",nullable = true)
 	private String knowAugNewspaper;
 	
-	@Column(name = "DESCRIPTION_NEWSPAPER")
+	@Column(name = "DESCRIPTION_NEWSPAPER",nullable = true)
 	private String descriptionNewspaper;
 	
-	@Column(name = "KNOW_AUG_MAGAZINE")
+	@Column(name = "KNOW_AUG_MAGAZINE",nullable = true)
 	private String knowAugMagazine;
 	
-	@Column(name = "DESCRIPTION_MAGAZINE")
+	@Column(name = "DESCRIPTION_MAGAZINE",nullable = true)
 	private String descriptionMagazine;
 	
-	@Column(name = "KNOW_AUG_WEBSITE")
+	@Column(name = "KNOW_AUG_WEBSITE",nullable = true)
 	private String knowAugWebsite;
 	
-	@Column(name = "DESCRIPTION_WEBSITE")
+	@Column(name = "DESCRIPTION_WEBSITE",nullable = true)
 	private String descriptionWebsite;
 	
-	@Column(name = "KNOW_AUG_FRIEND")
+	@Column(name = "KNOW_AUG_FRIEND",nullable = true)
 	private String knowAugFriend;
 	
-	@Column(name = "DESCRIPTION_FRIEND")
+	@Column(name = "DESCRIPTION_FRIEND",nullable = true)
 	private String descriptionFriend;
 	
-	@Column(name = "KNOW_AUG_OTHER")
+	@Column(name = "KNOW_AUG_OTHER",nullable = true)
 	private String knowAugOther;
 	
-	@Column(name = "DESCRIPTION_OTHER")
+	@Column(name = "DESCRIPTION_OTHER",nullable = true)
 	private String descriptionOther;
 	
-	@Column(name = "KNOW_EMPLOYED_YES")
+	@Column(name = "KNOW_EMPLOYED_YES",nullable = true)
 	private String knowEmployedYes;
 	
-	@Column(name = "DESCRIPTION_YES")
+	@Column(name = "DESCRIPTION_YES",nullable = true)
 	private String descriptionYes;
 	
-	@Column(name = "KNOW_EMPLOYER_NO")
+	@Column(name = "KNOW_EMPLOYER_NO",nullable = true)
 	private String knowEmployerNo;
 	
-	@Column(name = "MILITARY_SERVICE_YES")
+	@Column(name = "MILITARY_SERVICE_YES",nullable = true)
 	private String militaryServiceYes;
 	
-	@Column(name = "FROM_YEAR")
+	@Column(name = "FROM_YEAR",nullable = true)
 	private Date fromYear;
 	
-	@Column(name = "TO_YEAR")
+	@Column(name = "TO_YEAR",nullable = true)
 	private Date toYear;
 	
-	@Column(name = "BRANCH_OF_SERVICE")
+	@Column(name = "BRANCH_OF_SERVICE",nullable = true)
 	private String branchOfService;
 	
-	@Column(name = "MILITARY_SERVICE_NO")
+	@Column(name = "SERVICE_NO",nullable = true)
+	private String serviceNo;
+	
+	@Column(name = "MILITARY_SERVICE_NO",nullable = true)
 	private String militaryServiceNo;
 	
-	@Column(name = "REASONS_NO")
+	@Column(name = "REASONS_NO",nullable = true)
 	private String reasonsNo;
 	
-
-	@Column(name = "DATE_TO_BE_DRAFTED")
+	@Column(name = "DATE_TO_BE_DRAFTED",nullable = true)
 	private Date dateToBeDrafted;
 	
-	@Column(name = "PREVIOUS_EMPLOYER_YES")
+	@Column(name = "PREVIOUS_EMPLOYER_YES",nullable = true)
 	private String previousEmployerYes;
 	
-	@Column(name = "PREVIOUS_EMPLOYER_NO")
+	@Column(name = "PREVIOUS_EMPLOYER_NO",nullable = true)
 	private String previousEmployerNo;
 	
-	@Column(name = "PREVIOUSEMP_REASONS_NO")
+	@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
 	private String previousEmpreasonsNo;
 	
 	
@@ -775,6 +777,18 @@ public class Employee extends BaseEntity{
 
 	public void setOfficial(Official official) {
 		this.official = official;
+	}
+
+
+
+	public String getServiceNo() {
+		return serviceNo;
+	}
+
+
+
+	public void setServiceNo(String serviceNo) {
+		this.serviceNo = serviceNo;
 	}
 	 
 	 

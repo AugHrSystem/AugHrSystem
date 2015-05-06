@@ -34,7 +34,8 @@
 <f:form method="post" commandName="employee" class="form-horizontal" role="form">
 <div class="container" style="padding: 0px 0px 25px 0px;">
 
-<!----------------------------- Start Information----------------- -->
+<!------------------------------------------------------ Start Information-------------------------------------------------------->
+		
 		<div id="message"></div>
 		<div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
 				<h2 style="border-bottom: 1px solid #8f8f8f;">Information
@@ -46,53 +47,62 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> ID :</label> <input type="text" class="form-control"
-									id="id" placeholder="id">
+									id="id" placeholder="Enter Id">
 								</div>
+								
+								<div class="col-md-3">
+									<label> Employee Code :</label> <input type="text" class="form-control"
+									id="employeeCode" placeholder="Enter Employee Code">
+								</div>
+								
 							</div>
+							
 					</form>
-	        	
 	        </div>
+	        
+	        
 	         <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-3">
-									<label> Name(Thai) :</label> <input type="text" class="form-control"
-									id="nameThai" placeholder="name(thai)">
+									<label> Name (Thai.) :</label> <input type="text" class="form-control"
+									id="nameThai" placeholder="Enter Name (Thai)">
 								</div>
 								<div class="col-md-3">
-									<label> SurName(Thai) :</label> <input type="text" class="form-control"
-									id="surname" placeholder="surname(thai)">
+									<label> SurName (Thai.) :</label> <input type="text" class="form-control"
+									id="surnameThai" placeholder="Enter Surname (Thai)">
 								</div>
 								<div class="col-md-3">
-									<label> NickName(Thai) :</label> <input type="text" class="form-control"
-									id="surname" placeholder="nickname(thai)">
-								</div>
-							</div>
-					</form>
-	         
-	         </div>
-	         <div class="col-md-12">
-	         		<form>
-							<div class="form-group">
-								<div class="col-md-3">
-									<label> Name(Eng) :</label> <input type="text" class="form-control"
-									id="name" placeholder="name(eng)">
-								</div>
-								<div class="col-md-3">
-									<label> SurName(Eng) :</label> <input type="text" class="form-control"
-									id="surname" placeholder="surname(eng)">
-								</div>
-								<div class="col-md-3">
-									<label> NickName(Eng) :</label> <input type="text" class="form-control"
-									id="surname" placeholder="nickname(eng)">
+									<label> NickName (Thai.) :</label> <input type="text" class="form-control"
+									id="nicknameThai" placeholder="Enter Nickname (Thai)">
 								</div>
 							</div>
 					</form>
 	         </div>
 	         
-	         <!----------------------------- Start General----------------- -->
+	         <div class="col-md-12">
+	         		<form>
+							<div class="form-group">
+								<div class="col-md-3">
+									<label> Name (Eng.) :</label> <input type="text" class="form-control"
+									id="nameEng" placeholder="Enter Name (Eng)">
+								</div>
+								<div class="col-md-3">
+									<label> SurName (Eng.) :</label> <input type="text" class="form-control"
+									id="surnameEng" placeholder="Enter Surname (Eng)">
+								</div>
+								<div class="col-md-3">
+									<label> NickName (Eng.) :</label> <input type="text" class="form-control"
+									id="nicknameEng" placeholder="Enter Nickname (Eng)">
+								</div>
+							</div>
+					</form>
+	         </div>
+	         
+ <!-------------------------------------------------- Start Address-------------------------------------------------->
+ 
 	       <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
-				<h2 style="border-bottom: 1px solid #8f8f8f;">General
+				<h2 style="border-bottom: 1px solid #8f8f8f;">Address
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 				</h2>
 	       </div>
@@ -108,7 +118,7 @@
 							<tr>
 								<th>Address Type</th>
 								<th>Address</th>
-								<th>Address(Cont.)</th>
+								<th>Address (Cont.)</th>
 								<th>Province</th>
 								<th>Zipcode</th>
 								<th>Action</th>
@@ -118,56 +128,64 @@
 					</table>
 	     </div>
 	     
+ <!----------------------------------------- Start General------------------------------------------------------>
+	     
+	     <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
+				<h2 style="border-bottom: 1px solid #8f8f8f;">General
+					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
+				</h2>
+	       </div>
+	     
+	     
 	      <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-3">
-									<label> Home :</label> <input type="text" class="form-control"
-									id="home" placeholder="xx-xxx-xxxx">
+									<label> Tel. (Home) :</label> <input type="text" class="form-control"
+									id="telHome" placeholder="xx-xxx-xxxx">
 								</div>
 								<div class="col-md-3">
-									<label> Mobile :</label> <input type="text" class="form-control"
-									id="mobile" placeholder="xxx-xxx-xxxx">
+									<label> Tel. (Mobile) :</label> <input type="text" class="form-control"
+									id="telMobile" placeholder="xxx-xxx-xxxx">
 								</div>
 								<div class="col-md-3">
-									<label> Fax :</label> <input type="text" class="form-control"
-									id="fax" placeholder="xx-xxx-xxxx">
+									<label> Tel. (Fax) :</label> <input type="text" class="form-control"
+									id="telFax" placeholder="xx-xxx-xxxx">
 								</div>
 							</div>
 					</form>
-	         
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-6">
 									<label> Emergency Contact :</label> <input type="text" class="form-control"
-									id="contact" placeholder="name">
+									id="emergencyContact" placeholder="Enter Emergency Name">
 								</div>
 								<div class="col-md-6">
 									<label> Relationship with Emergency Contact :</label> <input type="text" class="form-control"
-									id="relationship" placeholder="relation">
+									id="relationshipWithEmergencyContact" placeholder="Enter Emergency Relation">
 								</div>
 							</div>
 					</form>
-	         
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-6">
 									<label> Emergency Contact Address :</label> <input type="text" class="form-control"
-									id="address" placeholder="address">
+									id="emergencyContactAddress" placeholder="Enter Emergency Address">
 								</div>
 								<div class="col-md-3">
 									<label> Emergency Contact Phone Number  :</label> <input type="text" class="form-control"
-									id="phone" placeholder="xxx-xxx-xxxx">
+									id="emergencyContactPhoneNumber" placeholder="xxx-xxx-xxxx">
 								</div>
 							</div>
 					</form>
-	         
 	        </div>
 	       
 	       
@@ -175,62 +193,62 @@
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-3">
-									<label> Date of Birth :</label> <input type="text" class="form-control"
-									id="date" placeholder="DOB">
+									<p><label> Date of Birth :</label> <input type="text" class="form-control"
+									id="dateOfBirth" placeholder="Enter DOB"></p>
 								</div>
 								<div class="col-md-3">
 									<label> Place of Birth :</label> <input type="text" class="form-control"
-									id="place" placeholder="POB">
+									id="placeOfBirth" placeholder="Enter POB">
 								</div>
 								<div class="col-md-3">
 									<label> Age :</label> <input type="text" class="form-control"
-									id="age" placeholder="age">
+									id="age" placeholder="Enter Age">
 								</div>
 								<div class="col-md-3">
 									<label> Religion :</label> <input type="text" class="form-control"
-									id="religion" placeholder="religion">
+									id="religion" placeholder="Enter Religion">
 								</div>
 								
 							</div>
 					</form>
-	         
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> ID Card :</label> <input type="text" class="form-control"
-									id="card" placeholder="id card">
+									id="idCard" placeholder="Enter Id Card">
 								</div>
 								<div class="col-md-3">
 									<label> Issued Office :</label> <input type="text" class="form-control"
-									id="issued" placeholder="issued office">
+									id="issuedOffice" placeholder="Enter Issued Office">
 								</div>
 								<div class="col-md-3">
 									<label> Expiry Date :</label> <input type="text" class="form-control"
-									id="exp" placeholder="exp">
+									id="expiryDate" placeholder="Enter Expiry Date">
 								</div>
 							</div>
 					</form>
-	         
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-3">
-									<label> Height(cms) :</label> <input type="text" class="form-control"
-									id="height" placeholder="height">
+									<label> Height (cms.) :</label> <input type="text" class="form-control"
+									id="height" placeholder="Enter Height">
 								</div>
 								<div class="col-md-3">
-									<label> Weigth(cms) :</label> <input type="text" class="form-control"
-									id="weigth" placeholder="weigth">
+									<label> Weigth (kgs.) :</label> <input type="text" class="form-control"
+									id="weigth" placeholder="Enter Weigth">
 								</div>
 							</div>
 					</form>
-	         
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
@@ -238,67 +256,70 @@
 								<div class="col-md-3">
 									<label> Sex :</label>
 									<div class="radio">
-     									 <label><input type="radio" name="sex"  >Male</label>
+     									 <label><input type="radio" name="sex" >Male</label>
       									 <label><input type="radio" name="sex" >Female</label>
     								</div>
 								</div>
     						</div>	
 					</form>
-	         
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Marital Status :</label>
-									<div class="checkbox">
-     									 <label><input type="checkbox" name="status">Single</label>
-      									 <label><input type="checkbox" name="status">Married</label>
-      									 <label><input type="checkbox" name="status">Divorce</label>
+									<div class="radio">
+     									 <label><input type="radio" name="status">Single</label> 
+      									 <label><input type="radio" name="status">Married</label>
+      									 <label><input type="radio" name="status">Divorce</label>
     								</div>
 								</div>
     						</div>	
 					</form>
 	        </div>
 	        
+	        
 	           <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Number of Children :</label> <input type="text" class="form-control"
-									id="num" placeholder="number of children">
+									id="numberOfChildren" placeholder="Enter Number Of Children">
 								</div>
 								<div class="col-md-3">
-									<label> Spouse:Name :</label> <input type="text" class="form-control"
-									id="spouse" placeholder="spouse">
+									<label> Spouse: Name :</label> <input type="text" class="form-control"
+									id="spouseName" placeholder="Enter Spouse Name">
 								</div>
 								<div class="col-md-3">
 									<label> Marriage certificate No. :</label> <input type="text" class="form-control"
-									id="marriage" placeholder="marriage">
+									id="marriageCertificateNo" placeholder="Enter Marriage Cert No.">
 								</div>
 								<div class="col-md-3">
 									<label> Issued Office :</label> <input type="text" class="form-control"
-									id="issue" placeholder="issue office">
+									id="issuedOffice2" placeholder="Enter Issue Office">
 								</div>
 							</div>
 					</form>
 	        </div>
+	       
 	       
 	        <div class="col-md-12">
 	         		<form>
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Address :</label> <input type="text" class="form-control"
-									id="address" placeholder="address">
+									id="address" placeholder="Enter Address">
 								</div>
 								<div class="col-md-3">
 									<label> Occupation :</label> <input type="text" class="form-control"
-									id="occupation" placeholder="occupation">
+									id="occupation" placeholder="Enter Occupation">
 								</div>
 							</div>
 					</form>
 	        </div>
+	       
 	       
 	           <div class="col-md-12">
 	         		<form>
@@ -307,20 +328,25 @@
 									<label> How do you know augmentis? :</label>
 									<div class="checkbox">
      									 <label><input type="checkbox" name="status">Newspaper</label>
-     									 <input type="text" class="form-control" id="newspaper" placeholder="newspaper">
+     									 <input type="text" class="form-control" id="descriptionNewspaper" placeholder="Enter Newspaper">
+     									 
       									 <label><input type="checkbox" name="status">Magazine</label>
-      									 <input type="text" class="form-control" id="magazine" placeholder="magazine">
+      									 <input type="text" class="form-control" id="descriptionMagazine" placeholder="Enter Magazine">
+      									 
       									 <label><input type="checkbox" name="status">Website</label>
-      									 <input type="text" class="form-control" id="web" placeholder="website">
+      									 <input type="text" class="form-control" id="descriptionWebsite" placeholder="Enter Website">
+      									 
       									 <label><input type="checkbox" name="status">Friend</label>
-      									 <input type="text" class="form-control" id="friend" placeholder="friend">
-      									 <label><input type="checkbox" name="status">Other(please specify)</label>
-      									 <input type="text" class="form-control" id="other" placeholder="other">
+      									 <input type="text" class="form-control" id="descriptionFriend" placeholder="Enter Friend">
+      									 
+      									 <label><input type="checkbox" name="status">Other (Please specify.)</label>
+      									 <input type="text" class="form-control" id="descriptionOther" placeholder="Enter Other">
     								</div>
 								</div>
     						</div>	
 					</form>
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
@@ -329,8 +355,9 @@
 									<label> Do you know anyone now being employed by this company? :</label>
 									<div class="checkbox">
      									 <label><input type="checkbox" name="yes">Yes</label>
-     									 <input type="text" class="form-control" id="other" placeholder="Please write name,position and relation">
+     									 <input type="text" class="form-control" id="descriptionYes" placeholder="Enter Please write name,position and relation">
     								</div>
+    								
     								<div class="checkbox">
      									 <label><input type="checkbox" name="status">No</label>
     								</div>
@@ -338,6 +365,7 @@
     						</div>	
 					</form>
 	        </div>
+	        
 	        
 	        <div class="col-md-12">
 	         		<form>
@@ -349,23 +377,24 @@
      								</div>
      								<div class="col-md-3">
     									 <label> From Year :</label>
-    									 <input type="text" class="form-control" id="from" placeholder="from year">
+    									 <input type="text" class="form-control" id="fromYear" placeholder="Enter From year">
     								</div>
     								<div class="col-md-3">
     									 <label> To Year :</label>
-    									 <input type="text" class="form-control" id="to" placeholder="to year">
+    									 <input type="text" class="form-control" id="toYear" placeholder="Enter To Year">
     								</div>
     								<div class="col-md-3">
     									 <label> Branch of Service :</label>
-    									 <input type="text" class="form-control" id="branch" placeholder="branch">
+    									 <input type="text" class="form-control" id="branchOfService" placeholder="Enter Branch Of Service">
     								</div>
     								<div class="col-md-3">
      									 <label> Service No :</label>
-    									 <input type="text" class="form-control" id="service" placeholder="service no">
+    									 <input type="text" class="form-control" id="serviceNo" placeholder="Enter Service No">
     							    </div>
     						</div>	
 					</form>
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
@@ -375,15 +404,16 @@
      								</div>
      								<div class="col-md-6">
     									 <label> Please state the reasons :</label>
-    									 <input type="text" class="form-control" id="from" placeholder="reasons">
+    									 <input type="text" class="form-control" id="reasonsNo" placeholder="Enter Reasons">
     								</div>
     								<div class="col-md-3">
     									 <label> Date to be drafted :</label>
-    									 <input type="text" class="form-control" id="to" placeholder="drafted">
+    									 <input type="text" class="form-control" id="dateToBeDrafted" placeholder="Enter Date Drafted">
     								</div>
     						</div>	
 					</form>
 	        </div>
+	        
 	        
 	         <div class="col-md-12">
 	         		<form>
@@ -394,17 +424,20 @@
 									<div class="checkbox">
 									 <label><input type="checkbox" name="yes">Yes</label>
     								</div>
+    								
     								<div class="checkbox">
      									 <label><input type="checkbox" name="no">No</label>
-     									 <input type="text" class="form-control" id="reason" placeholder="give the reason">
+     									 <input type="text" class="form-control" id="previousEmpreasonsNo" placeholder="Enter Give the reason">
     									
     								</div>
 								</div>
     						</div>	
 					</form>
 	        </div>
+	        
 	  		         
-	      <!----------------------------- Start Official----------------- -->   
+	 <!---------------------------------------------------------- Start Official--------------------------------------------->   
+	      
 	   <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
 			<h2 style="border-bottom: 1px solid #8f8f8f;">Official
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
@@ -412,10 +445,35 @@
 	   </div>
 	    
 	    <div class="col-md-12">
+	   
+	    <form>
+	    		<div class="form-group">
+								<div class="col-md-3">
+									<label> Date :</label> <input type="text" class="form-control"
+									id="date" placeholder="Enter Date">
+								</div>
+				
+				<div class="col-md-3">
+									<label> Position Applied For :</label> <input type="text" class="form-control"
+									id="positionAppliedFor" placeholder="Enter Position">
+								</div>
+								
+				<div class="col-md-3">
+									<label> Salary Expected :</label> <input type="text" class="form-control"
+									id="salaryExpected" placeholder="Enter Salary">
+								</div>				
+								
+							</div>
+	    </form>
+	    </div>
+	    
+<!--------------------------------------------------  Official link to table--------------------------------- --> 	    
+	    
+	    <div class="col-md-12">
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    				<label>Location:</label>
+    				<label>Location :</label>
     				<select path="location" id="location" class="form-control">
 								<options items="${ locationList }" itemLabel="locationname" itemValue="locationid"/> 
 								<option value="-1">--Choose Location--</option>
@@ -432,7 +490,7 @@
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    						<label>Start Work Date:</label>
+    						<label>Start Work Date :</label>
     						<select path="start" id="start" class="form-control">
 								<options items="${ startList }" itemLabel="startname" itemValue="startid"/> 
 								<option value="-1">--Start Work Date--</option>
@@ -443,7 +501,7 @@
 						</div>
 						
 						<div class="col-md-3">
-    						<label>End Work Date:</label>
+    						<label>End Work Date :</label>
     						<select path="end" id="end" class="form-control">
 								<options items="${ endList }" itemLabel="endname" itemValue="startid"/> 
 								<option value="-1">--Start Work Date--</option>
@@ -460,7 +518,7 @@
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    				<label>Employment Type:</label>
+    				<label>Employment Type :</label>
     				<select path="employment" id="employment" class="form-control">
 								<options items="${ employmentList }" itemLabel="employmentname" itemValue="locationid"/> 
 								<option value="-1">--Employment--</option>
@@ -477,7 +535,7 @@
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    						<label>Division:</label>
+    						<label>Division :</label>
     						<select path="division" id="division" class="form-control">
 								<options items="${ divisionList }" itemLabel="divisionname" itemValue="divisionid"/> 
 								<option value="-1">--Division--</option>
@@ -488,7 +546,7 @@
 						</div>
 						
 						<div class="col-md-3">
-    						<label>Staff Type:</label>
+    						<label>Staff Type :</label>
     						<select path="staff" id="staff" class="form-control">
 								<options items="${ staffList }" itemLabel="staffname" itemValue="staffid"/> 
 								<option value="-1">--Staff Type--</option>
@@ -505,7 +563,7 @@
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    						<label>Joblevel:</label>
+    						<label>Joblevel :</label>
     						<select path="joblevel" id="joblevel" class="form-control">
 								<options items="${ joblevelList }" itemLabel="joblevelname" itemValue="divisionid"/> 
 								<option value="-1">--Joblevel--</option>
@@ -516,7 +574,7 @@
 						</div>
 						
 						<div class="col-md-3">
-    						<label>Core Skill:</label>
+    						<label>Core Skill :</label>
     						<select path="coreskill" id="coreskill" class="form-control">
 								<options items="${ coreskillList }" itemLabel="coreskillname" itemValue="coreskillid"/> 
 								<option value="-1">--Core Skill--</option>
@@ -533,7 +591,7 @@
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    						<label>Technology:</label>
+    						<label>Technology :</label>
     						<select path="technology" id="technology" class="form-control">
 								<options items="${ technologyList }" itemLabel="technologyname" itemValue="technologyid"/> 
 								<option value="-1">--Technology--</option>
@@ -544,7 +602,7 @@
 						</div>
 						
 						<div class="col-md-3">
-    						<label>Speciality:</label>
+    						<label>Speciality :</label>
     						<select path="speciality" id="speciality" class="form-control">
 								<options items="${ specialityList }" itemLabel="specialityname" itemValue="specialityid"/> 
 								<option value="-1">--Speciality--</option>
@@ -561,7 +619,7 @@
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    				<label>AIM:</label>
+    				<label>AIM :</label>
     				<select path="aim" id="aim" class="form-control">
 								<options items="${ aimList }" itemLabel="aimname" itemValue="aimid"/> 
 								<option value="-1">--AIM--</option>
@@ -578,7 +636,7 @@
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    				<label>Probation Date:</label>
+    				<label>Probation Date :</label>
     				<select path="probation" id="probation" class="form-control">
 								<options items="${ probationList }" itemLabel="probationname" itemValue="probationid"/> 
 								<option value="-1">--Probation Date--</option>
@@ -589,14 +647,17 @@
 						</div>
   				</div>
 			</form>
+			
 			<div align="center">
-				<button type="button" class="btn btn-default">Cancel</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
     			<button type="button" class="btn btn-primary saveButton">Save</button>
 	    	</div>
 	    </div>
 	</div>
-</f:form>	    
-	    <!-- Modal -->
+</f:form>	
+    
+<!----------------------------------------------------------- Modal Address --------------------------------------------------->
+		
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -668,7 +729,11 @@
 				</div>
 			</div>
 	    </div>
-	<!-- Modal Delete -->
+	    
+	    
+	    
+<!------------------------------------------------- Modal Delete --------------------------------------------->
+
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -686,11 +751,70 @@
   </div>
 </div>    
 	    
+<!---------------------------------------------------------- Start JQuery ----------------------------------------------------->	  
+	    
 <script>
 var dt;
 	$(document).ready(function() {
+		var date1 = $( "#dateOfBirth" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+		
+    	var date2 = $( "#expiryDate" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+    	
+    	var date3 = $( "#fromYear" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+    	
+    	var date4 = $( "#toYear" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+    	
+    	var date5 = $( "#dateToBeDrafted" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+    	
+    	var date6 = $( "#date" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+		
     	dt=$("#tdResult").dataTable();
  		//listAll();
+ 		
+ 		var button = $(event.relatedTarget);
+    	var empId = button.data("id"); 
 		
   		$(this).find(".saveButton").off("click").on("click", function()
     		{
@@ -702,13 +826,69 @@ var dt;
     			}
     			
     		});
-    		
-    		function addEmployee() {
+    	
+/* --------------------------------------------------- Add Function --------------------------------------------------- */	
+    	
+			function addEmployee() {
     			$.ajax({
     				url : "${pageContext.request.contextPath}/employee/add",
     				type : "POST",
     				 data : JSON.stringify({
     					 nameThai: $("#nameThai").val(),
+    					 surnameThai: $("#surnameThai").val(),
+    					 nicknameThai: $("#nicknameThai").val(),
+    					 nameEng: $("#nameEng").val(),
+    					 surnameEng: $("#surnameEng").val(),
+    					 nicknameEng: $("#nicknameEng").val,
+    					 telHome: $("#telHome").val(),
+    					 telMobile: $("#telMobile").val(),
+    					 telFax: $("#telFax").val(),
+    					 emergencyContact: $("#emergencyContact").val(),
+    					 relationshipWithEmergencyContact: $("#relationshipWithEmergencyContact").val(),
+    					 emergencyContactAddress: $("#emergencyContactAddress").val(),
+    					 emergencyContactPhoneNumber: $("#emergencyContactPhoneNumber").val(),
+    					 dateOfBirth: $("#dateOfBirth").val,
+    					 placeOfBirth: $("#placeOfBirth").val,
+    					 age: $("#age").val,
+    					 religion: $("#religion").val,
+    					 idCard: $("#idCard").val,
+    					 issuedOffice: $("#issuedOffice").val,
+    					 expiryDate: $("#expiryDate").val,
+    					 height: $("#height").val,
+    					 weigth: $("#weigth").val,
+    					 sex: $("#sex").val,
+    					 maritalStatus: $("#maritalStatus").val,
+    					 numberOfChildren: $("#numberOfChildren").val,
+    					 spouseName: $("#spouseName").val,
+    					 marriageCertificateNo: $("#marriageCertificateNo").val,
+    					 issuedOffice2: $("#issuedOffice2").val,
+    					 address: $("#address").val(),
+    					 occupation: $("#occupation").val,
+    					 knowAugNewspaper: $("#knowAugNewspaper").val,
+    					 descriptionNewspaper: $("#descriptionNewspaper").val,
+    					 knowAugMagazine: $("#knowAugMagazine").val,
+    					 descriptionMagazine: $("#descriptionMagazine").val,
+    					 knowAugWebsite: $("#knowAugWebsite").val,
+    					 descriptionWebsite: $("#descriptionWebsite").val(),
+    					 knowAugFriend: $("#knowAugFriend").val(),
+    					 descriptionFriend: $("#descriptionFriend").val(),
+    					 knowAugOther: $("#knowAugOther").val(),
+    					 descriptionOther: $("#descriptionOther").val(),
+    					 knowEmployedYes: $("#knowEmployedYes").val(),
+    					 descriptionYes: $("#descriptionYes").val,
+    					 knowEmployerNo: $("#knowEmployerNo").val(),
+    					 militaryServiceYes: $("#militaryServiceYes").val(),
+    					 fromYear: $("#fromYear").val(),
+    					 toYear: $("#toYear").val(),
+    					 branchOfService: $("#branchOfService").val(),
+    					 serviceNo: $("#serviceNo").val(),
+    					 militaryServiceNo: $("#militaryServiceNo").val(),
+    					 reasonsNo: $("#reasonsNo").val(),
+    					 dateToBeDrafted: $("#dateToBeDrafted").val(),
+    					 previousEmployerYes: $("#previousEmployerYes").val(),
+    					 previousEmployerNo: $("#previousEmployerNo").val(),
+    					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val
+    					 
     			
     					}),
     				 datatype: "json",
@@ -716,12 +896,79 @@ var dt;
     				success : function(data) {
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					
+    					dt.fnClearTable();
+    					dt.fnAddData([
+    					       data.id,
+    					       data.employeeCode,
+    					       data.nameThai,
+    					       data.surnameThai,
+    					       data.nicknameThai,
+    					       data.nameEng,
+    					       data.surnameEng,
+    					       data.nicknameEng,
+    					       data.telHome,
+    					       data.telMobile,
+    					       data.telFax,
+    					       data.emergencyContact,
+    					       data.relationshipWithEmergencyContact,
+    					       data.emergencyContactAddress,
+    					       data.emergencyContactPhoneNumber,
+    					       data.dateOfBirth,
+    					       data.placeOfBirth,
+    					       data.age,
+    					       data.religion,
+    					       data.idCard,
+    					       data.issuedOffice,
+    					       data.expiryDate,
+    					       data.height,
+    					       data.weigth,
+    					       data.sex,
+    					       data.maritalStatus,
+    					       data.numberOfChildren,
+    					       data.spouseName,
+    					       data.marriageCertificateNo,
+    					       data.issuedOffice2,
+    					       data.address,
+    					       data.occupation,
+    					       data.knowAugNewspaper,
+    					       data.descriptionNewspaper,
+    					       data.knowAugMagazine,
+    					       data.descriptionMagazine,
+    					       data.knowAugWebsite,
+    					       data.descriptionWebsite,
+    					       data.knowAugFriend,
+    					       data.descriptionFriend,
+    					       data.knowAugOther,
+    					       data.descriptionOther,
+    					       data.knowEmployedYes,
+    					       data.descriptionYes,
+    					       data.knowEmployerNo,
+    					       data.militaryServiceYes,
+    					       data.fromYear,
+    					       data.toYear,
+    					       data.branchOfService,
+    					       data.serviceNo,
+    					       data.militaryServiceNo,
+    					       data.reasonsNo,
+    					       data.dateToBeDrafted,
+    					       data.previousEmployerYes,
+    					       data.previousEmployerNo,
+    					       data.previousEmpreasonsNo,
+    					       
+    					    '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+   	    					'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+    					              
+						]);              
+    					              
     				},
     				error : function(data,testStatus,jqXHR) {
     					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
     					}
     				});
     		}
+    		
+    		
+/* --------------------------------------------------- Edit Function --------------------------------------------------- */		
     		
     		function editEmployee() {
     			alert(empId+" edit");
@@ -731,12 +978,128 @@ var dt;
 					data : JSON.stringify({
 						 id: empId,
 						 nameThai: $("#nameThai").val(),
+    					 surnameThai: $("#surnameThai").val(),
+    					 nicknameThai: $("#nicknameThai").val(),
+    					 nameEng: $("#nameEng").val(),
+    					 surnameEng: $("#surnameEng").val(),
+    					 nicknameEng: $("#nicknameEng").val,
+    					 telHome: $("#telHome").val(),
+    					 telMobile: $("#telMobile").val(),
+    					 telFax: $("#telFax").val(),
+    					 emergencyContact: $("#emergencyContact").val(),
+    					 relationshipWithEmergencyContact: $("#relationshipWithEmergencyContact").val(),
+    					 emergencyContactAddress: $("#emergencyContactAddress").val(),
+    					 emergencyContactPhoneNumber: $("#emergencyContactPhoneNumber").val(),
+    					 dateOfBirth: $("#dateOfBirth").val,
+    					 placeOfBirth: $("#placeOfBirth").val,
+    					 age: $("#age").val,
+    					 religion: $("#religion").val,
+    					 idCard: $("#idCard").val,
+    					 issuedOffice: $("#issuedOffice").val,
+    					 expiryDate: $("#expiryDate").val,
+    					 height: $("#height").val,
+    					 weigth: $("#weigth").val,
+    					 sex: $("#sex").val,
+    					 maritalStatus: $("#maritalStatus").val,
+    					 numberOfChildren: $("#numberOfChildren").val,
+    					 spouseName: $("#spouseName").val,
+    					 marriageCertificateNo: $("#marriageCertificateNo").val,
+    					 issuedOffice2: $("#issuedOffice2").val,
+    					 address: $("#address").val(),
+    					 occupation: $("#occupation").val,
+    					 knowAugNewspaper: $("#knowAugNewspaper").val,
+    					 descriptionNewspaper: $("#descriptionNewspaper").val,
+    					 knowAugMagazine: $("#knowAugMagazine").val,
+    					 descriptionMagazine: $("#descriptionMagazine").val,
+    					 knowAugWebsite: $("#knowAugWebsite").val,
+    					 descriptionWebsite: $("#descriptionWebsite").val(),
+    					 knowAugFriend: $("#knowAugFriend").val(),
+    					 descriptionFriend: $("#descriptionFriend").val(),
+    					 knowAugOther: $("#knowAugOther").val(),
+    					 descriptionOther: $("#descriptionOther").val(),
+    					 knowEmployedYes: $("#knowEmployedYes").val(),
+    					 descriptionYes: $("#descriptionYes").val,
+    					 knowEmployerNo: $("#knowEmployerNo").val(),
+    					 militaryServiceYes: $("#militaryServiceYes").val(),
+    					 fromYear: $("#fromYear").val(),
+    					 toYear: $("#toYear").val(),
+    					 branchOfService: $("#branchOfService").val(),
+    					 serviceNo: $("#serviceNo").val(),
+    					 militaryServiceNo: $("#militaryServiceNo").val(),
+    					 reasonsNo: $("#reasonsNo").val(),
+    					 dateToBeDrafted: $("#dateToBeDrafted").val(),
+    					 previousEmployerYes: $("#previousEmployerYes").val(),
+    					 previousEmployerNo: $("#previousEmployerNo").val(),
+    					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val
+    					  
 					 }),
 					datatype: "json",
 					contentType: "application/json",
 					success : function(data) {
 						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-						
+						dt.fnClearTable();
+    					dt.fnAddData([
+    					       data.id,
+    					       data.employeeCode,
+    					       data.nameThai,
+    					       data.surnameThai,
+    					       data.nicknameThai,
+    					       data.nameEng,
+    					       data.surnameEng,
+    					       data.nicknameEng,
+    					       data.telHome,
+    					       data.telMobile,
+    					       data.telFax,
+    					       data.emergencyContact,
+    					       data.relationshipWithEmergencyContact,
+    					       data.emergencyContactAddress,
+    					       data.emergencyContactPhoneNumber,
+    					       data.dateOfBirth,
+    					       data.placeOfBirth,
+    					       data.age,
+    					       data.religion,
+    					       data.idCard,
+    					       data.issuedOffice,
+    					       data.expiryDate,
+    					       data.height,
+    					       data.weigth,
+    					       data.sex,
+    					       data.maritalStatus,
+    					       data.numberOfChildren,
+    					       data.spouseName,
+    					       data.marriageCertificateNo,
+    					       data.issuedOffice2,
+    					       data.address,
+    					       data.occupation,
+    					       data.knowAugNewspaper,
+    					       data.descriptionNewspaper,
+    					       data.knowAugMagazine,
+    					       data.descriptionMagazine,
+    					       data.knowAugWebsite,
+    					       data.descriptionWebsite,
+    					       data.knowAugFriend,
+    					       data.descriptionFriend,
+    					       data.knowAugOther,
+    					       data.descriptionOther,
+    					       data.knowEmployedYes,
+    					       data.descriptionYes,
+    					       data.knowEmployerNo,
+    					       data.militaryServiceYes,
+    					       data.fromYear,
+    					       data.toYear,
+    					       data.branchOfService,
+    					       data.serviceNo,
+    					       data.militaryServiceNo,
+    					       data.reasonsNo,
+    					       data.dateToBeDrafted,
+    					       data.previousEmployerYes,
+    					       data.previousEmployerNo,
+    					       data.previousEmpreasonsNo,
+    					       
+    					    '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+   	    					'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+    					              
+						]);              
 					},
 					error : function(data,testStatus,jqXHR) {
 						
@@ -745,6 +1108,8 @@ var dt;
 					});
 			}
 			
+  /* ---------------------------------------------------- Init Edit Function --------------------------------------------------- */				
+			
 			function initEditEmployee(empId) {
 				alert(empId+" Init edit");
 				$.ajax({
@@ -752,6 +1117,61 @@ var dt;
 					type : "POST",
 					success : function(data) {
 						$("#nameThai").val(data.nameThai);
+						$("#surnameThai").val(data.surnameThai);
+						$("#nicknameThai").val(data.nicknameThai);
+						$("#nameEng").val(data.nameEng);
+						$("#surnameEng").val(data.surnameEng);
+						$("#nicknameEng").val(data.nicknameEng);
+						$("#telHome").val(data.telHome);
+						$("#telMobile").val(data.telMobile);
+						$("#telFax").val(data.telFax);
+						$("#emergencyContact").val(data.emergencyContact);
+						$("#relationshipWithEmergencyContact").val(data.relationshipWithEmergencyContact);
+						$("#emergencyContactAddress").val(data.emergencyContactAddress);
+						$("#emergencyContactPhoneNumber").val(data.emergencyContactPhoneNumber);
+						$("#dateOfBirth").val(data.dateOfBirth);
+						$("#placeOfBirth").val(data.placeOfBirth);
+						$("#age").val(data.age);
+						$("#religion").val(data.religion);
+						$("#idCard").val(data.idCard);
+						$("#issuedOffice").val(data.issuedOffice);
+						$("#expiryDate").val(data.expiryDate);
+						$("#height").val(data.height);
+						$("#weigth").val(data.weigth);
+						$("#sex").val(data.sex);
+						$("#maritalStatus").val(data.maritalStatus);
+						$("#numberOfChildren").val(data.numberOfChildren);
+						$("#spouseName").val(data.spouseName);
+						$("#marriageCertificateNo").val(data.marriageCertificateNo);
+						$("#issuedOffice2").val(data.issuedOffice2);
+						$("#address").val(data.address);
+						$("#occupation").val(data.occupation);
+						$("#knowAugNewspaper").val(data.knowAugNewspaper);
+						$("#descriptionNewspaper").val(data.descriptionNewspaper);
+						$("#knowAugMagazine").val(data.knowAugMagazine);
+						$("#descriptionMagazine").val(data.descriptionMagazine);
+						$("#knowAugWebsite").val(data.knowAugWebsite);
+						$("#descriptionWebsite").val(data.descriptionWebsite);
+						$("#knowAugFriend").val(data.knowAugFriend);
+						$("#descriptionFriend").val(data.descriptionFriend);
+						$("#knowAugOther").val(data.knowAugOther);
+						$("#descriptionOther").val(data.descriptionOther);
+						$("#knowEmployedYes").val(data.knowEmployedYes);
+						$("#descriptionYes").val(data.descriptionYes);
+						$("#knowEmployerNo").val(data.knowEmployerNo);
+						$("#militaryServiceYes").val(data.militaryServiceYes);
+						$("#fromYear").val(data.fromYear);
+						$("#toYear").val(data.toYear);
+						$("#branchOfService").val(data.branchOfService);
+						$("#serviceNo").val(data.serviceNo);
+						$("#militaryServiceNo").val(data.militaryServiceNo);
+						$("#reasonsNo").val(data.reasonsNo);
+						$("#dateToBeDrafted").val(data.dateToBeDrafted);
+						$("#previousEmployerYes").val(data.previousEmployerYes);
+						$("#previousEmployerNo").val(data.previousEmployerNo);
+						$("#previousEmpreasonsNo").val(data.previousEmpreasonsNo);
+						
+						 
 		
 					},
 					error : function(data,testStatus,jqXHR) {
@@ -761,6 +1181,8 @@ var dt;
 			}
 			
 			});
+	
+/* --------------------------------------------------- Delete Function --------------------------------------------------- */		
 			
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
