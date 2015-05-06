@@ -6,6 +6,7 @@
 
 package com.aug.hr.entity;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,6 +30,9 @@ public class Official {
 	    @GeneratedValue
 	    @Column(name = "ID")
 	    private Integer id;
+		
+		@Column(name = "DATE")
+		private Date date;
 
 	 	@Column(name = "POSITION_APPLIED_FOR", nullable = true)
 		private String positionAppliedFor;
@@ -208,6 +212,18 @@ public class Official {
 		}
 
 
+
+		
+		public Date getDate() {
+			return date;
+		}
+
+
+		public void setDate(Date date) {
+			this.date = date;
+		}
+
+
 		public Set<TechnologyEmployee> getTechnology() {
 			return technology;
 		}
@@ -216,6 +232,9 @@ public class Official {
 		public void setTechnology(Set<TechnologyEmployee> technology) {
 			this.technology = technology;
 		}
+
+
+		
 
 
 		
