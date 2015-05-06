@@ -163,6 +163,7 @@
 	
 	$(document).ready(function(){
 		dt = $('#tbResult').dataTable();
+		listAll();
 		
 		/* --- addProduct,updateProduct --- */
 		$("#addModal").on("show.bs.modal",function(event) {
@@ -290,17 +291,17 @@
 		
 		function getId(educationid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/findById/"+educationid,
-				//data : "educationid=" + educationid,
+				url : "${pageContext.request.contextPath}/education/findById",
+				data : "educationid=" + educationid,
 				type : "POST",
 				success : function(data) {
 	 				//alert(JSON.stringify(data));
-					alert("ok");
+					//alert("ok");
 					$("#university").val(data.university),
 					$("#gpa").val(data.gpa),
 					$("#faculty").val(data.faculty),
 					$("#major").val(data.major);
-					//$("#masdegreetype").val(data.masdegreetype.id);
+					$("#masdegreetype").val(data.masdegreetype.id);
 			
 				},
 				error : function() {
@@ -329,6 +330,26 @@
 					alert("ERROR");
 				}
 			});
+		}
+		
+		function listAll(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/education/listAll",
+				type : "POST",
+				success : function(data) {
+					dt.fnClearTable();
+				for (var i=0;i< data.length; i++) {
+					dt.fnAddData([data[i].university,data[i].gpa,data[i].faculty, 
+					              data[i].major,data[i].masdegreetype.name,
+						'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+			
+					}
+				},
+				error : function() {
+					alert("ERROR");
+				}
+			}); 
 		}
 		
 	});
