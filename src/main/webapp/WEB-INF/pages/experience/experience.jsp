@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.1.min.js" />"></script>
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
@@ -21,7 +21,7 @@
 <!-- Data Table -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
-<%-- <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet"> --%>
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
 
 <title>Experience</title>
 <style>
@@ -153,7 +153,7 @@ var dt;
 			autoclose : true,
 			forceParse : false,
 			language : "en",
-			format : "dd/mm/yyyy",
+			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
     	var date2 = $( "#dateTo" ).datepicker({
@@ -161,7 +161,7 @@ var dt;
 			autoclose : true,
 			forceParse : false,
 			language : "en",
-			format : "dd/mm/yyyy",
+			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
     	dt=$("#tdResult").dataTable();

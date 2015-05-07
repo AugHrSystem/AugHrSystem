@@ -17,6 +17,9 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonFormat;
+@JsonAutoDetect
 @Entity
 @Table(name = "EXPERIENCE")
 public class Experience extends BaseEntity {
@@ -27,8 +30,10 @@ public class Experience extends BaseEntity {
 	private Integer id;
 	@Column(name = "COMPANY_NAME")
 	private String companyName;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Column(name = "DATE_FROM")
 	private Date dateFrom;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Column(name = "DATE_TO")
 	private Date dateTo;
 	@Column(name = "ADDRESS")
