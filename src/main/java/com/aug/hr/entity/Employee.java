@@ -195,13 +195,13 @@ public class Employee extends BaseEntity{
 	@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
 	private String previousEmpreasonsNo;
 	
-	
-	 @OneToMany(mappedBy = "employee")
-		private Set<Address> addresses = new HashSet<Address>();
+	@Column(name = "ADDRESS_ID",nullable = true)
+	@OneToMany(mappedBy = "employee" )
+	private Set<Address> addresses = new HashSet<Address>();
 
 	 
 	 @OneToOne(fetch=FetchType.LAZY)
-	 @JoinColumn(name = "OFFICIAL_ID")
+	 @JoinColumn(name = "OFFICIAL_ID",nullable = true)
 	 private Official official;
 	 
 
