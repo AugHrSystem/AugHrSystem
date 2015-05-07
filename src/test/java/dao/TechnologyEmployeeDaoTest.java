@@ -57,25 +57,27 @@ public class TechnologyEmployeeDaoTest {
 	public void Setup(){
 		masTechnology = new MasTechnology();
 		emp = new Employee();
-		emp.setId(1);
-		emp.setTelMobile(890851022);
+
+		/*emp.setId(1L);
+		emp.setTel("0890851022");
+		emp.setSalary(20000F);
 		emp.setAge(24);
 		emp.setReligion("thai");
 		emp.setIdCard(new Integer(11531090));
 		emp.setHeight(142);
 		emp.setWeigth(32);
-		emp.setSex("Female");
-		emp.setMaritalStatus("No");
-		emp.setMilitaryServiceYes("Yes");
-		emp.setOccupation("ITS");
-		emp.setEmployeeCode("001");
-		emp.setPlaceOfBirth("BKK");
+		emp.setGender("Female");
+		emp.setStatus("Active");
+		emp.setMilitary("no");
+		emp.setQualification("apiva");
+		emp.setCode("001");
+		emp.setPlacedob("BKK");*/
 
 		String dateString = "06/27/2007";
 		DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
 		try {
 			Date dateDob = df.parse(dateString);
-			emp.setDateOfBirth(dateDob);
+			//emp.setDob(dateDob);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,8 +99,7 @@ public class TechnologyEmployeeDaoTest {
 		
 		
 		TechnologyEmployee techEmp = new TechnologyEmployee();
-
-		techEmp.setOfficial(official);
+		//techEmp.setEmployee(employee);
   	    masTechnology.setMasTechnologyId(1);
 		techEmp.setMasTech(masTechnology);
 		techEmp.setAuditFlag("C");

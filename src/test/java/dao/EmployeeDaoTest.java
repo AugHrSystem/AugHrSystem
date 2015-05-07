@@ -55,7 +55,6 @@ public class EmployeeDaoTest {
 		employee.setJoblevel(null);
 		employee.setTechnology(null);*/
 
-
 		String dateString = "06/27/2007";
 		DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
 		try {

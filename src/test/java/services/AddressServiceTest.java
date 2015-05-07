@@ -60,7 +60,6 @@ public class AddressServiceTest {
 
 		/*Address address = (Address)addressService.find(2);
 		addressService.delete(address);*/
-
 	}
 	
 	@Test
