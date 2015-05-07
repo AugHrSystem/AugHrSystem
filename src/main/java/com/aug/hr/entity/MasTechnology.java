@@ -19,27 +19,27 @@ public class MasTechnology extends BaseEnityMasterData implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 9016889793391444496L;
-	private Integer masTechnologyId;
-	private String masTechnologyName;
+	private Integer id;
+	private String name;
 	
 	@Id
 	@GeneratedValue
 	@Column(name="ID")
 	public Integer getMasTechnologyId() {
-		return masTechnologyId;
+		return id;
 	}
 	
 	public void setMasTechnologyId(Integer masTechnologyId) {
-		this.masTechnologyId = masTechnologyId;
+		this.id = masTechnologyId;
 	}
 	
 	@Column(name="NAME",nullable=false)
 	public String getMasTechnologyName() {
-		return masTechnologyName;
+		return name;
 	}
 	
 	public void setMasTechnologyName(String masTechnologyName) {
-		this.masTechnologyName = masTechnologyName;
+		this.name = masTechnologyName;
 	}
 	
 	

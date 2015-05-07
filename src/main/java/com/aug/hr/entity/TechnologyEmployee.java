@@ -21,8 +21,8 @@ public class TechnologyEmployee extends BaseEntity implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8765152508545202607L;
-	private Integer technologyEmpId;
-	private MasTechnology masTech;
+	private Integer id;
+	private MasTechnology masTechnology;
 	private Official official;
 	
 	
@@ -31,24 +31,24 @@ public class TechnologyEmployee extends BaseEntity implements Serializable {
 	@GeneratedValue
 	@Column(name="ID")
 	public Integer getTechnologyEmpId() {
-		return technologyEmpId;
+		return id;
 	}
 	
 	
 	public void setTechnologyEmpId(Integer technologyEmpId) {
-		this.technologyEmpId = technologyEmpId;
+		this.id = technologyEmpId;
 	}
 
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="MASTECH_ID",nullable=false)
+	@JoinColumn(name="MASTECHNOLOGY_ID",nullable=false)
 	public MasTechnology getMasTech() {
-		return masTech;
+		return masTechnology;
 	}
 
 
 	public void setMasTech(MasTechnology masTech) {
-		this.masTech = masTech;
+		this.masTechnology = masTech;
 	}
 
 	
