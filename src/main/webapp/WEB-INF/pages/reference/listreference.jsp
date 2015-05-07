@@ -55,7 +55,7 @@
 
 				<table id="tbResult" class=" table table-striped table-bordered">
 					<thead>
-						<tr class="info">
+						<tr>
 								
 											
 							<th>NAME</th>
