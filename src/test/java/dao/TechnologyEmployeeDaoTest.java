@@ -70,6 +70,7 @@ public class TechnologyEmployeeDaoTest {
 		emp.setOccupation("ITS");
 		emp.setEmployeeCode("001");
 		emp.setPlaceOfBirth("BKK");
+
 		String dateString = "06/27/2007";
 		DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
 		try {
@@ -96,6 +97,7 @@ public class TechnologyEmployeeDaoTest {
 		
 		
 		TechnologyEmployee techEmp = new TechnologyEmployee();
+
 		techEmp.setOfficial(official);
   	    masTechnology.setMasTechnologyId(1);
 		techEmp.setMasTech(masTechnology);

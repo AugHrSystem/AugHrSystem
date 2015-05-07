@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.min.js" />"></script>
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.1.min.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
@@ -653,7 +653,7 @@
 	    	</div>
 	    </div>
 	</div>
-	
+</f:form>	
     
 <!----------------------------------------------------------- Modal Address --------------------------------------------------->
 		
@@ -728,7 +728,7 @@
 				</div>
 			</div>
 	    </div>
-</f:form>	    
+	    
 	    
 	    
 <!------------------------------------------------- Modal Delete --------------------------------------------->
@@ -752,7 +752,7 @@
 	    
 <!---------------------------------------------------------- Start JQuery ----------------------------------------------------->	  
 	    
-<script>
+<script type="text/javascript">
 var dt;
 	$(document).ready(function() {
 		var date1 = $( "#dateOfBirth" ).datepicker({
@@ -1180,7 +1180,7 @@ var dt;
 					});
 			}
 			
-			});
+			
 	
 /* --------------------------------------------------- Delete Function --------------------------------------------------- */		
 			
@@ -1212,6 +1212,8 @@ var dt;
     		   	
 			
   	});
+  	
+	});
   
   </script>
 </body>
