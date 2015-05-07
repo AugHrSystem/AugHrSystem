@@ -162,7 +162,8 @@
 	$(document).ready(function(){
 		dt = $('#tbResult').dataTable();
 		
-		
+		 listAll();
+		 
 		$("#addModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
@@ -226,7 +227,7 @@
 			$("#oocupation").val("");
 		}
 
-
+		
 
 		function addReference(){
 			$.ajax({
@@ -361,7 +362,33 @@
 				});
 			
 			
+			
 		}
+			function listAll(){
+				$.ajax({
+					url : "${pageContext.request.contextPath}/reference/listAll",
+					type : "POST",
+					success : function(data) {
+						dt.fnClearTable();
+					for (var i=0;i< data.length; i++) {
+						dt.fnAddData([data[i].id,data[i].name,data[i].address, 
+						              data[i].tel,data[i].oocupation,
+							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].referenceid + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].referenceid + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+				
+						}
+					},
+					error : function(data,testStatus,jqXHR) {
+						$("#outputajax").text(testStatus);
+						}
+					}); 
+			}
+			
+			
+			
+			
+			
+		
 	
 	
 </script>
