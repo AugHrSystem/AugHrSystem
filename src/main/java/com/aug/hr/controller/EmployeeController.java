@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasSpecialtyService;
-import com.aug.hr.services.TechnologyEmpService;
 
 @Controller
 public class EmployeeController {
