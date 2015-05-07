@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.min.js" />"></script>
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.1.min.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
@@ -19,9 +19,9 @@
 <link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
 
 <!-- Data Table -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
+<%-- <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet"> --%>
 
 <title>Experience</title>
 <style>
@@ -165,17 +165,15 @@ var dt;
 			todayHighlight : true
 		});
     	dt=$("#tdResult").dataTable();
- 		//listAll();
+ 		listAll();
 		
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		var expId = button.data("expid"); 
-    		/* if(expId != null){
+    		if(expId != null){
 				initEditExperience(expId);
 			}
-     		else {
-    			addExperience();
-    		}  */
+     		
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(expId != null){
@@ -200,7 +198,7 @@ var dt;
     					 description: $("#description").val(),
     					 superVisor: $("#supervisor").val(),
     					 address: $("#address").val(),
-    					 employee: {id: 2 }
+    					 //employee: {id: 2 }
     					}),
     				 datatype: "json",
     				 contentType: "application/json",
@@ -228,7 +226,6 @@ var dt;
     					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
     					}
     				});
-    			alert(date1);
     		}
     		
     		function editExperience() {
@@ -246,14 +243,14 @@ var dt;
     					 description: $("#description").val(),
     					 superVisor: $("#supervisor").val(),
     					 address: $("#address").val(),
-    					 employee: {id: 2 }
+    					 //employee: {id: 2 }
 					 }),
 					datatype: "json",
 					contentType: "application/json",
 					success : function(data) {
 						$('#addModal').modal('toggle');
 						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-						dt.fnClearTable();
+						/* dt.fnClearTable();
 						dt.fnAddData([
 						    data.id,
 							data.companyName,
@@ -266,7 +263,8 @@ var dt;
 							data.address,
 							'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 	    					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-						]);
+						]); */
+						listAll();
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -278,7 +276,7 @@ var dt;
 			function initEditExperience(expId) {
 				alert(expId+" Init edit");
 				$.ajax({
-					url : "${pageContext.request.contextPath}/experiecnce/initEdit/"+expId,
+					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
 					type : "POST",
 					success : function(data) {
 						$("#cName").val(data.name);
@@ -289,7 +287,7 @@ var dt;
 						$("#description").val(data.description);
 						$("#supervisor").val(data.superVisor);
 						$("#address").val(data.address);
-						employee: {id: 2 };
+						//employee: {id: 2 };
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -318,8 +316,9 @@ var dt;
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
 							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
-							var del = button.closet("tr");
-							dt.fnDeleteRow(del);
+							/* var del = button.closet("tr");
+							dt.fnDeleteRow(del); */
+							listAll();
 						},
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
@@ -340,8 +339,8 @@ var dt;
 						dt.fnAddData([data[i].id,data[i].companyName,data[i].business, 
 						              data[i].position,data[i].dateFrom,data[i].dateTo,
 						              data[i].description,data[i].superVisor,data[i].address,
-							'<button type="button" class="btn btn-info btn-sm active" data-productId="' + data[i].productId + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-							'<button type="button" class="btn btn-danger btn-sm active" data-productId="' + data[i].productId + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+							'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}
 					},
