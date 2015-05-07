@@ -38,12 +38,19 @@ public class EducationController {
 		return "/education/education";
 	}
 	
-	/*@RequestMapping(value = "/education/searchEducation", method = RequestMethod.POST)
-	public @ResponseBody List<Education> searchEducation(
+	/*@RequestMapping(value = "/education/listAll", method = RequestMethod.POST)
+	public @ResponseBody List<Education> listAll(
 			@RequestBody Education education) {
 		return educationService.findByCriteria(education);
 	}*/
 
+	@RequestMapping(value ="/education/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<Education> listAll(){
+		Education education = new Education();
+		education.setMajor("");
+		return educationService.findByCriteria(education);
+	}
+	
 	@RequestMapping(value = "/education/add", method = RequestMethod.POST)
 	public @ResponseBody Education addEducation(@RequestBody Education education) {
 		educationService.create(education);
@@ -62,6 +69,12 @@ public class EducationController {
 		return educationService.findById(educationid);
 	}
 	
+	/*
+	@RequestMapping(value = "/education/findById/{educationid}", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody Education findById(@PathVariable("educationid") Integer educationid) {	
+		return educationService.findById(educationid);
+	}*/
+		
 	@RequestMapping(value = "/education/delete", method = RequestMethod.POST)
 	public @ResponseBody String deleteEducation(@RequestParam Integer educationid) {
 		educationService.deleteById(educationid);

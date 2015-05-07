@@ -434,7 +434,7 @@
     						</div>	
 					</form>
 	        </div>
-	        
+        
 	  		         
 	 <!---------------------------------------------------------- Start Official--------------------------------------------->   
 	      
@@ -443,16 +443,17 @@
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 			</h2>
 	   </div>
-	    
+	    <div class="form-group">
 	    <div class="col-md-12">
 	   
 	    <form>
-	    		<div class="form-group">
-								<div class="col-md-3">
+	    		
+								 <div class="col-md-3-offset-9">
 									<label> Date :</label> <input type="text" class="form-control"
 									id="date" placeholder="Enter Date">
 								</div>
-				
+			</div>
+			<div class="col-md-12">	
 				<div class="col-md-3">
 									<label> Position Applied For :</label> <input type="text" class="form-control"
 									id="positionAppliedFor" placeholder="Enter Position">
@@ -462,14 +463,14 @@
 									<label> Salary Expected :</label> <input type="text" class="form-control"
 									id="salaryExpected" placeholder="Enter Salary">
 								</div>				
-								
+							
 							</div>
-	    </form>
+	   
 	    </div>
-	    
+	     </form>
 <!--------------------------------------------------  Official link to table--------------------------------- --> 	    
 	    
-	    <div class="col-md-12">
+	   <%--  <div class="col-md-12">
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
@@ -484,7 +485,7 @@
 						</div>
   				</div>
 			</form>
-	    </div>
+	    </div> --%>
 	    
 	      <div class="col-md-12">
 	         <form>
@@ -523,7 +524,7 @@
 								<options items="${ employmentList }" itemLabel="employmentname" itemValue="locationid"/> 
 								<option value="-1">--Employment--</option>
 								<forEach var="obj" items="${ employmentList }">${obj}
-									<option value="${obj.employmentid}">${obj.employmentname}</option>
+									<option value="${obj.Id}">${obj.name}</option>
 								</forEach>
 					</select>
 						</div>
@@ -540,12 +541,12 @@
 								<options items="${ divisionList }" itemLabel="divisionname" itemValue="divisionid"/> 
 								<option value="-1">--Division--</option>
 								<forEach var="obj" items="${ divisionList }">${obj}
-									<option value="${obj.divisionid}">${obj.startname}</option>
+									<option value="${obj.id}">${obj.name}</option>
 								</forEach>
 							</select>
 						</div>
 						
-						<div class="col-md-3">
+						<%-- <div class="col-md-3">
     						<label>Staff Type :</label>
     						<select path="staff" id="staff" class="form-control">
 								<options items="${ staffList }" itemLabel="staffname" itemValue="staffid"/> 
@@ -554,7 +555,7 @@
 									<option value="${obj.staffid}">${obj.staffname}</option>
 								</forEach>
 							</select>
-						</div>
+						</div> --%>
   				</div>
 			</form>
 	    </div>
@@ -568,7 +569,7 @@
 								<options items="${ joblevelList }" itemLabel="joblevelname" itemValue="divisionid"/> 
 								<option value="-1">--Joblevel--</option>
 								<forEach var="obj" items="${ joblevelList }">${obj}
-									<option value="${obj.joblevelid}">${obj.joblevelname}</option>
+									<option value="${obj.id}">${obj.name}</option>
 								</forEach>
 							</select>
 						</div>
@@ -579,7 +580,7 @@
 								<options items="${ coreskillList }" itemLabel="coreskillname" itemValue="coreskillid"/> 
 								<option value="-1">--Core Skill--</option>
 								<forEach var="obj" items="${ coreskillList }">${obj}
-									<option value="${obj.coreskillid}">${obj.coreskillname}</option>
+									<option value="${obj.id}">${obj.name}</option>
 								</forEach>
 							</select>
 						</div>
@@ -593,29 +594,27 @@
 						<div class="col-md-3">
     						<label>Technology :</label>
     						<select path="technology" id="technology" class="form-control">
-								<options items="${ technologyList }" itemLabel="technologyname" itemValue="technologyid"/> 
-								<option value="-1">--Technology--</option>
+								<form:option value="-1" label="---Select Specialty---" />
 								<forEach var="obj" items="${ technologyList }">${obj}
-									<option value="${obj.technologyid}">${obj.technologyname}</option>
+									<option value="${obj.masTechnologyId}">${obj.masTechnologyName}</option>
 								</forEach>
 							</select>
 						</div>
 						
 						<div class="col-md-3">
     						<label>Speciality :</label>
-    						<select path="speciality" id="speciality" class="form-control">
-								<options items="${ specialityList }" itemLabel="specialityname" itemValue="specialityid"/> 
-								<option value="-1">--Speciality--</option>
-								<forEach var="obj" items="${ specialityList }">${obj}
-									<option value="${obj.specialityid}">${obj.specialityname}</option>
-								</forEach>
+    						<select path="masspecialty" id="masspecialty" class="form-control">
+								<options items="${ masspecialtyList }"label="---Select Specialty---"/> 
+								<c:forEach var="obj" items="${ masspecialtyList }">
+				<option value="${obj.id }">${ obj.name}</option>
+			</c:forEach>
 							</select>
 						</div>
   				</div>
 			</form>
 	    </div>
 	    
-	      <div class="col-md-12">
+	   <%--    <div class="col-md-12">
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
@@ -630,10 +629,10 @@
 						</div>
   				</div>
 			</form>
-	    </div>
+	    </div> --%>
 	    
 	     <div class="col-md-12">
-	         <form>
+	         <%-- <form>
 				<div class="form-group">
 						<div class="col-md-3">
     				<label>Probation Date :</label>
@@ -646,7 +645,7 @@
 					</select>
 						</div>
   				</div>
-			</form>
+			</form> --%>
 			
 			<div align="center">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -654,7 +653,7 @@
 	    	</div>
 	    </div>
 	</div>
-</f:form>	
+	
     
 <!----------------------------------------------------------- Modal Address --------------------------------------------------->
 		
@@ -729,7 +728,7 @@
 				</div>
 			</div>
 	    </div>
-	    
+</f:form>	    
 	    
 	    
 <!------------------------------------------------- Modal Delete --------------------------------------------->
@@ -830,6 +829,7 @@ var dt;
 /* --------------------------------------------------- Add Function --------------------------------------------------- */	
     	
 			function addEmployee() {
+	alert("add");
     			$.ajax({
     				url : "${pageContext.request.contextPath}/employee/add",
     				type : "POST",
@@ -839,7 +839,7 @@ var dt;
     					 nicknameThai: $("#nicknameThai").val(),
     					 nameEng: $("#nameEng").val(),
     					 surnameEng: $("#surnameEng").val(),
-    					 nicknameEng: $("#nicknameEng").val,
+    					 nicknameEng: $("#nicknameEng").val(),
     					 telHome: $("#telHome").val(),
     					 telMobile: $("#telMobile").val(),
     					 telFax: $("#telFax").val(),
@@ -847,35 +847,35 @@ var dt;
     					 relationshipWithEmergencyContact: $("#relationshipWithEmergencyContact").val(),
     					 emergencyContactAddress: $("#emergencyContactAddress").val(),
     					 emergencyContactPhoneNumber: $("#emergencyContactPhoneNumber").val(),
-    					 dateOfBirth: $("#dateOfBirth").val,
-    					 placeOfBirth: $("#placeOfBirth").val,
-    					 age: $("#age").val,
-    					 religion: $("#religion").val,
-    					 idCard: $("#idCard").val,
-    					 issuedOffice: $("#issuedOffice").val,
-    					 expiryDate: $("#expiryDate").val,
-    					 height: $("#height").val,
-    					 weigth: $("#weigth").val,
-    					 sex: $("#sex").val,
-    					 maritalStatus: $("#maritalStatus").val,
-    					 numberOfChildren: $("#numberOfChildren").val,
-    					 spouseName: $("#spouseName").val,
-    					 marriageCertificateNo: $("#marriageCertificateNo").val,
-    					 issuedOffice2: $("#issuedOffice2").val,
+    					 dateOfBirth: $("#dateOfBirth").val(),
+    					 placeOfBirth: $("#placeOfBirth").val(),
+    					 age: $("#age").val(),
+    					 religion: $("#religion").val(),
+    					 idCard: $("#idCard").val(),
+    					 issuedOffice: $("#issuedOffice").val(),
+    					 expiryDate: $("#expiryDate").val(),
+    					 height: $("#height").val(),
+    					 weigth: $("#weigth").val(),
+    					 sex: $("#sex").val(),
+    					 maritalStatus: $("#maritalStatus").val(),
+    					 numberOfChildren: $("#numberOfChildren").val(),
+    					 spouseName: $("#spouseName").val(),
+    					 marriageCertificateNo: $("#marriageCertificateNo").val(),
+    					 issuedOffice2: $("#issuedOffice2").val(),
     					 address: $("#address").val(),
-    					 occupation: $("#occupation").val,
-    					 knowAugNewspaper: $("#knowAugNewspaper").val,
-    					 descriptionNewspaper: $("#descriptionNewspaper").val,
-    					 knowAugMagazine: $("#knowAugMagazine").val,
-    					 descriptionMagazine: $("#descriptionMagazine").val,
-    					 knowAugWebsite: $("#knowAugWebsite").val,
+    					 occupation: $("#occupation").val(),
+    					 knowAugNewspaper: $("#knowAugNewspaper").val(),
+    					 descriptionNewspaper: $("#descriptionNewspaper").val(),
+    					 knowAugMagazine: $("#knowAugMagazine").val(),
+    					 descriptionMagazine: $("#descriptionMagazine").val(),
+    					 knowAugWebsite: $("#knowAugWebsite").val(),
     					 descriptionWebsite: $("#descriptionWebsite").val(),
     					 knowAugFriend: $("#knowAugFriend").val(),
     					 descriptionFriend: $("#descriptionFriend").val(),
     					 knowAugOther: $("#knowAugOther").val(),
     					 descriptionOther: $("#descriptionOther").val(),
     					 knowEmployedYes: $("#knowEmployedYes").val(),
-    					 descriptionYes: $("#descriptionYes").val,
+    					 descriptionYes: $("#descriptionYes").val(),
     					 knowEmployerNo: $("#knowEmployerNo").val(),
     					 militaryServiceYes: $("#militaryServiceYes").val(),
     					 fromYear: $("#fromYear").val(),
@@ -887,7 +887,7 @@ var dt;
     					 dateToBeDrafted: $("#dateToBeDrafted").val(),
     					 previousEmployerYes: $("#previousEmployerYes").val(),
     					 previousEmployerNo: $("#previousEmployerNo").val(),
-    					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val
+    					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val(),
     					 
     			
     					}),
@@ -896,7 +896,7 @@ var dt;
     				success : function(data) {
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					
-    					dt.fnClearTable();
+    					/* dt.fnClearTable();
     					dt.fnAddData([
     					       data.id,
     					       data.employeeCode,
@@ -958,7 +958,7 @@ var dt;
     					    '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
    	    					'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
     					              
-						]);              
+						]);               */
     					              
     				},
     				error : function(data,testStatus,jqXHR) {
@@ -982,7 +982,7 @@ var dt;
     					 nicknameThai: $("#nicknameThai").val(),
     					 nameEng: $("#nameEng").val(),
     					 surnameEng: $("#surnameEng").val(),
-    					 nicknameEng: $("#nicknameEng").val,
+    					 nicknameEng: $("#nicknameEng").val(),
     					 telHome: $("#telHome").val(),
     					 telMobile: $("#telMobile").val(),
     					 telFax: $("#telFax").val(),
@@ -990,35 +990,35 @@ var dt;
     					 relationshipWithEmergencyContact: $("#relationshipWithEmergencyContact").val(),
     					 emergencyContactAddress: $("#emergencyContactAddress").val(),
     					 emergencyContactPhoneNumber: $("#emergencyContactPhoneNumber").val(),
-    					 dateOfBirth: $("#dateOfBirth").val,
-    					 placeOfBirth: $("#placeOfBirth").val,
-    					 age: $("#age").val,
-    					 religion: $("#religion").val,
-    					 idCard: $("#idCard").val,
-    					 issuedOffice: $("#issuedOffice").val,
-    					 expiryDate: $("#expiryDate").val,
-    					 height: $("#height").val,
-    					 weigth: $("#weigth").val,
-    					 sex: $("#sex").val,
-    					 maritalStatus: $("#maritalStatus").val,
-    					 numberOfChildren: $("#numberOfChildren").val,
-    					 spouseName: $("#spouseName").val,
-    					 marriageCertificateNo: $("#marriageCertificateNo").val,
-    					 issuedOffice2: $("#issuedOffice2").val,
+    					 dateOfBirth: $("#dateOfBirth").val(),
+    					 placeOfBirth: $("#placeOfBirth").val(),
+    					 age: $("#age").val(),
+    					 religion: $("#religion").val(),
+    					 idCard: $("#idCard").val(),
+    					 issuedOffice: $("#issuedOffice").val(),
+    					 expiryDate: $("#expiryDate").val(),
+    					 height: $("#height").val(),
+    					 weigth: $("#weigth").val(),
+    					 sex: $("#sex").val(),
+    					 maritalStatus: $("#maritalStatus").val(),
+    					 numberOfChildren: $("#numberOfChildren").val(),
+    					 spouseName: $("#spouseName").val(),
+    					 marriageCertificateNo: $("#marriageCertificateNo").val(),
+    					 issuedOffice2: $("#issuedOffice2").val(),
     					 address: $("#address").val(),
-    					 occupation: $("#occupation").val,
-    					 knowAugNewspaper: $("#knowAugNewspaper").val,
-    					 descriptionNewspaper: $("#descriptionNewspaper").val,
-    					 knowAugMagazine: $("#knowAugMagazine").val,
-    					 descriptionMagazine: $("#descriptionMagazine").val,
-    					 knowAugWebsite: $("#knowAugWebsite").val,
+    					 occupation: $("#occupation").val(),
+    					 knowAugNewspaper: $("#knowAugNewspaper").val(),
+    					 descriptionNewspaper: $("#descriptionNewspaper").val(),
+    					 knowAugMagazine: $("#knowAugMagazine").val(),
+    					 descriptionMagazine: $("#descriptionMagazine").val(),
+    					 knowAugWebsite: $("#knowAugWebsite").val(),
     					 descriptionWebsite: $("#descriptionWebsite").val(),
     					 knowAugFriend: $("#knowAugFriend").val(),
     					 descriptionFriend: $("#descriptionFriend").val(),
     					 knowAugOther: $("#knowAugOther").val(),
     					 descriptionOther: $("#descriptionOther").val(),
     					 knowEmployedYes: $("#knowEmployedYes").val(),
-    					 descriptionYes: $("#descriptionYes").val,
+    					 descriptionYes: $("#descriptionYes").val(),
     					 knowEmployerNo: $("#knowEmployerNo").val(),
     					 militaryServiceYes: $("#militaryServiceYes").val(),
     					 fromYear: $("#fromYear").val(),
@@ -1030,7 +1030,7 @@ var dt;
     					 dateToBeDrafted: $("#dateToBeDrafted").val(),
     					 previousEmployerYes: $("#previousEmployerYes").val(),
     					 previousEmployerNo: $("#previousEmployerNo").val(),
-    					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val
+    					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val(),
     					  
 					 }),
 					datatype: "json",
