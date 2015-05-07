@@ -50,9 +50,10 @@ public class ReferenceController {
 		return "/reference/listreference";
 	}
 	
-	@RequestMapping(value = "/searchReference", method = RequestMethod.POST)
-	public @ResponseBody List<Reference> searchReference(
-			@RequestBody Reference reference) {
+	@RequestMapping(value = "/reference/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<Reference> listAll() {
+		Reference reference = new Reference();
+		reference.setName("");
 		return referenceService.findByCriteria(reference);
 	}
 	
