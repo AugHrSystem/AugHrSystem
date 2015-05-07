@@ -13,7 +13,7 @@
 
 <!-- jquery and jquery validator -->
 <!-- jquery validator version 1.13.1 -->
-<script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.1.min.js" />"></script> 
+<script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.2.js" />"></script> 
 <script src="<c:url value="/resources/resource/bootstrap/js/jquery.validate.js" />"></script>
 <script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script>
 

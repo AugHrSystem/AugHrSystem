@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.hr.dao.TechnologyEmployeeDao;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasTechnology;
+import com.aug.hr.entity.Official;
 import com.aug.hr.entity.TechnologyEmployee;
 
 
@@ -36,6 +37,7 @@ public class TechnologyEmployeeDaoTest {
 	private TechnologyEmployeeDao techEmpDao;
 	private MasTechnology masTechnology ;
 	private Employee emp;
+	private Official official;
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -55,31 +57,31 @@ public class TechnologyEmployeeDaoTest {
 	public void Setup(){
 		masTechnology = new MasTechnology();
 		emp = new Employee();
-		emp.setId(1L);
-		emp.setTel("0890851022");
-		emp.setSalary(20000F);
+		emp.setId(1);
+		emp.setTelMobile(890851022);
 		emp.setAge(24);
 		emp.setReligion("thai");
-		emp.setIdcard(new Integer(11531090));
-		emp.setHeigh(142);
+		emp.setIdCard(new Integer(11531090));
+		emp.setHeight(142);
 		emp.setWeigth(32);
-		emp.setGender("Female");
-		emp.setStatus("Active");
-		emp.setMilitary("no");
-		emp.setQualification("apiva");
-		emp.setCode("001");
-		emp.setPlacedob("BKK");
+		emp.setSex("Female");
+		emp.setMaritalStatus("No");
+		emp.setMilitaryServiceYes("Yes");
+		emp.setOccupation("ITS");
+		emp.setEmployeeCode("001");
+		emp.setPlaceOfBirth("BKK");
 		String dateString = "06/27/2007";
 		DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
 		try {
 			Date dateDob = df.parse(dateString);
-			emp.setDob(dateDob);
+			emp.setDateOfBirth(dateDob);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-	    
+		official = new Official();
+		official.setEmpOfficial(emp);
 		masTechnology.setMasTechnologyId(1);
 	}
 	
@@ -94,7 +96,7 @@ public class TechnologyEmployeeDaoTest {
 		
 		
 		TechnologyEmployee techEmp = new TechnologyEmployee();
-		techEmp.setEmployee(employee);
+		techEmp.setOfficial(official);
   	    masTechnology.setMasTechnologyId(1);
 		techEmp.setMasTech(masTechnology);
 		techEmp.setAuditFlag("C");
