@@ -12,7 +12,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!-- jQuery -->
-<script src="/resource/bootstrap/js/jquery-1.11.2.min.js"></script>
+<script src="/resource/bootstrap/js/jquery-1.11.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Bootstrap -->
@@ -22,7 +22,7 @@
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <!-- jQuery dataTable -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
