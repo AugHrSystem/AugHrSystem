@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.1.min.js" />"></script>
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
@@ -19,7 +19,7 @@
 <link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
 
 <!-- Data Table -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
 
@@ -113,19 +113,22 @@
 	      <button type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
           Add</button>	
         </div>
+        <div id="outputAddress">
 	       <table id="tbResult" class ="table">
 						<thead>
 							<tr>
-								<th>Address Type</th>
+								<!-- <th>Address Type</th> -->
 								<th>Address</th>
 								<th>Address (Cont.)</th>
-								<th>Province</th>
+								<!-- <th>Province</th> -->
 								<th>Zipcode</th>
-								<th>Action</th>
+								<th></th>
+								<th></th>
 							</tr>
 						
 						</thead>
 					</table>
+	     </div>
 	     </div>
 	     
  <!----------------------------------------- Start General------------------------------------------------------>
@@ -443,8 +446,10 @@
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 			</h2>
 	   </div>
+	   
 	    <div class="form-group">
 	    <div class="col-md-12">
+	    
 	   
 	    <form>
 	    		
@@ -685,13 +690,13 @@
 
 							<div class="form-group">
 								<label>Address:</label>
-								<textarea class="form-control" rows="1" id="unit"></textarea>
+								<textarea class="form-control" rows="1" id="address1"></textarea>
 							</div>
 
 
 							<div class="form-group">
 								<label>Address(Cont.):</label>
-								<textarea class="form-control" rows="1" id="unit"></textarea>
+								<textarea class="form-control" rows="1" id="address2"></textarea>
 							</div>
 
 							<div class="form-group">
@@ -714,16 +719,18 @@
 
 							<div class="form-group">
 								<label>Zipcode:</label>
-								<textarea class="form-control" rows="1" id="unit"></textarea>
+								<textarea class="form-control" rows="1" id="zipcode"></textarea>
 							</div>
 
 						</div>
+						
 						<div class="form-group" align="center">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save
+							<button type="button" class="btn btn-primary saveAddressButton">Save
 								changes</button>
 						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -809,13 +816,15 @@ var dt;
 			todayHighlight : true
 		});
 		
-    	dt=$("#tdResult").dataTable();
+    	dt=$("#tbResult").dataTable();
  		//listAll();
  		
  		var button = $(event.relatedTarget);
-    	var empId = button.data("id"); 
+    	var addId = button.data("id"); 
 		
   		$(this).find(".saveButton").off("click").on("click", function()
+  		
+  				
     		{
     			if(empId != null){
     				editEmployee();
@@ -825,8 +834,18 @@ var dt;
     			}
     			
     		});
-    	
-/* --------------------------------------------------- Add Function --------------------------------------------------- */	
+  		
+  		
+  		
+  		$(this).find(".saveAddressButton").off("click").on("click", function()
+  				
+  				{
+			
+				addAddress();
+			
+			
+		});
+/* --------------------------------------------------- Add Employee Function --------------------------------------------------- */	
     	
 			function addEmployee() {
 	alert("add");
@@ -968,7 +987,7 @@ var dt;
     		}
     		
     		
-/* --------------------------------------------------- Edit Function --------------------------------------------------- */		
+/* --------------------------------------------------- Edit Employee Function --------------------------------------------------- */		
     		
     		function editEmployee() {
     			alert(empId+" edit");
@@ -1038,7 +1057,7 @@ var dt;
 					success : function(data) {
 						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 						dt.fnClearTable();
-    					dt.fnAddData([
+    					/* dt.fnAddData([
     					       data.id,
     					       data.employeeCode,
     					       data.nameThai,
@@ -1094,12 +1113,12 @@ var dt;
     					       data.dateToBeDrafted,
     					       data.previousEmployerYes,
     					       data.previousEmployerNo,
-    					       data.previousEmpreasonsNo,
+    					       data.previousEmpreasonsNo, */
     					       
-    					    '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+    					/*     '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
    	    					'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
     					              
-						]);              
+						]);  */             
 					},
 					error : function(data,testStatus,jqXHR) {
 						
@@ -1107,6 +1126,69 @@ var dt;
 						}
 					});
 			}
+			
+			
+   	/* ----------------------------------------------------- Add Address Function --------------------------------------------------- */		
+			
+			function addAddress() {
+				alert("addAddress");
+    			$.ajax({
+    				url : "${pageContext.request.contextPath}/employee/addAddress",
+    				type : "POST",
+    				 data : JSON.stringify({
+    					 address1: $("#address1").val(),
+    					 address2: $("#address2").val(),
+    					 zipcode: $("#zipcode").val(),
+    					 
+    				 }),
+    				 
+    			 datatype: "json",
+    			 contentType: "application/json",
+    			 success : function(data) {
+    					$("#message").html('<div class="alert alert-success" role="alert">Success Address</div>');
+    					dt.fnAddData([
+    					              //data.addressType.id,
+    					              data.address1,
+    					              data.address2,
+    					              //data.province.id,
+    					              data.zipcode,
+    					              
+    					              
+    					              
+    				 '<button type="button" class="btn btn-info btn-sm active" data-addId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+    			   	 '<button type="button" class="btn btn-danger btn-sm active" data-addId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+    				
+    			   	 ]);
+   	
+    			 },
+ 				error : function(data,testStatus,jqXHR) {
+ 					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+ 					}
+ 				});
+ 		}
+   	
+   		function listAddress(){
+   			$.ajax({
+				url : "${pageContext.request.contextPath}/employee/listAll",
+				type : "POST",
+				success : function(data) {
+					dt.fnClearTable();
+				for (var i=0;i< data.length; i++) {
+					dt.fnAddData([data[i].id,data[i].address1,data[i].address2, 
+					              data[i].zipcode,
+						'<button type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-danger btn-sm active" data-addId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+			
+					}
+				},
+				error : function(data,testStatus,jqXHR) {
+					$("#outputajax").text(testStatus);
+					}
+				}); 
+		}
+	
+	});
+			
 			
   /* ---------------------------------------------------- Init Edit Function --------------------------------------------------- */				
 			

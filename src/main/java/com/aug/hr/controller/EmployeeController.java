@@ -22,7 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+
+
+import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasSpecialtyService;
 
@@ -30,6 +34,9 @@ import com.aug.hr.services.MasSpecialtyService;
 public class EmployeeController {
 	@Autowired private EmployeeService employeeService;
 	@Autowired private MasSpecialtyService masSpecialtyService;
+	@Autowired private AddressService addressService;
+	
+	
 	//@Autowired private TechnologyEmpService technologyEmpService;
 	/*@RequestMapping(value = "/employee", method =  RequestMethod.GET)
     public String init(ModelMap model) {		
@@ -64,6 +71,14 @@ public class EmployeeController {
 		employeeService.create(employee);
 		return employee;
 	}
+	
+	
+	//Add Address
+		@RequestMapping(value = "/employee/addAddress", method = RequestMethod.POST )
+		public @ResponseBody Address AddAddress(@RequestBody Address address) {
+			addressService.create(address);
+			return address;
+		}
 	
 	//InitEdit
 	@RequestMapping(value = "/employee/initEdit/{empId}", method = { RequestMethod.GET, RequestMethod.POST })
