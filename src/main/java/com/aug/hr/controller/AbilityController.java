@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+ 
 import com.aug.hr.entity.Ability;
-import com.aug.hr.entity.Education;
 import com.aug.hr.services.AbilityService;
 import com.aug.hr.services.MasSpecialtyService;
 
