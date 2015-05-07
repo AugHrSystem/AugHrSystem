@@ -151,7 +151,7 @@ var dt;
 
 $(document).ready(function(){
 	dt = $('#tbResult').dataTable();
-	
+	listAll();
 	/* --- addProduct,updateProduct --- */
 	$("#addModal").on("show.bs.modal",function(event) {
 		
@@ -312,6 +312,27 @@ function deleteAbility(button,abilityid) {
 		}
 	
 		});
+}
+	
+	
+	
+function listAll(){
+	$.ajax({
+		url : "${pageContext.request.contextPath}/ability/listAll",
+		type : "POST",
+		success : function(data) {
+			dt.fnClearTable();
+		for (var i=0;i< data.length; i++) {
+			dt.fnAddData([data[i].rank,data[i].masspecialty.name,
+				'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+				'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+	
+			}
+		},
+		error : function() {
+			alert("ERROR");
+		}
+	}); 
 }
 	
 	

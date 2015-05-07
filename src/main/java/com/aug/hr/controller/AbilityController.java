@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+
 import com.aug.hr.entity.Ability;
+import com.aug.hr.entity.Education;
 import com.aug.hr.services.AbilityService;
 import com.aug.hr.services.MasSpecialtyService;
 
@@ -55,16 +57,19 @@ public class AbilityController {
 		return "/ability/ability";
 	}
 	
+	
+	@RequestMapping(value ="/ability/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<Ability> listAll(){
+		
+		return abilityService.findAll();
+	}
+	
 	@RequestMapping(value="/ability/add",method=RequestMethod.POST)
 	public @ResponseBody Ability addAbility(@RequestBody Ability ability){
 		abilityService.create(ability);
 		return ability;
 	}
-	/*
-	@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
-	public @ResponseBody Ability findById(@RequestParam Integer id){
-		return abilityService.find(id);
-	}*/
+	
 	
 	@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
 	public @ResponseBody Ability findById(@RequestParam Integer id)
