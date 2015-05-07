@@ -205,7 +205,7 @@ var dt;
     				success : function(data) {
     					$('#addModal').modal('toggle');
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-    					dt.fnClearTable();
+    					/* dt.fnClearTable();
     					dt.fnAddData([
     					    data.id,
     						data.companyName,
@@ -219,7 +219,8 @@ var dt;
     						//data.employee.id,
     					'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
     					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-    					]);
+    					]); */
+    					listAll();
     				},
     				error : function(data,testStatus,jqXHR) {
     					$('#addModal').modal('toggle');
