@@ -65,6 +65,8 @@
 		 $('#successmsg').hide();
 		 
 		
+		
+		 
 		  $("#formAdd").validate({
 				
 				rules:{
@@ -291,12 +293,23 @@
 	  	       		 $('#myModalUpdate').modal('hide');	   	     
 	  	          	 dt.ajax.reload(false, true );	
 	  			     $('#successmsg').show();
+	  				 if($('#successmsg').is(':visible'))
+	  				 {  
+	  					 $('#errormsg').hide();    
+	  				 }
   	    	   	 
 	  	        
 	  	     },  
 	  	      error : function(e) {  
-	  	      alert('Error: ' + e);   
+	  	      alert('Error: ' + e); 
+	  	      $('#myModalUpdate').modal('hide');	   
 	  	      $('#errormsg').show();
+	  	      
+	  	      if($('#errormsg').is(':visible'))
+			  {  
+					 $('#successmsg').hide();   
+		  	  }
+ 	   	 	  	      
 	  	     }  
 	  	    }); 	  	    
 	    }
@@ -387,13 +400,22 @@
 	  	    	 
 	  	    	    $('#myModal').modal('hide');
 	  	    	    dt.ajax.reload(false, true );
-	  	    	    $('#successmsg').show();	
+	  	    	    $('#successmsg').show();
+	  	    	    if($('#successmsg').is(':visible'))
+	  				 {  
+	  					 $('#errormsg').hide();    
+	  				 }
 		    		
 	  	     },  
 	  	      error : function(e) {  
 	  	           
 	  	    	   alert('Error: ' + e);  
-	  	    	   $('#errormsg').show();	
+	  	    	   $('#myModal').modal('hide');
+	  	    	   $('#errormsg').show();		  	    	 
+	  	    	   if($('#errormsg').is(':visible'))
+	  			   {  
+	  				 $('#successmsg').hide();    
+	  			   }
 	  	     }  
 	  	    }); 
 	  	    
@@ -426,12 +448,20 @@
 		  	    	alert(JSON.stringify(data));
 		  	    	dt.ajax.reload(false, true );	
 		  	        $('#successmsg').show();	
+	  	    	    if($('#successmsg').is(':visible'))
+	  				 {  
+	  					 $('#errormsg').hide();    
+	  				 }
 
 		  	    	 
 		  	     },  
 		  	      error : function(e) {  	  	      
 		  	    	  alert('Error: ' + e);  
-		  	    	  $('#errormsg').show();	
+		  	    	  $('#errormsg').show();  	    	 
+		  	    	  if($('#errormsg').is(':visible'))
+		  			  {  
+		  				 $('#successmsg').hide();    
+		  			  }
 		  	     }  
 		  	    }); 
 		  	   
@@ -721,10 +751,10 @@
 			    
 			     
 			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
+			     <%-- <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 			     		<f:input  id="relation" name="relation" path="relation" cssClass="form-control required" placeholder="${relation}" />
 			     		<f:errors path="relation"/>
-			     </div>		   
+			     </div> --%>		   
 		   
 		   </div>
 		   
