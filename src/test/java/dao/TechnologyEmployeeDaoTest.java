@@ -55,7 +55,7 @@ public class TechnologyEmployeeDaoTest {
 	public void Setup(){
 		masTechnology = new MasTechnology();
 		emp = new Employee();
-		emp.setId(1L);
+		/*emp.setId(1L);
 		emp.setTel("0890851022");
 		emp.setSalary(20000F);
 		emp.setAge(24);
@@ -68,12 +68,12 @@ public class TechnologyEmployeeDaoTest {
 		emp.setMilitary("no");
 		emp.setQualification("apiva");
 		emp.setCode("001");
-		emp.setPlacedob("BKK");
+		emp.setPlacedob("BKK");*/
 		String dateString = "06/27/2007";
 		DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
 		try {
 			Date dateDob = df.parse(dateString);
-			emp.setDob(dateDob);
+			//emp.setDob(dateDob);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,7 +94,7 @@ public class TechnologyEmployeeDaoTest {
 		
 		
 		TechnologyEmployee techEmp = new TechnologyEmployee();
-		techEmp.setEmployee(employee);
+		//techEmp.setEmployee(employee);
   	    masTechnology.setMasTechnologyId(1);
 		techEmp.setMasTech(masTechnology);
 		techEmp.setAuditFlag("C");

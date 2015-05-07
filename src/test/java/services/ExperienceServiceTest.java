@@ -24,7 +24,7 @@ public class ExperienceServiceTest {
 	public void createExp(){
 		
 		Experience exp = new Experience();
-		exp.setEmployee(null);
+		//exp.setEmployee(null);
 		experienceService.create(exp);
 		
 	}

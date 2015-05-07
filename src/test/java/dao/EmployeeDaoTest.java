@@ -36,7 +36,7 @@ public class EmployeeDaoTest {
 
 		Employee employee = new Employee();
 		employee.setName("Name");
-		employee.setTel("1234567890");
+		/*employee.setTel("1234567890");
 		employee.setSalary(3000F);
 		employee.setAge(12);
 		employee.setReligion("eiei");
@@ -52,13 +52,13 @@ public class EmployeeDaoTest {
 		employee.setEmployment(null);
 		employee.setDivision(null);
 		employee.setJoblevel(null);
-		employee.setTechnology(null);
+		employee.setTechnology(null);*/
 
 		String dateString = "06/27/2007";
 		DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
 		try {
 			Date dateDob = df.parse(dateString);
-			employee.setDob(dateDob);
+			//employee.setDob(dateDob);
 		} catch (ParseException e) {
 		
 			e.printStackTrace();
