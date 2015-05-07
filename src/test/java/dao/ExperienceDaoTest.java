@@ -44,7 +44,7 @@ public class ExperienceDaoTest {
 		experience.setDescription("Worked 3 months");
 		experience.setId(1);
 		experience.setSuperVisor("Natechanok K.");
-		experience.setEmployee(null);
+		experience.setOfficial(null);
 		experienceDao.getCurrentSession().save(experience);
 	}
 	
