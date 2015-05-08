@@ -16,10 +16,10 @@ public interface FamilyService {
 	public Family find(Integer Id);
 	public List<Family> findAll();
 	
-	public List<Family> findByOfficialId(Integer Id);
+	public List<Family> findFamilyByEmployeeId(Integer Id);
 	
 	
-    public Official findOfficialById(Integer Id);
+    public Employee findEmployeeById(Integer Id);
     public Family findLastFamily(Integer Id);
 
 

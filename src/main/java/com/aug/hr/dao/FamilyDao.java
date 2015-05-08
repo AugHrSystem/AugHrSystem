@@ -8,8 +8,8 @@ import com.aug.hr.entity.Official;
 
 public interface FamilyDao extends GenericDao<Family, Integer> {
 
-	 public List<Family> findEmployeeByOfficial(Integer Id);
-	 public Official findOfficialById(Integer Id);
+	 public List<Family> findFamilyByEmployeeId(Integer Id);
+	 public Employee findEmployeeById(Integer Id);
 	 public Family findLastFamily(Integer Id);
 }
 

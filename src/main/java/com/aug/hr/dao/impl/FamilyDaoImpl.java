@@ -36,16 +36,19 @@ public class FamilyDaoImpl extends GenericDaoImpl<Family, Integer> implements Fa
 
 	
 	@Override
-	public List<Family> findEmployeeByOfficial(Integer Id) {
+	public List<Family> findFamilyByEmployeeId(Integer Id) {
 		// TODO Auto-generated method stub
 		
 		Criteria c = getCurrentSession().createCriteria(Family.class,"family");		
-		c.setFetchMode("official",FetchMode.JOIN);
+		/*c.setFetchMode("official",FetchMode.JOIN);
 		c.createAlias("official", "official");
 		c.setFetchMode("official.empOfficial",FetchMode.JOIN);
 		c.createAlias("official.empOfficial", "employee");
 		c.add(Restrictions.eq("family.official.id", Id));
-		c.add(Restrictions.eq("employee.official.id", Id));
+		c.add(Restrictions.eq("employee.official.id", Id));*/
+		c.setFetchMode("employee",FetchMode.JOIN);
+		c.createAlias("employee", "employee");
+		c.add(Restrictions.eq("family.employee.id", Id));
 	  
 		return c.list();
 		
@@ -55,10 +58,10 @@ public class FamilyDaoImpl extends GenericDaoImpl<Family, Integer> implements Fa
 	
 
 	@Override
-	public Official findOfficialById(Integer Id) {
+	public Employee findEmployeeById(Integer Id) {
 		// TODO Auto-generated method stub
-		Official official = (Official) getCurrentSession().get(Official.class,Id);
-		return official;
+		Employee employee = (Employee) getCurrentSession().get(Employee.class,Id);
+		return employee;
 	}
 
 	
@@ -67,8 +70,8 @@ public class FamilyDaoImpl extends GenericDaoImpl<Family, Integer> implements Fa
 	public Family findLastFamily(Integer Id) {
 		// TODO Auto-generated method stub
 		Criteria c = getCurrentSession().createCriteria(Family.class,"family");
-		c.setFetchMode("official",FetchMode.JOIN);
-		c.createAlias("official", "official");
+		c.setFetchMode("employee",FetchMode.JOIN);
+		c.createAlias("employee", "employee");
 		c.add(Restrictions.eq("id", Id));
 		Family empFamily = (Family)c.uniqueResult();
 		return empFamily;

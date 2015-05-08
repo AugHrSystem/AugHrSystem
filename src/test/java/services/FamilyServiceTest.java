@@ -27,7 +27,7 @@ public class FamilyServiceTest {
 	
 	@Autowired
 	private FamilyService familyService;
-	private Official official = new Official();
+	private Employee employee = new Employee();
 	
 	
 	@Test
@@ -46,8 +46,8 @@ public class FamilyServiceTest {
 		family.setCreatedTimeStamp(cal.getTime());
 		family.setCreatedBy(0);
 		family.setAuditFlag("C");
-		official.setId(1);
-		family.setOfficial(official);
+		employee.setId(1);
+		family.setEmployee(employee);
 		familyService.create(family);
 		
 		
@@ -64,8 +64,8 @@ public class FamilyServiceTest {
 		empFamily1.setCreatedTimeStamp(cal1.getTime());
 		empFamily1.setCreatedBy(0);
 		empFamily1.setAuditFlag("C");
-		official.setId(2);
-		empFamily1.setOfficial(official);
+		employee.setId(2);
+		empFamily1.setEmployee(employee);
 		familyService.create(empFamily1);
 		
 		

@@ -29,11 +29,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aug.hr.dto.FamilyDto;
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.MasRelationType;
 import com.aug.hr.entity.Official;
 import com.aug.hr.entity.editor.FamilyEditor;
 import com.aug.hr.entity.validator.FamilyValidator;
 import com.aug.hr.services.FamilyService;
 import com.aug.hr.services.EmployeeService;
+import com.aug.hr.services.MasRelationTypeService;
 
 
 
@@ -53,6 +55,8 @@ public class FamilyController {
 	private FamilyDto familyDto;
 	@Autowired
 	private EmployeeService employeeService;
+	@Autowired
+	private MasRelationTypeService masRelationService;
 
 
 	@InitBinder
@@ -74,11 +78,13 @@ public class FamilyController {
 		//init page for display page 
 		
 		logger.info("Welcome to employee family(list) locale: " + locale);
-		List<Family> familyList = familyService.findByOfficialId(1);
+		List<Family> familyList = familyService.findFamilyByEmployeeId(1);
+		List<MasRelationType> masRelationTypeList = masRelationService.findAll();
 		Hibernate.initialize(familyList);
 		System.out.println(familyList);
 		model.addAttribute("familyList", familyList);
 		model.addAttribute("family", family);
+		model.addAttribute("masRelationTypeList", masRelationTypeList);
 		
 		return "/family/family";
 	}
@@ -92,7 +98,7 @@ public class FamilyController {
 		
 		
 		//find data on database and set it to list
-		List<Family> familyList = familyService.findByOfficialId(1);
+		List<Family> familyList = familyService.findFamilyByEmployeeId(1);
 		Hibernate.initialize(familyList);
 	    
 		List<FamilyDto> familyDtoList = new ArrayList<FamilyDto>();
@@ -150,14 +156,14 @@ public class FamilyController {
 		family.setCreatedTimeStamp(cal.getTime());
 		
 		
-		Official official = new Official();
-		official = familyService.findOfficialById(new Integer(1));		
-		family.setOfficial(official);
+		Employee employee = new Employee();
+		employee = familyService.findEmployeeById(new Integer(1));		
+		family.setEmployee(employee);
 		familyService.create(family);
 		
 		
 		
-		logger.info("official info : " +official);
+		logger.info("Employee info : " +employee);
 		
 		
 		List<Family> familyList = new ArrayList<Family>();
