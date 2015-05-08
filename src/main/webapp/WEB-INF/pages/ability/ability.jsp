@@ -222,7 +222,7 @@ $(document).ready(function(){
 				]);
 				 
 				$('#addModal').modal('toggle');
-				
+				listAll();
 			},
 			error : function() {
 				alert("ERROR");
@@ -284,7 +284,7 @@ function updateAbility(button,abilityid) {
 			
 			//alert(data.masspecialty.name);
 			$('#addModal').modal('toggle');
-
+			listAll();
 		},
 		error : function() {
 			alert("ERROR");
