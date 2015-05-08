@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
-
-
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
+import com.aug.hr.services.MasAddressTypeService;
+import com.aug.hr.services.MasProvinceService;
 import com.aug.hr.services.MasSpecialtyService;
 
 @Controller
@@ -35,7 +35,8 @@ public class EmployeeController {
 	@Autowired private EmployeeService employeeService;
 	@Autowired private MasSpecialtyService masSpecialtyService;
 	@Autowired private AddressService addressService;
-	
+	@Autowired private MasAddressTypeService masAddressTypeService;
+	@Autowired private MasProvinceService masProvinceService;
 	
 	//@Autowired private TechnologyEmpService technologyEmpService;
 	/*@RequestMapping(value = "/employee", method =  RequestMethod.GET)
@@ -53,8 +54,12 @@ public class EmployeeController {
 	@RequestMapping(value="/employee",method={RequestMethod.GET,
 			RequestMethod.POST})
 	public String listAll(HttpSession session,Locale locale, ModelMap model){
-		model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
+		//model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
 		//model.addAttribute("technologyList",technologyEmpService.findAll());
+		
+		//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
+		model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
+		model.addAttribute("provinceList",masProvinceService.findAll());
 		return "/employee/employee";
 	}
 	

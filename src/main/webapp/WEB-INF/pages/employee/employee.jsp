@@ -117,13 +117,13 @@
 	       <table id="tbResult" class ="table">
 						<thead>
 							<tr>
-								<!-- <th>Address Type</th> -->
+								<th>Address Type</th> 
 								<th>Address</th>
 								<th>Address (Cont.)</th>
-								<!-- <th>Province</th> -->
+								<th>Province</th> 
 								<th>Zipcode</th>
-								<th></th>
-								<th></th>
+								<th>Edit</th>
+								<th>Delete</th>
 							</tr>
 						
 						</thead>
@@ -441,30 +441,38 @@
 	  		         
 	 <!---------------------------------------------------------- Start Official--------------------------------------------->   
 	      
-	   <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
+	    <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
 			<h2 style="border-bottom: 1px solid #8f8f8f;">Official
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 			</h2>
 	   </div>
-	   
 	    <div class="form-group">
 	    <div class="col-md-12">
-	    
-	   
-	    <form>
-	    		
-								 <div class="col-md-3-offset-9">
+							<div class="col-md-3">
+									
+								</div>
+								<div class="col-md-3">
+									
+								</div>
+								<div class="col-md-3">
+									
+								</div>
+								
+			 			<div class="col-md-3">
 									<label> Date :</label> <input type="text" class="form-control"
 									id="date" placeholder="Enter Date">
 								</div>
 			</div>
+			</div>
+			
+			<div class="form-group">
 			<div class="col-md-12">	
-				<div class="col-md-3">
+				<div class="col-md-6">
 									<label> Position Applied For :</label> <input type="text" class="form-control"
 									id="positionAppliedFor" placeholder="Enter Position">
 								</div>
 								
-				<div class="col-md-3">
+				<div class="col-md-6">
 									<label> Salary Expected :</label> <input type="text" class="form-control"
 									id="salaryExpected" placeholder="Enter Salary">
 								</div>				
@@ -473,9 +481,10 @@
 	   
 	    </div>
 	     </form>
+	     
 <!--------------------------------------------------  Official link to table--------------------------------- --> 	    
 	    
-	   <%--  <div class="col-md-12">
+	    <div class="col-md-12">
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
@@ -490,7 +499,7 @@
 						</div>
   				</div>
 			</form>
-	    </div> --%>
+	    </div>
 	    
 	      <div class="col-md-12">
 	         <form>
@@ -551,7 +560,7 @@
 							</select>
 						</div>
 						
-						<%-- <div class="col-md-3">
+						<div class="col-md-3">
     						<label>Staff Type :</label>
     						<select path="staff" id="staff" class="form-control">
 								<options items="${ staffList }" itemLabel="staffname" itemValue="staffid"/> 
@@ -560,7 +569,7 @@
 									<option value="${obj.staffid}">${obj.staffname}</option>
 								</forEach>
 							</select>
-						</div> --%>
+						</div>
   				</div>
 			</form>
 	    </div>
@@ -619,7 +628,7 @@
 			</form>
 	    </div>
 	    
-	   <%--    <div class="col-md-12">
+	      <div class="col-md-12">
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
@@ -634,10 +643,10 @@
 						</div>
   				</div>
 			</form>
-	    </div> --%>
+	    </div>
 	    
 	     <div class="col-md-12">
-	         <%-- <form>
+	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
     				<label>Probation Date :</label>
@@ -650,7 +659,7 @@
 					</select>
 						</div>
   				</div>
-			</form> --%>
+			</form>
 			
 			<div align="center">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -658,7 +667,7 @@
 	    	</div>
 	    </div>
 	</div>
-</f:form>	
+	
     
 <!----------------------------------------------------------- Modal Address --------------------------------------------------->
 		
@@ -675,18 +684,20 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-
-							<div class="form-group">
-								<label>AddressType</label>
-								<div class="dropdown">
-									<select class="form-control">
-										<option>Address Type</option>
-										<option>Present address</option>
-										<option>Permanent address</option>
-
-									</select>
-								</div>
-							</div>
+					
+					<div class="form-group">
+	    				<label>Address Type :</label>
+	    
+						<div class="form-group">
+		 					 <select  class="form-control" id="addressType">
+								<option value="-1" label="---Select Address Type---" />
+								<c:forEach var="obj" items="${ masAddressTypeList }">
+									<option value="${obj.id }">${ obj.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+	  				</div>
+							
 
 							<div class="form-group">
 								<label>Address:</label>
@@ -700,22 +711,18 @@
 							</div>
 
 							<div class="form-group">
-								<label>Province:</label>
-								<div class="dropdown">
-									<select class="form-control">
-										<option>Province</option>
-										<option>Bangkok</option>
-										<option>ChiangRai</option>
-										<option>Chaingmai</option>
-										<option>Nan</option>
-										<option>Phayao</option>
-										<option>Phrae</option>
-										<option>MaeHongSon</option>
-										<option>Lampang</option>
-
-									</select>
-								</div>
-							</div>
+	    				<label>Province :</label>
+	    
+	    
+						<div class="form-group">
+		 					 <select  class="form-control" id="province">
+								<option value="-1" label="---Select Province---" />
+								<c:forEach var="obj" items="${ provinceList }">
+									<option value="${obj.id }">${ obj.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+	  				</div>
 
 							<div class="form-group">
 								<label>Zipcode:</label>
@@ -736,7 +743,7 @@
 			</div>
 	    </div>
 	    
-	    
+	</f:form>    
 	    
 <!------------------------------------------------- Modal Delete --------------------------------------------->
 
@@ -820,8 +827,9 @@ var dt;
  		//listAll();
  		
  		var button = $(event.relatedTarget);
-    	var addId = button.data("id"); 
-		
+    	var addId = button.data("addid"); 
+    	var buttonemp = $(event.relatedTarget);
+    	var empId = button.data("empid"); 
   		$(this).find(".saveButton").off("click").on("click", function()
   		
   				
@@ -1136,8 +1144,11 @@ var dt;
     				url : "${pageContext.request.contextPath}/employee/addAddress",
     				type : "POST",
     				 data : JSON.stringify({
+    					 
+    					 addressType : {id:$("#addressType").val(), name: $("#addressType option:selected").text()},
     					 address1: $("#address1").val(),
     					 address2: $("#address2").val(),
+    					 province :{id:$("#province").val(), name: $("#province option:selected").text()},
     					 zipcode: $("#zipcode").val(),
     					 
     				 }),
@@ -1145,12 +1156,12 @@ var dt;
     			 datatype: "json",
     			 contentType: "application/json",
     			 success : function(data) {
-    					$("#message").html('<div class="alert alert-success" role="alert">Success Address</div>');
+    					//$("#message").html('<div class="alert alert-success" role="alert">Success Address</div>');
     					dt.fnAddData([
-    					              //data.addressType.id,
+    					              data.addressType.id,
     					              data.address1,
     					              data.address2,
-    					              //data.province.id,
+    					              data.province.id,
     					              data.zipcode,
     					              
     					              
@@ -1159,6 +1170,8 @@ var dt;
     			   	 '<button type="button" class="btn btn-danger btn-sm active" data-addId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
     				
     			   	 ]);
+    					
+    					$('#myModal').modal('toggle');
    	
     			 },
  				error : function(data,testStatus,jqXHR) {
@@ -1174,7 +1187,7 @@ var dt;
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].id,data[i].address1,data[i].address2, 
+					dt.fnAddData([data[i].addressType.name,data[i].address1,data[i].address2, 
 					              data[i].zipcode,
 						'<button type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-addId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
@@ -1295,7 +1308,6 @@ var dt;
 			
   	});
   	
-	});
   
   </script>
 </body>

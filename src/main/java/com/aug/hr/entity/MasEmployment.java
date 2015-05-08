@@ -27,7 +27,7 @@ public class MasEmployment extends BaseEntity {
 	@Column(name = "ID", length = 10)
 	@GeneratedValue
 	
-	private Integer Id;
+	private Integer id;
 	
 	@Column(name = "NAME", nullable = false, length = 200)
 	private String name;
@@ -40,16 +40,17 @@ public class MasEmployment extends BaseEntity {
 
 	
 	@OneToMany(mappedBy = "employment")
-	private Set<Official> officials = new HashSet<Official>();
+	private Set<Employee> employees = new HashSet<Employee>();
+
 
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
 
@@ -83,21 +84,15 @@ public class MasEmployment extends BaseEntity {
 	}
 
 
-	public Set<Official> getOfficials() {
-		return officials;
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
 
 
-	public void setOfficials(Set<Official> officials) {
-		this.officials = officials;
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
 
 
-	
-	
-	
-	
-	
-	
 
 }

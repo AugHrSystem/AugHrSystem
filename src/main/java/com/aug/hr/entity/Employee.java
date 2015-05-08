@@ -10,12 +10,14 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -204,6 +206,40 @@ public class Employee extends BaseEntity{
 	 @JoinColumn(name = "OFFICIAL_ID",nullable = true)
 	 private Official official;
 	 
+	 
+	 @OneToMany(mappedBy = "employee")
+	 private Set<Education> educations = new HashSet<Education>();
+
+	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
+	 private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();
+		  
+	    @ManyToOne
+	    @JoinColumn(name= "EMPLOYMENT_ID")
+	    private MasEmployment employment;
+	    
+	    @OneToMany(mappedBy = "employee")
+	    private Set<Ability> abilities = new HashSet<Ability>();
+	    
+	    @OneToMany(mappedBy = "employee")
+	    private Set<Reference> references = new HashSet<Reference>();
+	    
+	    @ManyToOne
+	    @JoinColumn(name= "DIVISION_ID")
+	    private MasDivision masDivision;
+	    
+	    @ManyToOne
+	    @JoinColumn(name= "JOBLEVEL_ID")
+	    private Joblevel joblevel;
+	    
+	    @OneToMany(mappedBy = "employee")
+	    private Set<Experience> experiences = new HashSet<Experience>();
+	    
+	 
+	 /*   @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+	    private Set<TechnologyEmployee> technology = new HashSet<TechnologyEmployee>();
+	    
+	    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+	    private Set<Family> families = new HashSet<Family>(); */
 
 	 //-------------------------------------- getter setter --------------------------------------------------//
 
@@ -790,8 +826,128 @@ public class Employee extends BaseEntity{
 	public void setServiceNo(String serviceNo) {
 		this.serviceNo = serviceNo;
 	}
+
+
+
+	public Set<Education> getEducations() {
+		return educations;
+	}
+
+
+
+	public void setEducations(Set<Education> educations) {
+		this.educations = educations;
+	}
+
+
+
+	public Set<MasCoreSkill> getMasCoreSkill() {
+		return masCoreSkill;
+	}
+
+
+
+	public void setMasCoreSkill(Set<MasCoreSkill> masCoreSkill) {
+		this.masCoreSkill = masCoreSkill;
+	}
+
+
+
+	public MasEmployment getEmployment() {
+		return employment;
+	}
+
+
+
+	public void setEmployment(MasEmployment employment) {
+		this.employment = employment;
+	}
+
+
+
+	public Set<Ability> getAbilities() {
+		return abilities;
+	}
+
+
+
+	public void setAbilities(Set<Ability> abilities) {
+		this.abilities = abilities;
+	}
+
+
+
+	public Set<Reference> getReferences() {
+		return references;
+	}
+
+
+
+	public void setReferences(Set<Reference> references) {
+		this.references = references;
+	}
+
+
+
+	public MasDivision getMasDivision() {
+		return masDivision;
+	}
+
+
+
+	public void setMasDivision(MasDivision masDivision) {
+		this.masDivision = masDivision;
+	}
+
+
+
+	public Joblevel getJoblevel() {
+		return joblevel;
+	}
+
+
+
+	public void setJoblevel(Joblevel joblevel) {
+		this.joblevel = joblevel;
+	}
+
+
+
+	public Set<Experience> getExperiences() {
+		return experiences;
+	}
+
+
+
+	public void setExperiences(Set<Experience> experiences) {
+		this.experiences = experiences;
+	}
+
+
+/*
+	public Set<TechnologyEmployee> getTechnology() {
+		return technology;
+	}
+
+
+
+	public void setTechnology(Set<TechnologyEmployee> technology) {
+		this.technology = technology;
+	}
+
+
+
+	public Set<Family> getFamilies() {
+		return families;
+	}
+
+
+
+	public void setFamilies(Set<Family> families) {
+		this.families = families;
+	}
 	 
-	 
+	 */
 	 
 	 
 }
