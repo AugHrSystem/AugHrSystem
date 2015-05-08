@@ -6,8 +6,8 @@ import com.aug.hr.entity.MasCoreSkill;
 
 public interface MasCoreSkillDao extends GenericDao<MasCoreSkill, Integer> {
 
-	List<MasCoreSkill> findByCriteria(MasCoreSkill masCoreSkill);
+	public List<MasCoreSkill> findByCriteria(MasCoreSkill masCoreSkill);
 
-	MasCoreSkill deleteById(Integer id);
+	public void deleteById(Integer id);
 
 }

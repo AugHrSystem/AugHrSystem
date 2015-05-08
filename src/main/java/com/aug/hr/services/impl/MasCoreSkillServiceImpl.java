@@ -56,9 +56,9 @@ public class MasCoreSkillServiceImpl implements MasCoreSkillService{
 	}
 
 	@Override
-	public MasCoreSkill deleteById(Integer id) {
-		// TODO Auto-generated method stub
-		return masCoreSkillDao.deleteById(id);
+	public void deleteById(Integer id) {
+	
+		masCoreSkillDao.deleteById(id);
 	}
 
 }
