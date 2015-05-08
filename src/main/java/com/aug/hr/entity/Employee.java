@@ -215,7 +215,7 @@ public class Employee extends BaseEntity{
 		  
 	    @ManyToOne
 	    @JoinColumn(name= "EMPLOYMENT_ID")
-	    private MasEmployment employment;
+	    private MasEmployment masEmployment;
 	    
 	    @OneToMany(mappedBy = "employee")
 	    private Set<Ability> abilities = new HashSet<Ability>();
@@ -854,13 +854,13 @@ public class Employee extends BaseEntity{
 
 
 	public MasEmployment getEmployment() {
-		return employment;
+		return masEmployment;
 	}
 
 
 
 	public void setEmployment(MasEmployment employment) {
-		this.employment = employment;
+		this.masEmployment = employment;
 	}
 
 

@@ -532,16 +532,18 @@
 	     <div class="col-md-12">
 	         <form>
 				<div class="form-group">
+				
 						<div class="col-md-3">
-    				<label>Employment Type :</label>
-    				<select path="employment" id="employment" class="form-control">
-								<options items="${ employmentList }" itemLabel="employmentname" itemValue="locationid"/> 
-								<option value="-1">--Employment--</option>
-								<forEach var="obj" items="${ employmentList }">${obj}
-									<option value="${obj.Id}">${obj.name}</option>
-								</forEach>
-					</select>
+    						<label>Employment :</label>
+    						<select path="employment" id="employment" class="form-control">
+								<options items="${ employmentList }"itemLabel="employmentname" itemValue="employmentid"/>
+								<option value="-1"> ---Select Employment----</option>
+								<c:forEach var="obj" items="${ employmentList }">
+								<option value="${obj.id }">${ obj.name}</option>
+			</c:forEach>
+							</select>
 						</div>
+						
   				</div>
 			</form>
 	    </div>
@@ -553,10 +555,10 @@
     						<label>Division :</label>
     						<select path="division" id="division" class="form-control">
 								<options items="${ divisionList }" itemLabel="divisionname" itemValue="divisionid"/> 
-								<option value="-1">--Division--</option>
-								<forEach var="obj" items="${ divisionList }">${obj}
+								<option value="-1">--Select Division--</option>
+								<c:forEach var="obj" items="${ divisionList }">${obj}
 									<option value="${obj.id}">${obj.name}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
 						
@@ -565,9 +567,9 @@
     						<select path="staff" id="staff" class="form-control">
 								<options items="${ staffList }" itemLabel="staffname" itemValue="staffid"/> 
 								<option value="-1">--Staff Type--</option>
-								<forEach var="obj" items="${ staffList }">${obj}
+								<c:forEach var="obj" items="${ staffList }">${obj}
 									<option value="${obj.staffid}">${obj.staffname}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
   				</div>
@@ -582,9 +584,9 @@
     						<select path="joblevel" id="joblevel" class="form-control">
 								<options items="${ joblevelList }" itemLabel="joblevelname" itemValue="divisionid"/> 
 								<option value="-1">--Joblevel--</option>
-								<forEach var="obj" items="${ joblevelList }">${obj}
+								<c:forEach var="obj" items="${ joblevelList }">${obj}
 									<option value="${obj.id}">${obj.name}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
 						
@@ -593,9 +595,9 @@
     						<select path="coreskill" id="coreskill" class="form-control">
 								<options items="${ coreskillList }" itemLabel="coreskillname" itemValue="coreskillid"/> 
 								<option value="-1">--Core Skill--</option>
-								<forEach var="obj" items="${ coreskillList }">${obj}
+								<c:forEach var="obj" items="${ coreskillList }">${obj}
 									<option value="${obj.id}">${obj.name}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
   				</div>

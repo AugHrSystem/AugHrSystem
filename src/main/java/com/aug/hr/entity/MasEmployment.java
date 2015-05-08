@@ -24,8 +24,9 @@ import javax.persistence.Table;
 public class MasEmployment extends BaseEntity {
 	
 	@Id
-	@Column(name = "ID", length = 10)
 	@GeneratedValue
+	@Column(name = "ID", length = 10)
+	
 	
 	private Integer id;
 	
@@ -39,7 +40,7 @@ public class MasEmployment extends BaseEntity {
 	private Boolean isActive;
 
 	
-	@OneToMany(mappedBy = "employment")
+	@OneToMany(mappedBy = "masEmployment")
 	private Set<Employee> employees = new HashSet<Employee>();
 
 
