@@ -8,6 +8,6 @@ public interface MasCoreSkillDao extends GenericDao<MasCoreSkill, Integer> {
 
 	public List<MasCoreSkill> findByCriteria(MasCoreSkill masCoreSkill);
 
-	public void deleteById(Integer id);
+	public MasCoreSkill deleteById(Integer id);
 
 }

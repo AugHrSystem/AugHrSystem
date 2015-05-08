@@ -23,15 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
-
-
-
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasEmployment;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasAddressTypeService;
+import com.aug.hr.services.MasCoreSkillService;
 import com.aug.hr.services.MasDivisionService;
 import com.aug.hr.services.MasEmploymentService;
 import com.aug.hr.services.MasProvinceService;
@@ -48,7 +46,7 @@ public class EmployeeController {
 	@Autowired private MasEmploymentService masEmploymentService;
 	@Autowired private MasDivisionService masDivisionService;
 	@Autowired private masTechnologyService masTechnologyService;
-	
+	@Autowired private MasCoreSkillService masCoreSkillService;
 	
 	//@Autowired private TechnologyEmpService technologyEmpService;
 	/*@RequestMapping(value = "/employee", method =  RequestMethod.GET)
@@ -76,6 +74,7 @@ public class EmployeeController {
 		model.addAttribute("employmentList",masEmploymentService.findAll());
 		model.addAttribute("divisionList", masDivisionService.findAll());
 		model.addAttribute("technologyList", masTechnologyService.findAll());
+		model.addAttribute("coreskillList",masCoreSkillService.findAll());
 		return "/employee/employee";
 	}
 	

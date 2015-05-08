@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.aug.hr.dao.MasDegreetypeDao;
-import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasDegreetype;
 import com.aug.hr.services.MasDegreetypeService;

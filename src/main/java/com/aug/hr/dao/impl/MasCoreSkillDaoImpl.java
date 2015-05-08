@@ -27,11 +27,11 @@ public class MasCoreSkillDaoImpl extends GenericDaoImpl<MasCoreSkill, Integer> i
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public MasCoreSkill deleteById(Integer id) {
 		MasCoreSkill masCoreSkill =(MasCoreSkill)getCurrentSession().load(MasCoreSkill.class, id);
-		if(masCoreSkill != null){
-			getCurrentSession().delete(masCoreSkill);
+		getCurrentSession().delete(masCoreSkill);
+		return masCoreSkill;
 		}
-	}
+	
 
 }

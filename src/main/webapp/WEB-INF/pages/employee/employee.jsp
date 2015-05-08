@@ -610,17 +610,18 @@
 						<div class="col-md-3">
     						<label>Technology :</label>
     						<select path="technology" id="technology" class="form-control">
-								<form:option value="-1" label="---Select Specialty---" />
-								<forEach var="obj" items="${ technologyList }">${obj}
+								<option value="-1" label="---Select Technology---" />
+								<c:forEach var="obj" items="${ technologyList }">${obj}
 									<option value="${obj.masTechnologyId}">${obj.masTechnologyName}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
 						
 						<div class="col-md-3">
     						<label>Speciality :</label>
     						<select path="masspecialty" id="masspecialty" class="form-control">
-								<options items="${ masspecialtyList }"label="---Select Specialty---"/> 
+							<options items="${ masspecialtyList } itemLabel="specialtyname" itemValue="specialtyid"/> 
+							<option value="-1">--Select Specialty--</option>	
 								<c:forEach var="obj" items="${ masspecialtyList }">
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>

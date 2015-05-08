@@ -8,11 +8,17 @@ package com.aug.hr.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.MasCoreSkillDao;
 import com.aug.hr.entity.MasCoreSkill;
 import com.aug.hr.services.MasCoreSkillService;
 
+
+
+@Service("MasCoreSkillService")
+@Transactional
 public class MasCoreSkillServiceImpl implements MasCoreSkillService{
 
 	
@@ -25,7 +31,7 @@ public class MasCoreSkillServiceImpl implements MasCoreSkillService{
 		masCoreSkillDao.create(masCoreSkill);
 		
 	}
-
+	
 	@Override
 	public void update(MasCoreSkill masCoreSkill) {
 		masCoreSkillDao.update(masCoreSkill);
@@ -40,7 +46,7 @@ public class MasCoreSkillServiceImpl implements MasCoreSkillService{
 	@Override
 	public MasCoreSkill find(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return masCoreSkillDao.find(id);
 	}
 
 	@Override
