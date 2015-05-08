@@ -402,7 +402,7 @@
 							</classpath>
 							<configuration configurationfile="${project.basedir}/src/main/resources/hibernate.cfg.xml" />
 							<jdbcconfiguration packagename="com.aug.hr"/>
-							<hbm2ddl create="false" drop="false" export="true" outputfilename="create-schema.sql" format="true" console="true" />
+							<hbm2ddl create="true" drop="true" export="true" outputfilename="create-schema.sql" format="true" console="true" />
 
 						</hibernatetool>
 					</configuration>
