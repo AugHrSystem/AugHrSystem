@@ -32,7 +32,6 @@ public class Family extends BaseEntity implements Serializable {
 	private String address;
 	private String occupation;
 	private String position;
-	private String relation;
 	private Employee employee;
 	private MasRelationType masRelation;
 	
@@ -146,20 +145,6 @@ public class Family extends BaseEntity implements Serializable {
 		this.position = position;
 	}
 	
-	
-	
-	@Column(name="RELATION",length=40)
-	@NotNull
-	public String getRelation() {
-		return relation;
-	}
-	
-	
-	public void setRelation(String relation) {
-		this.relation = relation;
-	}
-	
-
 	
    
     @ManyToOne(fetch=FetchType.LAZY)
