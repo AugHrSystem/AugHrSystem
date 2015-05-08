@@ -11,25 +11,18 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<!-- jQuery -->
-<script src="../js/jquery-1.10.2.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
 <!-- Bootstrap -->
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
+<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
-<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
-<!-- jQuery dataTable -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
-<!-- dataTable Bootstrap -->
-<link href="<c:url value="/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
+<!-- Data Table -->
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
+
 
 </head>
 <body>
@@ -151,7 +144,7 @@ var dt;
 
 $(document).ready(function(){
 	dt = $('#tbResult').dataTable();
-	
+	listAll();
 	/* --- addProduct,updateProduct --- */
 	$("#addModal").on("show.bs.modal",function(event) {
 		
@@ -168,6 +161,7 @@ $(document).ready(function(){
 			 if(abilityid != null){
 				/*  alert("be up"); */
 				updateAbility(button,abilityid);
+				
 			}else{ 
 				addAbility();
 				
@@ -220,7 +214,7 @@ $(document).ready(function(){
 					'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 					'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 				]);
-				 
+				
 				$('#addModal').modal('toggle');
 				listAll();
 			},
@@ -283,6 +277,7 @@ function updateAbility(button,abilityid) {
 			dt.fnUpdate(data.rank, tr, 1 );
 			
 			//alert(data.masspecialty.name);
+			
 			$('#addModal').modal('toggle');
 			listAll();
 		},
@@ -313,7 +308,24 @@ function deleteAbility(button,abilityid) {
 	
 		});
 }
-	
+function listAll(){
+		$.ajax({
+			url : "${pageContext.request.contextPath}/ability/listAll",
+			type : "POST",
+			success : function(data) {
+				dt.fnClearTable();
+			for (var i=0;i< data.length; i++) {
+				dt.fnAddData([data[i].masspecialty.name,data[i].rank,
+					'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+					'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+		
+				}
+			},
+			error : function() {
+				alert("ERROR");
+			}
+		}); 
+	}
 	
 function clearModal(){
 		
