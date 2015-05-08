@@ -33,8 +33,8 @@ public class Family extends BaseEntity implements Serializable {
 	private String occupation;
 	private String position;
 	private String relation;
-	private Official official;
-	
+	private Employee employee;
+	private MasRelationType masRelation;
 	
 	
 	
@@ -158,29 +158,38 @@ public class Family extends BaseEntity implements Serializable {
 	public void setRelation(String relation) {
 		this.relation = relation;
 	}
+	
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="OFFICIAL_ID",nullable=false)
-	public Official getOfficial() {
-		return official;
+	
+   
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="MASRELATION_ID")
+	public MasRelationType getMasRelation() {
+		return masRelation;
 	}
 
 
-	public void setOfficial(Official official) {
-		this.official = official;
+	public void setMasRelation(MasRelationType masRelation) {
+		this.masRelation = masRelation;
+	}
+	
+	
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="EMPLOYEE_ID",nullable=false)
+	public Employee getEmployee() {
+		return employee;
 	}
 
 	
 
-	@Override
-	public String toString() {
-		return "Family [id=" + id + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", gender=" + gender + ", age=" + age
-				+ ", mobile=" + mobile + ", address=" + address
-				+ ", occupation=" + occupation + ", position=" + position
-				+ ", relation=" + relation + ", official=" + official + "]";
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 	
+	
+	
+
+
 	
 	
 	

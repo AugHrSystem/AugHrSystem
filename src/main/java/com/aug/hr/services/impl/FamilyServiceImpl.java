@@ -53,17 +53,17 @@ public class FamilyServiceImpl implements FamilyService{
 
 
 	@Override
-	public List<Family> findByOfficialId(Integer Id) {
+	public List<Family> findFamilyByEmployeeId(Integer Id) {
 		// TODO Auto-generated method stub
-		List<Family> empFamilyList = empFamilyDao.findEmployeeByOfficial(Id);
+		List<Family> empFamilyList = empFamilyDao.findFamilyByEmployeeId(Id);
 		return empFamilyList;
 	}
 
 	@Override
-	public Official findOfficialById(Integer Id) {
+	public Employee findEmployeeById(Integer Id) {
 		// TODO Auto-generated method stub
-		Official official = empFamilyDao.findOfficialById(Id);
-		return official;
+		Employee employee = empFamilyDao.findEmployeeById(Id);
+		return employee;
 	}
 
 	@Override

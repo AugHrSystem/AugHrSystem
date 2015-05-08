@@ -384,6 +384,7 @@
 	  		var occupation = $('#occupation').val();
 	  		var position = $('#position').val();
 	  		var relation = $('#relation').val();
+	  		alert(relation);
 
 	  	    
 	  	    var json = {"firstName":firstName,"lastName" : lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"relation":relation};
@@ -751,10 +752,16 @@
 			    
 			     
 			     
-			     <%-- <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  id="relation" name="relation" path="relation" cssClass="form-control required" placeholder="${relation}" />
-			     		<f:errors path="relation"/>
-			     </div> --%>		   
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
+
+			     		 <f:select id="relation" path="relation" cssClass="form-control required" >
+						  <f:option  value="-1" label="please select data"/>								
+							<c:forEach var="obj" items="${ masRelationTypeList }">									
+									<option value="${obj.id}" >${obj.relationType}</option> 									
+							</c:forEach>
+						</f:select> 
+								
+			     </div>		   
 		   
 		   </div>
 		   

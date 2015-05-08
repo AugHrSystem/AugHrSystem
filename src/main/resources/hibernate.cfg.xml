@@ -35,6 +35,7 @@
 		<mapping class="com.aug.hr.entity.Login"/>
 		<mapping class="com.aug.hr.entity.MasDegreetype"/>			
         <mapping class="com.aug.hr.entity.Official"/>
+        <mapping class="com.aug.hr.entity.MasRelationType"/>
 
 
 	</session-factory>

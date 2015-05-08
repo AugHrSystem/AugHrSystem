@@ -27,7 +27,7 @@ public class FamilyDaoTest {
 	
 	@Autowired
 	private FamilyDao familyDao;
-	private Official official = new Official();
+	private Employee employee = new Employee();
 	
 	
 	
@@ -47,8 +47,8 @@ public class FamilyDaoTest {
 		family.setCreatedTimeStamp(cal.getTime());
 		family.setCreatedBy(0);
 		family.setAuditFlag("C");
-		official.setId(1);
-		family.setOfficial(official);
+		employee.setId(1);
+		family.setEmployee(employee);
 		familyDao.getCurrentSession().save(family);
 		
 		
@@ -67,8 +67,8 @@ public class FamilyDaoTest {
 		family1.setCreatedTimeStamp(cal1.getTime());
 		family1.setCreatedBy(0);
 		family1.setAuditFlag("C");
-		official.setId(2);
-		family1.setOfficial(official);
+		employee.setId(2);
+		family1.setEmployee(employee);
 		familyDao.getCurrentSession().save(family1);
 	}
 	
