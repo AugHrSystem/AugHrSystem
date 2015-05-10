@@ -37,11 +37,12 @@ public class MasDivision extends BaseEntity{
 	
 	
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	 /*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
-	 private Official official;
-	/*@OneToMany(mappedBy = "masDivision")
-	private Set<Employee> employees;*/
+	 private Official official;*/
+	
+	@OneToMany(mappedBy = "masDivision")
+	private Set<Employee> employees;
 	
 	/*---------------------- getter / setter ----------------------*/
 
@@ -71,21 +72,15 @@ public class MasDivision extends BaseEntity{
 	
 	
 
-	/*public Set<Employee> getEmployees() {
+	public Set<Employee> getEmployees() {
 		return employees;
 	}
 
 	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
-	}*/
-
-	public Official getOfficial() {
-		return official;
 	}
 
-	public void setOfficial(Official official) {
-		this.official = official;
-	}
+
 
 	public Boolean getIsActive() {
 		return isActive;

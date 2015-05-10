@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.1.min.js" />"></script>
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
@@ -19,7 +19,7 @@
 <link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
 
 <!-- Data Table -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
 
@@ -113,19 +113,22 @@
 	      <button type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
           Add</button>	
         </div>
+        <div id="outputAddress">
 	       <table id="tbResult" class ="table">
 						<thead>
 							<tr>
-								<th>Address Type</th>
+								<th>Address Type</th> 
 								<th>Address</th>
 								<th>Address (Cont.)</th>
-								<th>Province</th>
+								<th>Province</th> 
 								<th>Zipcode</th>
-								<th>Action</th>
+								<th>Edit</th>
+								<th>Delete</th>
 							</tr>
 						
 						</thead>
 					</table>
+	     </div>
 	     </div>
 	     
  <!----------------------------------------- Start General------------------------------------------------------>
@@ -438,28 +441,38 @@
 	  		         
 	 <!---------------------------------------------------------- Start Official--------------------------------------------->   
 	      
-	   <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
+	    <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
 			<h2 style="border-bottom: 1px solid #8f8f8f;">Official
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 			</h2>
 	   </div>
 	    <div class="form-group">
 	    <div class="col-md-12">
-	   
-	    <form>
-	    		
-								 <div class="col-md-3-offset-9">
+							<div class="col-md-3">
+									
+								</div>
+								<div class="col-md-3">
+									
+								</div>
+								<div class="col-md-3">
+									
+								</div>
+								
+			 			<div class="col-md-3">
 									<label> Date :</label> <input type="text" class="form-control"
 									id="date" placeholder="Enter Date">
 								</div>
 			</div>
+			</div>
+			
+			<div class="form-group">
 			<div class="col-md-12">	
-				<div class="col-md-3">
+				<div class="col-md-6">
 									<label> Position Applied For :</label> <input type="text" class="form-control"
 									id="positionAppliedFor" placeholder="Enter Position">
 								</div>
 								
-				<div class="col-md-3">
+				<div class="col-md-6">
 									<label> Salary Expected :</label> <input type="text" class="form-control"
 									id="salaryExpected" placeholder="Enter Salary">
 								</div>				
@@ -468,9 +481,10 @@
 	   
 	    </div>
 	     </form>
+	     
 <!--------------------------------------------------  Official link to table--------------------------------- --> 	    
 	    
-	   <%--  <div class="col-md-12">
+	    <div class="col-md-12">
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
@@ -485,7 +499,7 @@
 						</div>
   				</div>
 			</form>
-	    </div> --%>
+	    </div>
 	    
 	      <div class="col-md-12">
 	         <form>
@@ -518,16 +532,18 @@
 	     <div class="col-md-12">
 	         <form>
 				<div class="form-group">
+				
 						<div class="col-md-3">
-    				<label>Employment Type :</label>
-    				<select path="employment" id="employment" class="form-control">
-								<options items="${ employmentList }" itemLabel="employmentname" itemValue="locationid"/> 
-								<option value="-1">--Employment--</option>
-								<forEach var="obj" items="${ employmentList }">${obj}
-									<option value="${obj.Id}">${obj.name}</option>
-								</forEach>
-					</select>
+    						<label>Employment :</label>
+    						<select path="employment" id="employment" class="form-control">
+								<options items="${ employmentList }"itemLabel="employmentname" itemValue="employmentid"/>
+								<option value="-1"> ---Select Employment----</option>
+								<c:forEach var="obj" items="${ employmentList }">
+								<option value="${obj.id }">${ obj.name}</option>
+			</c:forEach>
+							</select>
 						</div>
+						
   				</div>
 			</form>
 	    </div>
@@ -539,23 +555,23 @@
     						<label>Division :</label>
     						<select path="division" id="division" class="form-control">
 								<options items="${ divisionList }" itemLabel="divisionname" itemValue="divisionid"/> 
-								<option value="-1">--Division--</option>
-								<forEach var="obj" items="${ divisionList }">${obj}
+								<option value="-1">--Select Division--</option>
+								<c:forEach var="obj" items="${ divisionList }">${obj}
 									<option value="${obj.id}">${obj.name}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
 						
-						<%-- <div class="col-md-3">
+						<div class="col-md-3">
     						<label>Staff Type :</label>
     						<select path="staff" id="staff" class="form-control">
 								<options items="${ staffList }" itemLabel="staffname" itemValue="staffid"/> 
 								<option value="-1">--Staff Type--</option>
-								<forEach var="obj" items="${ staffList }">${obj}
+								<c:forEach var="obj" items="${ staffList }">${obj}
 									<option value="${obj.staffid}">${obj.staffname}</option>
-								</forEach>
+								</c:forEach>
 							</select>
-						</div> --%>
+						</div>
   				</div>
 			</form>
 	    </div>
@@ -568,9 +584,9 @@
     						<select path="joblevel" id="joblevel" class="form-control">
 								<options items="${ joblevelList }" itemLabel="joblevelname" itemValue="divisionid"/> 
 								<option value="-1">--Joblevel--</option>
-								<forEach var="obj" items="${ joblevelList }">${obj}
+								<c:forEach var="obj" items="${ joblevelList }">${obj}
 									<option value="${obj.id}">${obj.name}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
 						
@@ -579,9 +595,9 @@
     						<select path="coreskill" id="coreskill" class="form-control">
 								<options items="${ coreskillList }" itemLabel="coreskillname" itemValue="coreskillid"/> 
 								<option value="-1">--Core Skill--</option>
-								<forEach var="obj" items="${ coreskillList }">${obj}
+								<c:forEach var="obj" items="${ coreskillList }">${obj}
 									<option value="${obj.id}">${obj.name}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
   				</div>
@@ -594,17 +610,18 @@
 						<div class="col-md-3">
     						<label>Technology :</label>
     						<select path="technology" id="technology" class="form-control">
-								<form:option value="-1" label="---Select Specialty---" />
-								<forEach var="obj" items="${ technologyList }">${obj}
+								<option value="-1" label="---Select Technology---" />
+								<c:forEach var="obj" items="${ technologyList }">${obj}
 									<option value="${obj.masTechnologyId}">${obj.masTechnologyName}</option>
-								</forEach>
+								</c:forEach>
 							</select>
 						</div>
 						
 						<div class="col-md-3">
     						<label>Speciality :</label>
     						<select path="masspecialty" id="masspecialty" class="form-control">
-								<options items="${ masspecialtyList }"label="---Select Specialty---"/> 
+							<options items="${ masspecialtyList } itemLabel="specialtyname" itemValue="specialtyid"/> 
+							<option value="-1">--Select Specialty--</option>	
 								<c:forEach var="obj" items="${ masspecialtyList }">
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>
@@ -614,7 +631,7 @@
 			</form>
 	    </div>
 	    
-	   <%--    <div class="col-md-12">
+	      <div class="col-md-12">
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
@@ -629,10 +646,10 @@
 						</div>
   				</div>
 			</form>
-	    </div> --%>
+	    </div>
 	    
 	     <div class="col-md-12">
-	         <%-- <form>
+	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
     				<label>Probation Date :</label>
@@ -645,7 +662,7 @@
 					</select>
 						</div>
   				</div>
-			</form> --%>
+			</form>
 			
 			<div align="center">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -653,7 +670,7 @@
 	    	</div>
 	    </div>
 	</div>
-</f:form>	
+	
     
 <!----------------------------------------------------------- Modal Address --------------------------------------------------->
 		
@@ -670,66 +687,66 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-
-							<div class="form-group">
-								<label>AddressType</label>
-								<div class="dropdown">
-									<select class="form-control">
-										<option>Address Type</option>
-										<option>Present address</option>
-										<option>Permanent address</option>
-
-									</select>
-								</div>
-							</div>
+					
+					<div class="form-group">
+	    				<label>Address Type :</label>
+	    
+						<div class="form-group">
+		 					 <select  class="form-control" id="addressType">
+								<option value="-1" label="---Select Address Type---" />
+								<c:forEach var="obj" items="${ masAddressTypeList }">
+									<option value="${obj.id }">${ obj.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+	  				</div>
+							
 
 							<div class="form-group">
 								<label>Address:</label>
-								<textarea class="form-control" rows="1" id="unit"></textarea>
+								<textarea class="form-control" rows="1" id="address1"></textarea>
 							</div>
 
 
 							<div class="form-group">
 								<label>Address(Cont.):</label>
-								<textarea class="form-control" rows="1" id="unit"></textarea>
+								<textarea class="form-control" rows="1" id="address2"></textarea>
 							</div>
 
 							<div class="form-group">
-								<label>Province:</label>
-								<div class="dropdown">
-									<select class="form-control">
-										<option>Province</option>
-										<option>Bangkok</option>
-										<option>ChiangRai</option>
-										<option>Chaingmai</option>
-										<option>Nan</option>
-										<option>Phayao</option>
-										<option>Phrae</option>
-										<option>MaeHongSon</option>
-										<option>Lampang</option>
-
-									</select>
-								</div>
-							</div>
+	    				<label>Province :</label>
+	    
+	    
+						<div class="form-group">
+		 					 <select  class="form-control" id="province">
+								<option value="-1" label="---Select Province---" />
+								<c:forEach var="obj" items="${ provinceList }">
+									<option value="${obj.id }">${ obj.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+	  				</div>
 
 							<div class="form-group">
 								<label>Zipcode:</label>
-								<textarea class="form-control" rows="1" id="unit"></textarea>
+								<textarea class="form-control" rows="1" id="zipcode"></textarea>
 							</div>
 
 						</div>
+						
 						<div class="form-group" align="center">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save
+							<button type="button" class="btn btn-primary saveAddressButton">Save
 								changes</button>
 						</div>
+						
 					</div>
 				</div>
 			</div>
 	    </div>
 	    
-	    
+	</f:form>    
 	    
 <!------------------------------------------------- Modal Delete --------------------------------------------->
 
@@ -809,13 +826,16 @@ var dt;
 			todayHighlight : true
 		});
 		
-    	dt=$("#tdResult").dataTable();
+    	dt=$("#tbResult").dataTable();
  		//listAll();
  		
  		var button = $(event.relatedTarget);
-    	var empId = button.data("id"); 
-		
+    	var addId = button.data("addid"); 
+    	var buttonemp = $(event.relatedTarget);
+    	var empId = button.data("empid"); 
   		$(this).find(".saveButton").off("click").on("click", function()
+  		
+  				
     		{
     			if(empId != null){
     				editEmployee();
@@ -825,8 +845,18 @@ var dt;
     			}
     			
     		});
-    	
-/* --------------------------------------------------- Add Function --------------------------------------------------- */	
+  		
+  		
+  		
+  		$(this).find(".saveAddressButton").off("click").on("click", function()
+  				
+  				{
+			
+				addAddress();
+			
+			
+		});
+/* --------------------------------------------------- Add Employee Function --------------------------------------------------- */	
     	
 			function addEmployee() {
 	alert("add");
@@ -968,7 +998,7 @@ var dt;
     		}
     		
     		
-/* --------------------------------------------------- Edit Function --------------------------------------------------- */		
+/* --------------------------------------------------- Edit Employee Function --------------------------------------------------- */		
     		
     		function editEmployee() {
     			alert(empId+" edit");
@@ -1038,7 +1068,7 @@ var dt;
 					success : function(data) {
 						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 						dt.fnClearTable();
-    					dt.fnAddData([
+    					/* dt.fnAddData([
     					       data.id,
     					       data.employeeCode,
     					       data.nameThai,
@@ -1094,12 +1124,12 @@ var dt;
     					       data.dateToBeDrafted,
     					       data.previousEmployerYes,
     					       data.previousEmployerNo,
-    					       data.previousEmpreasonsNo,
+    					       data.previousEmpreasonsNo, */
     					       
-    					    '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+    					/*     '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
    	    					'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
     					              
-						]);              
+						]);  */             
 					},
 					error : function(data,testStatus,jqXHR) {
 						
@@ -1107,6 +1137,74 @@ var dt;
 						}
 					});
 			}
+			
+			
+   	/* ----------------------------------------------------- Add Address Function --------------------------------------------------- */		
+			
+			function addAddress() {
+				alert("addAddress");
+    			$.ajax({
+    				url : "${pageContext.request.contextPath}/employee/addAddress",
+    				type : "POST",
+    				 data : JSON.stringify({
+    					 
+    					 addressType : {id:$("#addressType").val(), name: $("#addressType option:selected").text()},
+    					 address1: $("#address1").val(),
+    					 address2: $("#address2").val(),
+    					 province :{id:$("#province").val(), name: $("#province option:selected").text()},
+    					 zipcode: $("#zipcode").val(),
+    					 
+    				 }),
+    				 
+    			 datatype: "json",
+    			 contentType: "application/json",
+    			 success : function(data) {
+    					//$("#message").html('<div class="alert alert-success" role="alert">Success Address</div>');
+    					dt.fnAddData([
+    					              data.addressType.id,
+    					              data.address1,
+    					              data.address2,
+    					              data.province.id,
+    					              data.zipcode,
+    					              
+    					              
+    					              
+    				 '<button type="button" class="btn btn-info btn-sm active" data-addId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+    			   	 '<button type="button" class="btn btn-danger btn-sm active" data-addId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+    				
+    			   	 ]);
+    					
+    					$('#myModal').modal('toggle');
+   	
+    			 },
+ 				error : function(data,testStatus,jqXHR) {
+ 					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+ 					}
+ 				});
+ 		}
+   	
+   		function listAddress(){
+   			$.ajax({
+				url : "${pageContext.request.contextPath}/employee/listAll",
+				type : "POST",
+				success : function(data) {
+					dt.fnClearTable();
+				for (var i=0;i< data.length; i++) {
+					dt.fnAddData([data[i].addressType.name,data[i].address1,data[i].address2, 
+					              data[i].zipcode,
+						'<button type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-danger btn-sm active" data-addId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+			
+					}
+				},
+				error : function(data,testStatus,jqXHR) {
+					$("#outputajax").text(testStatus);
+					}
+				}); 
+		}
+	
+	});
+			
 			
   /* ---------------------------------------------------- Init Edit Function --------------------------------------------------- */				
 			
@@ -1213,7 +1311,6 @@ var dt;
 			
   	});
   	
-	});
   
   </script>
 </body>

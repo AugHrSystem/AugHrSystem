@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -42,14 +41,14 @@ public class Reference {
 	private String oocupation;
 
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	/*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
-	 private Official official;
+	 private Official official;*/
 	
 	
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "EMP_ID")
-	private Employee employee;*/
+	private Employee employee;
 
 
 
@@ -113,19 +112,8 @@ public class Reference {
 
 
 
-	public Official getOfficial() {
-		return official;
-	}
 
-
-
-	public void setOfficial(Official official) {
-		this.official = official;
-	}
-
-
-
-	/*public Employee getEmployee() {
+	public Employee getEmployee() {
 		return employee;
 	}
 
@@ -133,11 +121,9 @@ public class Reference {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}*/
+	}
 
 
-	
-	
 	
 
 }

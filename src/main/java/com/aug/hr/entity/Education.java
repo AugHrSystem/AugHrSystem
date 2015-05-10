@@ -7,6 +7,7 @@ package com.aug.hr.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -35,13 +36,13 @@ public class Education extends BaseEntity{
 	private String major;
 	
 	
-	@ManyToOne()
+	/*@ManyToOne()
 	@JoinColumn(name="OFFICIAL_ID")
-	private Official official;
+	private Official official;*/
 	
-	/*@ManyToOne(fetch = FetchType.EAGER)w
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EMP_ID")
-	private Employee employee;*/
+	private Employee employee;
 	
 	@ManyToOne()
 	@JoinColumn(name = "DEGREE_ID", nullable = false)
@@ -89,13 +90,13 @@ public class Education extends BaseEntity{
 		this.major = major;
 	}
 	
-	public Official getOfficial() {
+	/*public Official getOfficial() {
 		return official;
 	}
 
 	public void setOfficial(Official official) {
 		this.official = official;
-	}
+	}*/
 
 	public MasDegreetype getMasdegreetype() {
 		return masdegreetype;
@@ -104,5 +105,15 @@ public class Education extends BaseEntity{
 	public void setMasdegreetype(MasDegreetype masdegreetype) {
 		this.masdegreetype = masdegreetype;
 	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
+	
 	
 }

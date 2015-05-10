@@ -48,8 +48,8 @@ public class Experience extends BaseEntity {
 	private String description;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
-	private Official official;
+	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id")
+	private Employee employee;
 	
 	
 	public Integer getId() {
@@ -106,12 +106,13 @@ public class Experience extends BaseEntity {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public Official getOfficial() {
-		return official;
+	public Employee getEmployee() {
+		return employee;
 	}
-	public void setOfficial(Official official) {
-		this.official = official;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
+	
 	
 	
 }

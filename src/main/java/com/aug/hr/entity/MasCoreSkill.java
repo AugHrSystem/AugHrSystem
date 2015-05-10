@@ -25,15 +25,15 @@ public class MasCoreSkill extends BaseEntity {
 	private Boolean isActive;
 	
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	/*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
-	 private Official official;
+	 private Official official;*/
 	
 	
-	/*@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="EMPLOYEE_ID",nullable=true)
 	private Employee employee;
-	*/
+	
 	public Integer getId() {
 		return id;
 	}
@@ -58,17 +58,12 @@ public class MasCoreSkill extends BaseEntity {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	/*public Employee getEmployee() {
+	public Employee getEmployee() {
 		return employee;
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}*/
-	public Official getOfficial() {
-		return official;
 	}
-	public void setOfficial(Official official) {
-		this.official = official;
-	}
+	
 	
 }
