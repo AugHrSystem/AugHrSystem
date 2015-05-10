@@ -19,6 +19,7 @@ public class FamilyDto {
 	private String relation;	
 	private String position;
 	private String address;
+	private Integer relationId;
 
 
 	
@@ -113,5 +114,14 @@ public class FamilyDto {
 		this.address = address;
 	}
 
+	public Integer getRelationId() {
+		return relationId;
+	}
+
+	public void setRelationId(Integer relationId) {
+		this.relationId = relationId;
+	}
+
+	
 
 }

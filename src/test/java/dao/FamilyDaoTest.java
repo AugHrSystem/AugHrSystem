@@ -17,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.hr.dao.FamilyDao;
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.MasRelationType;
 import com.aug.hr.entity.Official;
+import com.aug.hr.services.MasRelationTypeService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,7 +30,9 @@ public class FamilyDaoTest {
 	@Autowired
 	private FamilyDao familyDao;
 	private Employee employee = new Employee();
-	
+	@Autowired
+	private MasRelationTypeService masRelationService;
+	private MasRelationType masRelationType; 
 	
 	
 	@Test
@@ -41,7 +45,8 @@ public class FamilyDaoTest {
 		family.setMobile("0890851022");
 		family.setGender("Female");
 		family.setAddress("7/7 m.8 nongsamwong nongsua pathumtani");
-		family.setRelation("daughter");
+		masRelationType = masRelationService.find(1);
+		family.setMasRelation(masRelationType);
 		family.setAge(24);
 		Calendar cal = Calendar.getInstance();
 		family.setCreatedTimeStamp(cal.getTime());
@@ -61,7 +66,8 @@ public class FamilyDaoTest {
 		family1.setMobile("0890851022");
 		family1.setGender("Female");
 		family1.setAddress("7/7 m.8 nongsamwong nongsua pathumtani");
-		family1.setRelation("son");
+		masRelationType = masRelationService.find(1);
+		family1.setMasRelation(masRelationType);
 		family1.setAge(24);
 		Calendar cal1 = Calendar.getInstance();
 		family1.setCreatedTimeStamp(cal1.getTime());

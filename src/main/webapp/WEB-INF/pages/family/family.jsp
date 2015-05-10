@@ -85,7 +85,7 @@
 			         address:{
 			        	 required: true
 			         },
-			         relation:{
+			         masRelation:{
 			        	 required: true
 			         }
 			        
@@ -106,7 +106,7 @@
 				     address:{
 					    required: "<spring:message code="family.required.address"/>" 
 					 },
-					 relation:{
+					 masRelation:{
 						required: "<spring:message code="family.required.relation"/>" 
 					 }  
 		           
@@ -230,7 +230,7 @@
 	  	    	$('#addressUpdate').val(data.address);
 	  	    	$('#occupationUpdate').val(data.occupation);
 	  	    	$('#positionUpdate').val(data.position);
-	  	    	$('#relationUpdate').val(data.relation);
+	  	    	$('#masRelationUpdate').val(data.relationId);
 
 	  	    	 
 	  	     },  
@@ -268,12 +268,12 @@
 	  		var address = $('#addressUpdate').val();
 	  		var occupation = $('#occupationUpdate').val();
 	  		var position = $('#positionUpdate').val();
-	  		var relation = $('#relationUpdate').val();
+	  		var relation = $('#masRelationUpdate').val();
 	  		
 	  		alert("id: "+idUpdate);
 
 	  	    
-	  	    var json = {"id":id,"firstName":firstName,"lastName":lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"relation":relation};
+	  	    var json = {"id":id,"firstName":firstName,"lastName":lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"masRelation":{"id":relation}};
 	  	     
 	  	    
 	  	    $.ajax({  
@@ -383,11 +383,9 @@
 	  		var address = $('#address').val();
 	  		var occupation = $('#occupation').val();
 	  		var position = $('#position').val();
-	  		var relation = $('#relation').val();
-	  		alert(relation);
-
-	  	    
-	  	    var json = {"firstName":firstName,"lastName" : lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"relation":relation};
+	  		var relation = $('#masRelation').val();
+	  			  	    
+	  	    var json = {"firstName":firstName,"lastName" : lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"masRelation":{"id":relation}};
 	  	   
 	  	    
 	  	    $.ajax({  
@@ -746,16 +744,16 @@
 		    <div class="form-group form-group-sm">
 		   
 		           
-		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="relation" >
-			           <spring:message code="family.list.relation" var="relation"/> ${relation} :
+		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="masRelation" >
+			           <spring:message code="family.list.relation" var="masRelation"/> ${masRelation} :
 			    </label>	 		
 			    
 			     
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 
-			     		 <f:select id="relation" path="relation" cssClass="form-control required" >
-						  <f:option  value="-1" label="please select data"/>								
+			     		 <f:select id="masRelation" path="masRelation" cssClass="form-control required" >
+						  <f:option  value="" label="please select data"/>								
 							<c:forEach var="obj" items="${ masRelationTypeList }">									
 									<option value="${obj.id}" >${obj.relationType}</option> 									
 							</c:forEach>
@@ -948,16 +946,24 @@
 		    
 		    <div class="form-group form-group-sm">
 		   
-		         
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label" for="relation">
-			            <spring:message code="family.list.relation" var="relation"/> ${relation} :
-			     </label>	 		
-			  
+
+			     
+			    <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label" for="masRelation" >
+			           <spring:message code="family.list.relation" var="masRelation"/> ${masRelation} :
+			    </label>	 		
+			    
+			     
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  id="relationUpdate" name="relation" path="relation" cssClass="form-control" placeholder="${relation}" />
-			     		<f:errors path="relation"/>
+
+			     		 <f:select id="masRelationUpdate" path="masRelation" cssClass="form-control" >
+						  <f:option  value="" label="please select data"/>								
+							<c:forEach var="obj" items="${ masRelationTypeList }">									
+									<option value="${obj.id}" >${obj.relationType}</option> 									
+							</c:forEach>
+						</f:select> 								
 			     </div>		   
+		   
 		   
 		   </div>
 		   

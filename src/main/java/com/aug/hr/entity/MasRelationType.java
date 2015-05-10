@@ -8,8 +8,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="MASRELATION")
-public class MasRelationType {
+@Table(name="MASRELATIONTYPE")
+public class MasRelationType extends BaseEnityMasterData{
 	
 	private Integer id;
 	private String  relationType;

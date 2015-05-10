@@ -40,14 +40,10 @@ public class FamilyDaoImpl extends GenericDaoImpl<Family, Integer> implements Fa
 		// TODO Auto-generated method stub
 		
 		Criteria c = getCurrentSession().createCriteria(Family.class,"family");		
-		/*c.setFetchMode("official",FetchMode.JOIN);
-		c.createAlias("official", "official");
-		c.setFetchMode("official.empOfficial",FetchMode.JOIN);
-		c.createAlias("official.empOfficial", "employee");
-		c.add(Restrictions.eq("family.official.id", Id));
-		c.add(Restrictions.eq("employee.official.id", Id));*/
 		c.setFetchMode("employee",FetchMode.JOIN);
 		c.createAlias("employee", "employee");
+		c.setFetchMode("masRelation",FetchMode.JOIN);
+		c.createAlias("masRelation", "masRelation");
 		c.add(Restrictions.eq("family.employee.id", Id));
 	  
 		return c.list();
@@ -72,6 +68,8 @@ public class FamilyDaoImpl extends GenericDaoImpl<Family, Integer> implements Fa
 		Criteria c = getCurrentSession().createCriteria(Family.class,"family");
 		c.setFetchMode("employee",FetchMode.JOIN);
 		c.createAlias("employee", "employee");
+		c.setFetchMode("masRelation",FetchMode.JOIN);
+		c.createAlias("masRelation", "masRelation");
 		c.add(Restrictions.eq("id", Id));
 		Family empFamily = (Family)c.uniqueResult();
 		return empFamily;

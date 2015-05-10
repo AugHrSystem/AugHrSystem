@@ -14,10 +14,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.hr.dao.MasRelationTypeDao;
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.MasRelationType;
 import com.aug.hr.entity.Official;
 import com.aug.hr.services.FamilyService;
+import com.aug.hr.services.MasRelationTypeService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,6 +31,9 @@ public class FamilyServiceTest {
 	@Autowired
 	private FamilyService familyService;
 	private Employee employee = new Employee();
+	private MasRelationType masRelationType = new MasRelationType();
+	@Autowired
+	private MasRelationTypeService masRelationTypeService;
 	
 	
 	@Test
@@ -40,7 +46,8 @@ public class FamilyServiceTest {
 		family.setMobile("0890851022");
 		family.setGender("Female");
 		family.setAddress("7/7 m.8 nongsamwong nongsua pathumtani");
-		family.setRelation("daughter");
+		masRelationType = masRelationTypeService.find(1);
+		family.setMasRelation(masRelationType);
 		family.setAge(24);
 		Calendar cal = Calendar.getInstance();
 		family.setCreatedTimeStamp(cal.getTime());
@@ -58,7 +65,8 @@ public class FamilyServiceTest {
 		empFamily1.setMobile("0890851022");
 		empFamily1.setGender("Female");
 		empFamily1.setAddress("7/7 m.8 nongsamwong nongsua pathumtani");
-		empFamily1.setRelation("son");
+		masRelationType = masRelationTypeService.find(1);
+		family.setMasRelation(masRelationType);
 		empFamily1.setAge(24);
 		Calendar cal1 = Calendar.getInstance();
 		empFamily1.setCreatedTimeStamp(cal1.getTime());

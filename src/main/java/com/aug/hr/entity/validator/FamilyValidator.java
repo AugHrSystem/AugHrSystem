@@ -52,11 +52,11 @@ public class FamilyValidator  implements Validator{
 			errors.rejectValue( "mobile","empFamily.required.mobile");				
 		}if(rs.getAddress().isEmpty()==true){
 			errors.rejectValue( "address","empFamily.required.address");				
-		}if(rs.getRelation().isEmpty()==true){
+		}if(rs.getMasRelation()==null){
 			errors.rejectValue( "relation","empFamily.required.relation");				
-		}/*if(rs.getEmpFamilyRelation()==null){
+		}if(rs.getEmployee()==null){
 			errors.rejectValue( "employee","empFamily.required.employee");				
-		}*/
+		}
 	}
 	
 

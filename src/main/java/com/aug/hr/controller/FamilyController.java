@@ -30,7 +30,6 @@ import com.aug.hr.dto.FamilyDto;
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasRelationType;
-import com.aug.hr.entity.Official;
 import com.aug.hr.entity.editor.FamilyEditor;
 import com.aug.hr.entity.validator.FamilyValidator;
 import com.aug.hr.services.FamilyService;
@@ -116,7 +115,8 @@ public class FamilyController {
 		     familyDto.setFirstName(familyObj.getFirstName());
 		     familyDto.setLastName(familyObj.getLastName());
 		     familyDto.setName(familyObj.getFirstName()+" "+familyObj.getLastName());
-		     familyDto.setRelation(familyObj.getRelation());
+		     familyDto.setRelationId(new Integer(familyObj.getMasRelation().getId()));
+		     familyDto.setRelation(familyObj.getMasRelation().getRelationType());
 			 familyDto.setAge(familyObj.getAge());
 			 familyDto.setGender(familyObj.getGender());
 			 familyDto.setMobile(familyObj.getMobile());		 
@@ -147,8 +147,9 @@ public class FamilyController {
 		
 		logger.info("Info : " + family);
 		
-		
-		
+		MasRelationType masRelationType = new MasRelationType();
+		masRelationType = masRelationService.find(family.getMasRelation().getId());
+		family.setMasRelation(masRelationType);		
 		
 		family.setAuditFlag("C");
 		family.setCreatedBy(0);
@@ -159,6 +160,9 @@ public class FamilyController {
 		Employee employee = new Employee();
 		employee = familyService.findEmployeeById(new Integer(1));		
 		family.setEmployee(employee);
+		
+		
+		
 		familyService.create(family);
 		
 		
@@ -184,8 +188,9 @@ public class FamilyController {
 		familyDto.setAge(familyObj.getAge());
 		familyDto.setGender(familyObj.getGender());
 		familyDto.setMobile(familyObj.getMobile());
-		familyDto.setOccupation(familyObj.getOccupation());
-		familyDto.setRelation(familyObj.getRelation());
+		familyDto.setOccupation(familyObj.getOccupation());	
+		familyDto.setRelationId(familyObj.getMasRelation().getId());
+    	familyDto.setRelation(familyObj.getMasRelation().getRelationType());
 		familyDto.setAddress(familyObj.getAddress());
 		familyDto.setPosition(familyObj.getPosition());
 		
@@ -222,7 +227,8 @@ public class FamilyController {
         familyDto.setMobile(familyEdit.getMobile());
         familyDto.setOccupation(familyEdit.getOccupation());
         familyDto.setPosition(familyEdit.getPosition());
-        familyDto.setRelation(familyEdit.getRelation());
+        familyDto.setRelationId(familyEdit.getMasRelation().getId());
+        familyDto.setRelation(familyEdit.getMasRelation().getRelationType());
         family = familyEdit;
         family.setCmd("update");
         modal.addAttribute("family", family);
@@ -235,7 +241,7 @@ public class FamilyController {
 	
 
 	
-
+	
 	@RequestMapping(value = "/family/edit", method = {RequestMethod.POST})
 	public @ResponseBody FamilyDto Edit(Locale locale,
 							@RequestBody Family family,
@@ -244,6 +250,8 @@ public class FamilyController {
 	    logger.info("edit");
 		logger.info("info edit json: "+family);
        
+		MasRelationType masRelationType = new MasRelationType();
+		masRelationType = masRelationService.find(family.getMasRelation().getId());
 		
 		Family familyObj = new Family();
 		familyObj = familyService.findLastFamily(family.getId());	
@@ -255,7 +263,7 @@ public class FamilyController {
 		familyObj.setMobile(family.getMobile());
 		familyObj.setOccupation(family.getOccupation());
 		familyObj.setPosition(family.getPosition());
-		familyObj.setRelation(family.getRelation());
+		familyObj.setMasRelation(masRelationType);
 		Calendar cal = Calendar.getInstance();
 		familyObj.setUpdatedTimeStamp(cal.getTime());
 		familyObj.setAuditFlag("U");
@@ -275,7 +283,8 @@ public class FamilyController {
 		familyDto.setMobile(familySetDto.getMobile());
 		familyDto.setOccupation(familySetDto.getOccupation());
 		familyDto.setPosition(familySetDto.getPosition());
-		familyDto.setRelation(familySetDto.getRelation());
+		familyDto.setRelationId(familySetDto.getMasRelation().getId());
+		familyDto.setRelation(familySetDto.getMasRelation().getRelationType());
 		
         
 		return familyDto;
