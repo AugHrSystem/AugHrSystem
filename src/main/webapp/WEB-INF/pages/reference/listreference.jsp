@@ -22,7 +22,7 @@
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <!-- jQuery dataTable -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
@@ -185,6 +185,7 @@
 					updateReference(button, referenceid);
 				}else{ 
 					addReference();
+					
 				 } 
 				
 			});
@@ -266,6 +267,7 @@
 					]);
 					
 					$('#addModal').modal('toggle');
+					listAll();
 				},
 				error : function() {
 					alert("ERROR");
@@ -371,7 +373,7 @@
 					success : function(data) {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].id,data[i].name,data[i].address, 
+						dt.fnAddData([data[i].name,data[i].address, 
 						              data[i].tel,data[i].oocupation,
 							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].referenceid + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].referenceid + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
