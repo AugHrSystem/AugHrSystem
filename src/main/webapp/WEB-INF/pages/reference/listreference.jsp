@@ -55,16 +55,14 @@
 
 				<table id="tbResult" class=" table table-striped table-bordered">
 					<thead>
-						<tr>
-								
-											
+					
+						<tr>								
 							<th>NAME</th>
 							<th>ADDRESS</th>
 							<th>TEL</th>
 							<th>OCCUPATION</th>
 							<th></th>
 							<th></th>
-
 						</tr>
 					</thead>
 					<tbody></tbody>
