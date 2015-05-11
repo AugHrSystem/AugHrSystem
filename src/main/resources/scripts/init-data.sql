@@ -219,3 +219,10 @@ values
 (1,5),
 (2,6),
 (4,8);
+
+
+
+--ADDEMPLOYEE
+INSERT INTO EMPLOYEE (NAME_THAI) VALUES
+('Bill'),
+('Parn');
