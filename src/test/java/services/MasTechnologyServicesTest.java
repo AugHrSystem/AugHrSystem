@@ -28,7 +28,7 @@ public class MasTechnologyServicesTest {
 	public void createDataMasTechnology(){
 
 		MasTechnology masTech = new MasTechnology();
-		masTech.setMasTechnologyName("PHP");
+		masTech.setName("PHP");
 		masTech.setAuditFlag("C");
 		masTech.setCode("004A");
 		masTech.setCreatedBy(1);
@@ -43,7 +43,7 @@ public class MasTechnologyServicesTest {
 	public void updateDataMasTechnology(){
 
 		MasTechnology masTech = masTechService.find(2);
-		masTech.setMasTechnologyName("JAVA");
+		masTech.setName("JAVA");
 		masTechService.update(masTech);
 		
 	}
@@ -70,7 +70,7 @@ public class MasTechnologyServicesTest {
 	public void findDatabyIdMasTechnology(){
 
 		MasTechnology  masTech = masTechService.find(2);
-		Assert.assertEquals("JAVA",masTech.getMasTechnologyName());
+		Assert.assertEquals("JAVA",masTech.getName());
 		
 		
 	}

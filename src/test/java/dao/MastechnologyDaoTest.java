@@ -32,7 +32,7 @@ public class MastechnologyDaoTest {
 		
 		
 		MasTechnology masTech = new MasTechnology();
-		masTech.setMasTechnologyName("java");
+		masTech.setName("java");
 		masTech.setAuditFlag("C");
 		masTech.setCode("001A");
 		masTech.setCreatedBy(1);
@@ -44,7 +44,7 @@ public class MastechnologyDaoTest {
 		
 		
 		MasTechnology masTech1 = new MasTechnology();
-		masTech1.setMasTechnologyName(".NET");
+		masTech1.setName(".NET");
 		masTech1.setAuditFlag("C");
 		masTech1.setCode("002A");
 		masTech1.setCreatedBy(1);
@@ -55,7 +55,7 @@ public class MastechnologyDaoTest {
 		
 		
 		MasTechnology masTech2 = new MasTechnology();
-		masTech2.setMasTechnologyName("PHP");
+		masTech2.setName("PHP");
 		masTech2.setAuditFlag("C");
 		masTech2.setCode("003A");
 		masTech2.setCreatedBy(1);
@@ -71,7 +71,7 @@ public class MastechnologyDaoTest {
 	public void updateMasTechnology(){
 		
 		MasTechnology masTech = (MasTechnology) masTechnologyDao.getCurrentSession().get(MasTechnology.class, 1);
-		masTech.setMasTechnologyName("SAP");
+		masTech.setName("SAP");
 		masTechnologyDao.getCurrentSession().update(masTech);
 		
 	}
@@ -101,7 +101,7 @@ public class MastechnologyDaoTest {
 	public void findByIdMasTechnology(){
 		
 		MasTechnology masTechnology = (MasTechnology) masTechnologyDao.getCurrentSession().get(MasTechnology.class, 1);		
-		int id = masTechnology.getMasTechnologyId();
+		int id = masTechnology.getId();
 		Assert.assertEquals(1, id);
 		
 	}
