@@ -85,12 +85,12 @@ public class FamilyController {
 		model.addAttribute("family", family);
 		model.addAttribute("masRelationTypeList", masRelationTypeList);
 		
-		return "/family/family";
+		return "/family/familytest";
 	}
 	
 	
 
-	@RequestMapping(value = "/family/list", method = RequestMethod.GET,produces="application/json")
+	/*@RequestMapping(value = "/family/list", method = RequestMethod.GET,produces="application/json")
 	public @ResponseBody Map<String,List< FamilyDto>> findEmpFamily(Locale locale,
 			@ModelAttribute(value = "empFamily") Family family,
 			ModelMap model){// throws JSONException{
@@ -315,7 +315,7 @@ public class FamilyController {
 	 
 		
 		return familyId;		
-	}
+	}*/
 	
 	
 	
