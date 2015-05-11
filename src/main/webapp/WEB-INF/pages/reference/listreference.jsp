@@ -331,7 +331,7 @@
 						},
 				error : function(jqXHR,	textStatus,	error) {
 					
-							alert(errorResponse.Message);
+							alert("error");
 									}
 							});
 		}
@@ -373,8 +373,8 @@
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].name,data[i].address, 
 						              data[i].tel,data[i].oocupation,
-							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].referenceid + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].referenceid + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}
 					},

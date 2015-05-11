@@ -13,9 +13,9 @@ import com.aug.hr.services.ReferenceService;
 import com.mysql.jdbc.StringUtils;
 
 @Repository("referenceDao")
-public class ReferenceImpl extends GenericDaoImpl<Reference, Integer> implements ReferenceDao{
+public class ReferenceDaoImpl extends GenericDaoImpl<Reference, Integer> implements ReferenceDao{
 
-		public ReferenceImpl(){
+		public ReferenceDaoImpl(){
 			super(Reference.class);
 		}
 
@@ -30,11 +30,7 @@ public class ReferenceImpl extends GenericDaoImpl<Reference, Integer> implements
 		}
 
 
-		@Override
-		public List<Reference>  findByID(Integer id) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		
 
 		@Override
 		public Reference deleteById(Integer id) {
