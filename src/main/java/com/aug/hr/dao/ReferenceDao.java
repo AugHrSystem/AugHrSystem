@@ -8,7 +8,6 @@ import com.aug.hr.services.ReferenceService;
 public interface ReferenceDao extends GenericDao<Reference, Integer>{
 
 	public List<Reference> findByCriteria(Reference reference);
-	public List<Reference>  findByID(Integer id);
 	public Reference deleteById(Integer id);
 	
 	

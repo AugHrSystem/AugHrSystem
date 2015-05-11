@@ -22,7 +22,7 @@
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <!-- jQuery dataTable -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
@@ -55,16 +55,14 @@
 
 				<table id="tbResult" class=" table table-striped table-bordered">
 					<thead>
-						<tr class="info">
-								
-											
+					
+						<tr>								
 							<th>NAME</th>
 							<th>ADDRESS</th>
 							<th>TEL</th>
 							<th>OCCUPATION</th>
 							<th></th>
 							<th></th>
-
 						</tr>
 					</thead>
 					<tbody></tbody>
@@ -185,6 +183,7 @@
 					updateReference(button, referenceid);
 				}else{ 
 					addReference();
+					
 				 } 
 				
 			});
@@ -266,6 +265,7 @@
 					]);
 					
 					$('#addModal').modal('toggle');
+					listAll();
 				},
 				error : function() {
 					alert("ERROR");
@@ -331,7 +331,7 @@
 						},
 				error : function(jqXHR,	textStatus,	error) {
 					
-							alert(errorResponse.Message);
+							alert("error");
 									}
 							});
 		}
@@ -371,10 +371,10 @@
 					success : function(data) {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].id,data[i].name,data[i].address, 
+						dt.fnAddData([data[i].name,data[i].address, 
 						              data[i].tel,data[i].oocupation,
-							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].referenceid + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].referenceid + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}
 					},
@@ -384,8 +384,7 @@
 					}); 
 			}
 			
-			
-			
+		
 			
 			
 		
