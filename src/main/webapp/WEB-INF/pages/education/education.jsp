@@ -182,6 +182,7 @@
 					updateEducation(button, educationid);
 				}else{
 					addEducation();
+					
 				 }
 				
 			});
@@ -247,6 +248,7 @@
 					]);
 					
 					$('#addModal').modal('toggle');
+					listAll();
 					
 				},
 				error : function() {
