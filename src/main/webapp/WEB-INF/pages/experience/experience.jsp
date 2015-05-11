@@ -189,7 +189,7 @@ var dt;
     			$.ajax({
     				url : "${pageContext.request.contextPath}/experience/add",
     				type : "POST",
-    				 data : JSON.stringify({
+    				data : JSON.stringify({
     					 companyName: $("#cName").val(),
     					 business: $("#business").val(),
     					 position: $("#position").val(),
@@ -198,10 +198,10 @@ var dt;
     					 description: $("#description").val(),
     					 superVisor: $("#supervisor").val(),
     					 address: $("#address").val(),
-    					 //employee: {id: 2 }
+    					 employee: {id: 2 }
     					}),
-    				 datatype: "json",
-    				 contentType: "application/json",
+    				datatype: "json",
+    				contentType: "application/json",
     				success : function(data) {
     					$('#addModal').modal('toggle');
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
@@ -244,7 +244,7 @@ var dt;
     					 description: $("#description").val(),
     					 superVisor: $("#supervisor").val(),
     					 address: $("#address").val(),
-    					 //employee: {id: 2 }
+    					 employee: {id: 2 }
 					 }),
 					datatype: "json",
 					contentType: "application/json",
@@ -288,7 +288,7 @@ var dt;
 						$("#description").val(data.description);
 						$("#supervisor").val(data.superVisor);
 						$("#address").val(data.address);
-						//employee: {id: 2 };
+						employee: {id: 2 };
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -333,9 +333,10 @@ var dt;
 			function listAll(){
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/listAll",
-					type : "POST",
+					data: "id="+2,
+					type : "POST", 
 					success : function(data) {
-						dt.fnClearTable();
+					dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].id,data[i].companyName,data[i].business, 
 						              data[i].position,data[i].dateFrom,data[i].dateTo,

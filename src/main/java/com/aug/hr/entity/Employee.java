@@ -198,7 +198,7 @@ public class Employee extends BaseEntity{
 	private String previousEmpreasonsNo;
 	
 	@Column(name = "ADDRESS_ID",nullable = true)
-	@OneToMany(mappedBy = "employee" )
+	@OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
 	private Set<Address> addresses = new HashSet<Address>();
 
 	 
@@ -207,20 +207,20 @@ public class Employee extends BaseEntity{
 	 private Official official;
 	 
 	 
-	 @OneToMany(mappedBy = "employee")
+	 @OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
 	 private Set<Education> educations = new HashSet<Education>();
 
-	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
+	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
 	 private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();
 		  
 	    @ManyToOne
 	    @JoinColumn(name= "EMPLOYMENT_ID")
 	    private MasEmployment masEmployment;
 	    
-	    @OneToMany(mappedBy = "employee")
+	    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
 	    private Set<Ability> abilities = new HashSet<Ability>();
 	    
-	    @OneToMany(mappedBy = "employee")
+	    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
 	    private Set<Reference> references = new HashSet<Reference>();
 	    
 	    @ManyToOne
@@ -231,7 +231,7 @@ public class Employee extends BaseEntity{
 	    @JoinColumn(name= "JOBLEVEL_ID")
 	    private Joblevel joblevel;
 	    
-	    @OneToMany(mappedBy = "employee")
+	    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
 	    private Set<Experience> experiences = new HashSet<Experience>();
 	    
 	 

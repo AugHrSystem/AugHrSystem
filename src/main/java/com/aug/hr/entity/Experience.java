@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @JsonAutoDetect
 @Entity
 @Table(name = "EXPERIENCE")
@@ -49,6 +50,7 @@ public class Experience extends BaseEntity {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id")
+	@JsonIgnore
 	private Employee employee;
 	
 	

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Experience;
 import com.aug.hr.services.ExperienceService;
 
@@ -40,10 +41,12 @@ public class ExperienceController {
     }	
 	
 	@RequestMapping(value ="/experience/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<Experience> listAll(){
+	public @ResponseBody List<Experience> listAll(@RequestParam Integer id){
+		Employee emp = new Employee();
+		emp.setId(id);
 		Experience experience = new Experience();
-		experience.setAddress("");
-		return experienceService.findByCriteria(experience);
+		experience.setEmployee(emp);
+		return (List<Experience>) experienceService.findByCriteria(experience);
 	}
 	
 	@RequestMapping(value ="/experience/testAjax/{string}", method = {RequestMethod.GET, RequestMethod.POST})
