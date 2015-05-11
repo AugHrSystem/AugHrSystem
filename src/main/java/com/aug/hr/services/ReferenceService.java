@@ -9,7 +9,7 @@ public interface ReferenceService {
 	public void create(Reference reference);
 	public void update(Reference reference);
 	public void delete(Reference reference);
-	public Reference findById(Integer Id);
+	public Reference findById(Integer id);
 	public List<Reference> findAll();
 	public List<Reference> findByCriteria(Reference reference);
 	public Reference deleteById(Integer id);
