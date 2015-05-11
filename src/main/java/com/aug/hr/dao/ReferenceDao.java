@@ -11,6 +11,5 @@ public interface ReferenceDao extends GenericDao<Reference, Integer>{
 	public Reference deleteById(Integer id);
 	
 	
-	
 
 }
