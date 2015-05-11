@@ -63,7 +63,7 @@ public class JoblevelServiceImpl implements JoblevelService {
 	@Override
 	public Joblevel deleteById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return joblevelDao.deleteById(id);
 	}
 
 }
