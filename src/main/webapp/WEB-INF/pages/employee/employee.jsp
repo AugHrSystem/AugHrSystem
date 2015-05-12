@@ -925,14 +925,10 @@ var dt;
     					 previousEmployerNo: $("#previousEmployerNo").val(),
     					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val(),
     					 
-//     					 addresses : { 	
-//     						 	address1: $("#address1").val(),
-// 					 			address2: $("#address2").val(),
-// 					 			addressType: 1,// //$("#addressType option:selected").text(),
-// 					 			province: 1,////$("#province option:selected").text(),
-// 					 			zipcode: $("#zipcode").val(),
-					 			
-//     					 }
+						 
+    					 
+    					 
+    					 
     				 addresses :[
 		    				     {
 		    					 addressType :{id:$("#addressType").val()},
