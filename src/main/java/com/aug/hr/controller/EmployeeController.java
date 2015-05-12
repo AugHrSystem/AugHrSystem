@@ -48,10 +48,10 @@ public class EmployeeController {
 	@Autowired private AddressEditor addressEditor;
 	
 	//@Autowired private TechnologyEmpService technologyEmpService;
-	/*@RequestMapping(value = "/employee", method =  RequestMethod.GET)
+	@RequestMapping(value = "/listemployee", method =  {RequestMethod.GET,RequestMethod.POST})
     public String init(ModelMap model) {		
-		return "employee/employee";
-	}*/
+		return "/employee/listemployee";
+	}
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -78,12 +78,10 @@ public class EmployeeController {
 		return "/employee/employee";
 	}
 	
-//	@RequestMapping(value ="/employee/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-//	public @ResponseBody List<Employee> listAll(){
-//		Employee emp = new Employee();
-//		emp.setAge(null);
-//		return employeeService.findByCriteria(emp);
-//	}
+	@RequestMapping(value ="/employee/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<Employee> listAll(){
+		return employeeService.findAll();
+	}
 	
 	//Add	
 	@RequestMapping(value = "/employee/add", method = RequestMethod.POST )
