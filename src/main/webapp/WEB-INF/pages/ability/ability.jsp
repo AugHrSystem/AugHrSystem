@@ -35,7 +35,23 @@
 </ol>
 
 <h2>Ability</h2> 
- 
+
+<iframe src="http://localhost:8080/AugHrSystem/ability" height="600" width="1000" >
+</iframe>
+
+
+
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li>
+</ul>
+
+
+
+
+ <br></br>
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
