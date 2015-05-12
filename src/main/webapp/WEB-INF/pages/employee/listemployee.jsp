@@ -23,16 +23,16 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
 
-<title>Experience</title>
+<title>Employee</title>
 </head>
 <body>
-<f:form method="post" commandName="experience" class="form-horizontal" role="form">
+<f:form method="post" commandName="listemployee" class="form-horizontal" role="form">
 	<div class="container">
 		<ol class="breadcrumb">
 			<li role="presentation" class="active"><a href="#">Home</a></li>
- 			<li role="presentation"><a href="#addModal" data-toggle="modal">Add Experience</a></li>
+ 			<li role="presentation"><a href="employee.jsp" data-toggle="modal">Add Employee</a></li>
 		</ol>
-		<h2>Experience</h2>
+		<h2>Employee</h2>
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">
@@ -52,9 +52,11 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-		<button type="button" class="btn btn-primary btn-md addEmployee">
+	<form action="http://localhost:8080/AugHrSystem/employee">
+		<button type="button submit" class="btn btn-primary btn-md addEmployee">
  	 	Add
 		</button>
+	</form>
 	</div>
 </div>			
 		
@@ -81,21 +83,19 @@
 var dt;
 	$(document).ready(function() {
     	dt=$("#tdResult").dataTable();
+    	var button = $(event.relatedTarget);
+		var empId = button.data("empid"); 
  		listAll();
-		
-     	$("#addModal").on("show.bs.modal", function(event){
-    		var button = $(event.relatedTarget);
-    		var empId = button.data("empid"); 
-    		if(expId != null){
-				initEditEmployee(empId);
-			}
-     	
-    		
-    		
+		$(this).find(".editButton").off("click").on("click", function()
+  		{			
+			alert("check");
+			initEditEmployee(empId);	
+  		});
+ 			
     		function editEmployee() {
     			alert(empId+" edit");
 				$.ajax({
-					url : "employee.jsp",
+					url : "${pageContext.request.contextPath}/employee/edit",
 					type : "POST",
 					datatype: "json",
 					contentType: "application/json",
@@ -242,7 +242,26 @@ var dt;
 					});
 			}
 			
-			
+    		function listAll(){
+    			$.ajax({
+    				url : "${pageContext.request.contextPath}/employee/listAll",
+    				type : "POST",
+    				success : function(data) {
+    					dt.fnClearTable();
+    					alert(data.length);
+    				for (var i=0;i< data.length; i++) {
+    					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameThai, 
+    					              data[i].surnameEng,
+    						'<div class="form-group "><button type="button" class="btn btn-info btn-sm active editButton" data-empId="' + data[i].id + '">Edit</button></div>',
+    						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+    			
+    					}
+    				},
+    				error : function(data,testStatus,jqXHR) {
+    					$("#outputajax").text(testStatus);
+    					}
+    				}); 
+    		}
 	
 /* --------------------------------------------------- Delete Function --------------------------------------------------- */		
 			
@@ -264,39 +283,19 @@ var dt;
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
 							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
+							listAll();
 						},
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
 							$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 							}
 						});
-				}
+					}
     		   	
 			
-  	});
+  				});
   	
-			
-			function listAll(){
-				$.ajax({
-					url : "${pageContext.request.contextPath}/employee/listAll",
-					type : "POST",
-					success : function(data) {
-						dt.fnClearTable();
-					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameEng, 
-						              data[i].surnameEng,
-							'<button type="button" class="btn btn-info btn-sm active" data-empId="' + data[i].id + '" data-target="editEmployee()" data-toggle="modal">Edit</button>',
-							'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
-				
-						}
-					},
-					error : function(data,testStatus,jqXHR) {
-						$("#outputajax").text(testStatus);
-						}
-					}); 
-			}
-    	
-  	});
+    
      	
 	});
   
