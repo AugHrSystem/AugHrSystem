@@ -29,11 +29,11 @@
 
     alter table EMPLOYEE 
         drop 
-        foreign key FK75C8D6AEA2AFAF69;
+        foreign key FK75C8D6AEFD52A74A;
 
     alter table EMPLOYEE 
         drop 
-        foreign key FK75C8D6AEFD52A74A;
+        foreign key FK75C8D6AEA2AFAF69;
 
     alter table EMPLOYEE 
         drop 
@@ -41,11 +41,15 @@
 
     alter table EMPLOYEE 
         drop 
-        foreign key FK75C8D6AE78EF579B;
+        foreign key FK75C8D6AEBFC260E9;
 
     alter table EMPLOYEEFAMILY 
         drop 
-        foreign key FKE4F7EB92264515AF;
+        foreign key FKE4F7EB92A63767E5;
+
+    alter table EMPLOYEEFAMILY 
+        drop 
+        foreign key FKE4F7EB92AA332609;
 
     alter table EXPERIENCE 
         drop 
@@ -59,17 +63,17 @@
         drop 
         foreign key FK9AE7E393AA332609;
 
+    alter table MASTECHNOLOGY 
+        drop 
+        foreign key FKB07B578BAA332609;
+
     alter table REFERENCE 
         drop 
         foreign key FK6EF34F2B264515AF;
 
-    alter table TECHNOLOGYEMPLOYEE 
+    alter table SKILLLANGUAGE 
         drop 
-        foreign key FKF5CE7BBA264515AF;
-
-    alter table TECHNOLOGYEMPLOYEE 
-        drop 
-        foreign key FKF5CE7BBAE5BED341;
+        foreign key FK63549489AA332609;
 
     drop table if exists ABILITY;
 
@@ -99,34 +103,43 @@
 
     drop table if exists MASPROVINCE;
 
+    drop table if exists MASRELATIONTYPE;
+
     drop table if exists MASSPECIALTY;
 
     drop table if exists MASTECHNOLOGY;
 
+    drop table if exists OFFICIAL;
+
     drop table if exists REFERENCE;
 
-    drop table if exists TECHNOLOGYEMPLOYEE;
+    drop table if exists SKILLLANGUAGE;
 
     create table ABILITY (
-        ID integer not null auto_increment unique,
+        ID integer not null auto_increment,
         auditFlag varchar(255),
         createdBy integer,
         createdTimeStamp datetime,
         updatedBy integer,
         updatedTimeStamp datetime,
         RANK integer not null,
-        EMP_ID bigint,
+        EMP_ID integer,
         SPEC_ID integer,
         primary key (ID)
     );
 
     create table ADDRESS (
         ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
         ADDRESS1 varchar(255),
         ADDRESS2 varchar(255),
         ZIPCODE varchar(255),
         ADDTYPE_ID integer,
-        EMP_ID bigint,
+        EMP_ID integer,
         PROVINCE_ID integer,
         primary key (ID)
     );
@@ -142,32 +155,77 @@
         GPA double precision not null,
         MAJOR varchar(255) not null,
         UNIVERSITY varchar(255) not null,
-        EMP_ID bigint,
-        DEGREE_ID integer,
+        EMP_ID integer,
+        DEGREE_ID integer not null,
         primary key (ID)
     );
 
     create table EMPLOYEE (
-        ID bigint not null auto_increment,
-        AGE integer not null,
-        CODE varchar(10) not null,
-        DOB datetime not null,
-        GENDER varchar(255) not null,
-        HEIGH integer not null,
-        IDCARD integer not null,
-        MILITARY varchar(255) not null,
-        NAME varchar(255),
-        PLACEDOB varchar(50) not null,
-        QUALIFICATION varchar(255) not null,
-        RELIGION varchar(20) not null,
-        SALARY float not null,
-        STATUS varchar(255) not null,
-        TEL varchar(10) not null,
-        WEIGTH integer not null,
-        EMPLOYMENT_ID integer,
+        ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
+        ADDRESS varchar(255),
+        AGE integer,
+        BRANCH_OF_SERVICE varchar(255),
+        DATEOFBIRTH datetime,
+        DATE_TO_BE_DRAFTED datetime,
+        DESCRIPTION_FRIEND varchar(255),
+        DESCRIPTION_MAGAZINE varchar(255),
+        DESCRIPTION_NEWSPAPER varchar(255),
+        DESCRIPTION_OTHER varchar(255),
+        DESCRIPTION_WEBSITE varchar(255),
+        DESCRIPTION_YES varchar(255),
+        EMERGENCY_CONTACT varchar(255),
+        EMERGENCY_CONTACT_ADDRESS varchar(255),
+        EMERGENCY_CONTACT_PHONE_NUMBER varchar(255),
+        EMPLOYEE_CODE varchar(255),
+        EXPIRY_DATE datetime,
+        FROM_YEAR datetime,
+        HEIGHT integer,
+        ID_CARD integer,
+        ISSUED_OFFICE varchar(255),
+        ISSUED_OFFICE2 varchar(255),
+        KNOW_AUG_FRIEND varchar(255),
+        KNOW_AUG_MAGAZINE varchar(255),
+        KNOW_AUG_NEWSPAPER varchar(255),
+        KNOW_AUG_OTHER varchar(255),
+        KNOW_AUG_WEBSITE varchar(255),
+        KNOW_EMPLOYED_YES varchar(255),
+        KNOW_EMPLOYER_NO varchar(255),
+        MARITAL_STATUS varchar(255),
+        MARRIAGE_CERTIFICATE_NO varchar(255),
+        MILITARY_SERVICE_NO varchar(255),
+        MILITARY_SERVICE_YES varchar(255),
+        NAME_ENG varchar(255),
+        NAME_THAI varchar(255) not null,
+        NICKNAME_ENG varchar(255),
+        NICKNAME_THAI varchar(255),
+        NUMBER_OF_CHILDREN varchar(255),
+        OCCUPATION varchar(255),
+        PLACEOFBIRTH varchar(255),
+        PREVIOUS_EMPLOYER_NO varchar(255),
+        PREVIOUS_EMPLOYER_YES varchar(255),
+        PREVIOUSEMP_REASONS_NO varchar(255),
+        REASONS_NO varchar(255),
+        RELATIONSHIP_WITH_EMERGENCY_CONTACT varchar(255),
+        RELIGION varchar(255),
+        SERVICE_NO varchar(255),
+        SEX varchar(255),
+        SPOUSE_NAME varchar(255),
+        SURNAM_ENG varchar(255),
+        SURNAME_THAI varchar(255),
+        TEL_FAX integer,
+        TEL_HOME integer,
+        TEL_MOBILE integer,
+        TO_YEAR datetime,
+        WEIGTH integer,
         JOBLEVEL_ID integer,
         DIVISION_ID integer,
-        TECHNOLOGY_ID integer,
+        EMPLOYMENT_ID integer,
+        OFFICIAL_ID integer,
         primary key (ID)
     );
 
@@ -186,8 +244,8 @@
         TEL varchar(10) not null,
         OCCUPATION varchar(255),
         POSITION varchar(255),
-        RELATION varchar(40) not null,
-        EMP_ID bigint not null,
+        EMPLOYEE_ID integer not null,
+        MASRELATION_ID integer not null,
         primary key (ID)
     );
 
@@ -206,7 +264,7 @@
         DESCRIPTION varchar(255),
         POSITION varchar(255),
         SUPERVISOR varchar(255),
-        EMPLOYEE_ID bigint,
+        EMPLOYEE_ID integer,
         primary key (ID)
     );
 
@@ -234,12 +292,17 @@
         UPDATEDTIMESTAMP datetime,
         PASSWORD varchar(13) not null,
         USERNAME varchar(255) not null,
-        EMP_ID bigint,
+        EMP_ID integer,
         primary key (ID)
     );
 
     create table MASADDRESSTYPE (
         ID integer not null auto_increment,
+        auditFlag varchar(255),
+        createdBy integer,
+        createdTimeStamp datetime,
+        updatedBy integer,
+        updatedTimeStamp datetime,
         CODE varchar(255) not null,
         ISACTIVE varchar(255) not null,
         NAME varchar(255) not null,
@@ -256,7 +319,7 @@
         CODE varchar(255),
         ISACTIVE bit,
         NAME varchar(255) not null,
-        EMPLOYEE_ID bigint,
+        EMPLOYEE_ID integer,
         primary key (ID)
     );
 
@@ -312,6 +375,19 @@
         primary key (ID)
     );
 
+    create table MASRELATIONTYPE (
+        ID integer not null auto_increment,
+        AUDITFLAG varchar(1) not null,
+        CODE varchar(10) not null,
+        CREATEDBY integer not null,
+        CREATEDTIMESTAMP datetime not null,
+        ISACTIVE bit not null,
+        UPDATEDBY integer,
+        UPDATEDTIMESTAMP datetime,
+        RELATIONTYPE varchar(255) not null,
+        primary key (ID)
+    );
+
     create table MASSPECIALTY (
         SPEC_ID integer not null auto_increment,
         auditFlag varchar(255),
@@ -335,6 +411,15 @@
         UPDATEDBY integer,
         UPDATEDTIMESTAMP datetime,
         NAME varchar(255) not null,
+        EMPLOYEE_ID integer,
+        primary key (ID)
+    );
+
+    create table OFFICIAL (
+        ID integer not null auto_increment,
+        DATE datetime,
+        POSITION_APPLIED_FOR varchar(255),
+        SALARY_EXPECTED double precision,
         primary key (ID)
     );
 
@@ -344,19 +429,22 @@
         NAME varchar(255) not null,
         OCCUPATION varchar(255) not null,
         TEL varchar(255) not null,
-        EMP_ID bigint,
+        EMP_ID integer,
         primary key (REF_ID)
     );
 
-    create table TECHNOLOGYEMPLOYEE (
+    create table SKILLLANGUAGE (
         ID integer not null auto_increment,
         AUDITFLAG varchar(1) not null,
         CREATEDBY integer not null,
         CREATEDTIMESTAMP datetime not null,
         UPDATEDBY integer,
         UPDATEDTIMESTAMP datetime,
-        EMP_ID bigint not null,
-        MASTECH_ID integer not null,
+        SKILL_LISTEN varchar(255),
+        SKILL_READING varchar(255),
+        SKILL_SPEAKING varchar(255),
+        SKILLNAME varchar(255),
+        EMPLOYEE_ID integer not null,
         primary key (ID)
     );
 
@@ -403,16 +491,16 @@
         references MASDEGREETYPE (ID);
 
     alter table EMPLOYEE 
-        add index FK75C8D6AEA2AFAF69 (JOBLEVEL_ID), 
-        add constraint FK75C8D6AEA2AFAF69 
-        foreign key (JOBLEVEL_ID) 
-        references JOBLEVEL (ID);
-
-    alter table EMPLOYEE 
         add index FK75C8D6AEFD52A74A (EMPLOYMENT_ID), 
         add constraint FK75C8D6AEFD52A74A 
         foreign key (EMPLOYMENT_ID) 
         references MASEMPLOYMENT (ID);
+
+    alter table EMPLOYEE 
+        add index FK75C8D6AEA2AFAF69 (JOBLEVEL_ID), 
+        add constraint FK75C8D6AEA2AFAF69 
+        foreign key (JOBLEVEL_ID) 
+        references JOBLEVEL (ID);
 
     alter table EMPLOYEE 
         add index FK75C8D6AE391EE7AA (DIVISION_ID), 
@@ -421,15 +509,21 @@
         references MASDIVISION (ID);
 
     alter table EMPLOYEE 
-        add index FK75C8D6AE78EF579B (TECHNOLOGY_ID), 
-        add constraint FK75C8D6AE78EF579B 
-        foreign key (TECHNOLOGY_ID) 
-        references TECHNOLOGYEMPLOYEE (ID);
+        add index FK75C8D6AEBFC260E9 (OFFICIAL_ID), 
+        add constraint FK75C8D6AEBFC260E9 
+        foreign key (OFFICIAL_ID) 
+        references OFFICIAL (ID);
 
     alter table EMPLOYEEFAMILY 
-        add index FKE4F7EB92264515AF (EMP_ID), 
-        add constraint FKE4F7EB92264515AF 
-        foreign key (EMP_ID) 
+        add index FKE4F7EB92A63767E5 (MASRELATION_ID), 
+        add constraint FKE4F7EB92A63767E5 
+        foreign key (MASRELATION_ID) 
+        references MASRELATIONTYPE (ID);
+
+    alter table EMPLOYEEFAMILY 
+        add index FKE4F7EB92AA332609 (EMPLOYEE_ID), 
+        add constraint FKE4F7EB92AA332609 
+        foreign key (EMPLOYEE_ID) 
         references EMPLOYEE (ID);
 
     alter table EXPERIENCE 
@@ -450,20 +544,20 @@
         foreign key (EMPLOYEE_ID) 
         references EMPLOYEE (ID);
 
+    alter table MASTECHNOLOGY 
+        add index FKB07B578BAA332609 (EMPLOYEE_ID), 
+        add constraint FKB07B578BAA332609 
+        foreign key (EMPLOYEE_ID) 
+        references EMPLOYEE (ID);
+
     alter table REFERENCE 
         add index FK6EF34F2B264515AF (EMP_ID), 
         add constraint FK6EF34F2B264515AF 
         foreign key (EMP_ID) 
         references EMPLOYEE (ID);
 
-    alter table TECHNOLOGYEMPLOYEE 
-        add index FKF5CE7BBA264515AF (EMP_ID), 
-        add constraint FKF5CE7BBA264515AF 
-        foreign key (EMP_ID) 
+    alter table SKILLLANGUAGE 
+        add index FK63549489AA332609 (EMPLOYEE_ID), 
+        add constraint FK63549489AA332609 
+        foreign key (EMPLOYEE_ID) 
         references EMPLOYEE (ID);
-
-    alter table TECHNOLOGYEMPLOYEE 
-        add index FKF5CE7BBAE5BED341 (MASTECH_ID), 
-        add constraint FKF5CE7BBAE5BED341 
-        foreign key (MASTECH_ID) 
-        references MASTECHNOLOGY (ID);
