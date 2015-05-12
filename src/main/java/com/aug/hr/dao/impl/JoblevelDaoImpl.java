@@ -13,33 +13,33 @@ import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.JoblevelDao;
 import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.Joblevel;
+import com.aug.hr.entity.MasJoblevel;
 import com.aug.hr.entity.MasDegreetype;
 import com.mysql.jdbc.StringUtils;
 
 
 @Repository
-public class JoblevelDaoImpl extends GenericDaoImpl<Joblevel,Integer> implements JoblevelDao{
+public class JoblevelDaoImpl extends GenericDaoImpl<MasJoblevel,Integer> implements JoblevelDao{
 
 	public JoblevelDaoImpl( ) {
-		super(Joblevel.class);
+		super(MasJoblevel.class);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public List<Joblevel> findByCriteria(Joblevel joblevel) {
-		Criteria c = getCurrentSession().createCriteria(Joblevel.class);
-		if (!StringUtils.isNullOrEmpty(joblevel.getName())) {
-			c.add(Restrictions.like("Name", "%" + joblevel.getName() + "%"));
+	public List<MasJoblevel> findByCriteria(MasJoblevel masJoblevel) {
+		Criteria c = getCurrentSession().createCriteria(MasJoblevel.class);
+		if (!StringUtils.isNullOrEmpty(masJoblevel.getName())) {
+			c.add(Restrictions.like("Name", "%" + masJoblevel.getName() + "%"));
 		}
 		return c.list();
 	}
 
 	@Override
-	public Joblevel deleteById(Integer id) {
-		Joblevel joblevel =(Joblevel)getCurrentSession().load(Joblevel.class, id);
-		getCurrentSession().delete(joblevel);
-		return joblevel;
+	public MasJoblevel deleteById(Integer id) {
+		MasJoblevel masJoblevel =(MasJoblevel)getCurrentSession().load(MasJoblevel.class, id);
+		getCurrentSession().delete(masJoblevel);
+		return masJoblevel;
 	}
 
 }

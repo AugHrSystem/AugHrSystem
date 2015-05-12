@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SKILLLANGUAGE")
+@Table(name="EMP_SKILLLANGUAGE")
 public class SkillLanguage extends BaseEntity{
 	
 	private Integer id;

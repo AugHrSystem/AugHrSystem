@@ -12,11 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.stereotype.Repository;
 
 
 @Entity
-@Table(name="EMPLOYEEFAMILY")
+@Table(name="EMP_EMPLOYEEFAMILY")
 public class Family extends BaseEntity implements Serializable {
 	
 	/**
@@ -171,22 +170,5 @@ public class Family extends BaseEntity implements Serializable {
 		this.employee = employee;
 	}
 	
-	
-	
-
-
-	
-	
-	
-	
-
-
-	
-
-	
-
-
-	
-		
 
 }

@@ -7,18 +7,18 @@ package com.aug.hr.services;
 
 import java.util.List;
 
-import com.aug.hr.entity.Joblevel;
+import com.aug.hr.entity.MasJoblevel;
 
 
 
 public interface JoblevelService {
 	
-	public void create(Joblevel joblevel);
-	public void update(Joblevel joblevel);
-	public void delete(Joblevel joblevel);
-	public Joblevel find(Integer id);
-	public List<Joblevel> findAll();
-	public List<Joblevel> findByCriteria(Joblevel joblevel);
-	public Joblevel deleteById(Integer id);
+	public void create(MasJoblevel masJoblevel);
+	public void update(MasJoblevel masJoblevel);
+	public void delete(MasJoblevel masJoblevel);
+	public MasJoblevel find(Integer id);
+	public List<MasJoblevel> findAll();
+	public List<MasJoblevel> findByCriteria(MasJoblevel masJoblevel);
+	public MasJoblevel deleteById(Integer id);
 
 }

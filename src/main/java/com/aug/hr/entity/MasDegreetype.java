@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "MAS_DEGREE_TYPE")
+@Table(name = "MAS_DEGREETYPE")
 public class MasDegreetype extends BaseEntity{
 
 	@Id

@@ -44,7 +44,6 @@ public class MasEmployment extends BaseEntity {
 	private Set<Employee> employees = new HashSet<Employee>();
 
 
-
 	public Integer getId() {
 		return id;
 	}

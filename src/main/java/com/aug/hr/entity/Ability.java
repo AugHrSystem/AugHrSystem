@@ -6,10 +6,7 @@
 package com.aug.hr.entity;
 
 
-
-
 import javax.persistence.Column;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +17,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="ABILITY")
+@Table(name="EMP_ABILITY")
 public class Ability extends BaseEntity  {
 	
 
@@ -32,19 +29,17 @@ public class Ability extends BaseEntity  {
 
 	@Column(name = "RANK",nullable = false)
 	private Integer rank;
-
-	
 	
 	/*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
 	
 	@ManyToOne
-	@JoinColumn(name = "EMP_ID")
+	@JoinColumn(name = "EMPLOYEE_ID")
 	private Employee employee;
 	
 	@ManyToOne
-	@JoinColumn(name = "SPEC_ID")
+	@JoinColumn(name = "SPECIALTY_ID")
 	private MasSpecialty masspecialty;
 
 	public Integer getId() {
@@ -82,11 +77,5 @@ public class Ability extends BaseEntity  {
 		this.masspecialty = masspecialty;
 	}
  
-	
-	
-	
-
-	
-
 	
 }

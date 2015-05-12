@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "REWARD")
+@Table(name = "EMP_REWARD")
 public class Reward extends BaseEntity{
 
 	@Id
@@ -32,7 +32,7 @@ public class Reward extends BaseEntity{
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "EMP_ID")
+	@JoinColumn(name = "EMPLOYEE_ID")
 	private Employee employee;
 
 

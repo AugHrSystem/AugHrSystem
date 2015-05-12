@@ -1,10 +1,7 @@
 package com.aug.hr.entity;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,17 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @JsonAutoDetect
 @Entity
-@Table(name = "EXPERIENCE")
+@Table(name = "EMP_EXPERIENCE")
 public class Experience extends BaseEntity {
 	
 	@Id
@@ -114,7 +110,6 @@ public class Experience extends BaseEntity {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
 	
 	
 }

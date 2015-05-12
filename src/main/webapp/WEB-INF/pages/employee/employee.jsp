@@ -486,7 +486,22 @@
 	    
 	    <div class="col-md-12">
 	         <form>
-				<div class="form-group">
+	         
+	         <div class="form-group">
+						<div class="col-md-3">
+    				<label>Location :</label>
+    				<select path="location" id="location" class="form-control">
+								<option >--Choose Location--</option>
+								<option >Thailand</option>
+								<option >Singapore</option>
+								<option >Indonesia</option>
+					</select>
+						</div>
+  				</div> 
+	         
+	         
+	         
+				<%-- <div class="form-group">
 						<div class="col-md-3">
     				<label>Location :</label>
     				<select path="location" id="location" class="form-control">
@@ -497,11 +512,30 @@
 								</forEach>
 					</select>
 						</div>
-  				</div>
+  				</div> --%>
 			</form>
 	    </div>
 	    
-	      <div class="col-md-12">
+	    
+	    <div class="form-group">
+			<div class="col-md-12">	
+				<div class="col-md-3">
+									<label> Start Work Date :</label> <input type="text" class="form-control"
+									id="startWorkDate" placeholder="Enter Start Work Date">
+								</div>
+								
+				<div class="col-md-3">
+									<label> End Work Date :</label> <input type="text" class="form-control"
+									id="endWorkDate" placeholder="Enter End Work Date">
+								</div>				
+							
+							</div>
+	   
+	    </div>
+	    
+	    
+	    
+	    <%--   <div class="col-md-12">
 	          <form>
 				<div class="form-group">
 						<div class="col-md-3">
@@ -527,7 +561,7 @@
 						</div>
   				</div>
 			</form>
-	    </div>
+	    </div> --%>
 	    
 	     <div class="col-md-12">
 	         <form>
@@ -825,6 +859,28 @@ var dt;
 			format : "dd/mm/yyyy",
 			todayHighlight : true
 		});
+    	
+    	
+    	var date7 = $( "#startWorkDate" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+    	
+    	
+    	
+    	var date8 = $( "#date" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+    	
 		
     	dt=$("#tbResult").dataTable();
  		//listAll();
@@ -925,14 +981,15 @@ var dt;
     					 previousEmployerNo: $("#previousEmployerNo").val(),
     					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val(),
     					 
-//     					 addresses : { 	
-//     						 	address1: $("#address1").val(),
-// 					 			address2: $("#address2").val(),
-// 					 			addressType: 1,// //$("#addressType option:selected").text(),
-// 					 			province: 1,////$("#province option:selected").text(),
-// 					 			zipcode: $("#zipcode").val(),
-					 			
-//     					 }
+    					 masEmployment: {id:$("#employment").val(), name:$("employment option:selected").text()},
+    					 masDivision: {id:$("#division").val(), name:$("division option:selected").text()},
+    					 joblevel: {id:$("#joblevel").val(), name:$("joblevel option:selected").text()},
+    					 masCoreSkill: {id:$("#coreskill").val(), name:$("coreskill option:selected").text()},
+    					 technology: {id:$("#technology").val(), name:$("technology option:selected").text()},
+    					 technology: {id:$("#technology").val(), name:$("technology option:selected").text()},
+    					 
+    					 
+    					 
     				 addresses :[
 		    				     {
 		    					 addressType :{id:$("#addressType").val()},

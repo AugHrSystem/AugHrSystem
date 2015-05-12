@@ -10,12 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
-import org.springframework.stereotype.Repository;
 
 @Entity
-@Table(name="MASTECHNOLOGY")
+@Table(name="MAS_TECHNOLOGY")
 public class MasTechnology extends BaseEnityMasterData implements Serializable{
 	
 	/**

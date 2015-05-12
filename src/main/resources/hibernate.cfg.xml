@@ -21,7 +21,7 @@
 		<mapping class="com.aug.hr.entity.Ability" />
 		<mapping class="com.aug.hr.entity.MasCoreSkill" />
 		<mapping class="com.aug.hr.entity.MasDivision" />
-		<mapping class="com.aug.hr.entity.Joblevel" />
+		<mapping class="com.aug.hr.entity.MasJoblevel" />
 		<mapping class="com.aug.hr.entity.MasEmployment" />
 		<mapping class="com.aug.hr.entity.Reference" />
 		<mapping class="com.aug.hr.entity.MasSpecialty" />
