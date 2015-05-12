@@ -44,7 +44,7 @@ public class Experience extends BaseEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id")
 	@JsonIgnore
 	private Employee employee;
