@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.JoblevelDao;
-import com.aug.hr.entity.Joblevel;
+import com.aug.hr.entity.MasJoblevel;
 import com.aug.hr.services.JoblevelService;
 
 
@@ -25,43 +25,43 @@ public class JoblevelServiceImpl implements JoblevelService {
 	@Autowired private JoblevelDao joblevelDao;
 	
 	@Override
-	public void create(Joblevel joblevel) {
-		joblevelDao.create(joblevel);
+	public void create(MasJoblevel masJoblevel) {
+		joblevelDao.create(masJoblevel);
 		
 	}
 
 	@Override
-	public void update(Joblevel joblevel) {
-		joblevelDao.update(joblevel);
+	public void update(MasJoblevel masJoblevel) {
+		joblevelDao.update(masJoblevel);
 		
 	}
 
 	@Override
-	public void delete(Joblevel joblevel) {
-		joblevelDao.delete(joblevel);
+	public void delete(MasJoblevel masJoblevel) {
+		joblevelDao.delete(masJoblevel);
 		
 	}
 
 	@Override
-	public Joblevel find(Integer id) {
+	public MasJoblevel find(Integer id) {
 		
 		return joblevelDao.find(id);
 	}
 
 	@Override
-	public List<Joblevel> findAll() {
+	public List<MasJoblevel> findAll() {
 		// TODO Auto-generated method stub
 		return joblevelDao.findAll();
 	}
 
 	@Override
-	public List<Joblevel> findByCriteria(Joblevel joblevel) {
+	public List<MasJoblevel> findByCriteria(MasJoblevel masJoblevel) {
 		// TODO Auto-generated method stub
-		return joblevelDao.findByCriteria(joblevel);
+		return joblevelDao.findByCriteria(masJoblevel);
 	}
 
 	@Override
-	public Joblevel deleteById(Integer id) {
+	public MasJoblevel deleteById(Integer id) {
 		// TODO Auto-generated method stub
 		return joblevelDao.deleteById(id);
 	}

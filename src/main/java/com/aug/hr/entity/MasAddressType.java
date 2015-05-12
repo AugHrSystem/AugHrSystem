@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="MAS_ADDRESS_TYPE")
+@Table(name="MAS_ADDRESSTYPE")
 public class MasAddressType extends BaseEntity{
 	
 	
@@ -71,7 +71,4 @@ public class MasAddressType extends BaseEntity{
 	 @OneToMany(mappedBy = "addressType")
 	 private Set<Address> addresses = new HashSet<Address>();
 	
-	
-	
-
 }

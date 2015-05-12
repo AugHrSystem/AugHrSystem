@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MAS_CORE_SKILL")
+@Table(name = "MAS_CORESKILL")
 public class MasCoreSkill extends BaseEntity {
 	
 	@Id
@@ -24,11 +24,9 @@ public class MasCoreSkill extends BaseEntity {
 	@Column(name = "ISACTIVE",nullable=true)
 	private Boolean isActive;
 	
-	
 	/*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
-	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="EMPLOYEE_ID",nullable=true)

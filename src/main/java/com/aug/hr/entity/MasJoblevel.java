@@ -4,21 +4,18 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
+@SuppressWarnings("serial")
 @Entity
-@Table(name="JOBLEVEL")
-public class Joblevel extends BaseEntity implements Serializable {
+@Table(name="MAS_JOBLEVEL")
+public class MasJoblevel extends BaseEntity implements Serializable {
 	
 	@Id
 	@Column(name="ID",nullable=false,unique=true)
@@ -34,12 +31,11 @@ public class Joblevel extends BaseEntity implements Serializable {
 	@Column(name = "ISACTIVE")
 	private Boolean isActive;
 
-	
 	/*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
 	
-	@OneToMany(mappedBy="joblevel")
+	@OneToMany(mappedBy="masJoblevel")
 	private Set<Employee> employees = new HashSet<Employee>();
 
 	public Integer getId() {
@@ -84,9 +80,4 @@ public class Joblevel extends BaseEntity implements Serializable {
 	}
 	
 	
-
-	
-	
-	
-
 }

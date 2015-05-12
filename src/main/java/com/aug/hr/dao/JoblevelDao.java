@@ -7,13 +7,13 @@ package com.aug.hr.dao;
 
 import java.util.List;
 
-import com.aug.hr.entity.Joblevel;
+import com.aug.hr.entity.MasJoblevel;
 
 
-public interface JoblevelDao extends GenericDao<Joblevel,Integer> {
+public interface JoblevelDao extends GenericDao<MasJoblevel,Integer> {
 
-	public List<Joblevel> findByCriteria(Joblevel joblevel);
+	public List<MasJoblevel> findByCriteria(MasJoblevel masJoblevel);
 
-	public Joblevel deleteById(Integer id);
+	public MasJoblevel deleteById(Integer id);
 
 }

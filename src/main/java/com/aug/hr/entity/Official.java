@@ -7,10 +7,6 @@
 package com.aug.hr.entity;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +17,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "OFFICIAL")
+@Table(name = "EMP_OFFICIAL")
 public class Official {
 		@Id
 	    @GeneratedValue
@@ -94,12 +90,6 @@ public class Official {
 		public void setDate(Date date) {
 			this.date = date;
 		}
-
-
-		
-
-
-		
 
 
 

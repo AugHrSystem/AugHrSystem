@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "ADDRESS")
+@Table(name = "EMP_ADDRESS")
 public class Address extends BaseEntity{
 	
 	@Id
@@ -33,6 +33,19 @@ public class Address extends BaseEntity{
 	
 	@Column(name="ZIPCODE")
 	private String zipcode;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name= "EMPLOYEE_ID")
+    private Employee employee;
+	
+	
+	@ManyToOne
+    @JoinColumn(name= "ADDRESSTYPE_ID")
+    private MasAddressType addressType;
+	
+	@ManyToOne
+    @JoinColumn(name= "PROVINCE_ID")
+    private MasProvince province;
 
 	public Integer getId() {
 		return id;
@@ -50,9 +63,6 @@ public class Address extends BaseEntity{
 		this.address1 = address1;
 	}
 
-	
-	
-	
 	public String getZipcode() {
 		return zipcode;
 	}
@@ -60,21 +70,6 @@ public class Address extends BaseEntity{
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-
-
-
-	@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name= "EMP_ID")
-    private Employee employee;
-	
-	
-	@ManyToOne
-    @JoinColumn(name= "ADDTYPE_ID")
-    private MasAddressType addressType;
-	
-	@ManyToOne
-    @JoinColumn(name= "PROVINCE_ID")
-    private MasProvince province;
 
 	public Employee getEmployee() {
 		return employee;
@@ -108,10 +103,6 @@ public class Address extends BaseEntity{
 		this.province = province;
 	}
 
-	
-	
-	
-	
 
 }
 

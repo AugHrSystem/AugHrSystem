@@ -1,16 +1,11 @@
 package com.aug.hr.entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,7 +22,6 @@ public class MasSpecialty extends BaseEntity{
 	@GeneratedValue
 	private Integer id;
 
-	
 	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
@@ -37,14 +31,9 @@ public class MasSpecialty extends BaseEntity{
 	@Column(name = "ISACTIVE")
 	private Boolean isActive;
 	
-	
-	
 	@JsonIgnore
 	@OneToMany(mappedBy = "masspecialty")
 	private Set<Ability> abilities;
-
-
-
 
 	public Integer getId() {
 		return id;

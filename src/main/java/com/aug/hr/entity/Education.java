@@ -7,7 +7,6 @@ package com.aug.hr.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EDUCATION")
+@Table(name = "EMP_EDUCATION")
 public class Education extends BaseEntity{
 	
 	@Id
@@ -35,17 +34,16 @@ public class Education extends BaseEntity{
 	@Column(name = "MAJOR" ,nullable =false)
 	private String major;
 	
-	
 	/*@ManyToOne()
 	@JoinColumn(name="OFFICIAL_ID")
 	private Official official;*/
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "EMP_ID")
+	@ManyToOne()
+	@JoinColumn(name = "EMPLOYEE_ID")
 	private Employee employee;
 	
 	@ManyToOne()
-	@JoinColumn(name = "DEGREE_ID", nullable = false)
+	@JoinColumn(name = "DEGREETYPE_ID", nullable = false)
 	private MasDegreetype masdegreetype;
 
 	/*---------------------- getter / setter ----------------------*/

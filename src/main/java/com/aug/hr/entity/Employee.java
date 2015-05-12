@@ -24,7 +24,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "EMPLOYEE")
+@Table(name = "EMP_EMPLOYEE")
 public class Employee extends BaseEntity{
 	
 	@Id
@@ -213,41 +213,39 @@ public class Employee extends BaseEntity{
 	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
 	 private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();
 		  
-	    @ManyToOne
-	    @JoinColumn(name= "EMPLOYMENT_ID")
-	    private MasEmployment masEmployment;
-	    
-	    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
-	    private Set<Ability> abilities = new HashSet<Ability>();
-	    
-	    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
-	    private Set<Reference> references = new HashSet<Reference>();
-	    
-	    @ManyToOne
-	    @JoinColumn(name= "DIVISION_ID")
-	    private MasDivision masDivision;
-	    
-	    @ManyToOne
-	    @JoinColumn(name= "JOBLEVEL_ID")
-	    private Joblevel joblevel;
-	    
-	    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
-	    private Set<Experience> experiences = new HashSet<Experience>();
+    @ManyToOne
+    @JoinColumn(name= "EMPLOYMENT_ID")
+    private MasEmployment masEmployment;
+    
+    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    private Set<Ability> abilities = new HashSet<Ability>();
+    
+    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    private Set<Reference> references = new HashSet<Reference>();
+    
+    @ManyToOne
+    @JoinColumn(name= "DIVISION_ID")
+    private MasDivision masDivision;
+    
+    @ManyToOne
+    @JoinColumn(name= "JOBLEVEL_ID")
+    private MasJoblevel masJoblevel;
+    
+    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    private Set<Experience> experiences = new HashSet<Experience>();
 	    
 	 
-	 /*   @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-	    private Set<TechnologyEmployee> technology = new HashSet<TechnologyEmployee>();
-	    
-	    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
-	    private Set<Family> families = new HashSet<Family>(); */
+ /* @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    private Set<TechnologyEmployee> technology = new HashSet<TechnologyEmployee>();
+    
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+    private Set<Family> families = new HashSet<Family>(); */
 
 	 //-------------------------------------- getter setter --------------------------------------------------//
 
 	public Integer getId() {
 		return id;
 	}
-
-
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -901,14 +899,14 @@ public class Employee extends BaseEntity{
 
 
 
-	public Joblevel getJoblevel() {
-		return joblevel;
+	public MasJoblevel getJoblevel() {
+		return masJoblevel;
 	}
 
 
 
-	public void setJoblevel(Joblevel joblevel) {
-		this.joblevel = joblevel;
+	public void setJoblevel(MasJoblevel masJoblevel) {
+		this.masJoblevel = masJoblevel;
 	}
 
 
