@@ -21,6 +21,7 @@ public interface AddressService {
 	public List<Address> findAll();
 	public List<Address> findByCriteria(Address address);
 	public Address deleteById(Integer id);
+	public Address find(Integer Id);
 	
 
 }

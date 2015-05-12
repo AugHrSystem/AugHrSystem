@@ -502,7 +502,7 @@
 	    </div>
 	    
 	      <div class="col-md-12">
-	         <form>
+	          <form>
 				<div class="form-group">
 						<div class="col-md-3">
     						<label>Start Work Date :</label>
@@ -832,7 +832,11 @@ var dt;
  		var button = $(event.relatedTarget);
     	var addId = button.data("addid"); 
     	var buttonemp = $(event.relatedTarget);
-    	var empId = button.data("empid"); 
+    	var empId = button.data("empid");
+    /*	var buttonemp = $(event.relatedTarget);
+    	var editaddId = button.data("editaddid");*/
+    	
+    	
   		$(this).find(".saveButton").off("click").on("click", function()
   		
   				
@@ -852,6 +856,8 @@ var dt;
   				
   				{
 			
+  			
+  			
 				addAddress();
 			
 			
@@ -919,11 +925,28 @@ var dt;
     					 previousEmployerNo: $("#previousEmployerNo").val(),
     					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val(),
     					 
-    			
-    					}),
+//     					 addresses : { 	
+//     						 	address1: $("#address1").val(),
+// 					 			address2: $("#address2").val(),
+// 					 			addressType: 1,// //$("#addressType option:selected").text(),
+// 					 			province: 1,////$("#province option:selected").text(),
+// 					 			zipcode: $("#zipcode").val(),
+					 			
+//     					 }
+    				 addresses :[
+		    				     {
+		    					 addressType :{id:$("#addressType").val()},
+		    					 address1: $("#address1").val(),
+		    					 address2: $("#address2").val(),
+		    					 province :{id:$("#province").val()},
+		    					 zipcode: $("#zipcode").val()    					 
+		    					 }
+    				 			] 
+    				 }),
     				 datatype: "json",
     				 contentType: "application/json",
     				success : function(data) {
+    					alert("=========>"+data);
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					
     					/* dt.fnClearTable();
@@ -1183,6 +1206,9 @@ var dt;
  				});
  		}
    	
+   	
+			/* --------------------------------------------------- List Address Function --------------------------------------------------- */		
+   	
    		function listAddress(){
    			$.ajax({
 				url : "${pageContext.request.contextPath}/employee/listAll",
@@ -1204,9 +1230,84 @@ var dt;
 		}
 	
 	});
+	
+	
+
+	/* --------------------------------------------------- GetId Edit Address Function --------------------------------------------------- */			
+	
+	function getId(addid){
+		
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath}/employee/findById",
+			data : "id=" + addid,
+			type : "POST",
+			success : function(data) {
+				//alert(JSON.stringify(data));
+				
+				 $("#addressType").val(data.addressType.id);
+				 $("#address1").val(data.address1);
+				 $("#address2").val(data.address2);
+				 $("#province").val(data.province.id);
+				 $("#zipcode").val(data.zipcode);
+				 
+				
+			},
+			error : function(data, textStatus, jqXML) {
+				{
+					alert("error");
+				}
+				;
+			}
+
+		});
+	}
+	
+	/* --------------------------------------------------- Edit Address Function --------------------------------------------------- */		
+	
+	function editAddress(button,addid) {
+/* alert("fn up"); */
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/employee/editAddress",
+		data : JSON.stringify({
+			id: addid,
+			 addressType : {id:$("#addressType").val(), name: $("#addressType option:selected").text()},
+			 address1: $("#address1").val(),
+			 address2: $("#address2").val(),
+			 province :{id:$("#province").val(), name: $("#province option:selected").text()},
+			 zipcode: $("#zipcode").val(),
+			 
+		 }),
+
+		type : "POST",
+		contentType : "application/json",
+		dataType : "json",
+		success : function(data) {
 			
 			
-  /* ---------------------------------------------------- Init Edit Function --------------------------------------------------- */				
+			var tr = button.closest("tr");
+			
+			dt.fnUpdate(data.addressType.name, tr, 0);
+			dt.fnUpdate(data.address1, tr, 1 );
+			dt.fnUpdate(data.address2, tr, 2 );
+			dt.fnUpdate(data.province.name, tr, 3 );
+			dt.fnUpdate(data.zipcode, tr, 4 );
+			
+		
+			$('#addModal').modal('toggle');
+			listAll();
+		},
+		error : function() {
+			alert("ERROR");
+		}
+	});
+}
+	
+	
+			
+  /* ---------------------------------------------------- Init Edit Employee Function --------------------------------------------------- */				
 			
 			function initEditEmployee(empId) {
 				alert(empId+" Init edit");

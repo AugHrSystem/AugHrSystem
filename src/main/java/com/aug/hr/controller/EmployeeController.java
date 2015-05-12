@@ -2,7 +2,6 @@ package com.aug.hr.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -18,14 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
-
+import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.MasEmployment;
+import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasAddressTypeService;
@@ -47,6 +45,7 @@ public class EmployeeController {
 	@Autowired private MasDivisionService masDivisionService;
 	@Autowired private masTechnologyService masTechnologyService;
 	@Autowired private MasCoreSkillService masCoreSkillService;
+	@Autowired private AddressEditor addressEditor;
 	
 	//@Autowired private TechnologyEmpService technologyEmpService;
 	/*@RequestMapping(value = "/employee", method =  RequestMethod.GET)
@@ -59,6 +58,7 @@ public class EmployeeController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         binder.registerCustomEditor(Date.class, editor);
+        binder.registerCustomEditor(Address.class, addressEditor);
     }	
 	
 	@RequestMapping(value="/employee",method={RequestMethod.GET,
@@ -94,7 +94,7 @@ public class EmployeeController {
 	
 	
 	//Add Address
-		@RequestMapping(value = "/employee/addAddress", method = RequestMethod.POST )
+		@RequestMapping(value = "/employee/addAddress", method = { RequestMethod.GET, RequestMethod.POST })
 		public @ResponseBody Address AddAddress(@RequestBody Address address) {
 			addressService.create(address);
 			return address;
@@ -112,6 +112,19 @@ public class EmployeeController {
 		employeeService.update(emp);
 		return emp;
 	}
+	
+	@RequestMapping(value="/employee/findById",method=RequestMethod.POST)
+	public @ResponseBody Address findById(@RequestParam Integer id)
+	{
+		return addressService.find(id);
+	}
+	
+	//editAddress
+		@RequestMapping(value = "/employee/editAddress", method = RequestMethod.POST)
+		public @ResponseBody Address editAddress(@RequestBody Address addres) {
+			addressService.update(addres);
+			return addres;
+		}
 	
 	//delete
 //	@RequestMapping(value = "/employee/delete/{empId}", method = RequestMethod.POST )

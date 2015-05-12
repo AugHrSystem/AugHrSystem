@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name = "MASSPECIALTY")
+@Table(name = "MAS_SPECIALTY")
 public class MasSpecialty extends BaseEntity{
 	
 	@Id

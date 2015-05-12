@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "MASEMPLOYMENT")
+@Table(name = "MAS_EMPLOYMENT")
 public class MasEmployment extends BaseEntity {
 	
 	@Id

@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MASCORESKILL")
+@Table(name = "MAS_CORE_SKILL")
 public class MasCoreSkill extends BaseEntity {
 	
 	@Id

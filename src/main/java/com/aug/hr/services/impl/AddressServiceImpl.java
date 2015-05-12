@@ -61,6 +61,11 @@ public class AddressServiceImpl implements AddressService{
 	public Address deleteById(Integer id) {
 		return addressDao.deleteById(id);
 	}
+
+	@Override
+	public Address find(Integer Id) {
+		return addressDao.find(Id);
+	}
 	
 
 }

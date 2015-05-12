@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MASPROVINCE")
+@Table(name = "MAS_PROVINCE")
 public class MasProvince extends BaseEntity {
 	@Id
 	@GeneratedValue

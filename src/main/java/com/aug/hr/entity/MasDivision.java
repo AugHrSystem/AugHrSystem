@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MASDIVISION")
+@Table(name = "MAS_DIVISION")
 public class MasDivision extends BaseEntity{
 	
 	@Id
