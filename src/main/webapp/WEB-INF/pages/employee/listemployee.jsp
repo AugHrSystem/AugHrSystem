@@ -248,10 +248,11 @@ var dt;
     				type : "POST",
     				success : function(data) {
     					dt.fnClearTable();
+    					alert(data.length);
     				for (var i=0;i< data.length; i++) {
     					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameThai, 
     					              data[i].surnameEng,
-    						'<div class="form-group"><button type="button" class="btn btn-info btn-sm active editButton" data-empId="' + data[i].id + '">Edit</button></div>',
+    						'<div class="form-group "><button type="button" class="btn btn-info btn-sm active editButton" data-empId="' + data[i].id + '">Edit</button></div>',
     						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
     			
     					}
@@ -282,6 +283,7 @@ var dt;
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
 							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
+							listAll();
 						},
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');

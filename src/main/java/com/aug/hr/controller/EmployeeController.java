@@ -2,6 +2,7 @@ package com.aug.hr.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -125,11 +126,11 @@ public class EmployeeController {
 		}
 	
 	//delete
-//	@RequestMapping(value = "/employee/delete/{empId}", method = RequestMethod.POST )
-//	public String deleteEmployee(@PathVariable("empId") Integer empId) {
-//		employeeService.deleteById(empId);
-//		return "redirect:/employee";
-//	}
+	@RequestMapping(value = "/employee/delete/{empId}", method = RequestMethod.POST )
+	public String deleteEmployee(@PathVariable("empId") Integer empId) {
+		employeeService.deleteById(empId);
+		return "redirect:/listemployee";
+	}
 	
 	@ModelAttribute("employee")
 	Employee setupForm() {
