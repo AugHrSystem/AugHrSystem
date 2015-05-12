@@ -22,7 +22,7 @@
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <!-- jQuery dataTable -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.min.js" />"></script>
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
@@ -37,11 +37,11 @@
 
 <form:form id ="listForm" method="post" commandName="education">
 
-<ol class="breadcrumb">
+<!-- <ol class="breadcrumb">
 	<li role="presentation" class="active"><a href="#">Home</a></li>
 	<li role="presentation"><a href="#addModal" data-toggle="modal">Add Education</a></li>
 </ol>
-
+ -->
 <h2>Education</h2> 
  
 <!-- Table -->
