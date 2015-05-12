@@ -986,7 +986,7 @@ var dt;
     					 joblevel: {id:$("#joblevel").val(), name:$("joblevel option:selected").text()},
     					 masCoreSkill: {id:$("#coreskill").val(), name:$("coreskill option:selected").text()},
     					 technology: {id:$("#technology").val(), name:$("technology option:selected").text()},
-    					 technology: {id:$("#technology").val(), name:$("technology option:selected").text()},
+    					 masspecialty: {id:$("#masspecialty").val(), name:$("technology option:selected").text()},
     					 
     					 
     					 
