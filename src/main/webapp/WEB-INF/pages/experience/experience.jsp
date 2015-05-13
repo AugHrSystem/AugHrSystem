@@ -331,10 +331,11 @@ var dt;
       	});
 			
 			function listAll(){
+				alert("list");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/listAll",
 					data: "id="+2,
-					type : "POST", 
+					type : "POST",
 					success : function(data) {
 					dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {

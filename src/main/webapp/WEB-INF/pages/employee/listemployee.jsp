@@ -246,9 +246,11 @@ var dt;
     			$.ajax({
     				url : "${pageContext.request.contextPath}/employee/listAll",
     				type : "POST",
+    				contentType: "application/json",
+    				dataType: "json",
     				success : function(data) {
     					dt.fnClearTable();
-    					alert(data.length);
+    					
     				for (var i=0;i< data.length; i++) {
     					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameThai, 
     					              data[i].surnameEng,
