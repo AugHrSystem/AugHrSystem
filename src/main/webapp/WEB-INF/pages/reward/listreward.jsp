@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Reference</title>
+<title>Reward</title>
 
 <!-- Spring -->	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -40,16 +40,16 @@
 
 	<div class="container" style="padding-top: 5px"">
 
-		<form:form id ="listForm" method="post" commandName="reference">
+		<form:form id ="listForm" method="post" commandName="reward">
 		<div>
 		<ol class="breadcrumb">
 			<li role ="presentation" class="active"><a href="#">Home</a></li>
-			<li role ="presentation"><a href="‪#‎addModal‬" data-toggle="modal">Add Reference</a></li>
+			<li role ="presentation"><a href="‪#‎addModal‬" data-toggle="modal">Add Reward</a></li>
 		</ol>
 		
 		
 			<div style="padding-bottom: 10px">
-				<h2>Reference</h2>
+				<h2>Reward</h2>
 			</div>
 			<div class="form-group">
 
@@ -58,9 +58,8 @@
 					
 						<tr>								
 							<th>NAME</th>
-							<th>ADDRESS</th>
-							<th>TEL</th>
-							<th>OCCUPATION</th>
+							<th>DETAILREWARD</th>
+							<th>BENEFIT</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -71,10 +70,10 @@
 			
 	   </form:form>		
 
-<form:form id ="addForm" method="post" commandName="reference">
+<form:form id ="addForm" method="post" commandName="reward">
 		<!-- Button trigger modal -->
 	<div class="form-group" align="right">
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Reference</button> 
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Reward</button> 
 	</div>
 	
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
@@ -86,31 +85,28 @@
 					<div class="modal-header">
 				
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Add Reference</h4>
+       					 <h4 class="modal-title" id="addModalLabel">Add Reward</h4>
       					</div>
 							
 																									
 				<div class="col col-lg-12 " style="padding-top: 10px">	
 									
 					<div class="form-group " align="left">
-							<label for="name" >Name:</label>
+							<label for="name">Name:</label>
 							<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
 				    </div>
 				    
 				    <div class="form-group "  align="left">
-							<label for="address" >Address:</label>		
-							<form:textarea path="address" class="form-control" rows="1" id="address" placeholder="Address"/>		
+							<label for="detailreward">Detailreward:</label>		
+							<form:textarea path="detailreward" class="form-control" rows="1" id="detailreward" placeholder="Detailreward"/>		
 				    </div>
 				    
 				    <div class="form-group "  align="left">
-							<label for="tel" >Tel:</label>
-							<form:input path="Tel" type="text" class="form-control" id="tel" placeholder="Tel"/>							
+							<label for="benefit">Benefit:</label>
+							<form:input path="benefit" type="text" class="form-control" id="benefit" placeholder="Benefit"/>							
 				    </div>
 				    
-				    <div class="form-group "  align="left">
-							<label for="oocupation" >Occupation:</label>
-							<form:input path="oocupation" type="text" class="form-control" id="oocupation" placeholder="Occupation"/>							
-				    </div>
+				   
 					
 					<div align="right">
 						<button type="button" class="btn btn-info btnSave">Save changes</button>
@@ -165,12 +161,12 @@
 		$("#addModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var referenceid = button.data("id") //Extract info from data-* attribute
+			var rewardid = button.data("id") //Extract info from data-* attribute
 			
 			
 			clearModal();
-			 if(referenceid != null){				 
-				 getReferenceById(referenceid);
+			 if(rewardid != null){				 
+				 getRewardById(rewardid);
 			} 
 			
 			else{
@@ -179,10 +175,10 @@
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				
-				 if(referenceid != null){
-					updateReference(button, referenceid);
+				 if(rewardid != null){
+					updateReward(button, rewardid);
 				}else{ 
-					addReference();
+					addReward();
 					
 				 } 
 				
@@ -198,13 +194,13 @@
 	 	$("#deleteModal").on("show.bs.modal", function (event) {
 				
 	 			var button = $(event.relatedTarget); // select การกระทำของปุ่ม
-	 			var referenceid = button.data("id"); //กดไอดีฝังในปุ่ม 
+	 			var rewardid = button.data("id"); //กดไอดีฝังในปุ่ม 
 				
 	 			
 					
 	 		$(this).find('.DeleteButton').off('click').on("click", function() {
 								
-	 					deleteById(button ,referenceid);
+	 					deleteById(button ,rewardid);
 	 			
 			
 	 				})
@@ -220,22 +216,21 @@
 
 		function clearModal(){
 			$("#name").val(""),
-			$("#address").val(""),
-			$("#Unit").val(""),
-			$("#tel").val(""),
-			$("#oocupation").val("");
+			$("#detailreward").val(""),
+			$("#benefit").val("");
+			
 		}
 
 		
 
-		function addReference(){
+		function addReward(){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/add",
+				url : "${pageContext.request.contextPath}/reward/add",
 				data : JSON.stringify({
 					name : $("#name").val(),
-					address :$("#address").val(),
-					tel :$("#tel").val(),
-					oocupation :$("#oocupation").val(),
+					detailreward :$("#detailreward").val(),
+					benefit :$("#benefit").val(),
+					
 //					employee :{id:2},
 				
 				}),
@@ -255,9 +250,9 @@
 						$("#Price").val(),
 						$("#Description").val(), */
 						data.name,
-						data.address,
-						data.tel,
-						data.oocupation,
+						data.detailreward,
+						data.benefit,
+						
 						
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -276,19 +271,19 @@
 		
 		
 		
-		function updateReference(button,referenceid) {
+		function updateReward(button,rewardid) {
 			$.ajax({
-				url:'${pageContext.request.contextPath}/reference/update',
+				url:'${pageContext.request.contextPath}/reward/update',
 				type:"POST",
 				contentType:"application/json",
 				datatype: "json",
 				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
 					
-								id :referenceid,
+								id :rewardid,
 								name: $("#name").val(),	
-								address: $("#address").val(), 
-								tel :$("#tel").val(),
-								oocupation: $("#oocupation").val(),
+								detailreward: $("#detailreward").val(), 
+								benefit :$("#benefit").val(),
+								
 								
 					
 					}),
@@ -301,7 +296,7 @@
 					dt.fnUpdate(data.name, tr, 0),
 					dt.fnUpdate(data.address, tr, 1),
 					dt.fnUpdate(data.tel, tr, 2),
-					dt.fnUpdate(data.oocupation, tr, 3),
+					
 					'<button class="btn btn-info btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
 					
@@ -316,16 +311,16 @@
 		}
 		
 		
-		function getReferenceById(referenceid) {
+		function getRewardById(rewardid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/findById",
-				data : "id=" +referenceid,
+				url : "${pageContext.request.contextPath}/reward/findById",
+				data : "id=" +rewardid,
 				type : "POST", 
 				success : function(data) {
 					$("#name").val(data.name); 
-					$("#address").val(data.address);
-					$("#tel").val(data.tel);
-					$("#oocupation").val(data.oocupation);
+					$("#detailreward").val(data.detailreward);
+					$("#benefit").val(data.benefit);
+					
 					
 					
 						},
@@ -339,10 +334,10 @@
 		
 		
 		
-		function deleteById(button ,referenceid) {
+		function deleteById(button ,rewardid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/delete",
-				data : "id=" +referenceid,
+				url : "${pageContext.request.contextPath}/reward/delete",
+				data : "id=" +rewardid,
 				type : "POST", 
 				
 				success : function(data) {
@@ -366,13 +361,13 @@
 		}
 			function listAll(){
 				$.ajax({
-					url : "${pageContext.request.contextPath}/reference/listAll",
+					url : "${pageContext.request.contextPath}/reward/listAll",
 					type : "POST",
 					success : function(data) {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].name,data[i].address, 
-						              data[i].tel,data[i].oocupation,
+						dt.fnAddData([data[i].name,data[i].detailreward, 
+						              data[i].benefit,
 							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
