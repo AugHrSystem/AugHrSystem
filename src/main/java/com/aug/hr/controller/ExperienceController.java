@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -45,7 +46,9 @@ public class ExperienceController {
 		Employee emp = new Employee();
 		emp.setId(id);
 		Experience experience = new Experience();
+		Hibernate.initialize(experience.getEmployee());
 		experience.setEmployee(emp);
+		
 		return (List<Experience>) experienceService.findByCriteria(experience);
 	}
 	
@@ -57,6 +60,7 @@ public class ExperienceController {
 	//Add	
 	@RequestMapping(value = "/experience/add", method = RequestMethod.POST )
 	public @ResponseBody Experience Add(@RequestBody Experience experience) {
+		Hibernate.initialize(experience.getEmployee());
 		experienceService.create(experience);
 		return experience;
 	}

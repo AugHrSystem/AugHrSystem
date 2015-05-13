@@ -10,7 +10,7 @@ import com.aug.hr.dao.ReferenceDao;
 import com.aug.hr.entity.Reference;
 import com.aug.hr.services.ReferenceService;
 
-@Service("ReferenceService")
+@Service("referenceService")
 @Transactional
 public class ReferenceServiceImpl implements ReferenceService {
 

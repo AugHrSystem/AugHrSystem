@@ -16,7 +16,7 @@ import com.aug.hr.dao.AddressDao;
 import com.aug.hr.entity.Address;
 import com.aug.hr.services.AddressService;
 
-@Service("AddressService")
+@Service("addressService")
 @Transactional
 public class AddressServiceImpl implements AddressService{
 

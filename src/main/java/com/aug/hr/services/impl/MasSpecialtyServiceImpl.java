@@ -12,7 +12,7 @@ import com.aug.hr.entity.MasSpecialty;
 import com.aug.hr.services.MasSpecialtyService;
 
 
-@Service
+@Service("masSpecialty")
 @Transactional
 public class MasSpecialtyServiceImpl implements MasSpecialtyService{
 	

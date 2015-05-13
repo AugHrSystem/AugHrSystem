@@ -16,7 +16,7 @@ import com.aug.hr.dao.OfficialDao;
 import com.aug.hr.entity.Official;
 import com.aug.hr.services.OfficialService;
 
-@Service("OfficialService")
+@Service("officialService")
 @Transactional
 public class OfficialServiceImpl implements OfficialService{
 

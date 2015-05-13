@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "EMP_EMPLOYEE")
@@ -232,6 +234,7 @@ public class Employee extends BaseEntity{
     private MasJoblevel masJoblevel;
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    @JsonIgnore
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
 	 
