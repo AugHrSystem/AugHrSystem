@@ -23,7 +23,7 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
 
-<title>Employee</title>
+<title>List Employee</title>
 </head>
 <body>
 <f:form method="post" commandName="listemployee" class="form-horizontal" role="form">
@@ -81,166 +81,12 @@
 
 <script>
 var dt;
+var empId;
 	$(document).ready(function() {
     	dt=$("#tdResult").dataTable();
     	var button = $(event.relatedTarget);
-		var empId = button.data("empid"); 
+		empId = button.data("empid"); 
  		listAll();
-		$(this).find(".editButton").off("click").on("click", function()
-  		{			
-			alert("check");
-			initEditEmployee(empId);	
-  		});
- 			
-    		function editEmployee() {
-    			alert(empId+" edit");
-				$.ajax({
-					url : "${pageContext.request.contextPath}/employee/edit",
-					type : "POST",
-					datatype: "json",
-					contentType: "application/json",
-					success : function(data) {
-						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-						/* dt.fnClearTable();
-    					dt.fnAddData([
-    					       data.id,
-    					       data.employeeCode,
-    					       data.nameThai,
-    					       data.surnameThai,
-    					       data.nicknameThai,
-    					       data.nameEng,
-    					       data.surnameEng,
-    					       data.nicknameEng,
-    					       data.telHome,
-    					       data.telMobile,
-    					       data.telFax,
-    					       data.emergencyContact,
-    					       data.relationshipWithEmergencyContact,
-    					       data.emergencyContactAddress,
-    					       data.emergencyContactPhoneNumber,
-    					       data.dateOfBirth,
-    					       data.placeOfBirth,
-    					       data.age,
-    					       data.religion,
-    					       data.idCard,
-    					       data.issuedOffice,
-    					       data.expiryDate,
-    					       data.height,
-    					       data.weigth,
-    					       data.sex,
-    					       data.maritalStatus,
-    					       data.numberOfChildren,
-    					       data.spouseName,
-    					       data.marriageCertificateNo,
-    					       data.issuedOffice2,
-    					       data.address,
-    					       data.occupation,
-    					       data.knowAugNewspaper,
-    					       data.descriptionNewspaper,
-    					       data.knowAugMagazine,
-    					       data.descriptionMagazine,
-    					       data.knowAugWebsite,
-    					       data.descriptionWebsite,
-    					       data.knowAugFriend,
-    					       data.descriptionFriend,
-    					       data.knowAugOther,
-    					       data.descriptionOther,
-    					       data.knowEmployedYes,
-    					       data.descriptionYes,
-    					       data.knowEmployerNo,
-    					       data.militaryServiceYes,
-    					       data.fromYear,
-    					       data.toYear,
-    					       data.branchOfService,
-    					       data.serviceNo,
-    					       data.militaryServiceNo,
-    					       data.reasonsNo,
-    					       data.dateToBeDrafted,
-    					       data.previousEmployerYes,
-    					       data.previousEmployerNo,
-    					       data.previousEmpreasonsNo,
-    					       
-    					    '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-   	    					'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-    					              
-						]);               */
-						listAll();
-					},
-					error : function(data,testStatus,jqXHR) {
-						
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-						}
-					});
-			}
-    		function initEditEmployee(empId) {
-				alert(empId+" Init edit");
-				$.ajax({
-					url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,
-					type : "POST",
-					success : function() {
-						/* $("#nameThai").val(data.nameThai);
-						$("#surnameThai").val(data.surnameThai);
-						$("#nicknameThai").val(data.nicknameThai);
-						$("#nameEng").val(data.nameEng);
-						$("#surnameEng").val(data.surnameEng);
-						$("#nicknameEng").val(data.nicknameEng);
-						$("#telHome").val(data.telHome);
-						$("#telMobile").val(data.telMobile);
-						$("#telFax").val(data.telFax);
-						$("#emergencyContact").val(data.emergencyContact);
-						$("#relationshipWithEmergencyContact").val(data.relationshipWithEmergencyContact);
-						$("#emergencyContactAddress").val(data.emergencyContactAddress);
-						$("#emergencyContactPhoneNumber").val(data.emergencyContactPhoneNumber);
-						$("#dateOfBirth").val(data.dateOfBirth);
-						$("#placeOfBirth").val(data.placeOfBirth);
-						$("#age").val(data.age);
-						$("#religion").val(data.religion);
-						$("#idCard").val(data.idCard);
-						$("#issuedOffice").val(data.issuedOffice);
-						$("#expiryDate").val(data.expiryDate);
-						$("#height").val(data.height);
-						$("#weigth").val(data.weigth);
-						$("#sex").val(data.sex);
-						$("#maritalStatus").val(data.maritalStatus);
-						$("#numberOfChildren").val(data.numberOfChildren);
-						$("#spouseName").val(data.spouseName);
-						$("#marriageCertificateNo").val(data.marriageCertificateNo);
-						$("#issuedOffice2").val(data.issuedOffice2);
-						$("#address").val(data.address);
-						$("#occupation").val(data.occupation);
-						$("#knowAugNewspaper").val(data.knowAugNewspaper);
-						$("#descriptionNewspaper").val(data.descriptionNewspaper);
-						$("#knowAugMagazine").val(data.knowAugMagazine);
-						$("#descriptionMagazine").val(data.descriptionMagazine);
-						$("#knowAugWebsite").val(data.knowAugWebsite);
-						$("#descriptionWebsite").val(data.descriptionWebsite);
-						$("#knowAugFriend").val(data.knowAugFriend);
-						$("#descriptionFriend").val(data.descriptionFriend);
-						$("#knowAugOther").val(data.knowAugOther);
-						$("#descriptionOther").val(data.descriptionOther);
-						$("#knowEmployedYes").val(data.knowEmployedYes);
-						$("#descriptionYes").val(data.descriptionYes);
-						$("#knowEmployerNo").val(data.knowEmployerNo);
-						$("#militaryServiceYes").val(data.militaryServiceYes);
-						$("#fromYear").val(data.fromYear);
-						$("#toYear").val(data.toYear);
-						$("#branchOfService").val(data.branchOfService);
-						$("#serviceNo").val(data.serviceNo);
-						$("#militaryServiceNo").val(data.militaryServiceNo);
-						$("#reasonsNo").val(data.reasonsNo);
-						$("#dateToBeDrafted").val(data.dateToBeDrafted);
-						$("#previousEmployerYes").val(data.previousEmployerYes);
-						$("#previousEmployerNo").val(data.previousEmployerNo);
-						$("#previousEmpreasonsNo").val(data.previousEmpreasonsNo);
-						 */
-						editEmployee(); 
-		
-					},
-					error : function(data,testStatus,jqXHR) {
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-						}
-					});
-			}
 			
     		function listAll(){
     			$.ajax({
@@ -254,7 +100,7 @@ var dt;
     				for (var i=0;i< data.length; i++) {
     					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameThai, 
     					              data[i].surnameEng,
-    						'<div class="form-group "><button type="button" class="btn btn-info btn-sm active editButton" data-empId="' + data[i].id + '">Edit</button></div>',
+    						'<button type="button" class="btn btn-info btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')">Edit</button>',
     						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
     			
     					}
@@ -296,10 +142,101 @@ var dt;
     		   	
 			
   				});
-  	
-    
+
      	
 	});
+	
+	/* --------------------------------------------------- EditFunction --------------------------------------------------- */		
+		function initEditEmployee(empId) {
+		alert(empId+" Init edit");
+		$.ajax({
+			url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,
+			type : "POST",
+			success : function(data) {
+				
+				window.location = "http://localhost:8080/AugHrSystem/employee?Id="+empId;
+				alert("emp id:"+ empId);
+				//editEmployee(); 
+
+			},
+			error : function(data,testStatus,jqXHR) {
+				$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+				}
+			});
+	}
+	
+	function editEmployee() {
+		alert(empId+" edit");
+		$.ajax({
+			url : "${pageContext.request.contextPath}/employee/edit",
+			type : "POST",
+			datatype: "json",
+			contentType: "application/json",
+			success : function(data) {
+				$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+				$("#nameThai").val(data.nameThai);
+				$("#surnameThai").val(data.surnameThai);
+				$("#nicknameThai").val(data.nicknameThai);
+				$("#nameEng").val(data.nameEng);
+				$("#surnameEng").val(data.surnameEng);
+				$("#nicknameEng").val(data.nicknameEng);
+				$("#telHome").val(data.telHome);
+				$("#telMobile").val(data.telMobile);
+				$("#telFax").val(data.telFax);
+				$("#emergencyContact").val(data.emergencyContact);
+				$("#relationshipWithEmergencyContact").val(data.relationshipWithEmergencyContact);
+				$("#emergencyContactAddress").val(data.emergencyContactAddress);
+				$("#emergencyContactPhoneNumber").val(data.emergencyContactPhoneNumber);
+				$("#dateOfBirth").val(data.dateOfBirth);
+				$("#placeOfBirth").val(data.placeOfBirth);
+				$("#age").val(data.age);
+				$("#religion").val(data.religion);
+				$("#idCard").val(data.idCard);
+				$("#issuedOffice").val(data.issuedOffice);
+				$("#expiryDate").val(data.expiryDate);
+				$("#height").val(data.height);
+				$("#weigth").val(data.weigth);
+				$("#sex").val(data.sex);
+				$("#maritalStatus").val(data.maritalStatus);
+				$("#numberOfChildren").val(data.numberOfChildren);
+				$("#spouseName").val(data.spouseName);
+				$("#marriageCertificateNo").val(data.marriageCertificateNo);
+				$("#issuedOffice2").val(data.issuedOffice2);
+				$("#address").val(data.address);
+				$("#occupation").val(data.occupation);
+				$("#knowAugNewspaper").val(data.knowAugNewspaper);
+				$("#descriptionNewspaper").val(data.descriptionNewspaper);
+				$("#knowAugMagazine").val(data.knowAugMagazine);
+				$("#descriptionMagazine").val(data.descriptionMagazine);
+				$("#knowAugWebsite").val(data.knowAugWebsite);
+				$("#descriptionWebsite").val(data.descriptionWebsite);
+				$("#knowAugFriend").val(data.knowAugFriend);
+				$("#descriptionFriend").val(data.descriptionFriend);
+				$("#knowAugOther").val(data.knowAugOther);
+				$("#descriptionOther").val(data.descriptionOther);
+				$("#knowEmployedYes").val(data.knowEmployedYes);
+				$("#descriptionYes").val(data.descriptionYes);
+				$("#knowEmployerNo").val(data.knowEmployerNo);
+				$("#militaryServiceYes").val(data.militaryServiceYes);
+				$("#fromYear").val(data.fromYear);
+				$("#toYear").val(data.toYear);
+				$("#branchOfService").val(data.branchOfService);
+				$("#serviceNo").val(data.serviceNo);
+				$("#militaryServiceNo").val(data.militaryServiceNo);
+				$("#reasonsNo").val(data.reasonsNo);
+				$("#dateToBeDrafted").val(data.dateToBeDrafted);
+				$("#previousEmployerYes").val(data.previousEmployerYes);
+				$("#previousEmployerNo").val(data.previousEmployerNo);
+				$("#previousEmpreasonsNo").val(data.previousEmpreasonsNo);
+				
+			},
+			error : function(data,testStatus,jqXHR) {
+				
+				$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+				}
+			});
+	}
+
   
   </script>
 </body>
