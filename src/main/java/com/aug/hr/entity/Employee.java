@@ -209,6 +209,9 @@ public class Employee extends BaseEntity{
 	 
 	 @OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
 	 private Set<Education> educations = new HashSet<Education>();
+	 
+	 @OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
+	 private Set<GetPosition> getPositions = new HashSet<GetPosition>();
 
 	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
 	 private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();

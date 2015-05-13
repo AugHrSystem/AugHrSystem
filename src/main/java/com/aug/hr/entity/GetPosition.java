@@ -7,7 +7,6 @@ package com.aug.hr.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "GETPOSITION")
-public class GetPosistion extends BaseEntity{
+public class GetPosition extends BaseEntity{
 
 	@Id
 	@Column(name = "ID")
@@ -26,7 +25,17 @@ public class GetPosistion extends BaseEntity{
 	@Column(name = "POSITION" ,nullable = false)
 	private String position;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@Column(name = "COMPANY" ,nullable = false)
+	private String 	company;
+	
+	@Column(name = "SALARY" ,nullable = false)
+	private String salary;
+	
+	@Column(name = "TIME" ,nullable = false)
+	private String time;
+	
+	
+	@ManyToOne()
 	@JoinColumn(name = "EMP_ID")
 	private Employee employee;
 
@@ -44,6 +53,30 @@ public class GetPosistion extends BaseEntity{
 
 	public void setPosition(String position) {
 		this.position = position;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public String getSalary() {
+		return salary;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	public Employee getEmployee() {
