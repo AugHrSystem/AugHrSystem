@@ -169,10 +169,7 @@
 				 getRewardById(rewardid);
 			} 
 			
-			else{
 	
-			} 
-			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				
 				 if(rewardid != null){

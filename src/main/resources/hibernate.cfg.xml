@@ -36,6 +36,7 @@
         <mapping class="com.aug.hr.entity.Official"/>
         <mapping class="com.aug.hr.entity.MasRelationType"/>
         <mapping class="com.aug.hr.entity.SkillLanguage"/>
+         <mapping class="com.aug.hr.entity.Reward"/>
 
 
 	</session-factory>
