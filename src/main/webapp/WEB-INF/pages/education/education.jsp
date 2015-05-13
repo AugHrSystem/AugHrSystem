@@ -35,7 +35,7 @@
 <body>
 <div class="container">
 
-<form:form id ="listForm" method="post" commandName="education">
+<form:form id ="listForm" method="post" commandName="education" action="education">
 
 <!-- <ol class="breadcrumb">
 	<li role="presentation" class="active"><a href="#">Home</a></li>
