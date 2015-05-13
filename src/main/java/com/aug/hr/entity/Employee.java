@@ -238,11 +238,11 @@ public class Employee extends BaseEntity{
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
 	 
- /* @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-    private Set<TechnologyEmployee> technology = new HashSet<TechnologyEmployee>();
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    private Set<MasTechnology> technology = new HashSet<MasTechnology>();
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
-    private Set<Family> families = new HashSet<Family>(); */
+    private Set<Family> families = new HashSet<Family>(); 
 
 	 //-------------------------------------- getter setter --------------------------------------------------//
 
@@ -925,18 +925,6 @@ public class Employee extends BaseEntity{
 	}
 
 
-/*
-	public Set<TechnologyEmployee> getTechnology() {
-		return technology;
-	}
-
-
-
-	public void setTechnology(Set<TechnologyEmployee> technology) {
-		this.technology = technology;
-	}
-
-
 
 	public Set<Family> getFamilies() {
 		return families;
@@ -947,8 +935,34 @@ public class Employee extends BaseEntity{
 	public void setFamilies(Set<Family> families) {
 		this.families = families;
 	}
+
+	public MasEmployment getMasEmployment() {
+		return masEmployment;
+	}
+
+	public void setMasEmployment(MasEmployment masEmployment) {
+		this.masEmployment = masEmployment;
+	}
+
+	public MasJoblevel getMasJoblevel() {
+		return masJoblevel;
+	}
+
+	public void setMasJoblevel(MasJoblevel masJoblevel) {
+		this.masJoblevel = masJoblevel;
+	}
+
+	public Set<MasTechnology> getTechnology() {
+		return technology;
+	}
+
+	public void setTechnology(Set<MasTechnology> technology) {
+		this.technology = technology;
+	}
 	 
-	 */
+	
+	
+	
 	 
 	 
 }

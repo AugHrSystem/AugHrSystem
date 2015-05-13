@@ -486,8 +486,7 @@
 	    
 	    <div class="col-md-12">
 	         <form>
-	         
-	         <div class="form-group">
+				<div class="form-group">
 						<div class="col-md-3">
     				<label>Location :</label>
     				<select path="location" id="location" class="form-control">
@@ -497,87 +496,39 @@
 								<option >Indonesia</option>
 					</select>
 						</div>
-  				</div> 
-	         
-	         
-	         
-				<%-- <div class="form-group">
-						<div class="col-md-3">
-    				<label>Location :</label>
-    				<select path="location" id="location" class="form-control">
-								<options items="${ locationList }" itemLabel="locationname" itemValue="locationid"/> 
-								<option value="-1">--Choose Location--</option>
-								<forEach var="obj" items="${ locationList }">${obj}
-									<option value="${obj.locationid}">${obj.locationname}</option>
-								</forEach>
-					</select>
-						</div>
-  				</div> --%>
+  				</div>
 			</form>
 	    </div>
 	    
-	    
-	    <div class="form-group">
-			<div class="col-md-12">	
-				<div class="col-md-3">
-									<label> Start Work Date :</label> <input type="text" class="form-control"
-									id="startWorkDate" placeholder="Enter Start Work Date">
-								</div>
-								
-				<div class="col-md-3">
-									<label> End Work Date :</label> <input type="text" class="form-control"
-									id="endWorkDate" placeholder="Enter End Work Date">
-								</div>				
-							
-							</div>
-	   
-	    </div>
-	    
-	    
-	    
-	    <%--   <div class="col-md-12">
-	          <form>
+	      <div class="col-md-12">
+	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    						<label>Start Work Date :</label>
-    						<select path="start" id="start" class="form-control">
-								<options items="${ startList }" itemLabel="startname" itemValue="startid"/> 
-								<option value="-1">--Start Work Date--</option>
-								<forEach var="obj" items="${ startList }">${obj}
-									<option value="${obj.startid}">${obj.startname}</option>
-								</forEach>
-							</select>
+    						<label> Start Work Date :</label> <input type="text" class="form-control"
+									id="startWorkDate" placeholder="Enter Start Work Date">
 						</div>
 						
 						<div class="col-md-3">
-    						<label>End Work Date :</label>
-    						<select path="end" id="end" class="form-control">
-								<options items="${ endList }" itemLabel="endname" itemValue="startid"/> 
-								<option value="-1">--Start Work Date--</option>
-								<forEach var="obj" items="${ endList }">${obj}
-									<option value="${obj.endid}">${obj.endname}</option>
-								</forEach>
-							</select>
+    						<label> End Work Date :</label> <input type="text" class="form-control"
+									id="endWorkDate" placeholder="Enter End Work Date">
 						</div>
   				</div>
 			</form>
-	    </div> --%>
+	    </div>
 	    
 	     <div class="col-md-12">
 	         <form>
 				<div class="form-group">
-				
 						<div class="col-md-3">
-    						<label>Employment :</label>
+    					<label>Employment :</label>
     						<select path="employment" id="employment" class="form-control">
 								<options items="${ employmentList }"itemLabel="employmentname" itemValue="employmentid"/>
 								<option value="-1"> ---Select Employment----</option>
 								<c:forEach var="obj" items="${ employmentList }">
 								<option value="${obj.id }">${ obj.name}</option>
-			</c:forEach>
+								</c:forEach>
 							</select>
 						</div>
-						
   				</div>
 			</form>
 	    </div>
@@ -646,21 +597,11 @@
     						<select path="technology" id="technology" class="form-control">
 								<option value="-1" label="---Select Technology---" />
 								<c:forEach var="obj" items="${ technologyList }">${obj}
-									<option value="${obj.masTechnologyId}">${obj.masTechnologyName}</option>
+									<option value="${obj.id}">${obj.name}</option>
 								</c:forEach>
 							</select>
-						</div>
 						
-						<div class="col-md-3">
-    						<label>Speciality :</label>
-    						<select path="masspecialty" id="masspecialty" class="form-control">
-							<options items="${ masspecialtyList } itemLabel="specialtyname" itemValue="specialtyid"/> 
-							<option value="-1">--Select Specialty--</option>	
-								<c:forEach var="obj" items="${ masspecialtyList }">
-				<option value="${obj.id }">${ obj.name}</option>
-			</c:forEach>
-							</select>
-						</div>
+						
   				</div>
 			</form>
 	    </div>
@@ -686,14 +627,10 @@
 	         <form>
 				<div class="form-group">
 						<div class="col-md-3">
-    				<label>Probation Date :</label>
-    				<select path="probation" id="probation" class="form-control">
-								<options items="${ probationList }" itemLabel="probationname" itemValue="probationid"/> 
-								<option value="-1">--Probation Date--</option>
-								<forEach var="obj" items="${ probationList }">${obj}
-									<option value="${obj.probationid}">${obj.probationname}</option>
-								</forEach>
-					</select>
+						
+						<label> Probation Date :</label> <input type="text" class="form-control"
+									id="probationDate" placeholder="Enter Probation Date">
+						
 						</div>
   				</div>
 			</form>
@@ -704,7 +641,7 @@
 	    	</div>
 	    </div>
 	</div>
-	
+</div>	
     
 <!----------------------------------------------------------- Modal Address --------------------------------------------------->
 		
@@ -720,20 +657,20 @@
 						<h4 class="modal-title" id="myModalLabel">Add Address</h4>
 					</div>
 					<div class="modal-body">
-						<div class="form-group">
+						
 					
-					<div class="form-group">
-	    				<label>Address Type :</label>
-	    
 						<div class="form-group">
-		 					 <select  class="form-control" id="addressType">
+	    					<label>Address Type :</label>
+	    
+							<div class="form-group">
+		 					 <select class="form-control" id="addressType">
 								<option value="-1" label="---Select Address Type---" />
 								<c:forEach var="obj" items="${ masAddressTypeList }">
 									<option value="${obj.id }">${ obj.name}</option>
 								</c:forEach>
 							</select>
-						</div>
-	  				</div>
+							</div>
+	  				
 							
 
 							<div class="form-group">
@@ -747,27 +684,50 @@
 								<textarea class="form-control" rows="1" id="address2"></textarea>
 							</div>
 
-							<div class="form-group">
+<%-- <div class="form-group">
+						
+    						<label>Division :</label>
+    						<select path="division" id="division" class="form-control">
+								<options items="${ divisionList }" itemLabel="divisionname" itemValue="divisionid"/> 
+								<option value="-1">--Select Division--</option>
+								<c:forEach var="obj" items="${ divisionList }">${obj}
+									<option value="${obj.id}">${obj.name}</option>
+								</c:forEach>
+							</select>
+						
+						</div>
+						
+						
+						 --%>
+						
+ 			 <div class="form-group">
 	    				<label>Province :</label>
 	    
 	    
-						<div class="form-group">
+						
 		 					 <select  class="form-control" id="province">
 								<option value="-1" label="---Select Province---" />
 								<c:forEach var="obj" items="${ provinceList }">
 									<option value="${obj.id }">${ obj.name}</option>
 								</c:forEach>
 							</select>
-						</div>
-	  				</div>
+						
+	  				</div> 
+	  				
+	  				
+	  				
+	  				
 
 							<div class="form-group">
 								<label>Zipcode:</label>
 								<textarea class="form-control" rows="1" id="zipcode"></textarea>
 							</div>
 
-						</div>
 						
+						
+						
+						
+						</div>
 						<div class="form-group" align="center">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
@@ -775,11 +735,11 @@
 								changes</button>
 						</div>
 						
+					
 					</div>
 				</div>
-			</div>
-	    </div>
-	    
+	    	</div>
+	</div>    
 	</f:form>    
 	    
 <!------------------------------------------------- Modal Delete --------------------------------------------->
@@ -860,8 +820,7 @@ var dt;
 			todayHighlight : true
 		});
     	
-    	
-    	var date7 = $( "#startWorkDate" ).datepicker({
+    	var date6 = $( "#startWorkDate" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -870,9 +829,16 @@ var dt;
 			todayHighlight : true
 		});
     	
+    	var date6 = $( "#endWorkDate" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
     	
-    	
-    	var date8 = $( "#date" ).datepicker({
+    	var date6 = $( "#probationDate" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -888,11 +854,7 @@ var dt;
  		var button = $(event.relatedTarget);
     	var addId = button.data("addid"); 
     	var buttonemp = $(event.relatedTarget);
-    	var empId = button.data("empid");
-    /*	var buttonemp = $(event.relatedTarget);
-    	var editaddId = button.data("editaddid");*/
-    	
-    	
+    	var empId = button.data("empid"); 
   		$(this).find(".saveButton").off("click").on("click", function()
   		
   				
@@ -912,8 +874,6 @@ var dt;
   				
   				{
 			
-  			
-  			
 				addAddress();
 			
 			
@@ -981,29 +941,11 @@ var dt;
     					 previousEmployerNo: $("#previousEmployerNo").val(),
     					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val(),
     					 
-    					 masEmployment: {id:$("#employment").val(), name:$("employment option:selected").text()},
-    					 masDivision: {id:$("#division").val(), name:$("division option:selected").text()},
-    					 joblevel: {id:$("#joblevel").val(), name:$("joblevel option:selected").text()},
-    					 masCoreSkill: {id:$("#coreskill").val(), name:$("coreskill option:selected").text()},
-    					 technology: {id:$("#technology").val(), name:$("technology option:selected").text()},
-    					 masspecialty: {id:$("#masspecialty").val(), name:$("technology option:selected").text()},
-    					 
-    					 
-    					 
-    				 addresses :[
-		    				     {
-		    					 addressType :{id:$("#addressType").val()},
-		    					 address1: $("#address1").val(),
-		    					 address2: $("#address2").val(),
-		    					 province :{id:$("#province").val()},
-		    					 zipcode: $("#zipcode").val()    					 
-		    					 }
-    				 			] 
-    				 }),
+    			
+    					}),
     				 datatype: "json",
     				 contentType: "application/json",
     				success : function(data) {
-    					alert("=========>"+data);
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					
     					/* dt.fnClearTable();
@@ -1263,9 +1205,6 @@ var dt;
  				});
  		}
    	
-   	
-			/* --------------------------------------------------- List Address Function --------------------------------------------------- */		
-   	
    		function listAddress(){
    			$.ajax({
 				url : "${pageContext.request.contextPath}/employee/listAll",
@@ -1287,84 +1226,9 @@ var dt;
 		}
 	
 	});
-	
-	
-
-	/* --------------------------------------------------- GetId Edit Address Function --------------------------------------------------- */			
-	
-	function getId(addid){
-		
-		
-		$.ajax({
-			
-			url : "${pageContext.request.contextPath}/employee/findById",
-			data : "id=" + addid,
-			type : "POST",
-			success : function(data) {
-				//alert(JSON.stringify(data));
-				
-				 $("#addressType").val(data.addressType.id);
-				 $("#address1").val(data.address1);
-				 $("#address2").val(data.address2);
-				 $("#province").val(data.province.id);
-				 $("#zipcode").val(data.zipcode);
-				 
-				
-			},
-			error : function(data, textStatus, jqXML) {
-				{
-					alert("error");
-				}
-				;
-			}
-
-		});
-	}
-	
-	/* --------------------------------------------------- Edit Address Function --------------------------------------------------- */		
-	
-	function editAddress(button,addid) {
-/* alert("fn up"); */
-	
-	$.ajax({
-		url : "${pageContext.request.contextPath}/employee/editAddress",
-		data : JSON.stringify({
-			id: addid,
-			 addressType : {id:$("#addressType").val(), name: $("#addressType option:selected").text()},
-			 address1: $("#address1").val(),
-			 address2: $("#address2").val(),
-			 province :{id:$("#province").val(), name: $("#province option:selected").text()},
-			 zipcode: $("#zipcode").val(),
-			 
-		 }),
-
-		type : "POST",
-		contentType : "application/json",
-		dataType : "json",
-		success : function(data) {
 			
 			
-			var tr = button.closest("tr");
-			
-			dt.fnUpdate(data.addressType.name, tr, 0);
-			dt.fnUpdate(data.address1, tr, 1 );
-			dt.fnUpdate(data.address2, tr, 2 );
-			dt.fnUpdate(data.province.name, tr, 3 );
-			dt.fnUpdate(data.zipcode, tr, 4 );
-			
-		
-			$('#addModal').modal('toggle');
-			listAll();
-		},
-		error : function() {
-			alert("ERROR");
-		}
-	});
-}
-	
-	
-			
-  /* ---------------------------------------------------- Init Edit Employee Function --------------------------------------------------- */				
+  /* ---------------------------------------------------- Init Edit Function --------------------------------------------------- */				
 			
 			function initEditEmployee(empId) {
 				alert(empId+" Init edit");
