@@ -49,7 +49,7 @@ public class MasDegreetypeTest {
 		MasDegreetype masDegree2= new MasDegreetype();
 		masDegree2.setName("Ph.D.");
 		masDegree2.setCode("03");
-		masDegree2.setIsactive("1");
+		masDegree2.setIsactive(true);
 		masDegreetypeDao.getCurrentSession().save(masDegree);
 		
 		
