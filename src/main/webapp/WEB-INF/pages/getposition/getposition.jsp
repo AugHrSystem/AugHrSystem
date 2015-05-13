@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Education</title>
+<title>GetPosition</title>
 
 <!-- Spring -->	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -34,25 +34,24 @@
 <body>
 <div class="container">
 
-<form:form id ="listForm" method="post" commandName="education" action="education">
+<form:form id ="listForm" method="post" commandName="getposition">
 
 <!-- <ol class="breadcrumb">
 	<li role="presentation" class="active"><a href="#">Home</a></li>
 	<li role="presentation"><a href="#addModal" data-toggle="modal">Add Education</a></li>
 </ol>
  -->
-<h2>Education</h2> 
+<h2>GetPosition</h2> 
  
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>University</th>
-			<th>GPA</th>
-			<th>Faculty</th>
-			<th>Major</th>
-			<th>Degree</th>
+			<th>Position</th>
+			<th>Company</th>
+			<th>Salary</th>
+			<th>Time</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -63,11 +62,11 @@
 
 </form:form>
 
-<form:form id ="addForm" method="post" commandName="education">
+<form:form id ="addForm" method="post" commandName="getposition">
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Education</button> 
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
 </div>
 
 <!-- Modal -->
@@ -76,32 +75,32 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Education Add</h4>
+        <h4 class="modal-title" id="myModalLabel">Position Add</h4>
       </div>
       
       <div class="modal-body">
         
 	  <div class="form-group">
-	    <label>University :</label>
-	    <form:input path="university" type="text" class="form-control" id="university" placeholder="Enter University"/>
+	    <label>Position :</label>
+	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position"/>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>GPA :</label>
-	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="Enter GPA"/>
+	    <label>Company :</label>
+	    <form:input path="company" type="text" class="form-control" id="company" placeholder="Enter Company"/>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Faculty :</label>
-	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
+	    <label>Salary :</label>
+	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary"/>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Major :</label>
-	    <form:input path="major" type="text" class="form-control" id="major" placeholder="Enter Major"/>
+	    <label>Time :</label>
+	    <form:input path="time" type="text" class="form-control" id="time" placeholder="Enter Time"/>
 	  </div>
 	  
-	  <div class="form-group">
+	 <%--  <div class="form-group">
 	    <label>Degree :</label>
 	    
 		  <form:select path="masdegreetype" class="form-control"
@@ -111,7 +110,7 @@
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>
 		</form:select>
-	  </div>
+	  </div> --%>
 
       </div>
       
@@ -126,7 +125,7 @@
 
 </form:form>
 
-<form:form id="deleteForm" commandName="education" method="post">
+<form:form id="deleteForm" commandName="getposition" method="post">
 
 		<!-- Modal -->
 		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
@@ -138,7 +137,7 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Delete Education</h4>
+						<h4 class="modal-title" id="myModalLabel">Delete</h4>
 					</div>
 					<div class="modal-body">
 						<h4>Are you sure?</h4>
@@ -170,17 +169,17 @@
 			clearModal();
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var educationid = button.data("id") //Extract info from data-* attribute
+			var getpositionid = button.data("id") //Extract info from data-* attribute
 			
-			if(educationid != null){
-				getId(educationid);
+			if(getpositionid != null){
+				getId(getpositionid);
 			} 
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
-				if(educationid != null){
-					updateEducation(button, educationid);
+				if(getpositionid != null){
+					updateGetPosition(button, getpositionid);
 				}else{
-					addEducation();
+					addGetPosition();
 					
 				 }
 				
@@ -192,10 +191,10 @@
 		$("#deleteModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var educationid = button.data("id") //Extract info from data-* attribute
+			var getpositionid = button.data("id") //Extract info from data-* attribute
 			
 			$(this).find(".btnYes").off("click").on("click",function() {
-				deleteEducation(button, educationid);
+				deleteGetPosition(button, getpositionid);
 			});
 			
 		});
@@ -203,22 +202,21 @@
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
 		function clearModal(){
-			$("#university").val(""),
-			$("#gpa").val(""),
-			$("#faculty").val(""),
-			$("#major").val(""),
-			$("#masdegreetype").val("-1");
+			$("#position").val(""),
+			$("#company").val(""),
+			$("#salary").val(""),
+			$("#time").val("");
+			/* $("#masdegreetype").val("-1"); */
 		}
 		
-		function addEducation(){
+		function addGetPosition(){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/add",
+				url : "${pageContext.request.contextPath}/getposition/add",
 				data : JSON.stringify({
-					university : $("#university").val(),
-					gpa :$("#gpa").val(),
-					faculty :$("#faculty").val(),
-					major :$("#major").val(),
-					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
+					position : $("#position").val(),
+					company :$("#company").val(),
+					salary :$("#salary").val(),
+					time :$("#time").val(),
 				
 				}),
 				type : "POST",
@@ -236,11 +234,10 @@
 						$("#Unit").val(),
 						$("#Price").val(),
 						$("#Description").val(), */
-						data.university,
-						data.gpa,
-						data.faculty,
-						data.major,
-						data.masdegreetype.name,
+						data.position,
+						data.company,
+						data.salary,
+						data.time,
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
@@ -256,16 +253,14 @@
 			});
 		}
 		
-		function updateEducation(button, educationid){
+		function updateGetPosition(button, getpositionid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/update",
+				url : "${pageContext.request.contextPath}/getposition/update",
 				data : JSON.stringify({
-					id : educationid,
-					university : $("#university").val(),
-					gpa :$("#gpa").val(),
-					faculty :$("#faculty").val(),
-					major :$("#major").val(),
-					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
+					position : $("#position").val(),
+					company :$("#company").val(),
+					salary :$("#salary").val(),
+					time :$("#time").val(),
 					
 				}),
 				type : "POST",
@@ -276,11 +271,10 @@
 					
 					var tr = button.closest("tr")
 					
-					dt.fnUpdate(data.university, tr ,0);
-					dt.fnUpdate(data.gpa, tr ,1);
-					dt.fnUpdate(data.faculty, tr ,2);
-					dt.fnUpdate(data.major, tr ,3);
-					dt.fnUpdate(data.masdegreetype.name, tr ,4);
+					dt.fnUpdate(data.position, tr ,0);
+					dt.fnUpdate(data.company, tr ,1);
+					dt.fnUpdate(data.salary, tr ,2);
+					dt.fnUpdate(data.time, tr ,3);
 					
 					$('#addModal').modal('toggle');
 				},
@@ -290,19 +284,18 @@
 			});
 		}
 		
-		function getId(educationid){
+		function getId(getpositionid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/findById",
-				data : "educationid=" + educationid,
+				url : "${pageContext.request.contextPath}/getposition/findById",
+				data : "getpositionid=" + getpositionid,
 				type : "POST",
 				success : function(data) {
 	 				//alert(JSON.stringify(data));
 					//alert("ok");
-					$("#university").val(data.university),
-					$("#gpa").val(data.gpa),
-					$("#faculty").val(data.faculty),
-					$("#major").val(data.major);
-					$("#masdegreetype").val(data.masdegreetype.id);
+					$("#position").val(data.position),
+					$("#company").val(data.company),
+					$("#salary").val(data.salary),
+					$("#time").val(data.time);
 			
 				},
 				error : function() {
@@ -311,10 +304,10 @@
 			});
 		}
 		
-		function deleteEducation(button, educationid){
+		function deleteGetPosition(button, getpositionid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/delete",
-				data : "educationid=" + educationid,
+				url : "${pageContext.request.contextPath}/getposition/delete",
+				data : "getpositionid=" + getpositionid,
 				type : "POST",
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
@@ -335,13 +328,13 @@
 		
 		function listAll(){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/listAll",
+				url : "${pageContext.request.contextPath}/getposition/listAll",
 				type : "POST",
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].university,data[i].gpa,data[i].faculty, 
-					              data[i].major,data[i].masdegreetype.name,
+					dt.fnAddData([data[i].position,data[i].company,data[i].salary, 
+					              data[i].time,
 						'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
