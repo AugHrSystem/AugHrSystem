@@ -1,31 +1,31 @@
 /**
  *
  * @author Pranrajit
- * @date 22 เม.ย. 2558
+ * @date 13 พ.ค. 2558
  */
 package com.aug.hr.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
-@Table(name = "MAS_DEGREETYPE")
-public class MasDegreetype extends BaseEntity{
+@Table(name = "MAS_LOCATION")
+public class MasLocation extends BaseEntity {
 
 	@Id
-	@Column(name = "ID")
+	@Column(name="ID")
 	@GeneratedValue
 	private Integer id;
-
+	
 	@Column(name = "NAME", nullable = false, length = 200)
 	private String name;
 	
@@ -33,52 +33,69 @@ public class MasDegreetype extends BaseEntity{
 	private String code;
 	
 	@Column(name = "ISACTIVE" ,nullable =false)
-	private Boolean isactive;
+	private Boolean isActive;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "masdegreetype")
-	private Set<Education> educations = new HashSet<Education>();
+	
+	@ManyToOne
+	@JoinColumn(name = "EMPLOYEE_ID")
+	private Employee employee;
 
-	
+
 	public Integer getId() {
 		return id;
 	}
+
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+
 	public String getName() {
 		return name;
 	}
+
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+
 	public String getCode() {
 		return code;
 	}
+
 
 	public void setCode(String code) {
 		this.code = code;
 	}
 
+
 	
-	public Boolean getIsactive() {
-		return isactive;
+
+
+	public Boolean getIsActive() {
+		return isActive;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
-	public Set<Education> getEducations() {
-		return educations;
+
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setEducations(Set<Education> educations) {
-		this.educations = educations;
-	}
 
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
+	
+	
+
+	
+	
 }

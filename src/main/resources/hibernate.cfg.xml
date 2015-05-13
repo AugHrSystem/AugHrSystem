@@ -38,6 +38,7 @@
         <mapping class="com.aug.hr.entity.SkillLanguage"/>
          <mapping class="com.aug.hr.entity.Reward"/>
         <mapping class="com.aug.hr.entity.GetPosition"/>
+		<mapping class="com.aug.hr.entity.MasLocation" />
 
 
 	</session-factory>
