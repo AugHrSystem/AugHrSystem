@@ -40,7 +40,7 @@
 				<tr>
 					<th>Id</th>
 					<th>Code</th>
-					<th>Firstname</th>
+		 			<th>Firstname</th>
 					<th>Surname</th>
 					<th></th>
 					<th></th>

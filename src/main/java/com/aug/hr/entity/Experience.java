@@ -45,8 +45,8 @@ public class Experience extends BaseEntity {
 	private String description;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id")
-	@JsonIgnore
+	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id", nullable=false)
+//	@JsonIgnore
 	private Employee employee;
 	
 	

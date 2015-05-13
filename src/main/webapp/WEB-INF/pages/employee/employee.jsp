@@ -604,7 +604,7 @@
 									<option value="${obj.id}">${obj.name}</option>
 								</c:forEach>
 							</select>
-						
+						</div>
 						
   				</div>
 			</form>

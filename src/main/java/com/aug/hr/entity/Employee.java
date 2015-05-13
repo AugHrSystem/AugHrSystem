@@ -34,7 +34,7 @@ public class Employee extends BaseEntity{
 	@Column(name = "ID")
 	private Integer id;
 	
-	@Column(name = "EMPLOYEE_CODE",nullable = true)
+	@Column(name = "EMPLOYEE_CODE",nullable = false)
 	private String employeeCode;
 	
 	@Column(name = "NAME_THAI",nullable = false)
@@ -46,7 +46,7 @@ public class Employee extends BaseEntity{
 	@Column(name = "NICKNAME_THAI",nullable = true)
 	private String nicknameThai;
 	
-	@Column(name = "NAME_ENG",nullable = true)
+	@Column(name = "NAME_ENG",nullable = false)
 	private String nameEng;
 	
 	@Column(name = "SURNAM_ENG",nullable = true)
@@ -55,16 +55,16 @@ public class Employee extends BaseEntity{
 	@Column(name = "NICKNAME_ENG",nullable = true)
 	private String nicknameEng;
 
-	@Column(name = "TEL_HOME",nullable = true)
+	@Column(name = "TEL_HOME",nullable = false)
 	private Integer telHome;
 	
-	@Column(name = "TEL_MOBILE",nullable = true)
+	@Column(name = "TEL_MOBILE",nullable = false)
 	private Integer telMobile;
 	
 	@Column(name = "TEL_FAX",nullable = true)
 	private Integer telFax;
 
-	@Column(name = "EMERGENCY_CONTACT",nullable = true)
+	@Column(name = "EMERGENCY_CONTACT",nullable = false)
 	private String emergencyContact;
 	
 	@Column(name = "RELATIONSHIP_WITH_EMERGENCY_CONTACT",nullable = true)
@@ -73,10 +73,10 @@ public class Employee extends BaseEntity{
 	@Column(name = "EMERGENCY_CONTACT_ADDRESS",nullable = true)
 	private String emergencyContactAddress;
 	
-	@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER",nullable = true)
+	@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER",nullable = false)
 	private String emergencyContactPhoneNumber;
 	
-	@Column(name = "DATEOFBIRTH",nullable = true)
+	@Column(name = "DATEOFBIRTH",nullable = false)
 	private Date dateOfBirth;
 	
 	@Column(name = "PLACEOFBIRTH",nullable = true)
@@ -88,7 +88,7 @@ public class Employee extends BaseEntity{
 	@Column(name = "RELIGION",nullable = true)
 	private String religion;
 	
-	@Column(name = "ID_CARD",nullable = true)
+	@Column(name = "ID_CARD",nullable = false)
 	private Integer idCard;
 	
 	@Column(name = "ISSUED_OFFICE",nullable = true)
@@ -229,11 +229,11 @@ public class Employee extends BaseEntity{
     private Set<Reference> references = new HashSet<Reference>();
     
     @ManyToOne
-    @JoinColumn(name= "DIVISION_ID")
+    @JoinColumn(name= "DIVISION_ID", nullable = false)
     private MasDivision masDivision;
     
     @ManyToOne
-    @JoinColumn(name= "JOBLEVEL_ID")
+    @JoinColumn(name= "JOBLEVEL_ID", nullable = false)
     private MasJoblevel masJoblevel;
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
@@ -241,10 +241,10 @@ public class Employee extends BaseEntity{
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
 	 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
     private Set<MasTechnology> technology = new HashSet<MasTechnology>();
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<Family> families = new HashSet<Family>(); 
 
 	 //-------------------------------------- getter setter --------------------------------------------------//
