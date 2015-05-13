@@ -22,8 +22,7 @@ public class RewardServiceImpl implements RewardService {
 	
 	@Override
 	public List<Reward> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return rewardDao.findAll();
 	}
 
 	@Override
@@ -34,32 +33,29 @@ public class RewardServiceImpl implements RewardService {
 
 	@Override
 	public void update(Reward reward) {
-		// TODO Auto-generated method stub
+		rewardDao.update(reward);
 		
 	}
 
 	@Override
 	public void delete(Reward reward) {
-		// TODO Auto-generated method stub
+		rewardDao.delete(reward);
 		
 	}
 
 	@Override
 	public Reward findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return rewardDao.find(id);
 	}
 
 	@Override
 	public List<Reward> findByCriteria(Reward reward) {
-		// TODO Auto-generated method stub
-		return null;
+		return rewardDao.findByCriteria(reward);
 	}
 
 	@Override
 	public Reward deleteById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return rewardDao.deleteById(id);
 	}
 
 }
