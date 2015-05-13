@@ -17,7 +17,7 @@ import com.aug.hr.services.MasCoreSkillService;
 
 
 
-@Service("MasCoreSkillService")
+@Service("masCoreSkillService")
 @Transactional
 public class MasCoreSkillServiceImpl implements MasCoreSkillService{
 

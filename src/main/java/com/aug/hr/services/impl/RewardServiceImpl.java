@@ -12,7 +12,7 @@ import com.aug.hr.services.RewardService;
 
 
 
-@Service("RewardService")
+@Service("rewardService")
 @Transactional
 public class RewardServiceImpl implements RewardService {
 	

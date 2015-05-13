@@ -17,7 +17,7 @@ import com.aug.hr.entity.MasEmployment;
 import com.aug.hr.services.MasEmploymentService;
 
 
-@Service("MasEmploymentService")
+@Service("masEmploymentService")
 @Transactional
 public class MasEmploymentServiceImpl implements MasEmploymentService{
 

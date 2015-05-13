@@ -15,7 +15,7 @@ import com.aug.hr.dao.EducationDao;
 import com.aug.hr.entity.Education;
 import com.aug.hr.services.EducationService;
 
-@Service("EducationService")
+@Service("educationService")
 @Transactional
 public class EducationServiceImpl implements EducationService{
 

@@ -15,7 +15,7 @@ import com.aug.hr.dao.MasDivisionDao;
 import com.aug.hr.entity.MasDivision;
 import com.aug.hr.services.MasDivisionService;
 
-@Service("MasDivisionService")
+@Service("masDivisionService")
 @Transactional
 public class MasDivisionServiceImpl implements MasDivisionService {
 

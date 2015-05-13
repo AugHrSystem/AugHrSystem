@@ -16,7 +16,7 @@ import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.services.AbilityService;
 
-@Service("AbilityService")
+@Service("abilityService")
 @Transactional
 public class AbilityServiceImpl implements AbilityService{
 

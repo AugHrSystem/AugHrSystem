@@ -16,7 +16,7 @@ import com.aug.hr.dao.MasAddressTypeDao;
 import com.aug.hr.entity.MasAddressType;
 import com.aug.hr.services.MasAddressTypeService;
 
-@Service("MasAddressTypeService")
+@Service("masAddressTypeService")
 @Transactional
 public class MasAddressTypeServiceImpl implements MasAddressTypeService{
 	

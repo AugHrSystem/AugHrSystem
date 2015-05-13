@@ -11,7 +11,7 @@ import com.aug.hr.dao.ExperienceDao;
 import com.aug.hr.entity.Experience;
 import com.aug.hr.services.ExperienceService;
 
-@Service("ExperienceService")
+@Service("experienceService")
 @Transactional
 public class ExperienceServiceImpl implements ExperienceService{
 	@Autowired

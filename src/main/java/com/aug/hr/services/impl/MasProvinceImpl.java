@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.hr.dao.MasProvinceDao;
 import com.aug.hr.entity.MasProvince;
 import com.aug.hr.services.MasProvinceService;
-@Service("MasProvinceService")
+@Service("masProvinceService")
 @Transactional
 public class MasProvinceImpl implements MasProvinceService {
 

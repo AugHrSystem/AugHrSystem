@@ -17,7 +17,7 @@ import com.aug.hr.services.JoblevelService;
 
 
 
-@Service("JoblevelService")
+@Service("joblevelService")
 @Transactional
 public class JoblevelServiceImpl implements JoblevelService {
 

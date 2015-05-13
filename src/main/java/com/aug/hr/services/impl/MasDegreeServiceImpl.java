@@ -23,7 +23,7 @@ import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasDegreetype;
 import com.aug.hr.services.MasDegreetypeService;
 
-@Service("MasDegreetypeService")
+@Service("masDegreetypeService")
 @Transactional
 public class MasDegreeServiceImpl implements MasDegreetypeService{
 

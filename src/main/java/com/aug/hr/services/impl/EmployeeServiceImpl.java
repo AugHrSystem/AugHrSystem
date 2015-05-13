@@ -16,7 +16,7 @@ import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.services.EmployeeService;
 
-@Service("EmployeeService")
+@Service("employeeService")
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
