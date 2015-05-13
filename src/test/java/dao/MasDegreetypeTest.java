@@ -36,13 +36,13 @@ public class MasDegreetypeTest {
 		MasDegreetype masDegree= new MasDegreetype();
 		masDegree.setName("bachelor");
 		masDegree.setCode("01");
-		masDegree.setIsactive("1");
+		masDegree.setIsactive(true);
 		masDegreetypeDao.getCurrentSession().save(masDegree);
 
 		MasDegreetype masDegree1= new MasDegreetype();
 		masDegree1.setName("Master");
 		masDegree1.setCode("02");
-		masDegree1.setIsactive("1");
+		masDegree1.setIsactive(true);
 		masDegreetypeDao.getCurrentSession().save(masDegree);
 		
 		
