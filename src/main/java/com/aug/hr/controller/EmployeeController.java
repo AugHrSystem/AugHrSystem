@@ -95,7 +95,7 @@ public class EmployeeController {
 	//Add Address
 		@RequestMapping(value = "/employee/addAddress", method = { RequestMethod.GET, RequestMethod.POST })
 		public @ResponseBody Address AddAddress(@RequestBody Address address) {
-			//addressService.create(address);
+			addressService.create(address);
 			return address;
 		}
 	

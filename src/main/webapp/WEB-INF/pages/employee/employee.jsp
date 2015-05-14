@@ -1185,11 +1185,12 @@ var dt;
     			 contentType: "application/json",
     			 success : function(data) {
     					//$("#message").html('<div class="alert alert-success" role="alert">Success Address</div>');
+    					alert("kkk");
     					dt.fnAddData([
-    					              data.addressType.id,
+    					              data.addressType.name,
     					              data.address1,
     					              data.address2,
-    					              data.province.id,
+    					              data.province.name,
     					              data.zipcode,
     					              
     					              
