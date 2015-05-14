@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Reward</title>
 
+<style>
+.datepicker{z-index:1151 !important;}
+
+</style>
+
 <!-- Spring -->	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -20,6 +25,12 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
+
+
+<!-- Date Picker -->
+<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
+<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+
 
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
@@ -58,8 +69,8 @@
 					
 						<tr>								
 							<th>NAME</th>
+							<th>YEAR</th>
 							<th>DETAILREWARD</th>
-							<th>BENEFIT</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -95,18 +106,19 @@
 							<label for="name">Name:</label>
 							<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
 				    </div>
-				    
-				    <div class="form-group "  align="left">
-							<label for="detailreward">Detailreward:</label>		
-							<form:textarea path="detailreward" class="form-control" rows="1" id="detailreward" placeholder="Detailreward"/>		
+
+
+							<div class="form-group " align="left">
+								<label> year :</label> <input type="text" class="form-control" id="year" placeholder="Year">
+							</div>
+
+
+
+						<div class="form-group "  align="left">
+							<label for="detailreward">Detailreward:</label>
+							<form:input path="detailreward" type="text" class="form-control" id="detailreward" placeholder="detailreward"/>							
 				    </div>
-				    
-				    <div class="form-group "  align="left">
-							<label for="benefit">Benefit:</label>
-							<form:input path="benefit" type="text" class="form-control" id="benefit" placeholder="Benefit"/>							
-				    </div>
-				    
-				   
+				    		   
 					
 					<div align="right">
 						<button type="button" class="btn btn-info btnSave">Save changes</button>
@@ -154,6 +166,17 @@
 	var dt;
 	
 	$(document).ready(function(){
+		
+		var date1 = $( "#year" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd/mm/yyyy",
+			todayHighlight : true
+		});
+		
+	
 		dt = $('#tbResult').dataTable();
 		
 		 listAll();
@@ -165,6 +188,7 @@
 			
 			
 			clearModal();
+			
 			 if(rewardid != null){				 
 				 getRewardById(rewardid);
 			} 
@@ -183,9 +207,7 @@
 			
 		});
 		
-		
-		
-		
+	
 //		------------------------------------------------------------------------------------------------------------
 
 	 	$("#deleteModal").on("show.bs.modal", function (event) {
@@ -213,8 +235,8 @@
 
 		function clearModal(){
 			$("#name").val(""),
-			$("#detailreward").val(""),
-			$("#benefit").val("");
+			$("#year").val(""),
+			$("#detailreward").val("");
 			
 		}
 
@@ -225,9 +247,8 @@
 				url : "${pageContext.request.contextPath}/reward/add",
 				data : JSON.stringify({
 					name : $("#name").val(),
-					detailreward :$("#detailreward").val(),
-					benefit :$("#benefit").val(),
-					
+					year :$("#year").val(),
+					detailreward :$("#detailreward").val(),					
 //					employee :{id:2},
 				
 				}),
@@ -241,14 +262,10 @@
 					dt.fnClearTable();
 					
 					dt.fnAddData([
-						/* $("#Name").val(),
-						$("#ProductCategory").val(),
-						$("#Unit").val(),
-						$("#Price").val(),
-						$("#Description").val(), */
+					
 						data.name,
+						data.year,
 						data.detailreward,
-						data.benefit,
 						
 						
 						
@@ -278,11 +295,10 @@
 					
 								id :rewardid,
 								name: $("#name").val(),	
-								detailreward: $("#detailreward").val(), 
-								benefit :$("#benefit").val(),
+								year: $("#year").val(),	
+								detailreward :$("#detailreward").val(),
 								
-								
-					
+		
 					}),
 					
 					success : function(data) {
@@ -291,8 +307,8 @@
 						
 					
 					dt.fnUpdate(data.name, tr, 0),
-					dt.fnUpdate(data.address, tr, 1),
-					dt.fnUpdate(data.tel, tr, 2),
+					dt.fnUpdate(data.year, tr, 1),
+					dt.fnUpdate(data.detailreward, tr, 2),
 					
 					'<button class="btn btn-info btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
@@ -315,8 +331,8 @@
 				type : "POST", 
 				success : function(data) {
 					$("#name").val(data.name); 
+					$("#year").val(data.year);
 					$("#detailreward").val(data.detailreward);
-					$("#benefit").val(data.benefit);
 					
 					
 					
@@ -363,8 +379,8 @@
 					success : function(data) {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].name,data[i].detailreward, 
-						              data[i].benefit,
+						dt.fnAddData([data[i].name,data[i].year, 
+						              data[i].detailreward,
 							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
