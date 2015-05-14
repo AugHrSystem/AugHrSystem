@@ -92,7 +92,7 @@
 				<li role="presentation" class="active"><a
 					href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
 				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/getposition">history</a></li>
+					href="http://localhost:8080/AugHrSystem/history">history</a></li>
 				</ul>
 			</div>
 			
