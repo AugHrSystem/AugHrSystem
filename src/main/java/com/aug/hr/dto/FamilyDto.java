@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class FamilyDto {
 
 
-	private int id;
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String name;
-	private int age;
+	private Integer age;
 	private String gender;
 	private String occupation;
 	private String mobile;
@@ -20,15 +20,16 @@ public class FamilyDto {
 	private String position;
 	private String address;
 	private Integer relationId;
+	
 
 
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -57,11 +58,11 @@ public class FamilyDto {
 		this.name = name;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 	
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 	
@@ -122,6 +123,42 @@ public class FamilyDto {
 		this.relationId = relationId;
 	}
 
+	
+	
+
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("FamilyDto [id=");
+		builder.append(id);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", age=");
+		builder.append(age);
+		builder.append(", gender=");
+		builder.append(gender);
+		builder.append(", occupation=");
+		builder.append(occupation);
+		builder.append(", mobile=");
+		builder.append(mobile);
+		builder.append(", relation=");
+		builder.append(relation);
+		builder.append(", position=");
+		builder.append(position);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append(", relationId=");
+		builder.append(relationId);		
+		builder.append("]");
+		return builder.toString();
+	}
+
+	
 	
 
 }
