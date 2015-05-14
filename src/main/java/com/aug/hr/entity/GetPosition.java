@@ -25,18 +25,8 @@ public class GetPosition extends BaseEntity{
 	@Column(name = "POSITION" ,nullable = false)
 	private String position;
 	
-	@Column(name = "COMPANY" ,nullable = false)
-	private String 	company;
-	
-	@Column(name = "SALARY" ,nullable = false)
-	private String salary;
-	
-	@Column(name = "TIME" ,nullable = false)
-	private String time;
-	
-	
 	@ManyToOne()
-	@JoinColumn(name = "EMP_ID")
+	@JoinColumn(name = "EMPLOYEE_ID")
 	private Employee employee;
 
 	public Integer getId() {
@@ -55,36 +45,5 @@ public class GetPosition extends BaseEntity{
 		this.position = position;
 	}
 
-	public String getCompany() {
-		return company;
-	}
-
-	public void setCompany(String company) {
-		this.company = company;
-	}
-
-	public String getSalary() {
-		return salary;
-	}
-
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 	
 }

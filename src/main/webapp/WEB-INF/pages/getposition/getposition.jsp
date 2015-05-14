@@ -49,9 +49,6 @@
 	<thead>
 		<tr>
 			<th>Position</th>
-			<th>Company</th>
-			<th>Salary</th>
-			<th>Time</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -85,7 +82,7 @@
 	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position"/>
 	  </div>
 	  
-	  <div class="form-group">
+	  <%-- <div class="form-group">
 	    <label>Company :</label>
 	    <form:input path="company" type="text" class="form-control" id="company" placeholder="Enter Company"/>
 	  </div>
@@ -98,7 +95,7 @@
 	  <div class="form-group">
 	    <label>Time :</label>
 	    <form:input path="time" type="text" class="form-control" id="time" placeholder="Enter Time"/>
-	  </div>
+	  </div> --%>
 	  
 	 <%--  <div class="form-group">
 	    <label>Degree :</label>
@@ -202,10 +199,10 @@
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
 		function clearModal(){
-			$("#position").val(""),
-			$("#company").val(""),
+			$("#position").val("");
+			/* $("#company").val(""),
 			$("#salary").val(""),
-			$("#time").val("");
+			$("#time").val(""); */
 			/* $("#masdegreetype").val("-1"); */
 		}
 		
@@ -214,9 +211,9 @@
 				url : "${pageContext.request.contextPath}/getposition/add",
 				data : JSON.stringify({
 					position : $("#position").val(),
-					company :$("#company").val(),
+					/* company :$("#company").val(),
 					salary :$("#salary").val(),
-					time :$("#time").val(),
+					time :$("#time").val(), */
 				
 				}),
 				type : "POST",
@@ -235,9 +232,9 @@
 						$("#Price").val(),
 						$("#Description").val(), */
 						data.position,
-						data.company,
+						/* data.company,
 						data.salary,
-						data.time,
+						data.time, */
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
@@ -258,9 +255,9 @@
 				url : "${pageContext.request.contextPath}/getposition/update",
 				data : JSON.stringify({
 					position : $("#position").val(),
-					company :$("#company").val(),
+					/* company :$("#company").val(),
 					salary :$("#salary").val(),
-					time :$("#time").val(),
+					time :$("#time").val(), */
 					
 				}),
 				type : "POST",
@@ -271,10 +268,10 @@
 					
 					var tr = button.closest("tr")
 					
-					dt.fnUpdate(data.position, tr ,0);
-					dt.fnUpdate(data.company, tr ,1);
+					dt.fnUpdate(data.position);
+					/* dt.fnUpdate(data.company, tr ,1);
 					dt.fnUpdate(data.salary, tr ,2);
-					dt.fnUpdate(data.time, tr ,3);
+					dt.fnUpdate(data.time, tr ,3); */
 					
 					$('#addModal').modal('toggle');
 				},
@@ -292,10 +289,10 @@
 				success : function(data) {
 	 				//alert(JSON.stringify(data));
 					//alert("ok");
-					$("#position").val(data.position),
-					$("#company").val(data.company),
+					$("#position").val(data.position);
+					/* $("#company").val(data.company),
 					$("#salary").val(data.salary),
-					$("#time").val(data.time);
+					$("#time").val(data.time); */
 			
 				},
 				error : function() {
@@ -333,8 +330,9 @@
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].position,data[i].company,data[i].salary, 
-					              data[i].time,
+					dt.fnAddData([data[i].position,
+					              /* data[i].company,data[i].salary, 
+					              data[i].time, */
 						'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
