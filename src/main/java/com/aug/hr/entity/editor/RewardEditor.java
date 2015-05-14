@@ -27,7 +27,7 @@ public class RewardEditor extends PropertyEditorSupport{
 		}
 
 	}
-	
+//	
 	@Override
 	public String getAsText() {
 		String tx = "";

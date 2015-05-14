@@ -20,7 +20,7 @@
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-<!-- Bootstrap -->
+<!-- Bootstrap --->
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
