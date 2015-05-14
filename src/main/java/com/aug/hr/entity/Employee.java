@@ -246,7 +246,15 @@ public class Employee extends BaseEntity{
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<Family> families = new HashSet<Family>(); 
+    
+   /* @ManyToOne
+    @JoinColumn(name= "STAFFTYPE_ID")
+    private MasStaffType masStaffType;*/
 
+    @ManyToOne
+    @JoinColumn(name= "LOCATION_ID")
+    private MasLocation masLocation;
+    
 	 //-------------------------------------- getter setter --------------------------------------------------//
 
 	public Integer getId() {
@@ -962,6 +970,22 @@ public class Employee extends BaseEntity{
 	public void setTechnology(Set<MasTechnology> technology) {
 		this.technology = technology;
 	}
+
+	public MasLocation getMasLocation() {
+		return masLocation;
+	}
+
+	public void setMasLocation(MasLocation masLocation) {
+		this.masLocation = masLocation;
+	}
+
+	/*public MasStaffType getMasStaffType() {
+		return masStaffType;
+	}
+
+	public void setMasStaffType(MasStaffType masStaffType) {
+		this.masStaffType = masStaffType;
+	}*/
 	 
 	
 	
