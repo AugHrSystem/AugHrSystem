@@ -152,8 +152,8 @@
       	Do you want to delete experience ?
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-      <button type="button" class="btn btn-primary yesButton">Yes</button>
+		<button type="button" class="btn btn-danger yesButton" >Yes</button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>
