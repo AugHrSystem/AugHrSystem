@@ -29,15 +29,13 @@
 <div class="container">
 <form:form id ="listForm" method="post" commandName="ability">
 
-<ol class="breadcrumb">
+<!-- <ol class="breadcrumb">
 	<li role="presentation" class="active"><a href="#">Home</a></li>
 	<li role="presentation"><a href="#addModal" data-toggle="modal">Add Ability</a></li>
 </ol>
-
-<h2>Ability</h2> 
-
-
-<ul class="nav nav-tabs">
+ -->
+ 
+ <ul class="nav nav-tabs">
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
@@ -49,6 +47,11 @@
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/getposition">history</a></li>
 </ul>
+ 
+<h2>Ability</h2> 
+
+
+
 
 
 

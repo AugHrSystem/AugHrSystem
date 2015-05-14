@@ -32,11 +32,10 @@
 <body>
 <f:form method="post" commandName="experience" class="form-horizontal" role="form">
 	<div class="container">
-		<ol class="breadcrumb">
+		<!-- <ol class="breadcrumb">
 			<li role="presentation" class="active"><a href="#">Home</a></li>
  			<li role="presentation"><a href="#addModal" data-toggle="modal">Add Experience</a></li>
-		</ol>
-		<h2>Experience</h2>
+		</ol> -->
 		
 		
 		<ul class="nav nav-tabs">
@@ -47,8 +46,12 @@
   <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li>
   <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/getposition">getposition</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/getposition">history</a></li>
 </ul>
+		<h2>Experience</h2>
+		
+		
+		
 		<br><br>
 		
 		<div id="message"></div>
