@@ -59,7 +59,7 @@
 
 
 
-<!-- <div id="rootwizard">
+<div id="rootwizard">
 	<div class="navbar">
 	  <div class="navbar-inner">
 	    <div class="container">
@@ -104,7 +104,7 @@
 		  	<li class="next"><a href="#">Next</a></li>
 		</ul>
 	</div>	
-</div> -->
+</div>
 
 
 

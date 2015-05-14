@@ -747,7 +747,7 @@
 <br/>
 <br/>
 
-
+<!-- 
 <nav class="navbar navbar-default navbar-fixed-top" id="nav">
   <div class="container"> 
       
@@ -775,16 +775,23 @@
         </div>
       
   </div>
-</nav>
+</nav> -->
+
+ <ul class="nav nav-tabs">
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
+  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li> 
+  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/history">history</a></li>
+</ul>
+ 
+<h2>Family</h2> 
 
 
-
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
 
 
