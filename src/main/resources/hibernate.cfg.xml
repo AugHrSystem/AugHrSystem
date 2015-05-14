@@ -37,7 +37,7 @@
         <mapping class="com.aug.hr.entity.MasRelationType"/>
         <mapping class="com.aug.hr.entity.SkillLanguage"/>
          <mapping class="com.aug.hr.entity.Reward"/>
-        <mapping class="com.aug.hr.entity.GetPosition"/>
+        <mapping class="com.aug.hr.entity.Hitory"/>
 		<mapping class="com.aug.hr.entity.MasLocation" />
 
 

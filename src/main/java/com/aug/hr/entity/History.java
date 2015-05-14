@@ -14,8 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EMP_GETPOSITION")
-public class GetPosition extends BaseEntity{
+@Table(name = "EMP_HISTORY")
+public class History extends BaseEntity{
 
 	@Id
 	@Column(name = "ID")
