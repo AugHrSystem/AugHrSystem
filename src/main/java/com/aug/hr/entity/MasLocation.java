@@ -7,12 +7,14 @@ package com.aug.hr.entity;
 
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -36,9 +38,11 @@ public class MasLocation extends BaseEntity {
 	private Boolean isActive;
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "EMPLOYEE_ID")
-	private Employee employee;
+	
+	@OneToMany(mappedBy = "masLocation")
+	private Set<Employee> employees = new HashSet<Employee>();
+	
+	
 
 
 	public Integer getId() {
@@ -84,15 +88,15 @@ public class MasLocation extends BaseEntity {
 	}
 
 
-	public Employee getEmployee() {
-		return employee;
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
 
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
-	
+
 	
 	
 
