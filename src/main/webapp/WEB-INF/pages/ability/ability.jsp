@@ -43,10 +43,11 @@
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
+  
   <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
   <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/getposition">getposition</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/getposition">history</a></li>
 </ul>
 
 
