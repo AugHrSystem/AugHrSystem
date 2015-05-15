@@ -11,6 +11,10 @@ How to run
 
     mvn tomcat7:run
 
+How to make package for deployment
+
+    mvn clean install -DskipTests=true
+
 
 [![Build
 Status](https://travis-ci.org/AugHrSystem/AugHrSystem.svg)](https://travis-ci.org/AugHrSystem/AugHrSystem)
