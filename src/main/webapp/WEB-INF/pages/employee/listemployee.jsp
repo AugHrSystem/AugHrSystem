@@ -83,13 +83,13 @@
     <div class="modal-content">
     <div class="modal-header">
         <h4 class="modal-title" id="deleteModalLabel">Delete Employee</h4>
-      </div>
+    </div>
       <div class="modal-body">
       	Do you want to delete employee ?
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-      <button type="button" class="btn btn-primary yesButton">Yes</button>
+      	<button type="button" class="btn btn-danger yesButton" >Yes</button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>
