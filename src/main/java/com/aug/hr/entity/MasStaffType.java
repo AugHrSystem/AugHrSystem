@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="MASSTAFFTYPE")
+@Table(name="MAS_STAFFTYPE")
 public class MasStaffType extends BaseEntity{
 	
 	private Integer id;
