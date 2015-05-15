@@ -83,7 +83,7 @@
 	  var arrName; 
 	  
 	  var transection = [];
-	  var i=1;
+	  var idIndex=1;
    
 	  $(document).ready(function(){
 		
@@ -144,27 +144,30 @@
 			    	                 }
 			    	             ]		 
 		     } */);
+		 
 		     
 
-	    /*   dt = $('#tableResult').DataTable(/* {
-	    	  "columnDefs": [
-	    	                 {
-	    	                     "targets": [ 0 ],
-	    	                     "visible": false
-	    	                 }
-	    	             ],
-	     	  
+		     
+		     /*   dt = $('#tableResult').DataTable(/* {
+			    	  "columnDefs": [
+			    	                 {
+			    	                     "targets": [ 0 ],
+			    	                     "visible": false
+			    	                 }
+			    	             ],
+			     	  
+			      
+			     	  "createdRow": function ( row, data, index ) {
+			     		  if(data[11]=="unmodified"){
+			                  $('td', row).eq(11).addClass('highlight');
+			     	    }
+			          }
+		
+			     	  
+			      } */ //);  	 
 	      
-	     	  "createdRow": function ( row, data, index ) {
-	     		  if(data[11]=="unmodified"){
-	                  $('td', row).eq(11).addClass('highlight');
-	     	    }
-	          }
-
-	     	  
-	      } */ //);  	 
 	      
-	      
+		     
 	      doFindData();
 	      
 	      
@@ -203,8 +206,7 @@
 			  			        ] ).draw(); */
 			  			        
 			  			        
-			  			        
-			  			        
+			  			 	
 			  			        
 		  	        	 dt.fnAddData([ data[i].id,
 					  			           data[i].name,
@@ -215,12 +217,17 @@
 					  			           data[i].address,
 					  			           data[i].position,
 					  			           data[i].relation,
-					  			           '<button id="test" type="button" class="btn btn-default btn-sm"  data-id="'+data[i].id+'"><span class="glyphicon glyphicon-pencil">edit</span> </button>'+'<button id="delete" type="button" class="btn btn-default btn-sm"  data-id="'+data[i].id+'"><span class="glyphicon glyphicon-trash">delete</span></button>',
+					  			           '<button id="test" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addModal" data-dismiss="modal" data-backdrop="static" data-idindex="'+idIndex+'"><span class="glyphicon glyphicon-pencil">edit</span> </button>'+'<button id="delete" type="button" class="btn btn-default btn-sm"  data-id="'+data[i].id+'"><span class="glyphicon glyphicon-trash">delete</span></button>',
 				       		               status]);
-		  	    	
-				  			        
+			  			        
+		  	        	idIndex=idIndex+1;         
+		  			            
 		  	    	 }
+		  	        
+		  	        
+		  	        
 		  	    	 
+		  	        
 		  	     },  
 		  	      error : function(e) {  	  	      
 		  	    	  alert('Error: ' + e);   
@@ -233,18 +240,34 @@
 	      
 	      
 	
+	function clearDataModal(){
+		
+		$('#firstName').val('');
+		$('#lastName').val('');
+		$('#age').val('');
+		$("#genderMale").prop("checked", true);
+		$('#occupation').val('');
+		$('#position').val('');
+		$('#address').val('');
+		$('#position').val('');
+		$('#mobile').val('');
+		$('#masRelation').val(-1);
+	}      
 	      
-	 $('#create').on( 'click', function () {
+	      
+	      
+	
+	
+	
+	 $('#create').off('click').on( 'click', function () {
 
 			
-		 $('#myModal').modal('show');
 		 
-		 $('#saveBtn').click(function () {
+			 $('#saveBtn').off("click").on("click",function(){
 			 
 			    
 			    var firstName = $('#firstName').val();
 			    var lastName = $('#lastName').val();
-			    var relationId;
 			    var id = null;
 			    
 			    name = $('#firstName').val()+' '+$('#lastName').val();
@@ -274,13 +297,17 @@
 			    
 			    mobile = $('#mobile').val();
 			    
-			    if($('#masRelation').val()==1){
-			    	relation = 'SON';
-			    	relationId = $('#masRelation').val();
-			    }else if($('#masRelation').val()==2){
-			    	relation = 'DAUGTHER';
-			    	relationId = $('#masRelation').val();
+			    if($('#masRelation').val()==-1){
+			    	
+			    	  relation = null;
+			    	
+			    }else{
+			    	
+			    	 relation = $("#masRelation option:selected").text();
 			    }
+			    
+			   
+			   
 			    
 			    address = $('#address').val();
 			    
@@ -306,120 +333,26 @@
 			   			           address,
 			   			           position,
 			   			           relation,
-			   			           '<button id="test" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil">edit</span> </button><button id="delete" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash">delete</span></button>',
+			   			           '<button id="test" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addModal" data-dismiss="modal" data-backdrop="static" data-idindex="'+idIndex+'"><span class="glyphicon glyphicon-pencil">edit</span> </button><button id="delete" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash">delete</span></button>',
 			   			           status]);
 	   	
 				    
-				    
+				     idIndex = idIndex+1;
 			    
-				    $('#myModal').modal('hide');
-				    
-			       
-			    }); 
+				 $('#addModal').modal('hide');
+				
+				 
+				     $('#addModal').on('hidden.bs.modal', function () {
+					 
+					 clearDataModal();
+					 	
+			     });
+			     
+			    
+			 }); 
 		 	 
 			 
 		 });
-	 
-	 
-	 
-		 
-	 
-	 
-	 
-	 
-	/*  $('#saveBtn').click(function () {
-		 
-		    
-		    var firstName = $('#firstName').val();
-		    var lastName = $('#lastName').val();
-		    var relationId;
-		    var id = null;
-		    
-		    name = $('#firstName').val()+' '+$('#lastName').val();
-		    age = $('#age').val();
-		    
-		    
-		    if($('#genderMale:checked').val()!=null){
-	  			
-	  			gender = $('#genderMale:checked').val();
-	  			
-	  			
-	  		}else if($('#genderFemale:checked').val()!=null){
-	  			
-	  			gender = $('#genderFemale:checked').val();
-	  		}
-		    
-		    
-		    
-		    if($('#occupation').val()==''){
-		    	occupation = null;
-		    }else{
-		   		occupation = $('#occupation').val();
-		    }
-		    
-		   
-		    
-		    
-		    mobile = $('#mobile').val();
-		    
-		    if($('#masRelation').val()==1){
-		    	relation = 'SON';
-		    	relationId = $('#masRelation').val();
-		    }else if($('#masRelation').val()==2){
-		    	relation = 'DAUGTHER';
-		    	relationId = $('#masRelation').val();
-		    }
-		    
-		    address = $('#address').val();
-		    
-		    
-		    if($('#position').val()==''){
-		    	position = null;
-		    }else{
-		       position = $('#position').val();
-		    }
-		    
-		   
-		    
-		    
-		
-		    status = "add"; */ 
-		    
-				    
-			    /* dt.row.add( [
-			       null,                                  
-		           name,
-		           age,
-		           gender,
-		           occupation,
-		           mobile,
-		           address,
-		           position,
-		           relation,
-		           '<button id="test" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil">edit</span> </button><button id="delete" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash">delete</span></button>',
-		           status
-		        ] ).draw(); */
-		        
-		        
-		   		 /* dt.fnAddData([id,                                  
-		   			           name,
-		   			           age,
-		   			           gender,
-		   			           occupation,
-		   			           mobile,
-		   			           address,
-		   			           position,
-		   			           relation,
-		   			           '<button id="test" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil">edit</span> </button><button id="delete" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash">delete</span></button>',
-		   			           status]);
-   	
-			    
-			    
-		    
-			    $('#myModal').modal('hide');
-			    
-		       
-		    });  */
 	 
 	 
 		
@@ -440,9 +373,20 @@
 		    	  
 		    	  rowUpdate = $(this).parents('tr');
 		    	  dataUpdate = dt.fnGetData($(this).parents('tr'));
+		    	  
+		    	  
+		    	  /* $("#addModal").on("show.bs.modal", function(event){
+		    		  
+		    		  var button = $(event.relatedTarget);
+		      		  var idIndexUpdate = button.data("idindex"); 
+		      		  alert(idIndexUpdate);
+		    		  
+		    	  }); */
+		    	  
+		    	  
 		    	  alert("data[0]: "+dataUpdate[0]); 
 		    	
-		    	  updateRowInDataTable(rowUpdate,dataUpdate);
+		    	  updateRowInDataTable(rowUpdate,dataUpdate); 
 		    	    	  
 		  });   
 		 
@@ -453,42 +397,41 @@
 		   
 		function updateRowInDataTable(rowUpdate,dataUpdate){
 			
-		    $('#updateModal').modal('show');
-		    //$('#myModal').modal('show');
-		    
+		   
 		    alert(dataUpdate);
 		   
 		    var arr = dataUpdate[1].split(" ");
 		    
 		    alert(arr[0]);
 		   
-		    $('#firstNameUpdate').val(arr[0]);
-			$('#lastNameUpdate').val(arr[1]);
-		    $('#ageUpdate').val(dataUpdate[2]);
-			$('#occupationUpdate').val(dataUpdate[4]);
-		    $('#mobileUpdate').val(dataUpdate[5]);	
-		    $('#positionUpdate').val(dataUpdate[7]);
-		    $('#addressUpdate').val(dataUpdate[6]);
+		 	 	
+		    $('#firstName').val(arr[0]);
+			$('#lastName').val(arr[1]);
+		    $('#age').val(dataUpdate[2]);
+			$('#occupation').val(dataUpdate[4]);
+		    $('#mobile').val(dataUpdate[5]);	
+		    $('#position').val(dataUpdate[7]);
+		    $('#address').val(dataUpdate[6]);
 		    
 		  
 		    
 		    if(dataUpdate[3]=="Male"){
-		    	$("#genderMaleUpdate").prop("checked", true);
+		    	$("#genderMale").prop("checked", true);
 		    }else if(dataUpdate[3]=="Female"){
-		    	$("#genderFemaleUpdate").prop("checked", true);
+		    	$("#genderFemale").prop("checked", true);
 		    }
 		    
 		    
 		    alert("data8: "+dataUpdate[8]);
 		    
 		    if(dataUpdate[8]=="SON"){
-		   		 $('#masRelationUpdate').val(1);		    
+		   		 $('#masRelation').val(1);		    
 		    }else if(dataUpdate[8]=="DAUGTHER"){
-		    	 $('#masRelationUpdate').val(2);		    	
+		    	 $('#masRelation').val(2);		    	
 		    }
 	
 		    
-		   	$('#updateBtn').off("click").on("click",function(){
+		   	/* $('#saveBtn').off("click").on("click",function(){
 		   		
 		   		var id = dataUpdate[0];	   		
 		   		var firstNameUpdateData = $('#firstNameUpdate').val();
@@ -520,15 +463,12 @@
 			    
 			    addressUpdate = $('#addressUpdate').val();
 			    positionUpdate = $('#positionUpdate').val();
-		   		
-		   		
-	    	 	  alert("aaa: "+ rowUpdate.index());
+	    	 	
 	    	 	  
 	    	 	  
 	    	 	  
 	    	 	  
-	    	 	  
-	    	  if(dataUpdate[0]!=null){
+	    	  if(dataUpdate[0]!=null){ */
 	    		  
 	    		  
 	    	   	  /* cell1 = dt.cell(rowUpdate,1);
@@ -550,7 +490,7 @@
 			      cell1 = dt.cell(rowUpdate,10); 
 			      cell1.data('edit'); */
 			      
-			      dt.fnUpdate(nameUpdate, rowUpdate, 1);
+			   /*    dt.fnUpdate(nameUpdate, rowUpdate, 1);
 			      dt.fnUpdate(ageUpdate, rowUpdate, 2);
 			      dt.fnUpdate(genderUpdate, rowUpdate, 3);
 			      dt.fnUpdate(occupationUpdate, rowUpdate, 4);
@@ -562,7 +502,7 @@
 			      
 			      
 	    	  }else{
-	    		  
+	    		   */
 	    		 /*  cell1 = dt.cell(rowUpdate,1);
 			      cell1.data(nameUpdate);
 			      cell1 = dt.cell(rowUpdate,2);
@@ -580,7 +520,7 @@
 			      cell1 = dt.cell(rowUpdate,8);
 			      cell1.data(relationUpdate); */
 			      
-	    		  dt.fnUpdate(nameUpdate, rowUpdate, 1);
+	    		 /*  dt.fnUpdate(nameUpdate, rowUpdate, 1);
 			      dt.fnUpdate(ageUpdate, rowUpdate, 2);
 			      dt.fnUpdate(genderUpdate, rowUpdate, 3);
 			      dt.fnUpdate(occupationUpdate, rowUpdate, 4);
@@ -595,10 +535,83 @@
 			      
 
 			        $('#updateModal').modal('hide');
-	    	        //$('#myModal').modal('hide');
-	    	 	  
-	       });
+	    	      
+	       }); */
 		   
+	       
+	       $('#saveBtn').off("click").on("click",function(){
+	    	   
+	    	    var id = dataUpdate[0];	   		
+		   		var firstNameUpdateData = $('#firstName').val();
+		   		var lastNameUpdateData = $('#lastName').val();
+		   		var relationUpdateId = $('#masRelation').val();
+		   		
+		   		
+			    nameUpdate = $('#firstName').val()+' '+$('#lastName').val();
+			    ageUpdate = $('#age').val();
+			    
+			    
+			    if($('#genderMale:checked').val()!=null){
+		  			
+		  			genderUpdate = $('#genderMale:checked').val();
+		  			
+		  		}else if($('#genderFemale:checked').val()!=null){
+		  			
+		  			genderUpdate = $('#genderFemale:checked').val();
+		  		}
+			    
+			    occupationUpdate = $('#occupation').val();
+			    mobileUpdate = $('#mobile').val();
+			    
+			   
+			    relationUpdate = $("#masRelation option:selected").text();
+			   
+			    
+			    addressUpdate = $('#address').val();
+			    positionUpdate = $('#position').val();
+			    
+			    
+			    
+			    if(dataUpdate[0]!=null){
+		    		  
+		    		  
+		    	   	 
+				      dt.fnUpdate(nameUpdate, rowUpdate, 1);
+				      dt.fnUpdate(ageUpdate, rowUpdate, 2);
+				      dt.fnUpdate(genderUpdate, rowUpdate, 3);
+				      dt.fnUpdate(occupationUpdate, rowUpdate, 4);
+				      dt.fnUpdate(mobileUpdate, rowUpdate, 5);
+				      dt.fnUpdate(addressUpdate, rowUpdate, 6);
+				      dt.fnUpdate(positionUpdate, rowUpdate, 7);
+				      dt.fnUpdate(relationUpdate, rowUpdate, 8);
+				      dt.fnUpdate('edit', rowUpdate, 10);
+				      
+				      
+		    	  }else{
+		    		   
+		    		
+				      
+		    		  dt.fnUpdate(nameUpdate, rowUpdate, 1);
+				      dt.fnUpdate(ageUpdate, rowUpdate, 2);
+				      dt.fnUpdate(genderUpdate, rowUpdate, 3);
+				      dt.fnUpdate(occupationUpdate, rowUpdate, 4);
+				      dt.fnUpdate(mobileUpdate, rowUpdate, 5);
+				      dt.fnUpdate(addressUpdate, rowUpdate, 6);
+				      dt.fnUpdate(positionUpdate, rowUpdate, 7);
+				      dt.fnUpdate(relationUpdate, rowUpdate, 8);
+				
+		    		  
+		    	  }
+				      
+				      
+
+				     $('#addModal').modal('hide');
+
+	    	 	
+	    	 	  
+			    
+	    	   
+	       });
 		   
 		}
 		
@@ -722,7 +735,7 @@
 	    		
 	  	    	
 	  	    	alert(JSON.stringify(data));
-	  	    	
+	  	    	window.location.href = "<%=request.getContextPath()%>/employee";
 
 	  	    	 
 	  	     },  
@@ -809,32 +822,13 @@
             </tr>
         </thead>
 
- 
-       <%--  <tfoot>
-            <tr>
-     			<th>id</th>
-                <th><spring:message code="family.list.familyname"/></th>
-                <th><spring:message code="family.list.age"/></th>
-                <th><spring:message code="family.list.gender"/></th>
-                <th><spring:message code="family.list.occupation"/></th> 
-                <th><spring:message code="family.list.tel"/></th>
-                <th>address</th>
-                <th>position</th>
-                <th><spring:message code="family.list.relation"/></th> 
-                <th><spring:message code="family.list.edit"/></th>
-                <th>status</th>
-                <!-- <th>index</th> -->
-                
-            </tr>
-        </tfoot> --%>
-        
 	   <tbody>
 	   
 	   </tbody>
    </table>
    
    <div align="right">
-  	 <button id="create" type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil">Create</span> </button>   
+  	 <button id="create" type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal" data-dismiss="modal" data-backdrop="static"><span class="glyphicon glyphicon-pencil">Create</span> </button>   
      <button id="savetransection" type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil">SaveAndContitue</span> </button>   
      
    </div>
@@ -847,7 +841,7 @@
  
  
 <!-- Modal Add data-->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -1015,7 +1009,7 @@
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 
 			     		 <f:select id="masRelation" path="masRelation" cssClass="form-control required" >
-						  <f:option  value="" label="please select data"/>								
+						  <f:option  value="-1" label="please select data"/>								
 							<c:forEach var="obj" items="${ masRelationTypeList }">									
 									<option value="${obj.id}" >${obj.relationType}</option> 									
 							</c:forEach>
@@ -1049,7 +1043,7 @@
  
  
 <!-- Modal Update data-->
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<%-- <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -1238,7 +1232,7 @@
 	    </div>
 	  </div>
 	</div>   
- </div> 
+ </div>  --%>
  
  
  
