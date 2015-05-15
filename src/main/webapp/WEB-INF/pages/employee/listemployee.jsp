@@ -96,10 +96,10 @@ var empId;
     				dataType: "json",
     				success : function(data) {
     					dt.fnClearTable();
-    					
+    
     				for (var i=0;i< data.length; i++) {
-    					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameThai, 
-    					              data[i].surnameEng,
+    					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameEng, 
+    					              data[i].nameThai,
     						'<button type="button" class="btn btn-info btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')">Edit</button>',
     						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
     			

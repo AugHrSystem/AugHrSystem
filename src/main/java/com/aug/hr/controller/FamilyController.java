@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.FamilyDto;
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasRelationType;
+import com.aug.hr.entity.dto.FamilyDto;
 import com.aug.hr.entity.editor.FamilyEditor;
 import com.aug.hr.entity.validator.FamilyValidator;
 import com.aug.hr.services.FamilyService;

@@ -8,6 +8,8 @@ import java.util.Locale;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -17,17 +19,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.entity.Employee;
+import com.aug.hr.dto.services.ExperienceDtoService;
 import com.aug.hr.entity.Experience;
+import com.aug.hr.entity.dto.ExperienceDto;
 import com.aug.hr.services.ExperienceService;
 
 @Controller
 public class ExperienceController {
 	@Autowired private ExperienceService experienceService;
-	
+	@Autowired private ExperienceDtoService experienceDtoService;
 	
 	@RequestMapping(value = "/experience", method =  RequestMethod.GET)
     public String init(ModelMap model) {		
@@ -41,15 +43,20 @@ public class ExperienceController {
         binder.registerCustomEditor(Date.class, editor);
     }	
 	
+//	@RequestMapping(value ="/experience/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+//	public @ResponseBody List<Experience> listAll(@RequestParam Integer id){
+//		Employee emp = new Employee();
+//		emp.setId(id);
+//		Experience experience = new Experience();
+//		Hibernate.initialize(experience.getEmployee());
+//		experience.setEmployee(emp);
+//		return (List<Experience>) experienceService.findByCriteria(experience);
+//	}
+	
 	@RequestMapping(value ="/experience/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<Experience> listAll(@RequestParam Integer id){
-		Employee emp = new Employee();
-		emp.setId(id);
-		Experience experience = new Experience();
-		Hibernate.initialize(experience.getEmployee());
-		experience.setEmployee(emp);
-		
-		return (List<Experience>) experienceService.findByCriteria(experience);
+	public @ResponseBody List<ExperienceDto> listAll(){
+
+		return (List<ExperienceDto>) experienceDtoService.searchExperience();
 	}
 	
 	@RequestMapping(value ="/experience/testAjax/{string}", method = {RequestMethod.GET, RequestMethod.POST})
@@ -60,7 +67,9 @@ public class ExperienceController {
 	//Add	
 	@RequestMapping(value = "/experience/add", method = RequestMethod.POST )
 	public @ResponseBody Experience Add(@RequestBody Experience experience) {
-		Hibernate.initialize(experience.getEmployee());
+//		EmployeeDto employeeDto = new EmployeeDto();
+//		employeeDto.setName(experience.getEmployee().getNameEng());
+		Hibernate.initialize(experience.getEmployee().getNameEng());
 		experienceService.create(experience);
 		return experience;
 	}
