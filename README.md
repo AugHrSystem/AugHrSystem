@@ -15,7 +15,7 @@ How to make package for deployment
 
     mvn clean install -DskipTests=true
 
-Links
+Link
 
 	http://localhost:8080/AugHrSystem/listemployee
 	http://localhost:8080/AugHrSystem/employee
