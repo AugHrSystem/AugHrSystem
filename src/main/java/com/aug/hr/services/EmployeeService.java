@@ -8,7 +8,6 @@ package com.aug.hr.services;
 
 import java.util.List;
 
-
 import com.aug.hr.entity.Employee;
 
 public interface EmployeeService {
@@ -20,6 +19,7 @@ public interface EmployeeService {
 	public List<Employee> findAll();
 	public Employee deleteById(Integer id);
 	public List<Employee> findByCriteria(Employee employee);
+	public List<Employee> findByUserName(Employee employee);
 
 	
 }

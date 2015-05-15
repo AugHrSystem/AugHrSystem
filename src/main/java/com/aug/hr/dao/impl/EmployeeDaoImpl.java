@@ -43,4 +43,14 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		return employee;
 	}
 
+
+	@Override
+	public List<Employee> findByUserName(Employee employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
 }

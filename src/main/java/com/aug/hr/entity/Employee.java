@@ -199,6 +199,42 @@ public class Employee extends BaseEntity{
 	@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
 	private String previousEmpreasonsNo;
 	
+//------------------self relation-------------------
+	
+	private Set<Employee> staff = new HashSet<Employee>();
+	
+	@Column(name = "AIM_EMP_ID",nullable = true)
+	private Integer aimempid;
+	
+	@Column(name = "EMPLOYEE",nullable = true)
+	private Employee aim_emp_id;
+	
+	
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="ID")
+	public Employee getAim_emp_id() {
+		return aim_emp_id;
+	}
+	
+	
+	@OneToMany(mappedBy="aim_emp_id", fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
+	public Set<Employee> getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Set<Employee> staff) {
+		this.staff = staff;
+	}
+
+
+	public void setAim_emp_id(Employee aim_emp_id) {
+		this.aim_emp_id = aim_emp_id;
+	}
+	
+//------------------end self relation-----------------
+	
+
 	@Column(name = "ADDRESS_ID",nullable = true)
 	@OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
 	private Set<Address> addresses = new HashSet<Address>();
