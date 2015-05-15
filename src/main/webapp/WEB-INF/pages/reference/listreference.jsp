@@ -28,7 +28,6 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
 <!-- dataTable Bootstrap -->
-<link href="<c:url value="/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
 
@@ -41,26 +40,11 @@
 	<div class="container" style="padding-top: 5px"">
 
 		<form:form id ="listForm" method="post" commandName="reference">
-		<div>
-		<!-- <ol class="breadcrumb">
-			<li role ="presentation" class="active"><a href="#">Home</a></li>
-			<li role ="presentation"><a href="‪#‎addModal‬" data-toggle="modal">Add Reference</a></li>
-		</ol> -->
 		
 		
 			<div style="padding-bottom: 10px">
 			
-							<ul class="nav nav-tabs">
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li>
-  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
-  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/history">history</a></li>
-</ul>
+	
 			
 				<h2>Reference</h2>
 				
@@ -70,8 +54,8 @@
 				
 			</div>
 			<div class="form-group">
-
-				<table id="tbResult" class=" table table-striped table-bordered">
+<br><br>
+				<table id="tbResult" class="table">
 					<thead>
 					
 						<tr>								
@@ -92,7 +76,7 @@
 <form:form id ="addForm" method="post" commandName="reference">
 		<!-- Button trigger modal -->
 	<div class="form-group" align="right">
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Reference</button> 
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
 	</div>
 	
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
@@ -130,14 +114,11 @@
 							<form:input path="oocupation" type="text" class="form-control" id="oocupation" placeholder="Occupation"/>							
 				    </div>
 					
-					<div align="right">
-						<button type="button" class="btn btn-info btnSave">Save changes</button>
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					<div class="form-group" align="center">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
 				</div>
-					<div class="modal-footer">
-						
-					</div>
 				</div>			
 			</div>
 		</div>
@@ -157,8 +138,8 @@
 
 					</div>
 						<div class="modal-footer">
-						  <button type="button" class="btn btn-default" data-dismiss ="modal"> NO </button>
-						  <button type="button" class="btn btn-primary DeleteButton"> Delete </button>
+						<button type="button" class="btn btn-danger DeleteButton"> Yes </button>
+						  <button type="button" class="btn btn-info" data-dismiss ="modal"> NO </button>
 					   </div>
 				</div>
 
@@ -320,7 +301,7 @@
 					dt.fnUpdate(data.address, tr, 1),
 					dt.fnUpdate(data.tel, tr, 2),
 					dt.fnUpdate(data.oocupation, tr, 3),
-					'<button class="btn btn-info btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
+					'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
 					
 						
@@ -391,7 +372,7 @@
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].name,data[i].address, 
 						              data[i].tel,data[i].oocupation,
-							'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}

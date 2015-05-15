@@ -23,6 +23,9 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
 
+<!-- dataTable Bootstrap -->
+<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
+
 <title>Experience</title>
 <style>
 .datepicker{z-index:1151 !important;}
@@ -32,25 +35,8 @@
 <body>
 <f:form method="post" commandName="experience" class="form-horizontal" role="form">
 	<div class="container">
-		<!-- <ol class="breadcrumb">
-			<li role="presentation" class="active"><a href="#">Home</a></li>
- 			<li role="presentation"><a href="#addModal" data-toggle="modal">Add Experience</a></li>
-		</ol> -->
-		
-		
-		<ul class="nav nav-tabs">
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
-  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li>
-  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/history">history</a></li>
-</ul>
+
 		<h2>Experience</h2>
-		
-		
 		
 		<br><br>
 		
@@ -78,7 +64,7 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-		<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#addModal">
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
  	 	Add
 		</button>
 	</div>
@@ -135,9 +121,9 @@
   			<input type="text" class="form-control" id="employeeId" placeholder="Enter Employee Id">
   		</div> -->
       </div>
-      <div class="modal-footer">
+      <div class="form-group" align="center">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary saveButton">Save</button>
+        <button type="button" class="btn btn-info saveButton">Save</button>
       </div>
     </div>
   </div>
@@ -155,8 +141,8 @@
       	Do you want to delete experience ?
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-      <button type="button" class="btn btn-primary yesButton">Yes</button>
+      <button type="button" class="btn btn-danger yesButton">Yes</button>
+      <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>
@@ -359,7 +345,7 @@ var dt;
 						dt.fnAddData([data[i].id,data[i].companyName,data[i].business, 
 						              data[i].position,data[i].dateFrom,data[i].dateTo,
 						              data[i].description,data[i].superVisor,data[i].address,
-							'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-warning btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}

@@ -54,9 +54,6 @@
 	rel="stylesheet" media="all">
 
 <!-- dataTable Bootstrap -->
-<link
-	href="<c:url value="/resource/bootstrap/css/dataTables.bootstrap.css" />"
-	rel="stylesheet" media="all">
 <script
 	src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
@@ -73,35 +70,14 @@
 			
 		<form:form id="listForm" method="post" commandName="reward">
 				
-			<div style="padding-bottom: 10px">
-							<ul class="nav nav-tabs">
-				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
-				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
-				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/family">family</a></li>
-				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/education">education</a></li>
-				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/experience">experience</a></li>
-				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
-				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
-				<li role="presentation" class="active"><a
-					href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-				<li role="presentation"><a
-					href="http://localhost:8080/AugHrSystem/history">history</a></li>
-				</ul>
-			</div>
 			
 			
 			<h2>Reward</h2>
 			
+			<br><br>
 					<div class="form-group">
 
-						<table id="tbResult" class=" table table-striped table-bordered">
+						<table id="tbResult" class="table">
 							<thead>
 
 								<tr>
@@ -121,7 +97,7 @@
 				<!-- Button trigger modal -->
 				<div class="form-group" align="right">
 					<button type="button" class="btn btn-info" data-toggle="modal"
-						data-target="#addModal">Add Reward</button>
+						data-target="#addModal">Add</button>
 				</div>
 
 				<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
@@ -291,14 +267,12 @@
 								</div>
 
 
-								<div align="right">
-									<button type="button" class="btn btn-info btnSave">Save
-										changes</button>
-									<button type="button" class="btn btn-danger"
+								<div class="form-group " align="right">
+								<button type="button" class="btn btn-default"
 										data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-info btnSave">Save</button>
 								</div>
 							</div>
-							<div class="modal-footer"></div>
 						</div>
 					</div>
 				</div>
@@ -319,10 +293,10 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">
+					<button type="button" class="btn btn-danger DeleteButton">
+							Yes</button>
+						<button type="button" class="btn btn-info" data-dismiss="modal">
 							NO</button>
-						<button type="button" class="btn btn-primary DeleteButton">
-							Delete</button>
 					</div>
 				</div>
 
@@ -461,7 +435,7 @@
 										dt.fnUpdate(data.year, tr, 1),
 										dt.fnUpdate(data.detailreward, tr, 2),
 
-										'<button class="btn btn-info btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
+										'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 										'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
 
 								$('#addModal').modal('toggle');
@@ -526,7 +500,7 @@
 													data[i].name,
 													data[i].year,
 													data[i].detailreward,
-													'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+													'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 													'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>' ]);
 
 								}

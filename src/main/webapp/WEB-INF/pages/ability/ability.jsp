@@ -11,106 +11,29 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<!-- jQuery -->
+<script src="/resource/bootstrap/js/jquery-1.11.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-
-<!-- Data Table -->
+<!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 
+<!-- dataTable Bootstrap -->
+<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
 </head>
 <body>
 <div class="container">
 <form:form id ="listForm" method="post" commandName="ability">
 
-<!-- <ol class="breadcrumb">
-	<li role="presentation" class="active"><a href="#">Home</a></li>
-	<li role="presentation"><a href="#addModal" data-toggle="modal">Add Ability</a></li>
-</ol>
- -->
- 
- <ul class="nav nav-tabs">
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li>
-  
-  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/history">history</a></li>
-</ul>
- 
 <h2>Ability</h2> 
-
-
-
-
-
-
-
-
-
-
-<div id="rootwizard">
-	<div class="navbar">
-	  <div class="navbar-inner">
-	    <div class="container">
-	<ul>
-	  	<li><a href="#tab1" data-toggle="tab">First</a></li>
-		<li><a href="#tab2" data-toggle="tab">Second</a></li>
-		<li><a href="#tab3" data-toggle="tab">Third</a></li>
-		<li><a href="#tab4" data-toggle="tab">Forth</a></li>
-		<li><a href="#tab5" data-toggle="tab">Fifth</a></li>
-		<li><a href="#tab6" data-toggle="tab">Sixth</a></li>
-		<li><a href="#tab7" data-toggle="tab">Seventh</a></li>
-	</ul>
-	 </div>
-	  </div>
-	</div>
-	<div class="tab-content">
-	    <div class="tab-pane" id="tab1">
-	      1
-	    </div>
-	    <div class="tab-pane" id="tab2">
-	      2
-	    </div>
-		<div class="tab-pane" id="tab3">
-			3
-	    </div>
-		<div class="tab-pane" id="tab4">
-			4
-	    </div>
-		<div class="tab-pane" id="tab5">
-			5
-	    </div>
-		<div class="tab-pane" id="tab6">
-			6
-	    </div>
-		<div class="tab-pane" id="tab7">
-			7
-	    </div>
-		<ul class="pager wizard">
-			<li class="previous first" style="display:none;"><a href="#">First</a></li>
-			<li class="previous"><a href="#">Previous</a></li>
-			<li class="next last" style="display:none;"><a href="#">Last</a></li>
-		  	<li class="next"><a href="#">Next</a></li>
-		</ul>
-	</div>	
-</div>
-
-
-
-
-
-
 
  <br></br>
 <!-- Table -->
@@ -135,7 +58,7 @@
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add Ability</button> 
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
 </div>
 
 <!-- Modal -->
@@ -198,7 +121,7 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Delete Specialty</h4>
+						<h4 class="modal-title" id="myModalLabel">Delete Ability</h4>
 					</div>
 					<div class="modal-body">
 						<h4>Are you sure?</h4>
@@ -393,7 +316,7 @@ function listAll(){
 				dt.fnClearTable();
 			for (var i=0;i< data.length; i++) {
 				dt.fnAddData([data[i].masspecialty.name,data[i].rank,
-					'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+					'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 					'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 		
 				}

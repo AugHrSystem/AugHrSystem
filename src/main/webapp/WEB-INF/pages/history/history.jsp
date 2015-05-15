@@ -12,7 +12,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!-- jQuery -->
-<script src="/resource/bootstrap/js/jquery-1.11.2.min.js"></script>
+<script src="/resource/bootstrap/js/jquery-1.11.2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Bootstrap -->
@@ -27,7 +27,6 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
 <!-- dataTable Bootstrap -->
-<link href="<c:url value="/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
 </head>
@@ -36,27 +35,10 @@
 
 <form:form id ="listForm" method="post" commandName="history">
 
-<!-- <ol class="breadcrumb">
-	<li role="presentation" class="active"><a href="#">Home</a></li>
-	<li role="presentation"><a href="#addModal" data-toggle="modal">Add Education</a></li>
-</ol>
- -->
- 
-<ul class="nav nav-tabs">
-  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
-  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li> 
-  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/history">history</a></li>
-</ul>
-
-
 <h2>History</h2> 
- 
+
+<br></br>
+
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
@@ -348,7 +330,7 @@
 					dt.fnAddData([data[i].position,
 					              /* data[i].company,data[i].salary, 
 					              data[i].time, */
-						'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
 					}
