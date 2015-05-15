@@ -83,13 +83,13 @@
     <div class="modal-content">
     <div class="modal-header">
         <h4 class="modal-title" id="deleteModalLabel">Delete Employee</h4>
-      </div>
+    </div>
       <div class="modal-body">
       	Do you want to delete employee ?
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-      <button type="button" class="btn btn-primary yesButton">Yes</button>
+      	<button type="button" class="btn btn-danger yesButton" >Yes</button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>
@@ -112,10 +112,10 @@ var empId;
     				dataType: "json",
     				success : function(data) {
     					dt.fnClearTable();
-    					
+    
     				for (var i=0;i< data.length; i++) {
-    					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameThai, 
-    					              data[i].surnameEng,
+    					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameEng, 
+    					              data[i].nameThai,
     						'<button type="button" class="btn btn-info btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')">Edit</button>',
     						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
     			

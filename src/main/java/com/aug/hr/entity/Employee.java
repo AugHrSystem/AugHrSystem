@@ -264,11 +264,11 @@ public class Employee extends BaseEntity{
     @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
     private Set<Reference> references = new HashSet<Reference>();
     
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name= "DIVISION_ID", nullable = false)
     private MasDivision masDivision;
     
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name= "JOBLEVEL_ID", nullable = false)
     private MasJoblevel masJoblevel;
     

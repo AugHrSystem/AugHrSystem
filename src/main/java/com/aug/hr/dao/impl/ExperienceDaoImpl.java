@@ -2,12 +2,16 @@ package com.aug.hr.dao.impl;
 
 import java.util.List;
 
+import javax.transaction.Transaction;
+
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.ExperienceDao;
 import com.aug.hr.entity.Experience;
+import com.aug.hr.entity.dto.ExperienceDto;
 import com.mysql.jdbc.StringUtils;
 
 @Repository
@@ -16,7 +20,7 @@ public class ExperienceDaoImpl extends GenericDaoImpl<Experience, Integer> imple
 	public ExperienceDaoImpl() {
 		super(Experience.class);
 	}
-	
+		
 	@SuppressWarnings("unchecked")
 	public List<Experience> findByCriteria(Experience experience){
 		
@@ -35,6 +39,13 @@ public class ExperienceDaoImpl extends GenericDaoImpl<Experience, Integer> imple
 		if(experience != null){
 			getCurrentSession().delete(experience);
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ExperienceDto> searchExperience(){
+		Query namedQuery = getCurrentSession().getNamedQuery("searchExperience");
+		List<ExperienceDto> expDto = namedQuery.list();
+	     return expDto;
 	}
 
 }

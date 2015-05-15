@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 
 import com.aug.hr.entity.Experience;
+import com.aug.hr.entity.dto.ExperienceDto;
 
 public interface ExperienceService {
 	public List<Experience> findAll() throws DataAccessException;
@@ -20,5 +21,6 @@ public interface ExperienceService {
 	public List<Experience> findByCriteria(Experience experience);
 	
 	public void deleteById(Integer id);
+
 	
 }

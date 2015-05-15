@@ -10,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@JsonAutoDetect
 @Entity
 @Table(name = "EMP_EXPERIENCE")
 public class Experience extends BaseEntity {
@@ -29,9 +29,11 @@ public class Experience extends BaseEntity {
 	private String companyName;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Column(name = "DATE_FROM")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateFrom;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Column(name = "DATE_TO")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateTo;
 	@Column(name = "ADDRESS")
 	private String address;
