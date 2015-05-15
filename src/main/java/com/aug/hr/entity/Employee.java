@@ -247,13 +247,15 @@ public class Employee extends BaseEntity{
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<Family> families = new HashSet<Family>(); 
     
-   /* @ManyToOne
+    @ManyToOne
     @JoinColumn(name= "STAFFTYPE_ID")
-    private MasStaffType masStaffType;*/
+    private MasStaffType masStaffType;
 
     @ManyToOne
     @JoinColumn(name= "LOCATION_ID")
     private MasLocation masLocation;
+    
+   
     
 	 //-------------------------------------- getter setter --------------------------------------------------//
 
@@ -979,13 +981,13 @@ public class Employee extends BaseEntity{
 		this.masLocation = masLocation;
 	}
 
-	/*public MasStaffType getMasStaffType() {
+	public MasStaffType getMasStaffType() {
 		return masStaffType;
 	}
 
 	public void setMasStaffType(MasStaffType masStaffType) {
 		this.masStaffType = masStaffType;
-	}*/
+	}
 	 
 	
 	
