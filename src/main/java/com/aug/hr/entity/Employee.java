@@ -200,25 +200,28 @@ public class Employee extends BaseEntity{
 	private String previousEmpreasonsNo;
 	
 //------------------self relation-------------------
-	
+	@OneToMany(mappedBy="aimempid", fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
 	private Set<Employee> staff = new HashSet<Employee>();
-	
-	@Column(name = "AIM_EMP_ID",nullable = true)
-	private Integer aimempid;
-	
-	@Column(name = "EMPLOYEE",nullable = true)
-	private Employee aim_emp_id;
-	
-	
+
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="ID")
-	public Employee getAim_emp_id() {
-		return aim_emp_id;
+	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="id")
+	private Employee aimempid;
+	
+	
+	public Employee getAimempid() {
+		return aimempid;
 	}
+
+
+
+	public void setAimempid(Employee aimempid) {
+		this.aimempid = aimempid;
+	}
+
 	
 	
-	@OneToMany(mappedBy="aim_emp_id", fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
+	
 	public Set<Employee> getStaff() {
 		return staff;
 	}
@@ -228,9 +231,7 @@ public class Employee extends BaseEntity{
 	}
 
 
-	public void setAim_emp_id(Employee aim_emp_id) {
-		this.aim_emp_id = aim_emp_id;
-	}
+
 	
 //------------------end self relation-----------------
 	
