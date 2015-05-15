@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.hibernate.Hibernate;
@@ -56,8 +57,8 @@ public class FamilyController {
 	private EmployeeService employeeService;
 	@Autowired
 	private MasRelationTypeService masRelationService;
-
-
+	
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",
@@ -71,7 +72,7 @@ public class FamilyController {
 	
 	@RequestMapping(value = "/family/", method = RequestMethod.GET)
 	public String initEmpFamily(Locale locale,
-			@ModelAttribute(value = "empFamily") Family family,
+			@ModelAttribute(value = "family") Family family,
 			ModelMap model){
 		
 		//init page for display page 
@@ -90,9 +91,9 @@ public class FamilyController {
 	
 	
 
-	/*@RequestMapping(value = "/family/list", method = RequestMethod.GET,produces="application/json")
-	public @ResponseBody Map<String,List< FamilyDto>> findEmpFamily(Locale locale,
-			@ModelAttribute(value = "empFamily") Family family,
+	@RequestMapping(value = "/family/list", method = RequestMethod.GET,produces="application/json")
+	public @ResponseBody List<FamilyDto> findEmpFamily(Locale locale,
+		   @ModelAttribute(value = "family") Family family,
 			ModelMap model){// throws JSONException{
 		
 		
@@ -130,7 +131,7 @@ public class FamilyController {
 		Map<String,List<FamilyDto>>data = new HashMap<String,List<FamilyDto>>();
 		data.put("data", familyDtoList);
 	
-		return data;
+		return familyDtoList;
 		
 		
 		
@@ -138,7 +139,7 @@ public class FamilyController {
 	
 	
 	
-
+	/*
 	@RequestMapping(value = "/family/add", method =  {RequestMethod.GET,RequestMethod.POST})
 	public @ResponseBody FamilyDto Add(Locale locale,
 				@RequestBody Family family,
@@ -318,6 +319,160 @@ public class FamilyController {
 	}*/
 	
 	
+	
+
+	
+	
+	@RequestMapping(value = "/family/transection", method = {RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody String ManageData(Locale locale,
+							@RequestBody String info,
+							ModelMap modal) throws JSONException{
+		
+		logger.info("manage data");
+
+		JSONArray jsonArr = new JSONArray(info);
+		List<String> jsonInfoList = new ArrayList<String>();
+		List<Family> familyList = new ArrayList<Family>();
+		int id;
+		int age;
+		Employee employee = new Employee();
+		employee = employeeService.findById(1);
+		
+		logger.info("info: "+jsonArr);
+		
+		if(jsonArr!=null){
+			
+			 for(int i=0;i<jsonArr.length();i++){
+				 
+				 Family family = new Family();
+				 
+				 jsonInfoList.add(jsonArr.get(i).toString());
+				 logger.info("jsonArr.get(i): "+jsonInfoList);
+				 JSONObject jsonObj = jsonArr.getJSONObject(i);
+				 logger.info("json object: "+jsonObj);
+				 
+				 if(jsonObj.getString("id")=="null"){
+										 
+					 family.setId(null);
+					 
+				 }else{
+					 
+					 id = Integer.parseInt(jsonObj.getString("id"));
+					 family.setId(new Integer(id));
+				 }
+				
+				 
+				 
+				 
+				 family.setFirstName(jsonObj.getString("firstName"));
+				 family.setLastName(jsonObj.getString("lastName"));
+				 family.setName(jsonObj.getString("firstName")+" "+jsonObj.getString("lastName"));
+				 
+				 if(jsonObj.getString("id")=="age"){
+					 
+					 family.setAge(null);
+					 
+				 }else{
+					 
+					 age = Integer.parseInt(jsonObj.getString("age"));
+					 family.setAge(new Integer(age));
+				 }
+				 
+				 family.setGender(jsonObj.getString("gender"));
+				 family.setAddress(jsonObj.getString("address"));
+				 
+				 
+				 if(jsonObj.getString("occupation")=="null"){
+					 family.setOccupation(null);
+				 }else{
+					 family.setOccupation(jsonObj.getString("occupation"));
+				 }
+				 
+				 
+				 if(jsonObj.getString("position")=="null"){
+					 family.setOccupation(null);
+				 }else{
+					 family.setOccupation(jsonObj.getString("position"));
+				 }
+				 
+				 
+				 family.setMobile(jsonObj.getString("mobile"));
+				 family.setRelationName(jsonObj.getString("relation"));
+				 family.setStatus(jsonObj.getString("status"));
+				 
+
+				 familyList.add(family);
+				 
+				 logger.info("family dto list: "+family);
+			
+			 }
+			 
+			 
+			 for(Family familyObj:familyList){
+				 
+				 if(familyObj.getStatus().equals("add")){
+					 Family family = new Family();
+					 family.setFirstName(familyObj.getFirstName());
+					 family.setLastName(familyObj.getLastName());
+					 family.setAge(familyObj.getAge());
+					 family.setGender(familyObj.getGender());
+					 family.setMobile(familyObj.getMobile());
+					 family.setAddress(familyObj.getAddress());
+					 family.setOccupation(familyObj.getOccupation());
+					 family.setPosition(familyObj.getPosition());
+					 family.setEmployee(employee);
+					 
+					 MasRelationType masRelationType = new MasRelationType();
+					 masRelationType = masRelationService.findByName(familyObj.getRelationName());
+					 
+					 family.setMasRelation(masRelationType);					 
+					 family.setCreatedBy(0);
+					 Calendar cal = Calendar.getInstance();
+					 family.setCreatedTimeStamp(cal.getTime());
+					 family.setAuditFlag("C");
+					 
+					 familyService.create(family);
+					 
+					 
+					 
+				 }else if(familyObj.getStatus().equals("edit")){
+					 
+					 Family family= new Family();
+					 family = familyService.find(new Integer(familyObj.getId()));
+					 family.setFirstName(familyObj.getFirstName());
+					 family.setLastName(familyObj.getLastName());
+					 family.setAge(familyObj.getAge());
+					 family.setGender(familyObj.getGender());
+					 family.setAddress(familyObj.getAddress());
+					 family.setMobile(familyObj.getMobile());
+					 family.setOccupation(familyObj.getOccupation());
+					 family.setPosition(familyObj.getPosition());
+					 
+					 MasRelationType masRelationType = new MasRelationType();
+					 masRelationType = masRelationService.findByName(familyObj.getRelationName());
+					 
+					 family.setMasRelation(masRelationType);
+					 family.setUpdatedBy(0);
+					 Calendar cal = Calendar.getInstance();
+					 family.setUpdatedTimeStamp(cal.getTime());
+					 
+					 familyService.update(family);
+					 
+				 }else if(familyObj.getStatus().equals("delete")){
+					 
+					 Family family= new Family();
+					 family = familyService.find(new Integer(familyObj.getId()));
+					 familyService.delete(family);
+					 
+				 }
+				 
+			 }
+			
+			 
+		}
+		
+		return info;
+	}
 	
 
 }

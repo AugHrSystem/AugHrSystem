@@ -21,11 +21,12 @@ public class Reward extends BaseEntity{
 	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
-	@Column(name = "DETAILREWARD")
+	@Column(name = "YEAR" ,nullable = false)
+	private String year;
+		
+	@Column(name = "DETAILREWARD" ,nullable = true)
 	private String detailreward;
 	
-	@Column(name = "BENEFIT")
-	private String benefit;
 	
 	@Column(name = "ISACTIVE",nullable=true)
 	private Boolean isActive;
@@ -35,6 +36,8 @@ public class Reward extends BaseEntity{
 	@JoinColumn(name = "EMPLOYEE_ID")
 	private Employee employee;
 
+	
+	
 
 	public Integer getId() {
 		return id;
@@ -56,6 +59,16 @@ public class Reward extends BaseEntity{
 	}
 
 
+	public String getYear() {
+		return year;
+	}
+
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+
 	public String getDetailreward() {
 		return detailreward;
 	}
@@ -63,16 +76,6 @@ public class Reward extends BaseEntity{
 
 	public void setDetailreward(String detailreward) {
 		this.detailreward = detailreward;
-	}
-
-
-	public String getBenefit() {
-		return benefit;
-	}
-
-
-	public void setBenefit(String benefit) {
-		this.benefit = benefit;
 	}
 
 
@@ -94,7 +97,8 @@ public class Reward extends BaseEntity{
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
+
+
 	
 	
 	

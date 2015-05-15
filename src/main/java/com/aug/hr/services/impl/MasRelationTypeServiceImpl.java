@@ -50,4 +50,11 @@ public class MasRelationTypeServiceImpl implements MasRelationTypeService{
 		return masRelationTypeList;
 	}
 
+	@Override
+	public MasRelationType findByName(String name) {
+		// TODO Auto-generated method stub
+		MasRelationType masRelation = masRelationTypeDao.findByName(name);
+		return masRelation;
+	}
+
 }

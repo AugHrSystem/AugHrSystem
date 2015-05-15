@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>GetPosition</title>
+<title>History</title>
 
 <!-- Spring -->	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -12,7 +12,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!-- jQuery -->
-<script src="/resource/bootstrap/js/jquery-1.11.2.min.js"></script>
+<script src="/resource/bootstrap/js/jquery-1.11.2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Bootstrap -->
@@ -27,36 +27,18 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
 <!-- dataTable Bootstrap -->
-<link href="<c:url value="/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
 </head>
 <body>
 <div class="container">
 
-<form:form id ="listForm" method="post" commandName="getposition">
+<form:form id ="listForm" method="post" commandName="history">
 
-<!-- <ol class="breadcrumb">
-	<li role="presentation" class="active"><a href="#">Home</a></li>
-	<li role="presentation"><a href="#addModal" data-toggle="modal">Add Education</a></li>
-</ol>
- -->
- 
- 
- <ul class="nav nav-tabs">
-  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
-  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li> 
-  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/getposition">history</a></li>
-</ul>
- 
-<h2>GetPosition</h2> 
- 
+<h2>History</h2> 
+
+<br></br>
+
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
@@ -73,7 +55,7 @@
 
 </form:form>
 
-<form:form id ="addForm" method="post" commandName="getposition">
+<form:form id ="addForm" method="post" commandName="history">
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
@@ -136,7 +118,7 @@
 
 </form:form>
 
-<form:form id="deleteForm" commandName="getposition" method="post">
+<form:form id="deleteForm" commandName="history" method="post">
 
 		<!-- Modal -->
 		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
@@ -180,17 +162,17 @@
 			clearModal();
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var getpositionid = button.data("id") //Extract info from data-* attribute
+			var historyid = button.data("id") //Extract info from data-* attribute
 			
-			if(getpositionid != null){
-				getId(getpositionid);
+			if(historyid != null){
+				getId(historyid);
 			} 
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
-				if(getpositionid != null){
-					updateGetPosition(button, getpositionid);
+				if(historyid != null){
+					updateHistory(button, historyid);
 				}else{
-					addGetPosition();
+					addHistory();
 					
 				 }
 				
@@ -202,10 +184,10 @@
 		$("#deleteModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var getpositionid = button.data("id") //Extract info from data-* attribute
+			var historyid = button.data("id") //Extract info from data-* attribute
 			
 			$(this).find(".btnYes").off("click").on("click",function() {
-				deleteGetPosition(button, getpositionid);
+				deleteHistory(button, historyid);
 			});
 			
 		});
@@ -220,9 +202,9 @@
 			/* $("#masdegreetype").val("-1"); */
 		}
 		
-		function addGetPosition(){
+		function addHistory(){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/getposition/add",
+				url : "${pageContext.request.contextPath}/history/add",
 				data : JSON.stringify({
 					position : $("#position").val(),
 					/* company :$("#company").val(),
@@ -264,10 +246,11 @@
 			});
 		}
 		
-		function updateGetPosition(button, getpositionid){
+		function updateHistory(button, historyid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/getposition/update",
+				url : "${pageContext.request.contextPath}/history/update",
 				data : JSON.stringify({
+					id : historyid,
 					position : $("#position").val(),
 					/* company :$("#company").val(),
 					salary :$("#salary").val(),
@@ -282,7 +265,7 @@
 					
 					var tr = button.closest("tr")
 					
-					dt.fnUpdate(data.position);
+					dt.fnUpdate(data.position,tr,0);
 					/* dt.fnUpdate(data.company, tr ,1);
 					dt.fnUpdate(data.salary, tr ,2);
 					dt.fnUpdate(data.time, tr ,3); */
@@ -295,10 +278,10 @@
 			});
 		}
 		
-		function getId(getpositionid){
+		function getId(historyid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/getposition/findById",
-				data : "getpositionid=" + getpositionid,
+				url : "${pageContext.request.contextPath}/history/findById",
+				data : "historyid=" + historyid,
 				type : "POST",
 				success : function(data) {
 	 				//alert(JSON.stringify(data));
@@ -315,10 +298,10 @@
 			});
 		}
 		
-		function deleteGetPosition(button, getpositionid){
+		function deleteHistory(button, historyid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/getposition/delete",
-				data : "getpositionid=" + getpositionid,
+				url : "${pageContext.request.contextPath}/history/delete",
+				data : "historyid=" + historyid,
 				type : "POST",
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
@@ -339,7 +322,7 @@
 		
 		function listAll(){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/getposition/listAll",
+				url : "${pageContext.request.contextPath}/history/listAll",
 				type : "POST",
 				success : function(data) {
 					dt.fnClearTable();
@@ -347,7 +330,7 @@
 					dt.fnAddData([data[i].position,
 					              /* data[i].company,data[i].salary, 
 					              data[i].time, */
-						'<button type="button" class="btn btn-info btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
 					}

@@ -12,5 +12,6 @@ public interface MasRelationTypeService {
 	public void delete(MasRelationType masRelationType);
 	public MasRelationType find(Integer Id);
 	public List<MasRelationType> findAll();
+	public MasRelationType findByName(String name);
 
 }

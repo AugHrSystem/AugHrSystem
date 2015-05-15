@@ -9,7 +9,11 @@ How to run generate schema
 
 How to run
 
-    mvn tomcat7:run
+    mvn clean tomcat7:run
+
+How to make package for deployment
+
+    mvn clean install -DskipTests=true
 
 Links
 

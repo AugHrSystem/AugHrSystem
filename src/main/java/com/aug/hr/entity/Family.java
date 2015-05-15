@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 
@@ -33,7 +34,10 @@ public class Family extends BaseEntity implements Serializable {
 	private String position;
 	private Employee employee;
 	private MasRelationType masRelation;
-	
+	@Transient
+	private String relationName;
+	@Transient
+	private String status;
 	
 	
 	@Id
@@ -169,6 +173,61 @@ public class Family extends BaseEntity implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
+
+	public String getRelationName() {
+		return relationName;
+	}
+
+
+	public void setRelationName(String relationName) {
+		this.relationName = relationName;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Family [id=");
+		builder.append(id);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", gender=");
+		builder.append(gender);
+		builder.append(", age=");
+		builder.append(age);
+		builder.append(", mobile=");
+		builder.append(mobile);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append(", occupation=");
+		builder.append(occupation);
+		builder.append(", position=");
+		builder.append(position);
+		builder.append(", employee=");
+		builder.append(employee);
+		builder.append(", masRelation=");
+		builder.append(masRelation);
+		builder.append(", relationName=");
+		builder.append(relationName);
+		builder.append(", status=");
+		builder.append(status);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 
 }

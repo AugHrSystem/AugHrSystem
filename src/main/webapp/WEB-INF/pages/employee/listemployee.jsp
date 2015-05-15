@@ -28,10 +28,26 @@
 <body>
 <f:form method="post" commandName="listemployee" class="form-horizontal" role="form">
 	<div class="container">
-		<ol class="breadcrumb">
+		<!-- <ol class="breadcrumb">
 			<li role="presentation" class="active"><a href="#">Home</a></li>
  			<li role="presentation"><a href="employee.jsp" data-toggle="modal">Add Employee</a></li>
-		</ol>
+		</ol> -->
+		
+		
+		<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li> 
+  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
+  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/history">history</a></li>
+</ul>
+		
+		
+		
 		<h2>Employee</h2>
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
