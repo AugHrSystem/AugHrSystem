@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @NamedNativeQueries({
 	@NamedNativeQuery(
@@ -24,8 +26,10 @@ public class ExperienceDto {
 	@Column(name ="COMPANY_NAME")
 	private String companyName;
 	@Column(name ="DATE_FROM")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private Date dateFrom;
 	@Column(name ="DATE_TO")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private Date dateTo;
 	@Column(name = "ADDRESS")
 	private String address;
