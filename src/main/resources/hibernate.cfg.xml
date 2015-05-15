@@ -39,6 +39,7 @@
          <mapping class="com.aug.hr.entity.Reward"/>
         <mapping class="com.aug.hr.entity.History"/>
 		<mapping class="com.aug.hr.entity.MasLocation" />
+		<mapping class="com.aug.hr.entity.MasStaffType" />
 
 
 	</session-factory>

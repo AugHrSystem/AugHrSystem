@@ -1,32 +1,41 @@
 package com.aug.hr.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aug.hr.dao.MasStaffTypeDao;
 import com.aug.hr.entity.MasStaffType;
 import com.aug.hr.services.MasStaffTypeService;
 
+@Service("masStaffTypeService")
+@Transactional
 public class MasStaffTypeServiceImpl implements MasStaffTypeService{
+	
+	@Autowired
+	private MasStaffTypeDao masStaffTypeDao;
 
 	@Override
 	public void create(MasStaffType masStaffType) {
-		// TODO Auto-generated method stub
+		masStaffTypeDao.create(masStaffType);
 		
 	}
 
 	@Override
 	public void update(MasStaffType masStaffType) {
-		// TODO Auto-generated method stub
+		masStaffTypeDao.update(masStaffType);
 		
 	}
 
 	@Override
 	public void delete(MasStaffType masStaffType) {
-		// TODO Auto-generated method stub
+		masStaffTypeDao.delete(masStaffType);
 		
 	}
 
 	@Override
 	public MasStaffType find(Integer Id) {
-		// TODO Auto-generated method stub
-		return null;
+			return masStaffTypeDao.find(Id);
 	}
 
 }
