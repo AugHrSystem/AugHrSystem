@@ -38,6 +38,8 @@ public class Family extends BaseEntity implements Serializable {
 	private String relationName;
 	@Transient
 	private String status;
+	@Transient
+	private String name;
 	
 	
 	@Id
@@ -194,6 +196,17 @@ public class Family extends BaseEntity implements Serializable {
 		this.status = status;
 	}
 
+	
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	@Override
 	public String toString() {
@@ -224,9 +237,14 @@ public class Family extends BaseEntity implements Serializable {
 		builder.append(relationName);
 		builder.append(", status=");
 		builder.append(status);
+		builder.append(", name=");
+		builder.append(name);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
+	
 	
 	
 

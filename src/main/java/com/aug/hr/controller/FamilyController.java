@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.apache.sling.commons.json.JSONArray;
@@ -15,6 +16,7 @@ import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.aug.hr.dto.FamilyForm;
 
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
@@ -474,5 +477,76 @@ public class FamilyController {
 		return info;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/family/managedata", method = {RequestMethod.POST})
+	public String manageData(Locale locale,
+							@ModelAttribute FamilyForm familyList,
+							ModelMap modal,
+							@ModelAttribute(value="family") Family familyModal) {
+		
+		
+		logger.info("infooooo: "+familyList.getFamily());
+		
+		Employee employee = new Employee();
+		employee = employeeService.findById(1);
+		
+		
+		for(Family familyObj : familyList.getFamily()){
+		    
+			  if(familyObj.getId()==null){
+				  
+				  logger.info("is null");
+				  
+			  }else if(familyObj.getId()!=null){
+				  logger.info("data info: "+familyObj);
+				  
+				  if(familyObj.getStatus().equals("add")){
+					  logger.info("");
+					  Family family = new Family();
+					  family.setFirstName(familyObj.getFirstName());
+					  family.setLastName(familyObj.getLastName());
+					  family.setAge(familyObj.getAge());
+					  family.setMobile(familyObj.getMobile());
+					  family.setGender(familyObj.getGender());
+					  family.setOccupation(familyObj.getOccupation());
+					  family.setPosition(familyObj.getPosition());
+					  family.setAddress(familyObj.getAddress());
+					  
+					  MasRelationType masRelationType = new MasRelationType();
+					  masRelationType = masRelationService.findByName(familyObj.getRelationName());
+					  
+					  family.setMasRelation(masRelationType);
+					  family.setEmployee(employee);
+					  Calendar cal = Calendar.getInstance();
+					  family.setCreatedTimeStamp(cal.getTime());
+					  family.setCreatedBy(employee.getId());
+					  family.setAuditFlag("C");
+					  familyService.create(family);
+					  
+				  }else if(familyObj.getStatus().equals("edit")){
+					  
+				  }
+				  
+				 
+				  
+				  
+			  }
+		
+		}
+		
+		modal.addAttribute("family", familyModal);
+		
+		//return "redirect:/family/";
+		return "/family/familytest";
+		
+		}
 
 }

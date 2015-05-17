@@ -83,7 +83,7 @@
 	  var arrName; 
 	  
 	  var transection = [];
-	  var idIndex=1;
+	  var idIndex=0;
    
 	  $(document).ready(function(){
 		
@@ -148,7 +148,7 @@
 		     
 
 		     
-		     /*   dt = $('#tableResult').DataTable(/* {
+		         /* dt = $('#tableResult').DataTable({
 			    	  "columnDefs": [
 			    	                 {
 			    	                     "targets": [ 0 ],
@@ -161,10 +161,8 @@
 			     		  if(data[11]=="unmodified"){
 			                  $('td', row).eq(11).addClass('highlight');
 			     	    }
-			          }
-		
-			     	  
-			      } */ //);  	 
+			          }					     	  
+			      }); */  	 
 	      
 	      
 		     
@@ -191,7 +189,9 @@
 		  	    	
 		  	        for(var i=0;i<data.length;i++){
 		  	        	alert(data[i].id);
-			  	    	/* dt.row.add( [
+		  	        	
+		  	        	
+			  	    	    /* dt.row.add( [
 			  	    	           data[i].id,
 			  			           data[i].name,
 			  			           data[i].age,
@@ -203,31 +203,44 @@
 			  			           data[i].relation,
 			  			           '<button id="test" type="button" class="btn btn-default btn-sm"  data-id="'+data[i].id+'"><span class="glyphicon glyphicon-pencil">edit</span> </button>'+'<button id="delete" type="button" class="btn btn-default btn-sm"  data-id="'+data[i].id+'"><span class="glyphicon glyphicon-trash">delete</span></button>',
 		       		               status
-			  			        ] ).draw(); */
+			  			     ] ).draw(); */
 			  			        
 			  			        
 			  			 	
 			  			        
-		  	        	 dt.fnAddData([ data[i].id,
-					  			           data[i].name,
+		  	        	   dt.fnAddData([  data[i].id,
+					  			           data[i].firstName+' '+ data[i].lastName,
 					  			           data[i].age,
 					  			           data[i].gender,
 					  			           data[i].occupation,
 					  			           data[i].mobile,
 					  			           data[i].address,
 					  			           data[i].position,
+					  			           data[i].relationId,
 					  			           data[i].relation,
-					  			           '<button id="test" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addModal" data-dismiss="modal" data-backdrop="static" data-idindex="'+idIndex+'"><span class="glyphicon glyphicon-pencil">edit</span> </button>'+'<button id="delete" type="button" class="btn btn-default btn-sm"  data-id="'+data[i].id+'"><span class="glyphicon glyphicon-trash">delete</span></button>',
-				       		               status]);
-			  			        
-		  	        	idIndex=idIndex+1;         
+					  			           '<button id="test" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addModal" data-dismiss="modal" data-backdrop="static"><span class="glyphicon glyphicon-pencil">edit</span> </button>'+'<button id="delete" type="button" class="btn btn-default btn-sm"  data-id="'+data[i].id+'"><span class="glyphicon glyphicon-trash">delete</span></button>',
+				       		               status,
+				       		               idIndex,
+				       		               '<input id="idData'+idIndex+'" type="text" name="family['+idIndex+'].id" value="'+data[i].id+'"/>'+
+				       		               '<input id="firstNameData'+idIndex+'" type="text" name="family['+idIndex+'].firstName" value="'+data[i].firstName+'"/>'+
+				       		               '<input id="lastNameData'+idIndex+'"  type="text" name="family['+idIndex+'].lastName" value="'+data[i].lastName+'"/>'+
+				       		               '<input id="ageData'+idIndex+'" type="text" name="family['+idIndex+'].age" value="'+data[i].age+'"/>'+
+				       		               '<input id="genderData'+idIndex+'"  type="text" name="family['+idIndex+'].gender" value="'+data[i].gender+'"/>'+
+				       		               '<input id="occupationData'+idIndex+'" type="text" name="family['+idIndex+'].occupation" value="'+data[i].occupation+'"/>'+
+				       		               '<input id="mobileData'+idIndex+'"   type="text" name="family['+idIndex+'].mobile" value="'+data[i].mobile+'"/>'+
+				       		               '<input id="addressData'+idIndex+'"  type="text" name="family['+idIndex+'].address" value="'+data[i].address+'"/>'+
+				       		               '<input id="positionData'+idIndex+'" type="text" name="family['+idIndex+'].position" value="'+data[i].position+'"/>'+
+				       		               '<input id="relationIdData'+idIndex+'" type="text" name="family['+idIndex+'].relationId" value="'+data[i].relationId+'"/>'+
+				       		               '<input id="relationData'+idIndex+'" type="text" name="family['+idIndex+'].relationName" value="'+data[i].relation+'"/>'+
+				       		               '<input id="statusData'+idIndex+'" type="text" name="family['+idIndex+'].status" value="'+status+'"/>'
+				       		               ]);
+			  		
+			  			    
+		  	        	 idIndex = idIndex+1;
+			  			 			  		
 		  			            
 		  	    	 }
-		  	        
-		  	        
-		  	        
-		  	    	 
-		  	        
+		  	        		  	        
 		  	     },  
 		  	      error : function(e) {  	  	      
 		  	    	  alert('Error: ' + e);   
@@ -261,14 +274,16 @@
 	
 	 $('#create').off('click').on( 'click', function () {
 
-			
+		 clearDataModal();
 		 
 			 $('#saveBtn').off("click").on("click",function(){
 			 
 			    
 			    var firstName = $('#firstName').val();
 			    var lastName = $('#lastName').val();
-			    var id = null;
+			    //var id = null;
+			    var id=0;
+			    var relationId=$("#masRelation").val();
 			    
 			    name = $('#firstName').val()+' '+$('#lastName').val();
 			    age = $('#age').val();
@@ -332,9 +347,24 @@
 			   			           mobile,
 			   			           address,
 			   			           position,
+			   			           relationId,
 			   			           relation,
-			   			           '<button id="test" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addModal" data-dismiss="modal" data-backdrop="static" data-idindex="'+idIndex+'"><span class="glyphicon glyphicon-pencil">edit</span> </button><button id="delete" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash">delete</span></button>',
-			   			           status]);
+			   			           '<button id="test" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addModal" data-dismiss="modal" data-backdrop="static"><span class="glyphicon glyphicon-pencil">edit</span> </button><button id="delete" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash">delete</span></button>',
+			   			           status,
+			   			           idIndex,
+			   			           '<input id="idData'+idIndex+'" type="text" name="family['+idIndex+'].id" value="'+id+'">'+
+			   			           '<input id="firstNameData'+idIndex+'"  type="text" name="family['+idIndex+'].firstName" value="'+firstName+'">'+
+			   			           '<input id="lastNameData'+idIndex+'" type="text" name="family['+idIndex+'].lastName" value="'+lastName+'">'+
+			   			           '<input id="ageData'+idIndex+'"  type="text" name="family['+idIndex+'].age" value="'+age+'">'+
+			   			           '<input id="genderData'+idIndex+'"  type="text" name="family['+idIndex+'].gender" value="'+gender+'">'+
+			   			           '<input id="occupationData'+idIndex+'" type="text" name="family['+idIndex+'].occupation" value="'+occupation+'">'+
+			   			           '<input id="mobileData'+idIndex+'" type="text" name="family['+idIndex+'].mobile" value="'+mobile+'">'+
+			   			           '<input id="addressData'+idIndex+'" type="text" name="family['+idIndex+'].address" value="'+address+'">'+
+			   			           '<input id="positionData'+idIndex+'" type="text" name="family['+idIndex+'].position" value="'+position+'">'+
+			   			           '<input id="relationIdData'+idIndex+'" type="text" name="family['+idIndex+'].relationId" value="'+relationId+'">'+
+			   			           '<input id="relationData'+idIndex+'"  type="text" name="family['+idIndex+'].relationName" value="'+relation+'">'+
+			   			           '<input id="statusData'+idIndex+'" type="text" name="family['+idIndex+'].status" value="'+status+'">'
+			   			          ]);
 	   	
 				    
 				     idIndex = idIndex+1;
@@ -373,16 +403,7 @@
 		    	  
 		    	  rowUpdate = $(this).parents('tr');
 		    	  dataUpdate = dt.fnGetData($(this).parents('tr'));
-		    	  
-		    	  
-		    	  /* $("#addModal").on("show.bs.modal", function(event){
-		    		  
-		    		  var button = $(event.relatedTarget);
-		      		  var idIndexUpdate = button.data("idindex"); 
-		      		  alert(idIndexUpdate);
-		    		  
-		    	  }); */
-		    	  
+		    	 
 		    	  
 		    	  alert("data[0]: "+dataUpdate[0]); 
 		    	
@@ -404,7 +425,6 @@
 		    
 		    alert(arr[0]);
 		   
-		 	 	
 		    $('#firstName').val(arr[0]);
 			$('#lastName').val(arr[1]);
 		    $('#age').val(dataUpdate[2]);
@@ -422,13 +442,11 @@
 		    }
 		    
 		    
-		    alert("data8: "+dataUpdate[8]);
+		     alert("data8: "+dataUpdate[8]);
 		    
-		    if(dataUpdate[8]=="SON"){
-		   		 $('#masRelation').val(1);		    
-		    }else if(dataUpdate[8]=="DAUGTHER"){
-		    	 $('#masRelation').val(2);		    	
-		    }
+		    
+		   	 $('#masRelation').val(dataUpdate[8]);		    
+		   
 	
 		    
 		   	/* $('#saveBtn').off("click").on("click",function(){
@@ -539,6 +557,7 @@
 	       }); */
 		   
 	       
+	       
 	       $('#saveBtn').off("click").on("click",function(){
 	    	   
 	    	    var id = dataUpdate[0];	   		
@@ -572,24 +591,76 @@
 			    
 			    
 			    
-			    if(dataUpdate[0]!=null){
+			    if(dataUpdate[0]!=0){
 		    		  
-		    		  
-		    	   	 
-				      dt.fnUpdate(nameUpdate, rowUpdate, 1);
+		    		 
+			    	 
+			    	 alert(dataUpdate[12]);
+					    
+			    		   	 
+			    	  dt.fnUpdate(nameUpdate, rowUpdate, 1);
 				      dt.fnUpdate(ageUpdate, rowUpdate, 2);
 				      dt.fnUpdate(genderUpdate, rowUpdate, 3);
 				      dt.fnUpdate(occupationUpdate, rowUpdate, 4);
 				      dt.fnUpdate(mobileUpdate, rowUpdate, 5);
 				      dt.fnUpdate(addressUpdate, rowUpdate, 6);
 				      dt.fnUpdate(positionUpdate, rowUpdate, 7);
-				      dt.fnUpdate(relationUpdate, rowUpdate, 8);
-				      dt.fnUpdate('edit', rowUpdate, 10);
+				      dt.fnUpdate(relationUpdateId, rowUpdate, 8);
+				      dt.fnUpdate(relationUpdate, rowUpdate, 9);
+				      dt.fnUpdate('edit', rowUpdate, 11); 
+				      
+				      $("#firstNameData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].firstName");
+			    	  $("#firstNameData"+dataUpdate[12]).val(firstNameUpdateData);
+			    	  
+			    	  $("#lastNameData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].lastName");
+			    	  $("#lastNameData"+dataUpdate[12]).val(lastNameUpdateData);
+			    	  
+			    	  $("#ageData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].age");
+			    	  $("#ageData"+dataUpdate[12]).val(ageUpdate);
+			    	  
+			    	  $("#genderData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].gender");
+			    	  $("#genderData"+dataUpdate[12]).val(genderUpdate);
+			    	  
+			    	  
+			    	  $("#occupationData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].occupation");
+			    	  $("#occupationData"+dataUpdate[12]).val(occupationUpdate);
+			    	  
+			    	  $("#positionData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].position");
+			    	  $("#positionData"+dataUpdate[12]).val(positionUpdate);
+			    	  
+			    	  $("#mobileData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].mobile");
+			    	  $("#mobileData"+dataUpdate[12]).val(mobileUpdate);
+			    	  
+			    	  
+			    	  $("#addressData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].address");
+			    	  $("#addressData"+dataUpdate[12]).val(addressUpdate);
+			    	  
+			    	  $("#relationIdData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].relationId");
+			    	  $("#relationIdData"+dataUpdate[12]).val(relationUpdateId);
+			    	  
+			    	  $("#relationData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].relation");
+			    	  $("#relationData"+dataUpdate[12]).val(relationUpdate);
+			    	  
+			    	  
+			    	  $("#statusData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].status");
+			    	  $("#statusData"+dataUpdate[12]).val('edit');
+			    	  
 				      
 				      
 		    	  }else{
 		    		   
 		    		
+				      
+		    		  /* dt.fnUpdate(nameUpdate, rowUpdate, 1);
+				      dt.fnUpdate(ageUpdate, rowUpdate, 2);
+				      dt.fnUpdate(genderUpdate, rowUpdate, 3);
+				      dt.fnUpdate(occupationUpdate, rowUpdate, 4);
+				      dt.fnUpdate(mobileUpdate, rowUpdate, 5);
+				      dt.fnUpdate(addressUpdate, rowUpdate, 6);
+				      dt.fnUpdate(positionUpdate, rowUpdate, 7);
+				      dt.fnUpdate(relationUpdate, rowUpdate, 8); */
+				      
+				      
 				      
 		    		  dt.fnUpdate(nameUpdate, rowUpdate, 1);
 				      dt.fnUpdate(ageUpdate, rowUpdate, 2);
@@ -598,15 +669,49 @@
 				      dt.fnUpdate(mobileUpdate, rowUpdate, 5);
 				      dt.fnUpdate(addressUpdate, rowUpdate, 6);
 				      dt.fnUpdate(positionUpdate, rowUpdate, 7);
-				      dt.fnUpdate(relationUpdate, rowUpdate, 8);
-				
-		    		  
+				      dt.fnUpdate(relationUpdateId, rowUpdate, 8);
+				      dt.fnUpdate(relationUpdate, rowUpdate, 9);
+
+				      
+				      $("#firstNameData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].firstName");
+			    	  $("#firstNameData"+dataUpdate[12]).val(firstNameUpdateData);
+			    	  
+			    	  $("#lastNameData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].lastName");
+			    	  $("#lastNameData"+dataUpdate[12]).val(lastNameUpdateData);
+			    	  
+			    	  $("#ageData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].age");
+			    	  $("#ageData"+dataUpdate[12]).val(ageUpdate);
+			    	  
+			    	  $("#genderData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].gender");
+			    	  $("#genderData"+dataUpdate[12]).val(genderUpdate);
+			    	  
+			    	  
+			    	  $("#occupationData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].occupation");
+			    	  $("#occupationData"+dataUpdate[12]).val(occupationUpdate);
+			    	  
+			    	  $("#positionData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].position");
+			    	  $("#positionData"+dataUpdate[12]).val(positionUpdate);
+			    	  
+			    	  $("#mobileData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].mobile");
+			    	  $("#mobileData"+dataUpdate[12]).val(mobileUpdate);
+			    	  
+			    	  
+			    	  $("#addressData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].address");
+			    	  $("#addressData"+dataUpdate[12]).val(addressUpdate);
+			    	  
+			    	  $("#relationIdData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].relationId");
+			    	  $("#relationIdData"+dataUpdate[12]).val(relationUpdateId);
+			    	  
+			    	  $("#relationData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].relation");
+			    	  $("#relationData"+dataUpdate[12]).val(relationUpdate);
+			    	  
+			    		  
 		    	  }
 				      
 				      
 
 				     $('#addModal').modal('hide');
-
+				 
 	    	 	
 	    	 	  
 			    
@@ -646,26 +751,30 @@
 		 		 
 		 	    
 		 		 var idDelete = data[0];
-		 		 var arrNameDelete = data[1].split(" ");
+		 		 
+		 		 /* var arrNameDelete = data[1].split(" ");
 		 		 var ageDelete = data[2];
 		 		 var genderDelete = data[3];
 		 		 var occupationDelete = data[4];
 		 		 var mobileDelete = data[5];
 		 		 var addressUpdate = data[6];
 		 		 var positionUpdate = data[7];
-		 		 var relationUpdate = data[8];
+		 		 var relationUpdate = data[8];*/
 		 		 
 		 		
 		 		 
 		 		
-				 if(idDelete!=null){
+				 if(idDelete!=0){
 					 
 					 /* cell1 = dt.cell(row,10); 
 				     cell1.data('delete'); */
 				     		     
-					 dt.fnUpdate('delete', row,10);
-				     
-					 
+
+					 dt.fnUpdate('delete', row,11);
+					  
+			    	  $("#statusData"+data[12]).attr('name', "family["+data[12]+"].status");
+			    	  $("#statusData"+data[12]).val('delete');
+			    	  					 
 				 }else{
 				 
 					 //dt.row(row).remove().draw();
@@ -682,7 +791,7 @@
 		 
 		 
 		 
-		 $('#savetransection').on("click",function(){
+		// $('#savetransection').on("click",function(){
 		   
 	 	
 			 
@@ -690,33 +799,37 @@
 			 //alert(JSON.stringify(data.length));
 			
 			 
-			  data = dt.fnGetData();
+			/*   data = dt.fnGetData();
 			  alert(JSON.stringify(data.length));
 			
 			 
 			 for(var i=0;i<data.length;i++){
-				 
+				  */
 				 /* datarow = dt.row(i).data();
 				 arrName = datarow[1].split(" ");
 				 transection.push({id:datarow[0],firstName:arrName[0],lastName:arrName[1],age:datarow[2],gender:datarow[3],mobile:datarow[5],address:datarow[6],occupation:datarow[4],position:datarow[7],relation:datarow[8],status:datarow[10]});
 				 */
 				 
-				 datarow = dt.fnGetData(i);
-				 arrName = datarow[1].split(" ");
-				 transection.push({id:datarow[0],firstName:arrName[0],lastName:arrName[1],age:datarow[2],gender:datarow[3],mobile:datarow[5],address:datarow[6],occupation:datarow[4],position:datarow[7],relation:datarow[8],status:datarow[10]});
+			  // datarow = dt.fnGetData(i);
+			 //	 arrName = datarow[1].split(" ");
+		    //	 transection.push({id:datarow[0],firstName:arrName[0],lastName:arrName[1],age:datarow[2],gender:datarow[3],mobile:datarow[5],address:datarow[6],occupation:datarow[4],position:datarow[7],relation:datarow[8],status:datarow[10]});
 				 
 				 
-			 }
+		   //	 }
 			 
 			 
 			 
 			 
-			 alert(JSON.stringify(transection));
-			 postData(transection);
+		 //	 alert(JSON.stringify(transection));
+	 	//	 postData(transection);
 		 		
-		 });
+	    //});
 		 
-		 
+		
+		
+		
+		
+
 		 
 		 
 		 
@@ -807,43 +920,45 @@
 
 
 
+<f:form  name="familyForm"  method="post" commandName="family" action="${pageContext.request.contextPath}/family/managedata">	 
 
+	 <table id="tableResult" class="table table-striped table-bordered">
+		    <thead>
+	            <tr> 
+	                <th>id</th>
+	                <th><spring:message code="family.list.familyname"/></th>
+	                <th><spring:message code="family.list.age"/></th>
+	                <th><spring:message code="family.list.gender"/></th>
+	                <th><spring:message code="family.list.occupation"/></th> 
+	                <th><spring:message code="family.list.tel"/></th>
+	                <th>address</th>
+	                <th>position</th>
+	                <th>relationid</th>
+	                <th><spring:message code="family.list.relation"/></th> 
+	                <th><spring:message code="family.list.edit"/></th>
+	                <th>status</th>
+	                <th>index</th> 
+	                <th>hiddendata</th>
+	                              
+	            </tr>
+	        </thead>
+	
+		   <tbody>
+		   
+		   </tbody>
+	   </table>
 
-
- <table id="tableResult" class="table table-striped table-bordered">
-	    <thead>
-            <tr> 
-                <th>id</th>
-                <th><spring:message code="family.list.familyname"/></th>
-                <th><spring:message code="family.list.age"/></th>
-                <th><spring:message code="family.list.gender"/></th>
-                <th><spring:message code="family.list.occupation"/></th> 
-                <th><spring:message code="family.list.tel"/></th>
-                <th>address</th>
-                <th>position</th>
-                <th><spring:message code="family.list.relation"/></th> 
-                <th><spring:message code="family.list.edit"/></th>
-                <th>status</th>
-                <!-- <th>index</th> -->
-                              
-            </tr>
-        </thead>
-
-	   <tbody>
-	   
-	   </tbody>
-   </table>
    
    <div align="right">
   	 <button id="create" type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal" data-dismiss="modal" data-backdrop="static"><span class="glyphicon glyphicon-pencil">Create</span> </button>   
-     <button id="savetransection" type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil">SaveAndContitue</span> </button>   
+     <button id="savetransection" name="saveContinute" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil">SaveAndContitue</span> </button>   
      
    </div>
 
    <br/>
    <br/>
    
-   
+</f:form>   
    
  
  
@@ -1038,209 +1153,6 @@
 	  </div>
 	</div>   
  </div>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-<!-- Modal Update data-->
-<%-- <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-          
-             <div id="aa"></div>
-          
-            <f:form id="formAdd" name="FamilyForm" method="post" commandName="family" class="form-horizontal" role="form">	      	 
-	      	
-	      	<spring:message code="label.update"/>
-	        
-	        <br/>
-	        <br/>
-	       
-		    <div class="form-group form-group-sm">
-			    
-			        
-			      <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			           <spring:message code="family.form.firstname" var="firstName"/> ${firstName} :
-			      </label>	 		
-			     
-				     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  id="firstNameUpdate" name="firstNameUpdate" path="firstName" cssClass="form-control required" placeholder="${firstName}" />
-			     		<f:errors path="firstName"/>
-			     </div>
-		   </div>
-		   
-		   
-		   <div class="form-group form-group-sm">
-			    
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            <spring:message code="family.form.lastname" var="lastName"/> ${lastName} :
-			     </label>	 		
-			    
-			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="lastNameUpdate" path="lastName" cssClass="form-control required" placeholder="${lastName}" />
-			     		<f:errors path="lastName"/>
-			     </div>
-		   </div>
-		   
-		   
-		   <div class="form-group form-group-sm">
-			    
-			     
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			          <spring:message code="family.list.gender" var="gender"/> ${gender} :
-			     </label>	 		
-
-
-			      <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				       <label class="radio-inline" for="genderMaleUpdate" > 
-		 			     	<f:radiobutton id="genderMaleUpdate" name="genderUpdate" path="gender" value="Male" checked="true"/><spring:message code="family.form.gender.male"/>
-		 			   </label>
-		 			 <label class="radio-inline" for="genderFemale"> 
-		 			     <f:radiobutton id="genderFemaleUpdate" name="genderUpdate" path="gender" value="Female"/><spring:message code="family.form.gender.female"/>
-				     </label>  	
-				     	<f:errors path="gender"/>					     		 
-				  </div>
-		           
-		   </div>
-		   
-		   
-		   <div class="form-group form-group-sm">
-		   
-		        
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="age" >
-			         <spring:message code="family.list.age" var="age"/> ${age} :
-			     </label>	 		
-			    
-			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  type="number" id="ageUpdate" name="ageUpdate" path="age" cssClass="form-control required" placeholder="${age}" />
-			     		<f:errors path="age"/>
-			     </div>		   
-		   
-		   </div>	
-		   
-		      
-		   <div class="form-group form-group-sm">
-		   
-		   
-			    <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="mobile" >
-			        <spring:message code="family.list.tel" var="mobile"/> ${mobile} :
-			    </label>	 		
-
-			    
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  type="tel" id="mobileUpdate" name="mobileUpdate" path="mobile" cssClass="form-control required" placeholder="${mobile}" />
-			     		<f:errors path="mobile"/>
-			     </div>		   
-		   
-		   </div>
-		   
-		   
-		   
-		   
-		   
-		    <div class="form-group">
-		   
-		              
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="address" >
-			           <spring:message code="family.form.address" var="address"/> ${address} :
-			     </label>	 		
-			    
-			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:textarea rows="3" id="addressUpdate" name="addressUpdate"  path="address" cssClass="form-control required" placeholder="${address}" />
-			     		<f:errors path="address"/>
-			     </div>	
-			     	   
-		  
-		   </div>
-	
-		   
-		   
-		   
-		   <div class="form-group form-group-sm">
-		   
-		         
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label" for="occupation">
-			           <spring:message code="family.list.occupation" var="occupation"/> ${occupation} :
-			     </label>	 		
-			    
-			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="occupationUpdate" name="occupationUpdate" path="occupation" cssClass="form-control" placeholder="${occupation}" />
-			     		<f:errors path="occupation"/>
-			     </div>		   
-		   
-		   </div>
-		   
-		   
-		      
-		   <div class="form-group form-group-sm">
-		   
-		         
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label" for="position">
-			           <spring:message code="family.form.position" var="position"/> ${position} :
-			     </label>	 		
-			    
-			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="positionUpdate" name="positionUpdate" path="position" cssClass="form-control" placeholder="${position}" />
-			     		<f:errors path="position"/>
-			     </div>		   
-		   
-		   </div>
-		   
-		   
-		    
-		    <div class="form-group form-group-sm">
-		   
-		           
-		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="masRelation" >
-			           <spring:message code="family.list.relation" var="masRelation"/> ${masRelation} :
-			    </label>	 		
-			    
-			     
-			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-
-			     		 <f:select id="masRelationUpdate" path="masRelation" cssClass="form-control required" >
-						  <f:option  value="" label="please select data"/>								
-							<c:forEach var="obj" items="${ masRelationTypeList }">									
-									<option value="${obj.id}" >${obj.relationType}</option> 									
-							</c:forEach>
-						</f:select> 
-								
-			     </div>		   
-		   
-		   </div>
-		   
-		  
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close"/></button>
-		        <button id="updateBtn" name="updateBtn" type="button" class="btn btn-primary"><spring:message code="label.save"/></button>
-		      </div>
- 
-      </f:form>
-	  
-	    </div>
-	  </div>
-	</div>   
- </div>  --%>
- 
  
  
  
