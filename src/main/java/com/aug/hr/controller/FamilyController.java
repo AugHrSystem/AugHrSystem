@@ -72,7 +72,7 @@ public class FamilyController {
 	
 	
 	
-	@RequestMapping(value = "/family/", method = RequestMethod.GET)
+	@RequestMapping(value = "/family", method = RequestMethod.GET)
 	public String initEmpFamily(Locale locale,
 			@ModelAttribute(value = "family") Family family,
 			ModelMap model){
@@ -88,7 +88,7 @@ public class FamilyController {
 		model.addAttribute("family", family);
 		model.addAttribute("masRelationTypeList", masRelationTypeList);
 		
-		return "/family/familytest";
+		return "/family/familychange";
 	}
 	
 	
@@ -142,7 +142,7 @@ public class FamilyController {
 	
 	
 	
-	/*
+	
 	@RequestMapping(value = "/family/add", method =  {RequestMethod.GET,RequestMethod.POST})
 	public @ResponseBody FamilyDto Add(Locale locale,
 				@RequestBody Family family,
@@ -319,14 +319,14 @@ public class FamilyController {
 	 
 		
 		return familyId;		
-	}*/
+	}
 	
 	
 	
 
 	
 	
-	@RequestMapping(value = "/family/transection", method = {RequestMethod.GET,RequestMethod.POST})
+	/*@RequestMapping(value = "/family/transection", method = {RequestMethod.GET,RequestMethod.POST})
 	public @ResponseBody String ManageData(Locale locale,
 							@RequestBody String info,
 							ModelMap modal) throws JSONException{
@@ -585,15 +585,15 @@ public class FamilyController {
 		}
 		
 		
-		/*List<Family> familyListforShow = familyService.findFamilyByEmployeeId(1);
+		List<Family> familyListforShow = familyService.findFamilyByEmployeeId(1);
 		List<MasRelationType> masRelationTypeList = masRelationService.findAll();
 		modal.addAttribute("familyList", familyListforShow);
 		modal.addAttribute("masRelationTypeList", masRelationTypeList);
-		modal.addAttribute("family", familyModal);*/
+		modal.addAttribute("family", familyModal);
 		
 		return "redirect:/family/";
 		//return "/family/familytest";
 		
 		}
-
+*/
 }
