@@ -1,4 +1,4 @@
-package com.aug.hr.dto;
+package com.aug.hr.entity.form;
 
 import java.util.List;
 
