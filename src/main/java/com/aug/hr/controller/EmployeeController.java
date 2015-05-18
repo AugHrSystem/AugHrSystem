@@ -21,9 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.dto.EmployeeDto;
+import com.aug.hr.entity.dto.ExperienceDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
@@ -47,6 +50,7 @@ public class EmployeeController {
 	@Autowired private masTechnologyService masTechnologyService;
 	@Autowired private MasCoreSkillService masCoreSkillService;
 	@Autowired private AddressEditor addressEditor;
+	@Autowired private EmployeeDtoService employeeDtoService;
 	
 	//@Autowired private TechnologyEmpService technologyEmpService;
 	@RequestMapping(value = "/listemployee", method =  {RequestMethod.GET,RequestMethod.POST})
@@ -80,8 +84,8 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value ="/employee/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<Employee> listAll(){
-		return employeeService.findAll();
+	public @ResponseBody List<EmployeeDto> listAll(){
+		return (List<EmployeeDto>)employeeDtoService.searchEmployee();
 	}
 	
 	//Add	

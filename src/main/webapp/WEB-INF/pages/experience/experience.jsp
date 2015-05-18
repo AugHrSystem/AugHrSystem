@@ -51,9 +51,8 @@
 					<th>Position</th>
 					<th>Date From</th>
 					<th>Date To</th>
-					<th>Address</th>
-					<th>Description</th>
 					<th>Supervisor</th>
+					<th>Employee Code</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -344,7 +343,7 @@ var dt;
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].id,data[i].companyName,data[i].business, 
 						              data[i].position,data[i].dateFrom,data[i].dateTo,
-						              data[i].description,data[i].superVisor,data[i].address,
+						              data[i].superVisor,data[i].employeeCode,
 							'<button type="button" class="btn btn-warning btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				

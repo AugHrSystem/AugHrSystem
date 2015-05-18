@@ -10,12 +10,14 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
+import org.hibernate.Query;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.dto.EmployeeDto;
 import com.mysql.jdbc.StringUtils;
 
 @Repository
@@ -82,5 +84,13 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 //	}
 		return null;
 
+	}
+
+
+	@SuppressWarnings("unchecked")
+	public List<EmployeeDto> searchEmployee() {
+		Query namedQuery = getCurrentSession().getNamedQuery("searchEmployee");
+		List<EmployeeDto> empDto = namedQuery.list();
+		return empDto;
 	}
 }

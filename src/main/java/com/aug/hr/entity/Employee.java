@@ -49,7 +49,7 @@ public class Employee extends BaseEntity{
 	@Column(name = "NAME_ENG",nullable = false)
 	private String nameEng;
 	
-	@Column(name = "SURNAM_ENG",nullable = true)
+	@Column(name = "SURNAME_ENG",nullable = true)
 	private String surnameEng;
 	
 	@Column(name = "NICKNAME_ENG",nullable = true)
