@@ -153,7 +153,15 @@
 		  	      status="unmodified" 
 		  	    	
 		  	    
-		  	        dt.fnClearTable();
+		  	        dt.fnClearTable({
+		  	        	
+		  	        	 "columnDefs": [
+				    	          		{
+				    	                     "targets": [ 0 ],
+				    	                     "visible": false
+				    	                 }
+				    	             ]		
+		  	        });
 		  	    	
 		  	        for(var i=0;i<data.length;i++){
 		  	        	alert(data[i].id);
