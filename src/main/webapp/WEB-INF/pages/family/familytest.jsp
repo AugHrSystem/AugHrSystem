@@ -638,7 +638,7 @@
 			    	  $("#relationIdData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].relationId");
 			    	  $("#relationIdData"+dataUpdate[12]).val(relationUpdateId);
 			    	  
-			    	  $("#relationData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].relation");
+			    	  $("#relationData"+dataUpdate[12]).attr('name', "family["+dataUpdate[12]+"].relationName");
 			    	  $("#relationData"+dataUpdate[12]).val(relationUpdate);
 			    	  
 			    	  

@@ -97,19 +97,20 @@ public class FamilyController {
 	@RequestMapping(value = "/family/list", method = RequestMethod.GET,produces="application/json")
 	public @ResponseBody List<FamilyDto> findEmpFamily(Locale locale,
 		   @ModelAttribute(value = "family") Family family,
-			ModelMap model){// throws JSONException{
+			ModelMap model){
 		
 		
 		//find data on database and set it to list
-		List<Family> familyList = familyService.findFamilyByEmployeeId(1);
-		Hibernate.initialize(familyList);
+		List<Family> familyList = familyService.findFamilyByEmployeeId(new Integer(1));
+		
 	    
 		List<FamilyDto> familyDtoList = new ArrayList<FamilyDto>();
 	
 		
 		//set data after get it from database and set it to dto 
+	
 		
-		 for(int i=0;i<familyList.size();i++){
+		for(int i=0;i<familyList.size();i++){
 			
 			 Family familyObj = new Family();
 			 familyObj = familyList.get(i);			
@@ -516,8 +517,22 @@ public class FamilyController {
 					  family.setAge(familyObj.getAge());
 					  family.setMobile(familyObj.getMobile());
 					  family.setGender(familyObj.getGender());
-					  family.setOccupation(familyObj.getOccupation());
-					  family.setPosition(familyObj.getPosition());
+					  
+					  if(familyObj.getOccupation().equals("null")==false){
+						  family.setOccupation(familyObj.getOccupation());
+					  }else if(familyObj.getOccupation().equals("null")==true){
+						  family.setOccupation(null);
+						  logger.info("occupation null");
+					  }
+					  
+					  
+					  if(familyObj.getPosition().equals("null")==false){
+						  family.setPosition(familyObj.getPosition());
+					  }else if(familyObj.getPosition().equals("null")==true){
+						  family.setPosition(null);
+					  }
+					  
+					  
 					  family.setAddress(familyObj.getAddress());
 					  
 					  MasRelationType masRelationType = new MasRelationType();
@@ -533,19 +548,52 @@ public class FamilyController {
 					  
 				  }else if(familyObj.getStatus().equals("edit")){
 					  
+					  Family family= new Family();
+					  family = familyService.find(new Integer(familyObj.getId()));
+					  family.setFirstName(familyObj.getFirstName());
+					  family.setLastName(familyObj.getLastName());
+					  family.setAge(familyObj.getAge());
+					  family.setMobile(familyObj.getMobile());
+					  family.setGender(familyObj.getGender());						
+				      family.setOccupation(familyObj.getOccupation());
+					  family.setPosition(familyObj.getPosition());
+					  family.setAddress(familyObj.getAddress());
+						  
+					  MasRelationType masRelationType = new MasRelationType();
+					  masRelationType = masRelationService.findByName(familyObj.getRelationName());
+					  
+					  family.setAuditFlag("U");
+					  family.setUpdatedBy(employee.getId());
+					  family.setMasRelation(masRelationType);
+					  Calendar cal = Calendar.getInstance();
+				      family.setUpdatedTimeStamp(cal.getTime());
+						 
+					  familyService.update(family);
+						 
+		
+					  
+				  }else if(familyObj.getStatus().equals("delete")){
+					  
+					  Family family= new Family();
+					  family = familyService.find(new Integer(familyObj.getId()));
+					  familyService.delete(family);
+						 
+					  
 				  }
-				  
-				 
-				  
 				  
 			  }
 		
 		}
 		
-		modal.addAttribute("family", familyModal);
 		
-		//return "redirect:/family/";
-		return "/family/familytest";
+		/*List<Family> familyListforShow = familyService.findFamilyByEmployeeId(1);
+		List<MasRelationType> masRelationTypeList = masRelationService.findAll();
+		modal.addAttribute("familyList", familyListforShow);
+		modal.addAttribute("masRelationTypeList", masRelationTypeList);
+		modal.addAttribute("family", familyModal);*/
+		
+		return "redirect:/family/";
+		//return "/family/familytest";
 		
 		}
 
