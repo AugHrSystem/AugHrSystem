@@ -18,11 +18,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+            name = "listEmployeeAim",
+            query = "select emp.id, emp.name_eng from EMP_EMPLOYEE as emp where AIM_EMP_ID is null", 
+            resultClass = Employee.class)
+  })
 
 
 @Entity
@@ -199,35 +209,33 @@ public class Employee extends BaseEntity{
 	@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
 	private String previousEmpreasonsNo;
 	
+	
+	
 //------------------self relation-------------------
-	@OneToMany(mappedBy="aimempid", fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
-	private Set<Employee> staff = new HashSet<Employee>();
-
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="id")
 	private Employee aimempid;
+	
+	@OneToMany(mappedBy="aimempid", fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
+	private Set<Employee> staffs = new HashSet<Employee>();
 	
 	
 	public Employee getAimempid() {
 		return aimempid;
 	}
 
-
-
 	public void setAimempid(Employee aimempid) {
 		this.aimempid = aimempid;
 	}
 
-	
-	
-	
-	public Set<Employee> getStaff() {
-		return staff;
+
+	public Set<Employee> getStaffs() {
+		return staffs;
 	}
 
-	public void setStaff(Set<Employee> staff) {
-		this.staff = staff;
+	public void setStaffs(Set<Employee> staffs) {
+		this.staffs = staffs;
 	}
 
 
@@ -235,6 +243,8 @@ public class Employee extends BaseEntity{
 	
 //------------------end self relation-----------------
 	
+
+
 
 	@Column(name = "ADDRESS_ID",nullable = true)
 	@OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)

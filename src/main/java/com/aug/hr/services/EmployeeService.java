@@ -19,7 +19,7 @@ public interface EmployeeService {
 	public List<Employee> findAll();
 	public Employee deleteById(Integer id);
 	public List<Employee> findByCriteria(Employee employee);
-	public List<Employee> findByUserName(Employee employee);
+	public List<Employee> listEmployeeAim();
 
 	
 }

@@ -48,43 +48,6 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 	}
 
 
-	@Override
-	public List<Employee> findByUserName(Employee employee) {
-//		Criteria c = getCurrentSession().createCriteria(Employee.class);
-//		c.setFetchMode("", FetchMode.JOIN);
-//		c.setFetchMode("department", FetchMode.JOIN);
-//		c.setFetchMode("status", FetchMode.JOIN);
-//		c.createAlias("status","status" );
-//		//c.createAlias("department", "department");
-//		//c.createAlias("position", "position");
-//		//c.createAlias("status", "status");
-//		if (!StringUtils.isNullOrEmpty(employee.getName())) {
-//		 c.add(Restrictions.like("userName", "%"+employee.getName()+"%"));
-//		 c.add(Restrictions.or(Restrictions.like("firstName", "%"+employee.getName()+"%")));
-//		 c.add(Restrictions.or(Restrictions.like("lastName", "%"+employee.getName()+"%")));
-//		 c.add(Restrictions.or(Restrictions.like("email", "%"+employee.getName()+"%")));
-//
-//		 
-//		 
-//		//c.add(Restrictions.or(Restrictions.like("joinDate", "%"+employee.getName()+"%")));
-////		 c.add(Restrictions.or(Restrictions.like("department.departmentName", "%"+employee.getName()+"%")));
-////		 c.add(Restrictions.or(Restrictions.like("position.positionName", "%"+employee.getName()+"%")));
-////		 c.add(Restrictions.or(Restrictions.like("status.statusName", "%"+employee.getName()+"%")));
-//		// c.add(Restrictions.or(Restrictions.like("joinDate", "%"+employee.getName()+"%")));
-//		// c.add(Restrictions.or(Restrictions.like("department.departmentName", "%"+employee.getName()+"%")));
-//		// c.add(Restrictions.or(Restrictions.like("position.positionName", "%"+employee.getName()+"%")));
-//		//c.add(Restrictions.or(Restrictions.like("status.statusName", "%"+employee.getName()+"%")));
-//		}
-//		if(employee.getIsManager()!=null&& employee.getIsManager()>0)
-//			 c.add(Restrictions.eq("isManager", 1));
-//		if(!StringUtils.isNullOrEmpty(employee.getSortingBy())){
-//			c.addOrder(Order.asc(employee.getSortingBy()));
-//		}
-//		return c.list();
-//	}
-		return null;
-
-	}
 
 
 	@SuppressWarnings("unchecked")
@@ -92,5 +55,13 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		Query namedQuery = getCurrentSession().getNamedQuery("searchEmployee");
 		List<EmployeeDto> empDto = namedQuery.list();
 		return empDto;
+	}
+
+
+	@Override
+	public List<Employee> listEmployeeAim() {
+		Query namedQuery2 = getCurrentSession().getNamedQuery("listEmployeeAim");
+		List<Employee> emp = namedQuery2.list();
+		return emp;
 	}
 }
