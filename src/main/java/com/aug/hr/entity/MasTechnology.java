@@ -47,7 +47,7 @@ public class MasTechnology extends BaseEnityMasterData implements Serializable{
 		this.name = name;
 	}
 	
-	@OneToMany(mappedBy="employee",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="technology",fetch=FetchType.LAZY)
 	public Set<Employee> getEmployee() {
 		return Employee;
 	}
