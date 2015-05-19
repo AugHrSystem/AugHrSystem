@@ -296,7 +296,7 @@ var dt;
 					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
 					type : "POST",
 					success : function(data) {
-						id:expId;
+						//id:expId;
 						$("#cName").val(data.name);
 						$("#businessType").val(data.businessType);
 						$("#position").val(data.position);
@@ -307,7 +307,7 @@ var dt;
 						$("#reference").val(data.reference);
 						$("#address").val(data.address);
 						$("#reason").val(data.reason);
-						employee: {id: 2 };
+						employee: {id: data.employeeId };
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -351,7 +351,7 @@ var dt;
 			
 			function listAll(){
 				
-				alert("list experience");
+				//alert("list experience");
 				var id = getUrlParameter('Id');
 				alert("id >>>>"+id);
 				$.ajax({
@@ -379,12 +379,11 @@ var dt;
 					//alert("url "+document.referrer);
 				    var sPageURL = document.referrer;
 				    var sURLVariables = sPageURL.split('?');
-				    var sParameterName;
 				    //alert("spilt "+sURLVariables);
 
 				   	
 				    
-				    sParameterName = sURLVariables[1].split('=');
+				    var sParameterName = sURLVariables[1].split('=');
 				    //alert("Param "+parseInt(sParameterName[1]));
 				    if (sParameterName[0] == sParam) 
 				        {

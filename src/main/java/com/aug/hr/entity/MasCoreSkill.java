@@ -1,5 +1,9 @@
 package com.aug.hr.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,9 +33,8 @@ public class MasCoreSkill extends BaseEntity {
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="EMPLOYEE_ID",nullable=true)
-	private Employee employee;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "masCoreSkill", cascade=CascadeType.ALL, orphanRemoval=true)
+	private Set<Employee> employees = new HashSet<Employee>();
 	
 	public Integer getId() {
 		return id;
@@ -56,12 +60,14 @@ public class MasCoreSkill extends BaseEntity {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	public Employee getEmployee() {
-		return employee;
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
+
+
 	
 	
 }

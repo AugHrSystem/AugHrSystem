@@ -170,7 +170,7 @@ var empId;
 			type : "POST",
 			success : function(data) {
 				
-				window.location = "http://localhost:8080/AugHrSystem?Id="+empId;
+				window.location = "${pageContext.request.contextPath}?Id="+empId;
 				alert("emp id:"+ empId);
 				//editEmployee(); 
 

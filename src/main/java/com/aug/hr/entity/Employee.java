@@ -220,6 +220,7 @@ public class Employee extends BaseEntity{
 	private Employee aimempid;
 	
 	@OneToMany(mappedBy="aimempid", fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
+	@JsonIgnore
 	private Set<Employee> staffs = new HashSet<Employee>();
 	
 	
@@ -263,13 +264,12 @@ public class Employee extends BaseEntity{
 	 
 	 @OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
 	 private Set<History> histories = new HashSet<History>();
-
-	 /*@OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
-	 private Set<GetPosition> getPositions = new HashSet<GetPosition>();*/
-
-	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
-	 private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();
-		  
+	 
+	 @ManyToOne(fetch=FetchType.LAZY)
+	 @JoinColumn(name= "MAS_CORE_SKILL_ID")
+	 @JsonIgnore
+	 private MasCoreSkill masCoreSkill;
+	 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name= "EMPLOYMENT_ID")
     @JsonIgnore
@@ -919,17 +919,15 @@ public class Employee extends BaseEntity{
 
 
 
-	public Set<MasCoreSkill> getMasCoreSkill() {
+	public MasCoreSkill getMasCoreSkill() {
 		return masCoreSkill;
 	}
 
-
-
-	public void setMasCoreSkill(Set<MasCoreSkill> masCoreSkill) {
+	
+	public void setMasCoreSkill(MasCoreSkill masCoreSkill) {
 		this.masCoreSkill = masCoreSkill;
 	}
-
-
+	
 
 	public MasEmployment getEmployment() {
 		return masEmployment;
