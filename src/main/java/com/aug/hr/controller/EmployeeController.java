@@ -88,6 +88,13 @@ public class EmployeeController {
 		return (List<EmployeeDto>)employeeDtoService.searchEmployee();
 	}
 	
+	
+	@RequestMapping(value ="/employee/listEmployeeAim", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<Employee> listEmployeeAiml(){
+		return (List<Employee>)employeeService.listEmployeeAim();
+	}
+	
+	
 	//Add	
 	@RequestMapping(value = "/employee/add", method = RequestMethod.POST )
 	public @ResponseBody Employee Add(@RequestBody Employee employee) {
