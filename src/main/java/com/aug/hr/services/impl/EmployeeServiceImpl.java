@@ -64,9 +64,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDao.findByCriteria(employee);
 	}
 
+
 	@Override
-	public List<Employee> findByUserName(Employee employee) {
-		return employeeDao.findByUserName(employee);
+	public List<Employee> listEmployeeAim() {
+		return employeeDao.listEmployeeAim();
 	}
 
 	

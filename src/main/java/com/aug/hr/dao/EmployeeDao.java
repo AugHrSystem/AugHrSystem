@@ -17,7 +17,7 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 
 	public Employee deleteById(Integer id);
 
-	public List<Employee> findByUserName(Employee employee);
-
 	public List<EmployeeDto> searchEmployee();
+	
+	public List<Employee> listEmployeeAim();
 }
