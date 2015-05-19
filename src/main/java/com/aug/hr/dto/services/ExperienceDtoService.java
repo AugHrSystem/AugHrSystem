@@ -16,7 +16,7 @@ public class ExperienceDtoService {
 
 	@Autowired private ExperienceDao experienceDao;
 	
-	public List<ExperienceDto> searchExperience(){
-		return experienceDao.searchExperience();
+	public List<ExperienceDto> searchExperience(Integer id){
+		return experienceDao.searchExperience(id);
 	}
 }

@@ -37,16 +37,20 @@ public class Experience extends BaseEntity {
 	private Date dateTo;
 	@Column(name = "ADDRESS")
 	private String address;
-	@Column(name = "BUSINESS")
-	private String business;
+	@Column(name = "TYPE_OF_BUSINESS")
+	private String businessType;
 	@Column(name = "POSITION")
 	private String position;
-	@Column(name = "SUPERVISOR")
-	private String superVisor;
-	@Column(name = "DESCRIPTION")
-	private String description;
+	@Column(name = "REFERENCE")
+	private String reference;
+	@Column(name = "RESPONSIBILITY")
+	private String responsibility;	
+	@Column(name = "SALARY")
+	private Integer salary;	
+	@Column(name = "REASON_OF_REGISNATION")
+	private String reason;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id", nullable=false)
 //	@JsonIgnore
 	private Employee employee;
@@ -82,23 +86,23 @@ public class Experience extends BaseEntity {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getBusiness() {
-		return business;
+	public String getBusinessType() {
+		return businessType;
 	}
-	public void setBusiness(String business) {
-		this.business = business;
+	public void setBusinessType(String businessType) {
+		this.businessType = businessType;
 	}
-	public String getSuperVisor() {
-		return superVisor;
+	public String getReference() {
+		return reference;
 	}
-	public void setSuperVisor(String superVisor) {
-		this.superVisor = superVisor;
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
-	public String getDescription() {
-		return description;
+	public String getResponsibility() {
+		return responsibility;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setResponsibility(String responsibility) {
+		this.responsibility = responsibility;
 	}
 	public String getPosition() {
 		return position;
@@ -111,6 +115,18 @@ public class Experience extends BaseEntity {
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+	public Integer getSalary() {
+		return salary;
+	}
+	public void setSalary(Integer salary) {
+		this.salary = salary;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 	
 	

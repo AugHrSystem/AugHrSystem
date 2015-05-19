@@ -7,6 +7,7 @@ package com.aug.hr.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -38,8 +39,8 @@ public class Education extends BaseEntity{
 	@JoinColumn(name="OFFICIAL_ID")
 	private Official official;*/
 	
-	@ManyToOne()
-	@JoinColumn(name = "EMPLOYEE_ID")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "EMPLOYEE_ID",referencedColumnName="id" , nullable = false)
 	private Employee employee;
 	
 	@ManyToOne()
