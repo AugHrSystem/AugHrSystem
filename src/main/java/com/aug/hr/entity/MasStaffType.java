@@ -1,5 +1,6 @@
 package com.aug.hr.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ public class MasStaffType extends BaseEntity{
 	private String name;
 	private Boolean isActive;
 	private String code;
-	private Set<Employee> employee;
+	private Set<Employee> employee = new HashSet<Employee>();
 	
 	@Id
 	@GeneratedValue

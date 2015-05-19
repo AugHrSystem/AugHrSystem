@@ -1,6 +1,8 @@
 package com.aug.hr.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -22,7 +25,9 @@ public class MasTechnology extends BaseEnityMasterData implements Serializable{
 	private static final long serialVersionUID = 9016889793391444496L;
 	private Integer id;
 	private String name;
-	private Employee employee;
+
+	private Set<Employee> Employee = new HashSet<Employee>();
+	
 	
 	@Id
 	@GeneratedValue
@@ -42,14 +47,16 @@ public class MasTechnology extends BaseEnityMasterData implements Serializable{
 		this.name = name;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="EMPLOYEE_ID")
-	public Employee getEmployee() {
-		return employee;
+	@OneToMany(mappedBy="employee",fetch=FetchType.LAZY)
+	public Set<Employee> getEmployee() {
+		return Employee;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	
+	public void setEmployee(Set<Employee> employee) {
+		Employee = employee;
 	}
+	
+	
 	
 	
 	
