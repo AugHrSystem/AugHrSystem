@@ -7,6 +7,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.aug.hr.dto.services.EmployeeDtoService;
+
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
@@ -30,6 +33,7 @@ import com.aug.hr.entity.dto.ExperienceDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
+import com.aug.hr.services.JoblevelService;
 import com.aug.hr.services.MasAddressTypeService;
 import com.aug.hr.services.MasCoreSkillService;
 import com.aug.hr.services.MasDivisionService;
@@ -49,10 +53,15 @@ public class EmployeeController {
 	@Autowired private MasDivisionService masDivisionService;
 	@Autowired private masTechnologyService masTechnologyService;
 	@Autowired private MasCoreSkillService masCoreSkillService;
+	@Autowired private JoblevelService joblevelService;
 	@Autowired private AddressEditor addressEditor;
 	@Autowired private EmployeeDtoService employeeDtoService;
 	
-	//@Autowired private TechnologyEmpService technologyEmpService;
+	
+	
+	private static final Logger logger = Logger.getLogger(Employee.class);
+	
+	
 	@RequestMapping(value = "/listemployee", method =  {RequestMethod.GET,RequestMethod.POST})
     public String init(ModelMap model) {		
 		return "/employee/listemployee";
@@ -60,11 +69,13 @@ public class EmployeeController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         binder.registerCustomEditor(Date.class, editor);
         binder.registerCustomEditor(Address.class, addressEditor);
     }	
+	
+	
 	
 	@RequestMapping(value="/employee",method={RequestMethod.GET,
 			RequestMethod.POST})
@@ -80,12 +91,16 @@ public class EmployeeController {
 		model.addAttribute("divisionList", masDivisionService.findAll());
 		model.addAttribute("technologyList", masTechnologyService.findAll());
 		model.addAttribute("coreskillList",masCoreSkillService.findAll());
+		model.addAttribute("joblevelList",joblevelService.findAll());
+		//return "/employee/employee";
 		return "/employee/employee";
 	}
 	
+
 	@RequestMapping(value ="/employee/listAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<EmployeeDto> listAll(){
 		return (List<EmployeeDto>)employeeDtoService.searchEmployee();
+
 	}
 	
 	
@@ -142,6 +157,17 @@ public class EmployeeController {
 		employeeService.deleteById(empId);
 		return "redirect:/listemployee";
 	}
+	
+	
+	
+	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
+	public String manageSubmit(@ModelAttribute Employee employee) {
+	   
+		logger.info("infoooo: "+employee);
+		
+		return null;
+	}
+	
 	
 	@ModelAttribute("employee")
 	Employee setupForm() {

@@ -95,5 +95,12 @@ public class MasEmployment extends BaseEntity {
 	}
 
 
+	@Override
+	public String toString() {
+		return "MasEmployment [id=" + id + ", name=" + name + ", code=" + code
+				+ ", isActive=" + isActive + ", employees=" + employees + "]";
+	}
+
+
 
 }

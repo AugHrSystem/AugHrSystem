@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -34,6 +35,12 @@ public class Address extends BaseEntity{
 	@Column(name="ZIPCODE")
 	private String zipcode;
 	
+	@Transient
+    private Integer addressTypeId;
+	@Transient
+	private Integer provinceId;
+   
+	
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name= "EMPLOYEE_ID")
     private Employee employee;
@@ -46,6 +53,8 @@ public class Address extends BaseEntity{
 	@ManyToOne
     @JoinColumn(name= "PROVINCE_ID")
     private MasProvince province;
+	
+	
 
 	public Integer getId() {
 		return id;
@@ -103,7 +112,33 @@ public class Address extends BaseEntity{
 		this.province = province;
 	}
 
+	public Integer getAddressTypeId() {
+		return addressTypeId;
+	}
 
+	public void setAddressTypeId(Integer addressTypeId) {
+		this.addressTypeId = addressTypeId;
+	}
+
+	public Integer getProvinceId() {
+		return provinceId;
+	}
+
+	public void setProvinceId(Integer provinceId) {
+		this.provinceId = provinceId;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", address1=" + address1 + ", address2="
+				+ address2 + ", zipcode=" + zipcode + ", addressTypeId="
+				+ addressTypeId + ", provinceId=" + provinceId + ", employee="
+				+ employee + ", addressType=" + addressType + ", province="
+				+ province + "]";
+	}
+
+	
+	
 }
 
 
