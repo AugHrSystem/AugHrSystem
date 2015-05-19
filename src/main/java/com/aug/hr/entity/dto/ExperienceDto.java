@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -14,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
             name = "searchExperience",
-            query = "select exp.id, exp.company_name, exp.date_from, exp.date_to, exp.address, exp.business, exp.position, exp.supervisor, exp.description, exp.employee_id, emp.employee_code from emp_experience as exp, emp_employee as emp where exp.employee_id = emp.id", 
+            query = "select exp.id, exp.company_name, exp.date_from, exp.date_to, exp.address, exp.type_of_business, exp.position, exp.reference, exp.responsibility, exp.employee_id, emp.employee_code from emp_experience as exp, emp_employee as emp where exp.employee_id=:empId and emp.id = exp.employee_id", 
             resultClass = ExperienceDto.class)
   })
 
@@ -27,20 +29,22 @@ public class ExperienceDto {
 	private String companyName;
 	@Column(name ="DATE_FROM")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateFrom;
 	@Column(name ="DATE_TO")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateTo;
 	@Column(name = "ADDRESS")
 	private String address;
-	@Column(name ="BUSINESS")
-	private String business;
+	@Column(name ="TYPE_OF_BUSINESS")
+	private String businessType;
 	@Column(name ="POSITION")
 	private String position;
-	@Column(name ="SUPERVISOR")
-	private String superVisor;
-	@Column(name = "DESCRIPTION")
-	private String description;
+	@Column(name ="REFERENCE")
+	private String reference;
+	@Column(name = "RESPONSIBILITY")
+	private String responsibility;
 	@Column(name ="EMPLOYEE_ID")
 	private String employeeId;
 	
@@ -52,12 +56,6 @@ public class ExperienceDto {
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	public Integer getId() {
 		return id;
@@ -83,23 +81,17 @@ public class ExperienceDto {
 	public void setDateTo(Date dateTo) {
 		this.dateTo = dateTo;
 	}
-	public String getBusiness() {
-		return business;
+	public String getBusinessType() {
+		return businessType;
 	}
-	public void setBusiness(String business) {
-		this.business = business;
+	public void setBusinessType(String businessType) {
+		this.businessType = businessType;
 	}
 	public String getPosition() {
 		return position;
 	}
 	public void setPosition(String position) {
 		this.position = position;
-	}
-	public String getSuperVisor() {
-		return superVisor;
-	}
-	public void setSuperVisor(String superVisor) {
-		this.superVisor = superVisor;
 	}
 	public String getEmployeeId() {
 		return employeeId;
@@ -112,6 +104,18 @@ public class ExperienceDto {
 	}
 	public void setEmployeeCode(String employeeCode) {
 		this.employeeCode = employeeCode;
+	}
+	public String getReference() {
+		return reference;
+	}
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+	public String getResponsibility() {
+		return responsibility;
+	}
+	public void setResponsibility(String responsibility) {
+		this.responsibility = responsibility;
 	}
 	
 }

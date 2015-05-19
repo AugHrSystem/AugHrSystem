@@ -42,8 +42,9 @@ public class ExperienceDaoImpl extends GenericDaoImpl<Experience, Integer> imple
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<ExperienceDto> searchExperience(){
-		Query namedQuery = getCurrentSession().getNamedQuery("searchExperience");
+	public List<ExperienceDto> searchExperience(Integer id){
+		Query namedQuery = getCurrentSession().getNamedQuery("searchExperience").setInteger("empId" ,id);
+		//namedQuery.executeUpdate();
 		List<ExperienceDto> expDto = namedQuery.list();
 	     return expDto;
 	}

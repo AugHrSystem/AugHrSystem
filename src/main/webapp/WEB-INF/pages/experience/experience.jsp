@@ -47,11 +47,11 @@
 				<tr>
 					<th>Id</th>
 					<th>Company Name</th>
-					<th>Business</th>
+					<th>Business Type</th>
 					<th>Position</th>
 					<th>Date From</th>
 					<th>Date To</th>
-					<th>Supervisor</th>
+					<th>Reference</th>
 					<th>Employee Code</th>
 					<th></th>
 					<th></th>
@@ -84,13 +84,18 @@
   			<input type="text" class="form-control" id="cName" placeholder="Enter Company Name">
   		</div>
   		<div class="form-group">
-  			<label>Business :</label>
-  			<input type="text" class="form-control" id="business" placeholder="Enter Business">
+  			<label>Business Type:</label>
+  			<input type="text" class="form-control" id="businessType" placeholder="Enter Business Type">
   		</div>
   		
       	<div class="form-group">
       		<label>Position :</label>
   			<input type="text" class="form-control" id="position" placeholder="Enter Position">
+		</div>
+		
+		<div class="form-group">
+      		<label>Salary :</label>
+  			<input type="text" class="form-control" id="salary" placeholder="Enter Salary">
 		</div>
 		
   		<div class="form-group">
@@ -107,12 +112,17 @@
   		</div>
   		
 		<div class="form-group">
-  			<label>Description :</label>
-  			<input type="text" class="form-control" id="description" placeholder="Enter Description">
+  			<label>Responsibility :</label>
+  			<input type="text" class="form-control" id="responsibility" placeholder="Enter Responsibility">
   		</div>
   		<div class="form-group">
-  			<label>Supervisor :</label>
-  			<input type="text" class="form-control" id="supervisor" placeholder="Enter Supervisor Name">
+  			<label>Reference :</label>
+  			<input type="text" class="form-control" id="reference" placeholder="Enter Reference Name">
+  		</div>
+  		
+  		<div class="form-group">
+  			<label>Reason of Resignation:</label>
+  			<input type="text" class="form-control" id="reason" placeholder="Enter Reason of Resignation">
   		</div>
         
 		<!-- <div class="form-group">
@@ -193,13 +203,15 @@ var dt;
     				type : "POST",
     				data : JSON.stringify({
     					 companyName: $("#cName").val(),
-    					 business: $("#business").val(),
+    					 businessType: $("#businessType").val(),
     					 position: $("#position").val(),
+    					 salary: $("#salary").val(),
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
-    					 description: $("#description").val(),
+    					 responsibility: $("#responsibility").val(),
     					 superVisor: $("#supervisor").val(),
     					 address: $("#address").val(),
+    					 reason: $("#reason").val(),
     					 employee: {id: 2 }
     					}),
     				datatype: "json",
@@ -239,13 +251,15 @@ var dt;
 					data : JSON.stringify({
 						 id: expId,
 						 companyName: $("#cName").val(),
-    					 business: $("#business").val(),
+    					 businessType: $("#businessType").val(),
     					 position: $("#position").val(),
+    					 salary: $("#salary").val(),
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
-    					 description: $("#description").val(),
-    					 superVisor: $("#supervisor").val(),
+    					 responsibility: $("#responsibility").val(),
+    					 reference: $("#reference").val(),
     					 address: $("#address").val(),
+    					 reason: $("#reason").val(),
     					 employee: {id: 2 }
 					 }),
 					datatype: "json",
@@ -282,14 +296,17 @@ var dt;
 					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
 					type : "POST",
 					success : function(data) {
+						id:expId;
 						$("#cName").val(data.name);
-						$("#business").val(data.business);
+						$("#businessType").val(data.businessType);
 						$("#position").val(data.position);
+						$("#salary").val(data.salary);
 						$("#dataFrom").val(data.dateFrom);
 						$("#dateTo").val(data.dateTo);
-						$("#description").val(data.description);
-						$("#supervisor").val(data.superVisor);
+						$("#responsibility").val(data.responsibility);
+						$("#reference").val(data.reference);
 						$("#address").val(data.address);
+						$("#reason").val(data.reason);
 						employee: {id: 2 };
 					},
 					error : function(data,testStatus,jqXHR) {
@@ -333,17 +350,20 @@ var dt;
       	});
 			
 			function listAll(){
-				alert("list");
+				
+				alert("list experience");
+				var id = getUrlParameter('Id');
+				alert("id >>>>"+id);
 				$.ajax({
-					url : "${pageContext.request.contextPath}/experience/listAll",
-					data: "id="+2,
+					url : "${pageContext.request.contextPath}/experience/listAll/"+id,
+					/* data: "id="+getUrlParameter('Id'), */
 					type : "POST",
 					success : function(data) {
 					dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].id,data[i].companyName,data[i].business, 
+						dt.fnAddData([data[i].id,data[i].companyName,data[i].businessType, 
 						              data[i].position,data[i].dateFrom,data[i].dateTo,
-						              data[i].superVisor,data[i].employeeCode,
+						              data[i].reference,data[i].employeeCode,
 							'<button type="button" class="btn btn-warning btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
@@ -353,6 +373,28 @@ var dt;
 						$("#outputajax").text(testStatus);
 						}
 					}); 
+				
+				function getUrlParameter(sParam)
+				{
+					//alert("url "+document.referrer);
+				    var sPageURL = document.referrer;
+				    var sURLVariables = sPageURL.split('?');
+				    var sParameterName;
+				    //alert("spilt "+sURLVariables);
+
+				   	
+				    
+				    sParameterName = sURLVariables[1].split('=');
+				    //alert("Param "+parseInt(sParameterName[1]));
+				    if (sParameterName[0] == sParam) 
+				        {
+				        	//alert("Param "+sParameterName[0]);
+				        	return sParameterName[1];
+				        	
+				        }
+				        //alert("Param2 "+parseInt(sParameterName[1]));
+				    
+				}     
 			}
     	
   	});

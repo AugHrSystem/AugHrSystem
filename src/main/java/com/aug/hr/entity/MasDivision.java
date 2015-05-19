@@ -9,6 +9,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -36,7 +37,7 @@ public class MasDivision extends BaseEntity{
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
 	
-	@OneToMany(mappedBy = "masDivision")
+	@OneToMany(mappedBy = "masDivision",fetch=FetchType.EAGER)
 	private Set<Employee> employees;
 	
 	/*---------------------- getter / setter ----------------------*/

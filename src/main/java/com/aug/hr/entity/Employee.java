@@ -212,7 +212,6 @@ public class Employee extends BaseEntity{
 	
 	
 //------------------self relation-------------------
-	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="id")
 	private Employee aimempid;
@@ -265,8 +264,9 @@ public class Employee extends BaseEntity{
 	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
 	 private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();
 		  
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name= "EMPLOYMENT_ID")
+    @JsonIgnore
     private MasEmployment masEmployment;
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
@@ -276,11 +276,13 @@ public class Employee extends BaseEntity{
     private Set<Reference> references = new HashSet<Reference>();
     
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name= "DIVISION_ID", nullable = false)
+    @JoinColumn(name= "DIVISION_ID", referencedColumnName="id",nullable = false)
+    @JsonIgnore
     private MasDivision masDivision;
     
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name= "JOBLEVEL_ID", nullable = false)
+    @JoinColumn(name= "JOBLEVEL_ID", referencedColumnName="id",nullable = false)
+    @JsonIgnore
     private MasJoblevel masJoblevel;
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
@@ -302,6 +304,8 @@ public class Employee extends BaseEntity{
     @JoinColumn(name= "LOCATION_ID")
     private MasLocation masLocation;
     
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    private Set<Probation> probations = new HashSet<Probation>();
    
     
 	 //-------------------------------------- getter setter --------------------------------------------------//
@@ -961,15 +965,15 @@ public class Employee extends BaseEntity{
 	}
 
 
-
-	public MasJoblevel getJoblevel() {
-		return masJoblevel;
+	
+	public Set<History> getHistories() {
+		return histories;
 	}
 
 
 
-	public void setJoblevel(MasJoblevel masJoblevel) {
-		this.masJoblevel = masJoblevel;
+	public void setHistories(Set<History> histories) {
+		this.histories = histories;
 	}
 
 
@@ -1034,6 +1038,14 @@ public class Employee extends BaseEntity{
 
 	public void setMasStaffType(MasStaffType masStaffType) {
 		this.masStaffType = masStaffType;
+	}
+	
+	public Set<Probation> getProbations() {
+		return probations;
+	}
+
+	public void setProbations(Set<Probation> probations) {
+		this.probations = probations;
 	}
 	 
 	

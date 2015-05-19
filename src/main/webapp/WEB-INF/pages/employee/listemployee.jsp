@@ -170,7 +170,7 @@ var empId;
 			type : "POST",
 			success : function(data) {
 				
-				window.location = "http://localhost:8080/AugHrSystem/employee?Id="+empId;
+				window.location = "http://localhost:8080/AugHrSystem?Id="+empId;
 				alert("emp id:"+ empId);
 				//editEmployee(); 
 

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.hr.dto.services.ExperienceDtoService;
@@ -53,10 +54,10 @@ public class ExperienceController {
 //		return (List<Experience>) experienceService.findByCriteria(experience);
 //	}
 	
-	@RequestMapping(value ="/experience/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<ExperienceDto> listAll(){
-
-		return (List<ExperienceDto>) experienceDtoService.searchExperience();
+	@RequestMapping(value ="/experience/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<ExperienceDto> listAll(@PathVariable("id") Integer id){
+		
+		return (List<ExperienceDto>) experienceDtoService.searchExperience(id);
 	}
 	
 	@RequestMapping(value ="/experience/testAjax/{string}", method = {RequestMethod.GET, RequestMethod.POST})

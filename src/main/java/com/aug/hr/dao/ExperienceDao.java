@@ -11,5 +11,5 @@ public interface ExperienceDao extends GenericDao<Experience, Integer>{
 
 	public void deleteById(Integer id);
 
-	public List<ExperienceDto> searchExperience();
+	public List<ExperienceDto> searchExperience(Integer id);
 }
