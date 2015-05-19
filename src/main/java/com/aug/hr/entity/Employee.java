@@ -6,8 +6,10 @@
 
 package com.aug.hr.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -23,6 +25,7 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -247,7 +250,7 @@ public class Employee extends BaseEntity{
 
 	@Column(name = "ADDRESS_ID",nullable = true)
 	@OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
-	private Set<Address> addresses = new HashSet<Address>();
+	private List<Address> addresses = new ArrayList<Address>();
 
 	 
 	 @OneToOne(fetch=FetchType.LAZY)
@@ -260,6 +263,9 @@ public class Employee extends BaseEntity{
 	 
 	 @OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
 	 private Set<History> histories = new HashSet<History>();
+
+	 /*@OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
+	 private Set<GetPosition> getPositions = new HashSet<GetPosition>();*/
 
 	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade=CascadeType.ALL, orphanRemoval=true)
 	 private Set<MasCoreSkill> masCoreSkill = new HashSet<MasCoreSkill>();
@@ -307,8 +313,17 @@ public class Employee extends BaseEntity{
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
     private Set<Probation> probations = new HashSet<Probation>();
    
+    @Transient
+    private String status;
     
-	 //-------------------------------------- getter setter --------------------------------------------------//
+    
+   @Transient
+   private Integer masCoreSkillId;
+    
+   
+   @Transient
+   private Integer technologyId;
+ //-------------------------------------- getter setter --------------------------------------------------//
 
 	public Integer getId() {
 		return id;
@@ -861,15 +876,13 @@ public class Employee extends BaseEntity{
 	}
 
 
-	public Set<Address> getAddresses() {
+	public List<Address> getAddresses() {
 		return addresses;
 	}
 
-
-	public void setAddresses(Set<Address> addresses) {
+	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
 	}
-
 
 	public Official getOfficial() {
 		return official;
@@ -1032,6 +1045,87 @@ public class Employee extends BaseEntity{
 		this.masLocation = masLocation;
 	}
 
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Integer getMasCoreSkillId() {
+		return masCoreSkillId;
+	}
+
+	public void setMasCoreSkillId(Integer masCoreSkillId) {
+		this.masCoreSkillId = masCoreSkillId;
+	}
+
+	public Integer getTechnologyId() {
+		return technologyId;
+	}
+
+	public void setTechnologyId(Integer technologyId) {
+		this.technologyId = technologyId;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", employeeCode=" + employeeCode
+				+ ", nameThai=" + nameThai + ", surnameThai=" + surnameThai
+				+ ", nicknameThai=" + nicknameThai + ", nameEng=" + nameEng
+				+ ", surnameEng=" + surnameEng + ", nicknameEng=" + nicknameEng
+				+ ", telHome=" + telHome + ", telMobile=" + telMobile
+				+ ", telFax=" + telFax + ", emergencyContact="
+				+ emergencyContact + ", relationshipWithEmergencyContact="
+				+ relationshipWithEmergencyContact
+				+ ", emergencyContactAddress=" + emergencyContactAddress
+				+ ", emergencyContactPhoneNumber="
+				+ emergencyContactPhoneNumber + ", dateOfBirth=" + dateOfBirth
+				+ ", placeOfBirth=" + placeOfBirth + ", age=" + age
+				+ ", religion=" + religion + ", idCard=" + idCard
+				+ ", issuedOffice=" + issuedOffice + ", expiryDate="
+				+ expiryDate + ", height=" + height + ", weigth=" + weigth
+				+ ", sex=" + sex + ", maritalStatus=" + maritalStatus
+				+ ", numberOfChildren=" + numberOfChildren + ", spouseName="
+				+ spouseName + ", marriageCertificateNo="
+				+ marriageCertificateNo + ", issuedOffice2=" + issuedOffice2
+				+ ", address=" + address + ", occupation=" + occupation
+				+ ", knowAugNewspaper=" + knowAugNewspaper
+				+ ", descriptionNewspaper=" + descriptionNewspaper
+				+ ", knowAugMagazine=" + knowAugMagazine
+				+ ", descriptionMagazine=" + descriptionMagazine
+				+ ", knowAugWebsite=" + knowAugWebsite
+				+ ", descriptionWebsite=" + descriptionWebsite
+				+ ", knowAugFriend=" + knowAugFriend + ", descriptionFriend="
+				+ descriptionFriend + ", knowAugOther=" + knowAugOther
+				+ ", descriptionOther=" + descriptionOther
+				+ ", knowEmployedYes=" + knowEmployedYes + ", descriptionYes="
+				+ descriptionYes + ", knowEmployerNo=" + knowEmployerNo
+				+ ", militaryServiceYes=" + militaryServiceYes + ", fromYear="
+				+ fromYear + ", toYear=" + toYear + ", branchOfService="
+				+ branchOfService + ", serviceNo=" + serviceNo
+				+ ", militaryServiceNo=" + militaryServiceNo + ", reasonsNo="
+				+ reasonsNo + ", dateToBeDrafted=" + dateToBeDrafted
+				+ ", previousEmployerYes=" + previousEmployerYes
+				+ ", previousEmployerNo=" + previousEmployerNo
+				+ ", previousEmpreasonsNo=" + previousEmpreasonsNo
+				+ ", addresses=" + addresses + ", official=" + official
+				+ ", educations=" + educations + ", masCoreSkill="
+				+ masCoreSkill + ", masEmployment=" + masEmployment
+				+ ", abilities=" + abilities + ", references=" + references
+				+ ", masDivision=" + masDivision + ", masJoblevel="
+				+ masJoblevel + ", experiences=" + experiences
+				+ ", technology=" + technology + ", families=" + families
+				+ ", masLocation=" + masLocation + ", status=" + status
+				+ ", masCoreSkillId=" + masCoreSkillId + ", technologyId="
+				+ technologyId + "]";
+	}
+
+	
+
 	public MasStaffType getMasStaffType() {
 		return masStaffType;
 	}
@@ -1049,6 +1143,9 @@ public class Employee extends BaseEntity{
 	}
 	 
 	
+	
+	
+
 	
 	
 	 
