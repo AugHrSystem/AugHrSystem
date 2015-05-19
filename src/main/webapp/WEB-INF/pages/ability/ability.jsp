@@ -192,9 +192,9 @@ $(document).ready(function(){
 		$.ajax({
 			url : "${pageContext.request.contextPath}/ability/add",
 			data : JSON.stringify({
-				masspecialty : {id:$("#masspecialty").val(), name:$("#masspecialty option:selected").text()},
+				masspecialty : {id:$("#masspecialty").val()},
 				rank : $("#rank").val(),
-				//employee : {id:2},
+				employee : {id:2},
 			}),
 			type : "POST",
 			contentType : "application/json",

@@ -35,11 +35,11 @@ public class Ability extends BaseEntity  {
 	 private Official official;*/
 	
 	@ManyToOne
-	@JoinColumn(name = "EMPLOYEE_ID")
+	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
 	private Employee employee;
 	
 	@ManyToOne
-	@JoinColumn(name = "SPECIALTY_ID")
+	@JoinColumn(name = "SPECIALTY_ID",nullable = false,referencedColumnName="SPEC_ID")
 	private MasSpecialty masspecialty;
 
 	public Integer getId() {
