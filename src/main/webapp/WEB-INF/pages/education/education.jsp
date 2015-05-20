@@ -215,7 +215,7 @@
 					faculty :$("#faculty").val(),
 					major :$("#major").val(),
 					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
-				
+					employee : {id:2},
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -262,7 +262,7 @@
 					faculty :$("#faculty").val(),
 					major :$("#major").val(),
 					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
-					
+					employee : {id:2},
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -330,8 +330,9 @@
 		}
 		
 		function listAll(){
+			var id = getUrlParameter('Id');
 			$.ajax({
-				url : "${pageContext.request.contextPath}/education/listAll",
+				url : "${pageContext.request.contextPath}/education/listAll/"+id,
 				type : "POST",
 				success : function(data) {
 					dt.fnClearTable();
@@ -348,6 +349,29 @@
 				}
 			}); 
 		}
+		
+		
+		function getUrlParameter(sParam)
+		{
+			//alert("url "+document.referrer);
+		    var sPageURL = document.referrer;
+		    var sURLVariables = sPageURL.split('?');
+		    var sParameterName;
+		    //alert("spilt "+sURLVariables);
+
+		   	
+		    
+		    sParameterName = sURLVariables[1].split('=');
+		    //alert("Param "+parseInt(sParameterName[1]));
+		    if (sParameterName[0] == sParam) 
+		        {
+		        	//alert("Param "+sParameterName[0]);
+		        	return sParameterName[1];
+		        	
+		        }
+		        //alert("Param2 "+parseInt(sParameterName[1]));
+		    
+		}     
 		
 	});
 	

@@ -11,13 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.hr.dto.services.EducationDtoService;
 import com.aug.hr.entity.Education;
+import com.aug.hr.entity.dto.EducationDto;
 import com.aug.hr.services.EducationService;
 import com.aug.hr.services.MasDegreetypeService;
 
@@ -27,6 +30,8 @@ public class EducationController {
 	@Autowired
 	private EducationService educationService;
 
+	@Autowired private EducationDtoService educationDtoService;
+	
 	@Autowired
 	private MasDegreetypeService masDegreetypeService;
 
@@ -44,12 +49,20 @@ public class EducationController {
 		return educationService.findByCriteria(education);
 	}*/
 
-	@RequestMapping(value ="/education/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+	/*@RequestMapping(value ="/education/listAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<Education> listAll(){
 		Education education = new Education();
 		education.setMajor("");
 		return educationService.findByCriteria(education);
+	}*/
+	
+	
+	@RequestMapping(value ="/education/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<EducationDto> listAll(@PathVariable("id") Integer id){
+		
+		return (List<EducationDto>) educationDtoService.searchEducation(id);
 	}
+	
 	
 	@RequestMapping(value = "/education/add", method = RequestMethod.POST)
 	public @ResponseBody Education addEducation(@RequestBody Education education) {

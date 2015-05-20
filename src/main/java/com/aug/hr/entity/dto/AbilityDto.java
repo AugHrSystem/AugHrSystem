@@ -22,19 +22,12 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchAbility",
-			query="select ability.id,ability.rank,ability.employee_id,emp.employee_code from emp_ability as ability ,emp_employee as emp, mas_specialty where ability.employee_id=emp.id and mas_specialty.SPEC_ID = ability.SPECIALTY_ID",
+			query="select ability.id,ability.rank,mas_specialty.name,ability.employee_id,emp.employee_code from emp_ability as ability ,emp_employee as emp, mas_specialty where ability.employee_id=:empId and ability.employee_id = emp.id and mas_specialty.SPEC_ID = ability.specialty_id",
 			resultClass = AbilityDto.class)
 			
 	
 	
-	/*select ability.id,ability.rank,ability.employee_id, from emp_ability as ability,emp_employee as employee where ability.employee_id=emp.id ; 
-
-	select ability.id,ability.rank,ability.employee_id, from emp_ability as ability,emp_employee as employee where ability.employee_id=emp.id; 
-
 	
-	UPDATE table_name
-	SET column1=value1,column2=value2,...
-	WHERE some_column=some_value;*/
 	
 })
 
@@ -45,11 +38,10 @@ public class AbilityDto {
 	private Integer id;
 	@Column(name = "RANK",nullable = false)
 	private Integer rank;
-	@Column(name = "SPECIALTY_ID")
-	private Integer masspecialty;
+	@Column(name = "NAME")
+	private String masspecialty;
 	@Column(name ="EMPLOYEE_ID")
-	private String employeeId;
-	
+	private String employeeId;	
 	@Column(name = "EMPLOYEE_CODE")
 	private String employeeCode;
 
@@ -85,13 +77,14 @@ public class AbilityDto {
 		this.employeeCode = employeeCode;
 	}
 
-	public Integer getMasspecialty() {
+	public String getMasspecialty() {
 		return masspecialty;
 	}
 
-	public void setMasspecialty(Integer masspecialty) {
+	public void setMasspecialty(String masspecialty) {
 		this.masspecialty = masspecialty;
 	}
+
 
 
 	

@@ -8,12 +8,14 @@ package com.aug.hr.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.AbilityDao;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.dto.AbilityDto;
 import com.mysql.jdbc.StringUtils;
 
 @Repository
@@ -38,6 +40,14 @@ public class AbilityDaoImpl extends GenericDaoImpl<Ability,Integer> implements A
 		Ability ability =(Ability)getCurrentSession().load(Ability.class, id);
 		getCurrentSession().delete(ability);
 		return ability;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<AbilityDto> searchAbility(Integer id) {
+		Query namedQuery = getCurrentSession().getNamedQuery("searchAbility").setInteger("empId" ,id);
+		//namedQuery.executeUpdate();
+		List<AbilityDto> abiDto = namedQuery.list();
+	     return abiDto;
 	}
 
 	

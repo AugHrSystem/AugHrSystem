@@ -192,7 +192,7 @@ $(document).ready(function(){
 		$.ajax({
 			url : "${pageContext.request.contextPath}/ability/add",
 			data : JSON.stringify({
-				masspecialty : {id:$("#masspecialty").val()},
+				masspecialty : {id:$("#masspecialty").val(), name:$("#masspecialty option:selected").text()},
 				rank : $("#rank").val(),
 				employee : {id:2},
 			}),
@@ -261,7 +261,7 @@ function updateAbility(button,abilityid) {
 				name : $("#masspecialty option:selected").text()
 			},
 			rank : $("#rank").val(),
-			
+			employee : {id:2},
 		}),
 
 		type : "POST",
@@ -309,13 +309,16 @@ function deleteAbility(button,abilityid) {
 		});
 }
 function listAll(){
-		$.ajax({
-			url : "${pageContext.request.contextPath}/ability/listAll",
+	var id=2;
+	//var id = getUrlParameter('Id');
+	alert("id >>>>"+id);	
+	$.ajax({
+			url : "${pageContext.request.contextPath}/ability/listAll/"+id,
 			type : "POST",
 			success : function(data) {
 				dt.fnClearTable();
 			for (var i=0;i< data.length; i++) {
-				dt.fnAddData([data[i].masspecialty.name,data[i].rank,
+				dt.fnAddData([data[i].masspecialty,data[i].rank,
 					'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 					'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 		
@@ -335,7 +338,27 @@ function clearModal(){
 	
 	
 	
+ function getUrlParameter(sParam)
+{
+	//alert("url "+document.referrer);
+    var sPageURL = document.referrer;
+    var sURLVariables = sPageURL.split('?');
+    var sParameterName;
+    //alert("spilt "+sURLVariables);
 
+   	
+    
+    sParameterName = sURLVariables[1].split('=');
+    //alert("Param "+parseInt(sParameterName[1]));
+    if (sParameterName[0] == sParam) 
+        {
+        	//alert("Param "+sParameterName[0]);
+        	return sParameterName[1];
+        	
+        }
+        //alert("Param2 "+parseInt(sParameterName[1]));
+    
+}      
 	
 	
 });

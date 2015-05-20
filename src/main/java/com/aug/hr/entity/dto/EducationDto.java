@@ -18,7 +18,7 @@ import com.aug.hr.entity.MasDegreetype;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchEducation",
-			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,edu.masdegreetype,edu.employee_id,edu.employee_code from emp_education as edu,emp_employee as emp where edu.employee_id=emp.id",
+			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,mas_degreetype.name,edu.employee_id,emp.employee_code from emp_education as edu,emp_employee as emp,mas_degreetype where edu.employee_id=:empId  and edu.employee_id = emp.id and mas_degreetype.id = edu.degreetype_id",																																																																					
 			resultClass = EducationDto.class)
 			
 })
@@ -37,8 +37,8 @@ public class EducationDto {
 	private String faculty;
 	@Column(name = "MAJOR" ,nullable =false)
 	private String major;
-	@Column(name = "DEGREETYPE_ID" )
-	private Integer masdegreetype;
+	@Column(name = "NAME" )
+	private String masdegreetype;
 	@Column(name ="EMPLOYEE_ID")
 	private String employeeId;
 	
@@ -86,11 +86,13 @@ public class EducationDto {
 	}
 
 	
-	public Integer getMasdegreetype() {
+	
+
+	public String getMasdegreetype() {
 		return masdegreetype;
 	}
 
-	public void setMasdegreetype(Integer masdegreetype) {
+	public void setMasdegreetype(String masdegreetype) {
 		this.masdegreetype = masdegreetype;
 	}
 
