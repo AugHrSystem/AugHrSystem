@@ -45,6 +45,11 @@
 	<thead>
 		<tr>
 			<th>Position</th>
+			<th>Salary</th>
+			<th>Old Salary</th>
+			<th>Date Of Adjustment</th>
+			<th>Reason Of Adjustment</th>
+			<th>Adjustment Time</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -78,32 +83,31 @@
 	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position"/>
 	  </div>
 	  
-	  <%-- <div class="form-group">
-	    <label>Company :</label>
-	    <form:input path="company" type="text" class="form-control" id="company" placeholder="Enter Company"/>
-	  </div>
-	  
 	  <div class="form-group">
 	    <label>Salary :</label>
 	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary"/>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Time :</label>
-	    <form:input path="time" type="text" class="form-control" id="time" placeholder="Enter Time"/>
-	  </div> --%>
+	    <label>Old Salary :</label>
+	    <form:input path="oldSalary" type="text" class="form-control" id="oldSalary" placeholder="Enter Old Salary"/>
+	  </div>
 	  
-	 <%--  <div class="form-group">
-	    <label>Degree :</label>
-	    
-		  <form:select path="masdegreetype" class="form-control"
-			id="masdegreetype">
-			<form:option value="-1" label="---Select Degree---" />
-			<c:forEach var="obj" items="${ masdegreetypeList }">
-				<option value="${obj.id }">${ obj.name}</option>
-			</c:forEach>
-		</form:select>
-	  </div> --%>
+	  <div class="form-group">
+	    <label>Date Of Adjustment :</label>
+	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment"/>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label>Reason Of Adjustment :</label>
+	    <form:input path="reasonOfAdjustment" type="text" class="form-control" id="reasonOfAdjustment" placeholder="Enter Reason Of Adjustment"/>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label>Adjustment Time :</label>
+	    <form:input path="adjustmentTime" type="text" class="form-control" id="adjustmentTime" placeholder="Enter Adjustment Time"/>
+	  </div>
+	  
 
       </div>
       
@@ -153,6 +157,16 @@
 	var dt;
 	
 	$(document).ready(function(){
+		
+		var date1 = $( "#dateOfAdjustment" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd-mm-yyyy",
+			todayHighlight : true
+		});
+		
 		dt = $('#tbResult').dataTable();
 		listAll();
 		
@@ -207,10 +221,12 @@
 				url : "${pageContext.request.contextPath}/history/add",
 				data : JSON.stringify({
 					position : $("#position").val(),
-					/* company :$("#company").val(),
 					salary :$("#salary").val(),
-					time :$("#time").val(), */
-				
+					oldSalary :$("#oldSalary").val(),
+					dateOfAdjustment :$("#dateOfAdjustment").val(),
+					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
+					adjustmentTime :$("#adjustmentTime").val(),
+					employee: {id: 2 }
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -228,6 +244,11 @@
 						$("#Price").val(),
 						$("#Description").val(), */
 						data.position,
+						data.salary,
+						data.oldSalary,
+						data.dateOfAdjustment,
+						data.reasonOfAdjustment,
+						data.adjustmentTime,
 						/* data.company,
 						data.salary,
 						data.time, */
@@ -252,6 +273,12 @@
 				data : JSON.stringify({
 					id : historyid,
 					position : $("#position").val(),
+					salary :$("#salary").val(),
+					oldSalary :$("#oldSalary").val(),
+					dateOfAdjustment :$("#dateOfAdjustment").val(),
+					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
+					adjustmentTime :$("#adjustmentTime").val(),
+					employee: {id: 2 }
 					/* company :$("#company").val(),
 					salary :$("#salary").val(),
 					time :$("#time").val(), */
@@ -266,6 +293,11 @@
 					var tr = button.closest("tr")
 					
 					dt.fnUpdate(data.position,tr,0);
+					dt.fnUpdate(data.salary,tr,1);
+					dt.fnUpdate(data.oldSalary,tr,2);
+					dt.fnUpdate(data.dateOfAdjustment,tr,3);
+					dt.fnUpdate(data.reasonOfAdjustment,tr,4);
+					dt.fnUpdate(data.adjustmentTime,tr,5);
 					/* dt.fnUpdate(data.company, tr ,1);
 					dt.fnUpdate(data.salary, tr ,2);
 					dt.fnUpdate(data.time, tr ,3); */
@@ -287,6 +319,12 @@
 	 				//alert(JSON.stringify(data));
 					//alert("ok");
 					$("#position").val(data.position);
+					("#salary").val(data.salary);
+					("#oldSalary").val(data.oldSalary);
+					("#dateOfAdjustment").val(data.dateOfAdjustment);
+					("#reasonOfAdjustment").val(data.reasonOfAdjustment);
+					("#adjustmentTime").val(data.adjustmentTime);
+					/* employee: {id: data.position } */
 					/* $("#company").val(data.company),
 					$("#salary").val(data.salary),
 					$("#time").val(data.time); */
@@ -328,8 +366,8 @@
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
 					dt.fnAddData([data[i].position,
-					              /* data[i].company,data[i].salary, 
-					              data[i].time, */
+					              data[i].salary,data[i].oldSalary, 
+					              data[i].dateOfAdjustment,data[i].reasonOfAdjustment,data[i].adjustmentTime,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
