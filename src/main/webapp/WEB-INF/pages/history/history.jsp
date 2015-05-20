@@ -20,6 +20,11 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+<!-- Date Picker -->
+<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
+<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+
+
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
@@ -28,6 +33,11 @@
 
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
+
+<style>
+.datepicker{z-index:1151 !important;}
+
+</style>
 
 </head>
 <body>
@@ -319,11 +329,12 @@
 	 				//alert(JSON.stringify(data));
 					//alert("ok");
 					$("#position").val(data.position);
-					("#salary").val(data.salary);
-					("#oldSalary").val(data.oldSalary);
-					("#dateOfAdjustment").val(data.dateOfAdjustment);
-					("#reasonOfAdjustment").val(data.reasonOfAdjustment);
-					("#adjustmentTime").val(data.adjustmentTime);
+					$("#salary").val(data.salary);
+					$("#oldSalary").val(data.oldSalary);
+					$("#dateOfAdjustment").val(data.dateOfAdjustment);
+					$("#reasonOfAdjustment").val(data.reasonOfAdjustment);
+					$("#adjustmentTime").val(data.adjustmentTime);
+					employee: {id: data.employeeId };
 					/* employee: {id: data.position } */
 					/* $("#company").val(data.company),
 					$("#salary").val(data.salary),
@@ -358,7 +369,7 @@
 			});
 		}
 		
-		function listAll(){
+		/* function listAll(){
 			$.ajax({
 				url : "${pageContext.request.contextPath}/history/listAll",
 				type : "POST",
@@ -377,7 +388,53 @@
 					alert("ERROR");
 				}
 			}); 
+		} */
+		
+		function listAll(){
+			
+			var id = getUrlParameter('Id');
+			alert("id >>>>"+id);
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/history/listAll/"+id,
+				type : "POST",
+				success : function(data) {
+					dt.fnClearTable();
+				for (var i=0;i< data.length; i++) {
+					dt.fnAddData([data[i].position,
+					              data[i].salary,data[i].oldSalary, 
+					              data[i].dateOfAdjustment,data[i].reasonOfAdjustment,data[i].adjustmentTime,
+						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+			
+					}
+				},
+				error : function() {
+					alert("ERROR");
+				}
+			}); 
 		}
+		
+		function getUrlParameter(sParam)
+		{
+			//alert("url "+document.referrer);
+		    var sPageURL = document.referrer;
+		    var sURLVariables = sPageURL.split('?');
+		    //alert("spilt "+sURLVariables);
+
+		   	
+		    
+		    var sParameterName = sURLVariables[1].split('=');
+		    //alert("Param "+parseInt(sParameterName[1]));
+		    if (sParameterName[0] == sParam) 
+		        {
+		        	//alert("Param "+sParameterName[0]);
+		        	return sParameterName[1];
+		        	
+		        }
+		        //alert("Param2 "+parseInt(sParameterName[1]));
+		    
+		}   
 		
 	});
 	

@@ -18,13 +18,17 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.hr.dto.services.HistoryDtoService;
 import com.aug.hr.entity.History;
+import com.aug.hr.entity.dto.ExperienceDto;
+import com.aug.hr.entity.dto.HistoryDto;
 import com.aug.hr.services.HistoryService;
 
 @Controller
@@ -32,6 +36,9 @@ public class HistoryController {
 
 	@Autowired
 	private HistoryService historyService;
+	
+	@Autowired
+	private HistoryDtoService historyDtoService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -42,18 +49,23 @@ public class HistoryController {
 	
 	@RequestMapping(value = "/history", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String list(ModelMap model) {
-		System.out.println("ddddddddddddddddd");
+	public String init(ModelMap model) {
 		return "history/history";
 	}
 	
 
-	@RequestMapping(value ="/history/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value ="/history/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<HistoryDto> listAll(@PathVariable("id") Integer id){
+		
+		return (List<HistoryDto>) historyDtoService.searchHistory(id);
+	}
+	
+	/*@RequestMapping(value ="/history/listAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<History> listAll(){
 		History historyid = new History();
 		historyid.setPosition("");
 		return historyService.findByCriteria(historyid);
-	}
+	}*/
 	
 	@RequestMapping(value = "/history/add", method = RequestMethod.POST)
 	public @ResponseBody History addHistory(@RequestBody History historyid) {
