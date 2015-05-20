@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+//import com.aug.hr.dto.services.ReferenceDtoService;
 import com.aug.hr.entity.Reference;
+import com.aug.hr.entity.dto.EmployeeDto;
+//import com.aug.hr.entity.dto.ReferenceDto;
 import com.aug.hr.entity.editor.ReferenceEditor;
 import com.aug.hr.services.ReferenceService;
 
@@ -31,6 +35,8 @@ public class ReferenceController {
 	private ReferenceService referenceService;
 	@Autowired
 	private ReferenceEditor referenceEditor;
+	@Autowired
+//	private ReferenceDtoService referenceDtoService;
 //	@Autowired
 //	private ReferenceValidator referenceValidator;
 	
@@ -43,7 +49,17 @@ public class ReferenceController {
 //		binder.registerCustomEditor(Date.class, editor);
 //		binder.registerCustomEditor(Reference.class, referenceEditor);		
 //	}
+	
+
 //	
+//	@RequestMapping(value = "/reference/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+//	public @ResponseBody List<ReferenceDto> listAll() {
+//		//Reference reference = new Reference();
+//	
+//		return (List<ReferenceDto>) referenceDtoService.searchReference();
+//	}
+//	
+
 	@RequestMapping(value = "/reference", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("referenceList", referenceService.findAll());
