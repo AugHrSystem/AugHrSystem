@@ -295,11 +295,13 @@ public class Employee extends BaseEntity{
     @JsonIgnore
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
-	 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
-    private Set<MasTechnology> technology = new HashSet<MasTechnology>();
+	
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name= "TECHNOLOGY_ID", referencedColumnName="id",nullable = false)
+    private MasTechnology technology;
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade=CascadeType.ALL,orphanRemoval=true)
+    
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<Family> families = new HashSet<Family>(); 
     
     @ManyToOne
@@ -1027,11 +1029,12 @@ public class Employee extends BaseEntity{
 		this.masJoblevel = masJoblevel;
 	}
 
-	public Set<MasTechnology> getTechnology() {
+
+	public MasTechnology getTechnology() {
 		return technology;
 	}
 
-	public void setTechnology(Set<MasTechnology> technology) {
+	public void setTechnology(MasTechnology technology) {
 		this.technology = technology;
 	}
 
@@ -1068,7 +1071,22 @@ public class Employee extends BaseEntity{
 		this.technologyId = technologyId;
 	}
 
+	public MasStaffType getMasStaffType() {
+		return masStaffType;
+	}
+
+	public void setMasStaffType(MasStaffType masStaffType) {
+		this.masStaffType = masStaffType;
+	}
 	
+	public Set<Probation> getProbations() {
+		return probations;
+	}
+
+	public void setProbations(Set<Probation> probations) {
+		this.probations = probations;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", employeeCode=" + employeeCode
@@ -1110,42 +1128,18 @@ public class Employee extends BaseEntity{
 				+ ", previousEmployerYes=" + previousEmployerYes
 				+ ", previousEmployerNo=" + previousEmployerNo
 				+ ", previousEmpreasonsNo=" + previousEmpreasonsNo
+				+ ", aimempid=" + aimempid + ", staffs=" + staffs
 				+ ", addresses=" + addresses + ", official=" + official
-				+ ", educations=" + educations + ", masCoreSkill="
-				+ masCoreSkill + ", masEmployment=" + masEmployment
-				+ ", abilities=" + abilities + ", references=" + references
-				+ ", masDivision=" + masDivision + ", masJoblevel="
-				+ masJoblevel + ", experiences=" + experiences
-				+ ", technology=" + technology + ", families=" + families
-				+ ", masLocation=" + masLocation + ", status=" + status
-				+ ", masCoreSkillId=" + masCoreSkillId + ", technologyId="
-				+ technologyId + "]";
+				+ ", educations=" + educations + ", histories=" + histories
+				+ ", masCoreSkill=" + masCoreSkill + ", masEmployment="
+				+ masEmployment + ", abilities=" + abilities + ", references="
+				+ references + ", masDivision=" + masDivision
+				+ ", masJoblevel=" + masJoblevel + ", experiences="
+				+ experiences + ", technology=" + technology + ", families="
+				+ families + ", masStaffType=" + masStaffType
+				+ ", masLocation=" + masLocation + ", probations=" + probations
+				+ ", status=" + status + ", masCoreSkillId=" + masCoreSkillId
+				+ ", technologyId=" + technologyId + "]";
 	}
-
-	
-
-	public MasStaffType getMasStaffType() {
-		return masStaffType;
-	}
-
-	public void setMasStaffType(MasStaffType masStaffType) {
-		this.masStaffType = masStaffType;
-	}
-	
-	public Set<Probation> getProbations() {
-		return probations;
-	}
-
-	public void setProbations(Set<Probation> probations) {
-		this.probations = probations;
-	}
-	 
-	
-	
-	
-
-	
-	
-	 
 	 
 }

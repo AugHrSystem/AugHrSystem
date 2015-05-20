@@ -25,6 +25,7 @@ Link
 	http://localhost:8080/AugHrSystem/getposition
 	http://localhost:8080/AugHrSystem/reference
 	http://localhost:8080/AugHrSystem/reward
+	http://localhost:8080/AugHrSystem/family
 
 [![Build
 Status](https://travis-ci.org/AugHrSystem/AugHrSystem.svg)](https://travis-ci.org/AugHrSystem/AugHrSystem)
