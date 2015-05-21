@@ -25,12 +25,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Ability;
+import com.aug.hr.dto.services.AimEmployeeDtoService;
+import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.dto.EmployeeDto;
-import com.aug.hr.entity.dto.ExperienceDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
@@ -39,8 +41,10 @@ import com.aug.hr.services.MasAddressTypeService;
 import com.aug.hr.services.MasCoreSkillService;
 import com.aug.hr.services.MasDivisionService;
 import com.aug.hr.services.MasEmploymentService;
+import com.aug.hr.services.MasLocationService;
 import com.aug.hr.services.MasProvinceService;
 import com.aug.hr.services.MasSpecialtyService;
+import com.aug.hr.services.MasStaffTypeService;
 import com.aug.hr.services.masTechnologyService;
 
 @Controller
@@ -57,8 +61,11 @@ public class EmployeeController {
 	@Autowired private masTechnologyService masTechnologyService;
 	@Autowired private MasCoreSkillService masCoreSkillService;
 	@Autowired private JoblevelService joblevelService;
+	@Autowired private MasLocationService masLocationService;
+	@Autowired private MasStaffTypeService masStaffTypeService;
 	@Autowired private AddressEditor addressEditor;
 	@Autowired private EmployeeDtoService employeeDtoService;
+	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
 	
 	
 	
@@ -84,8 +91,6 @@ public class EmployeeController {
 			RequestMethod.POST})
 	public String listAll(HttpSession session,Locale locale, ModelMap model){
 		model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
-		//model.addAttribute("technologyList",technologyEmpService.findAll());
-		
 		//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 		model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 		model.addAttribute("provinceList",masProvinceService.findAll());
@@ -95,6 +100,10 @@ public class EmployeeController {
 		model.addAttribute("technologyList", masTechnologyService.findAll());
 		model.addAttribute("coreskillList",masCoreSkillService.findAll());
 		model.addAttribute("joblevelList",joblevelService.findAll());
+		model.addAttribute("locationList",masLocationService.findAll());
+		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
+		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+		
 		//return "/employee/employee";
 		return "/employee/employee";
 	}
@@ -106,12 +115,12 @@ public class EmployeeController {
 
 	}
 	
-	
-	@RequestMapping(value ="/employee/listEmployeeAim", method = {RequestMethod.GET, RequestMethod.POST})
+
+	/*@RequestMapping(value ="/employee/listEmployeeAim", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<Employee> listEmployeeAim(){
 		return (List<Employee>)employeeService.listEmployeeAim();
 	}
-	
+	*/
 	
 	//Add	
 	@RequestMapping(value = "/employee/add", method = RequestMethod.POST )

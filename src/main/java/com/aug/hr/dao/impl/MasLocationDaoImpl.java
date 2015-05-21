@@ -12,7 +12,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.MasLocationDao;
-
 import com.aug.hr.entity.MasLocation;
 import com.mysql.jdbc.StringUtils;
 
@@ -27,7 +26,7 @@ public class MasLocationDaoImpl  extends GenericDaoImpl<MasLocation,Integer> imp
 	}
 	
 	
-	@Override
+	@SuppressWarnings("unchecked")
 	public List<MasLocation> findByCriteria(MasLocation masLocation) {
 		Criteria c = getCurrentSession().createCriteria(MasLocation.class);
 		if (!StringUtils.isNullOrEmpty(masLocation.getName())) {
@@ -36,7 +35,7 @@ public class MasLocationDaoImpl  extends GenericDaoImpl<MasLocation,Integer> imp
 		return c.list();
 	}
 
-	@Override
+	
 	public MasLocation deleteById(Integer id) {
 		MasLocation masLocation =(MasLocation)getCurrentSession().load(MasLocation.class, id);
 		getCurrentSession().delete(masLocation);

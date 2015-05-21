@@ -584,8 +584,21 @@
     						
 						</div>
 						
+						
+						<div class="col-md-3">
+    						<label>Staff Type :</label>
+    						
+    						<f:select  path="masStaffType.id"  class="form-control">
+    						
+	    						<f:option  value="-1" label="--Select Staff Type--" />
+	  							<f:options items="${ staffTypeList }"  itemValue="id" itemLabel="name" />
+	    						
+								
+							</f:select>
+    						
   				</div>
 			
+	    </div>
 	    </div>
 	    
 	    <div class="col-md-12">
@@ -609,6 +622,7 @@
     						
     						 <f:select  path="masCoreSkillId"  class="form-control">
     						 
+    						 	<f:option  value="-1" label="--Select Core Skill--" />
 	  							 <f:options items="${ coreskillList }"  itemValue="id" itemLabel="name" /> 
 	    						 
 								
@@ -644,10 +658,18 @@
 	      <div class="col-md-12">
 	         
 				<div class="form-group">
-						<div class="col-md-3">
+				
+				<div class="col-md-3">
+				<label> AIM :</label>
+								<div class="checkbox">
+     								<label><input type="checkbox" name="isAIM">isAIM</label>
+								</div>
+			</div>
+				<div class="form-group">
+					
     				<label>AIM :</label>
     				
-    				<%--  <f:select  path="aim.id"  class="form-control">
+    				<%--  <f:select  path="aimempid"  class="form-control">
     						 
     						 <f:option  value="-1" label="--Select AIM--" />
   							 <f:options items="${ aimList }"  itemValue="id" itemLabel="name" />
@@ -655,21 +677,13 @@
 								
 							</f:select>  --%>
     				
-    				
-    				<select path="aim" id="aim" class="form-control">
-								<options items="${ aimList }" itemLabel="aimname" itemValue="aimid"/> 
-								<option value="-1">--AIM--</option>
-								<forEach var="obj" items="${ aimList }">${obj}
-									<option value="${obj.aimid}">${obj.aimname}</option>
-								</forEach>
-					</select>
 						</div>
   				</div>
 			
 	    </div>
 	    
+	    
 	     <div class="col-md-12">
-	         
 				<div class="form-group">
 						<div class="col-md-3">
 						
@@ -678,6 +692,7 @@
 						
 						</div>
   				</div>
+			</div>
 			
 			
 			<div align="center">
@@ -685,7 +700,7 @@
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
     			<button type="submit" class="btn btn-primary">Save&Continue</button>
 	    	</div>
-	    </div>
+	    
 	</div>
 </f:form>   
     

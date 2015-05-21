@@ -9,6 +9,7 @@ package com.aug.hr.dao;
 import java.util.List;
 
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.dto.AimEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 
 public interface EmployeeDao extends GenericDao<Employee, Integer>{
@@ -19,5 +20,5 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 
 	public List<EmployeeDto> searchEmployee();
 	
-	public List<Employee> listEmployeeAim();
+	public List<AimEmployeeDto> listEmployeeAim();
 }

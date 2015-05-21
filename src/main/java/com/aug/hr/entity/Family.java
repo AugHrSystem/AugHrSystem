@@ -32,10 +32,10 @@ public class Family extends BaseEntity implements Serializable {
 	private Integer age;
 	private String mobile;
 	private String address;
-	private String occupation;
-	private String position;
+	private String occupation; 
+	private String position; 
 	private Employee employee;
-	private MasRelationType masRelation;
+	private MasRelationType masRelationType;
 	@Transient
 	private String relationName;
 	@Transient
@@ -157,12 +157,12 @@ public class Family extends BaseEntity implements Serializable {
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="MASRELATION_ID",nullable=false)
 	public MasRelationType getMasRelation() {
-		return masRelation;
+		return masRelationType;
 	}
 
 
 	public void setMasRelation(MasRelationType masRelation) {
-		this.masRelation = masRelation;
+		this.masRelationType = masRelation;
 	}
 	
 	
@@ -235,7 +235,7 @@ public class Family extends BaseEntity implements Serializable {
 		builder.append(", employee=");
 		builder.append(employee);
 		builder.append(", masRelation=");
-		builder.append(masRelation);
+		builder.append(masRelationType);
 		builder.append(", relationName=");
 		builder.append(relationName);
 		builder.append(", status=");

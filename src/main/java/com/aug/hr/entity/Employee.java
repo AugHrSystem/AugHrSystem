@@ -20,15 +20,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 
 
@@ -280,6 +277,7 @@ public class Employee extends BaseEntity{
     @JsonIgnore
     private Set<Reference> references = new HashSet<Reference>();
     
+
     @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
     private Set<Punish> punishs  = new HashSet<Punish>();
     
@@ -291,16 +289,19 @@ public class Employee extends BaseEntity{
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "JOBLEVEL_ID", referencedColumnName="id",nullable = false)
 //    @JsonIgnore
+
+ 
     private MasJoblevel masJoblevel;
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
     @JsonIgnore
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
-	
+
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "TECHNOLOGY_ID", referencedColumnName="id",nullable = false)
  //   @JsonIgnore
+
     private MasTechnology technology;
     
     
@@ -312,9 +313,11 @@ public class Employee extends BaseEntity{
 //    @JsonIgnore
     private MasStaffType masStaffType;
 
+
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "LOCATION_ID")
 //    @JsonIgnore
+
     private MasLocation masLocation;
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)

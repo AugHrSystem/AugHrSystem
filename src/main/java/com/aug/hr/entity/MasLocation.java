@@ -12,6 +12,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -24,8 +25,8 @@ import javax.persistence.Table;
 public class MasLocation extends BaseEntity {
 
 	@Id
-	@Column(name="ID")
 	@GeneratedValue
+	@Column(name="ID")
 	private Integer id;
 	
 	@Column(name = "NAME", nullable = false, length = 200)
@@ -39,7 +40,7 @@ public class MasLocation extends BaseEntity {
 	
 	
 	
-	@OneToMany(mappedBy = "masLocation")
+	@OneToMany(mappedBy = "masLocation",fetch=FetchType.EAGER)
 	private Set<Employee> employees = new HashSet<Employee>();
 	
 	

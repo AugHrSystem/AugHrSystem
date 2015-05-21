@@ -8,6 +8,9 @@ package com.aug.hr.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
@@ -17,9 +20,16 @@ import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.dto.AimEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.mysql.jdbc.StringUtils;
 
+@NamedNativeQueries({
+	@NamedNativeQuery(
+            name = "searchEmployee",
+            query = "select emp.id as id, emp.employee_code as employeeCode, emp.name_eng as nameEng, emp.surname_eng as surnameEng from emp_employee as emp", 
+            resultClass = EmployeeDto.class)
+  })
 @Repository
 public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implements EmployeeDao{
 
@@ -58,10 +68,11 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Employee> listEmployeeAim() {
-		Query namedQuery2 = getCurrentSession().getNamedQuery("listEmployeeAim");
-		List<Employee> emp = namedQuery2.list();
-		return emp;
+	public List<AimEmployeeDto> listEmployeeAim() {
+		Query aimnamedQuery = getCurrentSession().getNamedQuery("listEmployeeAim");
+		List<AimEmployeeDto> aimemp = aimnamedQuery.list();
+		return aimemp;
 	}
 }
