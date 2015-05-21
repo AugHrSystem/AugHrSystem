@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "EMP_EDUCATION")
 public class Education extends BaseEntity{
@@ -39,11 +41,12 @@ public class Education extends BaseEntity{
 	@JoinColumn(name="OFFICIAL_ID")
 	private Official official;*/
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",referencedColumnName="id" , nullable = false)
+//	@JsonIgnore
 	private Employee employee;
 	
-	@ManyToOne()
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "DEGREETYPE_ID", nullable = false)
 	private MasDegreetype masdegreetype;
 

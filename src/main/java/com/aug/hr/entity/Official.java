@@ -34,7 +34,7 @@ public class Official {
 		private Double salaryExpected;
 	    
 		
-		 @OneToOne(fetch=FetchType.LAZY, mappedBy="official")
+		 @OneToOne(fetch=FetchType.EAGER, mappedBy="official")
 		 private Employee empOfficial;
 
 		 

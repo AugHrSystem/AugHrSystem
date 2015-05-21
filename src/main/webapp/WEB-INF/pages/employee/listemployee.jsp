@@ -32,22 +32,7 @@
 			<li role="presentation" class="active"><a href="#">Home</a></li>
  			<li role="presentation"><a href="employee.jsp" data-toggle="modal">Add Employee</a></li>
 		</ol> -->
-		
-		
-		<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="http://localhost:8080/AugHrSystem/listemployee">listemployee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/employee">employee</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/family">family</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/education">education</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/experience">experience</a></li> 
-  <li role="presentation" ><a href="http://localhost:8080/AugHrSystem/ability">ability</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reference">reference</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/reward">reward</a></li>
-  <li role="presentation"><a href="http://localhost:8080/AugHrSystem/history">history</a></li>
-</ul>
-		
-		
-		
+				
 		<h2>Employee</h2>
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
@@ -68,7 +53,7 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-	<form action="http://localhost:8080/AugHrSystem/employee">
+	<form action="javascript:initEditEmployee(0);">
 		<button type="button submit" class="btn btn-primary btn-md addEmployee">
  	 	Add
 		</button>
@@ -165,12 +150,13 @@ var empId;
 	/* --------------------------------------------------- EditFunction --------------------------------------------------- */		
 		function initEditEmployee(empId) {
 		alert(empId+" Init edit");
-		$.ajax({
+		window.location = "${pageContext.request.contextPath}/employee?Id="+empId;
+	/* 	$.ajax({
 			url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,
-			type : "POST",
+			type : "GET",
 			success : function(data) {
 				
-				window.location = "${pageContext.request.contextPath}?Id="+empId;
+				window.location = "${pageContext.request.contextPath}/?Id="+empId;
 				alert("emp id:"+ empId);
 				//editEmployee(); 
 
@@ -178,7 +164,7 @@ var empId;
 			error : function(data,testStatus,jqXHR) {
 				$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 				}
-			});
+			}); */
 	}
 	
 	function editEmployee() {

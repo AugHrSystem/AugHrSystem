@@ -41,7 +41,7 @@ public class Address extends BaseEntity{
 	private Integer provinceId;
    
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "EMPLOYEE_ID")
     private Employee employee;
 	

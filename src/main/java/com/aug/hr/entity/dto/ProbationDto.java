@@ -1,41 +1,40 @@
-package com.aug.hr.entity;
+package com.aug.hr.entity.dto;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+@NamedNativeQueries({
+	@NamedNativeQuery(
+            name = "searchProbation",
+            query = "select pro.id, pro.date_from, pro.date_to, pro.status, emp.employee_code from emp_probation as pro, emp_employee as emp where pro.employee_id=:empId and emp.id = pro.employee_id", 
+            resultClass = ProbationDto.class)
+  })
 @Entity
-@Table(name = "EMP_PROBATION")
-public class Probation extends BaseEntity{
-	
+public class ProbationDto {
 	@Id
-	@GeneratedValue
-	@Column(name = "ID")
+	@Column(name ="ID")
 	private Integer id;
-	@Column(name = "DATE_FROM")
+	@Column(name ="DATE_FROM")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateFrom;
-	@Column(name = "DATE_TO")
+	@Column(name ="DATE_TO")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateTo;
 	@Column(name = "STATUS")
 	private String status;
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id", nullable=false)
-	private Employee employee;
+	@Column(name = "EMPLOYEE_CODE")
+	private String employeeCode;
 	public Integer getId() {
 		return id;
 	}
@@ -60,13 +59,12 @@ public class Probation extends BaseEntity{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Employee getEmployee() {
-		return employee;
+	public String getEmployeeCode() {
+		return employeeCode;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
 	}
 	
 	
-
 }
