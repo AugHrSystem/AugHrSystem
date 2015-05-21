@@ -9,6 +9,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,6 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "EMP_HISTORY")
@@ -48,8 +50,9 @@ public class History extends BaseEntity{
 	@Column(name = "ADJUSTMENT_TIME")
 	private Integer adjustmentTime;
 	
-	@ManyToOne()
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName="id", nullable=false)
+//	@JsonIgnore
 	private Employee employee;
 
 	public Integer getId() {

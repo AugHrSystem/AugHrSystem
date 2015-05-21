@@ -7,12 +7,15 @@ package com.aug.hr.entity;
 
 
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -34,12 +37,15 @@ public class Ability extends BaseEntity  {
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
 	
-	@ManyToOne
+
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
+//	@JsonIgnore
 	private Employee employee;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "SPECIALTY_ID",nullable = false,referencedColumnName="SPEC_ID")
+//	@JsonIgnore
 	private MasSpecialty masspecialty;
 
 	public Integer getId() {

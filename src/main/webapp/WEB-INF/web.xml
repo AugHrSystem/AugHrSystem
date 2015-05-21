@@ -18,6 +18,16 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- <filter>
+	    <filter-name>OpenSessionInViewFilter</filter-name>
+	    <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+	    <filter-name>OpenSessionInViewFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+ -->
 	<!-- Config spring dispatcher -->
 	<servlet>
 		<servlet-name>spring</servlet-name>

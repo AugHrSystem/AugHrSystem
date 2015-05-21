@@ -2,11 +2,14 @@ package com.aug.hr.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -32,8 +35,9 @@ public class Reward extends BaseEntity{
 	private Boolean isActive;
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "EMPLOYEE_ID")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "EMPLOYEE_ID",nullable = false)
+//	@JsonIgnore
 	private Employee employee;
 
 	

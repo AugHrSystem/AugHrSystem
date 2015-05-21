@@ -36,14 +36,14 @@ public class ExperienceDaoTest {
 		Date dateTo = new Date("10/11/2014");
 		experience.setAddress("22/224 Bangkok, Thailand");
 		experience.setAuditFlag("C");
-		experience.setBusiness("IT");
+		experience.setBusinessType("IT");
 		experience.setCompanyName("LogicSpace co.,th");
 		experience.setCreatedTimeStamp(calendar.getTime());
 		experience.setDateFrom(dateFrom);
 		experience.setDateFrom(dateTo);
-		experience.setDescription("Worked 3 months");
+		experience.setPosition("JAVA Consultant");
 		experience.setId(1);
-		experience.setSuperVisor("Natechanok K.");
+		experience.setReference("Natechanok K.");
 		//experience.setEmployee(null);
 		experienceDao.getCurrentSession().save(experience);
 	}
@@ -51,7 +51,7 @@ public class ExperienceDaoTest {
 	@Test
 	public void updateExperience(){
 		Experience experience = (Experience) experienceDao.getCurrentSession().get(Experience.class, 3);
-		experience.setBusiness("SAP");
+		experience.setBusinessType("SAP");
 		experienceDao.getCurrentSession().update(experience);
 	}
 	

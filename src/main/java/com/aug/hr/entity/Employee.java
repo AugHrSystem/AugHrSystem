@@ -213,8 +213,8 @@ public class Employee extends BaseEntity{
 	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="id")
 	private Employee aimempid;
 	
-	@OneToMany(mappedBy="aimempid", fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
-	@JsonIgnore
+	@OneToMany(mappedBy="aimempid", fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
+//	@JsonIgnore
 	private Set<Employee> staffs = new HashSet<Employee>();
 	
 	
@@ -244,7 +244,8 @@ public class Employee extends BaseEntity{
 
 
 	@Column(name = "ADDRESS_ID",nullable = true)
-	@OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<Address> addresses = new ArrayList<Address>();
 
 	 
@@ -253,63 +254,70 @@ public class Employee extends BaseEntity{
 	 private Official official;
 	 
 	 
-	 @OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
+	 @OneToMany(mappedBy = "employee",fetch=FetchType.LAZY)
+	 @JsonIgnore
 	 private Set<Education> educations = new HashSet<Education>();
 	 
-	 @OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
+	 @OneToMany(mappedBy = "employee",fetch=FetchType.LAZY)
+	 @JsonIgnore
 	 private Set<History> histories = new HashSet<History>();
 	 
-	 @ManyToOne(fetch=FetchType.LAZY)
+	 @ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name= "MAS_CORE_SKILL_ID")
-	 @JsonIgnore
+//	 @JsonIgnore
 	 private MasCoreSkill masCoreSkill;
 	 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "EMPLOYMENT_ID")
-    @JsonIgnore
+//    @JsonIgnore
     private MasEmployment masEmployment;
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @JsonIgnore
     private Set<Ability> abilities = new HashSet<Ability>();
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @JsonIgnore
     private Set<Reference> references = new HashSet<Reference>();
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
     private Set<Punish> punishs  = new HashSet<Punish>();
     
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "DIVISION_ID", referencedColumnName="id",nullable = false)
-    @JsonIgnore
+//    @JsonIgnore
     private MasDivision masDivision;
     
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "JOBLEVEL_ID", referencedColumnName="id",nullable = false)
-    @JsonIgnore
+//    @JsonIgnore
     private MasJoblevel masJoblevel;
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
     @JsonIgnore
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
 	
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "TECHNOLOGY_ID", referencedColumnName="id",nullable = false)
+ //   @JsonIgnore
     private MasTechnology technology;
     
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<Family> families = new HashSet<Family>(); 
     
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "STAFFTYPE_ID")
+//    @JsonIgnore
     private MasStaffType masStaffType;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "LOCATION_ID")
+//    @JsonIgnore
     private MasLocation masLocation;
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private Set<Probation> probations = new HashSet<Probation>();
    
     @Transient

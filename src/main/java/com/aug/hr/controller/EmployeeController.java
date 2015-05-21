@@ -5,12 +5,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -22,9 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import com.aug.hr.dto.services.EmployeeDtoService;
-
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
@@ -43,7 +44,9 @@ import com.aug.hr.services.MasSpecialtyService;
 import com.aug.hr.services.masTechnologyService;
 
 @Controller
+@Transactional
 public class EmployeeController {
+	@Resource(name="employeeService")
 	@Autowired private EmployeeService employeeService;
 	@Autowired private MasSpecialtyService masSpecialtyService;
 	@Autowired private AddressService addressService;
@@ -126,11 +129,28 @@ public class EmployeeController {
 		}
 	
 	//InitEdit
-	@RequestMapping(value = "/employee/initEdit/{empId}", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody Employee initEditEmployee(@PathVariable("empId") Integer empId) {	
-		return employeeService.findById(empId);
-	}
+//	@RequestMapping(value = "/employee/initEdit/{empId}", method = { RequestMethod.GET, RequestMethod.POST })
+//	@Transactional
+//	public @ResponseBody Employee initEditEmployee(@PathVariable("empId") Integer empId, Model model) {	
+//		Employee employee = employeeService.findById(empId);
+//		
+//		
+//		model.addAttribute("asdfaf",new Employee());
+//		
+//		Employee user = new Employee();
+//		
+//		user.setId(employee.getId());
+//		user.setName(employee.getName());
+//		
+//		return employee;
+//	}
 	
+	@RequestMapping(value = "/employee/{empId}",method =  RequestMethod.GET )
+	public String initEditEmployee(@PathVariable Integer empId, Model model) {	
+		Employee employee=employeeService.findById(empId);
+		model.addAttribute("employee", employee);
+		return "/employee/employee";
+	}
 	//edit
 	@RequestMapping(value = "/employee/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Employee editEmployee(@RequestBody Employee emp) {

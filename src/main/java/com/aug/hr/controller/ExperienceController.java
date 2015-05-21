@@ -11,6 +11,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -76,12 +77,14 @@ public class ExperienceController {
 	}
 	
 	//InitEdit
+	@Transactional
 	@RequestMapping(value = "/experience/initEdit/{expId}", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Experience initEditExperience(@PathVariable("expId") Integer expId) {	
 		return experienceService.find(expId);
 	}
 	
 	//edit
+	@Transactional
 	@RequestMapping(value = "/experience/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Experience editExperience(@RequestBody Experience exp) {
 		experienceService.update(exp);
