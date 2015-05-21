@@ -43,6 +43,7 @@
 		<mapping class="com.aug.hr.entity.MasSkillLanguage" />
 		<mapping class="com.aug.hr.entity.SkillLanguage" />
 		<mapping class="com.aug.hr.entity.Probation" />
+		<mapping class="com.aug.hr.entity.Punish" />
 
 
 	</session-factory>

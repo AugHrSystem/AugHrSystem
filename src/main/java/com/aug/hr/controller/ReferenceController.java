@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,11 +53,10 @@ public class ReferenceController {
 	
 
 	
-	@RequestMapping(value = "/reference/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<ReferenceDto> listAll() {
-		//Reference reference = new Reference();
-	
-		return (List<ReferenceDto>) referenceDtoService.searchReference();
+	@RequestMapping(value = "/reference/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
+		//Reference reference = new Reference();	
+		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
 	}
 	
 

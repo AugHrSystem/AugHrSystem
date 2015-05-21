@@ -17,8 +17,8 @@ public class ReferenceDtoService {
 	
 	@Autowired private ReferenceDao referenceDao;
 	
-	public List<ReferenceDto> searchReference(){
-		return referenceDao.searchReference();
+	public List<ReferenceDto> searchReference(Integer id){
+		return referenceDao.searchReference(id);
 	}
 
 }

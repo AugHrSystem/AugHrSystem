@@ -30,12 +30,6 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-@NamedNativeQueries({
-	@NamedNativeQuery(
-            name = "listEmployeeAim",
-            query = "select emp.id, emp.name_eng from EMP_EMPLOYEE as emp where AIM_EMP_ID is null", 
-            resultClass = Employee.class)
-  })
 
 
 @Entity
@@ -280,6 +274,9 @@ public class Employee extends BaseEntity{
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
     private Set<Reference> references = new HashSet<Reference>();
+    
+    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    private Set<Punish> punishs  = new HashSet<Punish>();
     
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name= "DIVISION_ID", referencedColumnName="id",nullable = false)
@@ -1086,6 +1083,15 @@ public class Employee extends BaseEntity{
 	public void setProbations(Set<Probation> probations) {
 		this.probations = probations;
 	}
+	
+	
+	public Set<Punish> getPunishs() {
+		return punishs;
+	}
+
+	public void setPunishs(Set<Punish> punishs) {
+		this.punishs = punishs;
+	}
 
 	@Override
 	public String toString() {
@@ -1133,13 +1139,15 @@ public class Employee extends BaseEntity{
 				+ ", educations=" + educations + ", histories=" + histories
 				+ ", masCoreSkill=" + masCoreSkill + ", masEmployment="
 				+ masEmployment + ", abilities=" + abilities + ", references="
-				+ references + ", masDivision=" + masDivision
-				+ ", masJoblevel=" + masJoblevel + ", experiences="
-				+ experiences + ", technology=" + technology + ", families="
-				+ families + ", masStaffType=" + masStaffType
+				+ references + ", punishs=" + punishs + ", masDivision="
+				+ masDivision + ", masJoblevel=" + masJoblevel
+				+ ", experiences=" + experiences + ", technology=" + technology
+				+ ", families=" + families + ", masStaffType=" + masStaffType
 				+ ", masLocation=" + masLocation + ", probations=" + probations
 				+ ", status=" + status + ", masCoreSkillId=" + masCoreSkillId
 				+ ", technologyId=" + technologyId + "]";
 	}
+
+
 	 
 }

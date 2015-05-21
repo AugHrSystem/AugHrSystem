@@ -10,7 +10,7 @@ public interface ReferenceDao extends GenericDao<Reference, Integer>{
 
 	public List<Reference> findByCriteria(Reference reference);
 	public Reference deleteById(Integer id);
-	public List<ReferenceDto> searchReference();
+	public List<ReferenceDto> searchReference(Integer id);
 	
 	
 	

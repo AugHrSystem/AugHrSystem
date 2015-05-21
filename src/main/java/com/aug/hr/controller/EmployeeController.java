@@ -105,7 +105,7 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value ="/employee/listEmployeeAim", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<Employee> listEmployeeAiml(){
+	public @ResponseBody List<Employee> listEmployeeAim(){
 		return (List<Employee>)employeeService.listEmployeeAim();
 	}
 	

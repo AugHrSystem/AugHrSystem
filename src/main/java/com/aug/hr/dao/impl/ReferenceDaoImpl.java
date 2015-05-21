@@ -43,11 +43,16 @@ public class ReferenceDaoImpl extends GenericDaoImpl<Reference, Integer> impleme
 			return reference;
 		}
 
+		
+		
+		
+		
+		@SuppressWarnings("unchecked")
 		@Override
-		public List<ReferenceDto> searchReference() {
-		    Query   nQuery = getCurrentSession().getNamedQuery("searchReferent");
-			List<ReferenceDto> refDto = nQuery.list();
-			return refDto;
+		public List<ReferenceDto> searchReference(Integer id) {
+			 Query   nQuery = getCurrentSession().getNamedQuery("searchReferent").setInteger("empId" ,id);
+				List<ReferenceDto> refDto = nQuery.list();
+				return refDto;
 		}
 		
 		
