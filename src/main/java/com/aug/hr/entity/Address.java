@@ -16,6 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 @Entity
 @Table(name = "EMP_ADDRESS")
@@ -43,15 +48,21 @@ public class Address extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "EMPLOYEE_ID")
+	@JsonBackReference
+//	@JsonIgnore
     private Employee employee;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "ADDRESSTYPE_ID")
+	@JsonBackReference
+//	@JsonIgnore
     private MasAddressType addressType;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "PROVINCE_ID")
+	@JsonBackReference
+//	@JsonIgnore
     private MasProvince province;
 	
 	

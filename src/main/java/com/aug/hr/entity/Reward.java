@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -37,6 +38,7 @@ public class Reward extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false)
+	@JsonBackReference
 //	@JsonIgnore
 	private Employee employee;
 

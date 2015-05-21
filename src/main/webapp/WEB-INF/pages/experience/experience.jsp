@@ -198,6 +198,7 @@ var dt;
     		});
     		
     		function addExperience() {
+    			var id = getUrlParameter('Id');
     			$.ajax({
     				url : "${pageContext.request.contextPath}/experience/add",
     				type : "POST",
@@ -212,7 +213,7 @@ var dt;
     					 superVisor: $("#supervisor").val(),
     					 address: $("#address").val(),
     					 reason: $("#reason").val(),
-    					 employee: {id: 2 }
+    					 employee: {id: id }
     					}),
     				datatype: "json",
     				contentType: "application/json",
@@ -242,6 +243,34 @@ var dt;
     					}
     				});
     		}
+    		
+    		function initEditExperience(expId) {
+				alert(expId+" Init edit");
+				$.ajax({
+					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
+					type : "POST",
+					success : function(data) {
+						id:expId;
+						$("#cName").val(data.name);
+						$("#businessType").val(data.businessType);
+						$("#position").val(data.position);
+						$("#salary").val(data.salary);
+						$("#dataFrom").val(data.dateFrom);
+						$("#dateTo").val(data.dateTo);
+						$("#responsibility").val(data.responsibility);
+						$("#reference").val(data.reference);
+						$("#address").val(data.address);
+						$("#reason").val(data.reason);
+						employee: {id: data.employeeId };
+					},
+					error : function(data,testStatus,jqXHR) {
+						$('#addModal').modal('toggle');
+						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+						}
+					});
+			}
+			
+			
     		
     		function editExperience() {
     			alert(expId+" edit");
@@ -290,33 +319,7 @@ var dt;
 					});
 			}
 			
-			function initEditExperience(expId) {
-				alert(expId+" Init edit");
-				$.ajax({
-					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
-					type : "POST",
-					success : function(data) {
-						//id:expId;
-						$("#cName").val(data.name);
-						$("#businessType").val(data.businessType);
-						$("#position").val(data.position);
-						$("#salary").val(data.salary);
-						$("#dataFrom").val(data.dateFrom);
-						$("#dateTo").val(data.dateTo);
-						$("#responsibility").val(data.responsibility);
-						$("#reference").val(data.reference);
-						$("#address").val(data.address);
-						$("#reason").val(data.reason);
-						employee: {id: data.employeeId };
-					},
-					error : function(data,testStatus,jqXHR) {
-						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-						}
-					});
-			}
-			
-			});
+     		});
 			
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
@@ -373,27 +376,28 @@ var dt;
 						$("#outputajax").text(testStatus);
 						}
 					}); 
-				
-				function getUrlParameter(sParam)
-				{
-					//alert("url "+document.referrer);
-				    var sPageURL = document.referrer;
-				    var sURLVariables = sPageURL.split('?');
-				    //alert("spilt "+sURLVariables);
+				     
+			}
+			
+			function getUrlParameter(sParam)
+			{
+				//alert("url "+document.referrer);
+			    var sPageURL = document.referrer;
+			    var sURLVariables = sPageURL.split('?');
+			    //alert("spilt "+sURLVariables);
 
-				   	
-				    
-				    var sParameterName = sURLVariables[1].split('=');
-				    //alert("Param "+parseInt(sParameterName[1]));
-				    if (sParameterName[0] == sParam) 
-				        {
-				        	//alert("Param "+sParameterName[0]);
-				        	return sParameterName[1];
-				        	
-				        }
-				        //alert("Param2 "+parseInt(sParameterName[1]));
-				    
-				}     
+			   	
+			    
+			    var sParameterName = sURLVariables[1].split('=');
+			    //alert("Param "+parseInt(sParameterName[1]));
+			    if (sParameterName[0] == sParam) 
+			        {
+			        	//alert("Param "+sParameterName[0]);
+			        	return sParameterName[1];
+			        	
+			        }
+			        //alert("Param2 "+parseInt(sParameterName[1]));
+			    
 			}
     	
   	});

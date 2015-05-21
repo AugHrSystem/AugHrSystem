@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 
@@ -31,8 +32,9 @@ public class MasSpecialty extends BaseEntity{
 	@Column(name = "ISACTIVE")
 	private Boolean isActive;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "masspecialty")
+	@JsonManagedReference
 	private Set<Ability> abilities;
 
 	public Integer getId() {

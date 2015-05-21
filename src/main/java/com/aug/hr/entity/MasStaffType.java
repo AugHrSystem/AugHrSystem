@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="MAS_STAFFTYPE")
@@ -66,6 +68,7 @@ public class MasStaffType extends BaseEntity{
 	}
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "masStaffType")
+    @JsonManagedReference
 	public Set<Employee> getEmployee() {
 		return employee;
 	}

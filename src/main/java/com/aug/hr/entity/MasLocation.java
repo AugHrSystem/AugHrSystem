@@ -18,6 +18,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 @Entity
@@ -40,7 +42,8 @@ public class MasLocation extends BaseEntity {
 	
 	
 	
-	@OneToMany(mappedBy = "masLocation",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "masLocation")
+	@JsonManagedReference
 	private Set<Employee> employees = new HashSet<Employee>();
 	
 	

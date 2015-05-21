@@ -69,7 +69,7 @@ public class ProbationController {
 	//InitEdit
 	@RequestMapping(value = "/probation/initEdit/{proId}", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Probation initEditProbation(@PathVariable("proId") Integer proId) {	
-		return probationService.find(proId);
+		return (Probation) probationService.find(proId);
 	}
 	
 	//edit

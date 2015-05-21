@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -40,11 +41,13 @@ public class Ability extends BaseEntity  {
 
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
+ @JsonBackReference
 //	@JsonIgnore
 	private Employee employee;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "SPECIALTY_ID",nullable = false,referencedColumnName="SPEC_ID")
+	@JsonBackReference
 //	@JsonIgnore
 	private MasSpecialty masspecialty;
 

@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "MAS_PROVINCE")
 public class MasProvince extends BaseEntity {
@@ -31,6 +33,7 @@ public class MasProvince extends BaseEntity {
 	
 	
 	@OneToMany(mappedBy = "province")
+	@JsonManagedReference
 	private Set<Address> addresss;
 
 	public Integer getId() {

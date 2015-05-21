@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="MAS_ADDRESSTYPE")
@@ -69,6 +71,7 @@ public class MasAddressType extends BaseEntity{
 	}
 	
 	 @OneToMany(mappedBy = "addressType")
+	 @JsonManagedReference
 	 private Set<Address> addresses = new HashSet<Address>();
 	
 }

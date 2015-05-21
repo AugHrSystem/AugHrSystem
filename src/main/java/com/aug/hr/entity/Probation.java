@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -35,6 +36,7 @@ public class Probation extends BaseEntity{
 	private String status;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id", nullable=false)
+	@JsonBackReference
 	private Employee employee;
 	public Integer getId() {
 		return id;

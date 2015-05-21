@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -156,6 +157,7 @@ public class Family extends BaseEntity implements Serializable {
    
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="MASRELATION_ID",nullable=false)
+    @JsonBackReference
 	public MasRelationType getMasRelation() {
 		return masRelationType;
 	}
@@ -168,6 +170,7 @@ public class Family extends BaseEntity implements Serializable {
 	
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="EMPLOYEE_ID",nullable=false)
+    @JsonBackReference
  //   @JsonIgnore
 	public Employee getEmployee() {
 		return employee;

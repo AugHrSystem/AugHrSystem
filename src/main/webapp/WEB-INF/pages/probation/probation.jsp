@@ -201,8 +201,28 @@ var dt;
     				});
     		}
     		
+    		function initEditProbation(proId) {
+				alert(proId+" Init edit");
+				$.ajax({
+					url : "${pageContext.request.contextPath}/probation/initEdit/"+proId,
+					type : "POST",
+					success : function(data) {
+						id:data.id;
+						$("#dataFrom").val(data.dateFrom);
+						$("#dateTo").val(data.dateTo);
+						$("#status :selected").text(data.status);
+						employee: {id: data.employeeId };
+					},
+					error : function(data,testStatus,jqXHR) {
+						$('#addModal').modal('toggle');
+						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+						}
+					});
+			}
+    		
     		function editProbation() {
     			alert(proId+" edit");
+    			var id = getUrlParameter('Id');
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/edit",
 					type : "POST",
@@ -211,7 +231,7 @@ var dt;
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 status: $("#status option:selected").text(),
-    					 employee: {id: 2 }
+    					 employee: {id: id }
 					 }),
 					datatype: "json",
 					contentType: "application/json",
@@ -241,24 +261,6 @@ var dt;
 					});
 			}
 			
-			function initEditProbaion(proId) {
-				alert(proId+" Init edit");
-				$.ajax({
-					url : "${pageContext.request.contextPath}/probation/initEdit/"+proId,
-					type : "POST",
-					success : function(data) {
-						//id:expId;
-						$("#dataFrom").val(data.dateFrom);
-						$("#dateTo").val(data.dateTo);
-						$("#stauts").val(data.status);
-						employee: {id: data.id };
-					},
-					error : function(data,testStatus,jqXHR) {
-						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-						}
-					});
-			}
 			
 			});
 			
@@ -272,7 +274,7 @@ var dt;
 							alert("go fn");
 						});
 				
-				function deleteExperience(button,proId){
+				function deleteProbation(button,proId){
 					alert("in fn");
 					$.ajax({
 						url : "${pageContext.request.contextPath}/probation/delete/"+proId,
@@ -317,28 +319,29 @@ var dt;
 						$("#outputajax").text(testStatus);
 						}
 					}); 
-				
-				function getUrlParameter(sParam)
-				{
-					//alert("url "+document.referrer);
-				    var sPageURL = document.referrer;
-				    var sURLVariables = sPageURL.split('?');
-				    //alert("spilt "+sURLVariables);
-
-				   	
-				    
-				    var sParameterName = sURLVariables[1].split('=');
-				    //alert("Param "+parseInt(sParameterName[1]));
-				    if (sParameterName[0] == sParam) 
-				        {
-				        	//alert("Param "+sParameterName[0]);
-				        	return sParameterName[1];
-				        	
-				        }
-				        //alert("Param2 "+parseInt(sParameterName[1]));
-				    
-				}     
+				 
 			}
+			
+			function getUrlParameter(sParam)
+			{
+				//alert("url "+document.referrer);
+			    var sPageURL = document.referrer;
+			    var sURLVariables = sPageURL.split('?');
+			    //alert("spilt "+sURLVariables);
+
+			   	
+			    
+			    var sParameterName = sURLVariables[1].split('=');
+			    //alert("Param "+parseInt(sParameterName[1]));
+			    if (sParameterName[0] == sParam) 
+			        {
+			        	//alert("Param "+sParameterName[0]);
+			        	return sParameterName[1];
+			        	
+			        }
+			        //alert("Param2 "+parseInt(sParameterName[1]));
+			    
+			}    
     	
   	});
   

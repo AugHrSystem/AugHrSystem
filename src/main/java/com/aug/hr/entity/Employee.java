@@ -25,7 +25,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 
@@ -208,9 +212,11 @@ public class Employee extends BaseEntity{
 //------------------self relation-------------------
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="id")
+	@JsonBackReference
 	private Employee aimempid;
 	
 	@OneToMany(mappedBy="aimempid", fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
+	@JsonManagedReference
 //	@JsonIgnore
 	private Set<Employee> staffs = new HashSet<Employee>();
 	
@@ -242,85 +248,99 @@ public class Employee extends BaseEntity{
 
 	@Column(name = "ADDRESS_ID",nullable = true)
 	@OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
-	@JsonIgnore
+	@JsonManagedReference
+//	@JsonIgnore
 	private List<Address> addresses = new ArrayList<Address>();
 
 	 
 	 @OneToOne(fetch=FetchType.LAZY)
 	 @JoinColumn(name = "OFFICIAL_ID",nullable = true)
+	 @JsonManagedReference
 	 private Official official;
 	 
 	 
 	 @OneToMany(mappedBy = "employee",fetch=FetchType.LAZY)
-	 @JsonIgnore
+	 @JsonManagedReference
+//	 @JsonIgnore
 	 private Set<Education> educations = new HashSet<Education>();
 	 
 	 @OneToMany(mappedBy = "employee",fetch=FetchType.LAZY)
-	 @JsonIgnore
+	 @JsonManagedReference
+//	 @JsonIgnore
 	 private Set<History> histories = new HashSet<History>();
 	 
 	 @ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name= "MAS_CORE_SKILL_ID")
+	 @JsonBackReference
 //	 @JsonIgnore
 	 private MasCoreSkill masCoreSkill;
 	 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "EMPLOYMENT_ID")
-//    @JsonIgnore
+    @JsonBackReference
+    @JsonIgnore
     private MasEmployment masEmployment;
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
-    @JsonIgnore
+    @JsonManagedReference
+//    @JsonIgnore
     private Set<Ability> abilities = new HashSet<Ability>();
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
-    @JsonIgnore
+    @JsonManagedReference
+ //   @JsonIgnore
     private Set<Reference> references = new HashSet<Reference>();
     
-
-    @OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Punish> punishs  = new HashSet<Punish>();
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "DIVISION_ID", referencedColumnName="id",nullable = false)
+    @JsonBackReference
 //    @JsonIgnore
     private MasDivision masDivision;
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "JOBLEVEL_ID", referencedColumnName="id",nullable = false)
+    @JsonBackReference
 //    @JsonIgnore
 
  
     private MasJoblevel masJoblevel;
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
-    @JsonIgnore
+    @JsonManagedReference
+//    @JsonIgnore
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "TECHNOLOGY_ID", referencedColumnName="id",nullable = false)
- //   @JsonIgnore
-
+    @JsonBackReference
+//    @JsonIgnore
     private MasTechnology technology;
     
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+    @JsonManagedReference
     private Set<Family> families = new HashSet<Family>(); 
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "STAFFTYPE_ID")
-//    @JsonIgnore
+    @JsonBackReference
+ //   @JsonIgnore
     private MasStaffType masStaffType;
 
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "LOCATION_ID")
-//    @JsonIgnore
-
+    @JsonBackReference
+ //   @JsonIgnore
     private MasLocation masLocation;
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Probation> probations = new HashSet<Probation>();
    
     @Transient

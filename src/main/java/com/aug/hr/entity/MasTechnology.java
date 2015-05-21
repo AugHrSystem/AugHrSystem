@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="MAS_TECHNOLOGY")
@@ -48,6 +50,7 @@ public class MasTechnology extends BaseEnityMasterData implements Serializable{
 	}
 	
 	@OneToMany(mappedBy="technology",fetch=FetchType.LAZY)
+	@JsonManagedReference
 	public Set<Employee> getEmployee() {
 		return Employee;
 	}

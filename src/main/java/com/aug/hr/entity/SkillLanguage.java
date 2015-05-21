@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -85,6 +86,7 @@ public class SkillLanguage extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="EMPLOYEE_ID",nullable=false)
+	@JsonBackReference
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -97,6 +99,7 @@ public class SkillLanguage extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="MASSKILLLANGUAGE_ID",nullable=false)
+	@JsonBackReference
 //	@JsonIgnore
 	public MasSkillLanguage getMasSkillLanguage() {
 		return masSkillLanguage;

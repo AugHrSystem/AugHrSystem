@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @SuppressWarnings("serial")
 @Entity
@@ -36,7 +38,8 @@ public class MasJoblevel extends BaseEntity implements Serializable {
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
 	
-	@OneToMany(mappedBy="masJoblevel",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="masJoblevel",fetch=FetchType.LAZY)
+	@JsonManagedReference
 	private Set<Employee> employees = new HashSet<Employee>();
 
 	public Integer getId() {

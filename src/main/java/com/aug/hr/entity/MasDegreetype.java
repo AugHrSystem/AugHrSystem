@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "MAS_DEGREETYPE")
@@ -35,8 +36,9 @@ public class MasDegreetype extends BaseEntity{
 	@Column(name = "ISACTIVE" ,nullable =false)
 	private Boolean isactive;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "masdegreetype")
+	@JsonManagedReference
 	private Set<Education> educations = new HashSet<Education>();
 
 	
