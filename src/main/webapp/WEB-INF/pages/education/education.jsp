@@ -21,6 +21,10 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+<!-- Date Picker -->
+<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
+<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
@@ -28,6 +32,11 @@
 
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
+
+<style>
+.datepicker{z-index:1151 !important;}
+
+</style>
 
 </head>
 <body>
@@ -49,6 +58,9 @@
 			<th>Faculty</th>
 			<th>Major</th>
 			<th>Degree</th>
+			<th>Certificate</th>
+			<th>Description</th>
+			<th>Expiry Date</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -109,6 +121,20 @@
 		</form:select>
 	  </div>
 
+	  <div class="form-group">
+	    <label>Certificate :</label>
+	    <form:input path="certificate" type="text" class="form-control" id="certificate" placeholder="Enter Certificate"/>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label>Description :</label>
+	    <form:input path="description" type="text" class="form-control" id="description" placeholder="Enter Description"/>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label>Expiry Date :</label>
+	    <form:input path="expiryDate" type="text" class="form-control" id="expiryDate"/>
+	  </div>
       </div>
       
       <div class="form-group" align="center">
@@ -157,6 +183,16 @@
 	var dt;
 	
 	$(document).ready(function(){
+		
+		var date1 = $( "#expiryDate" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd-mm-yyyy",
+			todayHighlight : true
+		});
+		
 		dt = $('#tbResult').dataTable();
 		listAll();
 		
@@ -204,6 +240,9 @@
 			$("#faculty").val(""),
 			$("#major").val(""),
 			$("#masdegreetype").val("-1");
+			$("#certificate").val("");
+			$("#description").val("");
+			$("#expiryDate").val("");
 		}
 		
 		function addEducation(){
@@ -215,7 +254,11 @@
 					faculty :$("#faculty").val(),
 					major :$("#major").val(),
 					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
+					certificate :$("#certificate").val(),
+					description :$("#description").val(),
+					expiryDate :$("#expiryDate").val(),
 					employee : {id:2},
+					
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -237,6 +280,9 @@
 						data.faculty,
 						data.major,
 						data.masdegreetype.name,
+						data.certificate,
+						data.description,
+						data.expiryDate,
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
@@ -262,7 +308,11 @@
 					faculty :$("#faculty").val(),
 					major :$("#major").val(),
 					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
+					certificate :$("#certificate").val(),
+					description :$("#description").val(),
+					expiryDate :$("#expiryDate").val(),
 					employee : {id:2},
+					
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -277,6 +327,9 @@
 					dt.fnUpdate(data.faculty, tr ,2);
 					dt.fnUpdate(data.major, tr ,3);
 					dt.fnUpdate(data.masdegreetype.name, tr ,4);
+					dt.fnUpdate(data.certificate, tr ,5);
+					dt.fnUpdate(data.description, tr ,6);
+					dt.fnUpdate(data.expiryDate, tr ,7);
 					
 					$('#addModal').modal('toggle');
 				},
@@ -299,7 +352,10 @@
 					$("#faculty").val(data.faculty),
 					$("#major").val(data.major);
 					$("#masdegreetype").val(data.masdegreetype.id);
-			
+					$("#certificate").val(data.certificate);
+					$("#description").val(data.description);
+					$("#expiryDate").val(data.expiryDate);
+					
 				},
 				error : function() {
 					alert("ERROR");
@@ -330,7 +386,9 @@
 		}
 		
 		function listAll(){
-			var id = getUrlParameter('Id');
+			var id=2;
+			/* var id = getUrlParameter('Id'); */
+			alert("id >>>>"+id);
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/listAll/"+id,
 				type : "POST",
@@ -338,7 +396,7 @@
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
 					dt.fnAddData([data[i].university,data[i].gpa,data[i].faculty, 
-					              data[i].major,data[i].masdegreetype.name,
+					              data[i].major,data[i].masdegreetype.name,data[i].certificate,data[i].description,data[i].expiryDate,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			

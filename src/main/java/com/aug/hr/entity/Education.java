@@ -5,6 +5,8 @@
  */
 package com.aug.hr.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,9 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "EMP_EDUCATION")
@@ -37,6 +41,17 @@ public class Education extends BaseEntity{
 	
 	@Column(name = "MAJOR" ,nullable =false)
 	private String major;
+	
+	@Column(name = "CERTIFICATE" ,nullable =false)
+	private String certificate;
+	
+	@Column(name = "DESCRIPTION" ,nullable =false)
+	private String description ;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "EXPIRY_DATE")
+	private Date expiryDate;
 	
 	/*@ManyToOne()
 	@JoinColumn(name="OFFICIAL_ID")
@@ -117,6 +132,30 @@ public class Education extends BaseEntity{
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public String getCertificate() {
+		return certificate;
+	}
+
+	public void setCertificate(String certificate) {
+		this.certificate = certificate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
 	}
 	
 	
