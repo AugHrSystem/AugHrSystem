@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.PunishDao;
 import com.aug.hr.entity.Punish;
 import com.mysql.jdbc.StringUtils;
 
+
+@Repository("PunishDao")
 public class PunishDaoImpl extends GenericDaoImpl<Punish, Integer>implements PunishDao {
 
 	
@@ -17,6 +20,7 @@ public class PunishDaoImpl extends GenericDaoImpl<Punish, Integer>implements Pun
 		
 	}
 
+	
 	@Override
 	public List<Punish> findByCriteria(Punish punish) {
 		Criteria c = getCurrentSession().createCriteria(Punish.class);
@@ -26,7 +30,7 @@ public class PunishDaoImpl extends GenericDaoImpl<Punish, Integer>implements Pun
 		return c.list();
 	}
 
-	@Override
+	
 	public Punish deleteById(Integer id) {
 		Punish punish =(Punish)getCurrentSession().load(Punish.class, id);
 		getCurrentSession().delete(punish);

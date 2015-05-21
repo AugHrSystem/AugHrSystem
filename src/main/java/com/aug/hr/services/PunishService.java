@@ -7,7 +7,6 @@ import com.aug.hr.entity.Punish;
 
 public interface PunishService {
 	
-	public List<Punish> findAll(Integer id);
 	
 	public void create(Punish punish);
 	public void update(Punish punish);

@@ -10,14 +10,20 @@ import com.aug.hr.dao.PunishDao;
 import com.aug.hr.entity.Punish;
 import com.aug.hr.services.PunishService;
 
-@Service("PunishService")
+@Service("punishService")
 @Transactional
 public class PunishServiceImpl implements PunishService {
 	
 	@Autowired
 	private  PunishDao punishDao;
 
-
+	
+	
+	@Override
+	public List<Punish> findAll() {
+			return punishDao.findAll();
+	}
+	
 	@Override
 	public void create(Punish punish) {
 		punishDao.create(punish);
@@ -41,10 +47,6 @@ public class PunishServiceImpl implements PunishService {
 		return punishDao.find(id);
 	}
 
-	@Override
-	public List<Punish> findAll() {
-		return punishDao.findAll();
-	}
 
 	@Override
 	public List<Punish> findByCriteria(Punish punish) {
@@ -56,10 +58,8 @@ public class PunishServiceImpl implements PunishService {
 		return punishDao.deleteById(id);
 	}
 
-	@Override
-	public List<Punish> findAll(Integer id) {
-		return punishDao.findAll();
-	}
+
+	
 	
 	
 
