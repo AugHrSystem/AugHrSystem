@@ -15,7 +15,7 @@ import com.aug.hr.dao.HistoryDao;
 import com.aug.hr.entity.History;
 import com.aug.hr.services.HistoryService;
 
-@Service("getPositionService")
+@Service("historyService")
 @Transactional
 public class HistoryServiceImpl implements HistoryService{
 

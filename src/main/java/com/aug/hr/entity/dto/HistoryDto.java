@@ -10,19 +10,17 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.aug.hr.entity.Employee;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @NamedNativeQueries({
 	@NamedNativeQuery(
             name = "searchHistory",
-            query = "select his.id, his.position, his.salary, his.old_salary, his.date_of_adjustment, his.reason_of_adjustment, his.adjustmentTime, his.employee_id from emp_history as his, emp_employee as emp where exp.employee_id=:empId and emp.id = his.employee_id", 
+            query = "select his.id, his.position, his.salary, his.old_salary, his.date_of_adjustment, his.reason_of_adjustment, his.adjustment_time, his.employee_id, his.employee_code from emp_history as his, emp_employee as emp where his.employee_id=:empId and emp.id = his.employee_id", 
             resultClass = HistoryDto.class)
   })
 
@@ -54,8 +52,11 @@ public class HistoryDto {
 	private Integer adjustmentTime;
 	
 	@Column(name = "EMPLOYEE_ID")
-	private Employee employeeId;
+	private String employeeId;
 
+	@Column(name = "EMPLOYEE_CODE")
+	private String employeeCode;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -112,12 +113,20 @@ public class HistoryDto {
 		this.adjustmentTime = adjustmentTime;
 	}
 
-	public Employee getEmployeeId() {
+	public String getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Employee employeeId) {
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
+	}
+
+	public String getEmployeeCode() {
+		return employeeCode;
+	}
+
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
 	}
 	
 	
