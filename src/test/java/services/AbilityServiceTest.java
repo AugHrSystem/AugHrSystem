@@ -30,7 +30,7 @@ public class AbilityServiceTest {
 	private AbilityService abilityService;
 	
 	
-	@Test
+	/*@Test
 	public void createDataAbility(){
 
 		Ability ability =new Ability();
@@ -39,7 +39,7 @@ public class AbilityServiceTest {
 		ability.setMasspecialty(null);
 		abilityService.create(ability);
 	}
-	
+	*/
 	
 	/*@Test
 	public void updateDataAbility(){
@@ -48,20 +48,20 @@ public class AbilityServiceTest {
 		ability.setRank(10);
 		abilityService.update(ability);
 		
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	public void deleteDataAbility(){
 		Ability ability=abilityService.find(1);
 		abilityService.delete(ability);
-	}*/
-	
-	/*@Test
+	}
+	*/
+	@Test
 	public void findAllDataAbility(){
 
 		List<Ability> ability = abilityService.findAll();
-		Assert.assertEquals(1, ability.size());
-	}*/
+		Assert.assertEquals(3, ability.size());
+	}
 	
 	
 	@Test

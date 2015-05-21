@@ -9,7 +9,6 @@ import java.util.List;
 
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.Reference;
 import com.aug.hr.entity.dto.AbilityDto;
 
 public interface AbilityDao extends GenericDao<Ability, Integer> {
