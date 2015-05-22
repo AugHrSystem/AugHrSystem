@@ -40,7 +40,7 @@ public class Ability extends BaseEntity  {
 	 private Official official;*/
 	
 
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
 	private Employee employee;
 	

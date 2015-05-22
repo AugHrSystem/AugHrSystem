@@ -1,6 +1,7 @@
 package com.aug.hr.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -9,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+
 
 
 import com.aug.hr.dto.services.EmployeeDtoService;
@@ -48,7 +52,6 @@ import com.aug.hr.services.MasStaffTypeService;
 import com.aug.hr.services.masTechnologyService;
 
 @Controller
-@Transactional
 public class EmployeeController {
 	@Resource(name="employeeService")
 	@Autowired private EmployeeService employeeService;
@@ -66,7 +69,7 @@ public class EmployeeController {
 	@Autowired private AddressEditor addressEditor;
 	@Autowired private EmployeeDtoService employeeDtoService;
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
-	
+
 	
 	
 	private static final Logger logger = Logger.getLogger(Employee.class);
@@ -87,9 +90,12 @@ public class EmployeeController {
 	
 	
 	
-	@RequestMapping(value="/employee",method={RequestMethod.GET,
-			RequestMethod.POST})
-	public String listAll(HttpSession session,Locale locale, ModelMap model){
+	@RequestMapping(value="/employee",method=RequestMethod.GET)
+	//@Transactional
+	public String listAll(HttpSession session,
+						  Locale locale,
+						  ModelMap model){
+	
 		model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
 		//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 		model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
@@ -102,7 +108,8 @@ public class EmployeeController {
 		model.addAttribute("joblevelList",joblevelService.findAll());
 		model.addAttribute("locationList",masLocationService.findAll());
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
-		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+//		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+		
 		
 		//return "/employee/employee";
 		return "/employee/employee";
@@ -154,6 +161,7 @@ public class EmployeeController {
 //		return employee;
 //	}
 	
+    @Transactional
 	@RequestMapping(value = "/employee/{empId}",method =  RequestMethod.GET )
 	public String initEditEmployee(@PathVariable Integer empId, Model model) {	
 		Employee employee=employeeService.findById(empId);
@@ -192,7 +200,26 @@ public class EmployeeController {
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
 	public String manageSubmit(@ModelAttribute Employee employee) {
 	   
+		
 		logger.info("infoooo: "+employee);
+	
+		
+        logger.info("address: "+employee.getAddresses());		 
+		
+		
+		employeeService.create(employee);
+		logger.info("employee: "+employee.getId());
+		for(Address address:employee.getAddresses()){
+			Address address1 = new Address();
+			address.setAddress1(address.getAddress1());
+			address.setEmployee(employee);
+			addressService.create(address);
+		}
+
+		//Address address = new Address();
+		//address.setAddress1(employee.getAddress());
+		//address.setEmployee(employee);
+		//addressService.create(address);
 		
 		return null;
 	}

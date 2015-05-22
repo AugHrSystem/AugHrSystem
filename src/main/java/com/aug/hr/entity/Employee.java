@@ -307,8 +307,6 @@ public class Employee extends BaseEntity{
     @JoinColumn(name= "JOBLEVEL_ID", referencedColumnName="id",nullable = false)
 
 //    @JsonIgnore
-
- 
     private MasJoblevel masJoblevel;
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
@@ -317,11 +315,9 @@ public class Employee extends BaseEntity{
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
 
-    @ManyToOne(fetch=FetchType.EAGER) 
-
-//  @JsonIgnore
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "TECHNOLOGY_ID", referencedColumnName="id",nullable = true)
- 
+ //   @JsonIgnore
     private MasTechnology technology;
     
     
@@ -337,8 +333,6 @@ public class Employee extends BaseEntity{
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "LOCATION_ID")
-
- //   @JsonIgnore
     private MasLocation masLocation;
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
@@ -1132,6 +1126,7 @@ public class Employee extends BaseEntity{
 		this.punishs = punishs;
 	}
 
+
 	/*@Override
 	public String toString() {
 		return "Employee [id=" + id + ", employeeCode=" + employeeCode
@@ -1186,6 +1181,62 @@ public class Employee extends BaseEntity{
 				+ ", status=" + status + ", masCoreSkillId=" + masCoreSkillId
 				+ ", technologyId=" + technologyId + "]";
 	}*/
+
+//	@Override
+//	public String toString() {
+//		return "Employee [id=" + id + ", employeeCode=" + employeeCode
+//				+ ", nameThai=" + nameThai + ", surnameThai=" + surnameThai
+//				+ ", nicknameThai=" + nicknameThai + ", nameEng=" + nameEng
+//				+ ", surnameEng=" + surnameEng + ", nicknameEng=" + nicknameEng
+//				+ ", telHome=" + telHome + ", telMobile=" + telMobile
+//				+ ", telFax=" + telFax + ", emergencyContact="
+//				+ emergencyContact + ", relationshipWithEmergencyContact="
+//				+ relationshipWithEmergencyContact
+//				+ ", emergencyContactAddress=" + emergencyContactAddress
+//				+ ", emergencyContactPhoneNumber="
+//				+ emergencyContactPhoneNumber + ", dateOfBirth=" + dateOfBirth
+//				+ ", placeOfBirth=" + placeOfBirth + ", age=" + age
+//				+ ", religion=" + religion + ", idCard=" + idCard
+//				+ ", issuedOffice=" + issuedOffice + ", expiryDate="
+//				+ expiryDate + ", height=" + height + ", weigth=" + weigth
+//				+ ", sex=" + sex + ", maritalStatus=" + maritalStatus
+//				+ ", numberOfChildren=" + numberOfChildren + ", spouseName="
+//				+ spouseName + ", marriageCertificateNo="
+//				+ marriageCertificateNo + ", issuedOffice2=" + issuedOffice2
+//				+ ", address=" + address + ", occupation=" + occupation
+//				+ ", knowAugNewspaper=" + knowAugNewspaper
+//				+ ", descriptionNewspaper=" + descriptionNewspaper
+//				+ ", knowAugMagazine=" + knowAugMagazine
+//				+ ", descriptionMagazine=" + descriptionMagazine
+//				+ ", knowAugWebsite=" + knowAugWebsite
+//				+ ", descriptionWebsite=" + descriptionWebsite
+//				+ ", knowAugFriend=" + knowAugFriend + ", descriptionFriend="
+//				+ descriptionFriend + ", knowAugOther=" + knowAugOther
+//				+ ", descriptionOther=" + descriptionOther
+//				+ ", knowEmployedYes=" + knowEmployedYes + ", descriptionYes="
+//				+ descriptionYes + ", knowEmployerNo=" + knowEmployerNo
+//				+ ", militaryServiceYes=" + militaryServiceYes + ", fromYear="
+//				+ fromYear + ", toYear=" + toYear + ", branchOfService="
+//				+ branchOfService + ", serviceNo=" + serviceNo
+//				+ ", militaryServiceNo=" + militaryServiceNo + ", reasonsNo="
+//				+ reasonsNo + ", dateToBeDrafted=" + dateToBeDrafted
+//				+ ", previousEmployerYes=" + previousEmployerYes
+//				+ ", previousEmployerNo=" + previousEmployerNo
+//				+ ", previousEmpreasonsNo=" + previousEmpreasonsNo
+//				+ ", aimempid=" + aimempid + ", staffs=" + staffs
+//				+ ", addresses=" + addresses + ", official=" + official
+//				+ ", educations=" + educations + ", histories=" + histories
+//				+ ", masCoreSkill=" + masCoreSkill + ", masEmployment="
+//				+ masEmployment + ", abilities=" + abilities + ", references="
+//				+ references + ", punishs=" + punishs + ", masDivision="
+//				+ masDivision + ", masJoblevel=" + masJoblevel
+//				+ ", experiences=" + experiences + ", technology=" + technology
+//				+ ", families=" + families + ", masStaffType=" + masStaffType
+//				+ ", masLocation=" + masLocation + ", probations=" + probations
+//				+ ", status=" + status + ", masCoreSkillId=" + masCoreSkillId
+//				+ ", technologyId=" + technologyId + "]";
+//	}
+
 
 
 	 

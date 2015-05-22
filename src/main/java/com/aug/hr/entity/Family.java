@@ -213,7 +213,7 @@ public class Family extends BaseEntity implements Serializable {
 	}
 
 
-	@Override
+	/*@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Family [id=");
@@ -246,7 +246,7 @@ public class Family extends BaseEntity implements Serializable {
 		builder.append(name);
 		builder.append("]");
 		return builder.toString();
-	}
+	}*/
 
 	
 	

@@ -139,14 +139,14 @@ public class Address extends BaseEntity{
 		this.provinceId = provinceId;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Address [id=" + id + ", address1=" + address1 + ", address2="
 				+ address2 + ", zipcode=" + zipcode + ", addressTypeId="
 				+ addressTypeId + ", provinceId=" + provinceId + ", employee="
 				+ employee + ", addressType=" + addressType + ", province="
 				+ province + "]";
-	}
+	}*/
 
 	
 	

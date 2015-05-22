@@ -10,12 +10,13 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "MAS_PROVINCE")
@@ -32,8 +33,8 @@ public class MasProvince extends BaseEntity {
 	private Boolean isActive;
 	
 	
-	@OneToMany(mappedBy = "province")
 
+	@OneToMany(mappedBy = "province")
 	private Set<Address> addresss;
 
 	public Integer getId() {
