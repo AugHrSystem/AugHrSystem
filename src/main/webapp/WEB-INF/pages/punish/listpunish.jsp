@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Reference</title>
 
 <!-- Spring -->	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -15,10 +14,10 @@
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 
 <!-- Bootstrap -->
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
+<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
-<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
@@ -26,42 +25,41 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
+<!-- Date Picker -->
+<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
+<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
+<title>punish</title>
+<style>
+.datepicker{z-index:1151 !important;}
 
+</style>
 
 </head>
-
 
 <body>
 
 
 	<div class="container" style="padding-top: 5px"">
 
-		<form:form id ="listForm" method="post" commandName="reference">
+		<form:form id ="listForm" method="post" commandName="punish">
 		
 		
 			<div style="padding-bottom: 10px">
-			
-	
-			
-				<h2>Reference</h2>
-				
-				
-
-				
-				
+					
+				<h2>Punish</h2>
+		
 			</div>
 			<div class="form-group">
-<br><br>
+			<br><br>
 				<table id="tbResult" class="table">
 					<thead>
 					
 						<tr>								
-							<th>NAME</th>
-							<th>ADDRESS</th>
-							<th>TEL</th>
-							<th>OCCUPATION</th>
+							<th>DATE</th>
+							<th>Punish Description</th>					
 							<th></th>
 							<th></th>
 						</tr>
@@ -72,7 +70,7 @@
 			
 	   </form:form>		
 
-<form:form id ="addForm" method="post" commandName="reference">
+<form:form id ="addForm" method="post" commandName="punish">
 		<!-- Button trigger modal -->
 	<div class="form-group" align="right">
 		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
@@ -87,30 +85,21 @@
 					<div class="modal-header">
 				
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Add Reference</h4>
+       					 <h4 class="modal-title" id="addModalLabel">Add Punish</h4>
       					</div>
 							
 																									
 				<div class="col col-lg-12 " style="padding-top: 10px">	
 									
-					<div class="form-group " align="left">
-							<label for="name" >Name:</label>
-							<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
+		
+				    <div class="form-group "  align="left">
+							<label for="tel" >Date:</label>
+							<p><input type="text" id="date" path="date"></p>							
 				    </div>
 				    
 				    <div class="form-group "  align="left">
-							<label for="address" >Address:</label>		
-							<form:textarea path="address" class="form-control" rows="1" id="address" placeholder="Address"/>		
-				    </div>
-				    
-				    <div class="form-group "  align="left">
-							<label for="tel" >Tel:</label>
-							<form:input path="Tel" type="text" class="form-control" id="tel" placeholder="Tel"/>							
-				    </div>
-				    
-				    <div class="form-group "  align="left">
-							<label for="oocupation" >Occupation:</label>
-							<form:input path="oocupation" type="text" class="form-control" id="oocupation" placeholder="Occupation"/>							
+							<label for="oocupation" >Punish Description:</label>
+							<form:input path="description" type="text" class="form-control" id="description" placeholder="Description"/>							
 				    </div>
 					
 					<div class="form-group" align="center">
@@ -155,6 +144,16 @@
 
 	var dt;
 	
+	$(document).ready(function() {
+    	var date1 = $( "#date" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd-mm-yyyy",
+			todayHighlight : true
+		});
+	
 	$(document).ready(function(){
 		dt = $('#tbResult').dataTable();
 		
@@ -163,12 +162,12 @@
 		$("#addModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var referenceid = button.data("id") //Extract info from data-* attribute
+			var punishid = button.data("id") //Extract info from data-* attribute
 			
 			
 			clearModal();
-			 if(referenceid != null){				 
-				 getReferenceById(referenceid);
+			 if(punishid != null){				 
+				 getpunishById(punishid);
 			} 
 			
 			else{
@@ -177,10 +176,10 @@
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				
-				 if(referenceid != null){
-					updateReference(button, referenceid);
+				 if(punishid != null){
+					updatepunish(button, punishid);
 				}else{ 
-					addReference();
+					addpunish();
 					
 				 } 
 				
@@ -196,13 +195,13 @@
 	 	$("#deleteModal").on("show.bs.modal", function (event) {
 				
 	 			var button = $(event.relatedTarget); // select การกระทำของปุ่ม
-	 			var referenceid = button.data("id"); //กดไอดีฝังในปุ่ม 
+	 			var punishid = button.data("id"); //กดไอดีฝังในปุ่ม 
 				
 	 			
 					
 	 		$(this).find('.DeleteButton').off('click').on("click", function() {
 								
-	 					deleteById(button ,referenceid);
+	 					deleteById(button ,punishid);
 	 			
 			
 	 				})
@@ -217,25 +216,19 @@
 
 
 		function clearModal(){
-			$("#name").val(""),
-			$("#address").val(""),
-			$("#Unit").val(""),
-			$("#tel").val(""),
-			$("#oocupation").val("");
+			$("#date").val(""),
+			$("#description").val("");
+		
 		}
 
-		
 
-		function addReference(){
+		function addpunish(){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/add",
+				url : "${pageContext.request.contextPath}/punish/add",
 				data : JSON.stringify({
-					name : $("#name").val(),
-					address :$("#address").val(),
-					tel :$("#tel").val(),
-					oocupation :$("#oocupation").val(),
-//					employee :{id:2},
-				
+					date : $("#date").val(),
+					description :$("#description").val(),
+//					employee :{id:2},		
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -247,15 +240,8 @@
 					dt.fnClearTable();
 					
 					dt.fnAddData([
-						/* $("#Name").val(),
-						$("#ProductCategory").val(),
-						$("#Unit").val(),
-						$("#Price").val(),
-						$("#Description").val(), */
-						data.name,
-						data.address,
-						data.tel,
-						data.oocupation,
+						data.date,
+						data.description,
 						
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -274,21 +260,18 @@
 		
 		
 		
-		function updateReference(button,referenceid) {
+		function updatepunish(button,punishid) {
 			$.ajax({
-				url:'${pageContext.request.contextPath}/reference/update',
+				url:'${pageContext.request.contextPath}/punish/update',
 				type:"POST",
 				contentType:"application/json",
 				datatype: "json",
 				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
 					
-								id :referenceid,
-								name: $("#name").val(),	
-								address: $("#address").val(), 
-								tel :$("#tel").val(),
-								oocupation: $("#oocupation").val(),
-								
-					
+								id :punishid,
+								date: $("#date").val(),	
+								description: $("#description").val(), 
+											
 					}),
 					
 					success : function(data) {
@@ -296,14 +279,12 @@
 					var tr = button.closest("tr"); // หาเเถวจากปุ่ม
 						
 					
-					dt.fnUpdate(data.name, tr, 0),
-					dt.fnUpdate(data.address, tr, 1),
-					dt.fnUpdate(data.tel, tr, 2),
-					dt.fnUpdate(data.oocupation, tr, 3),
+					dt.fnUpdate(data.date, tr, 0),
+					dt.fnUpdate(data.description, tr, 1),
+				
 					'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
-					
-						
+		
 						$('#addModal').modal('toggle');
 					},
 					error : function() {
@@ -314,19 +295,16 @@
 		}
 		
 		
-		function getReferenceById(referenceid) {
+		function getpunishById(punishid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/findById",
-				data : "id=" +referenceid,
+				url : "${pageContext.request.contextPath}/punish/findById",
+				data : "id=" +punishid,
 				type : "POST", 
 				success : function(data) {
-					$("#name").val(data.name); 
-					$("#address").val(data.address);
-					$("#tel").val(data.tel);
-					$("#oocupation").val(data.oocupation);
+					$("#date").val(data.date); 
+					$("#description").val(data.description);
 					
-					
-						},
+					},
 				error : function(jqXHR,	textStatus,	error) {
 					
 							alert("error");
@@ -337,10 +315,10 @@
 		
 		
 		
-		function deleteById(button ,referenceid) {
+		function deleteById(button ,punishid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/delete",
-				data : "id=" +referenceid,
+				url : "${pageContext.request.contextPath}/punish/delete",
+				data : "id=" +punishid,
 				type : "POST", 
 				
 				success : function(data) {
@@ -351,26 +329,24 @@
 					
 						$('#deleteModal').modal('toggle');
 					},
-					
-						
+										
 				error : function(jqXHR,	textStatus,	error) {
 					
 							alert("error ----");
 						}
 				});
 			
-			
-			
+					
 		}
 			function listAll(){
 				$.ajax({
-					url : "${pageContext.request.contextPath}/reference/listAll/"+id,
+					url : "${pageContext.request.contextPath}/punish/listAll",
 					type : "POST",
 					success : function(data) {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].name,data[i].address, 
-						              data[i].tel,data[i].oocupation,
+						dt.fnAddData([data[i].date,data[i].description, 
+						              
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
@@ -381,16 +357,12 @@
 						}
 					}); 
 			}
-			
-		
-			
-			
-		
 	
+	});
+					
 	
 </script>
 	
-		
 	
 </body>
 </html>

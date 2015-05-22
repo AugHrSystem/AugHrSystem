@@ -35,8 +35,9 @@ public class Punish {
 	private String description;
 
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id", nullable=false)
 	@JsonBackReference
+	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id", nullable=true)
+
 	private Employee employee;
 
 	public Integer getId() {

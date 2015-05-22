@@ -4,36 +4,33 @@ import java.beans.PropertyEditorSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.aug.hr.entity.Reference;
-import com.aug.hr.services.ReferenceService;
-
+import com.aug.hr.entity.Punish;
+import com.aug.hr.services.PunishService;
 
 
 @Component
-public class ReferenceEditor extends PropertyEditorSupport{
+public class PunishEditor extends PropertyEditorSupport {
 	
 	@Autowired
-	private ReferenceService referenceService;
+	private PunishService punishService;
+
 	
-	
-	@Override
 	public void setAsText(String text) {
 		this.setValue(null);
 		if (!"".equals(text)) {
-			Reference rs = referenceService.findById(Integer.valueOf(text));
+			Punish rs = punishService.findById(Integer.valueOf(text));
 			this.setValue(rs);
 		}
 
 	}
-	
-	@Override
+
 	public String getAsText() {
 		String tx = "";
-		Reference rs = (Reference) this.getValue();
+		Punish rs = (Punish) this.getValue();
 		if (rs != null) {
 			tx = Integer.toString(rs.getId());
 		}
 		return tx;
 	}
-
+	
 }

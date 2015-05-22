@@ -20,12 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.aug.hr.dto.services.ReferenceDtoService;
 import com.aug.hr.entity.Reference;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.ReferenceDto;
-import com.aug.hr.entity.editor.ReferenceEditor;
 import com.aug.hr.services.ReferenceService;
 
 
@@ -33,23 +31,12 @@ import com.aug.hr.services.ReferenceService;
 public class ReferenceController {
 
 	@Autowired
-	private ReferenceService referenceService;
-	@Autowired
-	private ReferenceEditor referenceEditor;
+	private ReferenceService referenceService;	
 	@Autowired
 	private ReferenceDtoService referenceDtoService;
 //	@Autowired
 //	private ReferenceValidator referenceValidator;
 	
-	
-//	@InitBinder
-//	public void initBinder(WebDataBinder binder) {
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",
-//				Locale.ENGLISH); // dd/MM/yyyy
-//		CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
-//		binder.registerCustomEditor(Date.class, editor);
-//		binder.registerCustomEditor(Reference.class, referenceEditor);		
-//	}
 	
 
 	

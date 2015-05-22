@@ -315,10 +315,11 @@ public class Employee extends BaseEntity{
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
 
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name= "TECHNOLOGY_ID", referencedColumnName="id",nullable = false)
+    @ManyToOne(fetch=FetchType.EAGER) 
     @JsonBackReference
-//    @JsonIgnore
+//  @JsonIgnore
+    @JoinColumn(name= "TECHNOLOGY_ID", referencedColumnName="id",nullable = true)
+ 
     private MasTechnology technology;
     
     
