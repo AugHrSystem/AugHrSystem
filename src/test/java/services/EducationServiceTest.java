@@ -16,6 +16,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.entity.Education;
+import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.MasDegreetype;
+import com.aug.hr.services.MasDegreetypeService;
 import com.aug.hr.services.impl.EducationServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,6 +29,13 @@ public class EducationServiceTest {
 	@Autowired
 	private EducationServiceImpl educationServiceImpl;
 
+	@Autowired
+	private MasDegreetypeService masDegreetypeService;
+	
+	private MasDegreetype masdegreetype = new MasDegreetype();
+	
+	private Employee employee = new Employee();
+	
 	@Test
 	public void create() {
 
@@ -34,8 +44,13 @@ public class EducationServiceTest {
 		education.setFaculty("Science");
 		education.setGpa(4.00);
 		education.setMajor("Com");
-		//education.setEmployee(null);
-		education.setMasdegreetype(null);
+		masdegreetype = masDegreetypeService.find(1);
+		education.setMasdegreetype(masdegreetype);
+		education.setCertificate("Java");
+		education.setDescription("Java");
+		education.setExpiryDate(null);
+		
+		employee.setId(2);
 
 		educationServiceImpl.create(education);
 

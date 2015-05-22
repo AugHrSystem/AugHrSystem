@@ -57,7 +57,7 @@
 			<th>GPA</th>
 			<th>Faculty</th>
 			<th>Major</th>
-			<th>Degree</th>
+			<th>Degree Type</th>
 			<th>Certificate</th>
 			<th>Description</th>
 			<th>Expiry Date</th>
@@ -110,7 +110,7 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Degree :</label>
+	    <label>Degree Type :</label>
 	    
 		  <form:select path="masdegreetype" class="form-control"
 			id="masdegreetype">
@@ -249,7 +249,7 @@
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/add",
 				data : JSON.stringify({
-					university : $("#university").val(),
+					university :$("#university").val(),
 					gpa :$("#gpa").val(),
 					faculty :$("#faculty").val(),
 					major :$("#major").val(),
@@ -395,8 +395,7 @@
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].university,data[i].gpa,data[i].faculty, 
-					              data[i].major,data[i].masdegreetype.name,data[i].certificate,data[i].description,data[i].expiryDate,
+					dt.fnAddData([data[i].university,data[i].gpa,data[i].faculty,data[i].major,data[i].masdegreetype.name,data[i].certificate,data[i].description,data[i].expiryDate,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
