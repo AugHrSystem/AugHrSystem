@@ -36,11 +36,19 @@ public class EducationController {
 	@Autowired
 	private EducationService educationService;
 
-	@Autowired private EducationDtoService educationDtoService;
+	@Autowired 
+	private EducationDtoService educationDtoService;
 	
 	@Autowired
 	private MasDegreetypeService masDegreetypeService;
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
+        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+        binder.registerCustomEditor(Date.class, editor);
+    }	
+	
 	@RequestMapping(value = "/education", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String listEducation(ModelMap model) {
@@ -48,13 +56,6 @@ public class EducationController {
 				masDegreetypeService.findAll());
 		return "/education/education";
 	}
-	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
-        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
-        binder.registerCustomEditor(Date.class, editor);
-    }	
 	
 	/*@RequestMapping(value = "/education/listAll", method = RequestMethod.POST)
 	public @ResponseBody List<Education> listAll(

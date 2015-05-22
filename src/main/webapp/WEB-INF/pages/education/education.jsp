@@ -14,7 +14,6 @@
 
 <!-- jQuery -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Bootstrap -->
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
@@ -194,6 +193,7 @@
 		});
 		
 		dt = $('#tbResult').dataTable();
+		
 		listAll();
 		
 		/* --- addProduct,updateProduct --- */
@@ -387,15 +387,22 @@
 		
 		function listAll(){
 			var id=2;
-			/* var id = getUrlParameter('Id'); */
-			alert("id >>>>"+id);
+// 			var id = getUrlParameter('Id');
+			alert("id"+id);
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/listAll/"+id,
 				type : "POST",
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].university,data[i].gpa,data[i].faculty,data[i].major,data[i].masdegreetype.name,data[i].certificate,data[i].description,data[i].expiryDate,
+					dt.fnAddData([data[i].university,
+					              data[i].gpa,
+					              data[i].faculty,
+					              data[i].major,
+					              data[i].masdegreetype,
+					              data[i].certificate,
+					              data[i].description,
+					              data[i].expiryDate,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
