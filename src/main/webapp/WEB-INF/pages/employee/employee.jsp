@@ -34,6 +34,9 @@
 </head>
 <body>
 <div class="container">
+
+<input type="hidden" id="emp">
+
  <div class="row">
         <div class="span12">
             <ul class="nav nav-tabs" id="myTabs">
@@ -1090,6 +1093,7 @@ var getIndex = 0;
     				success : function(data) {
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					
+    					window.parent.document.getElementById('emp').value=data.id;
     					/* dt.fnClearTable();
     					dt.fnAddData([
     					       data.id,

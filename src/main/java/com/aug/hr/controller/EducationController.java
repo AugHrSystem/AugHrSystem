@@ -5,11 +5,17 @@
  */
 package com.aug.hr.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,11 +36,19 @@ public class EducationController {
 	@Autowired
 	private EducationService educationService;
 
-	@Autowired private EducationDtoService educationDtoService;
+	@Autowired 
+	private EducationDtoService educationDtoService;
 	
 	@Autowired
 	private MasDegreetypeService masDegreetypeService;
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
+        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+        binder.registerCustomEditor(Date.class, editor);
+    }	
+	
 	@RequestMapping(value = "/education", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String listEducation(ModelMap model) {
