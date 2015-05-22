@@ -15,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "MAS_DIVISION")
@@ -39,8 +38,7 @@ public class MasDivision extends BaseEntity{
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
 	
-	@OneToMany(mappedBy = "masDivision",fetch=FetchType.LAZY)
-
+	@OneToMany(mappedBy = "masDivision")
 	private Set<Employee> employees;
 	
 	/*---------------------- getter / setter ----------------------*/
