@@ -37,7 +37,7 @@ public class Reference {
 	
 	
 	@Column(name = "OCCUPATION" ,nullable = false)
-	private String oocupation;
+	private String occupation;
 
 	
 	/*@ManyToOne(fetch=FetchType.EAGER)
@@ -47,7 +47,7 @@ public class Reference {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID")
-	@JsonBackReference
+	@JsonBackReference("employee-reference")
 //	@JsonIgnore
 	private Employee employee;
 
@@ -101,16 +101,16 @@ public class Reference {
 
 
 
-	public String getOocupation() {
-		return oocupation;
+
+	public String getOccupation() {
+		return occupation;
 	}
 
 
 
-	public void setOocupation(String oocupation) {
-		this.oocupation = oocupation;
+	public void setOccupation(String ocupation) {
+		this.occupation = ocupation;
 	}
-
 
 
 

@@ -65,7 +65,7 @@ public class ReferenceController {
 		referenceService.create(reference);
 		return reference;
 	}
-	@RequestMapping(value = "/reference/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/reference/update", method = RequestMethod.POST , consumes="appication/json", produces="appication/json")
 	public @ResponseBody Reference updateReference(@RequestBody Reference reference ) {
 		referenceService.update(reference);
 		return reference;

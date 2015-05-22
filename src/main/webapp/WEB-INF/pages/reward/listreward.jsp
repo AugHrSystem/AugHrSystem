@@ -390,8 +390,7 @@
 
 								dt.fnClearTable();
 
-								dt
-										.fnAddData([
+								dt.fnAddData([
 
 												data.name,
 												data.year,

@@ -60,8 +60,8 @@
 						<tr>								
 							<th>NAME</th>
 							<th>ADDRESS</th>
-							<th>TEL</th>
-							<th>OCCUPATION</th>
+							<th>tel</th>
+							<th>occupation</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -104,13 +104,13 @@
 				    </div>
 				    
 				    <div class="form-group "  align="left">
-							<label for="tel" >Tel:</label>
-							<form:input path="Tel" type="text" class="form-control" id="tel" placeholder="Tel"/>							
+							<label for="tel" >tel:</label>
+							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="tel"/>							
 				    </div>
 				    
 				    <div class="form-group "  align="left">
-							<label for="oocupation" >Occupation:</label>
-							<form:input path="oocupation" type="text" class="form-control" id="oocupation" placeholder="Occupation"/>							
+							<label for="occupation" >occupation:</label>
+							<form:input path="occupation" type="text" class="form-control" id="occupation" placeholder="occupation"/>							
 				    </div>
 					
 					<div class="form-group" align="center">
@@ -154,6 +154,7 @@
 	<script type="text/javascript">
 
 	var dt;
+	
 	
 	$(document).ready(function(){
 		dt = $('#tbResult').dataTable();
@@ -221,7 +222,7 @@
 			$("#address").val(""),
 			$("#Unit").val(""),
 			$("#tel").val(""),
-			$("#oocupation").val("");
+			$("#occupation").val("");
 		}
 
 		
@@ -233,13 +234,13 @@
 					name : $("#name").val(),
 					address :$("#address").val(),
 					tel :$("#tel").val(),
-					oocupation :$("#oocupation").val(),
-//					employee :{id:2},
+					occupation :$("#occupation").val(),
+					employee :{id:2},
 				
 				}),
 				type : "POST",
 				contentType : "application/json",
-				dataType: "json",
+				//dataType: "json",
 				success : function(data) {
 					
 //	 				alert(JSON.stringify(data));
@@ -255,7 +256,7 @@
 						data.name,
 						data.address,
 						data.tel,
-						data.oocupation,
+						data.occupation,
 						
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -286,7 +287,7 @@
 								name: $("#name").val(),	
 								address: $("#address").val(), 
 								tel :$("#tel").val(),
-								oocupation: $("#oocupation").val(),
+								occupation: $("#occupation").val(),
 								
 					
 					}),
@@ -299,7 +300,7 @@
 					dt.fnUpdate(data.name, tr, 0),
 					dt.fnUpdate(data.address, tr, 1),
 					dt.fnUpdate(data.tel, tr, 2),
-					dt.fnUpdate(data.oocupation, tr, 3),
+					dt.fnUpdate(data.occupation, tr, 3),
 					'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
 					
@@ -323,7 +324,7 @@
 					$("#name").val(data.name); 
 					$("#address").val(data.address);
 					$("#tel").val(data.tel);
-					$("#oocupation").val(data.oocupation);
+					$("#occupation").val(data.occupation);
 					
 					
 						},
@@ -363,6 +364,7 @@
 			
 		}
 			function listAll(){
+				var id = 2;
 				$.ajax({
 					url : "${pageContext.request.contextPath}/reference/listAll/"+id,
 					type : "POST",
@@ -370,7 +372,7 @@
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].name,data[i].address, 
-						              data[i].tel,data[i].oocupation,
+						              data[i].tel,data[i].occupation,
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
