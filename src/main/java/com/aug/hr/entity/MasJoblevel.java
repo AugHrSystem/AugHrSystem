@@ -39,7 +39,7 @@ public class MasJoblevel extends BaseEntity implements Serializable {
 	 private Official official;*/
 	
 	@OneToMany(mappedBy="masJoblevel",fetch=FetchType.LAZY)
-	@JsonManagedReference
+
 	private Set<Employee> employees = new HashSet<Employee>();
 
 	public Integer getId() {

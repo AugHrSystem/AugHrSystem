@@ -40,7 +40,7 @@ public class MasDivision extends BaseEntity{
 	 private Official official;*/
 	
 	@OneToMany(mappedBy = "masDivision",fetch=FetchType.LAZY)
-	@JsonManagedReference
+
 	private Set<Employee> employees;
 	
 	/*---------------------- getter / setter ----------------------*/

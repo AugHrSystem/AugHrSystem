@@ -38,7 +38,7 @@ public class Reward extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false)
-	@JsonBackReference
+
 //	@JsonIgnore
 	private Employee employee;
 

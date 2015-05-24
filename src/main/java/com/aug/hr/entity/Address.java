@@ -48,20 +48,20 @@ public class Address extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "EMPLOYEE_ID")
-	@JsonBackReference
+
 //	@JsonIgnore
     private Employee employee;
 	
 	
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "ADDRESSTYPE_ID")
-	@JsonBackReference
+
 //	@JsonIgnore
     private MasAddressType addressType;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "PROVINCE_ID")
-	@JsonBackReference
+
 //	@JsonIgnore
     private MasProvince province;
 	

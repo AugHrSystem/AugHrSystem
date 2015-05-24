@@ -47,7 +47,6 @@ public class Reference {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID")
-	@JsonBackReference("employee-reference")
 //	@JsonIgnore
 	private Employee employee;
 

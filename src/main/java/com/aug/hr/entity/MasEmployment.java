@@ -44,7 +44,7 @@ public class MasEmployment extends BaseEntity {
 
 	
 	@OneToMany(mappedBy = "masEmployment",fetch=FetchType.LAZY)
-	@JsonManagedReference
+
 	private Set<Employee> employees = new HashSet<Employee>();
 
 

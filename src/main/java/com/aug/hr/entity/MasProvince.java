@@ -33,7 +33,7 @@ public class MasProvince extends BaseEntity {
 	
 	
 	@OneToMany(mappedBy = "province")
-	@JsonManagedReference
+
 	private Set<Address> addresss;
 
 	public Integer getId() {

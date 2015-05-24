@@ -38,7 +38,7 @@ public class MasDegreetype extends BaseEntity{
 	
 //	@JsonIgnore
 	@OneToMany(mappedBy = "masdegreetype")
-	@JsonManagedReference
+
 	private Set<Education> educations = new HashSet<Education>();
 
 	
