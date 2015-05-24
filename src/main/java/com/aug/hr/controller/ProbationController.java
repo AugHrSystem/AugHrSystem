@@ -82,18 +82,25 @@ public class ProbationController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public @ResponseBody Probation insert(@RequestBody User probation) {
+    public @ResponseBody Probation insert(@RequestBody Probation probation) {
 
 
-        System.out.println("*****4444");
+        System.out.println("*****>>>> 333");
+        System.out.println("*****>>>> 222222");
         logger.debug("**** insert ****");
-        return new Probation();
+        return probation;
     }
 	
 	//InitEdit
 	@RequestMapping(value = "/probation/initEdit/{proId}", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody Probation initEditProbation(@PathVariable("proId") Integer proId) {	
-		return (Probation) probationService.find(proId);
+	public @ResponseBody ProbationDto initEditProbation(@PathVariable("proId") Integer proId) {
+        Probation probation = probationService.find(proId);
+
+        logger.debug("probation result : "+ probation);
+//        return new Probation();
+
+
+        return probation.toProbationDto();
 	}
 	
 	//edit

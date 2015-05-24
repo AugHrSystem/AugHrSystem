@@ -53,7 +53,7 @@ public class History extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName="id", nullable=false)
-	@JsonBackReference
+
 //	@JsonIgnore
 	private Employee employee;
 

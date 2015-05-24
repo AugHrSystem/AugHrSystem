@@ -34,7 +34,7 @@ public class MasSpecialty extends BaseEntity{
 	
 //	@JsonIgnore
 	@OneToMany(mappedBy = "masspecialty")
-	@JsonManagedReference
+
 	private Set<Ability> abilities;
 
 	public Integer getId() {

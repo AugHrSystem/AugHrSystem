@@ -157,7 +157,7 @@ public class Family extends BaseEntity implements Serializable {
    
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="MASRELATION_ID",nullable=false)
-    @JsonBackReference
+
 	public MasRelationType getMasRelation() {
 		return masRelationType;
 	}
@@ -170,7 +170,7 @@ public class Family extends BaseEntity implements Serializable {
 	
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="EMPLOYEE_ID",nullable=false)
-    @JsonBackReference
+
  //   @JsonIgnore
 	public Employee getEmployee() {
 		return employee;

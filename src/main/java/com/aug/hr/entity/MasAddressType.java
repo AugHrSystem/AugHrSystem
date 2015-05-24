@@ -71,7 +71,7 @@ public class MasAddressType extends BaseEntity{
 	}
 	
 	 @OneToMany(mappedBy = "addressType")
-	 @JsonManagedReference
+
 	 private Set<Address> addresses = new HashSet<Address>();
 	
 }

@@ -38,7 +38,7 @@ public class Official {
 	    
 		
 		 @OneToOne(fetch=FetchType.EAGER, mappedBy="official")
-		 @JsonBackReference
+
 		 private Employee empOfficial;
 
 		 

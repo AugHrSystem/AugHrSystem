@@ -86,7 +86,7 @@ public class SkillLanguage extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="EMPLOYEE_ID",nullable=false)
-	@JsonBackReference
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -99,7 +99,7 @@ public class SkillLanguage extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="MASSKILLLANGUAGE_ID",nullable=false)
-	@JsonBackReference
+
 //	@JsonIgnore
 	public MasSkillLanguage getMasSkillLanguage() {
 		return masSkillLanguage;
