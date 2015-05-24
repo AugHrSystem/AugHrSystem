@@ -19,7 +19,7 @@
 	</listener>
 
 
-    <filter>
+    <!--<filter>
         <filter-name>OpenEntityManagerInViewFilter</filter-name>
         <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
     </filter>
@@ -32,13 +32,13 @@
 
 	 <filter>
 	    <filter-name>OpenSessionInViewFilter</filter-name>
-	    <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+	    <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
 	</filter>
 	
 	<filter-mapping>
 	    <filter-name>OpenSessionInViewFilter</filter-name>
 	    <url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping>-->
 
 	<!-- Config spring dispatcher -->
 	<servlet>
