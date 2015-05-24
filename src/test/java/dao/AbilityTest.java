@@ -54,9 +54,9 @@ public class AbilityTest {
 	@Test
 	public void updateAbility(){
 		
-		Ability ability=(Ability)abilityDao.getCurrentSession().get(Ability.class,1);
+		Ability ability=(Ability)abilityDao.find(1);
 		ability.setRank(1);
-		abilityDao.getCurrentSession().update(ability);
+		abilityDao.update(ability);
 		
 		
 	}
