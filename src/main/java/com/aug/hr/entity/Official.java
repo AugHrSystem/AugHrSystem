@@ -37,7 +37,6 @@ public class Official {
 		private Double salaryExpected;
 	    
 		
-
 		 @OneToOne(fetch=FetchType.LAZY)
 		 @JoinColumn(name = "EMPLOYEE_ID",nullable = true)
 		 private Employee empOfficial;

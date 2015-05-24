@@ -72,7 +72,6 @@ public class MasAddressType extends BaseEntity{
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
 	public String getIsActive() {
 		return isActive;
 	}
@@ -88,7 +87,5 @@ public class MasAddressType extends BaseEntity{
 	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
 	}
-	 
-	 
 	
 }

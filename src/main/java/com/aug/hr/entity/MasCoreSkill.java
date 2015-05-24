@@ -34,7 +34,6 @@ public class MasCoreSkill extends BaseEntity {
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
 	
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "masCoreSkill", cascade=CascadeType.ALL, orphanRemoval=true)
 	private Set<Employee> employees = new HashSet<Employee>();
 	

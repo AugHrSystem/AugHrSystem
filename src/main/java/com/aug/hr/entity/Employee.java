@@ -456,7 +456,6 @@ public class Employee extends BaseEntity{
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "JOBLEVEL_ID", referencedColumnName="id",nullable = false)
-
 //    @JsonIgnore
     private MasJoblevel masJoblevel;
     
@@ -466,7 +465,7 @@ public class Employee extends BaseEntity{
     private Set<Experience> experiences = new HashSet<Experience>();
 	    
 
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER) 
     @JoinColumn(name= "TECHNOLOGY_ID", referencedColumnName="id",nullable = true)
  //   @JsonIgnore
     private MasTechnology technology;
