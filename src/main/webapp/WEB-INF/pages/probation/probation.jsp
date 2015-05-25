@@ -134,7 +134,7 @@ var dt;
 			autoclose : true,
 			forceParse : false,
 			language : "en",
-			format : "yyyy-mm-dd",
+			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
     	var date2 = $( "#dateTo" ).datepicker({
@@ -142,7 +142,7 @@ var dt;
 			autoclose : true,
 			forceParse : false,
 			language : "en",
-			format : "yyyy-mm-dd",
+			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
     	dt=$("#tdResult").dataTable();
