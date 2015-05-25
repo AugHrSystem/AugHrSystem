@@ -30,11 +30,11 @@ public class Experience extends BaseEntity {
 	private Integer id;
 	@Column(name = "COMPANY_NAME")
 	private String companyName;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-mm-dd")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Column(name = "DATE_FROM")
 //	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateFrom;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-mm-dd")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Column(name = "DATE_TO")
 //	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateTo;
