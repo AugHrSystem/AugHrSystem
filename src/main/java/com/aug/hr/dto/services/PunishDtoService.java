@@ -15,7 +15,7 @@ public class PunishDtoService {
 		
 	@Autowired private PunishDao punishDao;
 	
-//	public List<PunsihDto> searchPunish(Integer id){
-//		return punishDao.searchPunish(id);
-//	}
+	public List<PunsihDto> searchPunish(Integer id){
+		return punishDao.searchPunish(id);
+	}
 }

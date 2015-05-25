@@ -40,12 +40,12 @@ public class PunishDaoImpl extends GenericDaoImpl<Punish, Integer>implements Pun
 	}
 
 
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<PunsihDto> searchPunish(Integer id) {
-//		Query nameQuery = getCurrentSession().getNamedQuery("searchPunish").setInteger("empId" ,id);
-//		List<PunsihDto> punsihDtos = nameQuery.list();
-//		return punsihDtos;
-//	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PunsihDto> searchPunish(Integer id) {
+		Query nameQuery = getCurrentSession().getNamedQuery("searchPunish").setInteger("empId" ,id);
+		List<PunsihDto> punsihDtos = nameQuery.list();
+		return punsihDtos;
+	}
 
 }

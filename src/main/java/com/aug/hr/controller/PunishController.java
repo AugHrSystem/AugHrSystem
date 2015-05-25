@@ -22,14 +22,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.hr.dto.services.PunishDtoService;
 import com.aug.hr.entity.Punish;
+import com.aug.hr.entity.dto.PunsihDto;
 import com.aug.hr.entity.editor.PunishEditor;
 import com.aug.hr.services.PunishService;
 
 
 @Controller
 public class PunishController {
-	@Autowired private PunishService punishService;
+	@Autowired 
+	private PunishService punishService;
+	private PunishDtoService punishDtoService;
+	
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -41,11 +46,11 @@ public class PunishController {
 	
 
 	
-//	@RequestMapping(value = "/punish/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
-//	public @ResponseBody List<PunishDto> listAll(@PathVariable("id") Integer id) {
-//		//Punish punish = new Punish();	
-//		return (List<PunishDto>) punishDtoService.searchPunish(id);
-//	}
+	@RequestMapping(value = "/punish/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<PunsihDto> listAll(@PathVariable("id") Integer id) {
+		//Punish punish = new Punish();	
+		return (List<PunsihDto>) punishDtoService.searchPunish(id);
+	}
 	
 
 	@RequestMapping(value = "/punish", method = {RequestMethod.GET,RequestMethod.POST})
@@ -54,12 +59,12 @@ public class PunishController {
 		return "/punish/listpunish";
 	}
 	
-	@RequestMapping(value = "/punish/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<Punish> listAll() {
-		Punish punish = new Punish();
-		punish.setDescription("");
-		return punishService.findByCriteria(punish);
-	}
+//	@RequestMapping(value = "/punish/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+//	public @ResponseBody List<Punish> listAll() {
+//		Punish punish = new Punish();
+//		punish.setReason("");
+//		return punishService.findByCriteria(punish);
+//	}
 	
 	@RequestMapping(value = "/punish/add", method = RequestMethod.POST)
 	public @ResponseBody Punish addPunsih(@RequestBody Punish punish) {

@@ -118,15 +118,14 @@
 							<div class="col col-lg-12 " style="padding-top: 10px">
 
 								<div class="form-group " align="left">
-									<label for="name">Name:</label>
-									<form:input path="name" type="text" class="form-control"
-										id="name" placeholder="Name" />
+									  <label>Type :</label>
+									<form:input path="typereward" type="text" class="form-control" id="typereward" placeholder="Type" />
 								</div>
 
 
 								<div class="form-group " align="left">
 
-
+									 <label>Year :</label>
 									<form:select path="year" class="form-control" id="year">
 										<form:option value="-1" label="---Select year---" />
 										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>
@@ -258,16 +257,13 @@
 
 
 								<div class="form-group " align="left">
-									<label for="detailreward">Detailreward:</label>
-									<form:input path="detailreward" type="text"
-										class="form-control" id="detailreward"
-										placeholder="detailreward" />
+									 <label>Reason :</label>
+									<form:input path="reason" type="text" class="form-control" id="reason" placeholder="reason" />
 								</div>
 
 
 								<div class="form-group " align="right">
-								<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 									<button type="button" class="btn btn-info btnSave">Save</button>
 								</div>
 							</div>
@@ -306,9 +302,6 @@
 
 		</form:form>
 </div>
-
-
-
 
 
 
@@ -364,8 +357,9 @@
 			/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
 			function clearModal() {
-				$("#name").val(""), $("#year").val(""), $("#detailreward").val(
-						"");
+				$("#typereward").val(""), 
+				$("#year").val(""), 
+				$("#reason").val("");
 
 			}
 
@@ -374,9 +368,9 @@
 						.ajax({
 							url : "${pageContext.request.contextPath}/reward/add",
 							data : JSON.stringify({
-								name : $("#name").val(),
+								type_reward : $("#typereward").val(),
 								year : $("#year").val(),
-								detailreward : $("#detailreward").val(),
+								reason : $("#reason").val(),
 
 							//					employee :{id:2},
 
@@ -392,9 +386,9 @@
 
 								dt.fnAddData([
 
-												data.name,
+												data.type_reward,
 												data.year,
-												data.detailreward,
+												data.reason,
 
 												'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 												'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>' ]);
@@ -418,9 +412,9 @@
 							data : JSON.stringify({ //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
 
 								id : rewardid,
-								name : $("#name").val(),
+								type_reward : $("#typereward").val(),
 								year : $("#year").val(),
-								detailreward : $("#detailreward").val(),
+								reason : $("#reason").val(),
 
 							}),
 
@@ -430,7 +424,7 @@
 
 										dt.fnUpdate(data.name, tr, 0),
 										dt.fnUpdate(data.year, tr, 1),
-										dt.fnUpdate(data.detailreward, tr, 2),
+										dt.fnUpdate(data.reason, tr, 2),
 
 										'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 										'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
@@ -450,9 +444,9 @@
 					data : "id=" + rewardid,
 					type : "POST",
 					success : function(data) {
-						$("#name").val(data.name);
+						$("#typereward").val(data.type_reward);
 						$("#year").val(data.year);
-						$("#detailreward").val(data.detailreward);
+						$("#reason").val(data.reason);
 
 					},
 					error : function(jqXHR, textStatus, error) {
@@ -494,9 +488,9 @@
 								for (var i = 0; i < data.length; i++) {
 									dt
 											.fnAddData([
-													data[i].name,
+													data[i].type_reward,
 													data[i].year,
-													data[i].detailreward,
+													data[i].reason,
 													'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 													'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>' ]);
 

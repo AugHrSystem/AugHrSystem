@@ -71,7 +71,7 @@ public class Punish {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
+
 	
 	
 	

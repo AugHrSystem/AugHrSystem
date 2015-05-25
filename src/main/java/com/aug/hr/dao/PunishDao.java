@@ -12,6 +12,6 @@ public interface PunishDao extends GenericDao<Punish, Integer> {
 
 	public Punish deleteById(Integer id);
 
-	//public List<PunsihDto> searchPunish(Integer id);
+	public List<PunsihDto> searchPunish(Integer id);
 	
 }
