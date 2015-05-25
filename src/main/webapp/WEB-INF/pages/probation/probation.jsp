@@ -63,6 +63,10 @@
 		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
  	 	Add
 		</button>
+		
+		<button type="button" class="btn btn-info btn-md" id ='testing'>
+ 	 	TESTING
+		</button>
 	</div>
 </div>			
 		
@@ -77,7 +81,7 @@
       <div class="modal-body">
 		
   		<div class="form-group">
-  			<p><label>Date From : <input type="text" id="dateFrom" path="dateFrom"></label></p>
+  			<p><label>Date From : <input type="text" id="dateFrom"></label></p>
   		</div>
   		  		
   		<div class="form-group">
@@ -87,10 +91,10 @@
   		<div class="form-group">
     			<label>Status :</label>
     				<select  id="status"  class="form-control">
-						<option >--Choose Status--</option>
-						<option >Pass</option>
-						<option >Not Pass</option>
-						<option >Extend</option>
+						<option value="-1">--Choose Status--</option>
+						<option value="Pass">Pass</option>
+						<option value="Not Pass">Not Pass</option>
+						<option value="Extend">Extend</option>
 					</select>  
 		</div>
   		
@@ -130,7 +134,7 @@ var dt;
 			autoclose : true,
 			forceParse : false,
 			language : "en",
-			format : "dd-mm-yyyy",
+			format : "yyyy-mm-dd",
 			todayHighlight : true
 		});
     	var date2 = $( "#dateTo" ).datepicker({
@@ -138,12 +142,42 @@ var dt;
 			autoclose : true,
 			forceParse : false,
 			language : "en",
-			format : "dd-mm-yyyy",
+			format : "yyyy-mm-dd",
 			todayHighlight : true
 		});
     	dt=$("#tdResult").dataTable();
  		listAll();
 		
+ 		
+ 		$("#testing").on("click", function() {
+ 			
+ 		
+ 			$.ajax({
+ 			    headers: { 
+ 			        'Accept': 'application/json',
+ 			        'Content-Type': 'application/json' 
+ 			    },
+				url : "${pageContext.request.contextPath}/probation/add",
+				type : "POST",
+				
+				 data : JSON.stringify({
+					 dateFrom: "2014-01-01",
+					 dateTo: "2015-01-01",
+					 status: "test",
+					 employee: {id: 2 }
+					}), 
+				/* datatype: "json", */
+				contentType: "application/json",
+				success : function(data) {
+					console.log(data);	
+				},
+				error : function(data,testStatus,jqXHR) {
+					
+					}
+				});
+ 			
+ 		});
+ 		
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		var proId = button.data("proid"); 
@@ -162,12 +196,19 @@ var dt;
     			
     		});
     		
+    		
+    		
     		function addProbation() {
     			var id = getUrlParameter('Id');
     			$.ajax({
     				url : "${pageContext.request.contextPath}/probation/add",
     				type : "POST",
-    				data : JSON.stringify({
+    				/*data :  " dateFrom="+ $("#dateFrom").val()+
+   					"&dateTo="+ $("#dateTo").val()+ 
+    					 "status="+ $("#status option:selected").text()+
+   					 "&employee.id="+ id 
+   					,*/
+    				 data : JSON.stringify({
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 status: $("#status option:selected").text(),
@@ -203,7 +244,7 @@ var dt;
     		}
     		
     		function initEditProbation(proId) {
-				alert(proId+" Init edit");
+				//alert(proId+" Init edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/initEdit/"+proId,
 					type : "POST",
@@ -222,7 +263,7 @@ var dt;
 			}
     		
     		function editProbation() {
-    			alert(proId+" edit");
+    			//alert(proId+" edit");
     			var id = getUrlParameter('Id');
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/edit",
@@ -268,7 +309,7 @@ var dt;
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
 				var proId = button.data("proid");
-				alert("delete "+proId);
+				//alert("delete "+proId);
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteProbation(button,proId);
