@@ -5,10 +5,13 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
+import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.SkillLanguageDao;
 import com.aug.hr.entity.SkillLanguage;
+import com.aug.hr.entity.dto.SkillLanguageDto;
 
 @Repository
 public class SkillLanguageDaoImpl extends GenericDaoImpl<SkillLanguage,Integer> implements SkillLanguageDao,Serializable{
@@ -31,6 +34,27 @@ public class SkillLanguageDaoImpl extends GenericDaoImpl<SkillLanguage,Integer> 
 		c.createAlias("employee", "employee");
 		c.setFetchMode("masSkillLanguage",FetchMode.JOIN);		
 		return c.list();
+	}
+
+	@Override
+	public List<SkillLanguageDto> listSkillLanguageByEmployee(Integer id) {
+		// TODO Auto-generated method stub
+		Query query =  getCurrentSession().getNamedQuery("listSkillLanguage").setInteger("empId" ,id);
+		List<SkillLanguageDto> skillLanguageDtoList = query.list();
+		return skillLanguageDtoList;
+	}
+
+	@Override
+	public SkillLanguage findIdJoinEmployee(Integer id) {
+		// TODO Auto-generated method stub
+		Criteria c = getCurrentSession().createCriteria(SkillLanguage.class,"skillLanguage");
+		c.setFetchMode("employee",FetchMode.JOIN);
+		c.createAlias("employee", "employee");
+		c.setFetchMode("masSkillLanguage",FetchMode.JOIN);	
+		c.createAlias("masSkillLanguage", "masSkillLanguage");
+		c.add(Restrictions.eq("skillLanguage.id", id));
+		SkillLanguage skillLanguage = (SkillLanguage) c.uniqueResult();
+		return skillLanguage;
 	}
 
 }

@@ -354,6 +354,12 @@ public class Employee extends BaseEntity{
    
    @Transient
    private Integer technologyId;
+   
+   
+
+   @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE})
+   @JsonBackReference
+   private Set<SkillLanguage> skillLanguage = new HashSet<SkillLanguage>();
  //-------------------------------------- getter setter --------------------------------------------------//
 
 	public Integer getId() {
@@ -1125,7 +1131,7 @@ public class Employee extends BaseEntity{
 		this.punishs = punishs;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Employee [id=" + id + ", employeeCode=" + employeeCode
 				+ ", nameThai=" + nameThai + ", surnameThai=" + surnameThai
@@ -1178,7 +1184,7 @@ public class Employee extends BaseEntity{
 				+ ", masLocation=" + masLocation + ", probations=" + probations
 				+ ", status=" + status + ", masCoreSkillId=" + masCoreSkillId
 				+ ", technologyId=" + technologyId + "]";
-	}
+	}*/
 
 
 	 
