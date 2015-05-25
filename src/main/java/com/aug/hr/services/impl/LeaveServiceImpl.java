@@ -5,14 +5,16 @@
  */
 package com.aug.hr.services.impl;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aug.hr.dao.LeaveDao;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.services.LeaveService;
-
+@Service
 public class LeaveServiceImpl implements LeaveService {
 
 	
