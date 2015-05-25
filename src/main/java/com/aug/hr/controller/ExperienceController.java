@@ -68,27 +68,30 @@ public class ExperienceController {
 	
 	//Add	
 	@RequestMapping(value = "/experience/add", method = RequestMethod.POST )
-	public @ResponseBody Experience Add(@RequestBody Experience experience) {
+	public @ResponseBody ExperienceDto Add(@RequestBody ExperienceDto experienceDto) {
 //		EmployeeDto employeeDto = new EmployeeDto();
 //		employeeDto.setName(experience.getEmployee().getNameEng());
-		Hibernate.initialize(experience.getEmployee().getNameEng());
-		experienceService.create(experience);
-		return experience;
+//	Hibernate.initialize(experience.getEmployee().getNameEng());
+		Experience experience = new Experience();
+		experienceService.create(experience.fromExperienceDto(experienceDto));
+		return experienceDto;
 	}
 	
 	//InitEdit
-	@Transactional
+//	@Transactional
 	@RequestMapping(value = "/experience/initEdit/{expId}", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody Experience initEditExperience(@PathVariable("expId") Integer expId) {	
-		return experienceService.find(expId);
+	public @ResponseBody ExperienceDto initEditExperience(@PathVariable("expId") Integer expId) {	
+		Experience experience = experienceService.find(expId);
+		return experience.toExperienceDto();
 	}
 	
 	//edit
 	@Transactional
 	@RequestMapping(value = "/experience/edit", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody Experience editExperience(@RequestBody Experience exp) {
-		experienceService.update(exp);
-		return exp;
+	public @ResponseBody ExperienceDto editExperience(@RequestBody ExperienceDto experienceDto) {
+		Experience experience = new Experience();
+		experienceService.update(experience.fromExperienceDto(experienceDto));
+		return experienceDto;
 	}
 	
 	//delete

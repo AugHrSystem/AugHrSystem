@@ -213,7 +213,7 @@ var dt;
     					 superVisor: $("#supervisor").val(),
     					 address: $("#address").val(),
     					 reason: $("#reason").val(),
-    					 employee: {id: id }
+    					 employeeId: id 
     					}),
     				datatype: "json",
     				contentType: "application/json",
@@ -261,7 +261,7 @@ var dt;
 						$("#reference").val(data.reference);
 						$("#address").val(data.address);
 						$("#reason").val(data.reason);
-						employee: {id: data.employeeId };
+						employeeId: data.employeeId;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -273,6 +273,7 @@ var dt;
 			
     		
     		function editExperience() {
+    			var id = getUrlParameter('Id');
     			alert(expId+" edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/edit",
@@ -289,7 +290,7 @@ var dt;
     					 reference: $("#reference").val(),
     					 address: $("#address").val(),
     					 reason: $("#reason").val(),
-    					 employee: {id: 2 }
+    					 employeeId: id
 					 }),
 					datatype: "json",
 					contentType: "application/json",
@@ -356,7 +357,7 @@ var dt;
 				
 				//alert("list experience");
 				var id = getUrlParameter('Id');
-				alert("id >>>>"+id);
+				//alert("id >>>>"+id);
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/listAll/"+id,
 					/* data: "id="+getUrlParameter('Id'), */

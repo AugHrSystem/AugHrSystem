@@ -5,16 +5,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import com.aug.hr.entity.Login;
-import com.aug.hr.entity.User;
-import com.aug.hr.entity.dto.EducationDto;
-import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -24,11 +19,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.hr.dto.services.ProbationDtoService;
-import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Probation;
 import com.aug.hr.entity.dto.ProbationDto;
 //import com.aug.hr.entity.dto.ProbationDto;
@@ -72,7 +65,9 @@ public class ProbationController {
 	public @ResponseBody ProbationDto Add(@RequestBody ProbationDto probationDto) {
 //		EmployeeDto employeeDto = new EmployeeDto();
 //		employeeDto.setName(probation.getEmployee().getNameEng());
-		probationDtoService.createProbation(probationDto);
+//		probationDtoService.createProbation(probationDto);
+		Probation probation = new Probation();
+		probationService.create(probation.fromProbationDto(probationDto));
 		return probationDto;
 	}
 
@@ -80,19 +75,16 @@ public class ProbationController {
 	@RequestMapping(value = "/probation/initEdit/{proId}", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody ProbationDto initEditProbation(@PathVariable("proId") Integer proId) {
         Probation probation = probationService.find(proId);
-
         logger.debug("probation result : "+ probation);
-//        return new Probation();
-
-
         return probation.toProbationDto();
 	}
 	
 	//edit
 	@RequestMapping(value = "/probation/edit", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody Probation editProbation(@RequestBody Probation pro) {
-		probationService.update(pro);
-		return pro;
+	public @ResponseBody ProbationDto editProbation(@RequestBody ProbationDto probationDto) {
+		Probation probation = new Probation();
+		probationService.update(probation.fromProbationDto(probationDto));
+		return probationDto;
 	}
 	
 	//delete

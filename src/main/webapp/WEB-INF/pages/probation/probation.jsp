@@ -163,6 +163,7 @@ var dt;
     		});
     		
     		function addProbation() {
+    			var id = getUrlParameter('Id');
     			$.ajax({
     				url : "${pageContext.request.contextPath}/probation/add",
     				type : "POST",
@@ -170,7 +171,7 @@ var dt;
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 status: $("#status option:selected").text(),
-    					 employee: {id: 2 }
+    					 employeeId: id
     					}),
     				datatype: "json",
     				contentType: "application/json",
@@ -207,11 +208,11 @@ var dt;
 					url : "${pageContext.request.contextPath}/probation/initEdit/"+proId,
 					type : "POST",
 					success : function(data) {
-						id:data.id;
+						id:proId;
 						$("#dataFrom").val(data.dateFrom);
 						$("#dateTo").val(data.dateTo);
 						$("#status :selected").text(data.status);
-						employee: {id: data.employeeId };
+						employeeId: data.employeeId;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -231,7 +232,7 @@ var dt;
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 status: $("#status option:selected").text(),
-    					 employee: {id: id }
+    					 employeeId: id
 					 }),
 					datatype: "json",
 					contentType: "application/json",
@@ -300,7 +301,7 @@ var dt;
 				//alert("list experience");
 				var id = getUrlParameter('Id');
 				//var id = 2;
-				alert("id >>>>"+id);
+				//alert("id >>>>"+id);
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/listAll/"+id,
 					/* data: "id="+getUrlParameter('Id'), */

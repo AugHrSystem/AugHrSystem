@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.aug.hr.entity.dto.ExperienceDto;
+import com.aug.hr.entity.dto.ProbationDto;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -131,5 +133,41 @@ public class Experience extends BaseEntity {
 		this.reason = reason;
 	}
 	
-	
+	 public ExperienceDto toExperienceDto() {
+		ExperienceDto experienceDto = new ExperienceDto();
+		experienceDto.setId(this.id);
+		experienceDto.setDateFrom(this.dateFrom);
+		experienceDto.setDateTo(this.dateTo);
+		experienceDto.setEmployeeCode(this.employee.getEmployeeCode());
+		experienceDto.setEmployeeId(this.employee.getId());
+		experienceDto.setAddress(this.address);
+		experienceDto.setBusinessType(this.businessType);
+		experienceDto.setCompanyName(this.companyName);
+		experienceDto.setPosition(this.position);
+		experienceDto.setReference(this.reference);
+		experienceDto.setResponsibility(this.responsibility);
+		experienceDto.setSalary(this.salary);
+		experienceDto.setReason(this.reason);
+		return experienceDto;
+	}
+
+	public Experience fromExperienceDto(ExperienceDto experienceDto) {
+		Experience experience = new Experience();
+		experience.setId(experienceDto.getId());
+		experience.setDateFrom(experienceDto.getDateFrom());
+		experience.setDateTo(experienceDto.getDateTo());
+		experience.setAddress(experienceDto.getAddress());
+		experience.setBusinessType(experienceDto.getBusinessType());
+		experience.setCompanyName(experienceDto.getCompanyName());
+		experience.setPosition(experienceDto.getPosition());
+		experience.setReference(experienceDto.getReference());
+		experience.setResponsibility(experienceDto.getResponsibility());
+		experience.setSalary(experienceDto.getSalary());
+		experience.setReason(experienceDto.getReason());
+		Employee employee = new Employee();
+		employee.setId(experienceDto.getEmployeeId());
+		experience.setEmployee(employee);
+		return experience;
+	}
+
 }

@@ -26,7 +26,6 @@ public class Probation extends BaseEntity {
     @GeneratedValue
     @Column(name = "ID")
     private Integer id;
-
     @Column(name = "DATE_FROM")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.TIMESTAMP)
@@ -35,13 +34,11 @@ public class Probation extends BaseEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTo;
-
     @Column(name = "STATUS")
     private String status;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "id", nullable = false)
-    @JsonManagedReference
+ //   @JsonManagedReference
     private Employee employee;
 
     public Integer getId() {
@@ -90,10 +87,22 @@ public class Probation extends BaseEntity {
         probationDto.setDateFrom(this.dateFrom);
         probationDto.setDateTo(this.dateTo);
         probationDto.setEmployeeCode(this.employee.getEmployeeCode());
-        probationDto.setEmployeeId(this.employee.getId().toString());
+        probationDto.setEmployeeId(this.employee.getId());
         probationDto.setStatus(this.status);
 
         return probationDto;
+    }
+    
+    public Probation fromProbationDto(ProbationDto probationDto){
+    	Probation probation = new Probation();
+    	probation.setId(probationDto.getId());
+    	probation.setDateFrom(probationDto.getDateFrom());
+    	probation.setDateTo(getDateTo());
+    	probation.setStatus(probationDto.getStatus());
+    	Employee employee = new Employee();
+    	employee.setId(probationDto.getEmployeeId());
+    	probation.setEmployee(employee);
+    	return probation;
     }
 
 

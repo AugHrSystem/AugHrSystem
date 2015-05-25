@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
             name = "searchExperience",
-            query = "select exp.id, exp.company_name, exp.date_from, exp.date_to, exp.address, exp.type_of_business, exp.position, exp.reference, exp.responsibility, exp.employee_id, emp.employee_code from emp_experience as exp, emp_employee as emp where exp.employee_id=:empId and emp.id = exp.employee_id", 
+            query = "select exp.id, exp.company_name, exp.date_from, exp.date_to, exp.address, exp.type_of_business, exp.position, exp.reference, exp.responsibility,exp.salary, exp.reason_of_regisnation, exp.employee_id, emp.employee_code from emp_experience as exp, emp_employee as emp where exp.employee_id=:empId and emp.id = exp.employee_id", 
             resultClass = ExperienceDto.class)
   })
 
@@ -45,9 +45,12 @@ public class ExperienceDto {
 	private String reference;
 	@Column(name = "RESPONSIBILITY")
 	private String responsibility;
+	@Column(name = "SALARY")
+	private Integer salary;	
+	@Column(name = "REASON_OF_REGISNATION")
+	private String reason;
 	@Column(name ="EMPLOYEE_ID")
-	private String employeeId;
-	
+	private Integer employeeId;
 	@Column(name = "EMPLOYEE_CODE")
 	private String employeeCode;
 	
@@ -93,10 +96,10 @@ public class ExperienceDto {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public String getEmployeeId() {
+	public Integer getEmployeeId() {
 		return employeeId;
 	}
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
 	public String getEmployeeCode() {
@@ -116,6 +119,18 @@ public class ExperienceDto {
 	}
 	public void setResponsibility(String responsibility) {
 		this.responsibility = responsibility;
+	}
+	public Integer getSalary() {
+		return salary;
+	}
+	public void setSalary(Integer salary) {
+		this.salary = salary;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 	
 }
