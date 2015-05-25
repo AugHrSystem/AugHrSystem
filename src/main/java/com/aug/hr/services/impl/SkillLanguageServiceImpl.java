@@ -106,7 +106,7 @@ public class SkillLanguageServiceImpl implements SkillLanguageService{
 		// TODO Auto-generated method stub
 		SkillLanguage skilllanguage = skillLanguageDao.findIdJoinEmployee(id);
 		Hibernate.initialize(skilllanguage.getMasSkillLanguage());
-		Hibernate.initialize(skilllanguage.getMasSkillLanguage().getSkillLanguageList());
+		Hibernate.initialize(skilllanguage.getMasSkillLanguage().getSkillLanguage());
 		logger.info("emp: "+skilllanguage.getEmployee().toString());
 		logger.info("masskilllanguage: "+skilllanguage.getMasSkillLanguage().toString());
 		//logger.info("skilllanguage list: "+skilllanguage.getMasSkillLanguage().getSkillLanguage());
