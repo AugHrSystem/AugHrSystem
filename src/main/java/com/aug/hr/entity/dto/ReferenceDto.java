@@ -18,6 +18,7 @@ public class ReferenceDto {
 	@Column(name ="ID")
 	@Id
 	private Integer id;
+	
 	@Column(name = "NAME")
 	private String name;
 	
@@ -83,8 +84,5 @@ public class ReferenceDto {
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
-
-
-	
 	
 }

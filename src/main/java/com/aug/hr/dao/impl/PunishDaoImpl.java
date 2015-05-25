@@ -3,11 +3,13 @@ package com.aug.hr.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.PunishDao;
 import com.aug.hr.entity.Punish;
+import com.aug.hr.entity.dto.PunsihDto;
 import com.mysql.jdbc.StringUtils;
 
 
@@ -36,5 +38,14 @@ public class PunishDaoImpl extends GenericDaoImpl<Punish, Integer>implements Pun
 		getCurrentSession().delete(punish);
 		return punish;
 	}
+
+
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public List<PunsihDto> searchPunish(Integer id) {
+//		Query nameQuery = getCurrentSession().getNamedQuery("searchPunish").setInteger("empId" ,id);
+//		List<PunsihDto> punsihDtos = nameQuery.list();
+//		return punsihDtos;
+//	}
 
 }

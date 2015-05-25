@@ -485,9 +485,9 @@
 
 			}
 			function listAll() {
-				$
-						.ajax({
-							url : "${pageContext.request.contextPath}/reward/listAll",
+						var id = 2;
+						$.ajax({
+							url : "${pageContext.request.contextPath}/reward/listAll"+id,
 							type : "POST",
 							success : function(data) {
 								dt.fnClearTable();

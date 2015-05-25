@@ -14,14 +14,17 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.hr.dto.services.RewardDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Reward;
+import com.aug.hr.entity.dto.RewardDto;
 import com.aug.hr.entity.editor.RewardEditor;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.RewardService;
@@ -33,6 +36,15 @@ public class RewardController {
 	@Autowired RewardService rewardService;
 	@Autowired RewardEditor RewardEditor;
 	@Autowired EmployeeService employeeService;
+	@Autowired RewardDtoService rewardDtoService;
+	
+		
+
+	@RequestMapping(value = "/reward/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<RewardDto> listAll(@PathVariable("id") Integer id) {
+	//	Reward reward = new Reward();
+		return (List<RewardDto>) rewardDtoService.searchReward(id);
+	}
 	
 	
 	@RequestMapping(value = "/reward", method = {RequestMethod.GET,RequestMethod.POST})
@@ -50,13 +62,13 @@ public class RewardController {
         binder.registerCustomEditor(Address.class, RewardEditor);
     }	
 	
-	
-	@RequestMapping(value = "/reward/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<Reward> listAll() {
-		Reward reward = new Reward();
-		reward.setName("");
-		return rewardService.findByCriteria(reward);
-	}
+//	
+//	@RequestMapping(value = "/reward/listAll", method = {RequestMethod.GET, RequestMethod.POST})
+//	public @ResponseBody List<Reward> listAll() {
+//		Reward reward = new Reward();
+//		reward.setName("");
+//		return rewardService.findByCriteria(reward);
+//	}
 	
 	@RequestMapping(value = "/reward/add", method = RequestMethod.POST)
 	public @ResponseBody Reward addReward(@RequestBody Reward reward) {

@@ -154,25 +154,23 @@
 			todayHighlight : true
 		});
 	
-	$(document).ready(function(){
+
 		dt = $('#tbResult').dataTable();
 		
 		 listAll();
 		 
 		$("#addModal").on("show.bs.modal",function(event) {
 			
+			clearModal();
+			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var punishid = button.data("id") //Extract info from data-* attribute
 			
 			
-			clearModal();
 			 if(punishid != null){				 
 				 getpunishById(punishid);
 			} 
 			
-			else{
-	
-			} 
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				
@@ -188,8 +186,6 @@
 		});
 		
 		
-		
-		
 //		------------------------------------------------------------------------------------------------------------
 
 	 	$("#deleteModal").on("show.bs.modal", function (event) {
@@ -197,21 +193,17 @@
 	 			var button = $(event.relatedTarget); // select การกระทำของปุ่ม
 	 			var punishid = button.data("id"); //กดไอดีฝังในปุ่ม 
 				
-	 			
-					
-	 		$(this).find('.DeleteButton').off('click').on("click", function() {
+		
+	 			$(this).find('.DeleteButton').off('click').on("click", function() {
 								
 	 					deleteById(button ,punishid);
-	 			
-			
+	 
 	 				})
 					
 	 			})
 				
 				
-				
-			});
-		
+
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
@@ -228,7 +220,7 @@
 				data : JSON.stringify({
 					date : $("#date").val(),
 					description :$("#description").val(),
-//					employee :{id:2},		
+					employee :{id:2},		
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -271,6 +263,7 @@
 								id :punishid,
 								date: $("#date").val(),	
 								description: $("#description").val(), 
+								employee: {id: 2 }
 											
 					}),
 					
@@ -345,7 +338,8 @@
 					success : function(data) {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].date,data[i].description, 
+						dt.fnAddData([data[i].date,
+						              data[i].description, 
 						              
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
