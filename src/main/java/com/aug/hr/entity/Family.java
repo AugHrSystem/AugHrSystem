@@ -157,7 +157,6 @@ public class Family extends BaseEntity implements Serializable {
    
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="MASRELATION_ID",nullable=false)
-
 	public MasRelationType getMasRelation() {
 		return masRelationType;
 	}

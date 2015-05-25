@@ -17,6 +17,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,6 +25,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -34,11 +36,12 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
-@Table(name = "EMP_EMPLOYEE")
+@Table(name = "EMP_EMPLOYEE",uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Employee extends BaseEntity{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
 	
@@ -216,7 +219,6 @@ public class Employee extends BaseEntity{
 	private Employee aimempid;
 	
 	@OneToMany(mappedBy="aimempid", fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
-
 //	@JsonIgnore
 	private Set<Employee> staffs = new HashSet<Employee>();
 	
@@ -324,7 +326,6 @@ public class Employee extends BaseEntity{
     
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
-
     private Set<Family> families = new HashSet<Family>(); 
     
     @ManyToOne(fetch=FetchType.EAGER)

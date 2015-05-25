@@ -60,6 +60,13 @@ public class ProbationController {
 		return (List<ProbationDto>) probationDtoService.searchProbation(id);
 	}
 	
+	@RequestMapping(value = "/probation/test", consumes = "application/json" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody Probation test(@RequestBody Probation probation) {
+		
+		
+		return new Probation();
+	}
+	
 	//Add	
 	@RequestMapping(value = "/probation/add", method = RequestMethod.POST )
 	public @ResponseBody ProbationDto Add(@RequestBody ProbationDto probationDto) {
