@@ -63,10 +63,6 @@
 		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
  	 	Add
 		</button>
-		
-		<button type="button" class="btn btn-info btn-md" id ='testing'>
- 	 	TESTING
-		</button>
 	</div>
 </div>			
 		
@@ -146,37 +142,8 @@ var dt;
 			todayHighlight : true
 		});
     	dt=$("#tdResult").dataTable();
+    	
  		listAll();
-		
- 		
- 		$("#testing").on("click", function() {
- 			
- 		
- 			$.ajax({
- 			    headers: { 
- 			        'Accept': 'application/json',
- 			        'Content-Type': 'application/json' 
- 			    },
-				url : "${pageContext.request.contextPath}/probation/add",
-				type : "POST",
-				
-				 data : JSON.stringify({
-					 dateFrom: "2014-01-01",
-					 dateTo: "2015-01-01",
-					 status: "test",
-					 employee: {id: 2 }
-					}), 
-				/* datatype: "json", */
-				contentType: "application/json",
-				success : function(data) {
-					console.log(data);	
-				},
-				error : function(data,testStatus,jqXHR) {
-					
-					}
-				});
- 			
- 		});
  		
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
@@ -195,7 +162,6 @@ var dt;
     			}
     			
     		});
-    		
     		
     		
     		function addProbation() {
@@ -249,11 +215,12 @@ var dt;
 					url : "${pageContext.request.contextPath}/probation/initEdit/"+proId,
 					type : "POST",
 					success : function(data) {
-						id:proId;
-						$("#dataFrom").val(data.dateFrom);
-						$("#dateTo").val(data.dateTo);
-						$("#status :selected").text(data.status);
-						employeeId: data.employeeId;
+							id:proId;
+							$("#dataFrom").val(data.dateFrom);
+							$("#dateTo").val(data.dateTo);
+							$("#status option:selected").val(data.status);
+							employeeId: data.employeeId; 
+							//setModal(data);
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -302,7 +269,16 @@ var dt;
 						}
 					});
 			}
-			
+    		function clearModal(){
+				$("#dataFrom").val("");
+				$("#dateTo").val("");
+				$("#status option:selected").val(-1);
+			}
+    		function setModal(data){
+				$("#dataFrom").val(data.dateFrom);
+				$("#dateTo").val(data.dateTo);
+				$("#status option:selected").val(data.status);
+			}
 			
 			});
 			
@@ -383,7 +359,7 @@ var dt;
 			        }
 			        //alert("Param2 "+parseInt(sParameterName[1]));
 			    
-			}    
+			} 
     	
   	});
   
