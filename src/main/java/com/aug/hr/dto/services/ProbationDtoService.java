@@ -19,4 +19,8 @@ public class ProbationDtoService {
 		return probationDao.searchProbation(id);
 	}
 	
+	public void createProbation(ProbationDto probationDto){
+		probationDao.createProbation(probationDto);
+	}
+	
 }

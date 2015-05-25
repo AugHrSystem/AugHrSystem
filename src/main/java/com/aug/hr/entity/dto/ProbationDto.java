@@ -10,13 +10,17 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.aug.hr.entity.Probation;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @NamedNativeQueries({
         @NamedNativeQuery(
                 name = "searchProbation",
                 query = "select pro.id, pro.date_from, pro.date_to, pro.status,pro.employee_id, emp.employee_code from emp_probation as pro, emp_employee as emp where pro.employee_id=:empId and emp.id = pro.employee_id",
-                resultClass = ProbationDto.class)
+                resultClass = ProbationDto.class),
+        @NamedNativeQuery(name = "createProbation", 
+        		query = "insert into emp_probation as pro (pro.date_from, pro.date_to, pro.status,pro.employee_id) values (?dateFrom, ?dateTo, ?status, ?employeeId)",
+        		resultClass = Probation.class)
 })
 @Entity
 public class ProbationDto {

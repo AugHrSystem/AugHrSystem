@@ -13,4 +13,5 @@ public interface ProbationDao extends GenericDao<Probation, Integer>{
 	
 	public List<ProbationDto> searchProbation(Integer id);
 
+	public void createProbation(ProbationDto probationDto);
 }

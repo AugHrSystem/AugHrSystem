@@ -60,10 +60,10 @@
         <skip.unit.tests>false</skip.unit.tests>
 
 
-        <!--<database.driver>com.mysql.jdbc.Driver</database.driver>
-        <database.url>jdbc:mysql://localhost:3306/AugRmSystem</database.url>
+        <database.driver>com.mysql.jdbc.Driver</database.driver>
+        <database.url>jdbc:mysql://localhost:3306/hris_system</database.url>
         <database.username>root</database.username>
-        <database.password>root</database.password>-->
+        <database.password>root</database.password>
 
     </properties>
 

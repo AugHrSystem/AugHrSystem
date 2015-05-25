@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 import com.aug.hr.entity.dto.ProbationDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "EMP_PROBATION")
@@ -40,6 +41,7 @@ public class Probation extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "id", nullable = false)
+    @JsonManagedReference
     private Employee employee;
 
     public Integer getId() {

@@ -69,12 +69,11 @@ public class ProbationController {
 	
 	//Add	
 	@RequestMapping(value = "/probation/add", method = RequestMethod.POST )
-	public @ResponseBody Probation Add(@RequestBody Probation probation) {
+	public @ResponseBody ProbationDto Add(@RequestBody ProbationDto probationDto) {
 //		EmployeeDto employeeDto = new EmployeeDto();
 //		employeeDto.setName(probation.getEmployee().getNameEng());
-		Hibernate.initialize(probation.getEmployee().getNameEng());
-		probationService.create(probation);
-		return probation;
+		probationDtoService.createProbation(probationDto);
+		return probationDto;
 	}
 
     //Add

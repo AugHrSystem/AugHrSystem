@@ -341,7 +341,7 @@ public class Employee extends BaseEntity{
     private MasLocation masLocation;
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-
+    @JsonIgnore
     private Set<Probation> probations = new HashSet<Probation>();
    
     @Transient
