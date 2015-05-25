@@ -313,3 +313,11 @@ INSERT INTO EMP_PROBATION (DATE_FROM, DATE_TO, STATUS, EMPLOYEE_ID) VALUES
 ('2014-01-01','2014-03-01','Not Pass',1),
 ('2014-01-01','2014-03-01','Pass',2);
 
+--MASLEAVETYPE
+INSERT INTO MAS_LEAVETYPE (NAME,CODE,ISACTIVE) VALUES
+('Annual Holiday Leave','L01',true),
+('Maternity Leave','L02',true),
+('Personal Leave','L03',true),
+('Sick Leave','L04',true),
+('Urgent Leave','L05',true),
+('Other','L06',true);

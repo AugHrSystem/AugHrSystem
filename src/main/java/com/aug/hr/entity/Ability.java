@@ -15,8 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -34,6 +32,9 @@ public class Ability extends BaseEntity  {
 	@Column(name = "RANK",nullable = false)
 	private Integer rank;
 	
+	@Column(name = "PICTURE",nullable = true)
+    private String picture;
+	
 	/*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
@@ -41,8 +42,6 @@ public class Ability extends BaseEntity  {
 
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
-
-//	@JsonIgnore
 	private Employee employee;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -84,6 +83,14 @@ public class Ability extends BaseEntity  {
 
 	public void setMasspecialty(MasSpecialty masspecialty) {
 		this.masspecialty = masspecialty;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
  
 	
