@@ -50,7 +50,7 @@ public class RewardController {
 	@RequestMapping(value = "/reward", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("rewardList", rewardService.findAll());
-		return "/reward/listreward";
+		return "/reward/reward";
 	}
 	
 	

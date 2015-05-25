@@ -307,7 +307,8 @@
 
 		<script type="text/javascript">
 			var dt;
-
+			
+			$(document).ready(function(){
 			dt = $('#tbResult').dataTable();
 
 			listAll();
@@ -480,6 +481,7 @@
 			}
 			function listAll() {
 						var id = 2;
+//						var id = getUrlParameter('Id');
 						$.ajax({
 							url : "${pageContext.request.contextPath}/reward/listAll"+id,
 							type : "POST",
@@ -501,6 +503,34 @@
 							}
 						});
 			}
+			
+			
+			
+			
+			function getUrlParameter(sParam){
+	
+				//alert("url "+document.referrer);
+			    var sPageURL = document.referrer;
+			    var sURLVariables = sPageURL.split('?');
+			    var sParameterName;
+			    //alert("spilt "+sURLVariables);
+
+			   	
+			    
+			    sParameterName = sURLVariables[1].split('=');
+			    //alert("Param "+parseInt(sParameterName[1]));
+			    if (sParameterName[0] == sParam) 
+			        {
+			        	//alert("Param "+sParameterName[0]);
+			        	return sParameterName[1];
+			        	
+			        }
+			        //alert("Param2 "+parseInt(sParameterName[1]));
+			    
+			}     
+		});
+			
+			
 		</script>
 </body>
 </html>
