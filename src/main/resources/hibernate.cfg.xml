@@ -12,10 +12,10 @@
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
+
         <!-- <property name="hbm2ddl.auto">create-drop</property> -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
-        
-        
+        <property name="hbm2ddl.auto">update</property>
+      
 		<mapping class="com.aug.hr.entity.Employee" />
 		<mapping class="com.aug.hr.entity.Education" />
 		<mapping class="com.aug.hr.entity.Ability" />
@@ -44,6 +44,8 @@
 		<mapping class="com.aug.hr.entity.SkillLanguage" />
 		<mapping class="com.aug.hr.entity.Probation" />
 		<mapping class="com.aug.hr.entity.Punish" />
+		<mapping class="com.aug.hr.entity.MasLeaveType" />
+		<mapping class="com.aug.hr.entity.Leave" />
 
 
 	</session-factory>

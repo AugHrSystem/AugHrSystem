@@ -70,10 +70,31 @@
         <h4 class="modal-title" id="myModalLabel">Ability Add</h4>
       </div>
       
+      
+      <div class="row" style="text-align: center;">
+		<div class="visible-xs col-xs-12">
+			<c:choose>
+	    			<c:when test="${ empty emp_ability.picture }">
+	    				<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('<c:url value="/resources/images/no_image.gif" />');"></div>
+	    			</c:when>
+	    			<c:otherwise>
+	    				<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=ability&fileName=${ability.picture}');"></div>
+	    			</c:otherwise>
+	    		</c:choose>
+		</div>
+		</div> 
+      
       <div class="modal-body">
         
 	  
-	 
+	 <div class="form-group form-group-sm">
+			<label class="col-lg-3 col-md-3 col-sm-3 control-label"><spring:message
+					code="label.picture" var="var6" /> ${var6} </label>
+			<div class="col col-lg-5 col-md-8 col-sm-8">
+					<input name="image"  id="uploadFile" type="file" value="${emp_ability.picture }" accept="image/*" class="file" data-show-upload="false" data-show-preview="false" data-initial-caption="${var6}" data-overwrite-initial="false">
+					<input type="hidden" name="picture" class="form-control element-to-paste-filename" value="${emp_ability.picture }"  readonly placeholder="${var6}">
+			</div>
+		</div>
 	  
 	  <div class="form-group">
 	    <label>Specialty :</label>
@@ -146,6 +167,9 @@ $(document).ready(function(){
 	dt = $('#tbResult').dataTable();
 	listAll();
 	/* --- addProduct,updateProduct --- */
+	
+	
+	
 	$("#addModal").on("show.bs.modal",function(event) {
 		
 		clearModal();
@@ -229,7 +253,7 @@ function getId(abilityid){
 		
 		$.ajax({
 			
-			url : "${pageContext.request.contextPath}/ability/findById",
+			url : "${pageContext.request.contextPath}/ability/findById/",
 			data : "id=" + abilityid,
 			type : "POST",
 			success : function(data) {
@@ -237,7 +261,7 @@ function getId(abilityid){
 				
 				$("#masspecialty").val(data.masspecialty.id);
 				$("#rank").val(data.rank);
-				
+				//employee: {id: data.employeeId };
 			},
 			error : function(data, textStatus, jqXML) {
 				{
@@ -249,9 +273,9 @@ function getId(abilityid){
 		});
 	}
 	
-function updateAbility(button,abilityid) {
+function updateAbility() {
 /* alert("fn up"); */
-	
+	var id = getUrlParameter('Id');
 	$.ajax({
 		url : "${pageContext.request.contextPath}/ability/update",
 		data : JSON.stringify({
@@ -261,7 +285,8 @@ function updateAbility(button,abilityid) {
 				name : $("#masspecialty option:selected").text()
 			},
 			rank : $("#rank").val(),
-			employee : {id:2},
+			//employee : {id:2},
+		    employee: {id: id }
 		}),
 
 		type : "POST",
@@ -290,17 +315,19 @@ function updateAbility(button,abilityid) {
 function deleteAbility(button,abilityid) {
 	
 	$.ajax({
-		url : "${pageContext.request.contextPath}/ability/delete",
-		data :"id=" + abilityid,
+		url : "${pageContext.request.contextPath}/ability/delete"+abilityid,
+		//data :"id=" + abilityid,
 		type : "POST",
 		success : function(data) {
 			//alert(JSON.stringify(data));
 			
-			var tr = button.closest("tr");
+			/* var tr = button.closest("tr");
 			
-			dt.fnDeleteRow( tr );
+			dt.fnDeleteRow( tr ); */
 			
 			$('#deleteModal').modal('toggle');
+			
+			listAll();
 		},
 		error : function() {
 			alert("ERROR");
@@ -309,8 +336,8 @@ function deleteAbility(button,abilityid) {
 		});
 }
 function listAll(){
-	var id=2;
-	//var id = getUrlParameter('Id');
+	//var id=2;
+	var id = getUrlParameter('Id');
 	alert("id >>>>"+id);	
 	$.ajax({
 			url : "${pageContext.request.contextPath}/ability/listAll/"+id,
