@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchEducation",
-			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,mas_degreetype.name,edu.certificate,edu.description,edu.expiry_date,edu.employee_id from emp_education as edu,emp_employee as emp,mas_degreetype where edu.employee_id=:empId  and edu.employee_id = emp.id and mas_degreetype.id = edu.degreetype_id",																																																																					
+			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,mas_degreetype.name,edu.certificate,edu.description,edu.start_date,edu.graduated_date,edu.employee_id from emp_education as edu,emp_employee as emp,mas_degreetype where edu.employee_id=:empId  and edu.employee_id = emp.id and mas_degreetype.id = edu.degreetype_id",																																																																					
 			resultClass = EducationDto.class)
 			
 })
@@ -48,8 +48,12 @@ public class EducationDto {
 	private String description ;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "EXPIRY_DATE")
-	private Date expiryDate;
+	@Column(name = "START_DATE")
+	private Date startDate;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "Graduated_DATE")
+	private Date graduatedDate;
 	@Column(name ="EMPLOYEE_ID")
 	private String employeeId;
 	public Integer getId() {
@@ -100,11 +104,17 @@ public class EducationDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getExpiryDate() {
-		return expiryDate;
+	public Date getStartDate() {
+		return startDate;
 	}
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	public Date getGraduatedDate() {
+		return graduatedDate;
+	}
+	public void setGraduatedDate(Date graduatedDate) {
+		this.graduatedDate = graduatedDate;
 	}
 	public String getEmployeeId() {
 		return employeeId;

@@ -59,7 +59,8 @@
 			<th>Degree Type</th>
 			<th>Certificate</th>
 			<th>Description</th>
-			<th>Expiry Date</th>
+			<th>Start Date</th>
+			<th>Graduated Date</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -131,8 +132,12 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Expiry Date :</label>
-	    <form:input path="expiryDate" type="text" class="form-control" id="expiryDate"/>
+	    <label>Expiry Date</label>
+	    <br>
+	    <label>Start Date :</label>
+	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
+	    <label>Graduated Date :</label>
+	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate"/>
 	  </div>
       </div>
       
@@ -183,7 +188,16 @@
 	
 	$(document).ready(function(){
 		
-		var date1 = $( "#expiryDate" ).datepicker({
+		var date1 = $( "#startDate" ).datepicker({
+			clearBtn : true,
+			autoclose : true,
+			forceParse : false,
+			language : "en",
+			format : "dd-mm-yyyy",
+			todayHighlight : true
+		});
+		
+		var date1 = $( "#graduatedDate" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -199,7 +213,7 @@
 		/* --- addProduct,updateProduct --- */
 		$("#addModal").on("show.bs.modal",function(event) {
 			
-			clearModal();
+			//clearModal();
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var educationid = button.data("id") //Extract info from data-* attribute
@@ -242,7 +256,8 @@
 			$("#masdegreetype").val("-1");
 			$("#certificate").val("");
 			$("#description").val("");
-			$("#expiryDate").val("");
+			$("#startDate").val("");
+			$("#graduatedDate").val("");
 		}
 		
 		function addEducation(){
@@ -256,7 +271,8 @@
 					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
 					certificate :$("#certificate").val(),
 					description :$("#description").val(),
-					expiryDate :$("#expiryDate").val(),
+					startDate :$("#startDate").val(),
+					graduatedDate :$("#graduatedDate").val(),
 					employee : {id:2},
 					
 				}),
@@ -282,7 +298,8 @@
 						data.masdegreetype.name,
 						data.certificate,
 						data.description,
-						data.expiryDate,
+						data.startDate,
+						data.graduatedDate,
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
@@ -310,7 +327,8 @@
 					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
 					certificate :$("#certificate").val(),
 					description :$("#description").val(),
-					expiryDate :$("#expiryDate").val(),
+					startDate :$("#startDate").val(),
+					graduatedDate :$("#graduatedDate").val(),
 					employee : {id:2},
 					
 				}),
@@ -326,10 +344,11 @@
 					dt.fnUpdate(data.gpa, tr ,1);
 					dt.fnUpdate(data.faculty, tr ,2);
 					dt.fnUpdate(data.major, tr ,3);
-					dt.fnUpdate(data.masdegreetype.name, tr ,4);
+					dt.fnUpdate(data.masdegreetype, tr ,4);
 					dt.fnUpdate(data.certificate, tr ,5);
 					dt.fnUpdate(data.description, tr ,6);
-					dt.fnUpdate(data.expiryDate, tr ,7);
+					dt.fnUpdate(data.startDate, tr ,7);
+					dt.fnUpdate(data.graduatedDate, tr ,7);
 					
 					$('#addModal').modal('toggle');
 				},
@@ -351,10 +370,11 @@
 					$("#gpa").val(data.gpa),
 					$("#faculty").val(data.faculty),
 					$("#major").val(data.major);
-					$("#masdegreetype").val(data.masdegreetype.id);
+					$("#masdegreetype").val(data.masdegreetype);
 					$("#certificate").val(data.certificate);
 					$("#description").val(data.description);
-					$("#expiryDate").val(data.expiryDate);
+					$("#startDate").val(data.startDate);
+					$("#graduatedDate").val(data.graduatedDate);
 					
 				},
 				error : function() {
@@ -402,7 +422,8 @@
 					              data[i].masdegreetype,
 					              data[i].certificate,
 					              data[i].description,
-					              data[i].expiryDate,
+					              data[i].startDate,
+					              data[i].graduatedDate,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
