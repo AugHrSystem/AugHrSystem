@@ -73,7 +73,7 @@
 <form:form id ="addForm" method="post" commandName="punish">
 		<!-- Button trigger modal -->
 	<div class="form-group" align="right">
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
+		<button type="button"  id="addBtn" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
 	</div>
 	
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
@@ -94,7 +94,7 @@
 		
 				    <div class="form-group "  align="left">
 							<label for="tel" >Date:</label>
-							<p><input type="text" id="date" path="date"></p>							
+							<form:input path="date" type="text" class="form-control" id="date"/>							
 				    </div>
 				    
 				    <div class="form-group "  align="left">
@@ -143,8 +143,9 @@
 	<script type="text/javascript">
 
 	var dt;
-	
 	$(document).ready(function() {
+		$("#addBtn").on("click",function(){clearModal();});
+		
     	var date1 = $( "#date" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
@@ -154,14 +155,12 @@
 			todayHighlight : true
 		});
 	
-
-		dt = $('#tbResult').dataTable();
-		
+		dt = $('#tbResult').dataTable();	
 		 listAll();
 		 
 		$("#addModal").on("show.bs.modal",function(event) {
 			
-			clearModal();
+			
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var punishid = button.data("id") //Extract info from data-* attribute
@@ -275,9 +274,6 @@
 					dt.fnUpdate(data.date, tr, 0),
 					dt.fnUpdate(data.description, tr, 1),
 				
-					'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
-					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
-		
 						$('#addModal').modal('toggle');
 					},
 					error : function() {
@@ -303,7 +299,7 @@
 							alert("error");
 									}
 							});
-		}
+						}	
 		
 		
 		
@@ -332,6 +328,10 @@
 					
 		}
 			function listAll(){
+				
+				var id = getUrlParameter('Id');
+				alert("id >>>>"+id);
+				
 				$.ajax({
 					url : "${pageContext.request.contextPath}/punish/listAll",
 					type : "POST",
@@ -351,6 +351,28 @@
 						}
 					}); 
 			}
+			
+			
+			function getUrlParameter(sParam)
+			{
+				//alert("url "+document.referrer);
+			    var sPageURL = document.referrer;
+			    var sURLVariables = sPageURL.split('?');
+			    //alert("spilt "+sURLVariables);
+
+			   	
+			    
+			    var sParameterName = sURLVariables[1].split('=');
+			    //alert("Param "+parseInt(sParameterName[1]));
+			    if (sParameterName[0] == sParam) 
+			        {
+			        	//alert("Param "+sParameterName[0]);
+			        	return sParameterName[1];
+			        	
+			        }
+			        //alert("Param2 "+parseInt(sParameterName[1]));
+			    
+			}   
 	
 	});
 					

@@ -50,7 +50,7 @@ public class ReferenceController {
 	@RequestMapping(value = "/reference", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("referenceList", referenceService.findAll());
-		return "/reference/listreference";
+		return "/reference/reference";
 	}
 	
 //	@RequestMapping(value = "/reference/listAll", method = {RequestMethod.GET, RequestMethod.POST})

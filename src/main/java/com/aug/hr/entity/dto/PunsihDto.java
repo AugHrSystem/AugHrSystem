@@ -26,9 +26,8 @@ public class PunsihDto {
 	@Column(name = "ID")
 	private Integer id;
 	
-	
-	@Column(name ="DATE")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Column(name ="DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
@@ -71,7 +70,6 @@ public class PunsihDto {
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
-	
 	
 	
 	
