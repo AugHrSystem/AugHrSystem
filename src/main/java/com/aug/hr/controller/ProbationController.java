@@ -77,20 +77,6 @@ public class ProbationController {
 		return probation;
 	}
 
-    //Add
-    @RequestMapping(value = "/probation/insert", method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public @ResponseBody Probation insert(@RequestBody Probation probation) {
-
-
-        System.out.println("*****>>>> 333");
-        System.out.println("*****>>>> 222222");
-        logger.debug("**** insert ****");
-        return probation;
-    }
-	
 	//InitEdit
 	@RequestMapping(value = "/probation/initEdit/{proId}", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody ProbationDto initEditProbation(@PathVariable("proId") Integer proId) {
