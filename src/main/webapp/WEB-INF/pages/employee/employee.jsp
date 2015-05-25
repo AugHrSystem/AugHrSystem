@@ -49,6 +49,7 @@
               <li><a href="#reward" data-toggle="tab">Reward</a></li>
               <li><a href="#history" data-toggle="tab">History</a></li>
               <li><a href="#probation" data-toggle="tab">Probation</a></li>
+               <li><a href="#punish" data-toggle="tab">Punish</a></li>
             </ul>
          </div>
 </div>
@@ -854,6 +855,14 @@
 		marginwidth="0" marginheight="0" frameborder="0"
 		vspace="0" hspace="0"></iframe>
               </div>
+              
+              
+                     <div class="tab-pane" id="punish">
+                  <iframe src="${pageContext.request.contextPath}/punish" style="width: 100%; height: 600px; " 
+		marginwidth="0" marginheight="0" frameborder="0"
+		vspace="0" hspace="0"></iframe>
+              </div>
+              
             </div>
 
 

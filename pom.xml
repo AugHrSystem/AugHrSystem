@@ -60,10 +60,10 @@
         <skip.unit.tests>false</skip.unit.tests>
 
 
-        <database.driver>com.mysql.jdbc.Driver</database.driver>
-        <database.url>jdbc:mysql://localhost:3306/hris_system</database.url>
-        <database.username>root</database.username>
-        <database.password>root</database.password>
+        <db.driver>com.mysql.jdbc.Driver</db.driver>
+        <db.url>jdbc:mysql://localhost:3306/hris_system</db.url>
+        <db.username>root</db.username>
+        <db.password>root</db.password>
 
     </properties>
 
@@ -457,7 +457,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <driver>${db.driverClassName}</driver>
+                    <driver>${db.driver}</driver>
                     <url>${db.url}</url>
                     <username>${db.username}</username>
                     <password>${db.password}</password>
