@@ -47,16 +47,11 @@ public class MasSkillLanguage extends BaseEnityMasterData {
 	public void setSkillLanguageName(String skillLanguageName) {
 		this.skillLanguageName = skillLanguageName;
 	}
+	
+	@OneToMany(mappedBy="masSkillLanguage",fetch=FetchType.LAZY)
 
-
-	@OneToMany(mappedBy="masSkillLanguage",fetch=FetchType.LAZY,cascade=CascadeType.PERSIST)
-	//@JsonManagedReference
-	//@JsonIgnore
-	  @JsonBackReference
-	public Set<SkillLanguage> getSkillLanguage() {
+	public Set<SkillLanguage> getSkillLanguageList() {
 		return skillLanguage;
-
-
 	}
 
 

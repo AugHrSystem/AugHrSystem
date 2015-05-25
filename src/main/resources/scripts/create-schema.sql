@@ -406,10 +406,17 @@
         CREATEDTIMESTAMP datetime not null,
         UPDATEDBY integer,
         UPDATEDTIMESTAMP datetime,
+<<<<<<< HEAD
         READINGSKILL varchar(255) not null,
         SPEAKINGSKILL varchar(255) not null,
         UNDERSTANDINDSKILL varchar(255) not null,
         WRITINGSKILL varchar(255) not null,
+=======
+        LISTENINGSKILL varchar(255) not null,
+        READINGSKILL varchar(255) not null,
+        SPEAKINGSKILL varchar(255) not null,
+        UDERSTANDINDSKILL varchar(255) not null,
+>>>>>>> 1501d6e2ba704d6b895e8af3ed463203a82169b2
         EMPLOYEE_ID integer not null,
         MASSKILLLANGUAGE_ID integer not null,
         primary key (ID)

@@ -68,7 +68,7 @@ public class MasStaffType extends BaseEntity{
 	}
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "masStaffType")
-    @JsonManagedReference
+
 	public Set<Employee> getEmployee() {
 		return employee;
 	}

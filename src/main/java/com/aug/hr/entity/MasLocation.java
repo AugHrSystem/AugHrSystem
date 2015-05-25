@@ -43,7 +43,7 @@ public class MasLocation extends BaseEntity {
 	
 	
 	@OneToMany(mappedBy = "masLocation")
-	@JsonManagedReference
+
 	private Set<Employee> employees = new HashSet<Employee>();
 	
 	

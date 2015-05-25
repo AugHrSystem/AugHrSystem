@@ -59,13 +59,13 @@ public class Education extends BaseEntity{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",referencedColumnName="id" , nullable = false)
-	@JsonBackReference
+
 //	@JsonIgnore
 	private Employee employee;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "DEGREETYPE_ID", nullable = false)
-	@JsonBackReference
+
 	private MasDegreetype masdegreetype;
 
 	/*---------------------- getter / setter ----------------------*/

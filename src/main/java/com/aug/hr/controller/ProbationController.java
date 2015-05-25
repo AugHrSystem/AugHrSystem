@@ -5,9 +5,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import com.aug.hr.entity.Login;
+import com.aug.hr.entity.User;
+import com.aug.hr.entity.dto.EducationDto;
 import org.hibernate.Hibernate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.hateoas.ExposesResourceFor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -28,9 +35,13 @@ import com.aug.hr.entity.dto.ProbationDto;
 import com.aug.hr.services.ProbationService;
 
 @Controller
+@ExposesResourceFor(Probation.class)
 public class ProbationController {
-	
-	@Autowired private ProbationService probationService;
+
+    private static Logger logger = LoggerFactory.getLogger(ProbationController.class);
+
+    @Autowired private ProbationService probationService;
+
 	@Autowired private ProbationDtoService probationDtoService;
 
 	@RequestMapping(value = "/probation", method =  RequestMethod.GET)
@@ -65,11 +76,31 @@ public class ProbationController {
 		probationService.create(probation);
 		return probation;
 	}
+
+    //Add
+    @RequestMapping(value = "/probation/insert", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public @ResponseBody Probation insert(@RequestBody Probation probation) {
+
+
+        System.out.println("*****>>>> 333");
+        System.out.println("*****>>>> 222222");
+        logger.debug("**** insert ****");
+        return probation;
+    }
 	
 	//InitEdit
 	@RequestMapping(value = "/probation/initEdit/{proId}", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody Probation initEditProbation(@PathVariable("proId") Integer proId) {	
-		return (Probation) probationService.find(proId);
+	public @ResponseBody ProbationDto initEditProbation(@PathVariable("proId") Integer proId) {
+        Probation probation = probationService.find(proId);
+
+        logger.debug("probation result : "+ probation);
+//        return new Probation();
+
+
+        return probation.toProbationDto();
 	}
 	
 	//edit

@@ -36,7 +36,7 @@ public class MasCoreSkill extends BaseEntity {
 	 private Official official;*/
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "masCoreSkill", cascade=CascadeType.ALL, orphanRemoval=true)
-	@JsonManagedReference
+
 	private Set<Employee> employees = new HashSet<Employee>();
 	
 	public Integer getId() {

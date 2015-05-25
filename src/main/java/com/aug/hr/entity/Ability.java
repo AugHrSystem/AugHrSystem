@@ -41,13 +41,13 @@ public class Ability extends BaseEntity  {
 
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
- @JsonBackReference
+
 //	@JsonIgnore
 	private Employee employee;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "SPECIALTY_ID",nullable = false,referencedColumnName="SPEC_ID")
-	@JsonBackReference
+
 //	@JsonIgnore
 	private MasSpecialty masspecialty;
 

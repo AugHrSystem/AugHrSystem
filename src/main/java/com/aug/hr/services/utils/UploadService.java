@@ -13,7 +13,7 @@ import com.aug.hr.constants.Constants;
 @Service
 public class UploadService {
 	private static final Logger log = Logger.getLogger(UploadService.class);
-	@Value("#{appProps['picture.path']}")
+	@Value("#{'picture.path'}")
 	private String picpath;
 	
 	public String uploadImage(String module,String filename, MultipartFile image) throws RuntimeException, IOException {
