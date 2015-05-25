@@ -42,5 +42,9 @@ public class ProbationDaoImpl extends GenericDaoImpl<Probation, Integer> impleme
 	     return expDto;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public void createProbation(ProbationDto probationDto){
+		Query namedQuery = getCurrentSession().getNamedQuery("createProbation");
+	}
 
 }
