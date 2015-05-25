@@ -406,10 +406,10 @@
         CREATEDTIMESTAMP datetime not null,
         UPDATEDBY integer,
         UPDATEDTIMESTAMP datetime,
-        LISTENINGSKILL varchar(255) not null,
         READINGSKILL varchar(255) not null,
         SPEAKINGSKILL varchar(255) not null,
-        UDERSTANDINDSKILL varchar(255) not null,
+        UNDERSTANDINDSKILL varchar(255) not null,
+        WRITINGSKILL varchar(255) not null,
         EMPLOYEE_ID integer not null,
         MASSKILLLANGUAGE_ID integer not null,
         primary key (ID)
@@ -556,7 +556,7 @@
         ISACTIVE bit not null,
         UPDATEDBY integer,
         UPDATEDTIMESTAMP datetime,
-        SKILLLANGUAGE varchar(255),
+        SKILL_LANGUAGE varchar(255),
         primary key (ID)
     );
 

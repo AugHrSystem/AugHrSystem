@@ -1,8 +1,7 @@
 package com.aug.hr.entity;
 
-import java.util.HashSet;
-import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,21 +9,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="EMP_SKILLLANGUAGE")
 public class SkillLanguage extends BaseEntity{
 	
 	private Integer id;
-	private String  abilityListening;
 	private String  abilitySpeaking;
 	private String  abilityReading;
 	private String  abilityUnderstanding;
+	private String  abilityWriting;
 	private Employee employee;
 	private MasSkillLanguage masSkillLanguage;
 	
@@ -40,17 +41,8 @@ public class SkillLanguage extends BaseEntity{
 		this.id = id;
 	}
 	
-	
-    @Column(name="LISTENINGSKILL",nullable=false)
-	public String getAbilityListening() {
-		return abilityListening;
-	}
 
-	public void setAbilityListening(String abilityListening) {
-		this.abilityListening = abilityListening;
-	}
-
-	
+		
 	@Column(name="SPEAKINGSKILL",nullable=false)
 	public String getAbilitySpeaking() {
 		return abilitySpeaking;
@@ -71,7 +63,7 @@ public class SkillLanguage extends BaseEntity{
 	}
 
 	
-	@Column(name="UDERSTANDINDSKILL",nullable=false)
+	@Column(name="UNDERSTANDINDSKILL",nullable=false)
 	public String getAbilityUnderstanding() {
 		return abilityUnderstanding;
 	}
@@ -82,9 +74,17 @@ public class SkillLanguage extends BaseEntity{
 		this.abilityUnderstanding = abilityUnderstanding;
 	}
 	
-	
-	
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@Column(name="WRITINGSKILL",nullable=false)
+	public String getAbilityWriting() {
+		return abilityWriting;
+	}
+
+	public void setAbilityWriting(String abilityWriting) {
+		this.abilityWriting = abilityWriting;
+	}
+
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="EMPLOYEE_ID",nullable=false)
 
 	public Employee getEmployee() {
@@ -95,12 +95,12 @@ public class SkillLanguage extends BaseEntity{
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="MASSKILLLANGUAGE_ID",nullable=false)
 
-//	@JsonIgnore
+	
+
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="MASSKILLLANGUAGE_ID",nullable=false)
 	public MasSkillLanguage getMasSkillLanguage() {
 		return masSkillLanguage;
 	}
@@ -109,6 +109,7 @@ public class SkillLanguage extends BaseEntity{
 		this.masSkillLanguage = masSkillLanguage;
 	}
 
-   
+	
+	
 
 }

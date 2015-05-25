@@ -43,12 +43,8 @@
 		
 			<div style="padding-bottom: 10px">
 			
-	
 			
 				<h2>Reference</h2>
-				
-				
-
 				
 				
 			</div>

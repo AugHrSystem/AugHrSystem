@@ -2,6 +2,7 @@ package com.aug.hr.services;
 
 import java.util.List;
 
+
 import com.aug.hr.entity.SkillLanguage;
 
 public interface SkillLanguageService {
@@ -12,5 +13,10 @@ public interface SkillLanguageService {
 	public SkillLanguage find(Integer Id);
 	public List<SkillLanguage> findAll();
 	
-	public List<SkillLanguage> findAllByEmployee(Integer IdEmployee);
+	public List<SkillLanguage> findAllByEmployee(Integer IdEmployee);	
+	public void saveByFindEmployee(Integer employeeId,SkillLanguage skillLanguage);
+	public SkillLanguage findSkillLanguageById(Integer id);
+	
+	public void updateSetSkillLanguage(SkillLanguage skillLanguage);
+	
 }
