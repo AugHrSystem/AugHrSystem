@@ -182,7 +182,7 @@
 		/* --- addProduct,updateProduct --- */
 		$("#addModal").on("show.bs.modal",function(event) {
 			
-			clearModal();
+			//clearModal();
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var historyid = button.data("id") //Extract info from data-* attribute
@@ -219,10 +219,11 @@
 
 		function clearModal(){
 			$("#position").val("");
-			/* $("#company").val(""),
-			$("#salary").val(""),
-			$("#time").val(""); */
-			/* $("#masdegreetype").val("-1"); */
+			$("#salary").val("");
+			$("#oldSalary").val("");
+			$("#dateOfAdjustment").val("");
+			$("#reasonOfAdjustment").val("");
+			$("#adjustmentTime").val("");
 		}
 		
 		function addHistory(){

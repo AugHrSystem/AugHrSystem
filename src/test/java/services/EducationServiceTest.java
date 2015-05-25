@@ -48,7 +48,6 @@ public class EducationServiceTest {
 		education.setMasdegreetype(masdegreetype);
 		education.setCertificate("Java");
 		education.setDescription("Java");
-		education.setExpiryDate(null);
 		
 		employee.setId(2);
 

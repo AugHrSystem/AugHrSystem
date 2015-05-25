@@ -18,7 +18,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -50,22 +49,21 @@ public class Education extends BaseEntity{
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "EXPIRY_DATE")
-	private Date expiryDate;
+	@Column(name = "Start_DATE")
+	private Date startDate;
 	
-	/*@ManyToOne()
-	@JoinColumn(name="OFFICIAL_ID")
-	private Official official;*/
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "Graduated_DATE")
+	private Date graduatedDate;
+	
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID",referencedColumnName="id" , nullable = false)
-
-//	@JsonIgnore
 	private Employee employee;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "DEGREETYPE_ID", nullable = false)
-
+	@JoinColumn(name = "DEGREETYPE_ID",referencedColumnName="id" ,nullable = false)
 	private MasDegreetype masdegreetype;
 
 	/*---------------------- getter / setter ----------------------*/
@@ -109,14 +107,6 @@ public class Education extends BaseEntity{
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	
-	/*public Official getOfficial() {
-		return official;
-	}
-
-	public void setOfficial(Official official) {
-		this.official = official;
-	}*/
 
 	public MasDegreetype getMasdegreetype() {
 		return masdegreetype;
@@ -150,14 +140,20 @@ public class Education extends BaseEntity{
 		this.description = description;
 	}
 
-	public Date getExpiryDate() {
-		return expiryDate;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
-	
-	
-	
+
+	public Date getGraduatedDate() {
+		return graduatedDate;
+	}
+
+	public void setGraduatedDate(Date graduatedDate) {
+		this.graduatedDate = graduatedDate;
+	}
+
 }
