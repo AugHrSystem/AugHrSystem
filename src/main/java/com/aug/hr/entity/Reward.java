@@ -22,14 +22,14 @@ public class Reward extends BaseEntity{
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name = "NAME" ,nullable = false)
-	private String name;
+	@Column(name = "TYPE_REWARD" ,nullable = false)
+	private String typereward;
 	
 	@Column(name = "YEAR" ,nullable = false)
 	private String year;
 		
-	@Column(name = "DETAILREWARD" ,nullable = true)
-	private String detailreward;
+	@Column(name = "REASON" ,nullable = true)
+	private String reason;
 	
 	
 	@Column(name = "ISACTIVE",nullable=true)
@@ -42,8 +42,6 @@ public class Reward extends BaseEntity{
 //	@JsonIgnore
 	private Employee employee;
 
-	
-	
 
 	public Integer getId() {
 		return id;
@@ -55,13 +53,13 @@ public class Reward extends BaseEntity{
 	}
 
 
-	public String getName() {
-		return name;
+	public String getTypereward() {
+		return typereward;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTypereward(String typereward) {
+		this.typereward = typereward;
 	}
 
 
@@ -75,13 +73,13 @@ public class Reward extends BaseEntity{
 	}
 
 
-	public String getDetailreward() {
-		return detailreward;
+	public String getReason() {
+		return reason;
 	}
 
 
-	public void setDetailreward(String detailreward) {
-		this.detailreward = detailreward;
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 
@@ -104,7 +102,8 @@ public class Reward extends BaseEntity{
 		this.employee = employee;
 	}
 
-
+	
+	
 	
 	
 	

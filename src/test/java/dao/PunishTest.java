@@ -29,7 +29,7 @@ public class PunishTest {
 		Punish punish = new Punish();
 		Date date = new Date("10/09/2014");
 		
-		punish.setDescription("description");
+		punish.setDescription("reason");
 		
 		punishdao.getCurrentSession().save(punish);
 	}
