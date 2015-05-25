@@ -5,15 +5,17 @@
  */
 package com.aug.hr.controller;
 
+
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
-
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,24 +23,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+
 import com.aug.hr.dto.services.AbilityDtoService;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.dto.AbilityDto;
 import com.aug.hr.services.AbilityService;
 import com.aug.hr.services.MasSpecialtyService;
+import com.aug.hr.services.utils.UploadService;
 
 @Controller
 public class AbilityController {
 
-	@Autowired
-	private AbilityService abilityService;;
+	@Autowired private AbilityService abilityService;;
 	
-	@Autowired AbilityDtoService abilityDtoService;
+	@Autowired private AbilityDtoService abilityDtoService;
 	
-	@Autowired 
-	private MasSpecialtyService masSpecialtyService;
+	@Autowired private MasSpecialtyService masSpecialtyService;
 	
-	
+	@Autowired private UploadService uploadService;
 
 	/*@RequestMapping(value = "/ability", method =RequestMethod.GET)
     public String init(ModelMap model) {	
@@ -73,10 +77,42 @@ public class AbilityController {
 	}*/
 	
 	@RequestMapping(value="/ability/add",method=RequestMethod.POST)
-	public @ResponseBody Ability addAbility(@RequestBody Ability ability){
+	public @ResponseBody String addAbility(@RequestBody Ability ability,
+    		@RequestParam(value = "image", required = false) MultipartFile image,
+    		Locale locale, BindingResult result, ModelMap model,HttpSession session){
 		//Hibernate.initialize(ability.getEmployee().getNameEng());
+		Hibernate.initialize(ability.getEmployee().getNameEng());
+		
+		/*
+		
+		 * upload image
+		 
+		try {
+			if (image != null && image.getSize() > 0){
+					*//**
+					 * delete old upload picture
+					 *//*
+					if (!StringUtils.isEmpty(ability.getTmpImage()))
+						uploadService.deleteImage(Constants.ABILITY_MODULE, ability.getTmpImage());
+					
+					String extension[] = image.getOriginalFilename().split("\\.");
+					String fileName = ability.getName()+Calendar.getInstance().getTimeInMillis()+"."+extension[1];
+					ability.setPicture(fileName);
+					ability.setTmpImage(fileName);
+					*//**
+					 * upload new picture
+					 *//*
+					uploadService.uploadImage(Constants.ABILITY_MODULE, fileName, image);
+					
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.setAttribute("msgerror", e.getMessage());
+			return "/ability/ability";
+		}*/
+		
 		abilityService.create(ability);
-		return ability;
+		return "redirect:/ability/ability";
 	}
 	
 	
@@ -85,6 +121,15 @@ public class AbilityController {
 	{
 		return abilityService.find(id);
 	}
+	
+	
+	
+	/*@RequestMapping(value="/ability/findById/{abilityid}",method=RequestMethod.POST)
+	public @ResponseBody Ability findById(@PathVariable("abilityid") Integer abilityid)
+	{
+		return (Ability) abilityService.find(abilityid);
+	}
+	*/
 	
 	@RequestMapping(value="/ability/update",method=RequestMethod.POST)
 	public @ResponseBody Ability ubdateAbility(@RequestBody Ability ability){
@@ -95,12 +140,12 @@ public class AbilityController {
 	
 	
 	
-	@RequestMapping(value="/ability/delete",method=RequestMethod.POST)
-	public @ResponseBody String deleteById(@RequestParam Integer id){
+	@RequestMapping(value="/ability/delete{abilityid}",method=RequestMethod.POST)
+	public @ResponseBody String deleteById(@PathVariable("abilityid") Integer abilityid){
 		
-		abilityService.deleteById(id);
+		abilityService.deleteById(abilityid);
 		
-		return "{success:true}";
+		return "redirect:/ability";
 	
 	
 	}
