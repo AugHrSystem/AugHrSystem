@@ -38,7 +38,6 @@ public class PunsihDto {
 	private String employeeId;
 
 	
-	
 	public Integer getId() {
 		return id;
 	}
@@ -70,8 +69,6 @@ public class PunsihDto {
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
-	
-	
 	
 
 }
