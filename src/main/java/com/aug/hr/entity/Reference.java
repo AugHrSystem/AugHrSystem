@@ -76,7 +76,7 @@ public class Reference {
 	public String getOccupation() {
 		return occupation;
 	}
-
+	
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
@@ -100,17 +100,25 @@ public class Reference {
 		return referenceDto;
 	}
 
+	public ReferenceDto toReferenceDto(){
+		ReferenceDto referenceDto = new ReferenceDto();
+		referenceDto.setId(this.id);
+		referenceDto.setName(this.name);
+		referenceDto.setAddress(this.address);
+		referenceDto.setTel(this.tel);
+		referenceDto.setOocupation(this.occupation);
+		return referenceDto;
+	}
+
 	public Reference fromReferenceDto(ReferenceDto referenceDto){
 		Reference reference = new Reference();
 		reference.setId(referenceDto.getId());
 		reference.setName(referenceDto.getName());
 		reference.setAddress(referenceDto.getAddress());
 		reference.setTel(referenceDto.getTel());
-		reference.setOccupation(referenceDto.getOccupation());
-		
+		reference.setOccupation(referenceDto.getOocupation());
 		Employee employee = new Employee();
 		employee.setId(referenceDto.getEmployeeId());
-		reference.setEmployee(employee);
 		return reference;
 	}
 

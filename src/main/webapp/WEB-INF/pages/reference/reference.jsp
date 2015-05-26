@@ -231,15 +231,25 @@
 					name : $("#name").val(),
 					address :$("#address").val(),
 					tel :$("#tel").val(),
+<<<<<<< HEAD
 					occupation :$("#occupation").val(),
 					employeeId: id 
+=======
+					oocupation :$("#occupation").val(),
+					employee :{id:2},
+>>>>>>> dto 415 reference
 				
 				}),
 				type : "POST",
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
+<<<<<<< HEAD
 		
+=======
+
+						
+>>>>>>> dto 415 reference
 					dt.fnClearTable();
 					
 					dt.fnAddData([
