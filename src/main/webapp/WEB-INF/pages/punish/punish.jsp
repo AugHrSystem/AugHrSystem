@@ -330,7 +330,7 @@
 			function listAll(){
 				
 				var id = getUrlParameter('Id');
-				alert("id >>>>"+id);
+				//alert("id >>>>"+id);
 				
 				$.ajax({
 					url : "${pageContext.request.contextPath}/punish/listAll",
@@ -353,6 +353,7 @@
 			}
 			
 			
+			
 			function getUrlParameter(sParam)
 			{
 				//alert("url "+document.referrer);
@@ -372,7 +373,7 @@
 			        }
 			        //alert("Param2 "+parseInt(sParameterName[1]));
 			    
-			}   
+			}
 	
 	});
 					
