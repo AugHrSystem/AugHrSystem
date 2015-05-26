@@ -45,7 +45,7 @@ public class ReferenceController {
 		//Reference reference = new Reference();	
 		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
 	}
-	
+//	
 
 	@RequestMapping(value = "/reference", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {

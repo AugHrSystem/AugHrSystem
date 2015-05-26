@@ -46,7 +46,7 @@ public class RewardController {
 		return (List<RewardDto>) rewardDtoService.searchReward(id);
 	}
 	
-	
+//	
 	@RequestMapping(value = "/reward", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("rewardList", rewardService.findAll());
