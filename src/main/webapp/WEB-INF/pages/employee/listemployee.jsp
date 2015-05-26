@@ -117,15 +117,15 @@ var empId;
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
 				var empId = button.data("empid");
-				alert("delete "+empId);
+				//alert("delete "+empId);
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteEmployee(button,empId);
-							alert("go fn");
+							//alert("go fn");
 						});
 				
 				function deleteEmployee(button,empId){
-					alert("in fn");
+					//alert("in fn");
 					$.ajax({
 						url : "${pageContext.request.contextPath}/employee/delete/"+empId,
 						type : "POST",
@@ -149,7 +149,7 @@ var empId;
 	
 	/* --------------------------------------------------- EditFunction --------------------------------------------------- */		
 		function initEditEmployee(empId) {
-		alert(empId+" Init edit");
+		//alert(empId+" Init edit");
 		window.location = "${pageContext.request.contextPath}/employee?Id="+empId;
 	/* 	$.ajax({
 			url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,
@@ -168,7 +168,7 @@ var empId;
 	}
 	
 	function editEmployee() {
-		alert(empId+" edit");
+		//alert(empId+" edit");
 		$.ajax({
 			url : "${pageContext.request.contextPath}/employee/edit",
 			type : "POST",

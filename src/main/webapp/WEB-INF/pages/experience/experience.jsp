@@ -245,7 +245,7 @@ var dt;
     		}
     		
     		function initEditExperience(expId) {
-				alert(expId+" Init edit");
+				//alert(expId+" Init edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
 					type : "POST",
@@ -274,7 +274,7 @@ var dt;
     		
     		function editExperience() {
     			var id = getUrlParameter('Id');
-    			alert(expId+" edit");
+    			//alert(expId+" edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/edit",
 					type : "POST",
@@ -338,11 +338,11 @@ var dt;
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
 				var expId = button.data("expid");
-				alert("delete "+expId);
+				//alert("delete "+expId);
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteExperience(button,expId);
-							alert("go fn");
+							//alert("go fn");
 						});
 				
 				function deleteExperience(button,expId){
