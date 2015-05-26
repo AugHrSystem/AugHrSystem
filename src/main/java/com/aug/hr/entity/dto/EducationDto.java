@@ -55,7 +55,10 @@ public class EducationDto {
 	@Column(name = "Graduated_DATE")
 	private Date graduatedDate;
 	@Column(name ="EMPLOYEE_ID")
-	private String employeeId;
+	private Integer employeeId;
+	@Column(name ="DEGREETYPE_ID")
+	private Integer masDegreeTypeId;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -116,12 +119,17 @@ public class EducationDto {
 	public void setGraduatedDate(Date graduatedDate) {
 		this.graduatedDate = graduatedDate;
 	}
-	public String getEmployeeId() {
+	public Integer getEmployeeId() {
 		return employeeId;
 	}
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
-	
+	public Integer getMasDegreeTypeId() {
+		return masDegreeTypeId;
+	}
+	public void setMasDegreeTypeId(Integer masDegreeTypeId) {
+		this.masDegreeTypeId = masDegreeTypeId;
+	}
 	
 }
