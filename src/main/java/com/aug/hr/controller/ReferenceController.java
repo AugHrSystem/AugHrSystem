@@ -87,8 +87,8 @@ public class ReferenceController {
 		return reference.toReferenceDto();
 	}
 	
-	@RequestMapping(value = "/reference/delete/{id}", method =  RequestMethod.POST)
-	public @ResponseBody String deleteReference(@PathVariable("id") Integer id) {
+	@RequestMapping(value = "/reference/delete", method =  RequestMethod.POST)
+	public @ResponseBody String deleteReference(@PathVariable("referenceid") Integer id) {
 		referenceService.deleteById(id);		
 		return "{success:true}";
 	}

@@ -331,7 +331,7 @@
 		
 		
 		
-		function deleteById(button ,referenceid) {
+		function deleteById(button,referenceid) {
 			$.ajax({
 				url : "${pageContext.request.contextPath}/reference/delete",
 				data : "id=" +referenceid,
