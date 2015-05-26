@@ -77,5 +77,12 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 	}
 
 
+	@Override
+	public void saveEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 }

@@ -27,11 +27,143 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+
+import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+            name = "insertEmployee",
+            query = "insert into EMP_EMPLOYEE("
+            		+"EMPLOYEE_CODE,"
+            		+ "NAME_THAI,"
+            		+ "SURNAME_THAI,"
+            		+ "NICKNAME_THAI,"
+            		+ "NAME_ENG,"
+            		+ "SURNAME_ENG,"
+            		+ "NICKNAME_ENG,"
+            		+ "EMAIL,"
+            		+ "TEL_HOME,"
+            		+ "TEL_MOBILE,"
+            		+ "TEL_FAX,"
+            		+ "CONGENITAL_DISEASE,"
+            		+ "HOSPITAL,"
+            		+ "EMERGENCY_CONTACT,"
+            		+ "RELATIONSHIP_WITH_EMERGENCY_CONTACT,"
+            		+ "EMERGENCY_CONTACT_ADDRESS,"
+            		+ "EMERGENCY_CONTACT_PHONE_NUMBER,"
+            		+ "DATEOFBIRTH,"
+            		+ "PLACEOFBIRTH,"
+            		+ "AGE,"
+            		+ "RELIGION,"
+            		+ "ID_CARD,"
+            		+ "ISSUED_OFFICE,"
+            		+ "EXPIRY_DATE,"
+            		+ "HEIGHT,"
+            		+ "WEIGTH,"
+            		+ "SEX,"
+            		+ "MARITAL_STATUS,"
+            		+ "NUMBER_OF_CHILDREN,"
+            		+ "SPOUSE_NAME,"
+            		+ "MARRIAGE_CERTIFICATE_NO,"
+            		+ "ISSUED_OFFICE2,"
+            		+ "ADDRESS,"
+            		+ "OCCUPATION,"
+            		+ "KNOW_AUG_NEWSPAPER,"
+            		+ "DESCRIPTION_NEWSPAPER,"
+            		+ "KNOW_AUG_MAGAZINE,"
+            		+ "DESCRIPTION_MAGAZINE,"
+            		+ "KNOW_AUG_WEBSITE,"
+            		+ "DESCRIPTION_WEBSITE,"
+            		+ "KNOW_AUG_FRIEND,"
+            		+ "DESCRIPTION_FRIEND,"
+            		+ "KNOW_AUG_OTHER,"
+            		+ "DESCRIPTION_OTHER,"
+            		+ "KNOW_EMPLOYED_YES,"
+            		+ "DESCRIPTION_YES,"
+            		+ "KNOW_EMPLOYER_NO,"
+            		+ "MILITARY_SERVICE_YES,"
+            		+ "FROM_YEAR,"
+					+ "TO_YEAR,"
+            		+ "BRANCH_OF_SERVICE,"
+            		+ "SERVICE_NO,"
+            		+ "MILITARY_SERVICE_NO,"
+            		+ "REASONS_NO,"
+            		+ "DATE_TO_BE_DRAFTED,"
+            		+ "PREVIOUS_EMPLOYER_YES,"
+            		+ "PREVIOUS_EMPLOYER_NO,"
+            		+ "PREVIOUSEMP_REASONS_NO,"
+            		+ "IMAGE)"
+            		+ " values("
+            		+ ":EMPLOYEE_CODE,"
+            		+ ":NAME_THAI,"
+            		+ ":SURNAME_THAI,"
+            		+ ":NICKNAME_THAI,"
+            		+ ":NAME_ENG,"
+            		+ ":SURNAME_ENG,"
+            		+ ":NICKNAME_ENG,"
+            		+ ":EMAIL,"
+            		+ ":TEL_HOME,"
+            		+ ":TEL_MOBILE,"
+            		+ ":TEL_FAX,"
+            		+ ":CONGENITAL_DISEASE,"
+            		+ ":HOSPITAL,"
+            		+ ":EMERGENCY_CONTACT,"
+            		+ ":RELATIONSHIP_WITH_EMERGENCY_CONTACT,"
+            		+ ":EMERGENCY_CONTACT_ADDRESS,"
+            		+ ":EMERGENCY_CONTACT_PHONE_NUMBER,"
+            		+ ":DATEOFBIRTH,"
+            		+ ":PLACEOFBIRTH,"
+            		+ ":AGE,"
+            		+ ":RELIGION,"
+            		+ ":ID_CARD,"
+            		+ ":ISSUED_OFFICE,"
+            		+ ":EXPIRY_DATE,"
+            		+ ":HEIGHT,"
+            		+ ":WEIGTH,"
+            		+ ":SEX,"
+            		+ ":MARITAL_STATUS,"
+            		+ ":NUMBER_OF_CHILDREN,"
+            		+ ":SPOUSE_NAME,"
+            		+ ":MARRIAGE_CERTIFICATE_NO,"
+            		+ ":ISSUED_OFFICE2,"
+            		+ ":ADDRESS,"
+            		+ ":OCCUPATION,"
+            		+ ":KNOW_AUG_NEWSPAPER,"
+            		+ ":DESCRIPTION_NEWSPAPER,"
+            		+ ":KNOW_AUG_MAGAZINE,"
+            		+ ":DESCRIPTION_MAGAZINE,"
+            		+ ":KNOW_AUG_WEBSITE,"
+            		+ ":DESCRIPTION_WEBSITE,"
+            		+ ":KNOW_AUG_FRIEND,"
+            		+ ":DESCRIPTION_FRIEND,"
+            		+ ":KNOW_AUG_OTHER,"
+            		+ ":DESCRIPTION_OTHER,"
+            		+ ":KNOW_EMPLOYED_YES,"
+            		+ ":DESCRIPTION_YES,"
+            		+ ":KNOW_EMPLOYER_NO,"
+            		+ ":MILITARY_SERVICE_YES,"
+            		+ ":FROM_YEAR,"
+            		+ ":TO_YEAR,"
+            		+ ":BRANCH_OF_SERVICE,"
+            		+ ":SERVICE_NO,"
+            		+ ":MILITARY_SERVICE_NO,"
+            		+ ":REASONS_NO,"
+            		+ ":DATE_TO_BE_DRAFTED,"
+            		+ ":PREVIOUS_EMPLOYER_YES,"
+            		+ ":PREVIOUS_EMPLOYER_NO,"
+            		+ ":PREVIOUSEMP_REASONS_NO,"
+            		+ ":IMAGER"
+            		+ ")"
+            		,resultClass= AllEmployeeDto.class)
+  })
+
 
 
 
@@ -53,7 +185,7 @@ public class Employee extends BaseEntity{
 	
 	@Column(name = "SURNAME_THAI",nullable = true)
 	private String surnameThai;
-	
+		
 	@Column(name = "NICKNAME_THAI",nullable = true)
 	private String nicknameThai;
 	
@@ -66,6 +198,9 @@ public class Employee extends BaseEntity{
 	@Column(name = "NICKNAME_ENG",nullable = true)
 	private String nicknameEng;
 
+	@Column(name = "EMAIL",nullable = false)
+	private String email;
+	
 	@Column(name = "TEL_HOME",nullable = false)
 	private Integer telHome;
 	
@@ -74,7 +209,13 @@ public class Employee extends BaseEntity{
 	
 	@Column(name = "TEL_FAX",nullable = true)
 	private Integer telFax;
-
+	
+	@Column(name = "CONGENITAL_DISEASE",nullable = false)
+	private String congenitalDisease;
+	
+	@Column(name = "HOSPITAL",nullable = false)
+	private String hospital;
+	
 	@Column(name = "EMERGENCY_CONTACT",nullable = false)
 	private String emergencyContact;
 	
@@ -210,7 +351,8 @@ public class Employee extends BaseEntity{
 	@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
 	private String previousEmpreasonsNo;
 	
-	
+	@Column(name = "IMAGE",nullable = true)
+	private String image;
 	
 //------------------self relation-------------------
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -257,7 +399,6 @@ public class Employee extends BaseEntity{
 	 
 	 @OneToOne(fetch=FetchType.LAZY)
 	 @JoinColumn(name = "OFFICIAL_ID",nullable = true)
-
 	 private Official official;
 	 
 	 
@@ -435,6 +576,30 @@ public class Employee extends BaseEntity{
 		this.nicknameEng = nicknameEng;
 	}
 
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCongenitalDisease() {
+		return congenitalDisease;
+	}
+
+	public void setCongenitalDisease(String congenitalDisease) {
+		this.congenitalDisease = congenitalDisease;
+	}
+
+	public String getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital;
+	}
 
 	public Integer getTelHome() {
 		return telHome;
@@ -1127,6 +1292,7 @@ public class Employee extends BaseEntity{
 	}
 
 
+
 	/*@Override
 	public String toString() {
 		return "Employee [id=" + id + ", employeeCode=" + employeeCode
@@ -1181,6 +1347,16 @@ public class Employee extends BaseEntity{
 				+ ", status=" + status + ", masCoreSkillId=" + masCoreSkillId
 				+ ", technologyId=" + technologyId + "]";
 	}*/
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
+
 
 //	@Override
 //	public String toString() {

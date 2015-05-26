@@ -21,5 +21,6 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public List<EmployeeDto> searchEmployee();
 	
 	public List<AimEmployeeDto> listEmployeeAim();
+	public void saveEmployee();
 	
 }

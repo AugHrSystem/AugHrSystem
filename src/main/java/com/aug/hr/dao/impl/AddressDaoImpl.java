@@ -9,11 +9,13 @@ package com.aug.hr.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.AddressDao;
 import com.aug.hr.entity.Address;
+import com.aug.hr.entity.dto.AddressDto;
 import com.mysql.jdbc.StringUtils;
 
 @Repository
@@ -41,5 +43,15 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Integer> implements 
 		getCurrentSession().delete(address);
 		return address;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<AddressDto> searchAddress(Integer id) {
+		Query namedQuery = getCurrentSession().getNamedQuery("searchAddress").setInteger("empId" ,id);
+		//namedQuery.executeUpdate();
+		List<AddressDto> addreDto = namedQuery.list();
+	     return addreDto;
+	}
+	
+	
 
 }
