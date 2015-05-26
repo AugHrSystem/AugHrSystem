@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchEducation",
-			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,mas_degreetype.name,edu.certificate,edu.description,edu.start_date,edu.graduated_date,edu.employee_id from emp_education as edu,emp_employee as emp,mas_degreetype where edu.employee_id=:empId  and edu.employee_id = emp.id and mas_degreetype.id = edu.degreetype_id",																																																																					
+			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,mas_degreetype.name,edu.certificate,edu.description,edu.start_date,edu.graduated_date,edu.employee_id,mas_degreetype.id from emp_education as edu,emp_employee as emp,mas_degreetype where edu.employee_id=:empId  and edu.employee_id = emp.id and mas_degreetype.id = edu.degreetype_id",																																																																					
 			resultClass = EducationDto.class)
 			
 })
