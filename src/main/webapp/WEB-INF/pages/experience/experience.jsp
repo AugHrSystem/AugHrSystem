@@ -63,7 +63,7 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
+		<button id="clearModal" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
  	 	Add
 		</button>
 	</div>
@@ -160,7 +160,7 @@
 <script>
 var dt;
 	$(document).ready(function() {
-    	var date1 = $( "#dateFrom" ).datepicker({
+    	$( "#dateFrom" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -168,7 +168,7 @@ var dt;
 			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
-    	var date2 = $( "#dateTo" ).datepicker({
+    	$( "#dateTo" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -251,11 +251,11 @@ var dt;
 					type : "POST",
 					success : function(data) {
 						id:expId;
-						$("#cName").val(data.name);
+						$("#cName").val(data.companyName);
 						$("#businessType").val(data.businessType);
 						$("#position").val(data.position);
 						$("#salary").val(data.salary);
-						$("#dataFrom").val(data.dateFrom);
+						$("#dateFrom").val(data.dateFrom);
 						$("#dateTo").val(data.dateTo);
 						$("#responsibility").val(data.responsibility);
 						$("#reference").val(data.reference);
@@ -320,6 +320,19 @@ var dt;
 					});
 			}
 			
+    		$("#clearModal").off().on("click", function(){
+    			$("#cName").val("");
+				$("#businessType").val("");
+				$("#position").val("");
+				$("#salary").val("");
+				$("#dateFrom").val("");
+				$("#dateTo").val("");
+				$("#responsibility").val("");
+				$("#reference").val("");
+				$("#address").val("");
+				$("#reason").val("");
+			});
+    		
      		});
 			
 			$("#deleteModal").on("show.bs.modal", function(event){

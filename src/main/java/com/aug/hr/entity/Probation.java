@@ -99,7 +99,7 @@ public class Probation extends BaseEntity {
     	Probation probation = new Probation();
     	probation.setId(probationDto.getId());
     	probation.setDateFrom(probationDto.getDateFrom());
-    	probation.setDateTo(getDateTo());
+    	probation.setDateTo(probationDto.getDateTo());
     	probation.setStatus(probationDto.getStatus());
     	Employee employee = new Employee();
     	employee.setId(probationDto.getEmployeeId());
