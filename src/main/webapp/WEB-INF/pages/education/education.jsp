@@ -188,10 +188,8 @@
 	
 	$(document).ready(function(){
 		
-// 		$("‪.‎btnAdd").on("click",function(){
-// 			//clearModal();
-// 		alert('dd');
-// 		});
+		$("‪#‎addBtn‬Edu").on("click",function(){clearModal();});
+
 		
 		var date1 = $( "#startDate" ).datepicker({
 			clearBtn : true,

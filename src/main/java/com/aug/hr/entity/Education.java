@@ -63,7 +63,6 @@ public class Education extends BaseEntity{
 	
 	@ManyToOne()
 	@JoinColumn(name = "DEGREETYPE_ID", referencedColumnName="DEGREETYPE_ID", nullable = false)
-
 	private MasDegreetype masdegreetype;
 
 	/*---------------------- getter / setter ----------------------*/
