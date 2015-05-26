@@ -145,7 +145,7 @@
 	var dt;
 	$(document).ready(function() {
 		$("#addBtn").on("click",function(){clearModal();});
-		
+////		
     	var date1 = $( "#date" ).datepicker({
 			clearBtn : true,
 			autoclose : true,

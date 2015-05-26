@@ -121,7 +121,7 @@
 	  
 	  
 	  
-<!------------------------------------------Button  modal 2----------------------------------------------------->
+<!------------------------------------------Button  modal 2--------------------------------------------------------->
 		
 		
 		<div class="modal fade" id="deleteModal" tabindex ="-1" role ="dialog" aria-labelledby ="myModalLabel" aria-hidden ="true">

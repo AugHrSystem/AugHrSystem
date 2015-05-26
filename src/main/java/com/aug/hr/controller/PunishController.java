@@ -43,8 +43,8 @@ public class PunishController {
 		binder.registerCustomEditor(Date.class, editor);
 	//	binder.registerCustomEditor(Punish.class, PunishEditor);		
 	}
-	
-
+	 
+//
 	
 	@RequestMapping(value = "/punish/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<PunsihDto> listAll(@PathVariable("id") Integer id) {
