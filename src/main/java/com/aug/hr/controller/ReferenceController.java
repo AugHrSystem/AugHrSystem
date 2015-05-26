@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.aug.hr.dto.services.ReferenceDtoService;
 import com.aug.hr.entity.Reference;
 import com.aug.hr.entity.dto.EmployeeDto;
@@ -42,7 +43,6 @@ public class ReferenceController {
 	
 	@RequestMapping(value = "/reference/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
-		//Reference reference = new Reference();	
 		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
 	}
 //	
@@ -61,27 +61,33 @@ public class ReferenceController {
 //	}
 	
 	@RequestMapping(value = "/reference/add", method = RequestMethod.POST)
-	public @ResponseBody Reference addReference(@RequestBody Reference reference) {
-		referenceService.create(reference);
-		return reference;
-	}
-	@RequestMapping(value = "/reference/update", method = RequestMethod.POST , consumes="appication/json", produces="appication/json")
-	public @ResponseBody Reference updateReference(@RequestBody Reference reference ) {
-		referenceService.update(reference);
-		return reference;
+	public @ResponseBody ReferenceDto addReference(@RequestBody ReferenceDto referenceDto) {
+		Reference reference = new Reference();
+		referenceService.create(reference.fromReferenceDto(referenceDto));
+		return referenceDto;
 	}
 	
-	@RequestMapping(value = "/reference/findById", method = RequestMethod.POST)
-	public @ResponseBody Reference findById(@RequestParam Integer id) {
-		return referenceService.findById(id);
+	@RequestMapping(value = "/reference/update", method = {RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody ReferenceDto updateReference(@RequestBody ReferenceDto referenceDto ) {
+		Reference reference = new Reference();
+		referenceService.update(reference.fromReferenceDto(referenceDto));
+		return referenceDto;
 	}
 	
-	@RequestMapping(value = "/reference/delete", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/reference/findById", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody ReferenceDto findById(@RequestParam Integer id) {
+		Reference reference = referenceService.findById(id);
+		return reference.toReferenceDto();
+	}
+	
+	@RequestMapping(value = "/reference/delete", method =  RequestMethod.POST)
 	public @ResponseBody String deleteReference(@RequestParam Integer id) {
 		referenceService.deleteById(id);
 		
 		return "{success:true}";
 	}
+	
 	@ModelAttribute("reference")
 	Reference setupForm() {
 		return new Reference();

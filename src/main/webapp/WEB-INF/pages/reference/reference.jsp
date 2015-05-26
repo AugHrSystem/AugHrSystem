@@ -224,22 +224,22 @@
 		
 
 		function addReference(){
+			var id = getUrlParameter('Id');
 			$.ajax({
 				url : "${pageContext.request.contextPath}/reference/add",
 				data : JSON.stringify({
 					name : $("#name").val(),
 					address :$("#address").val(),
 					tel :$("#tel").val(),
-					occupation :$("#occupation").val(),
+					oocupation :$("#occupation").val(),
 					employee :{id:2},
 				
 				}),
 				type : "POST",
 				contentType : "application/json",
-				//dataType: "json",
+				dataType: "json",
 				success : function(data) {
-					
-//	 				alert(JSON.stringify(data));
+
 						
 					dt.fnClearTable();
 					
@@ -360,7 +360,6 @@
 			
 		}
 			function listAll(){
-				var id = 2;
 				var id = getUrlParameter('Id');
 				$.ajax({
 					url : "${pageContext.request.contextPath}/reference/listAll/"+id,
