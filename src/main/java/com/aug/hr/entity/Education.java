@@ -9,7 +9,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.aug.hr.entity.dto.EducationDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -49,21 +49,20 @@ public class Education extends BaseEntity{
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "Start_DATE")
+	@Column(name = "START_DATE")
 	private Date startDate;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "Graduated_DATE")
+	@Column(name = "GRADUATED_DATE")
 	private Date graduatedDate;
 	
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "EMPLOYEE_ID",referencedColumnName="id" , nullable = false)
+	@ManyToOne()
+	@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName="id", nullable = false)
 	private Employee employee;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "DEGREETYPE_ID",referencedColumnName="id" ,nullable = false)
+	@ManyToOne()
+	@JoinColumn(name = "DEGREETYPE_ID", referencedColumnName="DEGREETYPE_ID", nullable = false)
 	private MasDegreetype masdegreetype;
 
 	/*---------------------- getter / setter ----------------------*/
@@ -156,4 +155,53 @@ public class Education extends BaseEntity{
 		this.graduatedDate = graduatedDate;
 	}
 
+	public EducationDto toEducationDto() {
+		
+		EducationDto educationDto = new EducationDto();
+		
+		educationDto.setId(this.id);
+		educationDto.setUniversity(this.university);
+		educationDto.setGpa(this.gpa);
+		educationDto.setFaculty(this.faculty);
+		educationDto.setMajor(this.major);
+		educationDto.setCertificate(this.certificate);
+		educationDto.setDescription(this.description);
+		educationDto.setStartDate(this.startDate);
+		educationDto.setGraduatedDate(this.graduatedDate);
+		educationDto.setEmployeeId(this.employee.getId());
+		educationDto.setMasDegreeTypeId(this.masdegreetype.getId() );
+		educationDto.setMasdegreetype(this.masdegreetype.getName() );
+		
+		return educationDto;
+		
+	}
+	
+	public Education fromEducationDto(EducationDto educationDto) {
+		
+		Education education = new Education();
+		
+		education.setId(educationDto.getId());
+		education.setUniversity(educationDto.getUniversity());
+		education.setGpa(educationDto.getGpa());
+		education.setFaculty(educationDto.getFaculty());
+		education.setMajor(educationDto.getMajor());
+		education.setCertificate(educationDto.getCertificate());
+		education.setDescription(educationDto.getDescription());
+		education.setStartDate(educationDto.getStartDate());
+		education.setGraduatedDate(educationDto.getGraduatedDate());
+		
+		Employee employee = new Employee();
+		employee.setId(educationDto.getEmployeeId());
+		education.setEmployee(employee);
+		
+		MasDegreetype masDegreetype = new MasDegreetype();
+		masDegreetype.setId(educationDto.getMasDegreeTypeId());
+		masDegreetype.setName(educationDto.getMasdegreetype());
+		education.setMasdegreetype(masDegreetype);
+		
+		return education;
+		
+	}
+	
+	
 }

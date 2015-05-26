@@ -24,12 +24,12 @@ import com.aug.hr.entity.dto.AimEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.mysql.jdbc.StringUtils;
 
-@NamedNativeQueries({
+/*@NamedNativeQueries({
 	@NamedNativeQuery(
             name = "searchEmployee",
             query = "select emp.id as id, emp.employee_code as employeeCode, emp.name_eng as nameEng, emp.surname_eng as surnameEng from emp_employee as emp", 
             resultClass = EmployeeDto.class)
-  })
+  })*/
 @Repository
 public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implements EmployeeDao{
 
@@ -75,4 +75,14 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		List<AimEmployeeDto> aimemp = aimnamedQuery.list();
 		return aimemp;
 	}
+
+
+	@Override
+	public void saveEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
 }

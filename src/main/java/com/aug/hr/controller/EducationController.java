@@ -51,7 +51,7 @@ public class EducationController {
 	
 	@RequestMapping(value = "/education", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String listEducation(ModelMap model) {
+	public String init(ModelMap model) {
 		model.addAttribute("masdegreetypeList",
 				masDegreetypeService.findAll());
 		return "/education/education";
@@ -79,21 +79,23 @@ public class EducationController {
 	
 	
 	@RequestMapping(value = "/education/add", method = RequestMethod.POST)
-	public @ResponseBody Education addEducation(@RequestBody Education education) {
-		educationService.create(education);
-		return education;
+	public @ResponseBody EducationDto addEducation(@RequestBody EducationDto educationDto) {
+		Education education = new Education();
+		educationService.create(education.fromEducationDto(educationDto));
+		return educationDto;
 	}
 
-	@RequestMapping(value = "/education/update", method = RequestMethod.POST)
-	public @ResponseBody Education updateEducation(@RequestBody Education education) {
-		educationService.update(education);
-		return education;
+	@RequestMapping(value = "/education/update", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody EducationDto updateEducation(@RequestBody EducationDto educationDto) {
+		Education education = new Education();
+		educationService.update(education.fromEducationDto(educationDto));
+		return educationDto;
 	}
 	
-	@RequestMapping(value = "/education/findById", method = RequestMethod.POST)
-	public @ResponseBody Education findById(@RequestParam Integer educationid) {
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-		return educationService.findById(educationid);
+	@RequestMapping(value = "/education/findById", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody EducationDto findById(@RequestParam Integer educationid) {
+		Education education = educationService.findById(educationid);
+		return education.toEducationDto();
 	}
 	
 	/*

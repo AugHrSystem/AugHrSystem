@@ -16,7 +16,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
         @NamedNativeQuery(
                 name = "searchProbation",
-                query = "select pro.id, pro.date_from, pro.date_to, pro.status,pro.employee_id, emp.employee_code from emp_probation as pro, emp_employee as emp where pro.employee_id=:empId and emp.id = pro.employee_id",
+                query = "select pro.id, "
+                		+ "pro.date_from, "
+                		+ "pro.date_to, "
+                		+ "pro.status,"
+                		+ "pro.employee_id, "
+                		+ "emp.employee_code "
+                		+ "from emp_probation as pro, emp_employee as emp "
+                		+ "where pro.employee_id=:empId and emp.id = pro.employee_id",
                 resultClass = ProbationDto.class),
 //        @NamedNativeQuery(name = "createProbation", 
 //        		query = "insert into emp_probation as pro (pro.date_from, pro.date_to, pro.status,pro.employee_id) values (?dateFrom, ?dateTo, ?status, ?employeeId)",
@@ -28,11 +35,11 @@ public class ProbationDto {
     @Column(name = "ID")
     private Integer id;
     @Column(name = "DATE_FROM")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateFrom;
     @Column(name = "DATE_TO")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTo;
     @Column(name = "STATUS")

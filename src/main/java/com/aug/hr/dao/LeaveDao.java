@@ -21,7 +21,7 @@ public interface LeaveDao extends GenericDao<Leave, Integer>{
 	
 	public Leave deleteById(Integer id);
 
-
 	public List<LeaveDto> searchLeave(Integer id);
-	
+
+
 }

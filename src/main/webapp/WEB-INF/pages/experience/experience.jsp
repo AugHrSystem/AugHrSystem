@@ -63,7 +63,7 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
+		<button id="clearModal" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
  	 	Add
 		</button>
 	</div>
@@ -160,7 +160,7 @@
 <script>
 var dt;
 	$(document).ready(function() {
-    	var date1 = $( "#dateFrom" ).datepicker({
+    	$( "#dateFrom" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -168,7 +168,7 @@ var dt;
 			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
-    	var date2 = $( "#dateTo" ).datepicker({
+    	$( "#dateTo" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -245,17 +245,17 @@ var dt;
     		}
     		
     		function initEditExperience(expId) {
-				alert(expId+" Init edit");
+				//alert(expId+" Init edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
 					type : "POST",
 					success : function(data) {
 						id:expId;
-						$("#cName").val(data.name);
+						$("#cName").val(data.companyName);
 						$("#businessType").val(data.businessType);
 						$("#position").val(data.position);
 						$("#salary").val(data.salary);
-						$("#dataFrom").val(data.dateFrom);
+						$("#dateFrom").val(data.dateFrom);
 						$("#dateTo").val(data.dateTo);
 						$("#responsibility").val(data.responsibility);
 						$("#reference").val(data.reference);
@@ -274,7 +274,7 @@ var dt;
     		
     		function editExperience() {
     			var id = getUrlParameter('Id');
-    			alert(expId+" edit");
+    			//alert(expId+" edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/edit",
 					type : "POST",
@@ -320,16 +320,29 @@ var dt;
 					});
 			}
 			
+    		$("#clearModal").off().on("click", function(){
+    			$("#cName").val("");
+				$("#businessType").val("");
+				$("#position").val("");
+				$("#salary").val("");
+				$("#dateFrom").val("");
+				$("#dateTo").val("");
+				$("#responsibility").val("");
+				$("#reference").val("");
+				$("#address").val("");
+				$("#reason").val("");
+			});
+    		
      		});
 			
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
 				var expId = button.data("expid");
-				alert("delete "+expId);
+				//alert("delete "+expId);
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteExperience(button,expId);
-							alert("go fn");
+							//alert("go fn");
 						});
 				
 				function deleteExperience(button,expId){

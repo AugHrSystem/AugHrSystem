@@ -46,7 +46,7 @@ public class PunishController {
 	 
 //
 	
-	@RequestMapping(value = "/punish/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/punish/listAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<PunsihDto> listAll(@PathVariable("id") Integer id) {
 		//Punish punish = new Punish();	
 		return (List<PunsihDto>) punishDtoService.searchPunish(id);

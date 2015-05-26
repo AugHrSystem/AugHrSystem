@@ -38,6 +38,39 @@
 </style>
 </head>
 <body>
+<div class="container">
 
+
+
+<form:form id ="listForm" method="post" commandName="history">
+
+<h2>History</h2> 
+
+<br></br>
+
+<!-- Table -->
+<div class="form-group">
+<table id="tbResult" class="table">
+	<thead>
+		<tr>
+			<th>Position</th>
+			<th>Salary</th>
+			<th>Old Salary</th>
+			<th>Date Of Adjustment</th>
+			<th>Reason Of Adjustment</th>
+			<th>Adjustment Time</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+</div>
+
+</form:form>
+
+
+
+</div>
 </body>
 </html>

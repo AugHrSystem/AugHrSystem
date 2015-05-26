@@ -9,10 +9,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.hr.dto.services.ProbationDtoService;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Probation;
+import com.aug.hr.entity.dto.ProbationDto;
 import com.aug.hr.services.ProbationService;
-;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
@@ -21,7 +22,9 @@ public class ProbationServiceTest {
 	
 	@Autowired
 	private ProbationService probationService;
-		
+	
+	@Autowired 
+	private ProbationDtoService probationDtoService;
 	@Test
 	public void create(){
 		Employee emp = new Employee();
@@ -67,5 +70,11 @@ public class ProbationServiceTest {
 		Assert.assertEquals(1,id);
 		
 		
+	}
+	
+	@Test
+	public void searchProbation(){
+		List<ProbationDto> probationDto = probationDtoService.searchProbation(2);
+		Assert.assertNotNull(probationDto);
 	}
 }

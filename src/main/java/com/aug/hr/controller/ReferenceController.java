@@ -59,7 +59,7 @@ public class ReferenceController {
 	
 
 	
-	@RequestMapping(value = "/reference/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/reference/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
 		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
 	}
@@ -73,7 +73,7 @@ public class ReferenceController {
 	}
 	
 	@Transactional
-	@RequestMapping(value = "/reference/update", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/reference/update", method = RequestMethod.POST)
 	public @ResponseBody ReferenceDto updateReference(@RequestBody ReferenceDto referenceDto ) {
 		Reference reference = new Reference();
 		referenceService.update(reference.fromReferenceDto(referenceDto));
@@ -87,8 +87,8 @@ public class ReferenceController {
 		return reference.toReferenceDto();
 	}
 	
-	@RequestMapping(value = "/reference/delete/{id}", method =  RequestMethod.POST)
-	public @ResponseBody String deleteReference(@PathVariable("id") Integer id) {
+	@RequestMapping(value = "/reference/delete/{referenceid}", method =  RequestMethod.POST)
+	public @ResponseBody String deleteReference(@PathVariable("referenceid") Integer id) {
 		referenceService.deleteById(id);		
 		return "{success:true}";
 	}

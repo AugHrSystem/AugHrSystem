@@ -60,12 +60,8 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
+		<button id="clearModal"type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
  	 	Add
-		</button>
-		
-		<button type="button" class="btn btn-info btn-md" id ='testing'>
- 	 	TESTING
 		</button>
 	</div>
 </div>			
@@ -76,7 +72,7 @@
     <div class="modal-content">
       <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Experience</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Probation</h4>
       </div>
       <div class="modal-body">
 		
@@ -129,7 +125,8 @@
 <script>
 var dt;
 	$(document).ready(function() {
-    	var date1 = $( "#dateFrom" ).datepicker({
+		var proId; 
+    	$( "#dateFrom" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -137,7 +134,7 @@ var dt;
 			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
-    	var date2 = $( "#dateTo" ).datepicker({
+    	$( "#dateTo" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -146,41 +143,13 @@ var dt;
 			todayHighlight : true
 		});
     	dt=$("#tdResult").dataTable();
+    	
  		listAll();
-		
- 		
- 		$("#testing").on("click", function() {
- 			
- 		
- 			$.ajax({
- 			    headers: { 
- 			        'Accept': 'application/json',
- 			        'Content-Type': 'application/json' 
- 			    },
-				url : "${pageContext.request.contextPath}/probation/add",
-				type : "POST",
-				
-				 data : JSON.stringify({
-					 dateFrom: "2014-01-01",
-					 dateTo: "2015-01-01",
-					 status: "test",
-					 employee: {id: 2 }
-					}), 
-				/* datatype: "json", */
-				contentType: "application/json",
-				success : function(data) {
-					console.log(data);	
-				},
-				error : function(data,testStatus,jqXHR) {
-					
-					}
-				});
- 			
- 		});
  		
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
-    		var proId = button.data("proid"); 
+    		proId = button.data("proid");
+    		//console.log(proId);
     		if(proId != null){
 				initEditProbation(proId);
 			}
@@ -188,14 +157,15 @@ var dt;
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(proId != null){
+    				//console.log(proId);
     				editProbation();
     			}
     			else {
+    				//console.log("add : "+proId);
     				addProbation();
     			}
     			
     		});
-    		
     		
     		
     		function addProbation() {
@@ -249,11 +219,12 @@ var dt;
 					url : "${pageContext.request.contextPath}/probation/initEdit/"+proId,
 					type : "POST",
 					success : function(data) {
-						id:proId;
-						$("#dataFrom").val(data.dateFrom);
-						$("#dateTo").val(data.dateTo);
-						$("#status :selected").text(data.status);
-						employeeId: data.employeeId;
+							id:proId;
+							$("#dateFrom").val(data.dateFrom);
+							$("#dateTo").val(data.dateTo);
+							$("#status").val(data.status);
+							employeeId: data.employeeId; 
+							//setModal(data);
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -302,7 +273,19 @@ var dt;
 						}
 					});
 			}
-			
+    		
+    		$("#clearModal").off().on("click", function(){
+    			//console.log("test");
+				$("#dateFrom").val("");
+				$("#dateTo").val("");
+				$("#status").val("-1"); 
+				//console.log("test")
+			});
+    		/* function setModal(data){
+				$("#dataFrom").val(data.dateFrom);
+				$("#dateTo").val(data.dateTo);
+				$("#status option:selected").val(data.status);
+			} */
 			
 			});
 			
@@ -313,11 +296,11 @@ var dt;
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteProbation(button,proId);
-							alert("go fn");
+							//alert("go fn");
 						});
 				
 				function deleteProbation(button,proId){
-					alert("in fn");
+					//alert("in fn");
 					$.ajax({
 						url : "${pageContext.request.contextPath}/probation/delete/"+proId,
 						type : "POST",
@@ -383,7 +366,7 @@ var dt;
 			        }
 			        //alert("Param2 "+parseInt(sParameterName[1]));
 			    
-			}    
+			} 
     	
   	});
   

@@ -1,6 +1,7 @@
 package com.aug.hr.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -9,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -26,12 +28,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+
+
+
+
+
+
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.MasAddressType;
+import com.aug.hr.entity.MasProvince;
+import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
@@ -46,9 +57,9 @@ import com.aug.hr.services.MasProvinceService;
 import com.aug.hr.services.MasSpecialtyService;
 import com.aug.hr.services.MasStaffTypeService;
 import com.aug.hr.services.masTechnologyService;
+import com.aug.hr.services.utils.UploadService;
 
 @Controller
-@Transactional
 public class EmployeeController {
 	@Resource(name="employeeService")
 	@Autowired private EmployeeService employeeService;
@@ -66,7 +77,8 @@ public class EmployeeController {
 	@Autowired private AddressEditor addressEditor;
 	@Autowired private EmployeeDtoService employeeDtoService;
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
-	
+	@Autowired private UploadService uploadService;
+
 	
 	
 	private static final Logger logger = Logger.getLogger(Employee.class);
@@ -87,10 +99,13 @@ public class EmployeeController {
 	
 	
 	
-	@RequestMapping(value="/employee",method={RequestMethod.GET,
-			RequestMethod.POST})
-	public String listAll(HttpSession session,Locale locale, ModelMap model){
-		model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
+	@RequestMapping(value="/employee",method=RequestMethod.GET)
+	//@Transactional
+	public String listAll(HttpSession session,
+						  Locale locale,
+						  ModelMap model){
+	
+		//model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
 		//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 		model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 		model.addAttribute("provinceList",masProvinceService.findAll());
@@ -102,10 +117,11 @@ public class EmployeeController {
 		model.addAttribute("joblevelList",joblevelService.findAll());
 		model.addAttribute("locationList",masLocationService.findAll());
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
-		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+//		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
 		
-		//return "/employee/employee";
+		
 		return "/employee/employee";
+		//return "/employee/employeetest";
 	}
 	
 
@@ -154,6 +170,7 @@ public class EmployeeController {
 //		return employee;
 //	}
 	
+    @Transactional
 	@RequestMapping(value = "/employee/{empId}",method =  RequestMethod.GET )
 	public String initEditEmployee(@PathVariable Integer empId, Model model) {	
 		Employee employee=employeeService.findById(empId);
@@ -190,10 +207,26 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
-	public String manageSubmit(@ModelAttribute Employee employee) {
+	public String manageSubmit(@ModelAttribute AllEmployeeDto employee) {
 	   
-		logger.info("infoooo: "+employee);
 		
+		logger.info("infoooo: "+employee);		
+      //  logger.info("address: "+employee.getAddresses());		 
+		
+	
+        
+		/*employeeService.create(employee);
+		logger.info("employee: "+employee.getId());
+		for(Address address:employee.getAddresses()){
+			address.setEmployee(employee);
+			MasProvince masProvince = masProvinceService.find(address.getProvinceId());
+			address.setProvince(masProvince);
+			MasAddressType masAddressType = masAddressTypeService.findById(address.getAddressTypeId());
+			address.setAddressType(masAddressType);
+			addressService.create(address);
+		}*/
+       // employeeService.createEmployeeAndAddress(employee);
+
 		return null;
 	}
 	

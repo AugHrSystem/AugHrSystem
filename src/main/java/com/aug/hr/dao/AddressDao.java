@@ -9,6 +9,7 @@ package com.aug.hr.dao;
 import java.util.List;
 
 import com.aug.hr.entity.Address;
+import com.aug.hr.entity.dto.AddressDto;
 
 
 public interface AddressDao extends GenericDao<Address, Integer>{
@@ -16,5 +17,9 @@ public interface AddressDao extends GenericDao<Address, Integer>{
 	public List<Address> findByCriteria(Address address);
 
 	public Address deleteById(Integer id);
+	
+	public List<AddressDto> searchAddress(Integer id);
+	
+	
 
 }

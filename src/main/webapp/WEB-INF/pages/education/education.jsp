@@ -75,7 +75,7 @@
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
+<button type="button" id="addBtn‬Edu" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
 </div>
 
 <!-- Modal -->
@@ -188,6 +188,8 @@
 	
 	$(document).ready(function(){
 		
+		$("‪#‎addBtn‬Edu").on("click",function(){clearModal();});
+		
 		var date1 = $( "#startDate" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
@@ -205,6 +207,8 @@
 			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
+		
+		
 		
 		dt = $('#tbResult').dataTable();
 		
@@ -261,6 +265,7 @@
 		}
 		
 		function addEducation(){
+			var id=1;
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/add",
 				data : JSON.stringify({
@@ -268,12 +273,13 @@
 					gpa :$("#gpa").val(),
 					faculty :$("#faculty").val(),
 					major :$("#major").val(),
-					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
+					masDegreeTypeId :$("#masdegreetype").val(),
+					masdegreetype :$("#masdegreetype option:selected").text(),
 					certificate :$("#certificate").val(),
 					description :$("#description").val(),
 					startDate :$("#startDate").val(),
 					graduatedDate :$("#graduatedDate").val(),
-					employee : {id:2},
+					employeeId : id
 					
 				}),
 				type : "POST",
@@ -295,7 +301,7 @@
 						data.gpa,
 						data.faculty,
 						data.major,
-						data.masdegreetype.name,
+						data.masdegreetype,
 						data.certificate,
 						data.description,
 						data.startDate,
@@ -316,6 +322,7 @@
 		}
 		
 		function updateEducation(button, educationid){
+			var id=1;
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/update",
 				data : JSON.stringify({
@@ -324,12 +331,13 @@
 					gpa :$("#gpa").val(),
 					faculty :$("#faculty").val(),
 					major :$("#major").val(),
-					masdegreetype : {id:$("#masdegreetype").val(), name: $("#masdegreetype option:selected").text()},
+					masDegreeTypeId :$("#masdegreetype").val(),
+					masdegreetype :$("#masdegreetype option:selected").text(),
 					certificate :$("#certificate").val(),
 					description :$("#description").val(),
 					startDate :$("#startDate").val(),
 					graduatedDate :$("#graduatedDate").val(),
-					employee : {id:2},
+					employeeId : id
 					
 				}),
 				type : "POST",
@@ -406,9 +414,9 @@
 		}
 		
 		function listAll(){
-			var id=2;
+			var id=1;
 // 			var id = getUrlParameter('Id');
-			alert("id"+id);
+			//alert("id"+id);
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/listAll/"+id,
 				type : "POST",

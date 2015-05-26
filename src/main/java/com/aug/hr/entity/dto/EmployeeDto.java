@@ -24,6 +24,8 @@ public class EmployeeDto {
 	private String nameEng;
 	@Column(name = "SURNAME_ENG")
 	private String surnameEng;
+	
+	
 	public Integer getId() {
 		return id;
 	}

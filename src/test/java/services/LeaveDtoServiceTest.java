@@ -23,12 +23,12 @@ public class LeaveDtoServiceTest {
 
 @Autowired private LeaveDtoService leaveDtoService;
 	
-	@Test	
-	public void searchLeave(){
-		List<LeaveDto> leaveDto=leaveDtoService.searchLeave(2);
+//	@Test	
+//	public void searchLeave(){
+//		List<LeaveDto> leaveDto=leaveDtoService.searchLeave(2);
 //		int id =abilityDto.getId();
-		//Assert.assertEquals(2, id);
-		Assert.notEmpty(leaveDto);
-	}
+//		Assert.assertEquals(2, id);
+//		Assert.notEmpty(leaveDto);
+//	}
 	
 }

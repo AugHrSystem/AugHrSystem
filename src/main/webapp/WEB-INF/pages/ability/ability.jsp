@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -70,7 +71,7 @@
         <h4 class="modal-title" id="myModalLabel">Ability Add</h4>
       </div>
       
-      
+     <%--  
       <div class="row" style="text-align: center;">
 		<div class="visible-xs col-xs-12">
 			<c:choose>
@@ -82,11 +83,11 @@
 	    			</c:otherwise>
 	    		</c:choose>
 		</div>
-		</div> 
+		</div> --%> 
       
       <div class="modal-body">
         
-	  
+	<%--   
 	 <div class="form-group form-group-sm">
 			<label class="col-lg-3 col-md-3 col-sm-3 control-label"><spring:message
 					code="label.picture" var="var6" /> ${var6} </label>
@@ -94,7 +95,7 @@
 					<input name="image"  id="uploadFile" type="file" value="${emp_ability.picture }" accept="image/*" class="file" data-show-upload="false" data-show-preview="false" data-initial-caption="${var6}" data-overwrite-initial="false">
 					<input type="hidden" name="picture" class="form-control element-to-paste-filename" value="${emp_ability.picture }"  readonly placeholder="${var6}">
 			</div>
-		</div>
+		</div> --%>
 	  
 	  <div class="form-group">
 	    <label>Specialty :</label>
@@ -162,7 +163,6 @@
 </div>
 <script type="text/javascript">
 var dt;
-
 $(document).ready(function(){
 	dt = $('#tbResult').dataTable();
 	listAll();
@@ -210,15 +210,16 @@ $(document).ready(function(){
 	
 	
 	/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
-
 	
 	function addAbility(){
+		var id = getUrlParameter('Id');
 		$.ajax({
 			url : "${pageContext.request.contextPath}/ability/add",
 			data : JSON.stringify({
-				masspecialty : {id:$("#masspecialty").val(), name:$("#masspecialty option:selected").text()},
+				masspecialtyId : $("#masspecialty").val(), 
+				masspecialty : $("#masspecialty option:selected").text(),
 				rank : $("#rank").val(),
-				employee : {id:2},
+				employeeId :id
 			}),
 			type : "POST",
 			contentType : "application/json",
@@ -232,7 +233,7 @@ $(document).ready(function(){
 				
 				dt.fnAddData([
 				
-					data.masspecialty.name,
+					data.masspecialty,
 					data.rank,
 					
 					'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -253,15 +254,15 @@ function getId(abilityid){
 		
 		$.ajax({
 			
-			url : "${pageContext.request.contextPath}/ability/findById/",
-			data : "id=" + abilityid,
+			url : "${pageContext.request.contextPath}/ability/findById/"+ abilityid,
+			//data : "id=" + abilityid,
 			type : "POST",
 			success : function(data) {
 				//alert(JSON.stringify(data));
 				
-				$("#masspecialty").val(data.masspecialty.id);
+				$("#masspecialty").val(data.masspecialtyId);
 				$("#rank").val(data.rank);
-				//employee: {id: data.employeeId };
+				employeeId: data.employeeId;
 			},
 			error : function(data, textStatus, jqXML) {
 				{
@@ -269,26 +270,22 @@ function getId(abilityid){
 				}
 				;
 			}
-
 		});
 	}
 	
-function updateAbility() {
+function updateAbility(button,abilityid) {
 /* alert("fn up"); */
 	var id = getUrlParameter('Id');
 	$.ajax({
 		url : "${pageContext.request.contextPath}/ability/update",
 		data : JSON.stringify({
 			id: abilityid,
-			masspecialty : {
-				id : $("#masspecialty").val(),
-				name : $("#masspecialty option:selected").text()
-			},
+			masspecialtyId : $("#masspecialty").val(),
+			masspecialty : $("#masspecialty option:selected").text(),
 			rank : $("#rank").val(),
 			//employee : {id:2},
-		    employee: {id: id }
+			employeeId: id
 		}),
-
 		type : "POST",
 		contentType : "application/json",
 		dataType : "json",
@@ -315,7 +312,7 @@ function updateAbility() {
 function deleteAbility(button,abilityid) {
 	
 	$.ajax({
-		url : "${pageContext.request.contextPath}/ability/delete"+abilityid,
+		url : "${pageContext.request.contextPath}/ability/delete/"+abilityid,
 		//data :"id=" + abilityid,
 		type : "POST",
 		success : function(data) {
@@ -338,14 +335,15 @@ function deleteAbility(button,abilityid) {
 function listAll(){
 	//var id=2;
 	var id = getUrlParameter('Id');
-	alert("id >>>>"+id);	
+	//alert("id >>>>"+id);	
 	$.ajax({
 			url : "${pageContext.request.contextPath}/ability/listAll/"+id,
 			type : "POST",
 			success : function(data) {
 				dt.fnClearTable();
 			for (var i=0;i< data.length; i++) {
-				dt.fnAddData([data[i].masspecialty,data[i].rank,
+				dt.fnAddData([data[i].masspecialty,
+				              data[i].rank,
 					'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 					'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 		
@@ -372,7 +370,6 @@ function clearModal(){
     var sURLVariables = sPageURL.split('?');
     var sParameterName;
     //alert("spilt "+sURLVariables);
-
    	
     
     sParameterName = sURLVariables[1].split('=');
@@ -389,9 +386,9 @@ function clearModal(){
 	
 	
 });
-
 </script>
 
 
 </body>
 </html>
+

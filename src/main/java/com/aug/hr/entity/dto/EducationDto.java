@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchEducation",
-			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,mas_degreetype.name,edu.certificate,edu.description,edu.start_date,edu.graduated_date,edu.employee_id from emp_education as edu,emp_employee as emp,mas_degreetype where edu.employee_id=:empId  and edu.employee_id = emp.id and mas_degreetype.id = edu.degreetype_id",																																																																					
+			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,mas_degreetype.name,edu.certificate,edu.description,edu.start_date,edu.graduated_date,edu.employee_id,mas_degreetype.degreetype_id from emp_education as edu,emp_employee as emp,mas_degreetype where edu.employee_id=:empId  and edu.employee_id = emp.id and edu.degreetype_id=mas_degreetype.degreetype_id",																																																																					
 			resultClass = EducationDto.class)
 			
 })
@@ -52,10 +52,12 @@ public class EducationDto {
 	private Date startDate;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "Graduated_DATE")
+	@Column(name = "GRADUATED_DATE")
 	private Date graduatedDate;
 	@Column(name ="EMPLOYEE_ID")
-	private String employeeId;
+	private Integer employeeId;
+	@Column(name ="DEGREETYPE_ID")
+	private Integer masDegreeTypeId;
 	public Integer getId() {
 		return id;
 	}
@@ -116,11 +118,17 @@ public class EducationDto {
 	public void setGraduatedDate(Date graduatedDate) {
 		this.graduatedDate = graduatedDate;
 	}
-	public String getEmployeeId() {
+	public Integer getEmployeeId() {
 		return employeeId;
 	}
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
+	}
+	public Integer getMasDegreeTypeId() {
+		return masDegreeTypeId;
+	}
+	public void setMasDegreeTypeId(Integer masDegreeTypeId) {
+		this.masDegreeTypeId = masDegreeTypeId;
 	}
 	
 	
