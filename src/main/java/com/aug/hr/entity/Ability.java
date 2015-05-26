@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.aug.hr.entity.dto.AbilityDto;
+
 
 
 
@@ -32,8 +34,7 @@ public class Ability extends BaseEntity  {
 	@Column(name = "RANK",nullable = false)
 	private Integer rank;
 	
-	@Column(name = "PICTURE",nullable = true)
-    private String picture;
+	
 	
 	/*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
@@ -46,10 +47,12 @@ public class Ability extends BaseEntity  {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "SPECIALTY_ID",nullable = false,referencedColumnName="SPEC_ID")
-
 //	@JsonIgnore
 	private MasSpecialty masspecialty;
 
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -85,13 +88,36 @@ public class Ability extends BaseEntity  {
 		this.masspecialty = masspecialty;
 	}
 
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
+	
  
+	
+	public AbilityDto toAbilityDto(){
+		AbilityDto abilityDto = new AbilityDto();
+		abilityDto.setId(this.id);
+		abilityDto.setRank(this.rank);
+		abilityDto.setEmployeeCode(this.employee.getEmployeeCode());
+		abilityDto.setEmployeeId(this.employee.getId());
+		abilityDto.setMasspecialtyId(this.masspecialty.getId());
+		abilityDto.setMasspecialty(this.masspecialty.getName());;
+		return abilityDto;
+		
+	}
+	
+	public Ability fromAbilityDto (AbilityDto abilityDto){
+		Ability ability = new Ability();
+		ability.setId(abilityDto.getId());
+		ability.setRank(abilityDto.getRank());
+		
+		MasSpecialty masspecialty=new MasSpecialty();
+		masspecialty.setId(abilityDto.getMasspecialtyId());
+		masspecialty.setName(abilityDto.getMasspecialty());
+		ability.setMasspecialty(masspecialty);
+		
+		Employee employee = new Employee();
+		employee.setId(abilityDto.getEmployeeId());
+		ability.setEmployee(employee);
+		return ability;
+		
+	}
 	
 }

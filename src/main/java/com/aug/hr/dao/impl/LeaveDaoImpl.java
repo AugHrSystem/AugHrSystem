@@ -8,6 +8,7 @@ package com.aug.hr.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -42,10 +43,13 @@ public class LeaveDaoImpl extends GenericDaoImpl<Leave, Integer> implements Leav
 		return leave;
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
 	public List<LeaveDto> searchLeave(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Query namedQuery = getCurrentSession().getNamedQuery("searchLeave").setInteger("empId" ,id);
+		//namedQuery.executeUpdate();
+		List<LeaveDto> leaveDto = namedQuery.list();
+	     return leaveDto;
+
 	}
 
 	
