@@ -9,12 +9,47 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import com.aug.hr.entity.dto.Family2Dto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+ @NamedNativeQueries({
+	@NamedNativeQuery(
+            name = "insertFamily",
+            query = "insert into EMP_EMPLOYEEFAMILY(FIRSTNAME,LASTNAME,AGE,ADDRESS,OCCUPATION,POSITION,TEL,MASRELATION_ID, "
+              		+ "EMPLOYEE_ID,GENDER,AUDITFLAG,CREATEDBY,CREATEDTIMESTAMP) "
+              		+ "values(:FIRSTNAME,:LASTNAME,:AGE,:ADDRESS,:OCCUPATION,:POSITION,:TEL, "
+              		+ ":MASRELATION_ID,:EMPLOYEE_ID,:GENDER,'C',:CREATEDBY,NOW());",
+              		resultClass=Family.class),
+     @NamedNativeQuery(
+             name = "updateFamily",
+             query = "update EMP_EMPLOYEEFAMILY "
+             		+ "SET FIRSTNAME=:FIRSTNAME,"
+             		+ "LASTNAME=:LASTNAME,"
+             		+ "AGE=:AGE,"
+             		+ "ADDRESS=:ADDRESS,"
+             		+ "OCCUPATION=:OCCUPATION,"
+             		+ "POSITION=:POSITION,"
+             		+ "TEL=:TEL,"
+             		+ "MASRELATION_ID=:MASRELATION_ID, "
+              	   // + "EMPLOYEE_ID=:EMPLOYEE_ID,"
+              	    + "GENDER=:GENDER,"
+              	    + "AUDITFLAG='U',"
+              	    + "UPDATEDBY=:UPDATEDBY,"
+              	    + "UPDATEDTIMESTAMP=NOW() "
+              	    + "where ID=:familyId",
+              	    resultClass=Family.class),
+       @NamedNativeQuery(
+                name = "deleteFamily",
+                query = "delete from EMP_EMPLOYEEFAMILY where ID=:familyId",
+                    resultClass=Family.class) 
+  })
 
 
 
@@ -37,12 +72,12 @@ public class Family extends BaseEntity implements Serializable {
 	private String position; 
 	private Employee employee;
 	private MasRelationType masRelationType;
-	@Transient
+	/*@Transient
 	private String relationName;
 	@Transient
 	private String status;
 	@Transient
-	private String name;
+	private String name;*/
 	
 	
 	@Id
@@ -157,7 +192,6 @@ public class Family extends BaseEntity implements Serializable {
    
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="MASRELATION_ID",nullable=false)
-    @JsonBackReference
 	public MasRelationType getMasRelation() {
 		return masRelationType;
 	}
@@ -170,20 +204,18 @@ public class Family extends BaseEntity implements Serializable {
 	
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="EMPLOYEE_ID",nullable=false)
-    @JsonBackReference
- //   @JsonIgnore
 	public Employee getEmployee() {
 		return employee;
 	}
 
 	
 
-	public void setEmployee(Employee employee) {
+	public void setEmployee(Employee employee){
 		this.employee = employee;
 	}
 
 
-	public String getRelationName() {
+	/*public String getRelationName() {
 		return relationName;
 	}
 
@@ -213,8 +245,11 @@ public class Family extends BaseEntity implements Serializable {
 		this.name = name;
 	}
 
+	*/
 
-	@Override
+
+
+	/*@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Family [id=");
@@ -247,11 +282,9 @@ public class Family extends BaseEntity implements Serializable {
 		builder.append(name);
 		builder.append("]");
 		return builder.toString();
-	}
+	}*/
 
 	
-	
-	
-	
+
 
 }

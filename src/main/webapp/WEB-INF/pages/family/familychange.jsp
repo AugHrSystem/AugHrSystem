@@ -141,10 +141,11 @@
 		
 	      function doFindData() {  
 		   	   
-		  	  
+	    	     var id = getUrlParameter('Id');
+	    	     
 		  	     $.ajax({  
-		  	      type : "GET",   
-		  	      url : "<%=request.getContextPath()%>/family/list",   
+		  	      type : "POST",   
+		  	      url : "<%=request.getContextPath()%>/family/list"+id,   
 		  	      dataType : 'json', 
 		  	      contentType :"application/json; charset=utf-8",
 		  	     
@@ -159,24 +160,29 @@
 				    	          		{
 				    	                     "targets": [ 0 ],
 				    	                     "visible": false
+				    	                 },
+				    	                 {
+				    	                     "targets": [ 6 ],
+				    	                     "visible": false
 				    	                 }
+				    	          		
 				    	             ]		
 		  	        });
 		  	    	
 		  	        for(var i=0;i<data.length;i++){
-		  	        	alert(data[i].id);
+		  	        	//alert(data[i].id);
 		  	        	
 		  	        	
 			  			 	
 			  			        
 		  	        	   dt.fnAddData([  data[i].id,
-					  			           data[i].name,
+					  			           data[i].firstName+" "+data[i].lastName,
 					  			           data[i].age,
 					  			           data[i].gender,
 					  			           data[i].occupation,
 					  			           data[i].mobile,
-					  			           data[i].relationId,
-					  			           data[i].relation,
+					  			           data[i].masRelationTypeId,
+					  			           data[i].masRelationTypeName,
 					  			          '<button type="button" class="btn btn-info btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 					    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
 					    					
@@ -185,7 +191,7 @@
 			  	    	 }
 		  	        		  	        
 		  	     },  
-		  	      error : function(e) {  	  	      
+		  	      error : function(data,testStatus,jqXHR) {  	  	      
 		  	    	  $("#outputajax").text(testStatus); 
 		  	     }  
 		  	    }); 
@@ -232,9 +238,9 @@
 	    		
 	      function doSaveDataAjax() {  
 		   	   
-	    	  
-		   	   
-		  		
+	    	    
+	    	    var id = getUrlParameter('Id');
+		   	   		  		
 		  		var firstName = $('#firstName').val();
 		  		var lastName = $('#lastName').val();
 		  		var gender;
@@ -258,8 +264,9 @@
 		  		var occupation = $('#occupation').val();
 		  		var position = $('#position').val();
 		  		var relation = $('#masRelation').val();
+		  		var relationName = $("#masRelation option:selected").text();
 		  			  	    
-		  	    var json = {"firstName":firstName,"lastName" : lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"masRelation":{"id":relation}};
+		  	    var json = {"firstName":firstName,"lastName" : lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"masRelationTypeId":relation,"employeeId":id};
 		  	   
 		  	    
 		  	    
@@ -274,12 +281,6 @@
 		  	    	 
 		  	    	    $('#addModal').modal('hide');
 		  	    	    doFindData();
-		  	    	    /*  $('#successmsg').show();
-		  	    	    if($('#successmsg').is(':visible'))
-		  				 {  
-		  					 $('#errormsg').hide();    
-		  				 } */
-		  				 
 		  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 			    		
 		  	     },  
@@ -287,12 +288,7 @@
 		  	           
 		  	    	  
 		  	    	   $('#addModal').modal('hide');
-		  	    	   /* $('#errormsg').show();		  	    	 
-		  	    	   if($('#errormsg').is(':visible'))
-		  			   {  
-		  				 $('#successmsg').hide();    
-		  			   } */
-		  	    	  $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 		  	     }  
 		  	    }); 
 		  	    
@@ -325,8 +321,8 @@
 		  	    	$('#lastName').val(data.lastName);
 		  	    	
 		  	   
-		  	    	$("[name=gender]").val(data.gender);
-		  	    	var gender = $("[name=gender").val();
+		  	    	//$("[name=gender]").val(data.gender);
+		  	    	//var gender = $("[name=gender").val();
 		  	    	
 		  	    	if(data.gender=="Male"){
 		  	    		
@@ -345,7 +341,7 @@
 		  	    	$('#address').val(data.address);
 		  	    	$('#occupation').val(data.occupation);
 		  	    	$('#position').val(data.position);
-		  	    	$('#masRelation').val(data.relationId);
+		  	    	$('#masRelation').val(data.masRelationTypeId);
 
 		  	    	 
 		  	     },  
@@ -361,11 +357,11 @@
 	      
 	      
 	      function doEditDataPost(idUpdate) {  
-		   	   
+	    	    var idEmp = getUrlParameter('Id');
 		    	var id = idUpdate;
 		  		var firstName = $('#firstName').val();
 		  		var lastName = $('#lastName').val();
-				var gender;
+		  		var gender;
 		  		
 		  		if($('#genderMale:checked').val()!=null){
 		  			
@@ -376,6 +372,8 @@
 		  			gender = $('#genderFemale:checked').val();
 		  		}
 		  		
+		  		//alert(" "+gender);
+		  		
 		  		var age = $('#age').val();
 		  		var mobile = $('#mobile').val();
 		  		var address = $('#address').val();
@@ -383,10 +381,10 @@
 		  		var position = $('#position').val();
 		  		var relation = $('#masRelation').val();
 		  		
-		  		alert("id: "+idUpdate);
+		  		//alert("id: "+idUpdate);
 
 		  	    
-		  	    var json = {"id":id,"firstName":firstName,"lastName":lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"masRelation":{"id":relation}};
+		  	    var json = {"id":id,"firstName":firstName,"lastName":lastName,"gender":gender,"age":age,"mobile":mobile,"address":address,"occupation":occupation,"position":position,"masRelationTypeId":relation,"employeeId":idEmp};
 		  	     
 		  	    
 		  	    $.ajax({  
@@ -400,31 +398,18 @@
 		  	    	
 		  	    	 
 		  	    	  
-		  	    	  alert(JSON.stringify(data));
+		  	    	  //alert(JSON.stringify(data));
 		  	    	 
 		  	    	
 		  	       		 $('#addModal').modal('hide');	  
 		  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-		  	       	     doFindData();
-		  			    /*  $('#successmsg').show();
-		  				 if($('#successmsg').is(':visible'))
-		  				 {  
-		  					 $('#errormsg').hide();    
-		  				 } */
-	  	    	   	 
+		  	       	     doFindData();		  			 
 		  	        
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  
 
 		  	      $('#myModalUpdate').modal('hide');	   
-		  	      /* $('#errormsg').show();
-		  	      
-		  	      if($('#errormsg').is(':visible'))
-				  {  
-						 $('#successmsg').hide();   
-			  	  }
-	 	   	 	  */
-		  	     $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 		  	     }  
 		  	    }); 	  	    
 		    }
@@ -452,7 +437,7 @@
 	      function doDeleteDataPost(idDelete) {  
 		   	   
 		  	    var Id = idDelete;	    
-		  	    var json = {"Id":idDelete};
+		  	    var json = {"id":idDelete};
 		  	    
 		  	    
 		  	    
@@ -468,22 +453,11 @@
 		  	    	
 		  	    	$('#deleteModal').modal('hide');
 		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
-	  	       	    doFindData();
-		  	        /* $('#successmsg').show();	
-	  	    	    if($('#successmsg').is(':visible'))
-	  				 {  
-	  					 $('#errormsg').hide();    
-	  				 } */
-
+	  	       	    doFindData();		  	      
 		  	    	 
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  	  	      
-		  	    	  
-		  	    	  /* $('#errormsg').show();  	    	 
-		  	    	  if($('#errormsg').is(':visible'))
-		  			  {  
-		  				 $('#successmsg').hide();    
-		  			  } */
+		  	    	
 					  $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 
 		  	     }  
@@ -492,6 +466,28 @@
 		    }
 		      
 		      
+	      
+	      
+	      function getUrlParameter(sParam)
+			{
+				//alert("url "+document.referrer);
+			    var sPageURL = document.referrer;
+			    var sURLVariables = sPageURL.split('?');
+			    //alert("spilt "+sURLVariables);
+
+			   	
+			    
+			    var sParameterName = sURLVariables[1].split('=');
+			    //alert("Param "+parseInt(sParameterName[1]));
+			    if (sParameterName[0] == sParam) 
+			        {
+			        	//alert("Param "+sParameterName[0]);
+			        	return sParameterName[1];
+			        	
+			        }
+			        //alert("Param2 "+parseInt(sParameterName[1]));
+			    
+			}
 	      
 	      
 	  	   
@@ -538,7 +534,7 @@
                 <th>Age</th>
                 <th>Gender</th>
                 <th>Occupation</th> 
-                <th>Te</th>
+                <th>Tel</th>
                 <th>RelationId</th> 
                 <th>Relation</th> 
                 <th></th>
@@ -556,7 +552,7 @@
    <div align="right">
   	 <!-- <button id="create" type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-pencil">Create</span> </button> -->   
      
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">Add
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">Add</button>
    </div>
 
    <br/>
@@ -734,7 +730,7 @@
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 
 			     		 <f:select id="masRelation" path="masRelation" cssClass="form-control required" >
-						  <f:option  value="" label="please select data"/>								
+						  <f:option  value="-1" label="please select data"/>								
 							<c:forEach var="obj" items="${ masRelationTypeList }">									
 									<option value="${obj.id}" >${obj.relationType}</option> 									
 							</c:forEach>
@@ -764,10 +760,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel">Delete Experience</h4>
+        <h4 class="modal-title" id="deleteModalLabel">Delete Family</h4>
       </div>
       <div class="modal-body">
-      	Do you want to delete experience ?
+      	Do you want to delete family ?
       </div>
       <div class="modal-footer">
 		<button id="delete" type="button" class="btn btn-danger yesButton" >Yes</button>
