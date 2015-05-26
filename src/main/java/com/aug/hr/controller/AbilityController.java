@@ -124,7 +124,7 @@ public class AbilityController {
 	*/
 	
 	
-	@RequestMapping(value="/ability/findById/{abilityid}",method=RequestMethod.POST)
+	@RequestMapping(value="/ability/findById/{abilityid}",method={ RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody AbilityDto findById(@PathVariable("abilityid") Integer abilityid){
 		
 		Ability ability = abilityService.find(abilityid);

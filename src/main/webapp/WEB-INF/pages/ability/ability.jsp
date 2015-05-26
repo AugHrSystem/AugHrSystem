@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -162,7 +163,6 @@
 </div>
 <script type="text/javascript">
 var dt;
-
 $(document).ready(function(){
 	dt = $('#tbResult').dataTable();
 	listAll();
@@ -210,7 +210,6 @@ $(document).ready(function(){
 	
 	
 	/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
-
 	
 	function addAbility(){
 		var id = getUrlParameter('Id');
@@ -271,7 +270,6 @@ function getId(abilityid){
 				}
 				;
 			}
-
 		});
 	}
 	
@@ -288,7 +286,6 @@ function updateAbility(button,abilityid) {
 			//employee : {id:2},
 			employeeId: id
 		}),
-
 		type : "POST",
 		contentType : "application/json",
 		dataType : "json",
@@ -373,7 +370,6 @@ function clearModal(){
     var sURLVariables = sPageURL.split('?');
     var sParameterName;
     //alert("spilt "+sURLVariables);
-
    	
     
     sParameterName = sURLVariables[1].split('=');
@@ -390,9 +386,9 @@ function clearModal(){
 	
 	
 });
-
 </script>
 
 
 </body>
 </html>
+
