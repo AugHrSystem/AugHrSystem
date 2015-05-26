@@ -44,12 +44,12 @@ public class LeaveDaoImpl extends GenericDaoImpl<Leave, Integer> implements Leav
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<LeaveDto> searchLeave(Integer id) {
 		Query namedQuery = getCurrentSession().getNamedQuery("searchLeave").setInteger("empId" ,id);
 		//namedQuery.executeUpdate();
-		List<LeaveDto> leaveDto = namedQuery.list();
-	     return leaveDto;
-
+		List<LeaveDto> leaDto = namedQuery.list();
+	     return leaDto;
 	}
 
 	

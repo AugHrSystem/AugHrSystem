@@ -75,7 +75,7 @@
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
+<button type="button" id="addBtn‬Edu" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
 </div>
 
 <!-- Modal -->
@@ -205,6 +205,8 @@
 			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
+		
+		$("‪#‎addBtn‬Edu").on("click",function(){clearModal();});
 		
 		dt = $('#tbResult').dataTable();
 		
