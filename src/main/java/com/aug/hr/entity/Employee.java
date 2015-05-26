@@ -211,10 +211,10 @@ public class Employee extends BaseEntity{
 	@Column(name = "TEL_FAX",nullable = true)
 	private Integer telFax;
 	
-	@Column(name = "CONGENITAL_DISEASE",nullable = false)
+	@Column(name = "CONGENITAL_DISEASE",nullable = true)
 	private String congenitalDisease;
 	
-	@Column(name = "HOSPITAL",nullable = false)
+	@Column(name = "HOSPITAL",nullable = true)
 	private String hospital;
 	
 	@Column(name = "EMERGENCY_CONTACT",nullable = false)
