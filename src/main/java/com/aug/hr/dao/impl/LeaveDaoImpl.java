@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.LeaveDao;
 import com.aug.hr.entity.Leave;
+import com.aug.hr.entity.dto.LeaveDto;
 import com.mysql.jdbc.StringUtils;
 
 
@@ -39,6 +40,12 @@ public class LeaveDaoImpl extends GenericDaoImpl<Leave, Integer> implements Leav
 		Leave leave =(Leave)getCurrentSession().load(Leave.class, id);
 		getCurrentSession().delete(leave);
 		return leave;
+	}
+
+	@Override
+	public List<LeaveDto> searchLeave(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

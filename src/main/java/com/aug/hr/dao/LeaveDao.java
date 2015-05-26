@@ -8,7 +8,9 @@ package com.aug.hr.dao;
 import java.util.List;
 
 
+
 import com.aug.hr.entity.Leave;
+import com.aug.hr.entity.dto.LeaveDto;
 
 
 
@@ -21,7 +23,9 @@ public interface LeaveDao extends GenericDao<Leave, Integer>{
 	
 	public Leave deleteById(Integer id);
 
+	
 
-/*	public List<LeaveDto> searchLeave(Integer id);*/
+
+	public List<LeaveDto> searchLeave(Integer id);
 	
 }
