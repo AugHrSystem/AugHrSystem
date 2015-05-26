@@ -9,7 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.hr.dao.FamilyDao;
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.Official;
+import com.aug.hr.entity.dto.FamilyDto;
+import com.aug.hr.entity.dto.Family2Dto;
 import com.aug.hr.services.FamilyService;
 
 @Service
@@ -71,6 +72,24 @@ public class FamilyServiceImpl implements FamilyService{
 		// TODO Auto-generated method stub
 		Family empfamily = empFamilyDao.findLastFamily(Id);
 		return empfamily;
+	}
+
+	@Override
+	public void saveByNameQuery(Family2Dto family) {
+		// TODO Auto-generated method stub
+		empFamilyDao.saveByNameQuery(family);
+	}
+
+	@Override
+	public void updateByNameQuery(Family2Dto family) {
+		// TODO Auto-generated method stub
+		empFamilyDao.updateByNameQuery(family);
+	}
+
+	@Override
+	public void deleteByNameQuery(Family2Dto family) {
+		// TODO Auto-generated method stub
+		empFamilyDao.deleteByNameQuery(family);
 	}
 
 	
