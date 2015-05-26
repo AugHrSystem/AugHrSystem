@@ -15,15 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "MAS_DEGREETYPE")
 public class MasDegreetype extends BaseEntity{
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "DEGREETYPE_ID")
 	@GeneratedValue
 	private Integer id;
 

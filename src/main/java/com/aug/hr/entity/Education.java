@@ -54,7 +54,7 @@ public class Education extends BaseEntity{
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "GRADUATE_DATE")
+	@Column(name = "GRADUATED_DATE")
 	private Date graduatedDate;
 	
 	@ManyToOne()
@@ -62,7 +62,7 @@ public class Education extends BaseEntity{
 	private Employee employee;
 	
 	@ManyToOne()
-	@JoinColumn(name = "DEGREETYPE_ID", referencedColumnName="id", nullable = false)
+	@JoinColumn(name = "DEGREETYPE_ID", referencedColumnName="DEGREETYPE_ID", nullable = false)
 	private MasDegreetype masdegreetype;
 
 	/*---------------------- getter / setter ----------------------*/
@@ -170,6 +170,7 @@ public class Education extends BaseEntity{
 		educationDto.setGraduatedDate(this.graduatedDate);
 		educationDto.setEmployeeId(this.employee.getId());
 		educationDto.setMasDegreeTypeId(this.masdegreetype.getId() );
+		educationDto.setMasdegreetype(this.masdegreetype.getName() );
 		
 		return educationDto;
 		
@@ -185,6 +186,7 @@ public class Education extends BaseEntity{
 		education.setFaculty(educationDto.getFaculty());
 		education.setMajor(educationDto.getMajor());
 		education.setCertificate(educationDto.getCertificate());
+		education.setDescription(educationDto.getDescription());
 		education.setStartDate(educationDto.getStartDate());
 		education.setGraduatedDate(educationDto.getGraduatedDate());
 		
@@ -194,6 +196,7 @@ public class Education extends BaseEntity{
 		
 		MasDegreetype masDegreetype = new MasDegreetype();
 		masDegreetype.setId(educationDto.getMasDegreeTypeId());
+		masDegreetype.setName(educationDto.getMasdegreetype());
 		education.setMasdegreetype(masDegreetype);
 		
 		return education;
