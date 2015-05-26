@@ -13,10 +13,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
@@ -37,8 +37,9 @@ public class Official {
 		private Double salaryExpected;
 	    
 		
-		 @OneToOne(fetch=FetchType.EAGER, mappedBy="official")
 
+		 @OneToOne(fetch=FetchType.LAZY)
+		 @JoinColumn(name = "EMPLOYEE_ID",nullable = true)
 		 private Employee empOfficial;
 
 		 

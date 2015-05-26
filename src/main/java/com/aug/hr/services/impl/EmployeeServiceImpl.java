@@ -13,8 +13,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.EmployeeDao;
+import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.MasAddressType;
+import com.aug.hr.entity.MasProvince;
+import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
+import com.aug.hr.services.MasAddressTypeService;
+import com.aug.hr.services.MasProvinceService;
 
 @Service("employeeService")
 @Transactional
@@ -22,6 +28,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeDao employeeDao;
+	@Autowired 
+	private MasAddressTypeService masAddressTypeService;
+	@Autowired 
+	private MasProvinceService masProvinceService;
+	@Autowired 
+	private AddressService addressService;
+	
 	
 	@Override
 	public void create(Employee employee) {
@@ -62,6 +75,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> findByCriteria(Employee employee) {
 		return employeeDao.findByCriteria(employee);
+	}
+
+	@Override
+	@Transactional
+	public void createEmployeeAndAddress(Employee employee) {
+		// TODO Auto-generated method stub
+		employeeDao.create(employee);
+		for(Address address:employee.getAddresses()){
+			address.setEmployee(employee);
+			MasProvince masProvince = masProvinceService.find(address.getProvinceId());
+			address.setProvince(masProvince);
+			MasAddressType masAddressType = masAddressTypeService.findById(address.getAddressTypeId());
+			address.setAddressType(masAddressType);
+			addressService.create(address);
+		}
+		
 	}
 
 

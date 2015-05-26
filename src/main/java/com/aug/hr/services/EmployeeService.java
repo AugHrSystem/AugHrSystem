@@ -19,6 +19,7 @@ public interface EmployeeService {
 	public List<Employee> findAll();
 	public Employee deleteById(Integer id);
 	public List<Employee> findByCriteria(Employee employee);
+	public void createEmployeeAndAddress(Employee employee);
 
 
 	

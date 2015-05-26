@@ -29,7 +29,7 @@ public class MasAddressType extends BaseEntity{
 	@Column(name="ID")
 	private Integer id;
 	
-	@Column(name="NAME",nullable = false)
+	@Column(name="ADDRESSTYPENAME",nullable = false)
 	private String name;
 	
 	@Column(name="ISACTIVE", nullable = false)

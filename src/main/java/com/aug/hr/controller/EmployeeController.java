@@ -30,12 +30,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+
+
+
+
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.MasAddressType;
+import com.aug.hr.entity.MasProvince;
+import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
@@ -50,6 +57,7 @@ import com.aug.hr.services.MasProvinceService;
 import com.aug.hr.services.MasSpecialtyService;
 import com.aug.hr.services.MasStaffTypeService;
 import com.aug.hr.services.masTechnologyService;
+import com.aug.hr.services.utils.UploadService;
 
 @Controller
 public class EmployeeController {
@@ -69,6 +77,7 @@ public class EmployeeController {
 	@Autowired private AddressEditor addressEditor;
 	@Autowired private EmployeeDtoService employeeDtoService;
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
+	@Autowired private UploadService uploadService;
 
 	
 	
@@ -96,7 +105,7 @@ public class EmployeeController {
 						  Locale locale,
 						  ModelMap model){
 	
-		model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
+		//model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
 		//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 		model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 		model.addAttribute("provinceList",masProvinceService.findAll());
@@ -112,7 +121,7 @@ public class EmployeeController {
 		
 		
 		//return "/employee/employee";
-		return "/employee/employee";
+		return "/employee/employeetest";
 	}
 	
 
@@ -198,29 +207,26 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
-	public String manageSubmit(@ModelAttribute Employee employee) {
+	public String manageSubmit(@ModelAttribute AllEmployeeDto employee) {
 	   
 		
-		logger.info("infoooo: "+employee);
+		logger.info("infoooo: "+employee);		
+      //  logger.info("address: "+employee.getAddresses());		 
+		
 	
-		
-        logger.info("address: "+employee.getAddresses());		 
-		
-		
-		employeeService.create(employee);
+        
+		/*employeeService.create(employee);
 		logger.info("employee: "+employee.getId());
 		for(Address address:employee.getAddresses()){
-			Address address1 = new Address();
-			address.setAddress1(address.getAddress1());
 			address.setEmployee(employee);
+			MasProvince masProvince = masProvinceService.find(address.getProvinceId());
+			address.setProvince(masProvince);
+			MasAddressType masAddressType = masAddressTypeService.findById(address.getAddressTypeId());
+			address.setAddressType(masAddressType);
 			addressService.create(address);
-		}
+		}*/
+       // employeeService.createEmployeeAndAddress(employee);
 
-		//Address address = new Address();
-		//address.setAddress1(employee.getAddress());
-		//address.setEmployee(employee);
-		//addressService.create(address);
-		
 		return null;
 	}
 	

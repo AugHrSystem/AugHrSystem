@@ -72,12 +72,12 @@
 
 							<div class="form-group">
 								<div class="col-md-3">
-									<label for="id"> ID :</label> <input path="id" disabled="true" type="text" class="form-control"
+									<label for="id"> ID :</label> <input id="id" name="id" disabled="true" type="text" class="form-control"
 									id="id" placeholder="Enter ID">
 								</div>
 							
 								<div class="col-md-3">
-									<label for="employee_code"> Employee Code :</label> <input path="employee_code" type="text" class="form-control"
+									<label for="employee_code"> Employee Code :</label> <input id="employeeCode" name="employeeCode" type="text" class="form-control"
 									id="employeeCode" name="employeeCode" placeholder="Enter Employee Code">
 								</div>
 								
@@ -181,6 +181,10 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-3">
+									<label> Email :</label> <input type="text" class="form-control"
+									id="email" name="email" placeholder="Enter Email">
+								</div>
+								<div class="col-md-3">
 									<label> Tel. (Home) :</label> <input type="text" class="form-control"
 									id="telHome" name="telHome" placeholder="xx-xxx-xxxx">
 								</div>
@@ -196,6 +200,20 @@
 					
 	        </div>
 	        
+	        <div class="col-md-12">
+	         		
+							<div class="form-group">
+								<div class="col-md-6">
+									<label> Health (Congenital Disease) :</label> <input type="text" class="form-control"
+									id="congenitalDisease" name="congenitalDisease" placeholder="Enter Congenital Disease">
+								</div>
+								<div class="col-md-6">
+									<label> Hospital :</label> <input type="text" class="form-control"
+									id="hospital" name="hospital" placeholder="Enter Hospital">
+								</div>
+							</div>
+					
+	        </div>
 	        
 	         <div class="col-md-12">
 	         		
@@ -644,7 +662,7 @@
 						<div class="col-md-3">
     						<label>Technology :</label>
     						
-    						<f:select  path="technologyId"  class="form-control">
+    						<f:select  path="technology.id"  class="form-control">
     						 
 	    						 <f:option  value="-1" label="--Select Technology--" />
 	  							 <f:options items="${ technologyList }"  itemValue="id" itemLabel="name" />

@@ -25,7 +25,7 @@ public class MasProvince extends BaseEntity {
 	@GeneratedValue
 	@Column(name = "ID")
 	private Integer id;
-	@Column(name = "NAME", nullable = false)
+	@Column(name = "PROVINCENAME", nullable = false)
 	private String name;
 	@Column(name = "CODE",nullable = false)
 	private String code;
