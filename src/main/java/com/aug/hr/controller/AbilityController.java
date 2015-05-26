@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,9 +22,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 
 import com.aug.hr.dto.services.AbilityDtoService;
@@ -31,7 +31,7 @@ import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.dto.AbilityDto;
 import com.aug.hr.services.AbilityService;
 import com.aug.hr.services.MasSpecialtyService;
-import com.aug.hr.services.utils.UploadService;
+
 
 @Controller
 public class AbilityController {
@@ -77,7 +77,7 @@ public class AbilityController {
 	}*/
 	
 	@RequestMapping(value="/ability/add",method=RequestMethod.POST)
-	public @ResponseBody String addAbility(@RequestBody AbilityDto abilityDto){
+	public @ResponseBody AbilityDto addAbility(@RequestBody AbilityDto abilityDto){
 
 		//Hibernate.initialize(ability.getEmployee().getNameEng());
 		//Hibernate.initialize(ability.getEmployee().getNameEng());
@@ -109,42 +109,43 @@ public class AbilityController {
 			session.setAttribute("msgerror", e.getMessage());
 			return "/ability/ability";
 		}*/
-		Ability ability = new Ability()
+		Ability ability = new Ability();
 		abilityService.create(ability.fromAbilityDto(abilityDto));
 		return abilityDto;
 		
 	}
 	
 	
-	@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
+	/*@RequestMapping(value="/ability/findById",method=RequestMethod.POST)
 	public @ResponseBody Ability findById(@RequestParam Integer id)
 	{
 		return abilityService.find(id);
 	}
-	
-	
-	
-	/*@RequestMapping(value="/ability/findById/{abilityid}",method=RequestMethod.POST)
-	public @ResponseBody Ability findById(@PathVariable("abilityid") Integer abilityid)
-	{
-		return (Ability) abilityService.find(abilityid);
-	}
 	*/
 	
+	
+	@RequestMapping(value="/ability/findById/{abilityid}",method=RequestMethod.POST)
+	public @ResponseBody AbilityDto findById(@PathVariable("abilityid") Integer abilityid){
+		
+		Ability ability = abilityService.find(abilityid);
+		return ability.toAbilityDto();
+	}
+	
+	
+	@Transactional
 	@RequestMapping(value="/ability/update",method=RequestMethod.POST)
-	public @ResponseBody Ability ubdateAbility(@RequestBody Ability ability){
-			abilityService.update(ability);
-			return ability;
+	public @ResponseBody AbilityDto ubdateAbility(@RequestBody AbilityDto abilityDto){
+		Ability ability = new Ability();
+			abilityService.update(ability.fromAbilityDto(abilityDto));
+			return abilityDto;
 	}
 	
 	
 	
 	
-	@RequestMapping(value="/ability/delete{abilityid}",method=RequestMethod.POST)
+	@RequestMapping(value="/ability/delete/{abilityid}",method=RequestMethod.POST)
 	public @ResponseBody String deleteById(@PathVariable("abilityid") Integer abilityid){
-		
 		abilityService.deleteById(abilityid);
-		
 		return "redirect:/ability";
 	
 	
