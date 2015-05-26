@@ -284,6 +284,4 @@ public class Family extends BaseEntity implements Serializable {
 	}*/
 
 	
-
-
 }
