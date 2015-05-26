@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -41,11 +42,6 @@ public class ReferenceController {
 	
 
 	
-	@RequestMapping(value = "/reference/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
-		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
-	}
-//	
 
 	@RequestMapping(value = "/reference", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
@@ -60,6 +56,15 @@ public class ReferenceController {
 //		return referenceService.findByCriteria(reference);
 //	}
 	
+	
+
+	
+	@RequestMapping(value = "/reference/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
+		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
+	}
+	
+	
 	@RequestMapping(value = "/reference/add", method = RequestMethod.POST)
 	public @ResponseBody ReferenceDto addReference(@RequestBody ReferenceDto referenceDto) {
 		Reference reference = new Reference();
@@ -67,6 +72,7 @@ public class ReferenceController {
 		return referenceDto;
 	}
 	
+	@Transactional
 	@RequestMapping(value = "/reference/update", method = {RequestMethod.GET,RequestMethod.POST})
 	public @ResponseBody ReferenceDto updateReference(@RequestBody ReferenceDto referenceDto ) {
 		Reference reference = new Reference();
@@ -81,10 +87,9 @@ public class ReferenceController {
 		return reference.toReferenceDto();
 	}
 	
-	@RequestMapping(value = "/reference/delete", method =  RequestMethod.POST)
-	public @ResponseBody String deleteReference(@RequestParam Integer id) {
-		referenceService.deleteById(id);
-		
+	@RequestMapping(value = "/reference/delete/{id}", method =  RequestMethod.POST)
+	public @ResponseBody String deleteReference(@PathVariable("id") Integer id) {
+		referenceService.deleteById(id);		
 		return "{success:true}";
 	}
 	
