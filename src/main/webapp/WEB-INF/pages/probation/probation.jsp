@@ -149,7 +149,7 @@ var dt;
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		proId = button.data("proid");
-    		console.log(proId);
+    		//console.log(proId);
     		if(proId != null){
 				initEditProbation(proId);
 			}
@@ -157,11 +157,11 @@ var dt;
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(proId != null){
-    				console.log(proId);
+    				//console.log(proId);
     				editProbation();
     			}
     			else {
-    				console.log("add : "+proId);
+    				//console.log("add : "+proId);
     				addProbation();
     			}
     			
@@ -279,7 +279,7 @@ var dt;
 				$("#dateFrom").val("");
 				$("#dateTo").val("");
 				$("#status").val("-1"); 
-				console.log("test")
+				//console.log("test")
 			});
     		/* function setModal(data){
 				$("#dataFrom").val(data.dateFrom);
@@ -296,11 +296,11 @@ var dt;
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteProbation(button,proId);
-							alert("go fn");
+							//alert("go fn");
 						});
 				
 				function deleteProbation(button,proId){
-					alert("in fn");
+					//alert("in fn");
 					$.ajax({
 						url : "${pageContext.request.contextPath}/probation/delete/"+proId,
 						type : "POST",
