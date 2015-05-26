@@ -24,14 +24,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.aug.hr.dto.services.FamilyDtoService;
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasRelationType;
 import com.aug.hr.entity.dto.FamilyDto;
+import com.aug.hr.entity.dto.Family2Dto;
+import com.aug.hr.entity.dto.SkillLanguageDto;
 import com.aug.hr.entity.editor.FamilyEditor;
 import com.aug.hr.entity.form.FamilyForm;
 import com.aug.hr.entity.validator.FamilyValidator;
@@ -59,6 +64,8 @@ public class FamilyController {
 	private EmployeeService employeeService;
 	@Autowired
 	private MasRelationTypeService masRelationService;
+	@Autowired
+	private FamilyDtoService familyDtoServiceTest;
 	
 	
 	@InitBinder
@@ -93,14 +100,15 @@ public class FamilyController {
 	
 	
 
-	@RequestMapping(value = "/family/list", method = RequestMethod.GET,produces="application/json")
-	public @ResponseBody List<FamilyDto> findEmpFamily(Locale locale,
-		   @ModelAttribute(value = "family") Family family,
-			ModelMap model){
+	@RequestMapping(value = "/family/list{id}", method = RequestMethod.POST,produces="application/json")
+	public @ResponseBody List<Family2Dto> findEmpFamily(Locale locale,
+		    //@ModelAttribute(value = "family") Family family,
+			ModelMap model,
+			@PathVariable("id") Integer id){
 		
 		
 		//find data on database and set it to list
-		List<Family> familyList = familyService.findFamilyByEmployeeId(new Integer(1));
+		/*List<Family> familyList = familyService.findFamilyByEmployeeId(new Integer(1));
 		
 	    
 		List<FamilyDto> familyDtoList = new ArrayList<FamilyDto>();
@@ -134,8 +142,10 @@ public class FamilyController {
 		Map<String,List<FamilyDto>>data = new HashMap<String,List<FamilyDto>>();
 		data.put("data", familyDtoList);
 	
-		return familyDtoList;
+		return familyDtoList;*/
 		
+		List<Family2Dto> familyDtoTest = familyDtoServiceTest.listFamily(new Integer(id));
+		return familyDtoTest;
 		
 		
 	}
@@ -143,13 +153,13 @@ public class FamilyController {
 	
 	
 	
-	@RequestMapping(value = "/family/add", method =  {RequestMethod.GET,RequestMethod.POST})
-	public @ResponseBody FamilyDto Add(Locale locale,
-				@RequestBody Family family,
+	@RequestMapping(value = "/family/add", method =  RequestMethod.POST)
+	public @ResponseBody Family2Dto Add(Locale locale,
+				@RequestBody Family2Dto familyDto,
 				ModelMap model,
 				BindingResult result){
 		
-		logger.info("Info : " + family);
+		/*logger.info("Info : " + family);
 		
 		MasRelationType masRelationType = new MasRelationType();
 		masRelationType = masRelationService.find(family.getMasRelation().getId());
@@ -198,16 +208,20 @@ public class FamilyController {
 		familyDto.setAddress(familyObj.getAddress());
 		familyDto.setPosition(familyObj.getPosition());
 		
+		return familyDto;*/
+		
+		
+		familyService.saveByNameQuery(familyDto);
 		return familyDto;
 		
 	}
 	
 	
 	
-	@RequestMapping(value = "/family/initedit", method = {RequestMethod.POST})
-	public @ResponseBody FamilyDto initEdit(Locale locale,
+	@RequestMapping(value = "/family/initedit", method = RequestMethod.POST)
+	public @ResponseBody Family2Dto initEdit(Locale locale,
 							@RequestBody String familyId,
-							@ModelAttribute Family family,
+							@ModelAttribute FamilyDto family,
 							ModelMap modal) throws JSONException{
 		
 	    logger.info("edit");
@@ -219,22 +233,23 @@ public class FamilyController {
         int id = Integer.parseInt(idStr);
         Family familyEdit = familyService.findLastFamily(new Integer(id));
         Hibernate.initialize(familyEdit);
+       
         logger.info("emp edit: "+familyEdit);	
-        FamilyDto familyDto = new FamilyDto();
+        Family2Dto familyDto = new Family2Dto();
         familyDto.setId(familyEdit.getId());
         familyDto.setFirstName(familyEdit.getFirstName());
         familyDto.setLastName(familyEdit.getLastName());
-        familyDto.setName(familyEdit.getFirstName()+" "+familyEdit.getLastName());
+       //familyDto.setName(familyEdit.getFirstName()+" "+familyEdit.getLastName());
         familyDto.setAge(familyEdit.getAge());
         familyDto.setAddress(familyEdit.getAddress());
         familyDto.setGender(familyEdit.getGender());
         familyDto.setMobile(familyEdit.getMobile());
         familyDto.setOccupation(familyEdit.getOccupation());
         familyDto.setPosition(familyEdit.getPosition());
-        familyDto.setRelationId(familyEdit.getMasRelation().getId());
-        familyDto.setRelation(familyEdit.getMasRelation().getRelationType());
-        family = familyEdit;
-        family.setCmd("update");
+        familyDto.setMasRelationTypeId(familyEdit.getMasRelation().getId());
+        familyDto.setMasRelationTypeName(familyEdit.getMasRelation().getRelationType());
+        //family = familyEdit;
+        //family.setCmd("update");
         modal.addAttribute("family", family);
         
 		return familyDto;
@@ -246,13 +261,13 @@ public class FamilyController {
 
 	
 	
-	@RequestMapping(value = "/family/edit", method = {RequestMethod.POST})
-	public @ResponseBody FamilyDto Edit(Locale locale,
-							@RequestBody Family family,
+	@RequestMapping(value = "/family/edit", method = RequestMethod.POST)
+	public @ResponseBody Family2Dto Edit(Locale locale,
+							@RequestBody Family2Dto familyDtoTest,
 							ModelMap modal) throws JSONException{
 		
 	    logger.info("edit");
-		logger.info("info edit json: "+family);
+		/*logger.info("info edit json: "+family);
        
 		MasRelationType masRelationType = new MasRelationType();
 		masRelationType = masRelationService.find(family.getMasRelation().getId());
@@ -291,21 +306,23 @@ public class FamilyController {
 		familyDto.setRelation(familySetDto.getMasRelation().getRelationType());
 		
         
-		return familyDto;
+		return familyDto;*/
 		
+	    familyService.updateByNameQuery(familyDtoTest);	    
+	    return familyDtoTest;
 	}
 	
 	
 	
 	
 	
-	@RequestMapping(value = "/family/delete", method = {RequestMethod.GET,RequestMethod.POST})
-	public @ResponseBody String Delete(Locale locale,
-							@RequestBody String familyId,
+	@RequestMapping(value = "/family/delete", method = RequestMethod.POST)
+	public @ResponseBody Family2Dto Delete(Locale locale,
+							@RequestBody Family2Dto familyDtoTest,
 							ModelMap modal) throws JSONException{
 		
 	    logger.info("delete");
-		logger.info("id json delete: "+familyId);
+		/*logger.info("id json delete: "+familyId);
 		
 		JSONObject obj = new JSONObject(familyId);
 	    String idStr = obj.get("Id").toString();
@@ -315,10 +332,10 @@ public class FamilyController {
         familyService.delete(familyDelete);
 	    
         Family family = new Family();
-	    family = familyService.find(new Integer(id));
+	    family = familyService.find(new Integer(id));*/
 	 
-		
-		return familyId;		
+	    familyService.deleteByNameQuery(familyDtoTest);
+		return familyDtoTest;		
 	}
 	
 	
