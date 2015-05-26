@@ -162,7 +162,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
             		+ ":PREVIOUSEMP_REASONS_NO,"
             		+ ":IMAGER"
             		+ ")"
-            		,resultClass= AllEmployeeDto.class)
+            		,resultClass= Employee.class)
   })
 
 

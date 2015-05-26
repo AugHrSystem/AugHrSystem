@@ -36,7 +36,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 
 
 
-@Entity
+//@Entity
 public class AllEmployeeDto {
 	
 	

@@ -38,7 +38,7 @@
 <input type="hidden" id="emp">
 
  <div class="row">
-      <!--   <div class="span12">
+ 	<div class="span12">
             <ul class="nav nav-tabs" id="myTabs">
               <li class="active"><a href="#employee" data-toggle="tab">Employee</a></li>
               <li><a href="#family" data-toggle="tab">Family</a></li>
@@ -51,7 +51,7 @@
               <li><a href="#probation" data-toggle="tab">Probation</a></li>
                <li><a href="#punish" data-toggle="tab">Punish</a></li>
             </ul>
-         </div> -->
+	</div>
 </div>
 <div class="tab-content">
 	<div class="tab-pane active" id="employee">
@@ -826,7 +826,7 @@
 </div>
 
 
-<%-- <div class="tab-pane" id="family">
+<div class="tab-pane" id="family">
   <iframe src="${pageContext.request.contextPath}/family" style="width: 100%; height: 600px; " 
 		marginwidth="0" marginheight="0" frameborder="0"
 		vspace="0" hspace="0"></iframe>
@@ -882,7 +882,6 @@
               </div>
               
             </div>
- --%>
 
 </div>
 </div>    
