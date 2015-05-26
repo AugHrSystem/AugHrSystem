@@ -149,7 +149,7 @@ var dt;
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		proId = button.data("proid");
-    		//console.log(proId);
+
     		if(proId != null){
 				initEditProbation(proId);
 			}
@@ -157,11 +157,11 @@ var dt;
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(proId != null){
-    				//console.log(proId);
+    				console.log(proId);
     				editProbation();
     			}
     			else {
-    				//console.log("add : "+proId);
+    				console.log("add : "+proId);
     				addProbation();
     			}
     			
@@ -279,7 +279,6 @@ var dt;
 				$("#dateFrom").val("");
 				$("#dateTo").val("");
 				$("#status").val("-1"); 
-				//console.log("test")
 			});
     		/* function setModal(data){
 				$("#dataFrom").val(data.dateFrom);
