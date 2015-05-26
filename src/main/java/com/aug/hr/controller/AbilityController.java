@@ -42,7 +42,7 @@ public class AbilityController {
 	
 	@Autowired private MasSpecialtyService masSpecialtyService;
 	
-	@Autowired private UploadService uploadService;
+	//@Autowired private UploadService uploadService;
 
 	/*@RequestMapping(value = "/ability", method =RequestMethod.GET)
     public String init(ModelMap model) {	
@@ -77,11 +77,10 @@ public class AbilityController {
 	}*/
 	
 	@RequestMapping(value="/ability/add",method=RequestMethod.POST)
-	public @ResponseBody String addAbility(@RequestBody Ability ability,
-    		@RequestParam(value = "image", required = false) MultipartFile image,
-    		Locale locale, BindingResult result, ModelMap model,HttpSession session){
+	public @ResponseBody String addAbility(@RequestBody AbilityDto abilityDto){
+
 		//Hibernate.initialize(ability.getEmployee().getNameEng());
-		Hibernate.initialize(ability.getEmployee().getNameEng());
+		//Hibernate.initialize(ability.getEmployee().getNameEng());
 		
 		/*
 		
@@ -110,9 +109,10 @@ public class AbilityController {
 			session.setAttribute("msgerror", e.getMessage());
 			return "/ability/ability";
 		}*/
+		Ability ability = new Ability()
+		abilityService.create(ability.fromAbilityDto(abilityDto));
+		return abilityDto;
 		
-		abilityService.create(ability);
-		return "redirect:/ability/ability";
 	}
 	
 	
