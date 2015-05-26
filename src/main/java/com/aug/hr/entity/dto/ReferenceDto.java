@@ -9,7 +9,7 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
             name = "searchReferent",
-            query = "select ref.id,ref.name,ref.address,ref.tel,ref.occupation ,ref.employee_id from emp_reference as ref,emp_employee as emp where ref.employee_id =:empId and ref.employee_id=emp.id", 
+            query = "select ref.id,ref.name,ref.address,ref.tel,ref.occupation,ref.employee_id from emp_reference as ref,emp_employee as emp where ref.employee_id =:empId and ref.employee_id=emp.id", 
             resultClass = ReferenceDto.class)
   })
 
@@ -32,7 +32,7 @@ public class ReferenceDto {
 	
 	
 	@Column(name = "OCCUPATION" )
-	private String oocupation;
+	private String occupation;
 	
 	@Column(name ="EMPLOYEE_ID")
 	private Integer employeeId;
@@ -69,12 +69,12 @@ public class ReferenceDto {
 		this.tel = tel;
 	}
 
-	public String getOocupation() {
-		return oocupation;
+	public String getOccupation() {
+		return occupation;
 	}
 
-	public void setOocupation(String oocupation) {
-		this.oocupation = oocupation;
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
 	}
 
 	public Integer getEmployeeId() {
@@ -84,6 +84,7 @@ public class ReferenceDto {
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
+
 
 	
 }

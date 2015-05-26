@@ -228,27 +228,22 @@
 			$.ajax({
 				url : "${pageContext.request.contextPath}/reference/add",
 				data : JSON.stringify({
+					
 					name : $("#name").val(),
 					address :$("#address").val(),
 					tel :$("#tel").val(),
-					oocupation :$("#occupation").val(),
-					employee :{id:2},
+					occupation :$("#occupation").val(),
+					employeeId: id 
 				
 				}),
 				type : "POST",
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
-
-						
+		
 					dt.fnClearTable();
 					
 					dt.fnAddData([
-						/* $("#Name").val(),
-						$("#ProductCategory").val(),
-						$("#Unit").val(),
-						$("#Price").val(),
-						$("#Description").val(), */
 						data.name,
 						data.address,
 						data.tel,
@@ -272,6 +267,7 @@
 		
 		
 		function updateReference(button,referenceid) {
+		//	var id = getUrlParameter('Id');
 			$.ajax({
 				url:'${pageContext.request.contextPath}/reference/update',
 				type:"POST",
@@ -284,6 +280,7 @@
 								address: $("#address").val(), 
 								tel :$("#tel").val(),
 								occupation: $("#occupation").val(),
+								employeeId: id 
 								
 					
 					}),
@@ -365,7 +362,7 @@
 					url : "${pageContext.request.contextPath}/reference/listAll/"+id,
 					type : "POST",
 					success : function(data) {
-						dt.fnClearTable();
+					dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].name,data[i].address, 
 						              data[i].tel,data[i].occupation,
