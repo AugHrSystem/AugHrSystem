@@ -20,9 +20,10 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- Date Picker -->
-<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
-<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+<!-- Date Time Picker -->
+<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
+<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
+<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
 
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
@@ -135,9 +136,19 @@
 	    <label>Expiry Date</label>
 	    <br>
 	    <label>Start Date :</label>
+	    <div class='input-group date' id='datetimepickerStart'>
 	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
+	    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+	    </div>
 	    <label>Graduated Date :</label>
+	    <div class='input-group date' id='datetimepickerGrad'>
 	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate"/>
+	    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        </div>
 	  </div>
       </div>
       
@@ -189,23 +200,23 @@
 	$(document).ready(function(){
 		$("‪#‎addBtn‬Edu").on("click",function(){clearModal();});
 		
-		var date1 = $( "#startDate" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
-		});
+		$('#datetimepickerStart').datetimepicker({
+			 
+			 viewMode: 'days',
+			 format : 'DD-MM-YYYY',
+			 defaultDate: moment(),
+			 minDate: moment(),
+			 
+		 });
 		
-		var date1 = $( "#graduatedDate" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
-		});
+		$('#datetimepickerGrad').datetimepicker({
+			 
+			 viewMode: 'days',
+			 format : 'DD-MM-YYYY',
+			 defaultDate: moment(),
+			 minDate: moment(),
+			 
+		 });
 		
 		
 		dt = $('#tbResult').dataTable();
