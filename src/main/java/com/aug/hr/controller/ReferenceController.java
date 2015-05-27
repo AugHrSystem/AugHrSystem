@@ -57,7 +57,6 @@ public class ReferenceController {
 //	}
 	
 	
-
 	
 	@RequestMapping(value = "/reference/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
@@ -81,16 +80,17 @@ public class ReferenceController {
 	}
 	
 	
-	@RequestMapping(value = "/reference/findById", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody ReferenceDto findById(@RequestParam Integer id) {
-		Reference reference = referenceService.findById(id);
+	@RequestMapping(value = "/reference/findById/{referenceid}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody ReferenceDto findById(@PathVariable("referenceid") Integer referenceid) {
+		Reference reference = referenceService.findById(referenceid);
 		return reference.toReferenceDto();
 	}
 	
-	@RequestMapping(value = "/reference/delete", method =  RequestMethod.POST)
-	public @ResponseBody String deleteReference(@PathVariable("referenceid") Integer id) {
-		referenceService.deleteById(id);		
-		return "{success:true}";
+	@RequestMapping(value = "/reference/delete/{referenceid}", method =  RequestMethod.POST)
+	public @ResponseBody String deleteReference(@PathVariable("referenceid") Integer referenceid) {
+		referenceService.deleteById(referenceid);		
+		//return "{success:true}";
+		return "redirect:/reference";
 	}
 	
 	@ModelAttribute("reference")
