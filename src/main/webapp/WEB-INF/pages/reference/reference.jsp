@@ -227,8 +227,7 @@
 			var id = getUrlParameter('Id');
 			$.ajax({
 				url : "${pageContext.request.contextPath}/reference/add",
-				data : JSON.stringify({
-					
+				data : JSON.stringify({			
 					name : $("#name").val(),
 					address :$("#address").val(),
 					tel :$("#tel").val(),
@@ -264,10 +263,9 @@
 		}
 		
 		
-		
-		
+			
 		function updateReference(button,referenceid) {
-		//	var id = getUrlParameter('Id');
+			var id=1;
 			$.ajax({
 				url:'${pageContext.request.contextPath}/reference/update',
 				type:"POST",
@@ -318,6 +316,7 @@
 					$("#address").val(data.address);
 					$("#tel").val(data.tel);
 					$("#occupation").val(data.occupation);
+					employeeId: data.employeeId;
 					
 					
 						},
@@ -333,17 +332,18 @@
 		
 		function deleteById(button,referenceid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/delete",
-				data : "id=" +referenceid,
+				url : "${pageContext.request.contextPath}/reference/delete/"+referenceid,
+				//data : "id=" +referenceid,
 				type : "POST", 
-				
 				success : function(data) {
 					
-					var tr = button.closest("tr"); // หาเเถวจากปุ่ม
+				//	var tr = button.closest("tr"); // หาเเถวจากปุ่ม
 											
-					dt.fnDeleteRow(tr);
+				//	dt.fnDeleteRow(tr);
 					
 						$('#deleteModal').modal('toggle');
+						
+						listAll();
 					},
 					
 						
