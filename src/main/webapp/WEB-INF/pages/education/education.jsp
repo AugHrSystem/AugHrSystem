@@ -187,10 +187,7 @@
 	var dt;
 	
 	$(document).ready(function(){
-		
-<<<<<<< HEAD
 		$("‪#‎addBtn‬Edu").on("click",function(){clearModal();});
-
 		
 		var date1 = $( "#startDate" ).datepicker({
 			clearBtn : true,
@@ -202,14 +199,6 @@
 		});
 		
 		var date1 = $( "#graduatedDate" ).datepicker({
-=======
-// 		$("‪.‎btnAdd").on("click",function(){
-// 			//clearModal();
-// 		alert('dd');
-// 		});
-		
-		var date1 = $( "#startDate" ).datepicker({
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -217,19 +206,6 @@
 			format : "dd-mm-yyyy",
 			todayHighlight : true
 		});
-		
-<<<<<<< HEAD
-=======
-		var date1 = $( "#graduatedDate" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
-		});
-		
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
 		
 		
 		dt = $('#tbResult').dataTable();

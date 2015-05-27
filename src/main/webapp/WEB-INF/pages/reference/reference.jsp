@@ -231,34 +231,14 @@
 					name : $("#name").val(),
 					address :$("#address").val(),
 					tel :$("#tel").val(),
-<<<<<<< HEAD
 					occupation :$("#occupation").val(),
 					employeeId: id 
-<<<<<<< HEAD:src/main/webapp/WEB-INF/pages/reference/reference.jsp
-=======
-					oocupation :$("#occupation").val(),
-					employee :{id:2},
->>>>>>> dto 415 reference
-=======
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de:src/main/webapp/WEB-INF/pages/reference/reference.jsp
-				
 				}),
 				type : "POST",
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
-<<<<<<< HEAD:src/main/webapp/WEB-INF/pages/reference/reference.jsp
-<<<<<<< HEAD
-		
-=======
-
-						
->>>>>>> dto 415 reference
-=======
-		
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de:src/main/webapp/WEB-INF/pages/reference/reference.jsp
-					dt.fnClearTable();
-					
+					dt.fnClearTable();					
 					dt.fnAddData([
 						data.name,
 						data.address,

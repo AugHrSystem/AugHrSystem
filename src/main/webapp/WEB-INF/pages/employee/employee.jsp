@@ -857,8 +857,6 @@
             vspace="0" hspace="0"></iframe>
     </div>
 
-<<<<<<< HEAD
-=======
     <div class="tab-pane" id="reward">
       <iframe src="${pageContext.request.contextPath}/reward" style="width: 100%; height: 600px; "
             marginwidth="0" marginheight="0" frameborder="0"
@@ -885,8 +883,6 @@
     </div>
 
 </div>
-
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
 </div>
 </div>    
 <!---------------------------------------------------------- Start JQuery ----------------------------------------------------->	  
