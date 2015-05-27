@@ -310,7 +310,6 @@
 			
 			$(document).ready(function(){
 			dt = $('#tbResult').dataTable();
-
 			listAll();
 
 			$("#addModal").on("show.bs.modal", function(event) {
@@ -339,9 +338,7 @@
 
 			//		------------------------------------------------------------------------------------------------------------
 
-			$("#deleteModal").on(
-					"show.bs.modal",
-					function(event) {
+			$("#deleteModal").on("show.bs.modal",function(event) {
 
 						var button = $(event.relatedTarget); // select การกระทำของปุ่ม
 						var rewardid = button.data("id"); //กดไอดีฝังในปุ่ม 
@@ -365,15 +362,15 @@
 			}
 
 			function addReward() {
-				$
-						.ajax({
+				var id = getUrlParameter('Id');
+				$.ajax({
 							url : "${pageContext.request.contextPath}/reward/add",
 							data : JSON.stringify({
-								type_reward : $("#typereward").val(),
+								typereward : $("#typereward").val(),
 								year : $("#year").val(),
 								reason : $("#reason").val(),
-
-							//					employee :{id:2},
+								employeeId: id
+							
 
 							}),
 							type : "POST",
@@ -386,8 +383,7 @@
 								dt.fnClearTable();
 
 								dt.fnAddData([
-
-												data.type_reward,
+												data.typereward,
 												data.year,
 												data.reason,
 
@@ -403,22 +399,20 @@
 						});
 			}
 
-			function updateReward(button, rewardid) {
-				$
-						.ajax({
-							url : '${pageContext.request.contextPath}/reward/update',
-							type : "POST",
-							contentType : "application/json",
-							datatype : "json",
+			function updateReward(button,rewardid) {
+						var id = getUrlParameter('Id');
+						$.ajax({
+							url : "${pageContext.request.contextPath}/reward/update",
 							data : JSON.stringify({ //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
-
 								id : rewardid,
-								type_reward : $("#typereward").val(),
+								typereward : $("#typereward").val(),
 								year : $("#year").val(),
 								reason : $("#reason").val(),
 
 							}),
-
+							type : "POST",
+							contentType : "application/json",
+							datatype : "json",
 							success : function(data) {
 
 								var tr = button.closest("tr"); // หาเเถวจากปุ่ม
@@ -426,11 +420,11 @@
 										dt.fnUpdate(data.name, tr, 0),
 										dt.fnUpdate(data.year, tr, 1),
 										dt.fnUpdate(data.reason, tr, 2),
-
-										'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
-										'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
+										'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+										'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 
 								$('#addModal').modal('toggle');
+								listAll();
 							},
 							error : function() {
 								alert("ERROR");
@@ -441,11 +435,11 @@
 
 			function getRewardById(rewardid) {
 				$.ajax({
-					url : "${pageContext.request.contextPath}/reward/findById",
-					data : "id=" + rewardid,
+					url : "${pageContext.request.contextPath}/reward/findById/"+rewardid,
+					//data : "id=" + rewardid,
 					type : "POST",
 					success : function(data) {
-						$("#typereward").val(data.type_reward);
+						$("#typereward").val(data.typereward);
 						$("#year").val(data.year);
 						$("#reason").val(data.reason);
 
@@ -457,10 +451,10 @@
 				});
 			}
 
-			function deleteById(button, rewardid) {
+			function deleteById(button,rewardid) {
 				$.ajax({
-					url : "${pageContext.request.contextPath}/reward/delete",
-					data : "id=" + rewardid,
+					url : "${pageContext.request.contextPath}/reward/delete/"+rewardid,
+					//data : "id=" + rewardid,
 					type : "POST",
 
 					success : function(data) {
@@ -480,19 +474,16 @@
 
 			}
 			function listAll() {
-						var id = 2;
-//						var id = getUrlParameter('Id');
+						var id = getUrlParameter('Id');
 						$.ajax({
 							url : "${pageContext.request.contextPath}/reward/listAll"+id,
 							type : "POST",
 							success : function(data) {
 								dt.fnClearTable();
 								for (var i = 0; i < data.length; i++) {
-									dt
-											.fnAddData([
-													data[i].type_reward,
-													data[i].year,
-													data[i].reason,
+									dt.fnAddData([data[i].typereward,
+												  data[i].year,
+												  data[i].reason,
 													'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 													'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>' ]);
 

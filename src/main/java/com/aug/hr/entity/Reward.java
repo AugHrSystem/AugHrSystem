@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.aug.hr.entity.dto.RewardDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -103,8 +104,32 @@ public class Reward extends BaseEntity{
 	}
 
 	
+	public RewardDto toRewardDto(){
+		RewardDto rewardDto = new RewardDto();
+		rewardDto.setId(id);
+		rewardDto.setTypereward(typereward);
+		rewardDto.setYear(year);
+		rewardDto.setReason(reason);
+		rewardDto.setIsActive(isActive);
+		rewardDto.setEmployeeId(this.getId());
+		return rewardDto;
+		
+	}
 	
 	
+	public Reward fromRewardDto(RewardDto rewardDto){
+		Reward reward = new Reward();
+		reward.setId(rewardDto.getId());
+		reward.setTypereward(rewardDto.getTypereward());
+		reward.setYear(rewardDto.getYear());
+		reward.setReason(rewardDto.getReason());
+		reward.setIsActive(rewardDto.getIsActive());
+		
+		Employee employee = new Employee();
+		employee.setId(rewardDto.getEmployeeId());
+		reward.setEmployee(employee);
+		return reward;
+	}
 	
 	
 	

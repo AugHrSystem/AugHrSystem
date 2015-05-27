@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -38,22 +39,10 @@ public class RewardController {
 	@Autowired EmployeeService employeeService;
 	@Autowired RewardDtoService rewardDtoService;
 	
+	
+	
+	
 		
-
-	@RequestMapping(value = "/reward/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<RewardDto> listAll(@PathVariable("id") Integer id) {
-	//	Reward reward = new Reward();
-		return (List<RewardDto>) rewardDtoService.searchReward(id);
-	}
-	
-//	
-	@RequestMapping(value = "/reward", method = {RequestMethod.GET,RequestMethod.POST})
-    public String list(HttpSession session,Locale locale, ModelMap model) {
-		model.addAttribute("rewardList", rewardService.findAll());
-		return "/reward/reward";
-	}
-	
-	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
@@ -61,6 +50,14 @@ public class RewardController {
         binder.registerCustomEditor(Date.class, editor);
         binder.registerCustomEditor(Address.class, RewardEditor);
     }	
+	
+
+	@RequestMapping(value = "/reward", method = {RequestMethod.GET,RequestMethod.POST})
+    public String list(HttpSession session,Locale locale, ModelMap model) {
+		model.addAttribute("rewardList", rewardService.findAll());
+		return "/reward/reward";
+	}
+	
 	
 //	
 //	@RequestMapping(value = "/reward/listAll", method = {RequestMethod.GET, RequestMethod.POST})
@@ -70,28 +67,38 @@ public class RewardController {
 //		return rewardService.findByCriteria(reward);
 //	}
 	
-	@RequestMapping(value = "/reward/add", method = RequestMethod.POST)
-	public @ResponseBody Reward addReward(@RequestBody Reward reward) {
-		rewardService.create(reward);
-		return reward;
+	
+	@RequestMapping(value = "/reward/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<RewardDto> listAll(@PathVariable("id") Integer id) {
+		return (List<RewardDto>) rewardDtoService.searchReward(id);
 	}
 	
+	
+	@RequestMapping(value = "/reward/add", method = RequestMethod.POST)
+	public @ResponseBody RewardDto addReward(@RequestBody RewardDto rewardDto) {
+		Reward reward = new Reward();
+		rewardService.create(reward.fromRewardDto(rewardDto));
+		return rewardDto;
+	}
+	
+	@Transactional
 	@RequestMapping(value = "/reward/update", method = RequestMethod.POST)
-	public @ResponseBody Reward updateReward(@RequestBody Reward reward ) {
-		rewardService.update(reward);
-		return reward;
+	public @ResponseBody RewardDto updateReward(@RequestBody RewardDto rewardDto ) {
+		Reward reward = new Reward();
+		rewardService.update(reward.fromRewardDto(rewardDto));
+		return rewardDto;
 	}
 
-	@RequestMapping(value = "/reward/findById", method = RequestMethod.POST)
-	public @ResponseBody Reward findById(@RequestParam Integer id) {
-		return rewardService.findById(id);
+	@RequestMapping(value = "/reward/findById/{rewardid}", method = {RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody RewardDto findById(@PathVariable("rewardid") Integer rewardid) {
+		Reward reward = rewardService.findById(rewardid);
+		return reward.toRewardDto();
 	}
 	
-	@RequestMapping(value = "/reward/delete", method = RequestMethod.POST)
-	public @ResponseBody String deleteReward(@RequestParam Integer id) {
-		rewardService.deleteById(id);
-		
-		return "{success:true}";
+	@RequestMapping(value = "/reward/delete/{rewardid}", method = RequestMethod.POST)
+	public @ResponseBody String deleteReward(@PathVariable("rewardid") Integer rewardid) {
+		rewardService.deleteById(rewardid);
+		return "redirect:/reward";
 	}
 	
 	

@@ -35,14 +35,10 @@ public class RewardDto {
 	private Boolean isActive;
 
 	@Column(name ="EMPLOYEE_ID")
-	private String employeeId;
+	private Integer employeeId;
 
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getTypereward() {
@@ -77,14 +73,19 @@ public class RewardDto {
 		this.isActive = isActive;
 	}
 
-	public String getEmployeeId() {
+	public Integer getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 
 	
 }
