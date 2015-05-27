@@ -40,13 +40,6 @@ public class ReferenceController {
 //	private ReferenceValidator referenceValidator;
 	
 	
-
-	@RequestMapping(value = "/reference/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
-		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
-	}
-//	
-
 	@RequestMapping(value = "/reference", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("referenceList", referenceService.findAll());
