@@ -27,13 +27,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
-
-
-
-
-
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.dto.services.AimEmployeeDtoService;
@@ -121,8 +114,8 @@ public class EmployeeController {
 //		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
 		
 		
-		return "/employee/employee";
-		//return "/employee/employeetest";
+		//return "/employee/employee";
+		return "/employee/employeetest";
 	}
 	
 

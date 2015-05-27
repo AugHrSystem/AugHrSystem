@@ -48,9 +48,10 @@ public class AllEmployeeDaoTest {
 		allemp.setIdCard(111);
 		allemp.setHeight(21);
 		allemp.setWeigth(119);
-		allemp.setMasDivision(new Integer(2));
-		MasDivision masDivision = new MasDivision();
-		masDivision.setName("test");
+		allemp.setMasDivision(1);
+		//allemp.setMasDivision(new Integer(2));
+		//MasDivision masDivision = new MasDivision();
+		//masDivision.setName("test");
 		allemp.setMasLocation(1);
 		allemp.setMasJoblevel(1);
 		allemp.setMasEmployment(2);

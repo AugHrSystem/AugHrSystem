@@ -85,7 +85,7 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 
 	@Override
 	public void saveByNameQuery(AllEmployeeDto allEmployeeDto) {
-		// TODO Auto-generated method stub
+		
 		
 		Query query = getCurrentSession().getNamedQuery("insertEmployee");
 		query.setString("EMPLOYEE_CODE", allEmployeeDto.getEmployeeCode());
@@ -166,6 +166,13 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		
 		query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 		query.setString("IMAGE", allEmployeeDto.getImage());
+		query.setInteger("DIVISION_ID", allEmployeeDto.getMasDivision());
+		query.setInteger("JOBLEVEL_ID", allEmployeeDto.getMasDivision());
+		query.setInteger("EMPLOYMENT_ID", allEmployeeDto.getMasEmployment());
+		query.setInteger("TECHNOLOGY_ID", allEmployeeDto.getTechnology());
+		query.setInteger("MAS_CORE_SKILL_ID", allEmployeeDto.getMasCoreSkill());
+		query.setInteger("STAFFTYPE_ID", allEmployeeDto.getMasStaffType());
+		query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocation());
 		query.executeUpdate();
 	}
 
