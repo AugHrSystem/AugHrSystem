@@ -9,6 +9,7 @@ package com.aug.hr.services;
 import java.util.List;
 
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.dto.AllEmployeeDto;
 
 public interface EmployeeService {
 	
@@ -20,6 +21,7 @@ public interface EmployeeService {
 	public Employee deleteById(Integer id);
 	public List<Employee> findByCriteria(Employee employee);
 	public void createEmployeeAndAddress(Employee employee);
+	public void saveByNameQuery(AllEmployeeDto allEmployeeDto);
 
 
 	

@@ -7,8 +7,11 @@ package com.aug.hr.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -27,8 +30,14 @@ public class Certification extends BaseEntity {
 	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
-	@Column(name = "FROM_DATE" ,nullable = false)
-	private String from_date;
+	@Column(name = "DATE_FROM" ,nullable = false)
+	private String datefrom;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "EMPLOYEE_ID", nullable = false)
+	
+	private Employee employee;
+
 
 	public Integer getId() {
 		return id;
@@ -54,12 +63,20 @@ public class Certification extends BaseEntity {
 		this.name = name;
 	}
 
-	public String getFrom_date() {
-		return from_date;
+	public String getDatefrom() {
+		return datefrom;
 	}
 
-	public void setFrom_date(String from_date) {
-		this.from_date = from_date;
+	public void setDatefrom(String datefrom) {
+		this.datefrom = datefrom;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	

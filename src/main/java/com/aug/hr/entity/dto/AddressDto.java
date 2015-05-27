@@ -160,6 +160,17 @@ public class AddressDto {
 	public void setStatus(String status) {
 		Status = status;
 	}
+
+
+	@Override
+	public String toString() {
+		return "AddressDto [id=" + id + ", addressTypeId=" + addressTypeId
+				+ ", masaddresstypeName=" + masaddresstypeName + ", address1="
+				+ address1 + ", address2=" + address2 + ", masprovinceId="
+				+ masprovinceId + ", masprovinceName=" + masprovinceName
+				+ ", zipcode=" + zipcode + ", employeeId=" + employeeId
+				+ ", Status=" + Status + "]";
+	}
 	
 	
 }
