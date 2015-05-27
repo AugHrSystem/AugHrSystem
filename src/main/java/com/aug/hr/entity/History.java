@@ -18,9 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.aug.hr.entity.dto.HistoryDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "EMP_HISTORY")
@@ -31,30 +30,28 @@ public class History extends BaseEntity{
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name = "POSITION")
+	@Column(name = "POSITION" ,nullable =false)
 	private String position;
 	
-	@Column(name = "SALARY")
+	@Column(name = "SALARY" ,nullable =false)
 	private Double salary;
 	
-	@Column(name = "OLD_SALARY")
+	@Column(name = "OLD_SALARY" ,nullable =false)
 	private Double oldSalary;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Column(name = "DATE_OF_ADJUSTMENT")
+	@Column(name = "DATE_OF_ADJUSTMENT" ,nullable =false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfAdjustment;
 	
-	@Column(name = "REASON_OF_ADJUSTMENT")
+	@Column(name = "REASON_OF_ADJUSTMENT" ,nullable =false)
 	private String reasonOfAdjustment;
 	
-	@Column(name = "ADJUSTMENT_TIME")
+	@Column(name = "ADJUSTMENT_TIME" ,nullable =false)
 	private Integer adjustmentTime;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName="id", nullable=false)
-
-//	@JsonIgnore
 	private Employee employee;
 
 	public Integer getId() {
@@ -120,5 +117,60 @@ public class History extends BaseEntity{
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+	
+	/*---------------------- DTO ----------------------*/
+	
+	public HistoryDto toHistoryDto() {
+		
+		HistoryDto historyDto = new HistoryDto();
+		
+		historyDto.setId(this.id);
+		historyDto.setPosition(this.position);
+		historyDto.setSalary(this.salary);
+		historyDto.setOldSalary(this.oldSalary);
+		historyDto.setDateOfAdjustment(this.dateOfAdjustment);
+		historyDto.setReasonOfAdjustment(this.reasonOfAdjustment);
+		historyDto.setAdjustmentTime(this.adjustmentTime);
+		historyDto.setEmployeeId(this.employee.getId());
+		
+		return historyDto;
+		
+	}
+	
+	public History fromHistoryDto(HistoryDto historyDto) {
+		
+		History history = new History();
+		
+		history.setId(historyDto.getId());
+		history.setPosition(historyDto.getPosition());
+		history.setSalary(historyDto.getSalary());
+		history.setOldSalary(historyDto.getOldSalary());
+		history.setDateOfAdjustment(historyDto.getDateOfAdjustment());
+		history.setReasonOfAdjustment(historyDto.getReasonOfAdjustment());
+		history.setAdjustmentTime(historyDto.getAdjustmentTime());
+		
+		Employee employee = new Employee();
+		employee.setId(historyDto.getEmployeeId());
+		history.setEmployee(employee);
+		
+		return history;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

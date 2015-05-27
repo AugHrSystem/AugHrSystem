@@ -49,12 +49,12 @@ public class Education extends BaseEntity{
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "START_DATE")
+	@Column(name = "START_DATE" ,nullable =false)
 	private Date startDate;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "GRADUATED_DATE")
+	@Column(name = "GRADUATED_DATE" ,nullable =false)
 	private Date graduatedDate;
 	
 	@ManyToOne()
@@ -155,6 +155,8 @@ public class Education extends BaseEntity{
 		this.graduatedDate = graduatedDate;
 	}
 
+	/*---------------------- DTO ----------------------*/
+	
 	public EducationDto toEducationDto() {
 		
 		EducationDto educationDto = new EducationDto();

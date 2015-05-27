@@ -49,7 +49,7 @@ public class HistoryController {
 	@RequestMapping(value = "/history", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String init(ModelMap model) {
-		return "history/history";
+		return "/history/history";
 	}
 	
 
@@ -67,20 +67,23 @@ public class HistoryController {
 	}*/
 	
 	@RequestMapping(value = "/history/add", method = RequestMethod.POST)
-	public @ResponseBody History addHistory(@RequestBody History historyid) {
-		historyService.create(historyid);
-		return historyid;
+	public @ResponseBody HistoryDto addHistory(@RequestBody HistoryDto historyDto) {
+		History history = new History();
+		historyService.create(history.fromHistoryDto(historyDto));
+		return historyDto;
 	}
 
-	@RequestMapping(value = "/history/update", method = RequestMethod.POST)
-	public @ResponseBody History updateHistory(@RequestBody History historyid) {
-		historyService.update(historyid);
-		return historyid;
+	@RequestMapping(value = "/history/update", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody HistoryDto updateHistory(@RequestBody HistoryDto historyDto) {
+		History history = new History();
+		historyService.update(history.fromHistoryDto(historyDto));
+		return historyDto;
 	}
 	
-	@RequestMapping(value = "/history/findById", method = RequestMethod.POST)
-	public @ResponseBody History findById(@RequestParam Integer historyid) {
-		return historyService.findById(historyid);
+	@RequestMapping(value = "/history/findById", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody HistoryDto findById(@RequestParam Integer historyid) {
+		History history = historyService.findById(historyid);
+		return history.toHistoryDto();
 	}
 	
 		
