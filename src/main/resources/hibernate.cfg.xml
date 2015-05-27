@@ -14,7 +14,7 @@
         <property name="show_sql">true</property>
 
         <!-- <property name="hbm2ddl.auto">create-drop</property> -->
-        <property name="hbm2ddl.auto">update</property>
+        <!-- <property name="hbm2ddl.auto">update</property> -->
       
 		<mapping class="com.aug.hr.entity.Employee" />
 		<mapping class="com.aug.hr.entity.Education" />
@@ -47,6 +47,7 @@
 		<mapping class="com.aug.hr.entity.MasLeaveType" />
 		<mapping class="com.aug.hr.entity.Leave" />
 		<mapping class="com.aug.hr.entity.Certification" />
+		<mapping class="com.aug.hr.entity.Site" />
 
 	</session-factory>
         

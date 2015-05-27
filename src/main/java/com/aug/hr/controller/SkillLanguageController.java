@@ -95,11 +95,11 @@ public class SkillLanguageController {
 	
 
 	@RequestMapping(value = "/skilllanguage/add", method =  {RequestMethod.POST})
-	public @ResponseBody SkillLanguage addData(Locale locale,
-				@ModelAttribute SkillLanguage skillLanguageInfo,
+	public @ResponseBody SkillLanguageDto addData(Locale locale,
+				@ModelAttribute SkillLanguageDto skillLanguageInfo,
 				ModelMap model){
 		
-	    SkillLanguage skillLanguage = new SkillLanguage();
+	    SkillLanguageDto skillLanguage = new SkillLanguageDto();
 	    skillLanguage = skillLanguageInfo;
 		logger.info("Info skill language: " + skillLanguage.toString());
 		skillLanguageService.saveByFindEmployee(new Integer(1), skillLanguage);
@@ -111,12 +111,12 @@ public class SkillLanguageController {
 	
 	
 	@RequestMapping(value = "/skilllanguage/initedit", method =  {RequestMethod.POST})
-	public @ResponseBody SkillLanguage initEdit(Locale locale,
-				@ModelAttribute SkillLanguage skillLanguageInfo,
+	public @ResponseBody SkillLanguageDto initEdit(Locale locale,
+				@ModelAttribute SkillLanguageDto skillLanguageInfo,
 				ModelMap model){
 		
     
-	SkillLanguage skillLanguage = new SkillLanguage();
+	SkillLanguageDto skillLanguage = new SkillLanguageDto();
 	skillLanguage = skillLanguageService.findSkillLanguageById(skillLanguageInfo.getId());
 	return skillLanguage;
 	
@@ -126,8 +126,8 @@ public class SkillLanguageController {
 	
 	
 	@RequestMapping(value = "/skilllanguage/edit", method = RequestMethod.POST)
-	public @ResponseBody SkillLanguage edit(Locale locale,
-				@ModelAttribute SkillLanguage skillLanguage,
+	public @ResponseBody SkillLanguageDto edit(Locale locale,
+				@ModelAttribute SkillLanguageDto skillLanguage,
 				ModelMap model){
 	logger.info("info of skill language: "+skillLanguage.toString());
 	skillLanguageService.updateSetSkillLanguage(skillLanguage);
@@ -137,8 +137,8 @@ public class SkillLanguageController {
 	
 	
 	@RequestMapping(value = "/skilllanguage/delete", method = RequestMethod.POST)
-	public @ResponseBody SkillLanguage delete(Locale locale,
-				@ModelAttribute SkillLanguage skillLanguage,
+	public @ResponseBody SkillLanguageDto delete(Locale locale,
+				@ModelAttribute SkillLanguageDto skillLanguage,
 				ModelMap model){
 	logger.info("info of skill language: "+skillLanguage.toString());
 	SkillLanguage skillLanguageDelete = skillLanguageService.find(skillLanguage.getId());

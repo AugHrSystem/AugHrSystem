@@ -2,8 +2,8 @@ package com.aug.hr.services;
 
 import java.util.List;
 
-
 import com.aug.hr.entity.SkillLanguage;
+import com.aug.hr.entity.dto.SkillLanguageDto;
 
 public interface SkillLanguageService {
 
@@ -14,9 +14,9 @@ public interface SkillLanguageService {
 	public List<SkillLanguage> findAll();
 	
 	public List<SkillLanguage> findAllByEmployee(Integer IdEmployee);	
-	public void saveByFindEmployee(Integer employeeId,SkillLanguage skillLanguage);
-	public SkillLanguage findSkillLanguageById(Integer id);
+	public void saveByFindEmployee(Integer employeeId,SkillLanguageDto skillLanguage);
+	public SkillLanguageDto findSkillLanguageById(Integer id);
 	
-	public void updateSetSkillLanguage(SkillLanguage skillLanguage);
+	public void updateSetSkillLanguage(SkillLanguageDto skillLanguage);
 	
 }
