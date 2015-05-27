@@ -101,7 +101,8 @@ public class EmployeeController {
 	
 	@RequestMapping(value="/employee",method=RequestMethod.GET)
 	//@Transactional
-	public String listAll(HttpSession session,
+	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
+						  HttpSession session,
 						  Locale locale,
 						  ModelMap model){
 	
@@ -210,9 +211,10 @@ public class EmployeeController {
 	public String manageSubmit(@ModelAttribute AllEmployeeDto employee) {
 	   
 		
-		logger.info("infoooo: "+employee);		
+		logger.info("infoooo: "+employee);	
+		logger.info("infoooo: "+employee.getAddressList());		
       //  logger.info("address: "+employee.getAddresses());		 
-		
+		employeeService.saveByNameQuery(employee);
 	
         
 		/*employeeService.create(employee);

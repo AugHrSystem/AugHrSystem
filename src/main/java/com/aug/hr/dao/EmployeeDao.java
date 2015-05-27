@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.dto.AimEmployeeDto;
+import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 
 public interface EmployeeDao extends GenericDao<Employee, Integer>{
@@ -22,5 +23,6 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	
 	public List<AimEmployeeDto> listEmployeeAim();
 	public void saveEmployee();
+	public void saveByNameQuery(AllEmployeeDto allEmployeeDto);
 	
 }

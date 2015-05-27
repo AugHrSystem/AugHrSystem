@@ -8,19 +8,18 @@ package com.aug.hr.dao.impl;
 
 import java.util.List;
 
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
+
+
 
 import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
 import org.hibernate.Query;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.dto.AimEmployeeDto;
+import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.mysql.jdbc.StringUtils;
 
@@ -83,6 +82,95 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		
 	}
 
+
+	@Override
+	public void saveByNameQuery(AllEmployeeDto allEmployeeDto) {
+		// TODO Auto-generated method stub
+		
+		Query query = getCurrentSession().getNamedQuery("insertEmployee");
+		query.setString("EMPLOYEE_CODE", allEmployeeDto.getEmployeeCode());
+		query.setString("NAME_THAI", allEmployeeDto.getNameThai());
+		query.setString("SURNAME_THAI", allEmployeeDto.getSurnameThai());
+		
+		query.setString("NICKNAME_THAI", allEmployeeDto.getNicknameThai());
+		query.setString("NAME_ENG", allEmployeeDto.getNameEng());
+		query.setString("SURNAME_ENG", allEmployeeDto.getSurnameEng());
+		
+		query.setString("NICKNAME_ENG", allEmployeeDto.getNicknameEng());
+		query.setString("EMAIL", allEmployeeDto.getEmail());
+		query.setInteger("TEL_HOME", allEmployeeDto.getTelHome());
+		
+		query.setInteger("TEL_MOBILE", allEmployeeDto.getTelMobile());
+		query.setInteger("TEL_FAX", allEmployeeDto.getTelFax());
+		query.setString("CONGENITAL_DISEASE", allEmployeeDto.getCongenitalDisease());
+		
+		query.setString("HOSPITAL", allEmployeeDto.getHospital());
+		query.setString("EMERGENCY_CONTACT", allEmployeeDto.getEmergencyContact());
+		query.setString("RELATIONSHIP_WITH_EMERGENCY_CONTACT", allEmployeeDto.getRelationshipWithEmergencyContact());
+		
+		query.setString("EMERGENCY_CONTACT_ADDRESS", allEmployeeDto.getEmergencyContactAddress());
+		query.setString("EMERGENCY_CONTACT_PHONE_NUMBER", allEmployeeDto.getEmergencyContactPhoneNumber());
+		query.setDate("DATEOFBIRTH", allEmployeeDto.getDateOfBirth());
+		
+		query.setString("PLACEOFBIRTH", allEmployeeDto.getPlaceOfBirth());
+		query.setInteger("AGE", allEmployeeDto.getAge());
+		query.setString("RELIGION", allEmployeeDto.getReligion());
+		
+		query.setInteger("ID_CARD", allEmployeeDto.getIdCard());
+		query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
+		query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
+		
+		query.setInteger("HEIGHT", allEmployeeDto.getHeight());
+		query.setInteger("WEIGTH", allEmployeeDto.getWeigth());
+		query.setString("SEX", allEmployeeDto.getSex());
+		
+		query.setString("MARITAL_STATUS", allEmployeeDto.getMaritalStatus());
+		query.setString("NUMBER_OF_CHILDREN", allEmployeeDto.getNumberOfChildren());
+		query.setString("SPOUSE_NAME", allEmployeeDto.getSpouseName());
+		
+		query.setString("MARRIAGE_CERTIFICATE_NO", allEmployeeDto.getMarriageCertificateNo());
+		query.setString("ISSUED_OFFICE2", allEmployeeDto.getIssuedOffice2());
+		query.setString("ADDRESS", allEmployeeDto.getAddress());
+		
+		query.setString("OCCUPATION", allEmployeeDto.getOccupation());
+		query.setString("KNOW_AUG_NEWSPAPER", allEmployeeDto.getKnowAugNewspaper());
+		query.setString("DESCRIPTION_NEWSPAPER", allEmployeeDto.getDescriptionNewspaper());
+		
+		query.setString("KNOW_AUG_MAGAZINE", allEmployeeDto.getKnowAugMagazine());
+		query.setString("DESCRIPTION_MAGAZINE", allEmployeeDto.getDescriptionMagazine());
+		query.setString("KNOW_AUG_WEBSITE", allEmployeeDto.getKnowAugWebsite());
+		
+		query.setString("DESCRIPTION_WEBSITE", allEmployeeDto.getDescriptionWebsite());
+		query.setString("KNOW_AUG_FRIEND", allEmployeeDto.getKnowAugFriend());
+		query.setString("DESCRIPTION_FRIEND", allEmployeeDto.getDescriptionFriend());
+		
+		query.setString("KNOW_AUG_OTHER", allEmployeeDto.getKnowAugOther());
+		query.setString("DESCRIPTION_OTHER", allEmployeeDto.getDescriptionOther());
+		query.setString("KNOW_EMPLOYED_YES", allEmployeeDto.getKnowEmployedYes());
+		
+		query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
+		query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());
+		query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
+		
+		query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
+		query.setDate("TO_YEAR", allEmployeeDto.getToYear());
+		query.setString("BRANCH_OF_SERVICE", allEmployeeDto.getBranchOfService());
+		
+		query.setString("SERVICE_NO", allEmployeeDto.getServiceNo());
+		query.setString("MILITARY_SERVICE_NO", allEmployeeDto.getMilitaryServiceNo());
+		query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
+		
+		query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
+		query.setString("PREVIOUS_EMPLOYER_YES", allEmployeeDto.getPreviousEmployerYes());
+		query.setString("PREVIOUS_EMPLOYER_NO", allEmployeeDto.getPreviousEmployerNo());
+		
+		query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
+		query.setString("IMAGE", allEmployeeDto.getImage());
+		query.executeUpdate();
+	}
+
+
+	
 
 	
 }

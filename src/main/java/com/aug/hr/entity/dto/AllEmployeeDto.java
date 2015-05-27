@@ -9,16 +9,13 @@ package com.aug.hr.entity.dto;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
+import org.springframework.stereotype.Component;
 
 
 
-@NamedNativeQueries({
+
+
+/*@NamedNativeQueries({
 	@NamedNativeQuery(
             name = "employee",
             query = "select EMPLOYEE_CODE,NAME_THAI,SURNAME_THAI,NICKNAME_THAI,NAME_ENG,SURNAME_ENG,NICKNAME_ENG,EMAIL,TEL_HOME,"
@@ -31,238 +28,241 @@ import org.hibernate.annotations.NamedNativeQuery;
             		+ "from EMP_EMPLOYEE"
             		,resultClass = AllEmployeeDto.class)
 		
-  })
+  })*/
 
 
 
-
+@Component
 //@Entity
 public class AllEmployeeDto {
 	
 	
-	@Id
-	@Column(name = "ID")
+	//@Id
+	//@Column(name = "ID")
 	private Integer id;
 	
-	@Column(name = "EMPLOYEE_CODE",nullable = false)
+	//@Column(name = "EMPLOYEE_CODE",nullable = false)
 	private String employeeCode;
 	
-	@Column(name = "NAME_THAI",nullable = false)
+	//@Column(name = "NAME_THAI",nullable = false)
 	private String nameThai;
 	
-	@Column(name = "SURNAME_THAI",nullable = true)
+	//@Column(name = "SURNAME_THAI",nullable = true)
 	private String surnameThai;
 	
-	@Column(name = "NICKNAME_THAI",nullable = true)
+	//@Column(name = "NICKNAME_THAI",nullable = true)
 	private String nicknameThai;
 	
-	@Column(name = "NAME_ENG",nullable = false)
+	//@Column(name = "NAME_ENG",nullable = false)
 	private String nameEng;
 	
-	@Column(name = "SURNAME_ENG",nullable = true)
+	//@Column(name = "SURNAME_ENG",nullable = true)
 	private String surnameEng;
 	
-	@Column(name = "NICKNAME_ENG",nullable = true)
+	//@Column(name = "NICKNAME_ENG",nullable = true)
 	private String nicknameEng;
 
-	@Column(name = "EMAIL",nullable = false)
+	//@Column(name = "EMAIL",nullable = false)
 	private String email;
 	
-	@Column(name = "TEL_HOME",nullable = false)
+	//@Column(name = "TEL_HOME",nullable = false)
 	private Integer telHome;
 	
-	@Column(name = "TEL_MOBILE",nullable = false)
+	//@Column(name = "TEL_MOBILE",nullable = false)
 	private Integer telMobile;
 	
-	@Column(name = "TEL_FAX",nullable = true)
+	//@Column(name = "TEL_FAX",nullable = true)
 	private Integer telFax;
 	
-	@Column(name = "CONGENITAL_DISEASE",nullable = false)
+	//@Column(name = "CONGENITAL_DISEASE",nullable = false)
 	private String congenitalDisease;
 	
-	@Column(name = "HOSPITAL",nullable = false)
+	//@Column(name = "HOSPITAL",nullable = false)
 	private String hospital;
 	
-	@Column(name = "EMERGENCY_CONTACT",nullable = false)
+	//@Column(name = "EMERGENCY_CONTACT",nullable = false)
 	private String emergencyContact;
 	
-	@Column(name = "RELATIONSHIP_WITH_EMERGENCY_CONTACT",nullable = true)
+	//@Column(name = "RELATIONSHIP_WITH_EMERGENCY_CONTACT",nullable = true)
 	private String relationshipWithEmergencyContact;
 	
-	@Column(name = "EMERGENCY_CONTACT_ADDRESS",nullable = true)
+	//@Column(name = "EMERGENCY_CONTACT_ADDRESS",nullable = true)
 	private String emergencyContactAddress;
 	
-	@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER",nullable = false)
+	//@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER",nullable = false)
 	private String emergencyContactPhoneNumber;
 	
-	@Column(name = "DATEOFBIRTH",nullable = false)
+	//@Column(name = "DATEOFBIRTH",nullable = false)
 	private Date dateOfBirth;
 	
-	@Column(name = "PLACEOFBIRTH",nullable = true)
+	//@Column(name = "PLACEOFBIRTH",nullable = true)
 	private String placeOfBirth;
 	
-	@Column(name = "AGE",nullable = true)
+	//@Column(name = "AGE",nullable = true)
 	private Integer age;
 	
-	@Column(name = "RELIGION",nullable = true)
+	//@Column(name = "RELIGION",nullable = true)
 	private String religion;
 	
-	@Column(name = "ID_CARD",nullable = false)
+	//@Column(name = "ID_CARD",nullable = false)
 	private Integer idCard;
 	
-	@Column(name = "ISSUED_OFFICE",nullable = true)
+	//@Column(name = "ISSUED_OFFICE",nullable = true)
 	private String issuedOffice;
 	
-	@Column(name = "EXPIRY_DATE",nullable = true)
+	//@Column(name = "EXPIRY_DATE",nullable = true)
 	private Date expiryDate;
 	
-	@Column(name = "HEIGHT",nullable = true)
+	//@Column(name = "HEIGHT",nullable = true)
 	private Integer height;
 	
-	@Column(name = "WEIGTH",nullable = true)
+	//@Column(name = "WEIGTH",nullable = true)
 	private Integer weigth;
 	
-	@Column(name = "SEX",nullable = true)
+	//@Column(name = "SEX",nullable = true)
 	private String sex;
 
-	@Column(name = "MARITAL_STATUS",nullable = true)
+	//@Column(name = "MARITAL_STATUS",nullable = true)
 	private String maritalStatus;
 	
-	@Column(name = "NUMBER_OF_CHILDREN",nullable = true)
+	//@Column(name = "NUMBER_OF_CHILDREN",nullable = true)
 	private String numberOfChildren;
 	
-	@Column(name = "SPOUSE_NAME",nullable = true)
+	//@Column(name = "SPOUSE_NAME",nullable = true)
 	private String spouseName;
 	
-	@Column(name = "MARRIAGE_CERTIFICATE_NO",nullable = true)
+	//@Column(name = "MARRIAGE_CERTIFICATE_NO",nullable = true)
 	private String marriageCertificateNo;
 	
-	@Column(name = "ISSUED_OFFICE2",nullable = true)
+	//@Column(name = "ISSUED_OFFICE2",nullable = true)
 	private String issuedOffice2;
 	
-	@Column(name = "ADDRESS",nullable = true)
+	//@Column(name = "ADDRESS",nullable = true)
 	private String address;
 	
-	@Column(name = "OCCUPATION",nullable = true)
+	//@Column(name = "OCCUPATION",nullable = true)
 	private String occupation;
 	
-	@Column(name = "KNOW_AUG_NEWSPAPER",nullable = true)
+	//@Column(name = "KNOW_AUG_NEWSPAPER",nullable = true)
 	private String knowAugNewspaper;
 	
-	@Column(name = "DESCRIPTION_NEWSPAPER",nullable = true)
+	//@Column(name = "DESCRIPTION_NEWSPAPER",nullable = true)
 	private String descriptionNewspaper;
 	
-	@Column(name = "KNOW_AUG_MAGAZINE",nullable = true)
+	//@Column(name = "KNOW_AUG_MAGAZINE",nullable = true)
 	private String knowAugMagazine;
 	
-	@Column(name = "DESCRIPTION_MAGAZINE",nullable = true)
+	//@Column(name = "DESCRIPTION_MAGAZINE",nullable = true)
 	private String descriptionMagazine;
 	
-	@Column(name = "KNOW_AUG_WEBSITE",nullable = true)
+	//@Column(name = "KNOW_AUG_WEBSITE",nullable = true)
 	private String knowAugWebsite;
 	
-	@Column(name = "DESCRIPTION_WEBSITE",nullable = true)
+	//@Column(name = "DESCRIPTION_WEBSITE",nullable = true)
 	private String descriptionWebsite;
 	
-	@Column(name = "KNOW_AUG_FRIEND",nullable = true)
+	//@Column(name = "KNOW_AUG_FRIEND",nullable = true)
 	private String knowAugFriend;
 	
-	@Column(name = "DESCRIPTION_FRIEND",nullable = true)
+	//@Column(name = "DESCRIPTION_FRIEND",nullable = true)
 	private String descriptionFriend;
 	
-	@Column(name = "KNOW_AUG_OTHER",nullable = true)
+	//@Column(name = "KNOW_AUG_OTHER",nullable = true)
 	private String knowAugOther;
 	
-	@Column(name = "DESCRIPTION_OTHER",nullable = true)
+	//@Column(name = "DESCRIPTION_OTHER",nullable = true)
 	private String descriptionOther;
 	
-	@Column(name = "KNOW_EMPLOYED_YES",nullable = true)
+	//@Column(name = "KNOW_EMPLOYED_YES",nullable = true)
 	private String knowEmployedYes;
 	
-	@Column(name = "DESCRIPTION_YES",nullable = true)
+	//@Column(name = "DESCRIPTION_YES",nullable = true)
 	private String descriptionYes;
 	
-	@Column(name = "KNOW_EMPLOYER_NO",nullable = true)
+	//@Column(name = "KNOW_EMPLOYER_NO",nullable = true)
 	private String knowEmployerNo;
 	
-	@Column(name = "MILITARY_SERVICE_YES",nullable = true)
+	//@Column(name = "MILITARY_SERVICE_YES",nullable = true)
 	private String militaryServiceYes;
 	
-	@Column(name = "FROM_YEAR",nullable = true)
+	//@Column(name = "FROM_YEAR",nullable = true)
 	private Date fromYear;
 	
-	@Column(name = "TO_YEAR",nullable = true)
+	//@Column(name = "TO_YEAR",nullable = true)
 	private Date toYear;
 	
-	@Column(name = "BRANCH_OF_SERVICE",nullable = true)
+	//@Column(name = "BRANCH_OF_SERVICE",nullable = true)
 	private String branchOfService;
 	
-	@Column(name = "SERVICE_NO",nullable = true)
+	//@Column(name = "SERVICE_NO",nullable = true)
 	private String serviceNo;
 	
-	@Column(name = "MILITARY_SERVICE_NO",nullable = true)
+	//@Column(name = "MILITARY_SERVICE_NO",nullable = true)
 	private String militaryServiceNo;
 	
-	@Column(name = "REASONS_NO",nullable = true)
+	//@Column(name = "REASONS_NO",nullable = true)
 	private String reasonsNo;
 	
-	@Column(name = "DATE_TO_BE_DRAFTED",nullable = true)
+	//@Column(name = "DATE_TO_BE_DRAFTED",nullable = true)
 	private Date dateToBeDrafted;
 	
-	@Column(name = "PREVIOUS_EMPLOYER_YES",nullable = true)
+	//@Column(name = "PREVIOUS_EMPLOYER_YES",nullable = true)
 	private String previousEmployerYes;
 	
-	@Column(name = "PREVIOUS_EMPLOYER_NO",nullable = true)
+	//@Column(name = "PREVIOUS_EMPLOYER_NO",nullable = true)
 	private String previousEmployerNo;
 	
-	@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
+	//@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
 	private String previousEmpreasonsNo;
 	
-	@Column(name = "IMAGE",nullable = true)
+	//@Column(name = "IMAGE",nullable = true)
 	private String image;
 	
 
-	@Column(name="AIM_EMP_ID")
+	//@Column(name="AIM_EMP_ID")
 	private Integer aimempid;
 	
 	
 
 	
-	 @Column(name= "MAS_CORE_SKILL_ID")
+	 //@Column(name= "MAS_CORE_SKILL_ID")
 	 private Integer masCoreSkill;
 	 
    
-    @Column(name= "EMPLOYMENT_ID")
+    //@Column(name= "EMPLOYMENT_ID")
     private Integer masEmployment;
     
     
     
     
-    @Column(name= "DIVISION_ID",nullable = false)
+   // @Column(name= "DIVISION_ID",nullable = false)
     private Integer masDivision;
     
    
-    @Column(name= "JOBLEVEL_ID", nullable = false)
+    //@Column(name= "JOBLEVEL_ID", nullable = false)
     private Integer masJoblevel;
     
     
     
-    @Column(name= "TECHNOLOGY_ID",nullable = true)
+    //@Column(name= "TECHNOLOGY_ID",nullable = true)
     private Integer technology;
     
     
   
-    @Column(name= "STAFFTYPE_ID")
+    //@Column(name= "STAFFTYPE_ID")
     private Integer masStaffType;
 
 
-    @Column(name= "LOCATION_ID")
+    //@Column(name= "LOCATION_ID")
     private Integer masLocation;
 
     
     
     
 	private List<AddressDto> addressList;
+	
+	
+	private Date probationDate;
     
 
 	public Integer getId() {
@@ -956,6 +956,71 @@ public class AllEmployeeDto {
 
 	public void setAddressList(List<AddressDto> addressList) {
 		this.addressList = addressList;
+	}
+
+
+	
+	public Date getProbationDate() {
+		return probationDate;
+	}
+
+
+	public void setProbationDate(Date probationDate) {
+		this.probationDate = probationDate;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "AllEmployeeDto [id=" + id + ", employeeCode=" + employeeCode
+				+ ", nameThai=" + nameThai + ", surnameThai=" + surnameThai
+				+ ", nicknameThai=" + nicknameThai + ", nameEng=" + nameEng
+				+ ", surnameEng=" + surnameEng + ", nicknameEng=" + nicknameEng
+				+ ", email=" + email + ", telHome=" + telHome + ", telMobile="
+				+ telMobile + ", telFax=" + telFax + ", congenitalDisease="
+				+ congenitalDisease + ", hospital=" + hospital
+				+ ", emergencyContact=" + emergencyContact
+				+ ", relationshipWithEmergencyContact="
+				+ relationshipWithEmergencyContact
+				+ ", emergencyContactAddress=" + emergencyContactAddress
+				+ ", emergencyContactPhoneNumber="
+				+ emergencyContactPhoneNumber + ", dateOfBirth=" + dateOfBirth
+				+ ", placeOfBirth=" + placeOfBirth + ", age=" + age
+				+ ", religion=" + religion + ", idCard=" + idCard
+				+ ", issuedOffice=" + issuedOffice + ", expiryDate="
+				+ expiryDate + ", height=" + height + ", weigth=" + weigth
+				+ ", sex=" + sex + ", maritalStatus=" + maritalStatus
+				+ ", numberOfChildren=" + numberOfChildren + ", spouseName="
+				+ spouseName + ", marriageCertificateNo="
+				+ marriageCertificateNo + ", issuedOffice2=" + issuedOffice2
+				+ ", address=" + address + ", occupation=" + occupation
+				+ ", knowAugNewspaper=" + knowAugNewspaper
+				+ ", descriptionNewspaper=" + descriptionNewspaper
+				+ ", knowAugMagazine=" + knowAugMagazine
+				+ ", descriptionMagazine=" + descriptionMagazine
+				+ ", knowAugWebsite=" + knowAugWebsite
+				+ ", descriptionWebsite=" + descriptionWebsite
+				+ ", knowAugFriend=" + knowAugFriend + ", descriptionFriend="
+				+ descriptionFriend + ", knowAugOther=" + knowAugOther
+				+ ", descriptionOther=" + descriptionOther
+				+ ", knowEmployedYes=" + knowEmployedYes + ", descriptionYes="
+				+ descriptionYes + ", knowEmployerNo=" + knowEmployerNo
+				+ ", militaryServiceYes=" + militaryServiceYes + ", fromYear="
+				+ fromYear + ", toYear=" + toYear + ", branchOfService="
+				+ branchOfService + ", serviceNo=" + serviceNo
+				+ ", militaryServiceNo=" + militaryServiceNo + ", reasonsNo="
+				+ reasonsNo + ", dateToBeDrafted=" + dateToBeDrafted
+				+ ", previousEmployerYes=" + previousEmployerYes
+				+ ", previousEmployerNo=" + previousEmployerNo
+				+ ", previousEmpreasonsNo=" + previousEmpreasonsNo + ", image="
+				+ image + ", aimempid=" + aimempid + ", masCoreSkill="
+				+ masCoreSkill + ", masEmployment=" + masEmployment
+				+ ", masDivision=" + masDivision + ", masJoblevel="
+				+ masJoblevel + ", technology=" + technology
+				+ ", masStaffType=" + masStaffType + ", masLocation="
+				+ masLocation + ", addressList=" + addressList
+				+ ", probationDate=" + probationDate + "]";
 	}
     
 	

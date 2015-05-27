@@ -46,7 +46,7 @@
 		<mapping class="com.aug.hr.entity.Punish" />
 		<mapping class="com.aug.hr.entity.MasLeaveType" />
 		<mapping class="com.aug.hr.entity.Leave" />
-
+		<mapping class="com.aug.hr.entity.Certification" />
 
 	</session-factory>
         

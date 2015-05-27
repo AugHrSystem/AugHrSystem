@@ -17,6 +17,7 @@ import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasAddressType;
 import com.aug.hr.entity.MasProvince;
+import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasAddressTypeService;
@@ -91,6 +92,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 			addressService.create(address);
 		}
 		
+	}
+
+	@Override
+	public void saveByNameQuery(AllEmployeeDto allEmployeeDto) {
+		// TODO Auto-generated method stub
+		employeeDao.saveByNameQuery(allEmployeeDto);
 	}
 
 

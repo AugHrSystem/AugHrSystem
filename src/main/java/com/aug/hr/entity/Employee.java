@@ -30,11 +30,8 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 
-import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 
@@ -100,7 +97,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
             		+ "PREVIOUS_EMPLOYER_YES,"
             		+ "PREVIOUS_EMPLOYER_NO,"
             		+ "PREVIOUSEMP_REASONS_NO,"
-            		+ "IMAGE)"
+            		+ "IMAGE,"
+            		+ "DIVISION_ID) "
             		+ " values("
             		+ ":EMPLOYEE_CODE,"
             		+ ":NAME_THAI,"
@@ -160,7 +158,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
             		+ ":PREVIOUS_EMPLOYER_YES,"
             		+ ":PREVIOUS_EMPLOYER_NO,"
             		+ ":PREVIOUSEMP_REASONS_NO,"
-            		+ ":IMAGER"
+            		+ ":IMAGE,"
+            		+ ":DIVISION_ID"
             		+ ")"
             		,resultClass= Employee.class)
   })
@@ -436,7 +435,15 @@ public class Employee extends BaseEntity{
     private Set<Reference> references = new HashSet<Reference>();
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
-
+    private Set<Reward> rewards  = new HashSet<Reward>();
+    
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    private Set<Certification> certifications  = new HashSet<Certification>();
+    
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    private Set<Leave> leaves  = new HashSet<Leave>();
+    
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
     private Set<Punish> punishs  = new HashSet<Punish>();
     
     @ManyToOne(fetch=FetchType.EAGER)
@@ -1349,6 +1356,14 @@ public class Employee extends BaseEntity{
 				+ ", technologyId=" + technologyId + "]";
 	}*/
 
+	public Set<Leave> getLeaves() {
+		return leaves;
+	}
+
+	public void setLeaves(Set<Leave> leaves) {
+		this.leaves = leaves;
+	}
+
 	public String getImage() {
 		return image;
 	}
@@ -1356,65 +1371,31 @@ public class Employee extends BaseEntity{
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	public Set<Reward> getRewards() {
+		return rewards;
+	}
+
+	public void setRewards(Set<Reward> rewards) {
+		this.rewards = rewards;
+	}
+
+	public Set<Certification> getCertifications() {
+		return certifications;
+	}
+
+	public void setCertifications(Set<Certification> certifications) {
+		this.certifications = certifications;
+	}
+
+	public Set<SkillLanguage> getSkillLanguage() {
+		return skillLanguage;
+	}
+
+	public void setSkillLanguage(Set<SkillLanguage> skillLanguage) {
+		this.skillLanguage = skillLanguage;
+	}
+
 	
-
-
-//	@Override
-//	public String toString() {
-//		return "Employee [id=" + id + ", employeeCode=" + employeeCode
-//				+ ", nameThai=" + nameThai + ", surnameThai=" + surnameThai
-//				+ ", nicknameThai=" + nicknameThai + ", nameEng=" + nameEng
-//				+ ", surnameEng=" + surnameEng + ", nicknameEng=" + nicknameEng
-//				+ ", telHome=" + telHome + ", telMobile=" + telMobile
-//				+ ", telFax=" + telFax + ", emergencyContact="
-//				+ emergencyContact + ", relationshipWithEmergencyContact="
-//				+ relationshipWithEmergencyContact
-//				+ ", emergencyContactAddress=" + emergencyContactAddress
-//				+ ", emergencyContactPhoneNumber="
-//				+ emergencyContactPhoneNumber + ", dateOfBirth=" + dateOfBirth
-//				+ ", placeOfBirth=" + placeOfBirth + ", age=" + age
-//				+ ", religion=" + religion + ", idCard=" + idCard
-//				+ ", issuedOffice=" + issuedOffice + ", expiryDate="
-//				+ expiryDate + ", height=" + height + ", weigth=" + weigth
-//				+ ", sex=" + sex + ", maritalStatus=" + maritalStatus
-//				+ ", numberOfChildren=" + numberOfChildren + ", spouseName="
-//				+ spouseName + ", marriageCertificateNo="
-//				+ marriageCertificateNo + ", issuedOffice2=" + issuedOffice2
-//				+ ", address=" + address + ", occupation=" + occupation
-//				+ ", knowAugNewspaper=" + knowAugNewspaper
-//				+ ", descriptionNewspaper=" + descriptionNewspaper
-//				+ ", knowAugMagazine=" + knowAugMagazine
-//				+ ", descriptionMagazine=" + descriptionMagazine
-//				+ ", knowAugWebsite=" + knowAugWebsite
-//				+ ", descriptionWebsite=" + descriptionWebsite
-//				+ ", knowAugFriend=" + knowAugFriend + ", descriptionFriend="
-//				+ descriptionFriend + ", knowAugOther=" + knowAugOther
-//				+ ", descriptionOther=" + descriptionOther
-//				+ ", knowEmployedYes=" + knowEmployedYes + ", descriptionYes="
-//				+ descriptionYes + ", knowEmployerNo=" + knowEmployerNo
-//				+ ", militaryServiceYes=" + militaryServiceYes + ", fromYear="
-//				+ fromYear + ", toYear=" + toYear + ", branchOfService="
-//				+ branchOfService + ", serviceNo=" + serviceNo
-//				+ ", militaryServiceNo=" + militaryServiceNo + ", reasonsNo="
-//				+ reasonsNo + ", dateToBeDrafted=" + dateToBeDrafted
-//				+ ", previousEmployerYes=" + previousEmployerYes
-//				+ ", previousEmployerNo=" + previousEmployerNo
-//				+ ", previousEmpreasonsNo=" + previousEmpreasonsNo
-//				+ ", aimempid=" + aimempid + ", staffs=" + staffs
-//				+ ", addresses=" + addresses + ", official=" + official
-//				+ ", educations=" + educations + ", histories=" + histories
-//				+ ", masCoreSkill=" + masCoreSkill + ", masEmployment="
-//				+ masEmployment + ", abilities=" + abilities + ", references="
-//				+ references + ", punishs=" + punishs + ", masDivision="
-//				+ masDivision + ", masJoblevel=" + masJoblevel
-//				+ ", experiences=" + experiences + ", technology=" + technology
-//				+ ", families=" + families + ", masStaffType=" + masStaffType
-//				+ ", masLocation=" + masLocation + ", probations=" + probations
-//				+ ", status=" + status + ", masCoreSkillId=" + masCoreSkillId
-//				+ ", technologyId=" + technologyId + "]";
-//	}
-
-
-
-	 
+	
 }
