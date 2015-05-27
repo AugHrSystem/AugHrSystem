@@ -82,7 +82,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Position Add</h4>
+        <h4 class="modal-title" id="myModalLabel">History Add</h4>
       </div>
       
       <div class="modal-body">
@@ -229,6 +229,7 @@
 		}
 		
 		function addHistory(){
+			var id = getUrlParameter('Id');
 			$.ajax({
 				url : "${pageContext.request.contextPath}/history/add",
 				data : JSON.stringify({
@@ -238,7 +239,7 @@
 					dateOfAdjustment :$("#dateOfAdjustment").val(),
 					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
 					adjustmentTime :$("#adjustmentTime").val(),
-					employee: {id: 2 }
+					employeeId: id
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -280,6 +281,7 @@
 		}
 		
 		function updateHistory(button, historyid){
+			var id = getUrlParameter('Id');
 			$.ajax({
 				url : "${pageContext.request.contextPath}/history/update",
 				data : JSON.stringify({
@@ -290,7 +292,7 @@
 					dateOfAdjustment :$("#dateOfAdjustment").val(),
 					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
 					adjustmentTime :$("#adjustmentTime").val(),
-					employee: {id: 2 }
+					employeeId : id
 					/* company :$("#company").val(),
 					salary :$("#salary").val(),
 					time :$("#time").val(), */
@@ -336,7 +338,7 @@
 					$("#dateOfAdjustment").val(data.dateOfAdjustment);
 					$("#reasonOfAdjustment").val(data.reasonOfAdjustment);
 					$("#adjustmentTime").val(data.adjustmentTime);
-					employee: {id: data.employeeId };
+					
 					/* employee: {id: data.position } */
 					/* $("#company").val(data.company),
 					$("#salary").val(data.salary),
@@ -395,7 +397,6 @@
 		function listAll(){
 			
 			var id = getUrlParameter('Id');
-			alert("id >>>>"+id);
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath}/history/listAll/"+id,

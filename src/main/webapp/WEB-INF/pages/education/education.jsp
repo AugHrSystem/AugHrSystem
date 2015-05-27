@@ -75,7 +75,7 @@
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<button type="button" id="addBtn‬Edu" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
+<button type="button" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">Add</button> 
 </div>
 
 <!-- Modal -->
@@ -188,7 +188,10 @@
 	
 	$(document).ready(function(){
 		
-		$("‪#‎addBtn‬Edu").on("click",function(){clearModal();});
+// 		$("‪.‎btnAdd").on("click",function(){
+// 			//clearModal();
+// 		alert('dd');
+// 		});
 		
 		var date1 = $( "#startDate" ).datepicker({
 			clearBtn : true,
@@ -265,7 +268,7 @@
 		}
 		
 		function addEducation(){
-			var id=1;
+			var id = getUrlParameter('Id');
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/add",
 				data : JSON.stringify({
@@ -322,7 +325,7 @@
 		}
 		
 		function updateEducation(button, educationid){
-			var id=1;
+			var id = getUrlParameter('Id');
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/update",
 				data : JSON.stringify({
@@ -356,7 +359,7 @@
 					dt.fnUpdate(data.certificate, tr ,5);
 					dt.fnUpdate(data.description, tr ,6);
 					dt.fnUpdate(data.startDate, tr ,7);
-					dt.fnUpdate(data.graduatedDate, tr ,7);
+					dt.fnUpdate(data.graduatedDate, tr ,8);
 					
 					$('#addModal').modal('toggle');
 				},
@@ -378,7 +381,7 @@
 					$("#gpa").val(data.gpa),
 					$("#faculty").val(data.faculty),
 					$("#major").val(data.major);
-					$("#masdegreetype").val(data.masdegreetype);
+					$("#masdegreetype").val(data.masDegreeTypeId);
 					$("#certificate").val(data.certificate);
 					$("#description").val(data.description);
 					$("#startDate").val(data.startDate);
@@ -414,8 +417,8 @@
 		}
 		
 		function listAll(){
-			var id=1;
-// 			var id = getUrlParameter('Id');
+// 			var id=1;
+			var id = getUrlParameter('Id');
 			//alert("id"+id);
 			$.ajax({
 				url : "${pageContext.request.contextPath}/education/listAll/"+id,

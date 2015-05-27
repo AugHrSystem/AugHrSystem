@@ -52,7 +52,7 @@ public class HistoryDto {
 	private Integer adjustmentTime;
 	
 	@Column(name = "EMPLOYEE_ID")
-	private String employeeId;
+	private Integer employeeId;
 
 	public Integer getId() {
 		return id;
@@ -110,14 +110,12 @@ public class HistoryDto {
 		this.adjustmentTime = adjustmentTime;
 	}
 
-	public String getEmployeeId() {
+	public Integer getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
 
-	
-	
 }
