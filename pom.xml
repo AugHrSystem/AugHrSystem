@@ -469,7 +469,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <driver>${db.driverClassName}</driver>
+                    <driver>${db.driver}</driver>
                     <url>${db.url}</url>
                     <username>${db.username}</username>
                     <password>${db.password}</password>
@@ -510,4 +510,3 @@
 
     </build>
 </project>
-

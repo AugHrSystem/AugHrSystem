@@ -38,7 +38,7 @@ public class MasSkillLanguage extends BaseEnityMasterData {
 		this.id = id;
 	}
 	
-	@Column(name="SKILLLANGUAGE")
+	@Column(name="SKILL_LANGUAGE")
 	public String getSkillLanguageName() {
 		return skillLanguageName;
 	}
@@ -48,6 +48,10 @@ public class MasSkillLanguage extends BaseEnityMasterData {
 		this.skillLanguageName = skillLanguageName;
 	}
 
+    @OneToMany(mappedBy="masSkillLanguage",fetch=FetchType.LAZY)
+    public Set<SkillLanguage> getSkillLanguage() {
+        return skillLanguage;
+    }
 
 	@OneToMany(mappedBy="masSkillLanguage",fetch=FetchType.LAZY)
 
@@ -60,7 +64,4 @@ public class MasSkillLanguage extends BaseEnityMasterData {
 		this.skillLanguage = skillLanguage;
 	}
 	
-	
-	
-
 }

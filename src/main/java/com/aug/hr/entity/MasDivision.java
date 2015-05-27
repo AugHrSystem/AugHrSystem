@@ -37,7 +37,6 @@ public class MasDivision extends BaseEntity{
 	 /*@ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="OFFICIAL_ID" , referencedColumnName="id")
 	 private Official official;*/
-
 	@OneToMany(mappedBy = "masDivision")
 	private Set<Employee> employees;
 	

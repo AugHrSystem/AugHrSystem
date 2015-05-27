@@ -76,7 +76,7 @@ public class Reference {
 	public String getOccupation() {
 		return occupation;
 	}
-	
+
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
@@ -106,9 +106,10 @@ public class Reference {
 		reference.setName(referenceDto.getName());
 		reference.setAddress(referenceDto.getAddress());
 		reference.setTel(referenceDto.getTel());
-		reference.setOccupation(referenceDto.getOccupation());
+		reference.setOccupation(referenceDto.getOccupation());		
 		Employee employee = new Employee();
 		employee.setId(referenceDto.getEmployeeId());
+		reference.setEmployee(employee);
 		return reference;
 	}
 

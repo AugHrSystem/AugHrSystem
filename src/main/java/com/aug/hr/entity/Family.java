@@ -215,6 +215,7 @@ public class Family extends BaseEntity implements Serializable {
 	}
 
 
+
 	/*public String getRelationName() {
 		return relationName;
 	}
@@ -246,7 +247,6 @@ public class Family extends BaseEntity implements Serializable {
 	}
 
 	*/
-
 
 	/*@Override
 	public String toString() {
@@ -283,5 +283,4 @@ public class Family extends BaseEntity implements Serializable {
 		return builder.toString();
 	}*/
 
-	
 }

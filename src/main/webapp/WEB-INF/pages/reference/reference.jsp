@@ -234,22 +234,29 @@
 <<<<<<< HEAD
 					occupation :$("#occupation").val(),
 					employeeId: id 
+<<<<<<< HEAD:src/main/webapp/WEB-INF/pages/reference/reference.jsp
 =======
 					oocupation :$("#occupation").val(),
 					employee :{id:2},
 >>>>>>> dto 415 reference
+=======
+>>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de:src/main/webapp/WEB-INF/pages/reference/reference.jsp
 				
 				}),
 				type : "POST",
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
+<<<<<<< HEAD:src/main/webapp/WEB-INF/pages/reference/reference.jsp
 <<<<<<< HEAD
 		
 =======
 
 						
 >>>>>>> dto 415 reference
+=======
+		
+>>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de:src/main/webapp/WEB-INF/pages/reference/reference.jsp
 					dt.fnClearTable();
 					
 					dt.fnAddData([
@@ -277,10 +284,7 @@
 		function updateReference(button,referenceid) {
 			var id=1;
 			$.ajax({
-				url:'${pageContext.request.contextPath}/reference/update',
-				type:"POST",
-				contentType:"application/json",
-				datatype: "json",
+				url:'${pageContext.request.contextPath}/reference/update',		
 				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
 					
 								id :referenceid,
@@ -292,7 +296,9 @@
 								
 					
 					}),
-					
+					type:"POST",
+					contentType:"application/json",
+					datatype: "json",
 					success : function(data) {
 						
 					var tr = button.closest("tr"); // หาเเถวจากปุ่ม
@@ -318,8 +324,8 @@
 		
 		function getReferenceById(referenceid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/reference/findById",
-				data : "id=" +referenceid,
+				url : "${pageContext.request.contextPath}/reference/findById/"+referenceid,
+				//data : "id=" +referenceid,
 				type : "POST", 
 				success : function(data) {
 					$("#name").val(data.name); 
@@ -334,7 +340,7 @@
 					
 							alert("error");
 									}
-							});
+					});
 		}
 		
 		

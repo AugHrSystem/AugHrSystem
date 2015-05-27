@@ -39,7 +39,6 @@ public class ReferenceController {
 //	@Autowired
 //	private ReferenceValidator referenceValidator;
 	
-	
 	@RequestMapping(value = "/reference", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("referenceList", referenceService.findAll());
@@ -54,8 +53,8 @@ public class ReferenceController {
 //	}
 	
 	
-	
-	@RequestMapping(value = "/reference/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+
+	@RequestMapping(value = "/reference/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
 		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
 	}
@@ -68,7 +67,6 @@ public class ReferenceController {
 		return referenceDto;
 	}
 	
-
 	@Transactional
 	@RequestMapping(value = "/reference/update", method = {RequestMethod.GET,RequestMethod.POST})
 	public @ResponseBody ReferenceDto updateReference(@RequestBody ReferenceDto referenceDto ) {

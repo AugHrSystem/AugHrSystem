@@ -50,6 +50,7 @@ public class LeaveDaoImpl extends GenericDaoImpl<Leave, Integer> implements Leav
 		//namedQuery.executeUpdate();
 		List<LeaveDto> leaDto = namedQuery.list();
 	     return leaDto;
+
 	}
 
 	

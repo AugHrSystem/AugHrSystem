@@ -28,7 +28,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 //        @NamedNativeQuery(name = "createProbation", 
 //        		query = "insert into emp_probation as pro (pro.date_from, pro.date_to, pro.status,pro.employee_id) values (?dateFrom, ?dateTo, ?status, ?employeeId)",
 //        		resultClass = Probation.class)
-
 })
 @Entity
 public class ProbationDto {

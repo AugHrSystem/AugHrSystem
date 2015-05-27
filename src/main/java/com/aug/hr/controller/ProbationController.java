@@ -75,7 +75,6 @@ public class ProbationController {
 //		probationDtoService.createProbation(probationDto);
 		Probation probation = new Probation();
 		probationService.create(probation.fromProbationDto(probationDto));
-
 		return probationDto;
 	}
 

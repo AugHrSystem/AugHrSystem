@@ -86,7 +86,6 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 	@Override
 	public void saveByNameQuery(AllEmployeeDto allEmployeeDto) {
 		
-		
 		Query query = getCurrentSession().getNamedQuery("insertEmployee");
 		query.setString("EMPLOYEE_CODE", allEmployeeDto.getEmployeeCode());
 		query.setString("NAME_THAI", allEmployeeDto.getNameThai());
@@ -173,6 +172,7 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		query.setInteger("MAS_CORE_SKILL_ID", allEmployeeDto.getMasCoreSkill());
 		query.setInteger("STAFFTYPE_ID", allEmployeeDto.getMasStaffType());
 		query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocation());
+
 		query.executeUpdate();
 	}
 

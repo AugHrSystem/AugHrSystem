@@ -149,7 +149,11 @@ var dt;
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		proId = button.data("proid");
+<<<<<<< HEAD
 
+=======
+    		//console.log(proId);
+>>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
     		if(proId != null){
 				initEditProbation(proId);
 			}
@@ -157,11 +161,19 @@ var dt;
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(proId != null){
+<<<<<<< HEAD
     				console.log(proId);
     				editProbation();
     			}
     			else {
     				console.log("add : "+proId);
+=======
+    				//console.log(proId);
+    				editProbation();
+    			}
+    			else {
+    				//console.log("add : "+proId);
+>>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
     				addProbation();
     			}
     			
@@ -279,6 +291,10 @@ var dt;
 				$("#dateFrom").val("");
 				$("#dateTo").val("");
 				$("#status").val("-1"); 
+<<<<<<< HEAD
+=======
+				//console.log("test")
+>>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
 			});
     		/* function setModal(data){
 				$("#dataFrom").val(data.dateFrom);

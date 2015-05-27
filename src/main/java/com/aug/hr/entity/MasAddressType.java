@@ -72,6 +72,7 @@ public class MasAddressType extends BaseEntity{
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public String getIsActive() {
 		return isActive;
 	}
