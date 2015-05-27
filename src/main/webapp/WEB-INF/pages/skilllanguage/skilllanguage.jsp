@@ -223,8 +223,8 @@
 			  	    				
 			  	 
 			  	    
-			  	    var language =  "masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
-	                
+			  	    //var language =  "masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
+			  	      var language =  "masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
 			 
 	                
 			  	    $.ajax({  
@@ -260,7 +260,7 @@
 		   	   
 			     		  	   
 		  	    var language = "id="+idUpdate;
-		  	    alert("id: "+idUpdate);
+		  	    //alert("id: "+idUpdate);
 		  	    
 		  	   
 		  	     $.ajax({  
@@ -270,7 +270,7 @@
 		  	     
 		  	      success : function(data) {  
 		    		
-		  	    	alert(" "+data.abilitySpeaking);
+		  	    	//alert(" "+data.abilitySpeaking);
 		  	    	
 		  	    	//$('#formAddUpdate')[0].reset();
 			  		
@@ -343,7 +343,7 @@
 			  		
 			  		
 			  	
-					$('#masSkillLanguage').val(data.masSkillLanguage.id);
+					$('#masSkillLanguage').val(data.masSkillLanguageId);
 			  	  
 		  	    	  
 		  	    	
@@ -409,7 +409,7 @@
 		  		}
 		  	
 				
-				alert("writing: "+writing)
+				//alert("writing: "+writing)
 		  		
 
 				
@@ -445,10 +445,13 @@
 		  		
 		  		
 				masSkillLanguageId = $('#masSkillLanguage').val();
+				
+				var masSkillLanguageName= $("#masSkillLanguage option:selected").text();
 		  	  
 	  	    	  
-		  	    var language =  "id="+idUpdate+"&masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
-                alert("masid: "+masSkillLanguageId);
+		  	    //var language =  "id="+idUpdate+"&masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
+                  var language =  "id="+idUpdate+"&masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing+"&employeeId="+1;
+		  	    //alert("masid: "+masSkillLanguageId);
 		  	    
 		  	    
 		  	   
@@ -579,7 +582,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><spring:message code="label.add"/> SkillLanguage</h4>
+        <h4 class="modal-title" id="myModalLabel"><%-- <spring:message code="label.add"/> --%>Add SkillLanguage</h4>
       </div>
       <div class="modal-body">
           
@@ -605,7 +608,7 @@
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 
 			     		 <f:select id="masSkillLanguage"  path="masSkillLanguage.id" cssClass="form-control required" >
-						  <f:option  value="0" label="please select data"/>								
+						  <f:option  value="-1" label="please select data"/>								
 							<c:forEach var="obj" items="${ masSkillLanguageList }">									
 									<option value="${obj.id}" >${obj.skillLanguageName}</option> 									
 							</c:forEach>
@@ -734,7 +737,7 @@
 		  
 		  
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close"/></button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal"><%-- <spring:message code="label.close"/> --%>close</button>
 		        <%-- <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save"/></button> --%>
 		     	<button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">savechange</button>
 		      </div>

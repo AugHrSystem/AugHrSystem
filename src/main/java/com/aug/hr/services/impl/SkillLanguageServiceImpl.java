@@ -75,25 +75,30 @@ public class SkillLanguageServiceImpl implements SkillLanguageService{
 	@Override
 	@Transactional
 	public void saveByFindEmployee(Integer employeeId,
-			SkillLanguage skillLanguage) {
+			SkillLanguageDto skillLanguage) {
 		// TODO Auto-generated method stub
 		try{
 			
 			Employee employee = employeeService.findById(employeeId);
-    		MasSkillLanguage masSkillLanguage = masSkillLanguageService.find(skillLanguage.getMasSkillLanguage().getId());
-    		Hibernate.initialize(skillLanguage.getMasSkillLanguage());
-    		Hibernate.initialize(skillLanguage.getEmployee());
-    		Hibernate.initialize(employee.getTechnology());
+    		MasSkillLanguage masSkillLanguage = masSkillLanguageService.find(skillLanguage.getMasSkillLanguageId());
+    		//Hibernate.initialize(skillLanguage.getMasSkillLanguage());
+    		//Hibernate.initialize(skillLanguage.getEmployee());
+    		//Hibernate.initialize(employee.getTechnology());
 			logger.info("employeeservice: "+employee.getId());
      		logger.info("masSkillLanguageservice: "+masSkillLanguage.getId());
-			skillLanguage.setMasSkillLanguage(skillLanguage.getMasSkillLanguage());
-			skillLanguage.setEmployee(employee);
-			skillLanguage.setCreatedBy(employee.getId());
+     		SkillLanguage skillLanguageObj = new SkillLanguage(); 
+     		skillLanguageObj.setAbilityReading(skillLanguage.getAbilityReading());
+     		skillLanguageObj.setAbilityWriting(skillLanguage.getAbilityWriting());
+     		skillLanguageObj.setAbilityUnderstanding(skillLanguage.getAbilityUnderstanding());
+     		skillLanguageObj.setAbilitySpeaking(skillLanguage.getAbilitySpeaking());
+     		skillLanguageObj.setMasSkillLanguage(masSkillLanguage);
+     		skillLanguageObj.setEmployee(employee);
+     		skillLanguageObj.setCreatedBy(employee.getId());
 			Calendar cal = Calendar.getInstance();
-			skillLanguage.setCreatedTimeStamp(cal.getTime());
-			skillLanguage.setAuditFlag("C");
+			skillLanguageObj.setCreatedTimeStamp(cal.getTime());
+			skillLanguageObj.setAuditFlag("C");
 			logger.info(skillLanguage.toString());
-			skillLanguageDao.create(skillLanguage);
+			skillLanguageDao.create(skillLanguageObj);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -102,7 +107,7 @@ public class SkillLanguageServiceImpl implements SkillLanguageService{
 
 	@Override
 	@Transactional
-	public SkillLanguage findSkillLanguageById(Integer id) {
+	public SkillLanguageDto findSkillLanguageById(Integer id) {
 		// TODO Auto-generated method stub
 		SkillLanguage skilllanguage = skillLanguageDao.findIdJoinEmployee(id);
 		Hibernate.initialize(skilllanguage.getMasSkillLanguage());
@@ -110,14 +115,24 @@ public class SkillLanguageServiceImpl implements SkillLanguageService{
 		logger.info("emp: "+skilllanguage.getEmployee().toString());
 		logger.info("masskilllanguage: "+skilllanguage.getMasSkillLanguage().toString());
 		//logger.info("skilllanguage list: "+skilllanguage.getMasSkillLanguage().getSkillLanguage());
-		return skilllanguage;
+		SkillLanguageDto skillLanguageDto = new SkillLanguageDto();
+		skillLanguageDto.setAbilityReading(skilllanguage.getAbilityReading());
+		skillLanguageDto.setAbilityWriting(skilllanguage.getAbilityWriting());
+		skillLanguageDto.setAbilityUnderstanding(skilllanguage.getAbilityUnderstanding());
+		skillLanguageDto.setAbilitySpeaking(skilllanguage.getAbilitySpeaking());
+		skillLanguageDto.setEmployeeId(skilllanguage.getEmployee().getId());
+		skillLanguageDto.setEmployeeCode(skilllanguage.getEmployee().getEmployeeCode());
+		skillLanguageDto.setMasSkillLanguageId(skilllanguage.getMasSkillLanguage().getId());
+		skillLanguageDto.setMasSkillLanguageName(skilllanguage.getMasSkillLanguage().getName());
+		return skillLanguageDto;
 	}
 
 	@Override
-	public void updateSetSkillLanguage(SkillLanguage skillLanguage) {
+	public void updateSetSkillLanguage(SkillLanguageDto skillLanguage) {
 		// TODO Auto-generated method stub
 		SkillLanguage skillLanguageUpdate = skillLanguageDao.find(skillLanguage.getId());
-		skillLanguageUpdate.setMasSkillLanguage(skillLanguage.getMasSkillLanguage());
+		MasSkillLanguage masSkillLanguage = masSkillLanguageService.find(skillLanguage.getMasSkillLanguageId());
+		skillLanguageUpdate.setMasSkillLanguage(masSkillLanguage);
 		skillLanguageUpdate.setAuditFlag("U");
 		skillLanguageUpdate.setUpdatedTimeStamp(Calendar.getInstance().getTime());
 		skillLanguageUpdate.setUpdatedBy(skillLanguageUpdate.getEmployee().getId());

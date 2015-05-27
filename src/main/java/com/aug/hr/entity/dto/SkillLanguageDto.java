@@ -12,7 +12,7 @@ import org.hibernate.annotations.NamedNativeQuery;
  @NamedNativeQueries({
 	@NamedNativeQuery(
             name = "listSkillLanguage",
-              query = "select language.ID as ID,employee.ID as EMPLOYEE_ID,employee.EMPLOYEE_CODE as EMPLOYEE_CODE,maslanguage.ID as MAS_SKILLLANGUAGEID,maslanguage.SKILLLANGUAGE as MAS_SKILLLANGUAGENAME,language.SPEAKINGSKILL as SPEAKKING,"
+              query = "select language.ID as ID,employee.ID as EMPLOYEE_ID,employee.EMPLOYEE_CODE as EMPLOYEE_CODE,maslanguage.ID as MAS_SKILLLANGUAGEID,maslanguage.SKILL_LANGUAGE as MAS_SKILLLANGUAGENAME,language.SPEAKINGSKILL as SPEAKKING,"
             		+ "language.READINGSKILL as READING,language.UNDERSTANDINDSKILL as UNDERSTANDDING,language.WRITINGSKILL as WRITING  from EMP_SKILLLANGUAGE as language join EMP_EMPLOYEE as employee"
             		+ " on employee.ID=language.EMPLOYEE_ID"
             		+ " join MAS_SKILLLANGUAGE as maslanguage on maslanguage.ID=language.MASSKILLLANGUAGE_ID"

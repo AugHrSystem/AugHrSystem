@@ -100,8 +100,7 @@ public class SkillLanguage extends BaseEntity{
 
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="MASSKILLLANGUAGE_ID",nullable=false)
-
+	@JoinColumn(name="MASSKILLLANGUAGE_ID",nullable=false,unique=true)
 //	@JsonIgnore
 	public MasSkillLanguage getMasSkillLanguage() {
 		return masSkillLanguage;

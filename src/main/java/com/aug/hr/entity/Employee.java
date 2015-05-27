@@ -20,6 +20,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -502,8 +504,15 @@ public class Employee extends BaseEntity{
    
 
    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE})
-   @JsonBackReference
+   //@JsonBackReference
    private Set<SkillLanguage> skillLanguage = new HashSet<SkillLanguage>();
+   
+   
+   
+   @OneToMany(mappedBy = "employee")
+   private Set<Site> site = new HashSet<Site>();
+   
+   
  //-------------------------------------- getter setter --------------------------------------------------//
 
 	public Integer getId() {
@@ -1298,6 +1307,8 @@ public class Employee extends BaseEntity{
 	public void setPunishs(Set<Punish> punishs) {
 		this.punishs = punishs;
 	}
+	
+	
 
 
 
@@ -1364,6 +1375,14 @@ public class Employee extends BaseEntity{
 		this.leaves = leaves;
 	}
 
+	public Set<Site> getSite() {
+		return site;
+	}
+
+	public void setSite(Set<Site> site) {
+		this.site = site;
+	}
+
 	public String getImage() {
 		return image;
 	}
@@ -1371,6 +1390,17 @@ public class Employee extends BaseEntity{
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+
+	
+	public Set<SkillLanguage> getSkillLanguage() {
+		return skillLanguage;
+	}
+
+	public void setSkillLanguage(Set<SkillLanguage> skillLanguage) {
+		this.skillLanguage = skillLanguage;
+	}
+	
 
 	public Set<Reward> getRewards() {
 		return rewards;
@@ -1388,13 +1418,7 @@ public class Employee extends BaseEntity{
 		this.certifications = certifications;
 	}
 
-	public Set<SkillLanguage> getSkillLanguage() {
-		return skillLanguage;
-	}
 
-	public void setSkillLanguage(Set<SkillLanguage> skillLanguage) {
-		this.skillLanguage = skillLanguage;
-	}
 
 	
 	

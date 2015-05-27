@@ -513,18 +513,9 @@
 <br><br>
 		
 <div id="message"></div>
-<div id="outputajax" class="form-group">	
+<div id="outputajax" class="form-group"></div>	
 
 
-<!-- <div id="successmsg" class="alert alert-success" role="alert">
-  <a href="#" class="alert-link">Success...</a>
-</div>
-
-
-<div id="errormsg" class="alert alert-danger" role="alert">
-  <a href="#" class="alert-link">Please try again...</a>
-</div>
- -->
 
  <table id="tableResult" class="table table-striped table-bordered">
 	    <thead>
@@ -562,7 +553,7 @@
    
  
  
-<!-- Modal Add data-->
+<!-- Modal Add and Update data-->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
