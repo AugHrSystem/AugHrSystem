@@ -171,8 +171,8 @@
 	
 	$(document).ready(function(){
 		
-// 		$("#datetimepicker1").datetimepicker();
-
+		$("#addBtnHis").on("click",function(){clearModal();});
+		
 		$('#datetimepicker1').datetimepicker({
 			 
 			 viewMode: 'days',

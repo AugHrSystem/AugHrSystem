@@ -33,10 +33,6 @@
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
-<style>
-.datepicker{z-index:1151 !important;}
-
-</style>
 
 </head>
 <body>
@@ -76,7 +72,7 @@
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<button type="button" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">Add</button> 
+<button type="button" id="addBtnEdu" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">Add</button> 
 </div>
 
 <!-- Modal -->
@@ -198,7 +194,8 @@
 	var dt;
 	
 	$(document).ready(function(){
-		$("‪#‎addBtn‬Edu").on("click",function(){clearModal();});
+
+		$("#addBtnEdu").on("click",function(){clearModal();});
 		
 		$('#datetimepickerStart').datetimepicker({
 			 
@@ -432,7 +429,8 @@
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].university,
+					dt.fnAddData([
+					              data[i].university,
 					              data[i].gpa,
 					              data[i].faculty,
 					              data[i].major,
