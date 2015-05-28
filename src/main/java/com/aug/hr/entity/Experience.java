@@ -151,9 +151,8 @@ public class Experience extends BaseEntity {
 		return experienceDto;
 	}
 
-	public Experience fromExperienceDto(ExperienceDto experienceDto) {
-		Experience experience = new Experience();
-		experience.setId(experienceDto.getId());
+	public Experience fromExperienceDto(Experience experience, ExperienceDto experienceDto) {
+		experience.setId(experience.getId());
 		experience.setDateFrom(experienceDto.getDateFrom());
 		experience.setDateTo(experienceDto.getDateTo());
 		experience.setAddress(experienceDto.getAddress());
