@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @NamedNativeQueries({
 	@NamedNativeQuery(
@@ -57,6 +59,7 @@ public class SiteDto {
 	
 	
 	@Column(name="STARTDATE")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -67,6 +70,7 @@ public class SiteDto {
 	}
 	
 	@Column(name="ENDDATE")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	public Date getEndDate() {
 		return endDate;
 	}

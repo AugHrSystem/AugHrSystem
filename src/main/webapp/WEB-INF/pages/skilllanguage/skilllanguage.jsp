@@ -51,10 +51,11 @@
 		 
 		   function doFindData() {  
 		   	   
+			     var id = getUrlParameter('Id');
 			  	  
 		  	     $.ajax({  
-		  	      type : "GET",   
-		  	      url : "<%=request.getContextPath()%>/skilllanguage/list",   
+		  	      type : "POST",   
+		  	      url : "<%=request.getContextPath()%>/skilllanguage/list/"+id,   
 		  	      dataType : 'json', 
 		  	      contentType :"application/json; charset=utf-8",
 		  	     
@@ -224,7 +225,9 @@
 			  	 
 			  	    
 			  	    //var language =  "masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
-			  	      var language =  "masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
+			  	     
+			  	    var id = getUrlParameter('Id');				
+			  	    var language =  "masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing+"&employeeId="+id;
 			 
 	                
 			  	    $.ajax({  
@@ -448,9 +451,10 @@
 				
 				var masSkillLanguageName= $("#masSkillLanguage option:selected").text();
 		  	  
-	  	    	  
+				var id = getUrlParameter('Id');	
+				
 		  	    //var language =  "id="+idUpdate+"&masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
-                  var language =  "id="+idUpdate+"&masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing+"&employeeId="+1;
+                var language =  "id="+idUpdate+"&masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing+"&employeeId="+id;
 		  	    //alert("masid: "+masSkillLanguageId);
 		  	    
 		  	    
@@ -529,6 +533,29 @@
 		  	    }); 
 		  	   
 		    }
+		   
+		   
+		   
+		   function getUrlParameter(sParam)
+			{
+				//alert("url "+document.referrer);
+			    var sPageURL = document.referrer;
+			    var sURLVariables = sPageURL.split('?');
+			    //alert("spilt "+sURLVariables);
+
+			   	
+			    
+			    var sParameterName = sURLVariables[1].split('=');
+			    //alert("Param "+parseInt(sParameterName[1]));
+			    if (sParameterName[0] == sParam) 
+			        {
+			        	//alert("Param "+sParameterName[0]);
+			        	return sParameterName[1];
+			        	
+			        }
+			        //alert("Param2 "+parseInt(sParameterName[1]));
+			    
+			}
 		   
 	
 	});

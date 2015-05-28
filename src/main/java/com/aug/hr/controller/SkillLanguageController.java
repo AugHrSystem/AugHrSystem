@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -78,9 +79,10 @@ public class SkillLanguageController {
 	
 	
 	
-	@RequestMapping(value = "/skilllanguage/list", method = RequestMethod.GET,produces="application/json")
-	public @ResponseBody List<SkillLanguageDto> findEmpFamily(Locale locale,
-		   @ModelAttribute(value = "family") Family family,
+	@RequestMapping(value = "/skilllanguage/list/{id}", method = RequestMethod.POST,produces="application/json")
+	public @ResponseBody List<SkillLanguageDto> findSkillLanguage(Locale locale,
+		   //@ModelAttribute(value = "family") Family family,
+			@PathVariable("id") Integer id,
 			ModelMap model){
 		
 		
@@ -102,7 +104,7 @@ public class SkillLanguageController {
 	    SkillLanguageDto skillLanguage = new SkillLanguageDto();
 	    skillLanguage = skillLanguageInfo;
 		logger.info("Info skill language: " + skillLanguage.toString());
-		skillLanguageService.saveByFindEmployee(new Integer(1), skillLanguage);
+		skillLanguageService.saveByFindEmployee(skillLanguageInfo.getEmployeeId(), skillLanguage);
 
 		return skillLanguage;
 		
