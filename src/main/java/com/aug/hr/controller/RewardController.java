@@ -78,8 +78,7 @@ public class RewardController {
 	@RequestMapping(value = "/reward/add", method = RequestMethod.POST)
 	public @ResponseBody RewardDto addReward(@RequestBody RewardDto rewardDto) {
 		Reward reward = new Reward();	
-		rewardService.create(reward.fromRewardDto(reward, rewardDto));
-			
+		rewardService.create(reward.fromRewardDto(reward, rewardDto));			
 		return rewardDto;
 	}
 	
@@ -88,11 +87,11 @@ public class RewardController {
 	public @ResponseBody RewardDto updateReward(@RequestBody RewardDto rewardDto ) {
 			
 		Reward entityLoaded = rewardService.findById(rewardDto.getId());	
-		
-		entityLoaded.setId(rewardDto.getId());
+		//entityLoaded.setId(rewardDto.getId());
 		entityLoaded.setTypereward(rewardDto.getTypereward());	
 		entityLoaded.setYear(rewardDto.getYear());	
 		entityLoaded.setReason(rewardDto.getReason());
+		entityLoaded.setIsActive(rewardDto.getIsActive());
 		
 		rewardService.update(entityLoaded);
 		return rewardDto;

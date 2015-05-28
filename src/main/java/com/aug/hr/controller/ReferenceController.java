@@ -63,15 +63,21 @@ public class ReferenceController {
 	@RequestMapping(value = "/reference/add", method = RequestMethod.POST)
 	public @ResponseBody ReferenceDto addReference(@RequestBody ReferenceDto referenceDto) {
 		Reference reference = new Reference();
-		referenceService.create(reference.fromReferenceDto(referenceDto));
+		referenceService.create(reference.fromReferenceDto(reference, referenceDto));
 		return referenceDto;
 	}
 	
 	@Transactional
 	@RequestMapping(value = "/reference/update", method = {RequestMethod.GET,RequestMethod.POST})
 	public @ResponseBody ReferenceDto updateReference(@RequestBody ReferenceDto referenceDto ) {
-		Reference reference = new Reference();
-		referenceService.update(reference.fromReferenceDto(referenceDto));
+		
+		Reference entityLOaded = referenceService.findById(referenceDto.getId());
+		entityLOaded.setName(referenceDto.getName()); 
+		entityLOaded.setAddress(referenceDto.getAddress());
+		entityLOaded.setTel(referenceDto.getTel());
+		entityLOaded.setOccupation(referenceDto.getOccupation());
+		
+		referenceService.update(entityLOaded);
 		return referenceDto;
 	}
 	
