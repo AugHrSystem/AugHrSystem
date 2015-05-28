@@ -153,16 +153,14 @@
 	
 	
 	$(document).ready(function(){
-		dt = $('#tbResult').dataTable();
-		
+		dt = $('#tbResult').dataTable();	
 		 listAll();
 		 
 		$("#addModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var referenceid = button.data("id") //Extract info from data-* attribute
-			
-			
+						
 			clearModal();
 			 if(referenceid != null){				 
 				 getReferenceById(referenceid);
@@ -240,10 +238,10 @@
 				success : function(data) {
 					dt.fnClearTable();					
 					dt.fnAddData([
-						data.name,
-						data.address,
-						data.tel,
-						data.occupation,
+								data.name,
+								data.address,
+								data.tel,
+								data.occupation,
 						
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -262,7 +260,7 @@
 		
 			
 		function updateReference(button,referenceid) {
-			var id=1;
+			var id = getUrlParameter('Id');
 			$.ajax({
 				url:'${pageContext.request.contextPath}/reference/update',		
 				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน

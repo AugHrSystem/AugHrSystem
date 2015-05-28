@@ -10,11 +10,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.LeaveDao;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.services.LeaveService;
-@Service
+@Service("leaveService")
+@Transactional
 public class LeaveServiceImpl implements LeaveService {
 
 	
@@ -53,7 +55,7 @@ public class LeaveServiceImpl implements LeaveService {
 	@Override
 	public List<Leave> findByCriteria(Leave leave) {
 		
-		return leaveDao.findByCriteria(null);
+		return leaveDao.findByCriteria(leave);
 	}
 
 	@Override

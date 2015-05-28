@@ -96,7 +96,7 @@ public class Reference {
 		referenceDto.setAddress(this.address);
 		referenceDto.setTel(this.tel);
 		referenceDto.setOccupation(this.occupation);
-		referenceDto.setEmployeeId(this.getId());
+		referenceDto.setEmployeeId(this.employee.getId());
 		return referenceDto;
 	}
 

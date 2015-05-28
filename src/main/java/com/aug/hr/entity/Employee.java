@@ -449,9 +449,7 @@ public class Employee extends BaseEntity{
  //   @JsonIgnore
     private Set<Reference> references = new HashSet<Reference>();
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
-    private Set<Reward> rewards  = new HashSet<Reward>();
-    
+   
     @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
     private Set<Certification> certifications  = new HashSet<Certification>();
     
@@ -486,6 +484,12 @@ public class Employee extends BaseEntity{
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
     private Set<Family> families = new HashSet<Family>(); 
+    
+    
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Reward> rewards  = new HashSet<Reward>();
+    
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name= "STAFFTYPE_ID")
@@ -1379,6 +1383,7 @@ public class Employee extends BaseEntity{
 				+ ", technologyId=" + technologyId + "]";
 	}*/
 
+
 	public Set<Leave> getLeaves() {
 		return leaves;
 	}
@@ -1394,6 +1399,8 @@ public class Employee extends BaseEntity{
 	public void setSite(Set<Site> site) {
 		this.site = site;
 	}
+
+
 
 	public String getImage() {
 		return image;
