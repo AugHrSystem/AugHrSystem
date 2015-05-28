@@ -96,7 +96,7 @@ public class Probation extends BaseEntity {
     }
 
     public Probation fromProbationDto(Probation probation, ProbationDto probationDto){
-    	probation.setId(probation.getId());
+    	//probation.setId(probation.getId());
     	probation.setDateFrom(probationDto.getDateFrom());
     	probation.setDateTo(probationDto.getDateTo());
     	probation.setStatus(probationDto.getStatus());
