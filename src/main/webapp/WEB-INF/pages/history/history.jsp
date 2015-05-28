@@ -175,10 +175,7 @@
 		
 		$('#datetimepicker1').datetimepicker({
 			 
-			 viewMode: 'days',
 			 format : 'DD-MM-YYYY',
-			 defaultDate: moment(),
-			 minDate: moment(),
 			 
 		 });
 		

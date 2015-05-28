@@ -199,22 +199,15 @@
 		
 		$('#datetimepickerStart').datetimepicker({
 			 
-			 viewMode: 'days',
 			 format : 'DD-MM-YYYY',
-			 defaultDate: moment(),
-			 minDate: moment(),
 			 
 		 });
 		
 		$('#datetimepickerGrad').datetimepicker({
 			 
-			 viewMode: 'days',
 			 format : 'DD-MM-YYYY',
-			 defaultDate: moment(),
-			 minDate: moment(),
 			 
 		 });
-		
 		
 		dt = $('#tbResult').dataTable();
 		
