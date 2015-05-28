@@ -53,11 +53,6 @@ public class MasSkillLanguage extends BaseEnityMasterData {
         return skillLanguage;
     }
 
-	@OneToMany(mappedBy="masSkillLanguage",fetch=FetchType.LAZY)
-
-	public Set<SkillLanguage> getSkillLanguageList() {
-		return skillLanguage;
-	}
 
 
 	public void setSkillLanguage(Set<SkillLanguage> skillLanguage) {

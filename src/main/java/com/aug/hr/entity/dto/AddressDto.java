@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 
+import org.springframework.stereotype.Component;
 
-@NamedNativeQueries({
+
+/*@NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchAddress",
 			//query="select address.ID,mas_addresstype.NAME,address.ADDRESS1,address.ADDRESS2,mas_province.NAME,address.ZIPCODE,address.EMPLOYEE_ID,emp.EMPLOYEE_CODE from EMP_ADDRESS as address,EMP_EMPLOYEE as employee,MAS_ADDRESSTYPE as mas_addresstype,MAS_PROVINCE vince as mas_pro  where address.EMPLOYEE_ID=:empId and address.EMPLOYEE_ID = emp.ID and mas_addresstype.ID = address.addresstype.id and mas_province.ID = address.PROVINCE_ID",
@@ -25,38 +27,40 @@ import javax.persistence.NamedNativeQuery;
 			resultClass = AddressDto.class)
 
 })
+*/
 
+@Component
 //@Entity
 public class AddressDto {
 	
-	@Column(name="ID")
-	@Id
+	//@Id
+	//@Column(name="ID")
 	private Integer id;
 	
-	@Column(name="ADDRESSTYPE_ID")
+	//@Column(name="ADDRESSTYPE_ID")
 	private Integer addressTypeId;
 	
 	
-	@Column(name = "ADDRESSTYPENAME")
+	//@Column(name = "ADDRESSTYPENAME")
 	private String masaddresstypeName;
 	
-	@Column(name="ADDRESS1")
+	//@Column(name="ADDRESS1")
 	private String address1;
 	
-	@Column(name="ADDRESS2")
+	//@Column(name="ADDRESS2")
 	private String address2;
 	
-	@Column(name = "PROVINCE_ID")
-	private String masprovinceId;
+	//@Column(name = "PROVINCE_ID")
+	private Integer masprovinceId;
 	
-	@Column(name = "PROVINCENAME")
+	//@Column(name = "PROVINCENAME")
 	private String masprovinceName;
 	
-	@Column(name="ZIPCODE")
-	private String zipcode;
+	//@Column(name="ZIPCODE")
+	private Integer zipcode;
 	
-	@Column(name ="EMPLOYEE_ID")
-	private String employeeId;	
+	//@Column(name ="EMPLOYEE_ID")
+	private Integer employeeId;	
 	
 	
 	private String Status;
@@ -112,13 +116,22 @@ public class AddressDto {
 	}
 
 
-	public String getMasprovinceId() {
+	public Integer getMasprovinceId() {
 		return masprovinceId;
 	}
 
 
-	public void setMasprovinceId(String masprovinceId) {
+	public void setMasprovinceId(Integer masprovinceId) {
 		this.masprovinceId = masprovinceId;
+	}
+
+	public Integer getEmployeeId() {
+		return employeeId;
+	}
+
+
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
 	}
 
 
@@ -132,23 +145,13 @@ public class AddressDto {
 	}
 
 
-	public String getZipcode() {
+	public Integer getZipcode() {
 		return zipcode;
 	}
 
 
-	public void setZipcode(String zipcode) {
+	public void setZipcode(Integer zipcode) {
 		this.zipcode = zipcode;
-	}
-
-
-	public String getEmployeeId() {
-		return employeeId;
-	}
-
-
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
 	}
 
 

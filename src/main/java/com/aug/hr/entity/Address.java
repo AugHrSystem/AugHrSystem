@@ -15,6 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -22,8 +26,31 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
+@NamedNativeQueries({
+	@NamedNativeQuery(
+            name = "insertAddress",
+            query = "insert into EMP_ADDRESS("
+            		+ "ADDRESS1,"
+            		+ "ADDRESS2,"
+            		+ "ZIPCODE,"
+            		+ "EMPLOYEE_ID,"
+            		+ "ADDRESSTYPE_ID,"
+            		+ "PROVINCE_ID"
+            		+ ") "
+            		+ " values("
+            		+ ":ADDRESS1,"
+            		+ ":ADDRESS2,"
+            		+ ":ZIPCODE,"
+            		+ ":EMPLOYEE_ID,"
+            		+ ":ADDRESSTYPE_ID,"
+            		+ ":PROVINCE_ID"
+            		+ ")"
+            	
+            		,resultClass= Address.class)
+  })
+
 @Entity
-@Table(name = "EMP_ADDRESS")
+@Table(name = "EMP_ADDRESS",uniqueConstraints = {@UniqueConstraint(columnNames = {"address1","address2"})})
 public class Address extends BaseEntity{
 	
 	@Id

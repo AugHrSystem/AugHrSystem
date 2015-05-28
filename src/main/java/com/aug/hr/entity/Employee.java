@@ -32,9 +32,9 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 
+import com.aug.hr.entity.dto.ExperienceDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 
 @NamedNativeQueries({
@@ -176,9 +176,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ ":STAFFTYPE_ID,"
             		+ ":LOCATION_ID"
             		+ ")"
-            		,resultClass= Employee.class)
-  })
+            		,resultClass= Employee.class),
+ 
 
+	@NamedNativeQuery(
+            name = "searchIdEmptoAddress",
+            query = "select * from EMP_EMPLOYEE  ORDER BY createdTimeStamp LIMIT 1;", 
+            resultClass = Employee.class)
+  })
 
 
 

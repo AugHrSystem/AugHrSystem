@@ -52,6 +52,22 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Integer> implements 
 	     return addreDto;
 	}
 	
+
+	@Override
+	public void saveAddressByNameQuery(AddressDto addressDto) {
+		
+		Query query = getCurrentSession().getNamedQuery("insertAddress");
+		query.setString("ADDRESS1", addressDto.getAddress1());
+		query.setString("ADDRESS2", addressDto.getAddress2());
+		query.setInteger("ZIPCODE", addressDto.getZipcode());
+		query.setInteger("EMPLOYEE_ID", addressDto.getEmployeeId());
+		query.setInteger("ADDRESSTYPE_ID", addressDto.getAddressTypeId());
+		query.setInteger("PROVINCE_ID", addressDto.getMasprovinceId());
+		
+		query.executeUpdate();
+		
+	}
+	
 	
 
 }
