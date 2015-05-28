@@ -15,13 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="MAS_LEAVETYPE")
 public class MasLeaveType extends BaseEntity{
 	@Id
-	@Column(name = "ID")
+	@Column(name = "LEAVETYPE_ID")
 	@GeneratedValue
 	private Integer id;
 
@@ -35,7 +34,7 @@ public class MasLeaveType extends BaseEntity{
 	private Boolean isactive;
 
 	@OneToMany(mappedBy = "masleavetype")
-	@JsonManagedReference
+	//@JsonManagedReference
 	private Set<Leave> leaves = new HashSet<Leave>();
 
 	public Integer getId() {

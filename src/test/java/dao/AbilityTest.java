@@ -21,11 +21,6 @@ import com.aug.hr.dao.AbilityDao;
 import com.aug.hr.entity.Ability;
 
 
-
-
-
-
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 @Transactional

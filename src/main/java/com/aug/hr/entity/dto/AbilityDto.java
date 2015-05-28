@@ -32,6 +32,8 @@ import javax.persistence.NamedNativeQuery;
 	
 })
 
+
+
 @Entity
 public class AbilityDto {
 	@Column(name="ID")

@@ -28,8 +28,8 @@ public class AbilityDtoServiceTest {
 	@Test	
 	public void searchAbility(){
 		List<AbilityDto> abilityDto=abilityDtoService.searchAbility(2);
-//		int id =abilityDto.getId();
-		//Assert.assertEquals(2, id);
+//	int id =abilityDto.getId();
+	//	Assert.assertEquals(2, id);
 		Assert.notEmpty(abilityDto);
 	}
 	
