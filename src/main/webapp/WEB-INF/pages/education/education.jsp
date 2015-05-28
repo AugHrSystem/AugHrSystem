@@ -20,9 +20,10 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- Date Picker -->
-<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
-<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+<!-- Date Time Picker -->
+<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
+<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
+<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
 
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
@@ -32,10 +33,6 @@
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
-<style>
-.datepicker{z-index:1151 !important;}
-
-</style>
 
 </head>
 <body>
@@ -75,7 +72,7 @@
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<button type="button" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">Add</button> 
+<button type="button" id="addBtnEdu" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">Add</button> 
 </div>
 
 <!-- Modal -->
@@ -135,9 +132,19 @@
 	    <label>Expiry Date</label>
 	    <br>
 	    <label>Start Date :</label>
+	    <div class='input-group date' id='datetimepickerStart'>
 	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
+	    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+	    </div>
 	    <label>Graduated Date :</label>
+	    <div class='input-group date' id='datetimepickerGrad'>
 	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate"/>
+	    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        </div>
 	  </div>
       </div>
       
@@ -187,50 +194,20 @@
 	var dt;
 	
 	$(document).ready(function(){
-		
-<<<<<<< HEAD
-		$("‪#‎addBtn‬Edu").on("click",function(){clearModal();});
 
+		$("#addBtnEdu").on("click",function(){clearModal();});
 		
-		var date1 = $( "#startDate" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
-		});
+		$('#datetimepickerStart').datetimepicker({
+			 
+			 format : 'DD-MM-YYYY',
+			 
+		 });
 		
-		var date1 = $( "#graduatedDate" ).datepicker({
-=======
-// 		$("‪.‎btnAdd").on("click",function(){
-// 			//clearModal();
-// 		alert('dd');
-// 		});
-		
-		var date1 = $( "#startDate" ).datepicker({
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
-		});
-		
-<<<<<<< HEAD
-=======
-		var date1 = $( "#graduatedDate" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
-		});
-		
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
-		
+		$('#datetimepickerGrad').datetimepicker({
+			 
+			 format : 'DD-MM-YYYY',
+			 
+		 });
 		
 		dt = $('#tbResult').dataTable();
 		
@@ -445,7 +422,8 @@
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].university,
+					dt.fnAddData([
+					              data[i].university,
 					              data[i].gpa,
 					              data[i].faculty,
 					              data[i].major,

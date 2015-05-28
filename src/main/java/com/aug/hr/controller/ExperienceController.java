@@ -73,7 +73,7 @@ public class ExperienceController {
 //		employeeDto.setName(experience.getEmployee().getNameEng());
 //	Hibernate.initialize(experience.getEmployee().getNameEng());
 		Experience experience = new Experience();
-		experienceService.create(experience.fromExperienceDto(experienceDto));
+		experienceService.create(experience.fromExperienceDto(experience, experienceDto));
 		return experienceDto;
 	}
 	
@@ -89,9 +89,10 @@ public class ExperienceController {
 	@Transactional
 	@RequestMapping(value = "/experience/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody ExperienceDto editExperience(@RequestBody ExperienceDto experienceDto) {
-		Experience experience = new Experience();
-		experienceService.update(experience.fromExperienceDto(experienceDto));
-		return experienceDto;
+		Experience experience = experienceService.find(experienceDto.getId());
+		Experience experienceEdit = experience.fromExperienceDto(experience, experienceDto);
+		experienceService.update(experienceEdit);
+		return experience.toExperienceDto();
 	}
 	
 	//delete

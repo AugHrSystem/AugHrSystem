@@ -14,9 +14,10 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- Date Picker -->
-<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
-<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+<!-- Date Time Picker -->
+<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
+<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
+<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
 
 <!-- Data Table -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
@@ -99,12 +100,20 @@
 		</div>
 		
   		<div class="form-group">
-  			<p><label>Date From : <input type="text" id="dateFrom" path="dateFrom"></label></p>
-  		</div>
-  		  		
-  		<div class="form-group">
-  			<p><label>Date To : <input type="text" id="dateTo"></label></p>
-  		</div>
+    		<label>Start Date :</label>
+  			<div class="input-group" id="dateTimeFrom">
+  				<input id="dateFrom" type="text" class="form-control" placeholder="Start Date">
+  				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+		</div>
+		
+		<div class="form-group">
+    		<label>End Date :</label> 	
+  			<div class="input-group" id="dateTimeTo">
+  				<input id="dateTo"type="text" class="form-control" placeholder="End Date">
+  				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+		</div>
   		
   		<div class="form-group">
   			<label>Address :</label>
@@ -125,10 +134,6 @@
   			<input type="text" class="form-control" id="reason" placeholder="Enter Reason of Resignation">
   		</div>
         
-		<!-- <div class="form-group">
-  			<label>Employee ID :</label>
-  			<input type="text" class="form-control" id="employeeId" placeholder="Enter Employee Id">
-  		</div> -->
       </div>
       <div class="form-group" align="center">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -160,28 +165,25 @@
 <script>
 var dt;
 	$(document).ready(function() {
-    	$( "#dateFrom" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
+		var expId; 
+    	$( "#dateTimeFrom" ).datetimepicker({
+			 viewMode: 'days',
+			 format : 'DD-MM-YYYY',
+			 defaultDate: 'moment',
+			 //minDate: moment(),
 		});
-    	$( "#dateTo" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
+    	$( "#dateTimeTo" ).datetimepicker({
+			 viewMode: 'days',
+			 format : 'DD-MM-YYYY',
+			 defaultDate: 'moment',
+			 //minDate: moment(),
 		});
     	dt=$("#tdResult").dataTable();
  		listAll();
 		
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
-    		var expId = button.data("expid"); 
+    		expId = button.data("expid"); 
     		if(expId != null){
 				initEditExperience(expId);
 			}

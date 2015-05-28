@@ -153,16 +153,14 @@
 	
 	
 	$(document).ready(function(){
-		dt = $('#tbResult').dataTable();
-		
+		dt = $('#tbResult').dataTable();	
 		 listAll();
 		 
 		$("#addModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var referenceid = button.data("id") //Extract info from data-* attribute
-			
-			
+						
 			clearModal();
 			 if(referenceid != null){				 
 				 getReferenceById(referenceid);
@@ -231,39 +229,19 @@
 					name : $("#name").val(),
 					address :$("#address").val(),
 					tel :$("#tel").val(),
-<<<<<<< HEAD
 					occupation :$("#occupation").val(),
 					employeeId: id 
-<<<<<<< HEAD:src/main/webapp/WEB-INF/pages/reference/reference.jsp
-=======
-					oocupation :$("#occupation").val(),
-					employee :{id:2},
->>>>>>> dto 415 reference
-=======
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de:src/main/webapp/WEB-INF/pages/reference/reference.jsp
-				
 				}),
 				type : "POST",
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
-<<<<<<< HEAD:src/main/webapp/WEB-INF/pages/reference/reference.jsp
-<<<<<<< HEAD
-		
-=======
-
-						
->>>>>>> dto 415 reference
-=======
-		
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de:src/main/webapp/WEB-INF/pages/reference/reference.jsp
-					dt.fnClearTable();
-					
+					dt.fnClearTable();					
 					dt.fnAddData([
-						data.name,
-						data.address,
-						data.tel,
-						data.occupation,
+								data.name,
+								data.address,
+								data.tel,
+								data.occupation,
 						
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -282,7 +260,7 @@
 		
 			
 		function updateReference(button,referenceid) {
-			var id=1;
+			var id = getUrlParameter('Id');
 			$.ajax({
 				url:'${pageContext.request.contextPath}/reference/update',		
 				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน

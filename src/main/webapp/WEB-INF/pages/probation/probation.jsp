@@ -14,9 +14,10 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- Date Picker -->
-<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
-<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
+<!-- Date Time Picker -->
+<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
+<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
+<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
 
 <!-- Data Table -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
@@ -75,14 +76,22 @@
         <h4 class="modal-title" id="myModalLabel">Add Probation</h4>
       </div>
       <div class="modal-body">
+      
+  		<div class="form-group">
+    		<label>Start Date :</label>
+  			<div class="input-group" id="dateTimeFrom">
+  				<input id="dateFrom" type="text" class="form-control" placeholder="Start Date">
+  				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+		</div>
 		
-  		<div class="form-group">
-  			<p><label>Date From : <input type="text" id="dateFrom"></label></p>
-  		</div>
-  		  		
-  		<div class="form-group">
-  			<p><label>Date To : <input type="text" id="dateTo"></label></p>
-  		</div>
+		<div class="form-group">
+    		<label>End Date :</label> 	
+  			<div class="input-group" id="dateTimeTo">
+  				<input id="dateTo"type="text" class="form-control" placeholder="End Date">
+  				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+		</div>
   		
   		<div class="form-group">
     			<label>Status :</label>
@@ -126,21 +135,17 @@
 var dt;
 	$(document).ready(function() {
 		var proId; 
-    	$( "#dateFrom" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
+    	$( "#dateTimeFrom" ).datetimepicker({
+			 viewMode: 'days',
+			 format : 'DD-MM-YYYY',
+			 defaultDate: 'moment',
+			 //minDate: moment(),
 		});
-    	$( "#dateTo" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
+    	$( "#dateTimeTo" ).datetimepicker({
+			 viewMode: 'days',
+			 format : 'DD-MM-YYYY',
+			 defaultDate: 'moment',
+			 //minDate: moment(),
 		});
     	dt=$("#tdResult").dataTable();
     	
@@ -149,11 +154,6 @@ var dt;
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		proId = button.data("proid");
-<<<<<<< HEAD
-
-=======
-    		//console.log(proId);
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
     		if(proId != null){
 				initEditProbation(proId);
 			}
@@ -161,19 +161,11 @@ var dt;
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(proId != null){
-<<<<<<< HEAD
-    				console.log(proId);
-    				editProbation();
-    			}
-    			else {
-    				console.log("add : "+proId);
-=======
     				//console.log(proId);
     				editProbation();
     			}
     			else {
     				//console.log("add : "+proId);
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
     				addProbation();
     			}
     			
@@ -291,10 +283,6 @@ var dt;
 				$("#dateFrom").val("");
 				$("#dateTo").val("");
 				$("#status").val("-1"); 
-<<<<<<< HEAD
-=======
-				//console.log("test")
->>>>>>> 234e78bb5658ba04244834b0b3c2b0cb15d646de
 			});
     		/* function setModal(data){
 				$("#dataFrom").val(data.dateFrom);

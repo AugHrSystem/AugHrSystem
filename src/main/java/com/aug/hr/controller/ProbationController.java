@@ -74,7 +74,7 @@ public class ProbationController {
 //		employeeDto.setName(probation.getEmployee().getNameEng());
 //		probationDtoService.createProbation(probationDto);
 		Probation probation = new Probation();
-		probationService.create(probation.fromProbationDto(probationDto));
+		probationService.create(probation.fromProbationDto(probation, probationDto));
 		return probationDto;
 	}
 
@@ -82,16 +82,18 @@ public class ProbationController {
 	@RequestMapping(value = "/probation/initEdit/{proId}", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody ProbationDto initEditProbation(@PathVariable("proId") Integer proId) {
         Probation probation = probationService.find(proId);
-        logger.debug("probation result : "+ probation);
+        //logger.debug("probation result : "+ probation);
         return probation.toProbationDto();
 	}
 	
 	//edit
 	@RequestMapping(value = "/probation/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody ProbationDto editProbation(@RequestBody ProbationDto probationDto) {
-		Probation probation = new Probation();
-		probationService.update(probation.fromProbationDto(probationDto));
-		return probationDto;
+		Probation probation = probationService.find(probationDto.getId());
+		Probation probationEdit = probation.fromProbationDto(probation,probationDto);
+		//ProbationDto probationDtoEdit = probation.toProbationDto();
+		probationService.update(probationEdit);
+		return probation.toProbationDto();
 	}
 	
 	//delete

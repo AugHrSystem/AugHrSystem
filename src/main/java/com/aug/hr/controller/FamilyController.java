@@ -100,7 +100,7 @@ public class FamilyController {
 	
 	
 
-	@RequestMapping(value = "/family/list{id}", method = RequestMethod.POST,produces="application/json")
+	@RequestMapping(value = "/family/list/{id}", method = RequestMethod.POST,produces="application/json")
 	public @ResponseBody List<Family2Dto> findEmpFamily(Locale locale,
 		    //@ModelAttribute(value = "family") Family family,
 			ModelMap model,
@@ -220,18 +220,20 @@ public class FamilyController {
 	
 	@RequestMapping(value = "/family/initedit", method = RequestMethod.POST)
 	public @ResponseBody Family2Dto initEdit(Locale locale,
-							@RequestBody String familyId,
-							@ModelAttribute FamilyDto family,
+							@RequestBody Family2Dto family,
+							//@RequestBody String familyId,
+						    //@ModelAttribute Family2Dto family,
 							ModelMap modal) throws JSONException{
 		
 	    logger.info("edit");
-		logger.info("id json: "+familyId);
+		logger.info("id json: "+family.getId());
 		
 		
-        JSONObject obj = new JSONObject(familyId);
-        String idStr = obj.get("Id").toString();
-        int id = Integer.parseInt(idStr);
-        Family familyEdit = familyService.findLastFamily(new Integer(id));
+        /*JSONObject obj = new JSONObject(familyId);
+        String idStr = obj.get("id").toString();
+        int id = Integer.parseInt(idStr);*/
+	    
+        Family familyEdit = familyService.findLastFamily(new Integer(family.getId()));
         Hibernate.initialize(familyEdit);
        
         logger.info("emp edit: "+familyEdit);	
@@ -248,9 +250,6 @@ public class FamilyController {
         familyDto.setPosition(familyEdit.getPosition());
         familyDto.setMasRelationTypeId(familyEdit.getMasRelation().getId());
         familyDto.setMasRelationTypeName(familyEdit.getMasRelation().getRelationType());
-        //family = familyEdit;
-        //family.setCmd("update");
-        modal.addAttribute("family", family);
         
 		return familyDto;
 		

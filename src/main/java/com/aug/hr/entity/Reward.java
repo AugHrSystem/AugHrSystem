@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.aug.hr.entity.dto.RewardDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -36,8 +37,8 @@ public class Reward extends BaseEntity{
 	private Boolean isActive;
 	
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "EMPLOYEE_ID",nullable = false)
+	@ManyToOne()
+	@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName= "id",nullable = false)
 
 //	@JsonIgnore
 	private Employee employee;
@@ -102,10 +103,32 @@ public class Reward extends BaseEntity{
 		this.employee = employee;
 	}
 
+
+	public RewardDto toRewardDto(){
+		RewardDto rewardDto = new RewardDto();
+		rewardDto.setId(this.id);
+		rewardDto.setTypereward(this.typereward);
+		rewardDto.setYear(this.year);
+		rewardDto.setReason(this.reason);
+		rewardDto.setIsActive(this.isActive);
+		rewardDto.setEmployeeId(this.employee.getId());
+		return rewardDto;
+		
+	}
 	
-	
-	
-	
-	
+		
+	public Reward fromRewardDto(Reward reward,RewardDto rewardDto){
+	//	Reward reward = new Reward();
+		reward.setId(rewardDto.getId());
+		reward.setTypereward(rewardDto.getTypereward());
+		reward.setYear(rewardDto.getYear());
+		reward.setReason(rewardDto.getReason());
+		reward.setIsActive(rewardDto.getIsActive());
+		
+		Employee employee = new Employee();
+		employee.setId(rewardDto.getEmployeeId());
+		reward.setEmployee(employee);
+		return reward;
+	}	
 	
 }

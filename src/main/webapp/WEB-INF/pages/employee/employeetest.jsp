@@ -38,7 +38,7 @@
 <input type="hidden" id="emp">
 
  <div class="row">
-      <!--   <div class="span12">
+         <div class="span12">
             <ul class="nav nav-tabs" id="myTabs">
               <li class="active"><a href="#employee" data-toggle="tab">Employee</a></li>
               <li><a href="#family" data-toggle="tab">Family</a></li>
@@ -49,9 +49,13 @@
               <li><a href="#reward" data-toggle="tab">Reward</a></li>
               <li><a href="#history" data-toggle="tab">History</a></li>
               <li><a href="#probation" data-toggle="tab">Probation</a></li>
-               <li><a href="#punish" data-toggle="tab">Punish</a></li>
+              <li><a href="#punish" data-toggle="tab">Punish</a></li>
+              <li><a href="#leave" data-toggle="tab">Leave</a></li>  
+              <li><a href="#skilllanguage" data-toggle="tab">SkillLanguage</a></li>
+              <li><a href="#site" data-toggle="tab">Site</a></li>  
+              <li><a href="#certification" data-toggle="tab">Certification</a></li>
             </ul>
-         </div> -->
+         </div> 
 </div>
 <div class="tab-content">
 	<div class="tab-pane active" id="employee">
@@ -826,7 +830,8 @@
 </div>
 
 
-<%-- <div class="tab-pane" id="family">
+
+<div class="tab-pane" id="family">
   <iframe src="${pageContext.request.contextPath}/family" style="width: 100%; height: 600px; " 
 		marginwidth="0" marginheight="0" frameborder="0"
 		vspace="0" hspace="0"></iframe>
@@ -881,8 +886,48 @@
 		vspace="0" hspace="0"></iframe>
               </div>
               
+              
+              
+              
+              
+           <div class="tab-pane" id="leave">
+                  <iframe src="${pageContext.request.contextPath}/leave" style="width: 100%; height: 600px; " 
+		marginwidth="0" marginheight="0" frameborder="0"
+		vspace="0" hspace="0"></iframe>
+              </div>       
+              
+              
+              
+              
+              
+              <div class="tab-pane" id="skilllanguage">
+ 			 <iframe src="${pageContext.request.contextPath}/skilllanguage" style="width: 100%; height: 600px; " 
+				marginwidth="0" marginheight="0" frameborder="0"
+				vspace="0" hspace="0"></iframe>
+              </div>
+              
+              
+              
+              
+              <div class="tab-pane" id="site">
+ 			 <iframe src="${pageContext.request.contextPath}/site" style="width: 100%; height: 600px; " 
+				marginwidth="0" marginheight="0" frameborder="0"
+				vspace="0" hspace="0"></iframe>
+              </div>
+              
             </div>
- --%>
+            
+            
+            
+            
+	       <div class="tab-pane" id="certification">
+	 	    <iframe src="${pageContext.request.contextPath}/certification" style="width: 100%; height: 600px; " 
+				marginwidth="0" marginheight="0" frameborder="0"
+				vspace="0" hspace="0"></iframe>
+	       </div>
+            
+            
+
 
 </div>
 </div>    

@@ -41,7 +41,7 @@
 
 #tableResult {
         width: 90%;
-        margin-top: 35%;
+        /* margin-top: 35%; */
     }
  
 #nav {
@@ -67,7 +67,7 @@
 		
 		
 		 
-		  $("#formAdd").validate({
+		  /* $("#formAdd").validate({
 				
 				rules:{
 					 firstName:{
@@ -92,31 +92,44 @@
 				 },
 				messages: {
 					 firstName:{
-			            required: "<spring:message code="family.required.firstname"/>"
+			            required:"First Name is required!!" 
 			         },
 					 lastName:{
-			         	required: "<spring:message code="family.required.lastname"/>"
+			         	required:"Last Name is required!!" 
 			         } ,
 			         age:{
-			        	required: "<spring:message code="family.required.age"/>" 
+			        	required:"Age is required!!"  
 			         },
 			         mobile:{
-				        required: "<spring:message code="family.required.mobile"/>" 
+				        required:"Mobile is required!!"  
 				     },
 				     address:{
-					    required: "<spring:message code="family.required.address"/>" 
+					    required:"Address is required!!"  
 					 },
 					 masRelation:{
-						required: "<spring:message code="family.required.relation"/>" 
+						required:"Relation is required!!" 
 					 }  
 		           
 				},
-			}); 
+			}); */ 
   	  
 		
 		  
 
-	      dt = $('#tableResult').dataTable();  	
+	      dt = $('#tableResult').dataTable({
+
+	        	 "columnDefs": [
+		    	          		{
+		    	                     "targets": [ 0 ],
+		    	                     "visible": false
+		    	                 },
+		    	                 {
+		    	                     "targets": [ 6 ],
+		    	                     "visible": false
+		    	                 }
+		    	          		
+		    	             ]		
+	      });  	
 	      
 	      doFindData();
 	      
@@ -145,7 +158,7 @@
 	    	     
 		  	     $.ajax({  
 		  	      type : "POST",   
-		  	      url : "<%=request.getContextPath()%>/family/list"+id,   
+		  	      url : "<%=request.getContextPath()%>/family/list/"+id,   
 		  	      dataType : 'json', 
 		  	      contentType :"application/json; charset=utf-8",
 		  	     
@@ -154,20 +167,7 @@
 		  	      status="unmodified" 
 		  	    	
 		  	    
-		  	        dt.fnClearTable({
-		  	        	
-		  	        	 "columnDefs": [
-				    	          		{
-				    	                     "targets": [ 0 ],
-				    	                     "visible": false
-				    	                 },
-				    	                 {
-				    	                     "targets": [ 6 ],
-				    	                     "visible": false
-				    	                 }
-				    	          		
-				    	             ]		
-		  	        });
+		  	        dt.fnClearTable();
 		  	    	
 		  	        for(var i=0;i<data.length;i++){
 		  	        	//alert(data[i].id);
@@ -303,7 +303,7 @@
 	      function doInitEditDataPost(idUpdate) {  
 		   	   
 		  	    var Id = idUpdate;	    
-		  	    var json = {"Id":idUpdate};
+		  	    var json = {"id":idUpdate};
 		  	   
 		  	    
 		  	     $.ajax({  
@@ -559,7 +559,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><spring:message code="label.add"/> Family</h4>
+        <h4 class="modal-title" id="myModalLabel"><%-- <spring:message code="label.add"/> --%>Add Family</h4>
       </div>
       <div class="modal-body">
           
@@ -575,13 +575,14 @@
 			    
 			        
 			      <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			           <spring:message code="family.form.firstname" var="firstName"/> ${firstName} :
+			            First Name: <%-- <spring:message code="family.form.firstname" var="firstName"/> ${firstName} : --%>
 			      </label>	 		
 			     
 				     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="${firstName}" />
-			     		<f:errors path="firstName"/>
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		  
+			     		<f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="First Name" />   		
+			     		<%-- <f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="${firstName}" /> --%>
+			     		<%-- <f:errors path="firstName"/> --%>
 			     </div>
 		   </div>
 		   
@@ -589,13 +590,15 @@
 		   <div class="form-group form-group-sm">
 			    
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            <spring:message code="family.form.lastname" var="lastName"/> ${lastName} :
+			     		Last Name:
+			            <%-- <spring:message code="family.form.lastname" var="lastName"/> ${lastName} : --%>
 			     </label>	 		
 			    
 			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="${lastName}" />
-			     		<f:errors path="lastName"/>
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			     		<f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="Last Name" />		     		
+			     		<%-- <f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="${lastName}" />
+			     		<f:errors path="lastName"/> --%>
 			     </div>
 		   </div>
 		   
@@ -604,18 +607,19 @@
 			    
 			     
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			          <spring:message code="family.list.gender" var="gender"/> ${gender} :
+			     	  Gender:
+			          <%-- <spring:message code="family.list.gender" var="gender"/> ${gender} : --%>
 			     </label>	 		
 
 
-			      <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				       <label class="radio-inline" for="gender_male" > 
-		 			     	<f:radiobutton id="genderMale" name="gender" path="gender" value="Male" checked="true"/><spring:message code="family.form.gender.male"/>
-		 			   </label>
+			      <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">					    
+				     	
+				     <label class="radio-inline" for="gender_male" > 
+		 			     	<f:radiobutton id="genderMale" name="gender" path="gender" value="Male" checked="true"/>Male
+		 			 </label>
 		 			 <label class="radio-inline" for="gender_female"> 
-		 			     <f:radiobutton id="genderFemale" name="gender" path="gender" value="Female"/><spring:message code="family.form.gender.female"/>
-				     </label>  	
-				     	<f:errors path="gender"/>					     		 
+		 			     <f:radiobutton id="genderFemale" name="gender" path="gender" value="Female"/>Female
+				     </label>  					     		 
 				  </div>
 		           
 		   </div>
@@ -625,13 +629,15 @@
 		   
 		        
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="age" >
-			         <spring:message code="family.list.age" var="age"/> ${age} :
+			       	 Age:
+			         <%-- <spring:message code="family.list.age" var="age"/> ${age} : --%>
 			     </label>	 		
 			    
 			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  type="number" id="age" name="age" path="age" cssClass="form-control required" placeholder="${age}" />
-			     		<f:errors path="age"/>
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		    
+						<f:input  type="number" id="age" name="age" path="age" cssClass="form-control required" placeholder="Age" />		
+			     		<%-- <f:input  type="number" id="age" name="age" path="age" cssClass="form-control required" placeholder="${age}" />
+			     		<f:errors path="age"/> --%>
 			     </div>		   
 		   
 		   </div>	
@@ -641,13 +647,15 @@
 		   
 		   
 			    <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="mobile" >
-			        <spring:message code="family.list.tel" var="mobile"/> ${mobile} :
+			        <%-- <spring:message code="family.list.tel" var="mobile"/> ${mobile} : --%>
+			    	Mobile:
 			    </label>	 		
 
 			    
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  type="tel" id="mobile" name="mobile" path="mobile" cssClass="form-control required" placeholder="${mobile}" />
-			     		<f:errors path="mobile"/>
+			     		<f:input  type="tel" id="mobile" name="mobile" path="mobile" cssClass="form-control required" placeholder="Mobile" />
+			     		<%-- <f:input  type="tel" id="mobile" name="mobile" path="mobile" cssClass="form-control required" placeholder="${mobile}" />
+			     		<f:errors path="mobile"/> --%>
 			     </div>		   
 		   
 		   </div>
@@ -660,13 +668,15 @@
 		   
 		              
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="address" >
-			           <spring:message code="family.form.address" var="address"/> ${address} :
+			           Address:
+			           <%-- <spring:message code="family.form.address" var="address"/> ${address} : --%>
 			     </label>	 		
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:textarea rows="3" id="address" name="address"  path="address" cssClass="form-control required" placeholder="${address}" />
-			     		<f:errors path="address"/>
+			     		<f:textarea rows="3" id="address" name="address"  path="address" cssClass="form-control required" placeholder="Address" />
+			     		<%-- <f:textarea rows="3" id="address" name="address"  path="address" cssClass="form-control required" placeholder="${address}" />
+			     		<f:errors path="address"/> --%>
 			     </div>	
 			     	   
 		  
@@ -679,13 +689,15 @@
 		   
 		         
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label" for="occupation">
-			           <spring:message code="family.list.occupation" var="occupation"/> ${occupation} :
+			           Occupation:
+			           <%-- <spring:message code="family.list.occupation" var="occupation"/> ${occupation} : --%>
 			     </label>	 		
 			    
 			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="occupation" name="occupation" path="occupation" cssClass="form-control" placeholder="${occupation}" />
-			     		<f:errors path="occupation"/>
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+			     		<f:input id="occupation" name="occupation" path="occupation" cssClass="form-control" placeholder="Occupation" />	     		
+			     		<%-- <f:input id="occupation" name="occupation" path="occupation" cssClass="form-control" placeholder="${occupation}" />
+			     		<f:errors path="occupation"/> --%>
 			     </div>		   
 		   
 		   </div>
@@ -696,13 +708,15 @@
 		   
 		         
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label" for="position">
-			           <spring:message code="family.form.position" var="position"/> ${position} :
+			     		Position:
+			           <%-- <spring:message code="family.form.position" var="position"/> ${position} : --%>
 			     </label>	 		
 			    
 			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="position" name="position" path="position" cssClass="form-control" placeholder="${position}" />
-			     		<f:errors path="position"/>
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+			     		<f:input id="position" name="position" path="position" cssClass="form-control" placeholder="Positon" />	     		
+			     		<%-- <f:input id="position" name="position" path="position" cssClass="form-control" placeholder="${position}" />
+			     		<f:errors path="position"/> --%>
 			     </div>		   
 		   
 		   </div>
@@ -713,7 +727,8 @@
 		   
 		           
 		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="masRelation" >
-			           <spring:message code="family.list.relation" var="masRelation"/> ${masRelation} :
+		        	   Relation:
+			           <%-- <spring:message code="family.list.relation" var="masRelation"/> ${masRelation} : --%>
 			    </label>	 		
 			    
 			     
@@ -733,8 +748,8 @@
 		   
 		  
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close"/></button>
-		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save"/></button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">Save</button>
 		      </div>
  
       </f:form>

@@ -36,7 +36,7 @@ import com.aug.hr.services.MasSpecialtyService;
 @Controller
 public class AbilityController {
 
-	@Autowired private AbilityService abilityService;;
+	@Autowired private AbilityService abilityService;
 	
 	@Autowired private AbilityDtoService abilityDtoService;
 	

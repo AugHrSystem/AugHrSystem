@@ -55,33 +55,309 @@
 	
 	
 		dt = $('#tableResult').dataTable();  
-	/* 	
-		$( "#dateFrom" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
+				
+		doFindData();
+	
+		var dateto = $('#datetimepicker1').datetimepicker({
+			 
+						 viewMode: 'days',
+						 format : 'DD-MM-YYYY',
+						 defaultDate: 'moment',
+						 minDate: 'moment',
+						 //showClear: true,
+						 showClose:true,
+			
+						
 		});
-		
-		
-		$( "#dateTo" ).datepicker({
-			clearBtn : true,
-			autoclose : true,
-			forceParse : false,
-			language : "en",
-			format : "dd-mm-yyyy",
-			todayHighlight : true
-		}); */
-		 $('#datetimepicker1').datetimepicker({
 			 
-			 viewMode: 'days',
-			 format : 'DD-MM-YYYY',
-			 defaultDate: moment(),
-			 minDate: moment(),
-			 
-		 });
+		
+		 
+ 		$('#datetimepicker2').datetimepicker({			 
+						 viewMode: 'days',
+						 format : 'DD-MM-YYYY',	 
+						 //defaultDate: 'moment',
+						 //minDate: 'moment',
+						 //ShowClear: true,
+						 showClose:true
+						 
+					
+		});
+ 		 
+ 		 
+ 		 
+ 		 
+ 		function doFindData() {  
+		   	   
+   	     var id = getUrlParameter('Id');
+   	     
+   	     
+	  	     $.ajax({  
+	  	      type : "POST",   
+	  	      url : "<%=request.getContextPath()%>/site/list/"+id,   
+	  	      dataType : 'json', 
+	  	      contentType :"application/json; charset=utf-8",
+	  	     
+	  	      success : function(data) {  
+	    		
+	  	    
+	  	        dt.fnClearTable();
+	  	    	
+	  	        for(var i=0;i<data.length;i++){
+	  	        	
+		  			 	
+		  			        
+	  	        	   dt.fnAddData([ 
+				  			           data[i].projectName,
+				  			           data[i].startDate,
+				  			           data[i].endDate,
+				  			           data[i].projectOwner,
+				  			           data[i].projectOwnerContact,
+				  			          '<button type="button" class="btn btn-info btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+				    					
+				  			           ]);
+		  		
+		  	    	 }
+	  	        		  	        
+	  	     },  
+	  	      error : function(data,testStatus,jqXHR) {  	  	      
+	  	    	  $("#outputajax").text(testStatus); 
+	  	     }  
+	  	    }); 
+	  	   
+	    }
+ 		
+ 		
+ 		
+ 		
+ 		 $("#addModal").on("show.bs.modal", function(event){
+	    	  
+	    	    //clearModal();
+	    	    var button = $(event.relatedTarget);
+	    		var idUpdate = button.data("idupdate"); 
+	    		if(idUpdate != null){
+	    		
+	    			doInitEdit(idUpdate);
+	    			
+				}
+	     		
+	    		$(this).find("#saveBtn").off("click").on("click", function()
+	    		{
+	    			if(idUpdate != null){
+	    				 doEdit(idUpdate);
+	    			}
+	    			else {
+	    				 addSite();
+	    			}
+	    		});
+	    	  
+	      });
+ 		 
+ 		 
+ 		 
+ 		 
+ 		function addSite() {  
+		   	   
+    	    
+    	    var id = getUrlParameter('Id');
+    	    
+	  		
+	  	    
+	  	    $.ajax({  
+	  	      type : "POST",   
+	  	      url : "<%=request.getContextPath()%>/site/add",   
+	  	      dataType : 'json', 
+	  	      data : JSON.stringify(
+	  	    		{"projectName":$('#projectName').val(),
+	    			"startDate" : $('#startDate').val(),
+  	    			"endDate": $('#endDate').val(),
+  	    			"projectOwner":$('#projectOwner').val(),
+  	    			"projectOwnerContact":$('#projectOwnerContact').val(),
+  	    			"employeeId":id}
+	  	    		),  
+	  	      contentType :"application/json; charset=utf-8",
+	  	     
+	  	      success : function(data) {  
+	  	    	 
+	  	    	    $('#addModal').modal('hide');
+	  	    	    doFindData();
+	  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+		    		
+	  	     },  
+	  	      error : function(data,testStatus,jqXHR) {  
+	  	           
+	  	    	   $('#addModal').modal('hide');
+	  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+	  	     }  
+	  	    }); 
+	  	    
+	  	   
+	     } 
+ 		 
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		function doInitEdit(idUpdate) {  
+		   	
+ 			
+	  	     $.ajax({  
+	  	      type : "POST",   
+	  	      url : "<%=request.getContextPath()%>/site/initedit",   
+	  	      dataType : 'json', 
+	  	      data : JSON.stringify({"id":idUpdate}),  
+	  	      contentType :"application/json; charset=utf-8",
+	  	     
+	  	      success : function(data) {  
+	    		
+	  	    	alert(JSON.stringify(data));
+	  	    	
+	  	    	$('#projectName').val(data.projectName);
+	  	    	$('#startDate').val(data.startDate);
+	  	    	$('#endDate').val(data.endDate);
+	  	    	$('#projectOwner').val(data.projectOwner);
+	  	    	$('#projectOwnerContact').val(data.projectOwnerContact);
+	  	    	
+	  	    	
+	  	    	//$('#datetimepicker1').datetimepicker('minDate',date.startDate);
+	  	    	
+	  	    	//$('#datetimepicker1').data("DateTimePicker").minDate(data.startDate);
+	  	    	
+	  	    	//$('#datetimepicker1').data("DateTimePicker").date('moment');
+	  	    	
+	  	    	//$('#datetimepicker2').data("DateTimePicker").minDate($('#datetimepicker1').data("DateTimePicker").date());
+	  	    	
+	  	    	
+	  	    	/*$('#datetimepicker1').datetimepicker('update');
+	  	    	 
+	  	    	$('#datetimepicker2').datetimepicker({
+	  	    		'defaultDate':date.endDate
+	  	    	});
+	  	    	
+	  	    	*/
+	  	     },  
+	  	      error : function(data,testStatus,jqXHR) {  
+	  	    	  
+	  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+	  	     }  
+	  	    }); 
+	  	   
+	    }
+ 		
+ 		
+ 		
+ 		 
+ 		
+ 		 
+ 		  function doEdit(idUpdate) {  
+ 			  
+ 			   var id = getUrlParameter('Id');
+	    	 
+		  	    $.ajax({  
+		  	      type : "POST",   
+		  	      url : "<%=request.getContextPath()%>/site/edit",   
+		  	      dataType : 'json', 
+		  	      data : JSON.stringify({
+		  	    	  			"id":idUpdate,
+	  	    		  			"projectName":$('#projectName').val(),
+	  	    		    		"startDate":$('#startDate').val(),
+	  	    		   	 		"endDate":$('#endDate').val(),
+	  	    		    		"projectOwner":$('#projectOwner').val(),
+	  	    		    		"projectOwnerContact":$('#projectOwnerContact').val(),
+	  	    		    		"employeeId":id
+	  	    		    		}),  
+		  	      contentType :"application/json; charset=utf-8",
+		  	     
+		  	      success : function(data) {  
+		  	    	
+		  	    	 
+		  	    	  
+		  	    	  alert(JSON.stringify(data));
+		  	    	 
+		  	    	
+		  	       		 $('#addModal').modal('hide');	  
+		  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+		  	       	     doFindData();		  			 
+		  	        
+		  	     },  
+		  	      error : function(data,testStatus,jqXHR) {  
+
+		  	      $('#myModalUpdate').modal('hide');	   
+		  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	     }  
+		  	    }); 	  	    
+		    }
+ 		 
+ 		 
+ 		  
+ 		 $("#deleteModal").on("show.bs.modal", function(event){
+ 			 
+  			var button = $(event.relatedTarget);
+     		var idDelete = button.data("iddelete"); 
+ 				
+     		
+     		$(this).find("#delete").off("click").on("click", function(){
+     			
+     			
+	     			$.ajax({  
+	  		  	      type : "POST",   
+	  		  	      url : "<%=request.getContextPath()%>/site/delete",   
+	  		  	      dataType : 'json', 
+	  		  	      data : JSON.stringify({"id":idDelete}),  
+	  		  	      contentType :"application/json; charset=utf-8",
+	  		  	     
+	  		  	      success : function(data) {  
+	  		    		
+	  		  	    	
+	  		  	    	$('#deleteModal').modal('hide');
+	  		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
+	  	  	       	    doFindData();		  	      
+	  		  	    	 
+	  		  	     },  
+	  		  	      error : function(data,testStatus,jqXHR) {  	  	      
+	  		  	    	
+	  					  $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+	
+	  		  	     }  
+	  		  	    }); 
+	  		  	   
+     			
+   						
+  			 
+  		    });
+  		 
+ 	     });
+ 		 
+ 		 
+ 		 
+ 		 
+ 		 
+ 		 function getUrlParameter(sParam)
+			{
+				//alert("url "+document.referrer);
+			    var sPageURL = document.referrer;
+			    var sURLVariables = sPageURL.split('?');
+			    //alert("spilt "+sURLVariables);
+
+			   	
+			    
+			    var sParameterName = sURLVariables[1].split('=');
+			    //alert("Param "+parseInt(sParameterName[1]));
+			    if (sParameterName[0] == sParam) 
+			        {
+			        	//alert("Param "+sParameterName[0]);
+			        	return sParameterName[1];
+			        	
+			        }
+			        //alert("Param2 "+parseInt(sParameterName[1]));
+			    
+			}
+  		 
+ 		  
+ 		
+ 		 
+	      
 
 	});
 </script>
@@ -91,7 +367,9 @@
 
 </head>
 <body>
-	
+
+<div class="container">
+
 	
 <br/>
 <br/>
@@ -103,6 +381,7 @@
 		
 <div id="message"></div>
 <div id="outputajax" class="form-group"></div>	
+
 
 
 
@@ -147,7 +426,7 @@
           
              
           
-            <f:form id="formAdd" name="siteForm" method="post" commandName="site" class="form-horizontal" role="form">	      	 
+            <f:form id="formAddUpdate" name="siteForm" method="post" commandName="site" class="form-horizontal" role="form">	      	 
 	      
 	        
 	        <br/>
@@ -173,13 +452,17 @@
 			            Start Date:
 			     </label>	 		
 			    
-                
-			     <div  class="input-group date" id='datetimepicker1'>		     		
-			     		<f:input id="dateFrom" path="startDate" cssClass="form-control"/>
-			     		<span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-			     </div>
+                <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		
+				     <div  class="input-group date" id='datetimepicker1'>		     		
+				     		<f:input id="startDate" path="startDate" cssClass="form-control"/>
+				     		<span class="input-group-addon">
+	                        	<span class="glyphicon glyphicon-calendar"></span>
+	                    	</span>
+	                    	<span class="input-group-addon">
+	                         	<span class="glyphicon glyphicon-remove"></span>
+	                    	</span>
+				     </div>
+				</div>
 		   </div>
 		   
 		   
@@ -190,11 +473,18 @@
 			     </label>	 		
 			    
 			     
-			     <div id="dateto" class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<%-- <f:input id="dateTo" path="endDate" cssClass="input-append date"/>  --%>
-			     		<input id="dateTo" name="endDate" class="input-append date"/> 
-			     </div>
-		           
+			   
+			    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		
+				     <div  class="input-group date" id='datetimepicker2'>		     		
+				     		<f:input id="endDate" path="endDate" cssClass="form-control"/>
+				     		<span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                    <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-remove"></span>
+	                    </span>
+				     </div>
+				</div>		   
 		   </div>
 		   
 		   
@@ -241,6 +531,29 @@
 	</div>   
  </div>
  
+   
+   
+   
+	<!-- Modal Delete -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	    <div class="modal-header">
+	        <h4 class="modal-title" id="deleteModalLabel">Delete Site</h4>
+	      </div>
+	      <div class="modal-body">
+	      	Do you want to delete Site ?
+	      </div>
+	      <div class="modal-footer">
+			<button id="delete" type="button" class="btn btn-danger yesButton" >Yes</button>
+	      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	   
+   
+   
    
 </div>
 
