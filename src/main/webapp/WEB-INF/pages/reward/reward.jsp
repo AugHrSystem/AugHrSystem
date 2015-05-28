@@ -129,6 +129,7 @@
 									<form:select path="year" class="form-control" id="year">
 										<form:option value="-1" label="---Select year---" />
 										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>
+									
 										<option value="2020">2020</option>
 										<option value="2019">2019</option>
 										<option value="2018">2018</option>
@@ -356,7 +357,7 @@
 
 			function clearModal() {
 				$("#typereward").val(""), 
-				$("#year").val(""), 
+				$("#year").val("-1"), 
 				$("#reason").val("");
 
 			}
@@ -516,7 +517,7 @@
 			        	return sParameterName[1];
 			        	
 			        }
-			        //alert("Param2 "+parseInt(sParameterName[1]));
+			        ///alert("Param2 "+parseInt(sParameterName[1]));
 			    
 			}     
 		});

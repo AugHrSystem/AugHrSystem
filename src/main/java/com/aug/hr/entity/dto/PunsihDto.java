@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name = "searchPunish",
-			query= "select punish.id,punish.date,punish.description,punish.employee_id from emp_punish as punish,emp_employee as emp where punish.employee_id =:empId and punish.employee_id=emp.id", 
+			query= "select punish.id,punish.datepunish,punish.description,punish.employee_id from emp_punish as punish,emp_employee as emp where punish.employee_id =:empId and punish.employee_id=emp.id", 
 			resultClass = PunsihDto.class)
 	})
 
@@ -27,17 +27,17 @@ public class PunsihDto {
 	private Integer id;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Column(name ="DATE")
+	@Column(name ="DATEPUNISHE")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
+	private Date datepunish;
 	
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
 	@Column(name ="EMPLOYEE_ID")
-	private String employeeId;
+	private Integer employeeId;
 
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -46,12 +46,12 @@ public class PunsihDto {
 		this.id = id;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDatepunish() {
+		return datepunish;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDatepunish(Date datepunish) {
+		this.datepunish = datepunish;
 	}
 
 	public String getDescription() {
@@ -62,13 +62,15 @@ public class PunsihDto {
 		this.description = description;
 	}
 
-	public String getEmployeeId() {
+	public Integer getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
+
 	
+
 
 }

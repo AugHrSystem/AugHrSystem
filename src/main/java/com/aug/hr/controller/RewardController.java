@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.hr.dto.services.RewardDtoService;
 import com.aug.hr.entity.Address;
+import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Reward;
 import com.aug.hr.entity.dto.RewardDto;
 import com.aug.hr.entity.editor.RewardEditor;
@@ -76,16 +77,24 @@ public class RewardController {
 	
 	@RequestMapping(value = "/reward/add", method = RequestMethod.POST)
 	public @ResponseBody RewardDto addReward(@RequestBody RewardDto rewardDto) {
-		Reward reward = new Reward();
-		rewardService.create(reward.fromRewardDto(rewardDto));
+		Reward reward = new Reward();	
+		rewardService.create(reward.fromRewardDto(reward, rewardDto));
+			
 		return rewardDto;
 	}
 	
 	@Transactional
 	@RequestMapping(value = "/reward/update", method = RequestMethod.POST)
 	public @ResponseBody RewardDto updateReward(@RequestBody RewardDto rewardDto ) {
-		Reward reward = new Reward();
-		rewardService.update(reward.fromRewardDto(rewardDto));
+			
+		Reward entityLoaded = rewardService.findById(rewardDto.getId());	
+		
+		entityLoaded.setId(rewardDto.getId());
+		entityLoaded.setTypereward(rewardDto.getTypereward());	
+		entityLoaded.setYear(rewardDto.getYear());	
+		entityLoaded.setReason(rewardDto.getReason());
+		
+		rewardService.update(entityLoaded);
 		return rewardDto;
 	}
 
@@ -106,5 +115,5 @@ public class RewardController {
 	Reward setupForm() {
 		return new Reward();
 	}
-	
+	//
 }
