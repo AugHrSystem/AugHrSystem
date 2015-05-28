@@ -926,11 +926,11 @@
             </div>  
             
             
-        <div class="tab-pane" id="certification">
+       <%--  <div class="tab-pane" id="certification">
  	    <iframe src="${pageContext.request.contextPath}/certification" style="width: 100%; height: 600px; " 
 			marginwidth="0" marginheight="0" frameborder="0"
 			vspace="0" hspace="0"></iframe>
-        </div>
+        </div> --%>
 
 
 </div>
