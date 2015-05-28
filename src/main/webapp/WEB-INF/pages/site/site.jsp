@@ -75,8 +75,8 @@
  		$('#datetimepicker2').datetimepicker({			 
 						 viewMode: 'days',
 						 format : 'DD-MM-YYYY',	 
-						 //defaultDate: 'moment',
-						 //minDate: 'moment',
+						 defaultDate: 'moment',
+						 minDate: 'moment',
 						 //ShowClear: true,
 						 showClose:true
 						 
@@ -211,7 +211,7 @@
 	  	     
 	  	      success : function(data) {  
 	    		
-	  	    	alert(JSON.stringify(data));
+	  	    	//alert(JSON.stringify(data));
 	  	    	
 	  	    	$('#projectName').val(data.projectName);
 	  	    	$('#startDate').val(data.startDate);
@@ -273,7 +273,7 @@
 		  	    	
 		  	    	 
 		  	    	  
-		  	    	  alert(JSON.stringify(data));
+		  	    	  //alert(JSON.stringify(data));
 		  	    	 
 		  	    	
 		  	       		 $('#addModal').modal('hide');	  
