@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchLeave",
-			query="select l.id, l.date_of_leave, l.time_of_leave, m.name, l.employee_id, emp.employee_code, m.leavetype_id from emp_leave l, emp_employee emp, mas_leavetype  m where  l.employee_id = :empId and l.employee_id = emp.id and l.leavetype_id = m.leavetype_id",																																																																					
+			query="select l.id, l.date_from,l.date_to, l.time_from,l.time_to, m.name, l.employee_id, emp.employee_code, m.leavetype_id from emp_leave l, emp_employee emp, mas_leavetype  m where  l.employee_id = :empId and l.employee_id = emp.id and l.leavetype_id = m.leavetype_id",																																																																					
 			resultClass = LeaveDto.class)
 			
 })
@@ -34,11 +34,25 @@ public class LeaveDto {
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DATE_OF_LEAVE")
-	private Date dateOfLeave;
+	@Column(name = "DATE_FROM")
+	private Date dateFrom;
 	
-	@Column(name="TIME_OF_LEAVE")
-	private Double timeOfLeave;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "DATE_TO")
+	private Date dateTo;
+	
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="TIME_FROM")
+	private Date timeFrom;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="TIME_TO")
+	private Date timeTo;
 	
 	@Column(name = "NAME")
 	private String masleavetype;
@@ -65,27 +79,46 @@ public class LeaveDto {
 	}
 
 
-	public Date getDateOfLeave() {
-		return dateOfLeave;
+
+
+	public Date getDateFrom() {
+		return dateFrom;
 	}
 
 
-	public void setDateOfLeave(Date dateOfLeave) {
-		this.dateOfLeave = dateOfLeave;
+	public void setDateFrom(Date dateFrom) {
+		this.dateFrom = dateFrom;
 	}
 
 
-	public Double getTimeOfLeave() {
-		return timeOfLeave;
+	public Date getDateTo() {
+		return dateTo;
 	}
 
 
-	public void setTimeOfLeave(Double timeOfLeave) {
-		this.timeOfLeave = timeOfLeave;
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
 	}
 
 
+	public Date getTimeFrom() {
+		return timeFrom;
+	}
 
+
+	public void setTimeFrom(Date timeFrom) {
+		this.timeFrom = timeFrom;
+	}
+
+
+	public Date getTimeTo() {
+		return timeTo;
+	}
+
+
+	public void setTimeTo(Date timeTo) {
+		this.timeTo = timeTo;
+	}
 
 
 	public String getMasleavetype() {

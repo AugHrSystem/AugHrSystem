@@ -30,12 +30,29 @@ public class Leave extends BaseEntity {
 	private Integer id;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Column(name = "DATE_OF_LEAVE")
+	@Column(name = "DATE_FROM")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateOfLeave;
+	private Date dateFrom;
 	
-	@Column(name="TIME_OF_LEAVE")
-	private Double timeOfLeave;
+
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Column(name = "DATE_TO")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateTo;
+	
+
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="TIME_FROM")
+	private  Date timeFrom;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="TIME_TO")
+	private Date timeTo;
+	
+	
+	
 	
 	
 	@ManyToOne()
@@ -56,12 +73,22 @@ public class Leave extends BaseEntity {
 		this.id = id;
 	}
 
-	public Date getDateOfLeave() {
-		return dateOfLeave;
+	
+
+	public Date getDateFrom() {
+		return dateFrom;
 	}
 
-	public void setDateOfLeave(Date dateOfLeave) {
-		this.dateOfLeave = dateOfLeave;
+	public void setDateFrom(Date dateFrom) {
+		this.dateFrom = dateFrom;
+	}
+
+	public Date getDateTo() {
+		return dateTo;
+	}
+
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
 	}
 
 	public MasLeaveType getMasleavetype() {
@@ -80,20 +107,34 @@ public class Leave extends BaseEntity {
 		this.employee = employee;
 	}
 
-	public Double getTimeOfLeave() {
-		return timeOfLeave;
+
+	
+	
+	
+
+	public Date getTimeFrom() {
+		return timeFrom;
 	}
 
-	public void setTimeOfLeave(Double timeOfLeave) {
-		this.timeOfLeave = timeOfLeave;
+	public void setTimeFrom(Date timeFrom) {
+		this.timeFrom = timeFrom;
 	}
-	
-	
+
+	public Date getTimeTo() {
+		return timeTo;
+	}
+
+	public void setTimeTo(Date timeTo) {
+		this.timeTo = timeTo;
+	}
+
 	public LeaveDto toLeaveDto(){
 		LeaveDto leaveDto = new LeaveDto();
 		leaveDto.setId(this.id);
-		leaveDto.setDateOfLeave(this.dateOfLeave);
-		leaveDto.setTimeOfLeave(this.timeOfLeave);
+		leaveDto.setDateFrom(this.dateFrom);
+		leaveDto.setDateTo(this.dateTo);
+		leaveDto.setTimeFrom(this.timeFrom);
+		leaveDto.setTimeTo(this.timeTo);
 		leaveDto.setEmployeeCode(this.employee.getEmployeeCode());
 		leaveDto.setEmployeeId(this.employee.getId());
 		leaveDto.setMasleavetypeId(this.masleavetype.getId());
@@ -104,8 +145,10 @@ public class Leave extends BaseEntity {
 	public Leave fromLeaveDto (LeaveDto leaveDto){
 		Leave leave = new Leave();
 		leave.setId(leaveDto.getId());
-		leave.setDateOfLeave(leaveDto.getDateOfLeave());
-		leave.setTimeOfLeave(leaveDto.getTimeOfLeave());
+		leave.setDateFrom(leaveDto.getDateFrom());
+		leave.setDateTo(leaveDto.getDateTo());
+		leave.setTimeFrom(leaveDto.getTimeFrom());
+		leave.setTimeTo(leaveDto.getTimeTo());
 		
 		MasLeaveType masleavetype=new MasLeaveType();
 		masleavetype.setId(leaveDto.getMasleavetypeId());

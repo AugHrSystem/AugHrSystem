@@ -31,6 +31,12 @@
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
+<!-- clock Picker -->
+<script src="<c:url value="/resource/clockpicker/js/bootstrap-clockpicker.js" />"></script>
+<link href="<c:url value="/resource/clockpicker/css/bootstrap-clockpicker.css" />" rel="stylesheet" media="all">
+
+
+
 
 <style>
 .datepicker{z-index:1151 !important;}
@@ -54,8 +60,10 @@
 	<thead>
 		<tr>
 			<th>Leave type</th>
-			<th>Date</th>
-			<th>Time</th>
+			<th>Date From</th>
+			<th>Date To</th>
+			<th>Time From</th>
+			<th>Time To</th>
 			<!-- <th>AIM</th> -->
 			<th></th>
 			<th></th>
@@ -107,20 +115,46 @@
   				
   				
   		<div class="form-group">
-  			<p><label>Date : <input type="text" id="dateOfLeave" path="dateOfLeave"></label></p>
+  			<p><label>Date From : <input type="text" id="dateFrom" path="dateFrom"></label></p>
   		</div>
-  		  		
-  		
-  		
-  		<div class="form-group">
-  			<label>Time :</label>
-  			<input type="text" class="form-control" id="timeOfLeave" placeholder="Enter timeOfLeave">
+
+
+	<div class="form-group">
+  			<p><label>Date To : <input type="text" id="dateTo" path="dateTo"></label></p>
   		</div>
-	  
-  	
-  	
-  	
-  	<%-- <div class="form-group">
+
+
+		<div class="form-group">
+			<label>Time From:</label>
+
+			<div class="input-group clockpicker">
+
+				<input type="text" class="form-control" id="timeFrom"
+					placeholder="Enter timeFrom" value="09.00"> <span
+					class="input-group-addon"> <span
+					class="glyphicon glyphicon-time"></span>
+				</span>
+			</div>
+		</div>
+
+
+<div class="form-group">
+			<label>Time to:</label>
+
+			<div class="input-group clockpicker2">
+
+				<input type="text" class="form-control" id="timeTo"
+					placeholder="Enter timeTo" value="18.00"> <span
+					class="input-group-addon"> <span
+					class="glyphicon glyphicon-time"></span>
+				</span>
+			</div>
+		</div>
+
+
+
+
+							<%-- <div class="form-group">
 	    <label>AIM:</label>
 	    
 		 <div class="form-group">
@@ -175,7 +209,10 @@
 
 var dt;
 $(document).ready(function() {
-	$( "#dateOfLeave" ).datepicker({
+	
+	$("#clearModal").on("click", function(){clearModal();});
+	
+	$( "#dateFrom" ).datepicker({
 		clearBtn : true,
 		autoclose : true,
 		forceParse : false,
@@ -184,6 +221,42 @@ $(document).ready(function() {
 		todayHighlight : true
 	});
 	
+	
+	
+	$( "#dateTo" ).datepicker({
+		clearBtn : true,
+		autoclose : true,
+		forceParse : false,
+		language : "en",
+		format : "dd-mm-yyyy",
+		todayHighlight : true
+	});
+	
+	
+//	$('.clockpicker').clockpicker();
+	
+	$('.clockpicker').clockpicker({
+		placement: 'bottom', // clock popover placement
+		align: 'left',       // popover arrow align
+		donetext: 'Done',     // done button text
+		autoclose: true,    // auto close when minute is selected
+		vibrate: true        // vibrate the device when dragging clock hand
+		});
+	
+	
+	$('.clockpicker2').clockpicker({
+		placement: 'top', // clock popover placement
+		align: 'left',       // popover arrow align
+		donetext: 'Done',     // done button text
+		autoclose: true,    // auto close when minute is selected
+		vibrate: true        // vibrate the device when dragging clock hand
+		});
+	
+	
+	
+	
+	
+	
 	dt=$("#tbResult").dataTable();
 		listAll();
 
@@ -191,7 +264,6 @@ $(document).ready(function() {
 		
 		$("#addModal").on("show.bs.modal",function(event) {
 			
-// 			clearModal();
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var leaveid = button.data("id") //Extract info from data-* attribute
@@ -238,8 +310,10 @@ $(document).ready(function() {
 					
 					masleavetypeId:$("#masleavetype").val(),
 					masleavetype:$("#masleavetype option:selected").text(),
-					dateOfLeave:$("#dateOfLeave").val(),
-					timeOfLeave:$("#timeOfLeave").val(),
+					dateFrom:$("#dateFrom").val(),
+					dateTo:$("#dateTo").val(),
+					timeFrom:$("#timeFrom").val(),
+					timeTo:$("#timeTo").val(),
 					employeeId :id 
 				}),
 				type : "POST",
@@ -256,8 +330,10 @@ $(document).ready(function() {
 					
 					              
 						data.masleavetype,
-						data.dateOfLeave,
-						data.timeOfLeave,
+						data.dateFrom,
+						data.dateTo,			
+						data.timeFrom,
+						data.timeTo,
 					
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -285,8 +361,10 @@ $(document).ready(function() {
 					//alert(JSON.stringify(data));
 					
 					$("#masleavetype").val(data.masleavetypeId);
-					$("#dateOfLeave").val(data.dateOfLeave);
-					$("#timeOfLeave").val(data.timeOfLeave);
+					$("#dateFrom").val(data.dateFrom);
+					$("#dateTo").val(data.dateTo);
+					$("#timeFrom").val(data.timeFrom);
+					$("#timeTo").val(data.timeTo);
 					employeeId: data.employeeId;
 				},
 				error : function(data, textStatus, jqXML) {
@@ -309,8 +387,10 @@ $(document).ready(function() {
 						id:leaveid,
 						masleavetypeId : $("#masleavetype").val(),
 						masleavetype : $("#masleavetype option:selected").text(),
-						dateOfLeave:$("#dateOfLeave").val(),
-						timeOfLeave:$("#timeOfLeave").val(),
+						dateFrom:$("#dateFrom").val(),
+						dateTo:$("#dateTo").val(),
+						timeFrom:$("#timeFrom").val(),
+						timeTo:$("#timeTo").val(),
 						employeeId: id
 					}),
 					type : "POST",
@@ -323,9 +403,10 @@ $(document).ready(function() {
 						var tr = button.closest("tr");
 						
 						dt.fnUpdate(data.masleavetype.name, tr, 0);
-						dt.fnUpdate(data.dateOfLeave, tr, 1 );
-						dt.fnUpdate(data.timeOfLeave, tr, 2 );
-						
+						dt.fnUpdate(data.dateFrom, tr, 1 );
+						dt.fnUpdate(data.dateTo, tr, 2 );
+						dt.fnUpdate(data.timeFrom, tr, 3 );
+						dt.fnUpdate(data.timeTo, tr, 4 );
 						
 						$('#addModal').modal('toggle');
 						listAll();
@@ -373,21 +454,37 @@ $(document).ready(function() {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].masleavetype,
-						              data[i].dateOfLeave,
-						              data[i].timeOfLeave,
+						              data[i].dateFrom,
+						              data[i].dateTo,
+						              data[i].timeFrom,
+						              data[i].timeTo,
+						              
+						              
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}
 					},
-					error : function() {
+					error : function() { 
 						alert("ERROR");
 					}
 				}); 
 			}
 		
 		
-		
+		 function clearModal(){
+				
+				$("#masleavetype").val("-1"),
+				$("#dateFrom").val(""),
+				$("#dateTo").val(""),
+				$("#timeFrom").val(""),
+				$("#timeTo").val("");
+				
+				
+				
+				
+				;
+			}
 		
 		 function getUrlParameter(sParam)
 		 {
@@ -410,7 +507,7 @@ $(document).ready(function() {
 		     
 		 }      
 		 	
-
+		
 		
 });
 </script>
