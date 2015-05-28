@@ -53,7 +53,6 @@ public class ReferenceController {
 //	}
 	
 	
-
 	@RequestMapping(value = "/reference/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<ReferenceDto> listAll(@PathVariable("id") Integer id) {
 		return (List<ReferenceDto>) referenceDtoService.searchReference(id);
@@ -94,6 +93,7 @@ public class ReferenceController {
 		//return "{success:true}";
 		return "redirect:/reference";
 	}
+	
 	
 	@ModelAttribute("reference")
 	Reference setupForm() {

@@ -34,10 +34,8 @@ public class Punish {
 		
 	@Column(name = "DESCRIPTION")
 	private String description;
-
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id", nullable=true)
-
 	private Employee employee;
 
 	
@@ -93,8 +91,8 @@ public class Punish {
 	
 	
 
-	public Punish fromPunishDto(PunsihDto punsihDto){
-		Punish punish = new Punish();
+	public Punish fromPunishDto(Punish punish,PunsihDto punsihDto){
+		//Punish punish = new Punish();
 		punish.setId(punsihDto.getId());
 		punish.setDatepunish(punsihDto.getDatepunish());
 		punish.setDescription(punsihDto.getDescription());

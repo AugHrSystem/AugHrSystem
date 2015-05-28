@@ -27,7 +27,7 @@ public class PunsihDto {
 	private Integer id;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Column(name ="DATEPUNISHE")
+	@Column(name ="DATEPUNISH")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date datepunish;
 	

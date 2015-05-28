@@ -30,13 +30,11 @@
 <link href="<c:url value="/resource/bootstrap/css/main.css" />"
 	rel="stylesheet" media="all">
 
-
 <!-- Date Picker -->
 <script
 	src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
 <link href="<c:url value="/resource/datepicker/css/datepicker.css" />"
 	rel="stylesheet" media="all">
-
 
 <!-- jQuery dataTable -->
 <script
@@ -55,29 +53,15 @@
 <script
 	src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
-
 </head>
-
-
 <body>
-
-
-	<div class="container" style="padding-top: 5px"">
-		
-		<div class="form-group">
-			
-		<form:form id="listForm" method="post" commandName="reward">
-				
-			
-			
-			<h2>Reward</h2>
-			
-			<br><br>
+<div class="container" style="padding-top: 5px"">
+	<div class="form-group">
+			<form:form id="listForm" method="post" commandName="reward">
+			<h2>Reward</h2><br><br>
 					<div class="form-group">
-
 						<table id="tbResult" class="table">
 							<thead>
-
 								<tr>
 									<th>NAME</th>
 									<th>YEAR</th>
@@ -91,7 +75,7 @@
 					</div>
 			</form:form>
 
-			<form:form id="addForm" method="post" commandName="reward">
+	<form:form id="addForm" method="post" commandName="reward">
 				<!-- Button trigger modal -->
 				<div class="form-group" align="right">
 					<button type="button" class="btn btn-info" data-toggle="modal"
@@ -106,30 +90,22 @@
 					<div class="modal-dialog modal-md">
 						<div class="modal-content">
 							<div class="modal-header">
-
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 								<h4 class="modal-title" id="addModalLabel">Add Reward</h4>
 							</div>
-
-
-							<div class="col col-lg-12 " style="padding-top: 10px">
-
-								<div class="form-group " align="left">
+						<div class="col col-lg-12 " style="padding-top: 10px">
+							<div class="form-group " align="left">
 									  <label>Type :</label>
-									<form:input path="typereward" type="text" class="form-control" id="typereward" placeholder="Type" />
-								</div>
-
-
+										<form:input path="typereward" type="text" class="form-control" id="typereward" placeholder="Type" />
+							</div>
 								<div class="form-group " align="left">
-
 									 <label>Year :</label>
 									<form:select path="year" class="form-control" id="year">
 										<form:option value="-1" label="---Select year---" />
-										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>
-									
+										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>						
 										<option value="2020">2020</option>
 										<option value="2019">2019</option>
 										<option value="2018">2018</option>
@@ -255,13 +231,10 @@
 									</form:select>
 								</div>
 
-
-
 								<div class="form-group " align="left">
 									 <label>Reason :</label>
 									<form:input path="reason" type="text" class="form-control" id="reason" placeholder="reason" />
 								</div>
-
 
 								<div class="form-group " align="right">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -271,50 +244,34 @@
 						</div>
 					</div>
 				</div>
-		</div>
-
-
+	</form:form> 
 
 		<!------------------------------------------Button  modal 2-------------------------------------------------------->
-
-
+	<form:form id="deleteForm" commandName="history" method="post">	
 		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
 					<div class="modal-body">
-
 						<label>ARE YOU DELETE !!</label>
-
 					</div>
 					<div class="modal-footer">
-					<button type="button" class="btn btn-danger DeleteButton">
-							Yes</button>
-						<button type="button" class="btn btn-info" data-dismiss="modal">
-							NO</button>
+					<button type="button" class="btn btn-danger DeleteButton">Yes</button>
+						<button type="button" class="btn btn-info" data-dismiss="modal">NO</button>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
-
-
-
-		</form:form>
+	</form:form>
 </div>
 
-
-
-		<script type="text/javascript">
-			var dt;
-			
+	<script type="text/javascript">
+			var dt;			
 			$(document).ready(function(){
 			dt = $('#tbResult').dataTable();
 			listAll();
-
 			$("#addModal").on("show.bs.modal", function(event) {
-
+				
 				var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 				var rewardid = button.data("id") //Extract info from data-* attribute
 
@@ -332,11 +289,8 @@
 						addReward();
 
 					}
-
 				});
-
 			});
-
 			//		------------------------------------------------------------------------------------------------------------
 
 			$("#deleteModal").on("show.bs.modal",function(event) {
@@ -348,9 +302,7 @@
 								function() {
 
 									deleteById(button, rewardid);
-
 								})
-
 					});
 
 			/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -362,6 +314,7 @@
 
 			}
 
+					
 			function addReward() {
 				var id = getUrlParameter('Id');
 				$.ajax({
@@ -372,34 +325,30 @@
 								reason : $("#reason").val(),
 								employeeId: id
 							
-
 							}),
 							type : "POST",
 							contentType : "application/json",
 							dataType : "json",
 							success : function(data) {
-
-								//	 				alert(JSON.stringify(data));
-
 								dt.fnClearTable();
-
 								dt.fnAddData([
 												data.typereward,
 												data.year,
 												data.reason,
-
 												'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 												'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>' ]);
 
 								$('#addModal').modal('toggle');
 								listAll();
 							},
-							error : function() {
-								alert("ERROR");
+							error : function(jqXHR,	textStatus,	error) {	
+									alert("error");
 							}
 						});
 			}
 
+			
+			
 			function updateReward(button,rewardid) {
 						var id = getUrlParameter('Id');
 						$.ajax({
@@ -427,13 +376,15 @@
 								$('#addModal').modal('toggle');
 								listAll();
 							},
-							error : function() {
-								alert("ERROR");
+							error : function(jqXHR,	textStatus,	error) {	
+									alert("error");
 							}
 						});
 
 			}
 
+			
+			
 			function getRewardById(rewardid) {
 				$.ajax({
 					url : "${pageContext.request.contextPath}/reward/findById/"+rewardid,
@@ -443,37 +394,34 @@
 						$("#typereward").val(data.typereward);
 						$("#year").val(data.year);
 						$("#reason").val(data.reason);
-
 					},
-					error : function(jqXHR, textStatus, error) {
-
-						alert("error");
+					error : function(jqXHR,	textStatus,	error) {	
+							alert("error");
 					}
 				});
 			}
 
+			
+			
 			function deleteById(button,rewardid) {
 				$.ajax({
 					url : "${pageContext.request.contextPath}/reward/delete/"+rewardid,
 					//data : "id=" + rewardid,
 					type : "POST",
-
 					success : function(data) {
-
 						var tr = button.closest("tr"); // หาเเถวจากปุ่ม
-
 						dt.fnDeleteRow(tr);
 
 						$('#deleteModal').modal('toggle');
 					},
-
-					error : function(jqXHR, textStatus, error) {
-
-						alert("error ----");
+					error : function(jqXHR,	textStatus,	error) {	
+							alert("error");
 					}
 				});
-
 			}
+			
+			
+			
 			function listAll() {
 						var id = getUrlParameter('Id');
 						$.ajax({
@@ -487,28 +435,23 @@
 												  data[i].reason,
 													'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 													'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>' ]);
-
 								}
 							},
-							error : function(data, testStatus, jqXHR) {
-								$("#outputajax").text(testStatus);
+							error : function(jqXHR,	textStatus,	error) {	
+									alert("error");
 							}
 						});
 			}
 			
 			
 			
-			
-			function getUrlParameter(sParam){
-	
+			function getUrlParameter(sParam){	
 				//alert("url "+document.referrer);
 			    var sPageURL = document.referrer;
 			    var sURLVariables = sPageURL.split('?');
 			    var sParameterName;
 			    //alert("spilt "+sURLVariables);
-
-			   	
-			    
+	    
 			    sParameterName = sURLVariables[1].split('=');
 			    //alert("Param "+parseInt(sParameterName[1]));
 			    if (sParameterName[0] == sParam) 
@@ -517,12 +460,10 @@
 			        	return sParameterName[1];
 			        	
 			        }
-			        ///alert("Param2 "+parseInt(sParameterName[1]));
-			    
+			        ///alert("Param2 "+parseInt(sParameterName[1]));		    
 			}     
-		});
+		});			
 			
-			
-		</script>
+	</script>
 </body>
 </html>

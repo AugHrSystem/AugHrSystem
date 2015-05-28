@@ -29,9 +29,6 @@ public class ReferenceDaoImpl extends GenericDaoImpl<Reference, Integer> impleme
 			}
 			return c.list();
 		}
-
-
-	
 		
 
 		@Override
@@ -40,10 +37,7 @@ public class ReferenceDaoImpl extends GenericDaoImpl<Reference, Integer> impleme
 			getCurrentSession().delete(reference);
 			return reference;
 		}
-
-		
-		
-		
+			
 		
 		@SuppressWarnings("unchecked")
 		@Override
@@ -52,7 +46,6 @@ public class ReferenceDaoImpl extends GenericDaoImpl<Reference, Integer> impleme
 				List<ReferenceDto> refDto = namedQuery.list();
 				return refDto;
 		}
-		
-		
+			
 
 }

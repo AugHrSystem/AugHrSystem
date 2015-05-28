@@ -17,23 +17,15 @@ import javax.persistence.NamedNativeQuery;
 public class ReferenceDto {
 	@Column(name ="ID")
 	@Id
-	private Integer id;
-	
+	private Integer id;	
 	@Column(name = "NAME")
-	private String name;
-	
-	
+	private String name;		
 	@Column(name = "ADDRESS")
 	private String address;
-	
-	
 	@Column(name = "TEL")
 	private String tel;
-	
-	
 	@Column(name = "OCCUPATION" )
 	private String occupation;
-	
 	@Column(name ="EMPLOYEE_ID")
 	private Integer employeeId;
 

@@ -41,9 +41,6 @@ public class RewardController {
 	@Autowired RewardDtoService rewardDtoService;
 	
 	
-	
-	
-		
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
@@ -114,5 +111,5 @@ public class RewardController {
 	Reward setupForm() {
 		return new Reward();
 	}
-	//
+	
 }

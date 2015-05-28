@@ -29,30 +29,17 @@
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
-
 </head>
 
-
 <body>
-
-
-	<div class="container" style="padding-top: 5px"">
-
-		<form:form id ="listForm" method="post" commandName="reference">
-		
-		
+<div class="container" style="padding-top: 5px"">
+		<form:form id ="listForm" method="post" commandName="reference">		
 			<div style="padding-bottom: 10px">
-			
-			
-				<h2>Reference</h2>
-				
-				
+				<h2>Reference</h2>	
 			</div>
-			<div class="form-group">
-<br><br>
+			<div class="form-group"><br><br>
 				<table id="tbResult" class="table">
-					<thead>
-					
+					<thead>	
 						<tr>								
 							<th>NAME</th>
 							<th>ADDRESS</th>
@@ -64,46 +51,37 @@
 					</thead>
 					<tbody></tbody>
 				</table>
-			</div>
-			
+			</div>			
 	   </form:form>		
 
-<form:form id ="addForm" method="post" commandName="reference">
+	<form:form id ="addForm" method="post" commandName="reference">
 		<!-- Button trigger modal -->
 	<div class="form-group" align="right">
 		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
 	</div>
 	
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
-	
-		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-			
+		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">		
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
-					<div class="modal-header">
-				
+					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
        					 <h4 class="modal-title" id="addModalLabel">Add Reference</h4>
-      					</div>
-							
-																									
-				<div class="col col-lg-12 " style="padding-top: 10px">	
-									
+      				</div>		
+      																											
+				<div class="col col-lg-12 " style="padding-top: 10px">									
 					<div class="form-group " align="left">
 							<label for="name" >Name:</label>
 							<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
-				    </div>
-				    
+				    </div>				    
 				    <div class="form-group "  align="left">
 							<label for="address" >Address:</label>		
 							<form:textarea path="address" class="form-control" rows="1" id="address" placeholder="Address"/>		
-				    </div>
-				    
+				    </div>				    
 				    <div class="form-group "  align="left">
 							<label for="tel" >tel:</label>
 							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="tel"/>							
-				    </div>
-				    
+				    </div>				    
 				    <div class="form-group "  align="left">
 							<label for="occupation" >occupation:</label>
 							<form:input path="occupation" type="text" class="form-control" id="occupation" placeholder="occupation"/>							
@@ -114,44 +92,34 @@
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
 				</div>
-				</div>			
-			</div>
+			</div>			
 		</div>
-	  </div> 
-	  
-	  
-	  
+	</div>
+	</form:form> 
+
 <!------------------------------------------Button  modal 2--------------------------------------------------------->
 		
-		
+<form:form id="deleteForm" commandName="history" method="post">			
 		<div class="modal fade" id="deleteModal" tabindex ="-1" role ="dialog" aria-labelledby ="myModalLabel" aria-hidden ="true">
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
 					<div class="modal-body">
-
 						<label >ARE YOU DELETE !!</label>
-
 					</div>
 						<div class="modal-footer">
 						<button type="button" class="btn btn-danger DeleteButton"> Yes </button>
 						  <button type="button" class="btn btn-info" data-dismiss ="modal"> NO </button>
 					   </div>
-				</div>
-
-				
+				</div>		
 			</div>
-		</div>
-	
-		   
-	  
-</form:form>
+		</div>			  
+ </form:form>
+</div>	
 
 		
-	<script type="text/javascript">
+<script type="text/javascript">
 
-	var dt;
-	
-	
+	var dt;	
 	$(document).ready(function(){
 		dt = $('#tbResult').dataTable();	
 		 listAll();
@@ -164,49 +132,29 @@
 			clearModal();
 			 if(referenceid != null){				 
 				 getReferenceById(referenceid);
-			} 
-			
-			else{
-	
-			} 
-			
+			} 			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				
 				 if(referenceid != null){
 					updateReference(button, referenceid);
 				}else{ 
-					addReference();
-					
-				 } 
-				
+					addReference();					
+				 	} 			
 			});
 			
-		});
-		
-		
-		
-		
+		});				
 //		------------------------------------------------------------------------------------------------------------
 
-	 	$("#deleteModal").on("show.bs.modal", function (event) {
-				
+	 	$("#deleteModal").on("show.bs.modal", function (event) {				
 	 			var button = $(event.relatedTarget); // select การกระทำของปุ่ม
 	 			var referenceid = button.data("id"); //กดไอดีฝังในปุ่ม 
 				
-	 			
-					
 	 		$(this).find('.DeleteButton').off('click').on("click", function() {
 								
-	 					deleteById(button ,referenceid);
-	 			
-			
-	 				})
-					
-	 			})
-				
-				
-				
-			});
+	 					deleteById(button ,referenceid);		
+	 		})				
+	 	})			
+	});
 		
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -219,8 +167,8 @@
 			$("#occupation").val("");
 		}
 
-		
 
+		
 		function addReference(){
 			var id = getUrlParameter('Id');
 			$.ajax({
@@ -251,8 +199,8 @@
 					$('#addModal').modal('toggle');
 					listAll();
 				},
-				error : function() {
-					alert("ERROR");
+				error : function(jqXHR,	textStatus,	error) {	
+							alert("error");
 				}
 			});
 		}
@@ -271,8 +219,7 @@
 								tel :$("#tel").val(),
 								occupation: $("#occupation").val(),
 								employeeId: id 
-								
-					
+												
 					}),
 					type:"POST",
 					contentType:"application/json",
@@ -280,24 +227,23 @@
 					success : function(data) {
 						
 					var tr = button.closest("tr"); // หาเเถวจากปุ่ม
-						
-					
+									
 					dt.fnUpdate(data.name, tr, 0),
 					dt.fnUpdate(data.address, tr, 1),
 					dt.fnUpdate(data.tel, tr, 2),
 					dt.fnUpdate(data.occupation, tr, 3),
 					'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
-					
-						
+							
 						$('#addModal').modal('toggle');
 					},
-					error : function() {
-						alert("ERROR");
+					error : function(jqXHR,	textStatus,	error) {	
+								alert("error");
 					}
 			});
 			
 		}
+		
 		
 		
 		function getReferenceById(referenceid) {
@@ -310,17 +256,13 @@
 					$("#address").val(data.address);
 					$("#tel").val(data.tel);
 					$("#occupation").val(data.occupation);
-					employeeId: data.employeeId;
-					
-					
-						},
-				error : function(jqXHR,	textStatus,	error) {
-					
+					employeeId: data.employeeId;					
+				},
+				error : function(jqXHR,	textStatus,	error) {	
 							alert("error");
-									}
-					});
+				}
+			});
 		}
-		
 		
 		
 		
@@ -329,27 +271,21 @@
 				url : "${pageContext.request.contextPath}/reference/delete/"+referenceid,
 				//data : "id=" +referenceid,
 				type : "POST", 
-				success : function(data) {
-					
-				//	var tr = button.closest("tr"); // หาเเถวจากปุ่ม
-											
-				//	dt.fnDeleteRow(tr);
-					
-						$('#deleteModal').modal('toggle');
-						
+				success : function(data) {					
+				//	var tr = button.closest("tr"); // หาเเถวจากปุ่ม											
+				//	dt.fnDeleteRow(tr);			
+						$('#deleteModal').modal('toggle');						
 						listAll();
 					},
-					
-						
-				error : function(jqXHR,	textStatus,	error) {
-					
-							alert("error ----");
+										
+					error : function(jqXHR,	textStatus,	error) {	
+								alert("error");
 						}
-				});
-			
-			
-			
+				});		
 		}
+		
+		
+		
 			function listAll(){
 				var id = getUrlParameter('Id');
 				$.ajax({
@@ -365,8 +301,8 @@
 				
 						}
 					},
-					error : function(data,testStatus,jqXHR) {
-						$("#outputajax").text(testStatus);
+					error : function(jqXHR,	textStatus,	error) {	
+								alert("error");
 						}
 					}); 
 			}
@@ -380,8 +316,6 @@
 			    var sURLVariables = sPageURL.split('?');
 			    var sParameterName;
 			    //alert("spilt "+sURLVariables);
-
-			   	
 			    
 			    sParameterName = sURLVariables[1].split('=');
 			    //alert("Param "+parseInt(sParameterName[1]));
@@ -394,13 +328,7 @@
 			        //alert("Param2 "+parseInt(sParameterName[1]));
 			    
 			}     
-			
-		
-	
 	
 </script>
-	
-		
-	
 </body>
 </html>

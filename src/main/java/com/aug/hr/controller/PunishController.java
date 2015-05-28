@@ -33,31 +33,25 @@ import com.aug.hr.services.PunishService;
 public class PunishController {
 	@Autowired 
 	private PunishService punishService;
+	@Autowired
 	private PunishDtoService punishDtoService;
+	
 	
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH); // dd/MM/yyyy
 		CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
-		binder.registerCustomEditor(Date.class, editor);
-	//	binder.registerCustomEditor(Punish.class, PunishEditor);		
+		binder.registerCustomEditor(Date.class, editor);		
 	}
 	 
-//
-	
-	@RequestMapping(value = "/punish/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody List<PunsihDto> listAll(@PathVariable("id") Integer id) {
-		//Punish punish = new Punish();	
-		return (List<PunsihDto>) punishDtoService.searchPunish(id);
-	}
-	
 
 	@RequestMapping(value = "/punish", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
 		model.addAttribute("punishList", punishService.findAll());
 		return "/punish/punish";
 	}
+	
 	
 //	@RequestMapping(value = "/punish/listAll", method = {RequestMethod.GET, RequestMethod.POST})
 //	public @ResponseBody List<Punish> listAll() {
@@ -66,28 +60,41 @@ public class PunishController {
 //		return punishService.findByCriteria(punish);
 //	}
 	
+	
+	@RequestMapping(value = "/punish/listAll{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<PunsihDto> listAll(@PathVariable("id") Integer id) {
+		return (List<PunsihDto>) punishDtoService.searchPunish(id);
+	}
+	
+	
 	@RequestMapping(value = "/punish/add", method = RequestMethod.POST)
-	public @ResponseBody Punish addPunsih(@RequestBody Punish punish) {
-	//	Hibernate.initialize(punish.getEmployee().getNameEng());
-		punishService.create(punish);
-		return punish;
-	}
-	@RequestMapping(value = "/punish/update", method = RequestMethod.POST)
-	public @ResponseBody Punish updatePunish(@RequestBody Punish punish ) {
-		punishService.update(punish);
-		return punish;
+	public @ResponseBody PunsihDto addPunsih(@RequestBody PunsihDto punishDto) {
+		Punish punish = new Punish();
+		punishService.create(punish.fromPunishDto(punish,punishDto));
+		return punishDto;
 	}
 	
-	@RequestMapping(value = "/punish/findById", method = RequestMethod.POST)
-	public @ResponseBody Punish findById(@RequestParam Integer id) {
-		return punishService.findById(id);
-	}
-	
-	@RequestMapping(value = "/punish/delete", method = RequestMethod.POST)
-	public @ResponseBody String deletePunish(@RequestParam Integer id) {
-		punishService.deleteById(id);
+	@RequestMapping(value = "/punish/update", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody PunsihDto updatePunish(@RequestBody PunsihDto punishDto ) {
 		
-		return "{success:true}";
+		Punish entityLoaded = punishService.findById(punishDto.getId());
+		entityLoaded.setDatepunish(punishDto.getDatepunish());
+		entityLoaded.setDescription(punishDto.getDescription());		
+		punishService.update(entityLoaded);
+		return punishDto;
+	}
+	
+	@RequestMapping(value = "/punish/findById/{punishid}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody PunsihDto findById(@PathVariable("punishid") Integer punishid) {
+		Punish punish = punishService.findById(punishid);
+		return punish.toPunishDto();
+	}
+	
+	@RequestMapping(value = "/punish/delete/{punishid}", method = RequestMethod.POST)
+	public @ResponseBody String deletePunish(@PathVariable("punishid")Integer punishid) {
+		punishService.deleteById(punishid);		
+		//return "{success:true}";
+		return "redirect:/punish";
 	}
 	@ModelAttribute("punish")
 	Punish setupForm() {

@@ -25,18 +25,13 @@ public class Reward extends BaseEntity{
 	
 	@Column(name = "TYPE_REWARD" ,nullable = false)
 	private String typereward;
-	
 	@Column(name = "YEAR" ,nullable = false)
-	private String year;
-		
+	private String year;		
 	@Column(name = "REASON" ,nullable = true)
-	private String reason;
-	
-	
+	private String reason;	
 	@Column(name = "ISACTIVE",nullable=true)
 	private Boolean isActive;
-	
-	
+		
 	@ManyToOne()
 	@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName= "id",nullable = false)
 

@@ -6,8 +6,7 @@ import com.aug.hr.entity.Punish;
 
 
 public interface PunishService {
-	
-	
+		
 	public void create(Punish punish);
 	public void update(Punish punish);
 	public void delete(Punish punish);
@@ -16,5 +15,4 @@ public interface PunishService {
 	public List<Punish> findByCriteria(Punish punish);
 	public Punish deleteById(Integer id);
 	
-
 }

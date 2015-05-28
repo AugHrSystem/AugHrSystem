@@ -19,21 +19,15 @@ public class RewardDto {
 	
 	@Column(name = "ID")
 	@Id
-	private Integer id;
-	
+	private Integer id;	
 	@Column(name = "TYPE_REWARD")
-	private String typereward;
-	
+	private String typereward;	
 	@Column(name = "YEAR")
-	private String year;
-		
+	private String year;		
 	@Column(name = "REASON")
 	private String reason;
-	
-	
 	@Column(name = "ISACTIVE")
 	private Boolean isActive;
-
 	@Column(name ="EMPLOYEE_ID")
 	private Integer employeeId;
 
@@ -85,7 +79,7 @@ public class RewardDto {
 		this.id = id;
 	}
 
-	//
+	
 
 	
 }
