@@ -172,8 +172,16 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		query.setInteger("MAS_CORE_SKILL_ID", allEmployeeDto.getMasCoreSkill());
 		query.setInteger("STAFFTYPE_ID", allEmployeeDto.getMasStaffType());
 		query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocation());
-
+		query.setInteger("OFFICIAL_ID", allEmployeeDto.getOfficialId());
 		query.executeUpdate();
+	}
+
+
+	@Override
+	public Employee searhEmpIdtoAddress() {
+		Query query = getCurrentSession().getNamedQuery("searchIdEmptoAddress");
+		List<Employee> employee = query.list();	
+		return employee.get(0);
 	}
 
 

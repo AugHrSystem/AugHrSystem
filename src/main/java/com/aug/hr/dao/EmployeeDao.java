@@ -24,5 +24,6 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public List<AimEmployeeDto> listEmployeeAim();
 	public void saveEmployee();
 	public void saveByNameQuery(AllEmployeeDto allEmployeeDto);
+	public Employee searhEmpIdtoAddress();
 	
 }

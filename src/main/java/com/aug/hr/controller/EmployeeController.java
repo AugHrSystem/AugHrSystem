@@ -207,7 +207,7 @@ public class EmployeeController {
 		logger.info("infoooo: "+employee);	
 		logger.info("infoooo: "+employee.getAddressList());		
       //  logger.info("address: "+employee.getAddresses());		 
-		employeeService.saveByNameQuery(employee);
+		//employeeService.saveByNameQuery(employee);
 	
         
 		/*employeeService.create(employee);

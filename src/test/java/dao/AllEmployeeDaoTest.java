@@ -8,6 +8,7 @@ package dao;
 
 import java.util.Date;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.EmployeeDao;
+import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasDivision;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 
@@ -57,8 +59,20 @@ public class AllEmployeeDaoTest {
 		allemp.setMasStaffType(1);
 		allemp.setMasCoreSkill(2);
 		allemp.setTechnology(3);
+		allemp.setOfficialId(1);
 		
 		empDao.saveByNameQuery(allemp);
 	}
+	
 
+	@Test
+	//@Rollback(false)
+	public void searchEmpIdToAddress(){
+		
+		
+		Employee emp = empDao.searhEmpIdtoAddress();
+		System.out.println(emp.getId());
+		
+		//Assert.assertEquals(1, empDao.searhEmpIdtoAddress());
+	}
 }

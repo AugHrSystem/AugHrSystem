@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.OfficialDao;
 import com.aug.hr.entity.Official;
+import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.services.OfficialService;
 
 @Service("officialService")
@@ -61,6 +62,19 @@ public class OfficialServiceImpl implements OfficialService{
 	@Override
 	public Official findById(Integer id) {
 		return officialDao.find(id);
+	}
+
+	@Override
+	public void saveOfficialByNameQuery(OfficialDto officialDto) {
+		
+		officialDao.saveOfficialByNameQuery(officialDto);
+		
+	}
+
+	@Override
+	public Official searhEmpIdtoOfficial() {
+		
+		return officialDao.searhEmpIdtoOfficial();
 	}
 
 }

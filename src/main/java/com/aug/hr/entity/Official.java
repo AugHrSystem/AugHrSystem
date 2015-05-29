@@ -16,19 +16,51 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+            name = "insertOfficial",
+            query = "insert into EMP_OFFICIAL("
+            		+ "START_DATE,"
+            		+ "POSITION_APPLIED_FOR,"
+            		+ "SALARY_EXPECTED,"
+            		+ "EMPLOYEE_ID"
+            		+ ") "
+            		+ " values("
+            		+ ":START_DATE,"
+            		+ ":POSITION_APPLIED_FOR,"
+            		+ ":SALARY_EXPECTED,"
+            		+ ":EMPLOYEE_ID"
+            		+ ")"
+            	
+            		,resultClass= Official.class),
+            		
+@NamedNativeQuery(
+           name = "searchIdEmptoOfficial",
+           query = "select * from EMP_OFFICIAL  ORDER BY createdTimeStamp LIMIT 1;", 
+            resultClass = Official.class)
+  })
 
 @Entity
-@Table(name = "EMP_OFFICIAL")
-public class Official {
+@Table(name = "EMP_OFFICIAL",uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+public class Official extends BaseEntity{
 		@Id
 	    @GeneratedValue
 	    @Column(name = "ID")
 	    private Integer id;
 		
-		@Column(name = "DATE")
-		private Date date;
+		@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+		@Column(name = "START_DATE")
+		//@Temporal(TemporalType.TIMESTAMP)
+		private Date startDate;
 
 	 	@Column(name = "POSITION_APPLIED_FOR", nullable = true)
 		private String positionAppliedFor;
@@ -84,15 +116,16 @@ public class Official {
 			this.empOfficial = empOfficial;
 		}
 
-		
-		public Date getDate() {
-			return date;
+
+		public Date getStartDate() {
+			return startDate;
 		}
 
 
-		public void setDate(Date date) {
-			this.date = date;
+		public void setStartDate(Date startDate) {
+			this.startDate = startDate;
 		}
+
 
 
 

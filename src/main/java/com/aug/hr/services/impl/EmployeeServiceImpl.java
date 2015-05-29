@@ -96,8 +96,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void saveByNameQuery(AllEmployeeDto allEmployeeDto) {
-		// TODO Auto-generated method stub
+		
 		employeeDao.saveByNameQuery(allEmployeeDto);
+	}
+
+	@Override
+	public Employee searhEmpIdtoAddress() {
+		
+		return employeeDao.searhEmpIdtoAddress();
 	}
 
 

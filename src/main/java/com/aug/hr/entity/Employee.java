@@ -26,6 +26,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
@@ -34,6 +36,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 
 import com.aug.hr.entity.dto.ExperienceDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -106,7 +109,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ "TECHNOLOGY_ID,"
             		+ "MAS_CORE_SKILL_ID,"
             		+ "STAFFTYPE_ID,"
-            		+ "LOCATION_ID"
+            		+ "LOCATION_ID,"
+            		+ "OFFICIAL_ID "
             		+ ") "
             		+ " values("
             		+ ":EMPLOYEE_CODE,"
@@ -174,14 +178,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ ":TECHNOLOGY_ID,"
             		+ ":MAS_CORE_SKILL_ID,"
             		+ ":STAFFTYPE_ID,"
-            		+ ":LOCATION_ID"
+            		+ ":LOCATION_ID,"
+            		+ ":OFFICIAL_ID"
             		+ ")"
             		,resultClass= Employee.class),
  
 
 	@NamedNativeQuery(
             name = "searchIdEmptoAddress",
-            query = "select * from EMP_EMPLOYEE  ORDER BY createdTimeStamp LIMIT 1;", 
+            //query = "select * from EMP_EMPLOYEE  ORDER BY createdTimeStamp LIMIT 1;", 
+            query = "select * from EMP_EMPLOYEE  ORDER BY ID LIMIT 1;",
             resultClass = Employee.class)
   })
 
@@ -248,7 +254,9 @@ public class Employee extends BaseEntity{
 	@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER",nullable = false)
 	private String emergencyContactPhoneNumber;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Column(name = "DATEOFBIRTH",nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBirth;
 	
 	@Column(name = "PLACEOFBIRTH",nullable = true)
@@ -341,10 +349,14 @@ public class Employee extends BaseEntity{
 	@Column(name = "MILITARY_SERVICE_YES",nullable = true)
 	private String militaryServiceYes;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Column(name = "FROM_YEAR",nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fromYear;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Column(name = "TO_YEAR",nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date toYear;
 	
 	@Column(name = "BRANCH_OF_SERVICE",nullable = true)
@@ -359,7 +371,9 @@ public class Employee extends BaseEntity{
 	@Column(name = "REASONS_NO",nullable = true)
 	private String reasonsNo;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Column(name = "DATE_TO_BE_DRAFTED",nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
 	
 	@Column(name = "PREVIOUS_EMPLOYER_YES",nullable = true)

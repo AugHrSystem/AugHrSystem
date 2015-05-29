@@ -518,8 +518,8 @@
 								</div>
 								
 			 			<div class="col-md-3">
-									<label> Date :</label> <input type="text" class="form-control"
-									id="date" name="date" placeholder="Enter Date">
+									<label> Date :</label> 
+									<input type="text" class="form-control" id="date" name="date" placeholder="Enter Date">
 								</div>
 			</div>
 			</div>
@@ -527,13 +527,12 @@
 			<div class="form-group">
 			<div class="col-md-12">	
 				<div class="col-md-6">
-									<label> Position Applied For :</label> <input type="text" class="form-control"
-									id="positionAppliedFor" name="positionAppliedFor" placeholder="Enter Position">
+									<label> Position Applied For :</label> 
+									<input type="text" class="form-control" id="positionAppliedFor" name="positionAppliedFor" placeholder="Enter Position">
 								</div>
 								
 				<div class="col-md-6">
-									<label> Salary Expected :</label> <input type="text" class="form-control"
-									id="salaryExpected" name="salaryExpected" placeholder="Enter Salary">
+									<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary">
 								</div>				
 							
 							</div>
@@ -920,7 +919,9 @@
             
             
             
+
 	      <%--  <div class="tab-pane" id="certification">
+
 	 	    <iframe src="${pageContext.request.contextPath}/certification" style="width: 100%; height: 600px; " 
 				marginwidth="0" marginheight="0" frameborder="0"
 				vspace="0" hspace="0"></iframe>

@@ -7,8 +7,8 @@
 package com.aug.hr.services;
 
 import java.util.List;
-
 import com.aug.hr.entity.Official;
+import com.aug.hr.entity.dto.OfficialDto;
 
 
 
@@ -20,5 +20,7 @@ public interface OfficialService {
 	public List<Official> findAll();
 	public List<Official> findByCriteria(Official official);
 	public Official deleteById(Integer id);
+	public void saveOfficialByNameQuery(OfficialDto officialDto);
+	public Official searhEmpIdtoOfficial();
 
 }

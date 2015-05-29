@@ -9,7 +9,12 @@ package com.aug.hr.entity.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 
@@ -93,6 +98,8 @@ public class AllEmployeeDto {
 	private String emergencyContactPhoneNumber;
 	
 	//@Column(name = "DATEOFBIRTH",nullable = false)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBirth;
 	
 	//@Column(name = "PLACEOFBIRTH",nullable = true)
@@ -186,9 +193,13 @@ public class AllEmployeeDto {
 	private String militaryServiceYes;
 	
 	//@Column(name = "FROM_YEAR",nullable = true)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fromYear;
 	
 	//@Column(name = "TO_YEAR",nullable = true)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date toYear;
 	
 	//@Column(name = "BRANCH_OF_SERVICE",nullable = true)
@@ -204,6 +215,8 @@ public class AllEmployeeDto {
 	private String reasonsNo;
 	
 	//@Column(name = "DATE_TO_BE_DRAFTED",nullable = true)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
 	
 	//@Column(name = "PREVIOUS_EMPLOYER_YES",nullable = true)
@@ -218,12 +231,17 @@ public class AllEmployeeDto {
 	//@Column(name = "IMAGE",nullable = true)
 	private String image;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date startDate;
+	
+	private String positionAppliedFor;
+	
+	private Double salaryExpected;
 
 	//@Column(name="AIM_EMP_ID")
 	private Integer aimempid;
 	
-	
-
 	
 	 //@Column(name= "MAS_CORE_SKILL_ID")
 	 private Integer masCoreSkill;
@@ -231,8 +249,6 @@ public class AllEmployeeDto {
    
     //@Column(name= "EMPLOYMENT_ID")
     private Integer masEmployment;
-    
-    
     
     
    // @Column(name= "DIVISION_ID",nullable = false)
@@ -263,6 +279,8 @@ public class AllEmployeeDto {
 	
 	
 	private Date probationDate;
+	
+	private Integer officialId;
     
 
 	public Integer getId() {
@@ -970,6 +988,48 @@ public class AllEmployeeDto {
 	}
 
 	
+	public Date getStartDate() {
+		return startDate;
+	}
+
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+
+	public String getPositionAppliedFor() {
+		return positionAppliedFor;
+	}
+
+
+	public void setPositionAppliedFor(String positionAppliedFor) {
+		this.positionAppliedFor = positionAppliedFor;
+	}
+
+
+	
+
+
+	public Double getSalaryExpected() {
+		return salaryExpected;
+	}
+
+
+	public void setSalaryExpected(Double salaryExpected) {
+		this.salaryExpected = salaryExpected;
+	}
+
+
+	public Integer getOfficialId() {
+		return officialId;
+	}
+
+
+	public void setOfficialId(Integer officialId) {
+		this.officialId = officialId;
+	}
+
 
 	@Override
 	public String toString() {
@@ -1014,14 +1074,17 @@ public class AllEmployeeDto {
 				+ ", previousEmployerYes=" + previousEmployerYes
 				+ ", previousEmployerNo=" + previousEmployerNo
 				+ ", previousEmpreasonsNo=" + previousEmpreasonsNo + ", image="
-				+ image + ", aimempid=" + aimempid + ", masCoreSkill="
-				+ masCoreSkill + ", masEmployment=" + masEmployment
-				+ ", masDivision=" + masDivision + ", masJoblevel="
-				+ masJoblevel + ", technology=" + technology
-				+ ", masStaffType=" + masStaffType + ", masLocation="
-				+ masLocation + ", addressList=" + addressList
-				+ ", probationDate=" + probationDate + "]";
+				+ image + ", startDate=" + startDate + ", positionAppliedFor="
+				+ positionAppliedFor + ", salaryExpected=" + salaryExpected
+				+ ", aimempid=" + aimempid + ", masCoreSkill=" + masCoreSkill
+				+ ", masEmployment=" + masEmployment + ", masDivision="
+				+ masDivision + ", masJoblevel=" + masJoblevel
+				+ ", technology=" + technology + ", masStaffType="
+				+ masStaffType + ", masLocation=" + masLocation
+				+ ", addressList=" + addressList + ", probationDate="
+				+ probationDate + ", officialId=" + officialId + "]";
 	}
-    
+
+
 	
 }

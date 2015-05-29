@@ -22,6 +22,7 @@ public interface EmployeeService {
 	public List<Employee> findByCriteria(Employee employee);
 	public void createEmployeeAndAddress(Employee employee);
 	public void saveByNameQuery(AllEmployeeDto allEmployeeDto);
+	public Employee searhEmpIdtoAddress();
 
 
 	
