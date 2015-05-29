@@ -1,6 +1,5 @@
 package com.aug.hr.entity;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,42 +8,36 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Repository;
 
 
 
 @Entity
-@Table(name="LOGIN")
+@Table(name="EMP_LOGIN")
 @Repository
-public class Login extends BaseEnityMasterData implements Serializable{
+public class Login extends BaseEntity{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5463453141490649784L;
 	
-	private Integer loginId;
+	private Integer id;
 	private String username;
 	private String password;
-	private Employee emp;
+	private Employee empolyee;
 	
 	
 	@Id
 	@GeneratedValue
 	@Column(name="ID")	
-	public Integer getLoginId() {
-		return loginId;
+	public Integer getId() {
+		return id;
 	}
 
 
-	public void setLoginId(Integer loginId) {
-		this.loginId = loginId;
-	}
+	public void setId(Integer id) {
+		this.id = id;
+	}	
 	
-	@Column(name="USERNAME")
-	@NotNull
+	@Column(name="USERNAME",nullable=false)
 	public String getUsername() {
 		return username;
 	}
@@ -67,14 +60,16 @@ public class Login extends BaseEnityMasterData implements Serializable{
 	}
 
 	@OneToOne
-	@JoinColumn(name="EMP_ID")
-	public Employee getEmp() {
-		return emp;
+	@JoinColumn(name="EMPLOYEE_ID",nullable=true)
+	public Employee getEmpolyee() {
+		return empolyee;
 	}
 
-	public void setEmp(Employee emp) {
-		this.emp = emp;
+
+	public void setEmpolyee(Employee empolyee) {
+		this.empolyee = empolyee;
 	}
+
 	
 	
 

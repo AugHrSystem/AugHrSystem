@@ -324,3 +324,8 @@ INSERT INTO MAS_LEAVETYPE (NAME,CODE,ISACTIVE) VALUES
 ('Sick Leave','L04',true),
 ('Urgent Leave','L05',true),
 ('Other','L06',true);
+
+--LOGIN
+INSERT INTO EMP_LOGIN ( AUDITFLAG, CREATEDBY,CREATEDTIMESTAMP,USERNAME, PASSWORD, EMPLOYEE_ID) VALUES
+('C',0,NOW(),'bill01','password',1),
+('C',0,NOW(),'parn01','password',2);

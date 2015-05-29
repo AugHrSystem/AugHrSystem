@@ -548,6 +548,10 @@ public class Employee extends BaseEntity{
    private Set<Site> site = new HashSet<Site>();
    
    
+   @OneToOne(fetch=FetchType.LAZY)
+   @JoinColumn(name = "LOGIN_ID",nullable = true)
+   private Login login;
+   
  //-------------------------------------- getter setter --------------------------------------------------//
 
 	public Integer getId() {
@@ -1456,7 +1460,13 @@ public class Employee extends BaseEntity{
 		this.certifications = certifications;
 	}
 
+	public Login getLogin() {
+		return login;
+	}
 
+	public void setLogin(Login login) {
+		this.login = login;
+	}
 
 	
 	

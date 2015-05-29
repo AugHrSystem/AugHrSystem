@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+    <!-- Excludes will never be decorated by Sitemesh. -->
+  	<excludes>
+<!-- 	    <pattern>*/exclude/*</pattern> -->
+<!-- 	    <pattern>/data/plaintext/*</pattern> -->
+<!-- 	    <pattern>*.txt</pattern> -->
+	    <pattern>/error.jsp</pattern>
+        <pattern>/*login*</pattern>
+        <pattern>/*logout*</pattern>
+        <pattern>/*accessdenied*</pattern>
+        <pattern>/403.jsp*</pattern>
+        <pattern>/404.jsp*</pattern>
+        <pattern>/*modal*</pattern>;
+        <pattern>/*Popup*</pattern>
+        <pattern>/*view*</pattern>
+  	</excludes>
+    <decorator name="default" page="main.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>

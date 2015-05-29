@@ -27,9 +27,9 @@
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
+
 <title>Experience</title>
 <style>
-.datepicker{z-index:1151 !important;}
 
 </style>
 </head>
@@ -37,11 +37,10 @@
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
 	<div class="container">
 
-		<h2>Probation</h2>
-		
-		<br><br>
-		
+		<h2>Probation</h2>	
+		<br>
 		<div id="message"></div>
+		<br>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">
 			<thead>
@@ -58,6 +57,7 @@
 			<tbody></tbody>
 		</table>
 		</div>
+		
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
@@ -135,6 +135,7 @@
 var dt;
 	$(document).ready(function() {
 		var proId; 
+		
     	$( "#dateTimeFrom" ).datetimepicker({
 			 viewMode: 'days',
 			 format : 'DD-MM-YYYY',
@@ -192,7 +193,7 @@ var dt;
     				contentType: "application/json",
     				success : function(data) {
     					$('#addModal').modal('toggle');
-    					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+    					$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();
     					/* dt.fnClearTable();
     					dt.fnAddData([
     					    data.id,
@@ -212,7 +213,7 @@ var dt;
     				},
     				error : function(data,testStatus,jqXHR) {
     					$('#addModal').modal('toggle');
-    					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+    					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
     					}
     				});
     		}
@@ -232,7 +233,7 @@ var dt;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
 						}
 					});
 			}
@@ -254,7 +255,7 @@ var dt;
 					contentType: "application/json",
 					success : function(data) {
 						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+						$("#message").html('<div class="alert alert-success" role="alert">Success</div>').slideDown('fast').delay(5000).fadeOut().delay(4000);
 						/* dt.fnClearTable();
 						dt.fnAddData([
 						    data.id,
@@ -273,7 +274,7 @@ var dt;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
 						}
 					});
 			}
@@ -309,14 +310,14 @@ var dt;
 						type : "POST",
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
+							$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();		
 							/* var del = button.closet("tr");
 							dt.fnDeleteRow(del); */
 							listAll();
 						},
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+							$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
 							}
 						});
 				}

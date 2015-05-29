@@ -48,6 +48,7 @@
 		<mapping class="com.aug.hr.entity.Leave" />
 		<mapping class="com.aug.hr.entity.Certification" />
 		<mapping class="com.aug.hr.entity.Site" />
+		<mapping class="com.aug.hr.entity.Login" />
 
 	</session-factory>
         
