@@ -32,20 +32,26 @@ import com.fasterxml.jackson.annotation.JsonFormat;
             		+ "START_DATE,"
             		+ "POSITION_APPLIED_FOR,"
             		+ "SALARY_EXPECTED,"
-            		+ "EMPLOYEE_ID"
+            		+ "createdTimeStamp,"
+            		+ "createdBy,"
+            		+ "auditFlag"
+            		//+ "EMPLOYEE_ID"
             		+ ") "
             		+ " values("
             		+ ":START_DATE,"
             		+ ":POSITION_APPLIED_FOR,"
             		+ ":SALARY_EXPECTED,"
-            		+ ":EMPLOYEE_ID"
+            		+ "NOW(),"
+            		+ "0,"
+            		+ "'C'"
+            		//+ ":EMPLOYEE_ID"
             		+ ")"
             	
             		,resultClass= Official.class),
             		
 @NamedNativeQuery(
            name = "searchIdEmptoOfficial",
-           query = "select * from EMP_OFFICIAL  ORDER BY createdTimeStamp LIMIT 1;", 
+           query = "select * from EMP_OFFICIAL ORDER BY ID desc LIMIT 1;", 
             resultClass = Official.class)
   })
 
@@ -68,8 +74,7 @@ public class Official extends BaseEntity{
 		@Column(name = "SALARY_EXPECTED", nullable = true)
 		private Double salaryExpected;
 	    
-		 @OneToOne(fetch=FetchType.LAZY)
-		 @JoinColumn(name = "EMPLOYEE_ID",nullable = true)
+		 @OneToOne(fetch=FetchType.LAZY,mappedBy="official")
 		 private Employee empOfficial;
 
 		 

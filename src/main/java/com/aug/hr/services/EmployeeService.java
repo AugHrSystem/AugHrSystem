@@ -23,6 +23,7 @@ public interface EmployeeService {
 	public void createEmployeeAndAddress(Employee employee);
 	public void saveByNameQuery(AllEmployeeDto allEmployeeDto);
 	public Employee searhEmpIdtoAddress();
+	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto);
 
 
 	

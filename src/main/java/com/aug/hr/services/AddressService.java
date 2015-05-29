@@ -9,6 +9,7 @@ package com.aug.hr.services;
 import java.util.List;
 
 import com.aug.hr.entity.Address;
+import com.aug.hr.entity.dto.AddressDto;
 
 
 
@@ -22,6 +23,7 @@ public interface AddressService {
 	public List<Address> findByCriteria(Address address);
 	public Address deleteById(Integer id);
 	public Address find(Integer Id);
+	public void saveAddressByNameQuery(AddressDto addressDto);
 	
 
 }

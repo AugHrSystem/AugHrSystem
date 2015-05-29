@@ -1545,7 +1545,7 @@ var getIndex = 0;
 		    $("#dataaddress2"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].address2");
 		    $("#dataaddress2"+dataUpdate[8]).val(address2);
 		    
-		    $("#dataprovinceid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].provinceId");
+		    $("#dataprovinceid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].masprovinceId");
 		    $("#dataprovinceid"+dataUpdate[8]).val(provinceId);
 		    
 		
@@ -1645,7 +1645,7 @@ var getIndex = 0;
 					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].addressTypeId" value="'+addressType+'">'+
 					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].address1" value="'+address1+'">'+
 					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].address2" value="'+address2+'">'+
-					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].provinceId" value="'+provinceId+'">'+
+					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].masprovinceId" value="'+provinceId+'">'+
 					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].zipcode" value="'+zipcode+'">'+
 					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].status" value="'+status+'">']);
 					

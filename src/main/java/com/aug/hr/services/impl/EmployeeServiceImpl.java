@@ -6,6 +6,8 @@
 
 package com.aug.hr.services.impl;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,15 @@ import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasAddressType;
 import com.aug.hr.entity.MasProvince;
+import com.aug.hr.entity.Official;
+import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
+import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasAddressTypeService;
 import com.aug.hr.services.MasProvinceService;
+import com.aug.hr.services.OfficialService;
 
 @Service("employeeService")
 @Transactional
@@ -35,6 +41,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private MasProvinceService masProvinceService;
 	@Autowired 
 	private AddressService addressService;
+	@Autowired
+	private OfficialService afficialService;
 	
 	
 	@Override
@@ -104,6 +112,42 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee searhEmpIdtoAddress() {
 		
 		return employeeDao.searhEmpIdtoAddress();
+	}
+
+	@Override
+	@Transactional
+	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto) {
+		// TODO Auto-generated method stub
+		
+		
+		OfficialDto officialDto = new OfficialDto();
+		//Date dateOffi = new Date("12/05/2015");
+		Calendar cal = Calendar.getInstance();
+		officialDto.setStartDate(allEmployeeDto.getStartDate());
+		officialDto.setPositionAppliedFor(allEmployeeDto.getPositionAppliedFor());
+		officialDto.setSalaryExpected(allEmployeeDto.getSalaryExpected());
+	
+		afficialService.saveOfficialByNameQuery(officialDto);		
+		
+		Official official1 = afficialService.searhEmpIdtoOfficial();
+		System.out.println(official1.getId());
+	
+		allEmployeeDto.setOfficialId(official1.getId());
+		
+		employeeDao.saveByNameQuery(allEmployeeDto);
+		
+		
+		Employee emp = employeeDao.searhEmpIdtoAddress();
+		
+		System.out.println("empId: "+emp.getId());
+    
+		for(AddressDto addressDto:allEmployeeDto.getAddressList()){
+			
+			addressDto.setEmployeeId(emp.getId());
+			addressService.saveAddressByNameQuery(addressDto);;
+			
+		}
+		
 	}
 
 

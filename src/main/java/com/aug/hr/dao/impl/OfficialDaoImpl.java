@@ -54,7 +54,7 @@ public class OfficialDaoImpl extends GenericDaoImpl<Official, Integer> implement
 		query.setDate("START_DATE", officialDto.getStartDate());
 		query.setString("POSITION_APPLIED_FOR", officialDto.getPositionAppliedFor());
 		query.setDouble("SALARY_EXPECTED", officialDto.getSalaryExpected());
-		query.setInteger("EMPLOYEE_ID", officialDto.getEmployeeId());
+		//query.setInteger("EMPLOYEE_ID", officialDto.getEmployeeId());
 		
 		query.executeUpdate();
 		

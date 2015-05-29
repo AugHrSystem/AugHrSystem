@@ -2,6 +2,7 @@ package com.aug.hr.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -35,8 +36,11 @@ import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasAddressType;
 import com.aug.hr.entity.MasProvince;
+import com.aug.hr.entity.Official;
+import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
+import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
@@ -71,7 +75,7 @@ public class EmployeeController {
 	@Autowired private EmployeeDtoService employeeDtoService;
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
 	@Autowired private UploadService uploadService;
-
+	
 	
 	
 	private static final Logger logger = Logger.getLogger(Employee.class);
@@ -205,22 +209,12 @@ public class EmployeeController {
 	   
 		
 		logger.info("infoooo: "+employee);	
-		logger.info("infoooo: "+employee.getAddressList());		
-      //  logger.info("address: "+employee.getAddresses());		 
-		//employeeService.saveByNameQuery(employee);
+		logger.info("infoooo: "+employee.getAddressList());
+		
+		employeeService.saveEmpAndWithRelateTable(employee);
 	
-        
-		/*employeeService.create(employee);
-		logger.info("employee: "+employee.getId());
-		for(Address address:employee.getAddresses()){
-			address.setEmployee(employee);
-			MasProvince masProvince = masProvinceService.find(address.getProvinceId());
-			address.setProvince(masProvince);
-			MasAddressType masAddressType = masAddressTypeService.findById(address.getAddressTypeId());
-			address.setAddressType(masAddressType);
-			addressService.create(address);
-		}*/
-       // employeeService.createEmployeeAndAddress(employee);
+		
+		
 
 		return null;
 	}

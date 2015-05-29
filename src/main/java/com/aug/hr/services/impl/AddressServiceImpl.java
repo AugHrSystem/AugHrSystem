@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.AddressDao;
 import com.aug.hr.entity.Address;
+import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.services.AddressService;
 
 @Service("addressService")
@@ -65,6 +66,12 @@ public class AddressServiceImpl implements AddressService{
 	@Override
 	public Address find(Integer Id) {
 		return addressDao.find(Id);
+	}
+
+	@Override
+	public void saveAddressByNameQuery(AddressDto addressDto) {
+		// TODO Auto-generated method stub
+		addressDao.saveAddressByNameQuery(addressDto);
 	}
 	
 

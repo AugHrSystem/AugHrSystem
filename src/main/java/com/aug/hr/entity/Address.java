@@ -65,7 +65,7 @@ public class Address extends BaseEntity{
 	private String address2;
 	
 	@Column(name="ZIPCODE")
-	private String zipcode;
+	private Integer zipcode;
 	
 	@Transient
     private Integer addressTypeId;
@@ -110,11 +110,12 @@ public class Address extends BaseEntity{
 		this.address1 = address1;
 	}
 
-	public String getZipcode() {
+	
+	public Integer getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(String zipcode) {
+	public void setZipcode(Integer zipcode) {
 		this.zipcode = zipcode;
 	}
 
