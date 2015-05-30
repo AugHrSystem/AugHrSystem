@@ -22,27 +22,18 @@
 
 <!-- Data Table -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
-
-
-<!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
+<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
+
+
+
+
+
 
 <title>Site</title>
 
 
-<style type="text/css">
-
-  #tableResult {
-        width: 90%;
-        /* margin-top: 35%; */
-    }
-  
-#nav {
-       margin-top: 3%;
-    }
- 
-</style>
 
 
 
@@ -54,11 +45,22 @@
 	$(function(){
 	
 	
-		dt = $('#tableResult').dataTable();  
-				
+		dt = $('#tableResult').dataTable({
+ 			 "columnDefs": [
+ 			                { "width": "16%", "targets": 0 },
+ 			                { "width": "16%", "targets": 1 },
+ 			                { "width": "16%", "targets": 2 },
+ 			                { "width": "16%", "targets": 3 },
+ 			                { "width": "16%", "targets": 4 },
+ 			               	{ "width": "10%", "targets": 5 },
+ 			               	{ "width": "10%", "targets": 6 }
+ 			              ]
+		});  
+		
 		doFindData();
+		
 	
-		var dateto = $('#datetimepicker1').datetimepicker({
+		$('#datetimepicker1').datetimepicker({
 			 
 						 viewMode: 'days',
 						 format : 'DD-MM-YYYY',
@@ -70,18 +72,29 @@
 						
 		});
 			 
+		var defaultDate = new Date($('#datetimepicker1').data("DateTimePicker").date());
+		defaultDate.setDate(defaultDate.getDate()+1);
 		
-		 
- 		$('#datetimepicker2').datetimepicker({			 
-						 viewMode: 'days',
-						 format : 'DD-MM-YYYY',	 
-						 defaultDate: 'moment',
-						 minDate: 'moment',
-						 //ShowClear: true,
-						 showClose:true
-						 
-					
+		
+		$('#datetimepicker2').datetimepicker({			 
+			 viewMode: 'days',
+			 format : 'DD-MM-YYYY',	 
+			 defaultDate: defaultDate,
+			 minDate: defaultDate,
+			 //ShowClear: true,
+			 showClose:true					 
+		
 		});
+	
+		
+		
+ 		
+ 		$("#datetimepicker1").on("dp.change", function (e) {
+ 			var tempdate = new Date(e.date);
+ 			tempdate.setDate(tempdate.getDate()+1);
+ 			//alert(tempdate);
+            $('#datetimepicker2').data("DateTimePicker").minDate(tempdate);
+        });
  		 
  		 
  		 
@@ -131,7 +144,8 @@
  		
  		
  		 $("#addModal").on("show.bs.modal", function(event){
-	    	  
+ 			 
+ 			 
 	    	    //clearModal();
 	    	    var button = $(event.relatedTarget);
 	    		var idUpdate = button.data("idupdate"); 
@@ -153,6 +167,18 @@
 	    	  
 	      });
  		 
+ 		 
+ 		 
+ 		$('#addModal').on("hidden.bs.modal",function(event){
+			   
+ 			 var d = new Date();
+ 		     d.setDate(d.getDate()+1);
+ 			 
+ 			 $('#datetimepicker1').data("DateTimePicker").date(new Date());
+ 			 $('#datetimepicker2').data("DateTimePicker").date(d);
+ 		
+			   		  
+	    });
  		 
  		 
  		 
@@ -222,20 +248,16 @@
 	  	    	
 	  	    	//$('#datetimepicker1').datetimepicker('minDate',date.startDate);
 	  	    	
-	  	    	//$('#datetimepicker1').data("DateTimePicker").minDate(data.startDate);
+	  	    	$('#datetimepicker1').data("DateTimePicker").minDate(data.startDate);
 	  	    	
 	  	    	//$('#datetimepicker1').data("DateTimePicker").date('moment');
 	  	    	
-	  	    	//$('#datetimepicker2').data("DateTimePicker").minDate($('#datetimepicker1').data("DateTimePicker").date());
+	  	    	$('#datetimepicker2').data("DateTimePicker").minDate($('#datetimepicker1').data("DateTimePicker").date());
 	  	    	
 	  	    	
-	  	    	/*$('#datetimepicker1').datetimepicker('update');
+	  	    
 	  	    	 
-	  	    	$('#datetimepicker2').datetimepicker({
-	  	    		'defaultDate':date.endDate
-	  	    	});
 	  	    	
-	  	    	*/
 	  	     },  
 	  	      error : function(data,testStatus,jqXHR) {  
 	  	    	  
@@ -370,11 +392,6 @@
 
 <div class="container">
 
-	
-<br/>
-<br/>
-
-
 <h2>Site</h2>
 		
 <br><br>
@@ -385,7 +402,7 @@
 
 
 
- <table id="tableResult" class="table table-striped table-bordered">
+ <table id="tableResult" class="display"> 
 	    <thead>
             <tr> 
                 <th>Project Name</th>
@@ -398,10 +415,6 @@
             </tr>
         </thead>
  
-      
-	   <tbody>
-	   
-	   </tbody>
    </table>
    
    <div align="right">    
