@@ -36,6 +36,7 @@
 <div class="container">
 
 <input type="hidden" id="emp">
+<input type="text" id="empname">
 
  <div class="row">
  	<div class="span12">
@@ -1157,6 +1158,8 @@ var getIndex = 0;
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					
     					window.parent.document.getElementById('emp').value=data.id;
+    					window.parent.document.getElementById('empname').value=data.nameEng;
+    					
     					/* dt.fnClearTable();
     					dt.fnAddData([
     					       data.id,
