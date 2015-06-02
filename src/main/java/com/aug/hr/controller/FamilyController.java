@@ -87,11 +87,11 @@ public class FamilyController {
 		//init page for display page 
 		
 		logger.info("Welcome to employee family(list) locale: " + locale);
-		List<Family> familyList = familyService.findFamilyByEmployeeId(1);
+		//List<Family> familyList = familyService.findFamilyByEmployeeId(1);
 		List<MasRelationType> masRelationTypeList = masRelationService.findAll();
-		Hibernate.initialize(familyList);
-		System.out.println(familyList);
-		model.addAttribute("familyList", familyList);
+		//Hibernate.initialize(familyList);
+		//System.out.println(familyList);
+		//model.addAttribute("familyList", familyList);
 		model.addAttribute("family", family);
 		model.addAttribute("masRelationTypeList", masRelationTypeList);
 		

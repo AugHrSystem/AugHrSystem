@@ -64,11 +64,11 @@ public class SkillLanguageController {
 		
 		logger.info("Welcome to skill language locale: " + locale);
 		List<MasSkillLanguage> masSkillLanguageList = masSkillLanguageService.findAll();
-		List<SkillLanguage> skillLanguageList = skillLanguageService.findAllByEmployee(1);
+		//List<SkillLanguage> skillLanguageList = skillLanguageService.findAllByEmployee(1);
 		
 		
 		
-		model.addAttribute("skillLaguageList", skillLanguageList );
+		//model.addAttribute("skillLaguageList", skillLanguageList );
 		model.addAttribute("skillLaguage", skillLanguage);
 		model.addAttribute("masSkillLanguageList", masSkillLanguageList);
 		
@@ -86,7 +86,7 @@ public class SkillLanguageController {
 			ModelMap model){
 		
 		
-		List<SkillLanguageDto> skillLanguageList = skillLanguageDtoService.listSkillLanguage(new Integer(1));
+		List<SkillLanguageDto> skillLanguageList = skillLanguageDtoService.listSkillLanguage(new Integer(id));
 		
 		return skillLanguageList;
 	

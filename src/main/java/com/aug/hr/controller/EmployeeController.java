@@ -1,5 +1,6 @@
 package com.aug.hr.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Ability;
@@ -205,13 +207,23 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
-	public String manageSubmit(@ModelAttribute AllEmployeeDto employee) {
+	public String manageSubmit(@ModelAttribute AllEmployeeDto employee,
+			@RequestParam("fileupload") MultipartFile file) {
 	   
 		
 		logger.info("infoooo: "+employee);	
 		logger.info("infoooo: "+employee.getAddressList());
+		logger.info("file: "+file.getOriginalFilename());
+		try {
+			uploadService.uploadImage("EMPLOYEE",file.getOriginalFilename(), file);
+		} catch (RuntimeException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		employeeService.saveEmpAndWithRelateTable(employee);
+		
+		
+		//employeeService.saveEmpAndWithRelateTable(employee);
 	
 		
 		
