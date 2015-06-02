@@ -548,8 +548,7 @@ public class Employee extends BaseEntity{
    private Set<Site> site = new HashSet<Site>();
    
    
-   @OneToOne(fetch=FetchType.LAZY)
-   @JoinColumn(name = "LOGIN_ID",nullable = true)
+   @OneToOne(fetch=FetchType.LAZY,mappedBy="empolyee")
    private Login login;
    
  //-------------------------------------- getter setter --------------------------------------------------//
