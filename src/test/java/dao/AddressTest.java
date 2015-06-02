@@ -37,7 +37,7 @@ public class AddressTest {
 		Address address = new Address();
 		address.setAddress1("200 moo.3 sukhumvit rd.");
 		address.setAddress2("Bangkok");
-		address.setZipcode("10270");
+		//address.setZipcode("10270");
 		//emp.setId(2L);
 		address.setEmployee(emp);
 		addressDao.getCurrentSession().save(address);

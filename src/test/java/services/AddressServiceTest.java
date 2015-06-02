@@ -37,7 +37,7 @@ public class AddressServiceTest {
 	Address address = new Address();
 	address.setAddress1("2/3 moo.3 sukhumvit rd.");
 	address.setAddress2("Bangkok");
-	address.setZipcode("10250");
+	//address.setZipcode("10250");
 	//emp.setId(3L);
 	address.setEmployee(null);
 	addressService.create(address);

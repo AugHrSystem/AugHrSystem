@@ -104,6 +104,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ "PREVIOUS_EMPLOYER_NO,"
             		+ "PREVIOUSEMP_REASONS_NO,"
             		+ "IMAGE,"
+            		+ "ISMANAGER,"
+            		+ "AIM_EMP_ID,"
             		+ "DIVISION_ID,"
             		+ "JOBLEVEL_ID,"
             		+ "EMPLOYMENT_ID,"
@@ -173,6 +175,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ ":PREVIOUS_EMPLOYER_NO,"
             		+ ":PREVIOUSEMP_REASONS_NO,"
             		+ ":IMAGE,"
+            		+ ":ISMANAGER,"
+            		+ ":AIM_EMP_ID,"
             		+ ":DIVISION_ID,"
             		+ ":JOBLEVEL_ID,"
             		+ ":EMPLOYMENT_ID,"
@@ -275,7 +279,9 @@ public class Employee extends BaseEntity{
 	@Column(name = "ISSUED_OFFICE",nullable = true)
 	private String issuedOffice;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Column(name = "EXPIRY_DATE",nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date expiryDate;
 	
 	@Column(name = "HEIGHT",nullable = true)
@@ -388,6 +394,9 @@ public class Employee extends BaseEntity{
 	
 	@Column(name = "IMAGE",nullable = true)
 	private String image;
+	
+	@Column(name = "ISMANAGER",nullable = true)
+	private Integer isManager;
 	
 //------------------self relation-------------------
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -1478,6 +1487,13 @@ public class Employee extends BaseEntity{
 		this.login = login;
 	}
 
-	
+	public Integer getIsManager() {
+		return isManager;
+	}
+
+	public void setIsManager(Integer isManager) {
+		this.isManager = isManager;
+	}
+
 	
 }

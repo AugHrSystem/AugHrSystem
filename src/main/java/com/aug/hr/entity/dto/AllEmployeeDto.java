@@ -115,9 +115,12 @@ public class AllEmployeeDto {
 	private Integer idCard;
 	
 	//@Column(name = "ISSUED_OFFICE",nullable = true)
+	
 	private String issuedOffice;
 	
 	//@Column(name = "EXPIRY_DATE",nullable = true)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date expiryDate;
 	
 	//@Column(name = "HEIGHT",nullable = true)
