@@ -15,7 +15,7 @@
 
         <!-- <property name="hbm2ddl.auto">create-drop</property> -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
-      
+      	
 		<mapping class="com.aug.hr.entity.Employee" />
 		<mapping class="com.aug.hr.entity.Education" />
 		<mapping class="com.aug.hr.entity.Ability" />
@@ -48,7 +48,9 @@
 		<mapping class="com.aug.hr.entity.Leave" />
 		<mapping class="com.aug.hr.entity.Certification" />
 		<mapping class="com.aug.hr.entity.Site" />
+		<mapping class="com.aug.hr.entity.Attendance" />
 		<mapping class="com.aug.hr.entity.Login" />
+		
 
 	</session-factory>
         

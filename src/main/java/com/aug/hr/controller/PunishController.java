@@ -48,7 +48,6 @@ public class PunishController {
 
 	@RequestMapping(value = "/punish", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model) {
-		model.addAttribute("punishList", punishService.findAll());
 		return "/punish/punish";
 	}
 	

@@ -464,8 +464,6 @@ public class Employee extends BaseEntity{
     private Set<Ability> abilities = new HashSet<Ability>();
     
     @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
-
- //   @JsonIgnore
     private Set<Reference> references = new HashSet<Reference>();
     
    
@@ -508,6 +506,11 @@ public class Employee extends BaseEntity{
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Reward> rewards  = new HashSet<Reward>();
+    
+    
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Attendance> attendances = new HashSet<Attendance>();
     
     
     @ManyToOne(fetch=FetchType.EAGER)
@@ -1449,6 +1452,14 @@ public class Employee extends BaseEntity{
 
 	public void setRewards(Set<Reward> rewards) {
 		this.rewards = rewards;
+	}
+	
+	public Set<Attendance> getAttendances() {
+		return attendances;
+	}
+
+	public void setAttendances(Set<Attendance> attendances) {
+		this.attendances = attendances;
 	}
 
 	public Set<Certification> getCertifications() {
