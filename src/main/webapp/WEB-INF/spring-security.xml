@@ -38,7 +38,7 @@
 		  users-by-username-query=
 		    "select  username as username,password as password,1 from emp_login where username=?"
 		  authorities-by-username-query=
-		   "select emp_employee.id,emp_login.employee_id from emp_employee,emp_login where (emp_employee.id=emp_login.employee_id) and emp_login.username=?" />
+		   "select emp_login.username,mas_role.type from mas_role,emp_login where (emp_login.role_id = mas_role.id) and emp_login.username=?" />
 	  </authentication-provider>
 	</authentication-manager>
  

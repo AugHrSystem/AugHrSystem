@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.LoginDao;
 import com.aug.hr.entity.Login;
+import com.aug.hr.entity.Official;
 import com.aug.hr.services.LoginService;
 
 @Service("loginService")
@@ -50,6 +51,11 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public Login deleteById(Integer id) {
 		return loginDao.deleteById(id);
+	}
+	
+	@Override
+	public Login searhEmpIdtoLogin() {		
+		return loginDao.searhEmpIdtoLogin();
 	}
 
 }

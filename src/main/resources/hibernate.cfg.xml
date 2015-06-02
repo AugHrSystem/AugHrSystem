@@ -50,7 +50,7 @@
 		<mapping class="com.aug.hr.entity.Site" />
 		<mapping class="com.aug.hr.entity.Attendance" />
 		<mapping class="com.aug.hr.entity.Login" />
-		
+		<mapping class="com.aug.hr.entity.MasRole" />
 
 	</session-factory>
         

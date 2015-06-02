@@ -10,6 +10,7 @@ package com.aug.hr.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,9 +42,11 @@ public class MasLocation extends BaseEntity {
 	
 	
 
-	@OneToMany(mappedBy = "masLocation")
+	@OneToMany(mappedBy = "masLocation", cascade=CascadeType.ALL, orphanRemoval=true)
 	private Set<Employee> employees = new HashSet<Employee>();
 	
+	@OneToMany(mappedBy = "masLocation", cascade=CascadeType.ALL, orphanRemoval=true)
+	private Set<Login> logins = new HashSet<Login>();
 	
 
 
@@ -97,6 +100,16 @@ public class MasLocation extends BaseEntity {
 
 	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
+	}
+
+
+	public Set<Login> getLogins() {
+		return logins;
+	}
+
+
+	public void setLogins(Set<Login> logins) {
+		this.logins = logins;
 	}
 
 	

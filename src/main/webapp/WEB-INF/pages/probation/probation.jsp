@@ -34,15 +34,15 @@
 </style>
 </head>
 <body>
+<div class="container">
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
-	<div class="container">
 
 		<h2>Probation</h2>	
 		<br>
 		<div id="message"></div>
 		<br>
 		<div id="outputajax" class="form-group">		
-		<table id="tdResult">
+		<table id="tbResult" class="table">
 			<thead>
 				<tr>
 					<th>Id</th>

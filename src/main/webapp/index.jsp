@@ -211,15 +211,15 @@ var empId;
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
 				var empId = button.data("empid");
-				alert("delete "+empId);
+				//alert("delete "+empId);
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteEmployee(button,empId);
-							alert("go fn");
+							//alert("go fn");
 						});
 				
 				function deleteEmployee(button,empId){
-					alert("in fn");
+					//alert("in fn");
 					$.ajax({
 						url : "${pageContext.request.contextPath}/employee/delete/"+empId,
 						type : "POST",
@@ -261,78 +261,6 @@ var empId;
 				$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 				}
 			}); */
-	}
-	
-	function editEmployee() {
-		alert(empId+" edit");
-		$.ajax({
-			url : "${pageContext.request.contextPath}/employee/edit",
-			type : "POST",
-			datatype: "json",
-			contentType: "application/json",
-			success : function(data) {
-				$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-				$("#nameThai").val(data.nameThai);
-				$("#surnameThai").val(data.surnameThai);
-				$("#nicknameThai").val(data.nicknameThai);
-				$("#nameEng").val(data.nameEng);
-				$("#surnameEng").val(data.surnameEng);
-				$("#nicknameEng").val(data.nicknameEng);
-				$("#telHome").val(data.telHome);
-				$("#telMobile").val(data.telMobile);
-				$("#telFax").val(data.telFax);
-				$("#emergencyContact").val(data.emergencyContact);
-				$("#relationshipWithEmergencyContact").val(data.relationshipWithEmergencyContact);
-				$("#emergencyContactAddress").val(data.emergencyContactAddress);
-				$("#emergencyContactPhoneNumber").val(data.emergencyContactPhoneNumber);
-				$("#dateOfBirth").val(data.dateOfBirth);
-				$("#placeOfBirth").val(data.placeOfBirth);
-				$("#age").val(data.age);
-				$("#religion").val(data.religion);
-				$("#idCard").val(data.idCard);
-				$("#issuedOffice").val(data.issuedOffice);
-				$("#expiryDate").val(data.expiryDate);
-				$("#height").val(data.height);
-				$("#weigth").val(data.weigth);
-				$("#sex").val(data.sex);
-				$("#maritalStatus").val(data.maritalStatus);
-				$("#numberOfChildren").val(data.numberOfChildren);
-				$("#spouseName").val(data.spouseName);
-				$("#marriageCertificateNo").val(data.marriageCertificateNo);
-				$("#issuedOffice2").val(data.issuedOffice2);
-				$("#address").val(data.address);
-				$("#occupation").val(data.occupation);
-				$("#knowAugNewspaper").val(data.knowAugNewspaper);
-				$("#descriptionNewspaper").val(data.descriptionNewspaper);
-				$("#knowAugMagazine").val(data.knowAugMagazine);
-				$("#descriptionMagazine").val(data.descriptionMagazine);
-				$("#knowAugWebsite").val(data.knowAugWebsite);
-				$("#descriptionWebsite").val(data.descriptionWebsite);
-				$("#knowAugFriend").val(data.knowAugFriend);
-				$("#descriptionFriend").val(data.descriptionFriend);
-				$("#knowAugOther").val(data.knowAugOther);
-				$("#descriptionOther").val(data.descriptionOther);
-				$("#knowEmployedYes").val(data.knowEmployedYes);
-				$("#descriptionYes").val(data.descriptionYes);
-				$("#knowEmployerNo").val(data.knowEmployerNo);
-				$("#militaryServiceYes").val(data.militaryServiceYes);
-				$("#fromYear").val(data.fromYear);
-				$("#toYear").val(data.toYear);
-				$("#branchOfService").val(data.branchOfService);
-				$("#serviceNo").val(data.serviceNo);
-				$("#militaryServiceNo").val(data.militaryServiceNo);
-				$("#reasonsNo").val(data.reasonsNo);
-				$("#dateToBeDrafted").val(data.dateToBeDrafted);
-				$("#previousEmployerYes").val(data.previousEmployerYes);
-				$("#previousEmployerNo").val(data.previousEmployerNo);
-				$("#previousEmpreasonsNo").val(data.previousEmpreasonsNo);
-				
-			},
-			error : function(data,testStatus,jqXHR) {
-				
-				$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-				}
-			});
 	}
 
   

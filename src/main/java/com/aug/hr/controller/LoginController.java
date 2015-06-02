@@ -27,7 +27,7 @@ public class LoginController {
 		return "login";
 	}
 
-//	@Secured({"ROLE_ADMIN","ROLE_USER"})
+	@Secured({"ROLE_ADMIN","ROLE_MANAGER","ROLE_STAFF"})
 	@RequestMapping(value="/listemployee", method = RequestMethod.GET)
 	public String dashboard(Locale locale,ModelMap model,HttpSession session) {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

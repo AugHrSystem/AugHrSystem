@@ -3,11 +3,13 @@ package com.aug.hr.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.LoginDao;
 import com.aug.hr.entity.Login;
+import com.aug.hr.entity.Official;
 
 @Repository
 public class LoginDaoImpl extends GenericDaoImpl<Login, Integer> implements LoginDao {
@@ -31,6 +33,14 @@ public class LoginDaoImpl extends GenericDaoImpl<Login, Integer> implements Logi
 		Login login = (Login) getCurrentSession().load(Login.class, id);
 		getCurrentSession().delete(login);
 		return login;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Login searhEmpIdtoLogin() {
+		Query query = getCurrentSession().getNamedQuery("searchIdEmptoLogin");
+		List<Login> login = query.list();
+		return login.get(0);
 	}
 
 }

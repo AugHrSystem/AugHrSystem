@@ -13,5 +13,6 @@ public interface LoginService {
 	public List<Login> findAll();
 	public Login findByUserName(String name);
 	public Login deleteById(Integer id);
+	public Login searhEmpIdtoLogin();
 
 }

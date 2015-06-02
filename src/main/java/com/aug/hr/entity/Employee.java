@@ -25,6 +25,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -550,9 +551,8 @@ public class Employee extends BaseEntity{
    @OneToMany(mappedBy = "employee")
    private Set<Site> site = new HashSet<Site>();
    
-   
-   @OneToOne(fetch=FetchType.LAZY,mappedBy="empolyee")
-   private Login login;
+	@OneToOne(fetch=FetchType.LAZY,mappedBy="employee")
+	private Login login;
    
  //-------------------------------------- getter setter --------------------------------------------------//
 
@@ -1469,7 +1469,7 @@ public class Employee extends BaseEntity{
 	public void setCertifications(Set<Certification> certifications) {
 		this.certifications = certifications;
 	}
-
+	
 	public Login getLogin() {
 		return login;
 	}

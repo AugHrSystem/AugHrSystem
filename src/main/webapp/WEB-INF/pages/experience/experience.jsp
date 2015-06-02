@@ -34,8 +34,8 @@
 </style>
 </head>
 <body>
+<div class="container">
 <f:form method="post" commandName="experience" class="form-horizontal" role="form">
-	<div class="container">
 
 		<h2>Experience</h2>
 		
@@ -43,7 +43,7 @@
 		
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
-		<table id="tdResult">
+		<table id="tbResult" class="table">
 			<thead>
 				<tr>
 					<th>Id</th>
