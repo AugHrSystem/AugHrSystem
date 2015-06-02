@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.CertificationDao;
 import com.aug.hr.entity.Certification;
+import com.aug.hr.entity.dto.CertificationDto;
 import com.aug.hr.services.CertificationService;
 
 @Service("certificationService")
@@ -55,6 +56,11 @@ public class CertificationServiceImpl implements CertificationService{
 	@Override
 	public Certification deleteById(Integer id) {
 		return certificationDao.deleteById(id);
+	}
+
+	@Override
+	public List<CertificationDto> searchCertification(Integer id) {
+		return certificationDao.searchCertification(id);
 	}
 
 }

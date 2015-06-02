@@ -54,7 +54,7 @@
               <li><a href="#leave" data-toggle="tab">Leave</a></li>  
               <li><a href="#skilllanguage" data-toggle="tab">SkillLanguage</a></li>
               <li><a href="#site" data-toggle="tab">Site</a></li>  
-              <li><a href="#certification" data-toggle="tab">Certification</a></li>
+              <li><a href="#certification1" data-toggle="tab">Certification</a></li>
              
             </ul>
 
@@ -896,47 +896,32 @@
 		marginwidth="0" marginheight="0" frameborder="0"
 		vspace="0" hspace="0"></iframe>
               </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <div class="tab-pane" id="skilllanguage">
- 			 <iframe src="${pageContext.request.contextPath}/skilllanguage" style="width: 100%; height: 600px; " 
-				marginwidth="0" marginheight="0" frameborder="0"
-				vspace="0" hspace="0"></iframe>
-              </div>
-              
-              
-              
-              
-              <div class="tab-pane" id="site">
- 			 <iframe src="${pageContext.request.contextPath}/site" style="width: 100%; height: 600px; " 
-				marginwidth="0" marginheight="0" frameborder="0"
-				vspace="0" hspace="0"></iframe>
-              </div>
-              
-            </div>  
-            
-            
-       <%--  <div class="tab-pane" id="certification">
- 	    <iframe src="${pageContext.request.contextPath}/certification" style="width: 100%; height: 600px; " 
-			marginwidth="0" marginheight="0" frameborder="0"
-			vspace="0" hspace="0"></iframe>
-        </div> --%>
 
+	<div class="tab-pane" id="skilllanguage">
+		<iframe src="${pageContext.request.contextPath}/skilllanguage"
+			style="width: 100%; height: 600px;" marginwidth="0"
+			marginheight="0" frameborder="0" vspace="0" hspace="0"></iframe>
+	</div>
+
+	<div class="tab-pane" id="site">
+		<iframe src="${pageContext.request.contextPath}/site"
+			style="width: 100%; height: 600px;" marginwidth="0"
+			marginheight="0" frameborder="0" vspace="0" hspace="0"></iframe>
+	</div>
+
+	<div class="tab-pane" id="certification1">
+		<iframe src="${pageContext.request.contextPath}/certification"
+			style="width: 100%; height: 600px;" marginwidth="0"
+			marginheight="0" frameborder="0" vspace="0" hspace="0"></iframe>
+	</div>
+
+</div>  
+            
+            
+        
 
 </div>
 
-</div>
-</div>    
 <!---------------------------------------------------------- Start JQuery ----------------------------------------------------->	  
 	    
 <script type="text/javascript">

@@ -14,8 +14,8 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchCertification",
-			query="select edu.id,edu.university,edu.gpa,edu.faculty,edu.major,mas_degreetype.name,edu.certificate,edu.description,edu.start_date,edu.graduated_date,edu.employee_id from emp_education as edu,emp_employee as emp,mas_degreetype where edu.employee_id=:empId  and edu.employee_id = emp.id and mas_degreetype.id = edu.degreetype_id",																																																																					
-			resultClass = EducationDto.class)
+			query="select c.id,c.year,c.name,c.certification_from,c.employee_id from emp_certification as c,emp_employee where c.employee_id=:empId  and c.employee_id = emp_employee.id",																																																																					
+			resultClass = CertificationDto.class)
 			
 })
 
@@ -25,7 +25,57 @@ public class CertificationDto {
 	@Column(name ="ID")
 	@Id
 	private Integer id;
-//	@Column(name = "UNIVERSITY")
-//	private String university;
+
+	@Column(name = "YEAR")
+	private String year;
+	
+	@Column(name = "NAME")
+	private String name;
+	
+	@Column(name = "CERTIFICATION_FROM")
+	private String certificationFrom;
+	
+	@Column(name = "EMPLOYEE_ID")
+	private Integer employeeId;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCertificationFrom() {
+		return certificationFrom;
+	}
+
+	public void setCertificationFrom(String certificationFrom) {
+		this.certificationFrom = certificationFrom;
+	}
+
+	public Integer getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
+	}
 	
 }

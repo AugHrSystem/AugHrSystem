@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>History</title>
+<title>Certification</title>
 
 <!-- Spring -->	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -34,15 +34,13 @@
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
-
-
 </head>
 <body>
 <div class="container">
 
-<form:form id ="listForm" method="post" commandName="history">
+<form:form id ="listForm" method="post" commandName="certification">
 
-<h2>History</h2> 
+<h2>Certification</h2> 
 
 <br></br>
 
@@ -51,12 +49,9 @@
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>Position</th>
-			<th>Salary</th>
-			<th>Old Salary</th>
-			<th>Date Of Adjustment</th>
-			<th>Reason Of Adjustment</th>
-			<th>Adjustment Time</th>
+			<th>Year</th>
+			<th>Certification Name</th>
+			<th>Certification From</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -67,11 +62,11 @@
 
 </form:form>
 
-<form:form id ="addForm" method="post" commandName="history">
+<form:form id ="addForm" method="post" commandName="certification">
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<button type="button" id="addBtnHis" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
+<button type="button" id="addBtnCer" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
 </div>
 
 <!-- Modal -->
@@ -80,48 +75,26 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">History Add</h4>
+        <h4 class="modal-title" id="myModalLabel">Certification Add</h4>
       </div>
       
       <div class="modal-body">
         
 	  <div class="form-group">
-	    <label>Position :</label>
-	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position"/>
+	    <label>Year :</label>
+	    <form:input path="year" type="text" class="form-control" id="year" placeholder="Enter Year"/>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Salary :</label>
-	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary"/>
+	    <label>Certification Name :</label>
+	    <form:input path="name" type="text" class="form-control" id="name" placeholder="Enter Certification Name"/>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Old Salary :</label>
-	    <form:input path="oldSalary" type="text" class="form-control" id="oldSalary" placeholder="Enter Old Salary"/>
+	    <label>Certification From :</label>
+	    <form:input path="certificationFrom" type="text" class="form-control" id="certificationFrom" placeholder="Enter Certification From"/>
 	  </div>
 	  
-	  <div class="form-group">
-	    <label>Date Of Adjustment :</label>
-	    <div class='input-group date' id='datetimepicker1'>
-	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment"/>
-	  	<span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-	  	
-	  	</div>
-	  </div>
-	  
-	  <div class="form-group">
-	    <label>Reason Of Adjustment :</label>
-	    <form:input path="reasonOfAdjustment" type="text" class="form-control" id="reasonOfAdjustment" placeholder="Enter Reason Of Adjustment"/>
-	  </div>
-	  
-	  <div class="form-group">
-	    <label>Adjustment Time :</label>
-	    <form:input path="adjustmentTime" type="text" class="form-control" id="adjustmentTime" placeholder="Enter Adjustment Time"/>
-	  </div>
-	  
-
       </div>
       
       <div class="form-group" align="center">
@@ -135,7 +108,7 @@
 
 </form:form>
 
-<form:form id="deleteForm" commandName="history" method="post">
+<form:form id="deleteForm" commandName="certification" method="post">
 
 		<!-- Modal -->
 		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
@@ -171,13 +144,7 @@
 	
 	$(document).ready(function(){
 		
-		$("#addBtnHis").on("click",function(){clearModal();});
-		
-		$('#datetimepicker1').datetimepicker({
-			 
-			 format : 'DD-MM-YYYY',
-			 
-		 });
+		$("#addBtnCer").on("click",function(){clearModal();});
 		
 		dt = $('#tbResult').dataTable();
 		listAll();
@@ -188,17 +155,17 @@
 			//clearModal();
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var historyid = button.data("id") //Extract info from data-* attribute
+			var certificationid = button.data("id") //Extract info from data-* attribute
 			
-			if(historyid != null){
-				getId(historyid);
+			if(certificationid != null){
+				getId(certificationid);
 			} 
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
-				if(historyid != null){
-					updateHistory(button, historyid);
+				if(certificationid != null){
+					updateCertification(button, certificationid);
 				}else{
-					addHistory();
+					addCertification();
 					
 				 }
 				
@@ -210,10 +177,10 @@
 		$("#deleteModal").on("show.bs.modal",function(event) {
 			
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var historyid = button.data("id") //Extract info from data-* attribute
+			var certificationid = button.data("id") //Extract info from data-* attribute
 			
 			$(this).find(".btnYes").off("click").on("click",function() {
-				deleteHistory(button, historyid);
+				deleteCertification(button, certificationid);
 			});
 			
 		});
@@ -221,25 +188,19 @@
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 		
 		function clearModal(){
-			$("#position").val("");
-			$("#salary").val("");
-			$("#oldSalary").val("");
-			$("#dateOfAdjustment").val("");
-			$("#reasonOfAdjustment").val("");
-			$("#adjustmentTime").val("");
+			$("#year").val("");
+			$("#name").val("");
+			$("#certificationFrom").val("");
 		}
 		
-		function addHistory(){
+		function addCertification(){
 			var id = getUrlParameter('Id');
 			$.ajax({
-				url : "${pageContext.request.contextPath}/history/add",
+				url : "${pageContext.request.contextPath}/certification/add",
 				data : JSON.stringify({
-					position : $("#position").val(),
-					salary :$("#salary").val(),
-					oldSalary :$("#oldSalary").val(),
-					dateOfAdjustment :$("#dateOfAdjustment").val(),
-					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
-					adjustmentTime :$("#adjustmentTime").val(),
+					year : $("#year").val(),
+					name :$("#name").val(),
+					certificationFrom :$("#certificationFrom").val(),
 					employeeId: id
 				}),
 				type : "POST",
@@ -257,12 +218,9 @@
 						$("#Unit").val(),
 						$("#Price").val(),
 						$("#Description").val(), */
-						data.position,
-						data.salary,
-						data.oldSalary,
-						data.dateOfAdjustment,
-						data.reasonOfAdjustment,
-						data.adjustmentTime,
+						data.year,
+						data.name,
+						data.certificationFrom,
 						/* data.company,
 						data.salary,
 						data.time, */
@@ -281,18 +239,15 @@
 			});
 		}
 		
-		function updateHistory(button, historyid){
+		function updateCertification(button, certificationid){
 			var id = getUrlParameter('Id');
 			$.ajax({
-				url : "${pageContext.request.contextPath}/history/update",
+				url : "${pageContext.request.contextPath}/certification/update",
 				data : JSON.stringify({
-					id : historyid,
-					position : $("#position").val(),
-					salary :$("#salary").val(),
-					oldSalary :$("#oldSalary").val(),
-					dateOfAdjustment :$("#dateOfAdjustment").val(),
-					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
-					adjustmentTime :$("#adjustmentTime").val(),
+					id : certificationid,
+					year : $("#year").val(),
+					name :$("#name").val(),
+					certificationFrom :$("#certificationFrom").val(),
 					employeeId : id
 					/* company :$("#company").val(),
 					salary :$("#salary").val(),
@@ -307,12 +262,9 @@
 					
 					var tr = button.closest("tr")
 					
-					dt.fnUpdate(data.position,tr,0);
-					dt.fnUpdate(data.salary,tr,1);
-					dt.fnUpdate(data.oldSalary,tr,2);
-					dt.fnUpdate(data.dateOfAdjustment,tr,3);
-					dt.fnUpdate(data.reasonOfAdjustment,tr,4);
-					dt.fnUpdate(data.adjustmentTime,tr,5);
+					dt.fnUpdate(data.year,tr,0);
+					dt.fnUpdate(data.name,tr,1);
+					dt.fnUpdate(data.certificationFrom,tr,2);
 					/* dt.fnUpdate(data.company, tr ,1);
 					dt.fnUpdate(data.salary, tr ,2);
 					dt.fnUpdate(data.time, tr ,3); */
@@ -325,20 +277,17 @@
 			});
 		}
 		
-		function getId(historyid){
+		function getId(certificationid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/history/findById",
-				data : "historyid=" + historyid,
+				url : "${pageContext.request.contextPath}/certification/findById",
+				data : "certificationid=" + certificationid,
 				type : "POST",
 				success : function(data) {
 	 				//alert(JSON.stringify(data));
 					//alert("ok");
-					$("#position").val(data.position);
-					$("#salary").val(data.salary);
-					$("#oldSalary").val(data.oldSalary);
-					$("#dateOfAdjustment").val(data.dateOfAdjustment);
-					$("#reasonOfAdjustment").val(data.reasonOfAdjustment);
-					$("#adjustmentTime").val(data.adjustmentTime);
+					$("#year").val(data.year);
+					$("#name").val(data.name);
+					$("#certificationFrom").val(data.certificationFrom);
 					
 					/* employee: {id: data.position } */
 					/* $("#company").val(data.company),
@@ -352,10 +301,10 @@
 			});
 		}
 		
-		function deleteHistory(button, historyid){
+		function deleteCertification(button, certificationid){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/history/delete",
-				data : "historyid=" + historyid,
+				url : "${pageContext.request.contextPath}/certification/delete",
+				data : "certificationid=" + certificationid,
 				type : "POST",
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
@@ -400,17 +349,14 @@
 			var id = getUrlParameter('Id');
 			
 			$.ajax({
-				url : "${pageContext.request.contextPath}/history/listAll/"+id,
+				url : "${pageContext.request.contextPath}/certification/listAll/"+id,
 				type : "POST",
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].position,
-					              data[i].salary,
-					              data[i].oldSalary, 
-					              data[i].dateOfAdjustment,
-					              data[i].reasonOfAdjustment,
-					              data[i].adjustmentTime,
+					dt.fnAddData([data[i].year,
+					              data[i].name,
+					              data[i].certificationFrom, 
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			

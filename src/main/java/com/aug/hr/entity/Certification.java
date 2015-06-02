@@ -7,12 +7,13 @@ package com.aug.hr.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.aug.hr.entity.dto.CertificationDto;
 
 
 @Entity
@@ -30,10 +31,10 @@ public class Certification extends BaseEntity {
 	@Column(name = "NAME" ,nullable = false)
 	private String name;
 	
-	@Column(name = "DATE_FROM" ,nullable = false)
-	private String datefrom;
+	@Column(name = "CERTIFICATION_FROM" ,nullable = false)
+	private String certificationFrom;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne()
 	@JoinColumn(name = "EMPLOYEE_ID", nullable = false)
 	
 	private Employee employee;
@@ -63,14 +64,6 @@ public class Certification extends BaseEntity {
 		this.name = name;
 	}
 
-	public String getDatefrom() {
-		return datefrom;
-	}
-
-	public void setDatefrom(String datefrom) {
-		this.datefrom = datefrom;
-	}
-
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -79,5 +72,45 @@ public class Certification extends BaseEntity {
 		this.employee = employee;
 	}
 
+	public String getCertificationFrom() {
+		return certificationFrom;
+	}
+
+	public void setCertificationFrom(String certificationFrom) {
+		this.certificationFrom = certificationFrom;
+	}
+
+	public Certification fromCertificationDto(CertificationDto certificationDto) {
+		
+		Certification certification = new Certification();
+		
+		certification.setId(certificationDto.getId());
+		certification.setYear(certificationDto.getYear());
+		certification.setName(certificationDto.getName());
+		certification.setCertificationFrom(certificationDto.getCertificationFrom());
+
+		Employee employee = new Employee();
+		employee.setId(certificationDto.getEmployeeId());
+		certification.setEmployee(employee);
+		
+		return certification;
+	}
+
+	public CertificationDto toCertificationDto() {
+
+		CertificationDto certificationDto = new CertificationDto();
+		
+		certificationDto.setId(this.id);
+		certificationDto.setYear(this.year);
+		certificationDto.setName(this.name);
+		certificationDto.setCertificationFrom(this.certificationFrom);
+		certificationDto.setEmployeeId(this.employee.getId());
+		
+		return certificationDto;
+	}
+	
+	
+	
+	
 	
 }
