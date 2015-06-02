@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -233,6 +234,8 @@ public class AllEmployeeDto {
 	
 	//@Column(name = "IMAGE",nullable = true)
 	private String image;
+	
+	private MultipartFile fileupload;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -1031,6 +1034,18 @@ public class AllEmployeeDto {
 
 	public void setOfficialId(Integer officialId) {
 		this.officialId = officialId;
+	}
+
+
+	
+
+	public MultipartFile getFileupload() {
+		return fileupload;
+	}
+
+
+	public void setFileupload(MultipartFile fileupload) {
+		this.fileupload = fileupload;
 	}
 
 

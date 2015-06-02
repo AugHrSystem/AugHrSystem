@@ -117,7 +117,7 @@ public class EmployeeController {
 		model.addAttribute("joblevelList",joblevelService.findAll());
 		model.addAttribute("locationList",masLocationService.findAll());
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
-//		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
 		
 		
 		//return "/employee/employee";
@@ -207,23 +207,26 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
-	public String manageSubmit(@ModelAttribute AllEmployeeDto employee,
-			@RequestParam("fileupload") MultipartFile file) {
+	public String manageSubmit(@ModelAttribute AllEmployeeDto employee
+			/*@RequestParam("fileupload") MultipartFile file*/) {
 	   
+		
+		
+		
 		
 		logger.info("infoooo: "+employee);	
 		logger.info("infoooo: "+employee.getAddressList());
-		logger.info("file: "+file.getOriginalFilename());
+		logger.info("file: "+employee.getFileupload().getOriginalFilename());
 		try {
-			uploadService.uploadImage("EMPLOYEE",file.getOriginalFilename(), file);
+			uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+employee.getFileupload().getOriginalFilename(), employee.getFileupload());
 		} catch (RuntimeException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		employee.setImage(employee.getEmployeeCode()+"_"+employee.getFileupload().getOriginalFilename());
 		
-		
-		//employeeService.saveEmpAndWithRelateTable(employee);
+		employeeService.saveEmpAndWithRelateTable(employee);
 	
 		
 		

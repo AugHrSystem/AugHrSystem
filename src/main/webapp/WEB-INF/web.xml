@@ -11,8 +11,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
   			classpath:applicationContext.xml,
-  			/WEB-INF/spring-servlet.xml ,
-  			/WEB-INF/spring-security.xml 
+  			/WEB-INF/spring-servlet.xml <!-- ,
+  			/WEB-INF/spring-security.xml  -->
         </param-value>
 	</context-param>
 	
@@ -56,24 +56,24 @@
 	</servlet-mapping>
 	
  	<!-- Spring Security -->
-    <filter>
+   <!--  <filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> 
+	</filter-mapping>  -->
 	
 	<!-- Sitemesh decorators -->
-	<filter>
+	<!-- <filter>
 		<filter-name>sitemesh</filter-name>
 		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>sitemesh</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
 	
 	
 	<filter>

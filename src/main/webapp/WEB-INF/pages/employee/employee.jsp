@@ -698,13 +698,13 @@
 					
     				<label>AIM :</label>
     				
-    				<%--  <f:select  path="aimempid"  class="form-control">
+    				  <f:select  path="aimempid"  class="form-control">
     						 
     						 <f:option  value="-1" label="--Select AIM--" />
   							 <f:options items="${ aimList }"  itemValue="id" itemLabel="name" />
     						  
 								
-							</f:select>  --%>
+							</f:select>  
     				
 						</div>
   				</div>

@@ -737,6 +737,19 @@
 			
 			
 			
+			<%-- <div class="visible-xs col-xs-12">
+			
+	    			
+	    				<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('<c:url value="/resources/images/no_image.gif" />');"></div>
+	    		
+	    			
+	    				<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=employee&fileName=${employee.picture}');"></div>
+	    		
+		</div> --%>
+			
+			
+			
+			
 			<div align="center">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
