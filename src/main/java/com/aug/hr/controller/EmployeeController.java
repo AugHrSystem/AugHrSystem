@@ -120,8 +120,8 @@ public class EmployeeController {
 		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
 		
 		
-		//return "/employee/employee";
-		return "/employee/employeetest";
+		return "/employee/employee";
+		//return "/employee/employeetest";
 	}
 	
 

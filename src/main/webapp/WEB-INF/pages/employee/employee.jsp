@@ -36,7 +36,7 @@
 <div class="container">
 
 <input type="hidden" id="emp">
-<input type="text" id="empname">
+<input type="hidden" id="empname">
 
  <div class="row">
  	<div class="span12">
