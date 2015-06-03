@@ -107,7 +107,7 @@
 	  <div class="form-group">
 	    <label>Date Of Adjustment :</label>
 	    <div class='input-group date' id='datetimepicker1'>
-	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment" placeholder="DD/MM/YYYY"/>
+	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment" placeholder="DD-MM-YYYY"/>
 	  	<span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -175,11 +175,15 @@
 	
 	$(document).ready(function(){
 		
-		$("#addBtnHis").on("click",function(){clearModal();});
+		$("#addBtnHis").on("click",function(){
+			clearModal();
+// 			bootstrapValidator('validate').hide();
+		});
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
 	        message: 'This value is not valid',
+	        container: 'tooltip',
 	        feedbackIcons: {
 	            valid: 'glyphicon glyphicon-ok',
 	            invalid: 'glyphicon glyphicon-remove',
@@ -197,14 +201,20 @@
 	                validators: {
 	                    notEmpty: {
 	                        message: 'The salary is required and cannot be empty'
-	                    }
+	                    },
+	                    digits: {
+	                    	message: 'The salary is number'
+	                    },
 	                }
 	            },
 	            oldSalary: {
 	                validators: {
 	                    notEmpty: {
 	                        message: 'The old salary is required and cannot be empty'
-	                    }
+	                    },
+	                    digits: {
+	                    	message: 'The old salary is number'
+	                    },
 	                }
 	            },
 	            dateOfAdjustment: {
@@ -228,7 +238,10 @@
 	                validators: {
 	                    notEmpty: {
 	                        message: 'The adjustment time is required and cannot be empty'
-	                    }
+	                    },
+	                    digits: {
+	                    	message: 'The adjustment time is number'
+	                    },
 	                }
 	            }
 	        }
