@@ -14,8 +14,6 @@
 <!-- jQuery -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 
-
-
 <!-- Bootstrap -->
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
@@ -34,19 +32,13 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
-
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
-
-
 
 <!-- Date Time Picker -->
 <script src="<c:url value="/resource/moment/js/moment.js" />"></script>
 <script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
 <link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
-
-
-
 
 </head>
 <body>
@@ -115,7 +107,7 @@
 	  <div class="form-group">
 	    <label>Date Of Adjustment :</label>
 	    <div class='input-group date' id='datetimepicker1'>
-	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment"/>
+	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment" placeholder="DD/MM/YYYY"/>
 	  	<span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -183,6 +175,8 @@
 	
 	$(document).ready(function(){
 		
+		$("#addBtnHis").on("click",function(){clearModal();});
+		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
 	        message: 'This value is not valid',
@@ -217,6 +211,9 @@
 	                validators: {
 	                    notEmpty: {
 	                        message: 'The date of adjustment is required and cannot be empty'
+	                    },
+	                    date: {
+	                        format: 'DD-MM-YYYY'
 	                    }
 	                }
 	            },
@@ -237,8 +234,6 @@
 	        }
 	    });
 	            
-		$("#addBtnHis").on("click",function(){clearModal();});
-		
 		$('#datetimepicker1').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
@@ -263,7 +258,7 @@
 			$(this).find(".btnSave").off("click").on("click",function() {
 				if(historyid != null){
 					updateHistory(button, historyid);
-				}else if( $('#addForm').bootstrapValidator('validate')){
+				}else{
 					addHistory();
 					
 				 }
@@ -343,6 +338,7 @@
 				},
 				error : function() {
 // 					alert("ERROR");
+					$('#addForm').bootstrapValidator('validate');
 				}
 			});
 		}

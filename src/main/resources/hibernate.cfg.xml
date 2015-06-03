@@ -51,6 +51,7 @@
 		<mapping class="com.aug.hr.entity.Attendance" />
 		<mapping class="com.aug.hr.entity.Login" />
 		<mapping class="com.aug.hr.entity.MasRole" />
+		<mapping class="com.aug.hr.entity.Allowances" />
 
 	</session-factory>
         

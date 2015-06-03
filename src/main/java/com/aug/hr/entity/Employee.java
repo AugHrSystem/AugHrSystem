@@ -446,14 +446,13 @@ public class Employee extends BaseEntity{
 	 private Official official;
 	 
 	 
-	 @OneToMany(mappedBy = "employee",fetch=FetchType.LAZY)
-
-//	 @JsonIgnore
+	 @OneToMany(mappedBy = "employee")
 	 private Set<Education> educations = new HashSet<Education>();
 	 
-	 @OneToMany(mappedBy = "employee",fetch=FetchType.LAZY)
-
-//	 @JsonIgnore
+	 @OneToMany(mappedBy = "employee")
+	 private Set<Allowances> allowances = new HashSet<Allowances>();
+	 
+	 @OneToMany(mappedBy = "employee")
 	 private Set<History> histories = new HashSet<History>();
 	 
 	 @ManyToOne(fetch=FetchType.EAGER)
