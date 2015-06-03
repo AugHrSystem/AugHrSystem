@@ -32,7 +32,7 @@
 
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
-<title>punish</title>
+<title>card</title>
 <style>
 .datepicker{z-index:1151 !important;}
 
@@ -41,17 +41,20 @@
 </head>
 <body>
 	<div class="container" style="padding-top: 5px"">
-		<form:form id ="listForm" method="post" commandName="punish">	
+		<form:form id ="listForm" method="post" commandName="card">	
 			<div style="padding-bottom: 10px">
-				<h2>Punish</h2>		
+				<h2>Card</h2>		
 			</div>
 			<div class="form-group">
 			<br><br>
 				<table id="tbResult" class="table">
 					<thead>					
 						<tr>								
-							<th>DATE</th>
-							<th>Punish Description</th>					
+							<th>Card No.</th>
+							<th>Start Date</th>					
+							<th>End Date</th>
+							<th>Status</th>
+							<th>Remark</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -61,7 +64,7 @@
 			</div>		
 	   </form:form>		
 
-	<form:form id ="addForm" method="post" commandName="punish">
+	<form:form id ="addForm" method="post" commandName="card">
 		<!-- Button trigger modal -->
 	<div class="form-group" align="right">
 		<button type="button"  id="addBtn" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
@@ -70,33 +73,63 @@
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
 	
 		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">		
-			<div class="modal-dialog modal-md">
+			<div class="modal-dialog modal-md">  
 				<div class="modal-content">
+				
 					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Add Punish</h4>
-      					</div>
-																															
-				<div class="col col-lg-12 " style="padding-top: 10px">		
+       					 <h4 class="modal-title" id="addModalLabel">Add Card</h4>
+      				</div>
+      					
+      		<div class="col col-lg-12 " style="padding-top: 10px">	
+      			<div class="form-group "  align="left">
+							<label for="cardno" >Card No.:</label>
+							<form:input path="card_no" type="text" class="form-control" id="cardno" placeholder="Card No."/>							
+				</div>			
+      					
+																																		
 				    <div class="form-group "  align="left">
-							<label for="date" >Date:</label>
+							<label for="startdate">Start Date:</label>
 						<div class='input-group date' id='datetimepicker1'>
-	   						 <form:input path="datepunish" type="text" class="form-control" id="datepunish"/>
+	   						 <form:input path="startdate" type="text" class="form-control" id="startdate"/>
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
-				    </div>			    
+					</div>
+				    		
+			
 				    <div class="form-group "  align="left">
-							<label for="description" >Punish Description:</label>
-							<form:input path="description" type="text" class="form-control" id="description" placeholder="Description"/>							
+							<label for="enddate">End Date:</label>
+						<div class='input-group date' id='datetimepicker2'>
+	   						 <form:input path="enddate" type="text" class="form-control" id="enddate"/>
+	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
+					  	</div>													
+					</div>    		
+				    		
+				    		<div class="form-group " align="left">
+									 <label>Status :</label>
+									<form:select path="status" class="form-control" id="status">
+										<form:option value="-1" label="---Select status---" />
+										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>						
+										<option value="Onsite">On site</option>
+										<option value="Office">Office</option>
+										<option value="Resign">Resign</option>	
+										<%-- </c:forEach> --%>
+									</form:select>
+								</div>
+				    						    		
+				    			    
+				    <div class="form-group "  align="left">
+							<label for="remark" >Remark:</label>
+							<form:input path="remark" type="text" class="form-control" id="remark" placeholder="Remark"/>							
 				    </div>					
 					<div class="form-group" align="center">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
 				</div>
-				</div>			
-			</div>
+			</div>			
 		</div>
+	</div>
 	</form:form>
 	  
 <!------------------------------------------Button  modal 2----------------------------------------------------->
@@ -132,6 +165,14 @@
 			 format : 'DD-MM-YYYY',
 			 
 		 });
+		
+		$('#datetimepicker2').datetimepicker({
+			 
+			 format : 'DD-MM-YYYY',
+			 
+		 });
+		
+		
 	
 		dt = $('#tbResult').dataTable();	
 		 listAll();
@@ -139,19 +180,20 @@
 		$("#addModal").on("show.bs.modal",function(event) {
 						
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
-			var punishid = button.data("id") //Extract info from data-* attribute
+			var cardid = button.data("id") //Extract info from data-* attribute
 						
-			 if(punishid != null){				 
-				 getpunishById(punishid);
+			 if(cardid != null){				 
+				 getcardById(cardid);
 			} 
 						
 			$(this).find(".btnSave").off("click").on("click",function() {
 				
-				 if(punishid != null){
-					updatepunish(button, punishid);
+				 if(cardid != null){
+					updatecard(button, cardid);
+					console.log("updatecard");
 				}else{ 
-					addpunish();
-					
+					addcard();
+					console.log("addcard");
 				 } 
 				
 			});
@@ -164,12 +206,12 @@
 	 	$("#deleteModal").on("show.bs.modal", function (event) {
 				
 	 			var button = $(event.relatedTarget); // select การกระทำของปุ่ม
-	 			var punishid = button.data("id"); //กดไอดีฝังในปุ่ม 
+	 			var cardid = button.data("id"); //กดไอดีฝังในปุ่ม 
 				
 		
 	 			$(this).find('.DeleteButton').off('click').on("click", function() {
 								
-	 					deleteById(button ,punishid);
+	 					deleteById(button ,cardid);
 	 
 	 				})
 					
@@ -177,19 +219,26 @@
 								
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 		function clearModal(){
-			$("#datepunish").val(""),
-			$("#description").val("");
+			$("#cardno").val(""),
+			$("#startdate").val("");
+			$("#enddate").val(""),
+			$("#status").val(""),
+			$("#remark").val("")
 		
 		}
 
-		function addpunish(){
+		function addcard(){
 			var id = getUrlParameter('Id');
 			$.ajax({
-				url : "${pageContext.request.contextPath}/punish/add",
+				url : "${pageContext.request.contextPath}/card/add",
 				data : JSON.stringify({
-					datepunish : $("#datepunish").val(),
-					description :$("#description").val(),
-					employeeId : id		
+					card_no : $("#cardno").val(),
+					startdate : $("#startdate").val(),
+					enddate : $("#enddate").val(),
+					status : $("#status").val(),
+					remark :$("#remark").val(),
+					employeeId : id	
+					//employeeId : {id:2}		
 				}),
 				type : "POST",
 				contentType : "application/json",
@@ -198,8 +247,11 @@
 
 					dt.fnClearTable();					
 					dt.fnAddData([             
-									data.datepunish,
-									data.description,										
+									data.card_no,
+									data.startdate,	
+									data.enddate,
+									data.status,
+									data.remark,
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 					]);
@@ -215,16 +267,20 @@
 		
 		
 		
-		function updatepunish(button,punishid) {
+		function updatecard(button,cardid) {
 			var id = getUrlParameter('Id');
 			$.ajax({
-				url:'${pageContext.request.contextPath}/punish/update',			
+				url:'${pageContext.request.contextPath}/card/update',			
 				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
 					
-								id :punishid,
-								datepunish: $("#datepunish").val(),	
-								description: $("#description").val(), 
-								employeeId: id 
+								id :cardid,
+								card_no: $("#cardno").val(),	
+								startdate: $("#startdate").val(), 
+								enddate: $("#enddate").val(),
+								status: $("#status").val(),
+								remark: $("#remark").val(),
+								employeeId : id	
+								//employeeId: {id:2}
 											
 					}),
 					type:"POST",
@@ -235,8 +291,11 @@
 					var tr = button.closest("tr"); // หาเเถวจากปุ่ม
 						
 					
-					dt.fnUpdate(data.datepunish, tr, 0),
-					dt.fnUpdate(data.description, tr, 1),
+					dt.fnUpdate(data.card_no, tr, 0),
+					dt.fnUpdate(data.startdate, tr, 1),
+					dt.fnUpdate(data.enddate, tr, 2),
+					dt.fnUpdate(data.status, tr, 3),
+					dt.fnUpdate(data.remark, tr, 4),
 				
 						$('#addModal').modal('toggle');
 						listAll();
@@ -250,14 +309,17 @@
 		
 		
 		
-		function getpunishById(punishid) {
+		function getcardById(cardid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/punish/findById/"+ punishid,
-				//data : "id=" +punishid,
+				url : "${pageContext.request.contextPath}/card/findById/"+ cardid,
+				//data : "id=" +cardid,
 				type : "POST", 
 				success : function(data) {
-					$("#datepunish").val(data.datepunish); 
-					$("#description").val(data.description);
+					$("#cardno").val(data.card_no); 
+					$("#startdate").val(data.startdate);
+					$("#enddate").val(data.enddate);
+					$("#status").val(data.status);
+					$("#remark").val(data.remark);
 					employeeId: data.employeeId;
 					
 					},
@@ -269,10 +331,10 @@
 		
 		
 		
-		function deleteById(button,punishid) {
+		function deleteById(button,cardid) {
 			$.ajax({
-				url : "${pageContext.request.contextPath}/punish/delete/"+ punishid,
-				//data : "id=" +punishid,
+				url : "${pageContext.request.contextPath}/card/delete/"+ cardid,
+				//data : "id=" +cardid,
 				type : "POST", 
 				success : function(data) {				
 					/* var tr = button.closest("tr"); // หาเเถวจากปุ่ม											
@@ -293,13 +355,16 @@
 				var id = getUrlParameter('Id');
 				//alert("id >>>>"+id);				
 				$.ajax({
-					url : "${pageContext.request.contextPath}/punish/listAll"+id,
+					url : "${pageContext.request.contextPath}/card/listAll"+id,
 					type : "POST",
 					success : function(data) {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].datepunish,
-						              data[i].description, 					              
+						dt.fnAddData([data[i].card_no,
+						              data[i].startdate, 		
+						              data[i].enddate, 
+						              data[i].status, 
+						              data[i].remark, 
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				

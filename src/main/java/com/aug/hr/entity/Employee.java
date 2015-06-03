@@ -519,7 +519,7 @@ public class Employee extends BaseEntity{
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     @JsonIgnore
-    private Set<Attendance> attendances = new HashSet<Attendance>();
+    private Set<Card> cards = new HashSet<Card>();
     
     
     @ManyToOne(fetch=FetchType.EAGER)
@@ -1462,12 +1462,12 @@ public class Employee extends BaseEntity{
 		this.rewards = rewards;
 	}
 	
-	public Set<Attendance> getAttendances() {
-		return attendances;
+	public Set<Card> getAttendances() {
+		return cards;
 	}
 
-	public void setAttendances(Set<Attendance> attendances) {
-		this.attendances = attendances;
+	public void setAttendances(Set<Card> cards) {
+		this.cards = cards;
 	}
 
 	public Set<Certification> getCertifications() {

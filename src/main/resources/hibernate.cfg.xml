@@ -48,7 +48,7 @@
 		<mapping class="com.aug.hr.entity.Leave" />
 		<mapping class="com.aug.hr.entity.Certification" />
 		<mapping class="com.aug.hr.entity.Site" />
-		<mapping class="com.aug.hr.entity.Attendance" />
+		<mapping class="com.aug.hr.entity.Card" />
 		<mapping class="com.aug.hr.entity.Login" />
 		<mapping class="com.aug.hr.entity.MasRole" />
 		<mapping class="com.aug.hr.entity.Allowances" />
