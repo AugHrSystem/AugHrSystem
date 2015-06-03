@@ -25,10 +25,25 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
 
+<!-- Browse-remove picture -->
+<script src="<c:url value="/resource/bootstrap/js/fileinput.min.js" />"></script>
+<link href="<c:url value="/resource/bootstrap/css/fileinput.min.css" />" rel="stylesheet"	media="all">
+
+
 <title>Employee</title>
 
 <style>
 .datepicker{z-index:1151 !important;}
+
+
+#imagePreview {
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline-block;
+}
 </style>
 
 </head>
@@ -36,6 +51,7 @@
 <div class="container">
 
 <input type="hidden" id="emp">
+<input type="text" id="empname">
 
  <div class="row">
          <div class="span12">
@@ -72,15 +88,18 @@
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 				</h2>
 		 </div>
+		 
+		 <div class="col-md-12">
+		 <div class="col-md-7">
 			 <div class="col-md-12">
 
 							<div class="form-group">
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<label for="id"> ID :</label> <input id="id" name="id" disabled="true" type="text" class="form-control"
 									id="id" placeholder="Enter ID">
 								</div>
 							
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<label for="employeeCode"> Employee Code :</label> <input id="employeeCode" name="employeeCode" type="text" class="form-control"
 									id="employeeCode" name="employeeCode" placeholder="Enter Employee Code">
 								</div>
@@ -94,15 +113,15 @@
 	         <div class="col-md-12">
 	         		
 							<div class="form-group">
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<label> Name (Thai.) :</label> <input type="text" class="form-control"
 									id="nameThai"name="nameThai" placeholder="Enter Name (Thai)">
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<label> SurName (Thai.) :</label> <input type="text" class="form-control"
 									id="surnameThai" name="surnameThai" placeholder="Enter Surname (Thai)">
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<label> NickName (Thai.) :</label> <input type="text" class="form-control"
 									id="nicknameThai" name="nicknameThai" placeholder="Enter Nickname (Thai)">
 								</div>
@@ -113,21 +132,61 @@
 	         <div class="col-md-12">
 	         		
 							<div class="form-group">
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<label> Name (Eng.) :</label> <input type="text" class="form-control"
 									id="nameEng" name="nameEng" placeholder="Enter Name (Eng)">
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<label> SurName (Eng.) :</label> <input type="text" class="form-control"
 									id="surnameEng" name="surnameEng" placeholder="Enter Surname (Eng)">
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<label> NickName (Eng.) :</label> <input type="text" class="form-control"
 									id="nicknameEng" name="nicknameEng" placeholder="Enter Nickname (Eng)">
 								</div>
 							</div>
 					
 	         </div>
+	         
+	         
+	         
+	         </div>
+	         
+	         
+	         
+	       <!--   Upload image -->
+							<div class="col-md-5">
+								<div class="form-group">
+									<div class="col-md-12">
+
+
+										<div class="col-md-3"></div>
+
+										<div class="col-md-9">
+
+											<label> Upload File :</label> 
+										
+											<input type="file" id="uploadFile" accept="image/*"
+												class="file" data-show-upload="false"
+												data-show-preview="false" data-initial-caption="Picture"
+												data-overwrite-initial="false" required> 
+												
+												<input type="hidden" name="image"
+												class="form-control element-to-paste-filename"
+												value="${allEmployeeDto.image}" />
+										
+											<div id="imagePreview" class="img-rounded img-responsive"
+												style="background-image:url('<c:url value="/resources/images/no_image.gif" />');"></div>
+										</div>
+										<!-- <div class="col-md-3"></div>
+ -->
+
+									</div>
+								</div>
+							</div>
+
+						</div>
+	         
 	         
  <!-------------------------------------------------- Start Address-------------------------------------------------->
  
@@ -718,36 +777,10 @@
 						</div>
   				</div>
 			</div>
-			
-	<!----------------------------------------------------------- Test Upload File --------------------------------------------------->
-			
-			
-			
-			 <div class="col-md-12">
-				<div class="form-group">
-						<div class="col-md-3">
-						
-						<label> Upload File :</label> 
-						<input type="file" name="fileupload" accept="image/*" class="file" data-show-upload="false" data-show-preview="false" data-initial-caption="Picture" data-overwrite-initial="false" required>
-						
-						</div>
-  				</div>
-			</div>
-			
-			
-			
-			
-			<%-- <div class="visible-xs col-xs-12">
-			
-	    			
-	    				<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('<c:url value="/resources/images/no_image.gif" />');"></div>
-	    		
-	    			
-	    				<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=employee&fileName=${employee.picture}');"></div>
-	    		
-		</div> --%>
-			
-			
+	
+		
+		
+	
 			
 			
 			<div align="center">
@@ -944,19 +977,23 @@
 				vspace="0" hspace="0"></iframe>
               </div>
               
+              
+              
+              
+             <div class="tab-pane" id="certification">
+
+	 	    <iframe src="${pageContext.request.contextPath}/certification" style="width: 100%; height: 600px; " 
+				marginwidth="0" marginheight="0" frameborder="0"
+				vspace="0" hspace="0"></iframe>
+	       </div> 
+           
             </div>
             
             
             
             
 
-	        <div class="tab-pane" id="certification">
-
-	 	    <iframe src="${pageContext.request.contextPath}/certification" style="width: 100%; height: 600px; " 
-				marginwidth="0" marginheight="0" frameborder="0"
-				vspace="0" hspace="0"></iframe>
-	       </div> 
-            
+	      
             
 
 
@@ -1082,9 +1119,27 @@ var getIndex = 0;
     			
     			});
  		//listAll();
+// 	 		$('input[type=file]').change(function(e){
+// 				$('.element-to-paste-filename').attr('value',e.target.files[0].name);
+// 			});
  		
- 		
- 		
+ 			$("#uploadFile").on("change", function()
+		    {
+		        var files = !!this.files ? this.files : [];
+		        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+		        if (/^image/.test( files[0].type)){ // only image file
+		            var reader = new FileReader(); // instance of the FileReader
+		            reader.readAsDataURL(files[0]); // read the local file
+
+		            reader.onloadend = function(){ // set image data as background of div
+		            	
+		                $("#imagePreview").css("background-image", "url("+this.result+")");
+/* 		                $("#imagePreview2").css("background-image", "url("+this.result+")");
+ */		            }
+		        }
+		        
+		    });
  		
  		
  		var button = $(event.relatedTarget);
@@ -1197,6 +1252,7 @@ var getIndex = 0;
     					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					
     					window.parent.document.getElementById('emp').value=data.id;
+						window.parent.document.getElementById('empname').value=data.nameEng;
     					/* dt.fnClearTable();
     					dt.fnAddData([
     					       data.id,

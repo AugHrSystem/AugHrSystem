@@ -224,7 +224,7 @@ public class EmployeeController {
 			e.printStackTrace();
 		}
 		
-		employee.setImage(employee.getEmployeeCode()+"_"+employee.getFileupload().getOriginalFilename());
+		employee.setImage(employee.getEmployeeCode()+employee.getFileupload().getOriginalFilename());
 		
 		employeeService.saveEmpAndWithRelateTable(employee);
 	
