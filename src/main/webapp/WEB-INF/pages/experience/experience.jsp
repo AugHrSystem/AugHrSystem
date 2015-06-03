@@ -8,10 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- Bootstrap -->
+<!-- Spring -->	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!-- jQuery -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
+
+<!-- Bootstrap -->
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
 <!-- Date Time Picker -->
@@ -19,14 +26,13 @@
 <script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
 <link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
 
-<!-- Data Table -->
+<!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
-
 <title>Experience</title>
 <style>
 .datepicker{z-index:1151 !important;}
@@ -43,7 +49,7 @@
 		
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
-		<table id="tbResult" class="table">
+		<table id="tdResult">
 			<thead>
 				<tr>
 					<th>Id</th>

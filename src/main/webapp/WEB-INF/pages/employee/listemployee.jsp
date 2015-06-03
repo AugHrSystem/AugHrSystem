@@ -168,7 +168,7 @@ var empId;
 			}); */
 	}
 	
-	function editEmployee() {
+/* 	function editEmployee() {
 		//alert(empId+" edit");
 		$.ajax({
 			url : "${pageContext.request.contextPath}/employee/edit",
@@ -238,7 +238,7 @@ var empId;
 				$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 				}
 			});
-	}
+	} */
 
   
   </script>

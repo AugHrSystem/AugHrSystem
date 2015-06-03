@@ -42,7 +42,7 @@
 		<div id="message"></div>
 		<br>
 		<div id="outputajax" class="form-group">		
-		<table id="tbResult" class="table">
+		<table id="tdResult">
 			<thead>
 				<tr>
 					<th>Id</th>
