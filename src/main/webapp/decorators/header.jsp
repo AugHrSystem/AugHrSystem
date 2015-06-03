@@ -11,11 +11,28 @@
 	</div>	
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="collapse navbar-collapse" id="navbar-collapse-01">
+<%-- 		<ul class="nav navbar-nav navbar-left">
+			<li class="active"><a href="#employee" data-toggle="tab">Employee</a></li>
+            <li><a href="$#education" data-toggle="tab">Family</a></li>
+			<li><a href="#education" data-toggle="tab">Education</a></li>
+            <li><a href="#experience" data-toggle="tab">Experience</a></li>
+            <li><a href="#ability" data-toggle="tab">Ability</a></li>
+            <li><a href="#reference" data-toggle="tab">Reference</a></li>
+            <li><a href="#reward" data-toggle="tab">Reward</a></li>
+            <li><a href="#history" data-toggle="tab">History</a></li>
+            <li><a href="#probation" data-toggle="tab">Probation</a></li>
+            <li><a href="#punish" data-toggle="tab">Punish</a></li>
+            <li><a href="#leave" data-toggle="tab">Leave</a></li>  
+            <li><a href="#skilllanguage" data-toggle="tab">SkillLanguage</a></li>
+            <li><a href="#site" data-toggle="tab">Site</a></li>  
+            <li><a href="#certification1" data-toggle="tab">Certification</a></li>
+            
+		</ul> --%> 
 		    <ul class="nav navbar-nav navbar-right">
 			    <li>
 			     	<a class="navbar-link" href="<%=request.getContextPath()%>/logout">Logout</a>
 			    </li>
 		    </ul>   
 	</div>
-	</nav>
+	</nav> 
 </div>
