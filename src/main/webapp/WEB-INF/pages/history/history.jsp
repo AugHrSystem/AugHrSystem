@@ -14,16 +14,19 @@
 <!-- jQuery -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 
+
+
 <!-- Bootstrap -->
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- Date Time Picker -->
-<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
-<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
-<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
+<%-- <link href="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all"> --%>
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
 
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/jquery/jquery.min.js" />"></script> --%>
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/js/bootstrap.min.js" />"></script> --%>
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
 
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
@@ -31,8 +34,17 @@
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
+
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
+
+
+
+<!-- Date Time Picker -->
+<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
+<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
+<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
+
 
 
 
@@ -171,6 +183,60 @@
 	
 	$(document).ready(function(){
 		
+		$('#addForm').bootstrapValidator({
+//	        live: 'disabled',
+	        message: 'This value is not valid',
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	position: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The position is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            salary: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The salary is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            oldSalary: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The old salary is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            dateOfAdjustment: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The date of adjustment is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            reasonOfAdjustment: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The reason of adjustment is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            adjustmentTime: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The adjustment time is required and cannot be empty'
+	                    }
+	                }
+	            }
+	        }
+	    });
+	            
 		$("#addBtnHis").on("click",function(){clearModal();});
 		
 		$('#datetimepicker1').datetimepicker({
@@ -197,7 +263,7 @@
 			$(this).find(".btnSave").off("click").on("click",function() {
 				if(historyid != null){
 					updateHistory(button, historyid);
-				}else{
+				}else if( $('#addForm').bootstrapValidator('validate')){
 					addHistory();
 					
 				 }
@@ -276,7 +342,7 @@
 					
 				},
 				error : function() {
-					alert("ERROR");
+// 					alert("ERROR");
 				}
 			});
 		}
