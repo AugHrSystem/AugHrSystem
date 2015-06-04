@@ -41,16 +41,29 @@
 <div class="container">
 <form:form id ="listForm" method="post" commandName="ability">
 
+			<div class="row-md-12">
 
-<h2>Ability</h2> 
+				<div class="col-md-6">
+					<h2>Ability</h2>
 
- <br><!-- Button trigger modal -->
-<div class="form-group" align="right"   >
-<button type="button" id="addBtnAbi" class="btn btn-info" data-toggle="modal" data-target="#addModal">New record</button> 
-</div></br>
+				</div>
+
+				<div class="col-md-6">
+
+					<br>
+					<!-- Button trigger modal -->
+					<div class="form-group" align="right">
+						<button type="button" id="addBtnAbi" class="btn btn-info"
+							data-toggle="modal" data-target="#addModal">New record</button>
+					</div>
+					</br>
 
 
-<!-- Table -->
+				</div>
+			</div>
+
+
+			<!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
 	<thead>

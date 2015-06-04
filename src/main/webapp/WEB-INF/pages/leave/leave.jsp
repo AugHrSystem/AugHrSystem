@@ -54,9 +54,34 @@
 
 <form:form id ="listForm" method="post" commandName="leave">
 
-<h2>Leave</h2> 
 
-<br></br>
+
+
+		<div class="row-md-12">
+
+				<div class="col-md-6">
+					<h2>Leave</h2> 
+
+				</div>
+
+				<div class="col-md-6">
+
+					<br>
+					<!-- Button trigger modal -->
+					<div align="right">
+						<button id="clearModal" type="button" class="btn btn-info btn-md"
+							data-toggle="modal" data-target="#addModal">New record</button>
+					</div>
+					</br>
+
+
+				</div>
+			</div>
+
+
+
+
+
 
 <!-- Table -->
 <div class="form-group">
@@ -81,12 +106,7 @@
 </form:form>
 
 <form:form id ="addForm" method="post" commandName="leave" >
-<!-- Button trigger modal -->
-	<div align="right">
-		<button id="clearModal" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
- 	 	Add
-		</button>
-	</div>
+
 	
 	
 	<!-- Modal -->
@@ -119,7 +139,7 @@
 	    <div class="form-group">
 			<label>Start Time :</label>
 
-			<div class="input-group clockpicker2">
+			<div class="input-group clockpicker">
 
 				<input type="text" class="form-control" id="startTime"
 					placeholder="Enter startTime" value="09.00"> <span
@@ -153,7 +173,7 @@
 <div class="form-group">
 			<label>End Time:</label>
 
-			<div class="input-group clockpicker2">
+			<div class="input-group clockpicker">
 
 				<input type="text" class="form-control" id="endTime"
 					placeholder="Enter endTime" value="18.00"> <span
@@ -267,7 +287,7 @@ $(document).ready(function() {
 	
 //	$('.clockpicker').clockpicker();
 	
-	$('.clockpicker').clockpicker({
+	 $('.clockpicker').clockpicker({
 		placement: 'bottom', // clock popover placement
 		align: 'left',       // popover arrow align
 		donetext: 'Done',     // done button text
@@ -276,13 +296,6 @@ $(document).ready(function() {
 		});
 	
 	
-	$('.clockpicker2').clockpicker({
-		placement: 'top', // clock popover placement
-		align: 'left',       // popover arrow align
-		donetext: 'Done',     // done button text
-		autoclose: true,    // auto close when minute is selected
-		vibrate: true        // vibrate the device when dragging clock hand
-		});
 	
 	
 	
