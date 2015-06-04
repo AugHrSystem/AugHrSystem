@@ -15,7 +15,7 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			 name = "listEmployeeAim",
-	            query = "select emp.ID, emp.NAME_ENG, emp.AIM_EMP_ID from EMP_EMPLOYEE as emp where AIM_EMP_ID IS NOT NULL", 
+	            query = "select emp.ID, emp.NAME_ENG, emp.AIM_EMP_ID from EMP_EMPLOYEE as emp where ISMANAGER IS NOT NULL", 
 	            resultClass = AimEmployeeDto.class)
 	  })
 

@@ -154,7 +154,7 @@
 							<tr>
 							    <th>Id</th>
 							    <th>IdAddressType</th>
-								<th>Address Type</th> 
+								<th>Type</th> 
 								<th>Address</th>
 								<th>Address (Cont.)</th>
 								<th>IdProvince</th>

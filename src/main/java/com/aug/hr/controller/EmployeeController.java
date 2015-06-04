@@ -118,8 +118,7 @@ public class EmployeeController {
 		model.addAttribute("locationList",masLocationService.findAll());
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
 		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
-		
-		
+
 		return "/employee/employee";
 		//return "/employee/employeetest";
 	}
@@ -211,10 +210,14 @@ public class EmployeeController {
 			/*@RequestParam("fileupload") MultipartFile file*/) {
 	   
 		
+
 		
 		
 		
 		logger.info("infoooo: "+employee);	
+
+		logger.info("infoooo: ================================================================>"+employee.getAimempid());	
+
 		logger.info("infoooo: "+employee.getAddressList());
 		logger.info("file: "+employee.getFileupload().getOriginalFilename());
 		try {

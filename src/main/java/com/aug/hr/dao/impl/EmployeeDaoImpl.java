@@ -173,6 +173,14 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		query.setInteger("STAFFTYPE_ID", allEmployeeDto.getMasStaffType());
 		query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocation());
 		query.setInteger("OFFICIAL_ID", allEmployeeDto.getOfficialId());
+		
+		query.setInteger("ISMANAGER", allEmployeeDto.getIsManager());
+		//Integer aim = (allEmployeeDto.getAimempid()!=null)?allEmployeeDto.getAimempid():null;
+		//query.setInteger("AIM_EMP_ID", aim);
+		
+		Integer aim = null;
+		query.setInteger("AIM_EMP_ID",aim);
+		
 		query.executeUpdate();
 	}
 

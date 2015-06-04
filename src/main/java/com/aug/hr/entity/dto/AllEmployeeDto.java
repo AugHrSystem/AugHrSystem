@@ -235,8 +235,22 @@ public class AllEmployeeDto {
 	//@Column(name = "IMAGE",nullable = true)
 	private String image;
 	
+
 	private MultipartFile fileupload;
 	
+
+	private Integer isManager;
+	
+	public Integer getIsManager() {
+		return isManager;
+	}
+
+
+	public void setIsManager(Integer isManager) {
+		this.isManager = isManager;
+	}
+
+
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;

@@ -747,17 +747,17 @@
 				<div class="col-md-3">
 				<label> AIM :</label>
 								<div class="checkbox">
-     								<label><input type="checkbox" name="isAIM">isAIM</label>
+     								<label><input type="checkbox" value = "1" name="isManager">isAIM</label>
 								</div>
 			</div>
 				<div class="form-group">
 					
-    				<label>AIM :</label>
+    				<label>AIM :${aimList.size()}</label>
     				
     				  <f:select  path="aimempid"  class="form-control">
     						 
-    						 <f:option  value="-1" label="--Select AIM--" />
-  							 <f:options items="${ aimList }"  itemValue="id" itemLabel="name" />
+    						 <f:option  value="" label="--Select AIM--" />
+  							 <f:options items="${ aimList }"  itemValue="id" itemLabel="name_eng" />
     						  
 								
 							</f:select>  

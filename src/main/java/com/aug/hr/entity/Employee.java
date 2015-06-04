@@ -113,7 +113,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ "MAS_CORE_SKILL_ID,"
             		+ "STAFFTYPE_ID,"
             		+ "LOCATION_ID,"
-            		+ "OFFICIAL_ID "
+            		+ "OFFICIAL_ID, "
+            		+ "ISMANAGER,"
+            		+ "AIM_EMP_ID"
             		+ ") "
             		+ " values("
             		+ ":EMPLOYEE_CODE,"
@@ -184,7 +186,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ ":MAS_CORE_SKILL_ID,"
             		+ ":STAFFTYPE_ID,"
             		+ ":LOCATION_ID,"
-            		+ ":OFFICIAL_ID"
+            		+ ":OFFICIAL_ID,"
+            		+ ":ISMANAGER,"
+            		+ ":AIM_EMP_ID"
             		+ ")"
             		,resultClass= Employee.class),
  
@@ -400,8 +404,7 @@ public class Employee extends BaseEntity{
 	
 //------------------self relation-------------------
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="id")
-
+	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="id",nullable = true)
 	private Employee aimempid;
 	
 	@OneToMany(mappedBy="aimempid", fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
@@ -549,8 +552,18 @@ public class Employee extends BaseEntity{
    private Integer technologyId;
    
    
+   public Integer getIsManager() {
+	return isManager;
+}
 
-   @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE})
+public void setIsManager(Integer isManager) {
+	this.isManager = isManager;
+}
+
+
+
+
+@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE})
    //@JsonBackReference
    private Set<SkillLanguage> skillLanguage = new HashSet<SkillLanguage>();
    

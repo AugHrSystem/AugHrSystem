@@ -7,6 +7,7 @@ package com.aug.hr.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -33,12 +34,16 @@ public class Certification extends BaseEntity {
 	
 	@Column(name = "CERTIFICATION_FROM" ,nullable = false)
 	private String certificationFrom;
+
 	
-	@ManyToOne()
-	@JoinColumn(name = "EMPLOYEE_ID", nullable = false)
+	@Column(name = "DESCRIPTION" ,nullable = false)
+	private String description;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "EMPLOYEE_ID", nullable = false,referencedColumnName="id")
+
 	
 	private Employee employee;
-
 
 	public Integer getId() {
 		return id;
@@ -64,14 +69,6 @@ public class Certification extends BaseEntity {
 		this.name = name;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
 	public String getCertificationFrom() {
 		return certificationFrom;
 	}
@@ -79,6 +76,23 @@ public class Certification extends BaseEntity {
 	public void setCertificationFrom(String certificationFrom) {
 		this.certificationFrom = certificationFrom;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 
 	public Certification fromCertificationDto(CertificationDto certificationDto) {
 		
