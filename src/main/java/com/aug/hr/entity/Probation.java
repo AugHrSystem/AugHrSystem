@@ -28,19 +28,20 @@ public class Probation extends BaseEntity {
     @GeneratedValue
     @Column(name = "ID")
     private Integer id;
-    @Column(name = "DATE_FROM")
+    @Column(name = "DATE_FROM", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateFrom;
-    @Column(name = "DATE_TO")
+    @Column(name = "DATE_TO", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTo;
-    @Column(name = "STATUS")
+    @Column(name = "STATUS", nullable = false)
     private String status;
+    @Column(name = "REASON")
+    private String reason;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "id", nullable = false)
- //   @JsonManagedReference
     private Employee employee;
 
     public Integer getId() {
@@ -83,7 +84,15 @@ public class Probation extends BaseEntity {
         this.employee = employee;
     }
 
-    public ProbationDto toProbationDto() {
+    public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public ProbationDto toProbationDto() {
         ProbationDto probationDto = new ProbationDto();
         probationDto.setId(this.id);
         probationDto.setDateFrom(this.dateFrom);
@@ -91,7 +100,7 @@ public class Probation extends BaseEntity {
         probationDto.setEmployeeCode(this.employee.getEmployeeCode());
         probationDto.setEmployeeId(this.employee.getId());
         probationDto.setStatus(this.status);
-
+        probationDto.setReason(this.reason);
         return probationDto;
     }
 
@@ -100,6 +109,7 @@ public class Probation extends BaseEntity {
     	probation.setDateFrom(probationDto.getDateFrom());
     	probation.setDateTo(probationDto.getDateTo());
     	probation.setStatus(probationDto.getStatus());
+    	probation.setReason(probationDto.getReason());
     	Employee employee = new Employee();
     	employee.setId(probationDto.getEmployeeId());
     	probation.setEmployee(employee);
