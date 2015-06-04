@@ -697,7 +697,7 @@
      								<label><input type="checkbox" name="isAIM">isAIM</label>
 								</div>
 			</div>
-				<div class="form-group">
+				<%-- <div class="form-group">
 					
     				<label>AIM :</label>
     				
@@ -709,7 +709,7 @@
 								
 							</f:select>  
     				
-						</div>
+						</div> --%>
   				</div>
 			
 	    </div>

@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ "NICKNAME_THAI,"
             		+ "NAME_ENG,"
             		+ "SURNAME_ENG,"
-            		+ "NICKNAME_ENG,"
+            		+ "NICKNAME_ENG," 
             		+ "EMAIL,"
             		+ "TEL_HOME,"
             		+ "TEL_MOBILE,"
