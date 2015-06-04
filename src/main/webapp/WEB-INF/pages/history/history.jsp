@@ -91,7 +91,7 @@
         
 	  <div class="form-group">
 	    <label>Position :</label>
-	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position"/>
+	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position" />
 	  </div>
 	  
 	  <div class="form-group">
@@ -176,14 +176,26 @@
 	$(document).ready(function(){
 		
 		$("#addBtnHis").on("click",function(){
-			clearModal();
+			
+// 			$(this).removeData('bs.modal');
+			$('#addForm').bootstrapValidator('resetForm', true);
+// 			clearModal();
 // 			bootstrapValidator('validate').hide();
+			
+			
 		});
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
 	        message: 'This value is not valid',
 	        container: 'tooltip',
+	        button: {
+	            // The submit buttons selector
+	            selector: '[type="submit"]',
+
+	            // The disabled class
+	            disabled: ''
+	        },
 	        feedbackIcons: {
 	            valid: 'glyphicon glyphicon-ok',
 	            invalid: 'glyphicon glyphicon-remove',
@@ -246,7 +258,7 @@
 	            }
 	        }
 	    });
-	            
+	   
 		$('#datetimepicker1').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
@@ -260,7 +272,7 @@
 		$("#addModal").on("show.bs.modal",function(event) {
 			
 			//clearModal();
-			
+			 
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var historyid = button.data("id") //Extract info from data-* attribute
 			
