@@ -4,511 +4,523 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<!-- jquery and jquery validator -->
-<!-- jquery validator version 1.13.1 -->
-<script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.2.js" />"></script> 
-<script src="<c:url value="/resources/resource/bootstrap/js/jquery.validate.js" />"></script>
-<script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script>
+<!-- Bootstrap -->
+<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
+<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
 
-<!-- bootstrap version 3.3.4-->
-<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- for show error massage and success massage-->
-<link href="<c:url value="/resources/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
-
-<!-- datatable version 1.10.6 -->
-<script src="<c:url value="/resources/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
+<!-- Data Table -->
+<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
+<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 <link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
+<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
+
+<script>
+
+var dt;  	
+
+$(function(){
+	
+	dt = $('#tableResult').dataTable();
+	 
+	 
+	doFindData(); 
+	
+	
+	
+	
+	 $("#addModal").on("show.bs.modal", function(event){
+			 
+			 
+    	    var button = $(event.relatedTarget);
+    		var idUpdate = button.data("idupdate"); 
+    		if(idUpdate != null){
+    		
+    			doInitEdit(idUpdate);
+    			
+			}
+     		
+    		$(this).find("#saveBtn").off("click").on("click", function()
+    		{
+    			if(idUpdate != null){
+    				 doEdit(idUpdate);
+    			}
+    			else {
+    				 addHealth();
+    			}
+    		});
+    	  
+      });
+	 
+	
+	 $('#addModal').on("hidden.bs.modal",function(event){
+		   
+		   $('#formAddUpdate')[0].reset();
+	  
+	  });
+	   
+
+	 
+	 function addHealth(){
+		 
+		    var id = getUrlParameter('Id');
+		    //id=2;
+		    var congenitalDisease;
+		    var geneticDisease;
+		    var takeMedicine;
+		    var intolerance;
+		    
+		    
+		    if($('#congenitalDisease_no').is(':checked')){
+			
+		    	congenitalDisease = $('#congenitalDisease_no').val();	
+	  			
+	  		}else if($('#congenitalDisease_yes').is(':checked')){
+	  			
+	  			congenitalDisease = $('#congenitalDisease_yes').val();	
+	  			
+	  		}
+		    
+		    
+		    
+		    if($('#geneticDisease_no').is(':checked')){
+			
+		    	geneticDisease = $('#geneticDisease_no').val();	
+	  			
+	  		}else if($('#geneticDisease_yes').is(':checked')){
+	  			
+	  			geneticDisease = $('#geneticDisease_yes').val();	
+	  			
+	  		}
+		    
+		    
+		    if($('#takeMedicine_no').is(':checked')){
+				
+		    	takeMedicine = $('#takeMedicine_no').val();	
+	  			
+	  		}else if($('#takeMedicine_yes').is(':checked')){
+	  			
+	  			takeMedicine = $('#takeMedicine_yes').val();	
+	  			
+	  		}
+		    
+		    
+		    
+			if($('#intolerance_no').is(':checked')){
+				
+				intolerance = $('#intolerance_no').val();	
+	  			
+	  		}else if($('#intolerance_yes').is(':checked')){
+	  			
+	  			intolerance = $('#intolerance_yes').val();	
+	  			
+	  		}
+		    
+		    
+	  	    
+	  	    $.ajax({  
+	  	      type : "POST",   
+	  	      url : "<%=request.getContextPath()%>/health/add",   
+	  	      dataType : 'json', 
+	  	      data : JSON.stringify(
+	  	    		{"congenitalDisease":congenitalDisease,
+	    			"congenitalDiseaseExplain" : $('#congenitalDiseaseExplain').val(),
+  	    			"congenitalDiseaseExplain2": $('#congenitalDiseaseExplain2').val(),
+  	    			"congenitalDiseaseExplain3":$('#congenitalDiseaseExplain3').val(),
+  	    			"projectOwnerContact":$('#projectOwnerContact').val(),
+  	    			"geneticDisease":geneticDisease,
+  	    			"geneticDiseaseExplain":$('#geneticDiseaseExplain').val(),
+  	    			"geneticDiseaseExplain2":$('#geneticDiseaseExplain2').val(),
+  	    			"geneticDiseaseExplain3":$('#geneticDiseaseExplain2').val(),
+  	    			"takeMedicine":takeMedicine,
+  	    			"takeMedicineExplain":$('#takeMedicineExplain').val(),
+  	    			"intolerance":intolerance,
+  	    			"intoleranceExplain":$('#intoleranceExplain').val(),
+  	    			"employeeId":id}
+	  	    		),  
+	  	      contentType :"application/json; charset=utf-8",
+	  	     
+	  	      success : function(data) {  
+	  	    	 
+	  	    	    $('#addModal').modal('hide');
+	  	    	    doFindData();
+	  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+		    		
+	  	     },  
+	  	      error : function(data,testStatus,jqXHR) {  
+	  	           
+	  	    	   $('#addModal').modal('hide');
+	  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+	  	     }  
+	  	    }); 
+	  	    
+		 
+	 }
+	
+	
+	
+	 
+	 
+	
+	 function doInitEdit(idUpdate){
+		 
+		 $.ajax({  
+	  	      type : "POST",   
+	  	      url : "<%=request.getContextPath()%>/health/initedit",   
+	  	      dataType : 'json', 
+	  	      data : JSON.stringify({"id":idUpdate}),  
+	  	      contentType :"application/json; charset=utf-8",
+	  	     
+	  	      success : function(data) {  
+
+	  	    	  
+					if(data.congenitalDisease == "Yes"){
+			  			
+			  			$('#congenitalDisease_yes').prop('checked', 'checked');
+			  			
+			  		}else if(data.abilitySpeaking == "No"){
+			  			
+			  			$('#congenitalDisease_no').prop('checked','checked');
+			  			
+			  		}
+					
+					
+
+					
+					if(data.geneticDisease=="Yes"){
+						
+						$('#geneticDisease_yes').prop('checked', 'checked');
+			  			
+			  		}else if(data.abilitySpeaking == "No"){
+			  			
+			  			$('#geneticDisease_no').prop('checked','checked');
+			  			
+			  		}
+					
+					
+					
+					if(data.takeMedicine=="Yes"){
+						
+						$('#takeMedicine_yes').prop('checked', 'checked');
+			  			
+			  		}else if(data.abilitySpeaking == "No"){
+			  			
+			  			$('#takeMedicine_no').prop('checked','checked');
+			  			
+			  		}
+			  		
+					
+					
+					if(data.intolerance=="Yes"){
+						
+						$('#intolerance_yes').prop('checked', 'checked');
+			  			
+			  		}else if(data.abilitySpeaking == "No"){
+			  			
+			  			$('#intolerance_no').prop('checked','checked');
+			  			
+			  		}
+	    		
+					
+					$('#congenitalDiseaseExplain').val(data.congenitalDiseaseExplain);
+					$('#congenitalDiseaseExplain2').val(data.congenitalDiseaseExplain2);
+					$('#congenitalDiseaseExplain3').val(data.congenitalDiseaseExplain3);
+					$('#geneticDiseaseExplain').val(data.geneticDiseaseExplain);
+					$('#geneticDiseaseExplain2').val(data.geneticDiseaseExplain2);
+					$('#geneticDiseaseExplain3').val(data.geneticDiseaseExplain3);
+					$('#takeMedicineExplain').val(data.takeMedicineExplain);
+					$('#intoleranceExplain').val(data.intoleranceExplain);
+					
+	  	    	
+	  	    	
+	  	     },  
+	  	      error : function(data,testStatus,jqXHR) {  
+	  	    	  
+	  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+	  	     }  
+	  	    }); 
+	  	   
+		 
+	 }
+	
+	
+	 
+	  function doEdit(idUpdate){
+		  
+		  var idemp = getUrlParameter('Id');
+		  //var idemp=2;
+		  var congenitalDisease;
+		  var geneticDisease;
+		  var takeMedicine;
+		  var intolerance;
+		    
+		    
+		    if($('#congenitalDisease_no').is(':checked')){
+			
+		    	congenitalDisease = $('#congenitalDisease_no').val();	
+	  			
+	  		}else if($('#congenitalDisease_yes').is(':checked')){
+	  			
+	  			congenitalDisease = $('#congenitalDisease_yes').val();	
+	  			
+	  		}
+		    
+		    
+		    
+		    if($('#geneticDisease_no').is(':checked')){
+			
+		    	geneticDisease = $('#geneticDisease_no').val();	
+	  			
+	  		}else if($('#geneticDisease_yes').is(':checked')){
+	  			
+	  			geneticDisease = $('#geneticDisease_yes').val();	
+	  			
+	  		}
+		    
+		    
+		    if($('#takeMedicine_no').is(':checked')){
+				
+		    	takeMedicine = $('#takeMedicine_no').val();	
+	  			
+	  		}else if($('#takeMedicine_yes').is(':checked')){
+	  			
+	  			takeMedicine = $('#takeMedicine_yes').val();	
+	  			
+	  		}
+		    
+		    
+		    
+			if($('#intolerance_no').is(':checked')){
+				
+				intolerance = $('#intolerance_no').val();	
+	  			
+	  		}else if($('#intolerance_yes').is(':checked')){
+	  			
+	  			intolerance = $('#intolerance_yes').val();	
+	  			
+	  		}
+		    
+		    
+	    	 
+	  	    $.ajax({  
+	  	      type : "POST",   
+	  	      url : "<%=request.getContextPath()%>/health/edit",   
+	  	      dataType : 'json', 
+	  	      data :  JSON.stringify(
+		  	    		{	"id":idUpdate,
+		  	    			"congenitalDisease":congenitalDisease,
+			    			"congenitalDiseaseExplain" : $('#congenitalDiseaseExplain').val(),
+		  	    			"congenitalDiseaseExplain2": $('#congenitalDiseaseExplain2').val(),
+		  	    			"congenitalDiseaseExplain3":$('#congenitalDiseaseExplain3').val(),
+		  	    			"projectOwnerContact":$('#projectOwnerContact').val(),
+		  	    			"geneticDisease":geneticDisease,
+		  	    			"geneticDiseaseExplain":$('#geneticDiseaseExplain').val(),
+		  	    			"geneticDiseaseExplain2":$('#geneticDiseaseExplain2').val(),
+		  	    			"geneticDiseaseExplain3":$('#geneticDiseaseExplain2').val(),
+		  	    			"takeMedicine":takeMedicine,
+		  	    			"takeMedicineExplain":$('#takeMedicineExplain').val(),
+		  	    			"intolerance":intolerance,
+		  	    			"intoleranceExplain":$('#intoleranceExplain').val(),
+		  	    			"employeeId":idemp}
+			  	    		),  
+	  	      contentType :"application/json; charset=utf-8",
+	  	     
+	  	      success : function(data) {  
+	  	    	
+	  	    	 
+	  	    	  
+	  	    	  //alert(JSON.stringify(data));
+	  	    	 
+	  	    	
+	  	       		 $('#addModal').modal('hide');	  
+	  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+	  	       	     doFindData();		  			 
+	  	        
+	  	     },  
+	  	      error : function(data,testStatus,jqXHR) {  
+
+	  	      $('#myModalUpdate').modal('hide');	   
+	  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+	  	     }  
+	  	    }); 	  	    
+		 
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	
+	function doFindData() {  
+	   	  
+		  var id = getUrlParameter('Id');
+		  var congenitalDiseaseExplain;
+		  var geneticDiseaseExplain;
+   	     
+   	     
+	  	     $.ajax({  
+	  	      type : "POST",   
+	  	      url : "<%=request.getContextPath()%>/health/list/"+id,   
+	  	      dataType : 'json', 
+	  	      contentType :"application/json; charset=utf-8",
+	  	     
+	  	      success : function(data) {  
+	    		
+	  	    
+	  	        dt.fnClearTable();
+	  	    	
+	  	        for(var i=0;i<data.length;i++){
+	  	        	
+	  	        	
+	  	        	if(data[i].congenitalDiseaseExplain!=null&&data[i].congenitalDiseaseExplain!==""){
+	  	        		
+	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain;
+	  	        		
+	  	        	}if(data[i].congenitalDiseaseExplain2!=null&&data[i].congenitalDiseaseExplain2!==""){
+	  	        		//alert('aaa');
+	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain+', '+data[i].congenitalDiseaseExplain2;
+	  	        	}if(data[i].congenitalDiseaseExplain3!=null&&data[i].congenitalDiseaseExplain3!==""){
+	  	        		
+	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain+', '+data[i].congenitalDiseaseExplain2+',  '+data[i].congenitalDiseaseExplain3;
+	  	        	}
+	  	        	
+	  	        	
+	  	        	
+	  	        	
+
+	  	        	if(data[i].geneticDiseaseExplain!=null&&data[i].geneticDiseaseExplain!==""){
+	  	        		
+	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain;
+	  	        		
+	  	        	}if(data[i].geneticDiseaseExplain2!=null&&data[i].geneticDiseaseExplain2!==""){
+	  	        		//alert('aaa');
+	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain+', '+data[i].geneticDiseaseExplain2;
+	  	        	}if(data[i].geneticDiseaseExplain3!=null&&data[i].geneticDiseaseExplain3!==""){
+	  	        		
+	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain+', '+data[i].geneticDiseaseExplain2+',  '+data[i].geneticDiseaseExplain3;
+	  	        	}
+	  	            
+	  	            
+	  	            
+	  	         
+	  	        	   dt.fnAddData([ 
+				  			           data[i].congenitalDisease,
+				  			           congenitalDiseaseExplain,
+				  			           data[i].geneticDisease,
+				  			           geneticDiseaseExplain,
+				  			           data[i].takeMedicine,
+				  			           data[i].takeMedicineExplain,
+				  			           data[i].intolerance,
+				  			           data[i].intoleranceExplain,
+				  			          '<button type="button" class="btn btn-info btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+				    					
+				  			           ]);
+	  	        	   
+	  	        	 
+		  		
+		  	    	 }
+	  	        	
+	  	        		  	        
+	  	     },  
+	  	      error : function(data,testStatus,jqXHR) {  	  	      
+	  	    	  $("#outputajax").text(testStatus); 
+	  	     }  
+	  	    }); 
+	  	   
+	    }
+	
+	
+	
+	
+	
+	
+	
+	$("#deleteModal").on("show.bs.modal", function(event){
+		 
+			var button = $(event.relatedTarget);
+ 			var idDelete = button.data("iddelete"); 
+				
+	 		
+		 			$(this).find("#delete").off("click").on("click", function(){
+		 			
+		 			
+			     			$.ajax({  
+				  		  	      type : "POST",   
+				  		  	      url : "<%=request.getContextPath()%>/health/delete",   
+				  		  	      dataType : 'json', 
+				  		  	      data : JSON.stringify({"id":idDelete}),  
+				  		  	      contentType :"application/json; charset=utf-8",
+			  		  	     
+				  		  	      success : function(data) {  
+				  		    		
+				  		  	    	
+				  		  	    	$('#deleteModal').modal('hide');
+				  		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
+				  	  	       	    doFindData();		  	      
+				  		  	    	 
+				  		  	     },  
+				  		  	     error : function(data,testStatus,jqXHR) {  	  	      
+				  		  	    	
+				  					  $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+				
+				  		  	     }  
+			  		  	    }); 
+			 
+			    });
+		 
+	 });
+	
+	
+	
+	
+
+	 function getUrlParameter(sParam)
+		{
+			//alert("url "+document.referrer);
+		    var sPageURL = document.referrer;
+		    var sURLVariables = sPageURL.split('?');
+		    //alert("spilt "+sURLVariables);
+
+		   	
+		    
+		    var sParameterName = sURLVariables[1].split('=');
+		    //alert("Param "+parseInt(sParameterName[1]));
+		    if (sParameterName[0] == sParam) 
+		        {
+		        	//alert("Param "+sParameterName[0]);
+		        	return sParameterName[1];
+		        	
+		        }
+		        //alert("Param2 "+parseInt(sParameterName[1]));
+		    
+		}
+		 
+	  
+			
+	
+});
+</script>
 
 <title>health</title>
 
 
-
-<script type="text/javascript">
-
-	var dt;  	
-
-	$(function(){
-		
-		dt = $('#tableResult').dataTable();
-		
-		doFindData(); 
-		
-		
-		
-		
-		 $("#addModal").on("show.bs.modal", function(event){
- 			 
- 			 
-	    	    //clearModal();
-	    	    var button = $(event.relatedTarget);
-	    		var idUpdate = button.data("idupdate"); 
-	    		if(idUpdate != null){
-	    		
-	    			doInitEdit(idUpdate);
-	    			
-				}
-	     		
-	    		$(this).find("#saveBtn").off("click").on("click", function()
-	    		{
-	    			if(idUpdate != null){
-	    				 doEdit(idUpdate);
-	    			}
-	    			else {
-	    				 addHealth();
-	    			}
-	    		});
-	    	  
-	      });
-		 
-		
-		 $('#addModal').on("hidden.bs.modal",function(event){
-			   
-			   $('#formAddUpdate')[0].reset();
-		  
-		  });
-		   
-		 
-		 
-		 
-		 function addHealth(){
-			 
-			   // var id = getUrlParameter('Id');
-			    id=2;
-			    var congenitalDisease;
-			    var geneticDisease;
-			    var takeMedicine;
-			    var intolerance;
-			    
-			    
-			    if($('#congenitalDisease_no').is(':checked')){
-				
-			    	congenitalDisease = $('#congenitalDisease_no').val();	
-		  			
-		  		}else if($('#congenitalDisease_yes').is(':checked')){
-		  			
-		  			congenitalDisease = $('#congenitalDisease_yes').val();	
-		  			
-		  		}
-			    
-			    
-			    
-			    if($('#geneticDisease_no').is(':checked')){
-				
-			    	geneticDisease = $('#geneticDisease_no').val();	
-		  			
-		  		}else if($('#geneticDisease_yes').is(':checked')){
-		  			
-		  			geneticDisease = $('#geneticDisease_yes').val();	
-		  			
-		  		}
-			    
-			    
-			    if($('#takeMedicine_no').is(':checked')){
-					
-			    	takeMedicine = $('#takeMedicine_no').val();	
-		  			
-		  		}else if($('#takeMedicine_yes').is(':checked')){
-		  			
-		  			takeMedicine = $('#takeMedicine_yes').val();	
-		  			
-		  		}
-			    
-			    
-			    
-				if($('#intolerance_no').is(':checked')){
-					
-					intolerance = $('#intolerance_no').val();	
-		  			
-		  		}else if($('#intolerance_yes').is(':checked')){
-		  			
-		  			intolerance = $('#intolerance_yes').val();	
-		  			
-		  		}
-			    
-			    
-		  	    
-		  	    $.ajax({  
-		  	      type : "POST",   
-		  	      url : "<%=request.getContextPath()%>/health/add",   
-		  	      dataType : 'json', 
-		  	      data : JSON.stringify(
-		  	    		{"congenitalDisease":congenitalDisease,
-		    			"congenitalDiseaseExplain" : $('#congenitalDiseaseExplain').val(),
-	  	    			"congenitalDiseaseExplain2": $('#congenitalDiseaseExplain2').val(),
-	  	    			"congenitalDiseaseExplain3":$('#congenitalDiseaseExplain3').val(),
-	  	    			"projectOwnerContact":$('#projectOwnerContact').val(),
-	  	    			"geneticDisease":geneticDisease,
-	  	    			"geneticDiseaseExplain":$('#geneticDiseaseExplain').val(),
-	  	    			"geneticDiseaseExplain2":$('#geneticDiseaseExplain2').val(),
-	  	    			"geneticDiseaseExplain3":$('#geneticDiseaseExplain2').val(),
-	  	    			"takeMedicine":takeMedicine,
-	  	    			"takeMedicineExplain":$('#takeMedicineExplain').val(),
-	  	    			"intolerance":intolerance,
-	  	    			"intoleranceExplain":$('#intoleranceExplain').val(),
-	  	    			"employeeId":id}
-		  	    		),  
-		  	      contentType :"application/json; charset=utf-8",
-		  	     
-		  	      success : function(data) {  
-		  	    	 
-		  	    	    $('#addModal').modal('hide');
-		  	    	    doFindData();
-		  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-			    		
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  
-		  	           
-		  	    	   $('#addModal').modal('hide');
-		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	     }  
-		  	    }); 
-		  	    
-			 
-		 }
-		
-		
-		
-		 
-		 
-		
-		 function doInitEdit(idUpdate){
-			 
-			 $.ajax({  
-		  	      type : "POST",   
-		  	      url : "<%=request.getContextPath()%>/health/initedit",   
-		  	      dataType : 'json', 
-		  	      data : JSON.stringify({"id":idUpdate}),  
-		  	      contentType :"application/json; charset=utf-8",
-		  	     
-		  	      success : function(data) {  
-
-		  	    	  
-						if(data.congenitalDisease == "Yes"){
-				  			
-				  			$('#congenitalDisease_yes').prop('checked', 'checked');
-				  			
-				  		}else if(data.abilitySpeaking == "No"){
-				  			
-				  			$('#congenitalDisease_no').prop('checked','checked');
-				  			
-				  		}
-						
-						
-
-						
-						if(data.geneticDisease=="Yes"){
-							
-							$('#geneticDisease_yes').prop('checked', 'checked');
-				  			
-				  		}else if(data.abilitySpeaking == "No"){
-				  			
-				  			$('#geneticDisease_no').prop('checked','checked');
-				  			
-				  		}
-						
-						
-						
-						if(data.takeMedicine=="Yes"){
-							
-							$('#takeMedicine_yes').prop('checked', 'checked');
-				  			
-				  		}else if(data.abilitySpeaking == "No"){
-				  			
-				  			$('#takeMedicine_no').prop('checked','checked');
-				  			
-				  		}
-				  		
-						
-						
-						if(data.intolerance=="Yes"){
-							
-							$('#intolerance_yes').prop('checked', 'checked');
-				  			
-				  		}else if(data.abilitySpeaking == "No"){
-				  			
-				  			$('#intolerance_no').prop('checked','checked');
-				  			
-				  		}
-		    		
-						
-						$('#congenitalDiseaseExplain').val(data.congenitalDiseaseExplain);
-						$('#congenitalDiseaseExplain2').val(data.congenitalDiseaseExplain2);
-						$('#congenitalDiseaseExplain3').val(data.congenitalDiseaseExplain3);
-						$('#geneticDiseaseExplain').val(data.geneticDiseaseExplain);
-						$('#geneticDiseaseExplain2').val(data.geneticDiseaseExplain2);
-						$('#geneticDiseaseExplain3').val(data.geneticDiseaseExplain3);
-						$('#takeMedicineExplain').val(data.takeMedicineExplain);
-						$('#intoleranceExplain').val(data.intoleranceExplain);
-						
-		  	    	
-		  	    	
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  
-		  	    	  
-		  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	     }  
-		  	    }); 
-		  	   
-			 
-		 }
-		
-		
-		 
-		  function doEdit(idUpdate){
-			  
-			  //var id = getUrlParameter('Id');
-			  var idemp=2;
-			  var congenitalDisease;
-			  var geneticDisease;
-			  var takeMedicine;
-			  var intolerance;
-			    
-			    
-			    if($('#congenitalDisease_no').is(':checked')){
-				
-			    	congenitalDisease = $('#congenitalDisease_no').val();	
-		  			
-		  		}else if($('#congenitalDisease_yes').is(':checked')){
-		  			
-		  			congenitalDisease = $('#congenitalDisease_yes').val();	
-		  			
-		  		}
-			    
-			    
-			    
-			    if($('#geneticDisease_no').is(':checked')){
-				
-			    	geneticDisease = $('#geneticDisease_no').val();	
-		  			
-		  		}else if($('#geneticDisease_yes').is(':checked')){
-		  			
-		  			geneticDisease = $('#geneticDisease_yes').val();	
-		  			
-		  		}
-			    
-			    
-			    if($('#takeMedicine_no').is(':checked')){
-					
-			    	takeMedicine = $('#takeMedicine_no').val();	
-		  			
-		  		}else if($('#takeMedicine_yes').is(':checked')){
-		  			
-		  			takeMedicine = $('#takeMedicine_yes').val();	
-		  			
-		  		}
-			    
-			    
-			    
-				if($('#intolerance_no').is(':checked')){
-					
-					intolerance = $('#intolerance_no').val();	
-		  			
-		  		}else if($('#intolerance_yes').is(':checked')){
-		  			
-		  			intolerance = $('#intolerance_yes').val();	
-		  			
-		  		}
-			    
-			    
-		    	 
-		  	    $.ajax({  
-		  	      type : "POST",   
-		  	      url : "<%=request.getContextPath()%>/health/edit",   
-		  	      dataType : 'json', 
-		  	      data :  JSON.stringify(
-			  	    		{	"id":idUpdate,
-			  	    			"congenitalDisease":congenitalDisease,
-				    			"congenitalDiseaseExplain" : $('#congenitalDiseaseExplain').val(),
-			  	    			"congenitalDiseaseExplain2": $('#congenitalDiseaseExplain2').val(),
-			  	    			"congenitalDiseaseExplain3":$('#congenitalDiseaseExplain3').val(),
-			  	    			"projectOwnerContact":$('#projectOwnerContact').val(),
-			  	    			"geneticDisease":geneticDisease,
-			  	    			"geneticDiseaseExplain":$('#geneticDiseaseExplain').val(),
-			  	    			"geneticDiseaseExplain2":$('#geneticDiseaseExplain2').val(),
-			  	    			"geneticDiseaseExplain3":$('#geneticDiseaseExplain2').val(),
-			  	    			"takeMedicine":takeMedicine,
-			  	    			"takeMedicineExplain":$('#takeMedicineExplain').val(),
-			  	    			"intolerance":intolerance,
-			  	    			"intoleranceExplain":$('#intoleranceExplain').val(),
-			  	    			"employeeId":idemp}
-				  	    		),  
-		  	      contentType :"application/json; charset=utf-8",
-		  	     
-		  	      success : function(data) {  
-		  	    	
-		  	    	 
-		  	    	  
-		  	    	  //alert(JSON.stringify(data));
-		  	    	 
-		  	    	
-		  	       		 $('#addModal').modal('hide');	  
-		  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-		  	       	     doFindData();		  			 
-		  	        
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  
-
-		  	      $('#myModalUpdate').modal('hide');	   
-		  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	     }  
-		  	    }); 	  	    
-			 
-		 }
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		
-		function doFindData() {  
-		   	  
-			//var id = getUrlParameter('Id');
-			  var id = 2;
-			  var congenitalDiseaseExplain;
-			  var geneticDiseaseExplain;
-	   	     
-	   	     
-		  	     $.ajax({  
-		  	      type : "POST",   
-		  	      url : "<%=request.getContextPath()%>/health/list/"+id,   
-		  	      dataType : 'json', 
-		  	      contentType :"application/json; charset=utf-8",
-		  	     
-		  	      success : function(data) {  
-		    		
-		  	    
-		  	        dt.fnClearTable();
-		  	    	
-		  	        for(var i=0;i<data.length;i++){
-		  	        	
-		  	        	
-		  	        	if(data[i].congenitalDiseaseExplain!=null&&data[i].congenitalDiseaseExplain!==""){
-		  	        		
-		  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain;
-		  	        		
-		  	        	}if(data[i].congenitalDiseaseExplain2!=null&&data[i].congenitalDiseaseExplain2!==""){
-		  	        		//alert('aaa');
-		  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain+', '+data[i].congenitalDiseaseExplain2;
-		  	        	}if(data[i].congenitalDiseaseExplain3!=null&&data[i].congenitalDiseaseExplain3!==""){
-		  	        		
-		  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain+', '+data[i].congenitalDiseaseExplain2+',  '+data[i].congenitalDiseaseExplain3;
-		  	        	}
-		  	        	
-		  	        	
-		  	        	
-		  	        	
-
-		  	        	if(data[i].geneticDiseaseExplain!=null&&data[i].geneticDiseaseExplain!==""){
-		  	        		
-		  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain;
-		  	        		
-		  	        	}if(data[i].geneticDiseaseExplain2!=null&&data[i].geneticDiseaseExplain2!==""){
-		  	        		//alert('aaa');
-		  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain+', '+data[i].geneticDiseaseExplain2;
-		  	        	}if(data[i].geneticDiseaseExplain3!=null&&data[i].geneticDiseaseExplain3!==""){
-		  	        		
-		  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain+', '+data[i].geneticDiseaseExplain2+',  '+data[i].geneticDiseaseExplain3;
-		  	        	}
-		  	            
-		  	            
-		  	            
-		  	         
-		  	        	   dt.fnAddData([ 
-					  			           data[i].congenitalDisease,
-					  			           congenitalDiseaseExplain,
-					  			           data[i].geneticDisease,
-					  			           geneticDiseaseExplain,
-					  			           data[i].takeMedicine,
-					  			           data[i].takeMedicineExplain,
-					  			           data[i].intolerance,
-					  			           data[i].intoleranceExplain,
-					  			          '<button type="button" class="btn btn-info btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-					    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-					    					
-					  			           ]);
-		  	        	   
-		  	        	 
-			  		
-			  	    	 }
-		  	        	
-		  	        		  	        
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  	  	      
-		  	    	  $("#outputajax").text(testStatus); 
-		  	     }  
-		  	    }); 
-		  	   
-		    }
-		
-		
-		
-		
-		
-		
-		
-		$("#deleteModal").on("show.bs.modal", function(event){
-			 
-  			var button = $(event.relatedTarget);
-     		var idDelete = button.data("iddelete"); 
- 				
-     		
-     		$(this).find("#delete").off("click").on("click", function(){
-     			
-     			
-	     			$.ajax({  
-	  		  	      type : "POST",   
-	  		  	      url : "<%=request.getContextPath()%>/health/delete",   
-	  		  	      dataType : 'json', 
-	  		  	      data : JSON.stringify({"id":idDelete}),  
-	  		  	      contentType :"application/json; charset=utf-8",
-	  		  	     
-	  		  	      success : function(data) {  
-	  		    		
-	  		  	    	
-	  		  	    	$('#deleteModal').modal('hide');
-	  		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
-	  	  	       	    doFindData();		  	      
-	  		  	    	 
-	  		  	     },  
-	  		  	      error : function(data,testStatus,jqXHR) {  	  	      
-	  		  	    	
-	  					  $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	
-	  		  	     }  
-	  		  	    }); 
-	  		  	   
-     			
-   						
-  			 
-  		    });
-  		 
- 	     });
-				
-		
-	});
-
-
-</script>
-
-
 </head>
+
+
+
 <body>
 
 <div class="container">
@@ -838,11 +850,10 @@
   </div>
 </div>
  
+ 
+ </body>
+ </html>
 
 
 
 
-
-
-</body>
-</html>

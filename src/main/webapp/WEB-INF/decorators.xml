@@ -26,6 +26,7 @@
         <pattern>/*certification*</pattern>
         <pattern>/*card*</pattern>
         <pattern>/*allowances*</pattern>
+        <pattern>/*health*</pattern>
   	</excludes>
     <decorator name="default" page="main.jsp">
         <pattern>/*</pattern>

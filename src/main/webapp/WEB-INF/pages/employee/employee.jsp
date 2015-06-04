@@ -57,8 +57,12 @@
               <li><a href="#site" data-toggle="tab">Site</a></li>  
               <li><a href="#certification" data-toggle="tab">Certification</a></li>
               <li><a href="#card" data-toggle="tab">Card</a></li>
+<<<<<<< HEAD
               <li><a href="#allowances" data-toggle="tab">Allowances</a></li>
              
+=======
+              <li><a href="#health" data-toggle="tab">Health</a></li>
+>>>>>>> fix err insert certification[init-data.sql] and fix err not show datatable of health,fix employee id
              
             </ul>
 
@@ -925,11 +929,20 @@
 			marginheight="0" frameborder="0" vspace="0" hspace="0"></iframe>
 	</div>
 	
+
 	<div class="tab-pane" id="allowances">
 		<iframe src="${pageContext.request.contextPath}/allowances"
 			style="width: 100%; height: 600px;" marginwidth="0"
 			marginheight="0" frameborder="0" vspace="0" hspace="0"></iframe>
 	</div>
+
+	 <div class="tab-pane" id="health">
+      <iframe src="${pageContext.request.contextPath}/health" style="width: 100%; height: 600px; "
+            marginwidth="0" marginheight="0" frameborder="0"
+            vspace="0" hspace="0">
+
+      </iframe>
+    </div>
 
 </div>  
             
