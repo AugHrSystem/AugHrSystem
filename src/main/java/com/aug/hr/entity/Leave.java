@@ -30,29 +30,30 @@ public class Leave extends BaseEntity {
 	private Integer id;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Column(name = "DATE_FROM")
+	@Column(name = "START_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateFrom;
+	private Date startDate;
 	
 
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Column(name = "DATE_TO")
+	@Column(name = "END_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateTo;
+	private Date endDate;
 	
 
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="TIME_FROM")
-	private  Date timeFrom;
+	@Column(name="START_TIME")
+	private  Date startTime;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="TIME_TO")
-	private Date timeTo;
+	@Column(name="END_TIME")
+	private Date endTime;
 	
 	
-	
+	@Column(name="REASON")
+	private String reason;
 	
 	
 	@ManyToOne()
@@ -73,22 +74,49 @@ public class Leave extends BaseEntity {
 		this.id = id;
 	}
 
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	
+	
 	
 
-	public Date getDateFrom() {
-		return dateFrom;
+	public Date getEndTime() {
+		return endTime;
 	}
 
-	public void setDateFrom(Date dateFrom) {
-		this.dateFrom = dateFrom;
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
 	}
 
-	public Date getDateTo() {
-		return dateTo;
+	public String getReason() {
+		return reason;
 	}
 
-	public void setDateTo(Date dateTo) {
-		this.dateTo = dateTo;
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 	public MasLeaveType getMasleavetype() {
@@ -112,29 +140,15 @@ public class Leave extends BaseEntity {
 	
 	
 
-	public Date getTimeFrom() {
-		return timeFrom;
-	}
-
-	public void setTimeFrom(Date timeFrom) {
-		this.timeFrom = timeFrom;
-	}
-
-	public Date getTimeTo() {
-		return timeTo;
-	}
-
-	public void setTimeTo(Date timeTo) {
-		this.timeTo = timeTo;
-	}
-
+	
 	public LeaveDto toLeaveDto(){
 		LeaveDto leaveDto = new LeaveDto();
 		leaveDto.setId(this.id);
-		leaveDto.setDateFrom(this.dateFrom);
-		leaveDto.setDateTo(this.dateTo);
-		leaveDto.setTimeFrom(this.timeFrom);
-		leaveDto.setTimeTo(this.timeTo);
+		leaveDto.setStartDate(this.startDate);
+		leaveDto.setStartTime(this.startTime);
+		leaveDto.setEndDate(this.endDate);
+		leaveDto.setEndTime(this.endTime);
+		leaveDto.setReason(this.reason);
 		leaveDto.setEmployeeCode(this.employee.getEmployeeCode());
 		leaveDto.setEmployeeId(this.employee.getId());
 		leaveDto.setMasleavetypeId(this.masleavetype.getId());
@@ -145,10 +159,11 @@ public class Leave extends BaseEntity {
 	public Leave fromLeaveDto (LeaveDto leaveDto){
 		Leave leave = new Leave();
 		leave.setId(leaveDto.getId());
-		leave.setDateFrom(leaveDto.getDateFrom());
-		leave.setDateTo(leaveDto.getDateTo());
-		leave.setTimeFrom(leaveDto.getTimeFrom());
-		leave.setTimeTo(leaveDto.getTimeTo());
+		leave.setStartDate(leaveDto.getStartDate());
+		leave.setStartTime(leaveDto.getStartTime());
+		leave.setEndDate(leaveDto.getEndDate());
+		leave.setEndTime(leaveDto.getEndTime());
+		leave.setReason(leaveDto.getReason());
 		
 		MasLeaveType masleavetype=new MasLeaveType();
 		masleavetype.setId(leaveDto.getMasleavetypeId());
