@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.aug.hr.entity.dto.AllowancesDto;
+
 @Entity
 @Table(name = "EMP_ALLOWANCES")
 public class Allowances extends BaseEntity{
@@ -64,6 +66,30 @@ public class Allowances extends BaseEntity{
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public Allowances fromAllowancesDto(Allowances allowances, AllowancesDto allowancesDto) {
+		
+		allowances.setAllowances_type(allowancesDto.getAllowances_type());
+		allowances.setAmount_allowances(allowancesDto.getAmount_allowances());
+		
+		Employee employee = new Employee();
+		employee.setId(allowancesDto.getEmployeeId());
+		allowances.setEmployee(employee);
+		
+		return allowances;
+	}
+
+	public AllowancesDto toAllowancesDto() {
+		
+		AllowancesDto allowancesDto = new AllowancesDto();
+		
+		allowancesDto.setId(this.id);
+		allowancesDto.setAllowances_type(this.allowances_type);
+		allowancesDto.setAmount_allowances(this.amount_allowances);
+		allowancesDto.setEmployeeId(this.employee.getId());
+		
+		return allowancesDto;
 	}
 	
 }

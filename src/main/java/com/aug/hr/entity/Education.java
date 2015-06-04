@@ -178,11 +178,9 @@ public class Education extends BaseEntity{
 		
 	}
 	
-	public Education fromEducationDto(EducationDto educationDto) {
+	public Education fromEducationDto(Education education, EducationDto educationDto) {
 		
-		Education education = new Education();
-		
-		education.setId(educationDto.getId());
+//		education.setId(educationDto.getId());
 		education.setUniversity(educationDto.getUniversity());
 		education.setGpa(educationDto.getGpa());
 		education.setFaculty(educationDto.getFaculty());

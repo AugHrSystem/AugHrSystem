@@ -8,6 +8,7 @@ package com.aug.hr.dao;
 import java.util.List;
 
 import com.aug.hr.entity.Allowances;
+import com.aug.hr.entity.dto.AllowancesDto;
 
 public interface AllowancesDao extends GenericDao<Allowances, Integer>{
 
@@ -15,6 +16,6 @@ public interface AllowancesDao extends GenericDao<Allowances, Integer>{
 
 	public Allowances deleteById(Integer id);
 
-//	public List<EducationDto> searchEducation(Integer id);
-	
+	public List<AllowancesDto> searchAllowances(Integer id);
+
 }

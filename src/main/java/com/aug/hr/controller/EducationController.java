@@ -81,15 +81,16 @@ public class EducationController {
 	@RequestMapping(value = "/education/add", method = RequestMethod.POST)
 	public @ResponseBody EducationDto addEducation(@RequestBody EducationDto educationDto) {
 		Education education = new Education();
-		educationService.create(education.fromEducationDto(educationDto));
+		educationService.create(education.fromEducationDto(education, educationDto));
 		return educationDto;
 	}
 
 	@RequestMapping(value = "/education/update", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody EducationDto updateEducation(@RequestBody EducationDto educationDto) {
-		Education education = new Education();
-		educationService.update(education.fromEducationDto(educationDto));
-		return educationDto;
+		Education education = educationService.findById(educationDto.getId());
+		Education educationUpdate = education.fromEducationDto(education, educationDto);
+		educationService.update(educationUpdate);
+		return education.toEducationDto();
 	}
 	
 	@RequestMapping(value = "/education/findById", method = {RequestMethod.GET, RequestMethod.POST})
