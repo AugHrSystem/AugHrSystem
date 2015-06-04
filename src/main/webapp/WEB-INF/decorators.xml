@@ -24,6 +24,8 @@
         <pattern>/*skilllanguage*</pattern>
         <pattern>/*site*</pattern>
         <pattern>/*certification*</pattern>
+        <pattern>/*card*</pattern>
+        <pattern>/*allowances*</pattern>
   	</excludes>
     <decorator name="default" page="main.jsp">
         <pattern>/*</pattern>

@@ -40,24 +40,24 @@
 
 <form:form id ="listForm" method="post" commandName="education" action="education">
 
-<h2>Education</h2> 
- 
-<br></br>
+
+<h2>Education</h2>
+
+<!-- Button trigger modal -->
+<div class="form-group" align="right">
+<button type="button" id="addBtnEdu" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">New record</button> 
+</div>
 
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>University</th>
-			<th>GPA</th>
-			<th>Faculty</th>
-			<th>Major</th>
-			<th>Degree Type</th>
-			<th>Certificate</th>
-			<th>Description</th>
 			<th>Start Date</th>
-			<th>Graduated Date</th>
+			<th>Finish Date</th>
+			<th>Degree Type</th>
+			<th>University</th>
+			<th>Major</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -70,11 +70,6 @@
 
 <form:form id ="addForm" method="post" commandName="education">
 
-<!-- Button trigger modal -->
-<div class="form-group" align="right">
-<button type="button" id="addBtnEdu" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">Add</button> 
-</div>
-
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -85,17 +80,21 @@
       </div>
       
       <div class="modal-body">
-        
+   
+   <div class="col-md-12">     
 	  <div class="form-group">
+	  <div class="col-md-6">
 	    <label>University :</label>
 	    <form:input path="university" type="text" class="form-control" id="university" placeholder="Enter University"/>
 	  </div>
 	  
-	  <div class="form-group">
+	  <div class="col-md-6">
 	    <label>GPA :</label>
 	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="Enter GPA"/>
 	  </div>
-	  
+	  </div>
+	</div>  
+	
 	  <div class="form-group">
 	    <label>Faculty :</label>
 	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
@@ -119,7 +118,7 @@
 	  </div>
 
 	  <div class="form-group">
-	    <label>Certificate :</label>
+	    <label>Certification :</label>
 	    <form:input path="certificate" type="text" class="form-control" id="certificate" placeholder="Enter Certificate"/>
 	  </div>
 	  
@@ -129,8 +128,6 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Expiry Date</label>
-	    <br>
 	    <label>Start Date :</label>
 	    <div class='input-group date' id='datetimepickerStart'>
 	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
@@ -138,7 +135,10 @@
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
 	    </div>
-	    <label>Graduated Date :</label>
+	   </div> 
+	   
+	   <div class="form-group">
+	    <label>Finish Date :</label>
 	    <div class='input-group date' id='datetimepickerGrad'>
 	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate"/>
 	    <span class="input-group-addon">
