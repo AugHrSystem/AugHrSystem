@@ -20,6 +20,14 @@
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
+
+<%-- <link href="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all"> --%>
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/jquery/jquery.min.js" />"></script> --%>
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/js/bootstrap.min.js" />"></script> --%>
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
@@ -121,6 +129,53 @@
 
 	var dt;	
 	$(document).ready(function(){
+		
+		$("#addBtn").on("click",function(){clearModal();});
+		
+		$('#addForm').bootstrapValidator({
+//	        live: 'disabled',
+	        message: 'This value is not valid',
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {        	
+	        	name: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The position is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            
+	            address: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The salary is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            
+	            tel: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The salary is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            
+	            occupation: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The salary is required and cannot be empty'
+	                    }
+	                }
+	            }
+	        }
+	    });
+		
+		
 		dt = $('#tbResult').dataTable();	
 		 listAll();
 		 
@@ -199,8 +254,9 @@
 					$('#addModal').modal('toggle');
 					listAll();
 				},
-				error : function(jqXHR,	textStatus,	error) {	
-							alert("error");
+				error : function() {	
+						//	alert("error");
+					$('#addForm').bootstrapValidator('validate');
 				}
 			});
 		}

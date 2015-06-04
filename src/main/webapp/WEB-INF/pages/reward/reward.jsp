@@ -35,6 +35,13 @@
 	src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
 <link href="<c:url value="/resource/datepicker/css/datepicker.css" />"
 	rel="stylesheet" media="all">
+	
+	<%-- <link href="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all"> --%>
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/jquery/jquery.min.js" />"></script> --%>
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/js/bootstrap.min.js" />"></script> --%>
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
 
 <!-- jQuery dataTable -->
 <script
@@ -268,6 +275,45 @@
 	<script type="text/javascript">
 			var dt;			
 			$(document).ready(function(){
+				
+			$("#addBtn").on("click",function(){clearModal();});
+				
+			
+			$('#addForm').bootstrapValidator({
+//		        live: 'disabled',
+		        message: 'This value is not valid',
+		        feedbackIcons: {
+		            valid: 'glyphicon glyphicon-ok',
+		            invalid: 'glyphicon glyphicon-remove',
+		            validating: 'glyphicon glyphicon-refresh'
+		        },
+		        fields: {
+		        	typereward: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'The typereward: is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            year: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'The  year is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            reason: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'The reason is required and cannot be empty'
+		                    }
+		                }
+		            },
+		           
+		        }
+		    });
+			
+			
 			dt = $('#tbResult').dataTable();
 			listAll();
 			$("#addModal").on("show.bs.modal", function(event) {
@@ -341,8 +387,9 @@
 								$('#addModal').modal('toggle');
 								listAll();
 							},
-							error : function(jqXHR,	textStatus,	error) {	
-									alert("error");
+							error : function() {	
+								//	alert("error");
+							$('#addForm').bootstrapValidator('validate');
 							}
 						});
 			}
