@@ -45,19 +45,19 @@
 </head>
 <body>
 <div class="container">
-<f:form method="post" commandName="experience" class="form-horizontal" role="form">
-
-		<h2>Experience</h2>
-		
-		<br>
+<f:form method="post" commandName="experience" class="form-horizontal" role="form">	
+		<div class="row">	
+			<h2 class="col-md-6">Experience</h2>
 			<!-- Button trigger modal -->
-		<div align="right">
-			<button id="clearModal" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
+			<br>
+			<div class="col-md-6" align="right">
+			<button id="clearModal" type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
  	 			New Record
 			</button>
+			<br>
+			<br>
+			</div>	
 		</div>
-		<br>
-		
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">
