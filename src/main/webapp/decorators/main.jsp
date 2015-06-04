@@ -42,6 +42,22 @@
 <script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
 <link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
 
+<!-- Browse-remove picture -->
+<script src="<c:url value="/resource/bootstrap/js/fileinput.min.js" />"></script>
+<link href="<c:url value="/resource/bootstrap/css/fileinput.min.css" />" rel="stylesheet"	media="all">
+
+<style >
+
+#imagePreview {
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline-block;
+}
+</style>
+
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>

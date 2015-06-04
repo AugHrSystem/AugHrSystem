@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,6 +20,14 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+
+<%-- <link href="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all"> --%>
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/jquery/jquery.min.js" />"></script> --%>
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/js/bootstrap.min.js" />"></script> --%>
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
@@ -34,10 +41,29 @@
 <div class="container">
 <form:form id ="listForm" method="post" commandName="ability">
 
-<h2>Ability</h2> 
+			<div class="row-md-12">
 
- <br></br>
-<!-- Table -->
+				<div class="col-md-6">
+					<h2>Ability</h2>
+
+				</div>
+
+				<div class="col-md-6">
+
+					<br>
+					<!-- Button trigger modal -->
+					<div class="form-group" align="right">
+						<button type="button" id="addBtnAbi" class="btn btn-info"
+							data-toggle="modal" data-target="#addModal">New record</button>
+					</div>
+					</br>
+
+
+				</div>
+			</div>
+
+
+			<!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
 	<thead>
@@ -57,10 +83,7 @@
 
 <form:form id ="addForm" method="post" commandName="ability" >
 
-<!-- Button trigger modal -->
-<div class="form-group" align="right">
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -70,32 +93,11 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Ability Add</h4>
       </div>
-      
-     <%--  
-      <div class="row" style="text-align: center;">
-		<div class="visible-xs col-xs-12">
-			<c:choose>
-	    			<c:when test="${ empty emp_ability.picture }">
-	    				<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('<c:url value="/resources/images/no_image.gif" />');"></div>
-	    			</c:when>
-	    			<c:otherwise>
-	    				<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=ability&fileName=${ability.picture}');"></div>
-	    			</c:otherwise>
-	    		</c:choose>
-		</div>
-		</div> --%> 
+     
       
       <div class="modal-body">
         
-	<%--   
-	 <div class="form-group form-group-sm">
-			<label class="col-lg-3 col-md-3 col-sm-3 control-label"><spring:message
-					code="label.picture" var="var6" /> ${var6} </label>
-			<div class="col col-lg-5 col-md-8 col-sm-8">
-					<input name="image"  id="uploadFile" type="file" value="${emp_ability.picture }" accept="image/*" class="file" data-show-upload="false" data-show-preview="false" data-initial-caption="${var6}" data-overwrite-initial="false">
-					<input type="hidden" name="picture" class="form-control element-to-paste-filename" value="${emp_ability.picture }"  readonly placeholder="${var6}">
-			</div>
-		</div> --%>
+	
 	  
 	  <div class="form-group">
 	    <label>Specialty :</label>
@@ -111,10 +113,22 @@
 		</div>
 	  </div>
 	  
-	   <div class="form-group">
+	   <%-- <div class="form-group">
 	    <label>Rank :</label>
 	    <form:input path="rank" type="text" class="form-control" id="rank" placeholder="Enter Rank"/>
-	  </div>
+	  </div> --%>
+	  
+	  
+	  <div class="form-group">
+								<div class="col-md-3">
+									<label> Rank :</label>
+									<input type="radio" name="rank" value="1">1</input>
+									<input type="radio" name="rank" value="2">2</input>
+									<input type="radio" name="rank" value="3">3</input>
+								</div>
+    						</div>	
+	  
+	  <input type='button' value='Display Selected' id='isSelect'>
 	  
 
       </div>
@@ -164,6 +178,47 @@
 <script type="text/javascript">
 var dt;
 $(document).ready(function(){
+	
+	$("#addBtnAbi").on("click",function(){clearModal();});
+	
+	  $("#isSelect").click(function () {
+		  
+			alert($('input:radio[name=rank]:checked').val());
+		 
+		    });
+	
+
+	
+	$('#addForm').bootstrapValidator({
+		
+		  message: 'This value is not valid',
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	masspecialty: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The masspecialty is required and cannot be empty'
+	                    }
+	                }
+	            },
+	          /*   rank: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The rank is required and cannot be empty'
+	                    },
+	                    digits:{
+	                    	message:'Plase Number'
+	                    }
+	                }
+	            } */
+	        }
+		
+	});
+	
 	dt = $('#tbResult').dataTable();
 	listAll();
 	/* --- addProduct,updateProduct --- */
@@ -172,7 +227,7 @@ $(document).ready(function(){
 	
 	$("#addModal").on("show.bs.modal",function(event) {
 		
-		clearModal();
+		//clearModal();
 		
 		var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 		var abilityid = button.data("id") //Extract info from data-* attribute
@@ -244,7 +299,8 @@ $(document).ready(function(){
 				listAll();
 			},
 			error : function() {
-				alert("ERROR");
+				//alert("ERROR");
+				$('#addForm').bootstrapValidator('validate');
 			}
 		});
 	}

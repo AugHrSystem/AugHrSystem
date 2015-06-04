@@ -54,20 +54,46 @@
 
 <form:form id ="listForm" method="post" commandName="leave">
 
-<h2>Leave</h2> 
 
-<br></br>
+
+
+		<div class="row-md-12">
+
+				<div class="col-md-6">
+					<h2>Leave</h2> 
+
+				</div>
+
+				<div class="col-md-6">
+
+					<br>
+					<!-- Button trigger modal -->
+					<div align="right">
+						<button id="clearModal" type="button" class="btn btn-info btn-md"
+							data-toggle="modal" data-target="#addModal">New record</button>
+					</div>
+					</br>
+
+
+				</div>
+			</div>
+
+
+
+
+
 
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>Leave_type</th>
-			<th>Date_From</th>
-			<th>Date_To</th>
-			<th>Time_From</th>
-			<th>Time_To</th>
+			<th>Start_Date</th>
+			<th>Start_Time</th>
+			<th>Start_Time</th>
+			<th>End_Time</th>
+			<th>Leave_Type</th>
+			<th>Reason</th>
 			<!-- <th>AIM</th> -->
 			<th></th>
 			<th></th>
@@ -80,12 +106,7 @@
 </form:form>
 
 <form:form id ="addForm" method="post" commandName="leave" >
-<!-- Button trigger modal -->
-	<div align="right">
-		<button id="clearModal" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
- 	 	Add
-		</button>
-	</div>
+
 	
 	
 	<!-- Modal -->
@@ -97,12 +118,73 @@
         <h4 class="modal-title" id="myModalLabel">Add Leave</h4>
       </div>
       <div class="modal-body">
-       
-     
-  				
-  				
-  				
-  				
+   	
+
+ <div class="col-md-12">
+
+<div class="col-md-6">
+	 <div class="form-group"> 
+	    <label>Start Date:</label>
+	    <div class='input-group date' id='dateFrom1'>
+	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
+	    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+	    </div>
+	    </div>
+	    </div>
+	    
+	    
+	    <div class="col-md-6">
+	    <div class="form-group">
+			<label>Start Time :</label>
+
+			<div class="input-group clockpicker">
+
+				<input type="text" class="form-control" id="startTime"
+					placeholder="Enter startTime" value="09.00"> <span
+					class="input-group-addon"> <span
+					class="glyphicon glyphicon-time"></span>
+				</span>
+			</div>
+		</div>
+	    </div>
+	    </div>
+	    
+	    
+	    
+	     <div class="col-md-12">
+
+<div class="col-md-6">
+ <div class="form-group">
+	    <label>End Date :</label>
+	    <div class='input-group date' id='dateTo1'>
+	    <form:input path="endDate" type="text" class="form-control" id="endDate"/>
+	    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        </div>
+	  </div>
+</div>
+
+
+
+<div class="col-md-6">
+<div class="form-group">
+			<label>End Time:</label>
+
+			<div class="input-group clockpicker">
+
+				<input type="text" class="form-control" id="endTime"
+					placeholder="Enter endTime" value="18.00"> <span
+					class="input-group-addon"> <span
+					class="glyphicon glyphicon-time"></span>
+				</span>
+			</div>
+		</div>
+</div>
+</div>
+		
   		<div class="form-group">
 	    <label>Leave type:</label>
 	    
@@ -115,62 +197,24 @@
 		</form:select>
 		</div>
 	  </div>
-  				
-
-
-
- <div class="form-group">
-	    <label>Leave Date</label>
-	    <br>
-	    <label>Date From :</label>
-	    <div class='input-group date' id='dateFrom1'>
-	    <form:input path="dateFrom" type="text" class="form-control" id="dateFrom"/>
-	    <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-	    </div>
-	    <label>Date To  :</label>
-	    <div class='input-group date' id='dateTo1'>
-	    <form:input path="dateTo" type="text" class="form-control" id="dateTo"/>
-	    <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-        </div>
+	  
+	  
+	  
+	  <div class="form-group">
+	    <label>Reason :</label>
+	    <form:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
 	  </div>
+	  
+	 
+  			
 
 
 
 
 
-		<div class="form-group">
-			<label>Time From:</label>
-
-			<div class="input-group clockpicker2">
-
-				<input type="text" class="form-control" id="timeFrom"
-					placeholder="Enter timeFrom" value="09.00"> <span
-					class="input-group-addon"> <span
-					class="glyphicon glyphicon-time"></span>
-				</span>
-			</div>
-		</div>
-
-
-<div class="form-group">
-			<label>Time to:</label>
-
-			<div class="input-group clockpicker2">
-
-				<input type="text" class="form-control" id="timeTo"
-					placeholder="Enter timeTo" value="18.00"> <span
-					class="input-group-addon"> <span
-					class="glyphicon glyphicon-time"></span>
-				</span>
-			</div>
-		</div>
-
-
-
+	
+	
+	
 
 							<%-- <div class="form-group">
 	    <label>AIM:</label>
@@ -243,7 +287,7 @@ $(document).ready(function() {
 	
 //	$('.clockpicker').clockpicker();
 	
-	$('.clockpicker').clockpicker({
+	 $('.clockpicker').clockpicker({
 		placement: 'bottom', // clock popover placement
 		align: 'left',       // popover arrow align
 		donetext: 'Done',     // done button text
@@ -252,13 +296,6 @@ $(document).ready(function() {
 		});
 	
 	
-	$('.clockpicker2').clockpicker({
-		placement: 'top', // clock popover placement
-		align: 'left',       // popover arrow align
-		donetext: 'Done',     // done button text
-		autoclose: true,    // auto close when minute is selected
-		vibrate: true        // vibrate the device when dragging clock hand
-		});
 	
 	
 	
@@ -318,10 +355,11 @@ $(document).ready(function() {
 					
 					masleavetypeId:$("#masleavetype").val(),
 					masleavetype:$("#masleavetype option:selected").text(),
-					dateFrom:$("#dateFrom").val(),
-					dateTo:$("#dateTo").val(),
-					timeFrom:$("#timeFrom").val(),
-					timeTo:$("#timeTo").val(),
+					startDate:$("#startDate").val(),
+					endDate:$("#endDate").val(),
+					startTime:$("#startTime").val(),
+					endTime:$("#endTime").val(),
+					reason:$("#reason").val(),
 					employeeId :id 
 				}),
 				type : "POST",
@@ -338,10 +376,11 @@ $(document).ready(function() {
 					
 					              
 						data.masleavetype,
-						data.dateFrom,
-						data.dateTo,			
-						data.timeFrom,
-						data.timeTo,
+						data.startDate,
+						data.endDate,			
+						data.startTime,
+						data.endTime,
+						data.reason,
 					
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -369,10 +408,12 @@ $(document).ready(function() {
 					//alert(JSON.stringify(data));
 					
 					$("#masleavetype").val(data.masleavetypeId);
-					$("#dateFrom").val(data.dateFrom);
-					$("#dateTo").val(data.dateTo);
-					$("#timeFrom").val(data.timeFrom);
-					$("#timeTo").val(data.timeTo);
+					$("#startDate").val(data.startDate);
+					$("#endDate").val(data.endDate);
+					$("#startTime").val(data.startTime);
+					$("#endTime").val(data.endTime);
+					$("#reason").val(data.reason);
+					
 					employeeId: data.employeeId;
 				},
 				error : function(data, textStatus, jqXML) {
@@ -395,10 +436,11 @@ $(document).ready(function() {
 						id:leaveid,
 						masleavetypeId : $("#masleavetype").val(),
 						masleavetype : $("#masleavetype option:selected").text(),
-						dateFrom:$("#dateFrom").val(),
-						dateTo:$("#dateTo").val(),
-						timeFrom:$("#timeFrom").val(),
-						timeTo:$("#timeTo").val(),
+						startDate:$("#startDate").val(),
+						endDate:$("#endDate").val(),
+						startTime:$("#startTime").val(),
+						endTime:$("#endTime").val(),
+						reason:$("#reason").val(),
 						employeeId: id
 					}),
 					type : "POST",
@@ -410,12 +452,13 @@ $(document).ready(function() {
 						
 						var tr = button.closest("tr");
 						
-						dt.fnUpdate(data.masleavetype.name, tr, 0);
-						dt.fnUpdate(data.dateFrom, tr, 1 );
-						dt.fnUpdate(data.dateTo, tr, 2 );
-						dt.fnUpdate(data.timeFrom, tr, 3 );
-						dt.fnUpdate(data.timeTo, tr, 4 );
 						
+						dt.fnUpdate(data.startDate, tr, 0 );
+						dt.fnUpdate(data.startTime, tr, 1 );
+						dt.fnUpdate(data.endDate, tr, 2 );
+						dt.fnUpdate(data.endTime, tr, 3 );
+						dt.fnUpdate(data.masleavetype.name, tr, 4);
+						dt.fnUpdate(data.reason, tr, 5 );
 						$('#addModal').modal('toggle');
 						listAll();
 					},
@@ -461,11 +504,15 @@ $(document).ready(function() {
 					success : function(data) {
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].masleavetype,
-						              data[i].dateFrom,
-						              data[i].dateTo,
-						              data[i].timeFrom,
-						              data[i].timeTo,
+						dt.fnAddData([
+						              
+						             
+						              data[i].startDate,
+						              data[i].startTime,
+						              data[i].endDate,
+						              data[i].endTime,
+						              data[i].masleavetype,
+						              data[i].reason,
 						              
 						              
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
@@ -483,11 +530,11 @@ $(document).ready(function() {
 		 function clearModal(){
 				
 				$("#masleavetype").val("-1"),
-				$("#dateFrom").val(""),
-				$("#dateTo").val(""),
-				$("#timeFrom").val(""),
-				$("#timeTo").val("");
-				
+				$("#startDate").val(""),
+				$("#endDate").val(""),
+				$("#startTime").val(""),
+				$("#endTime").val("");
+				$("#reason").val("");
 				
 				
 				

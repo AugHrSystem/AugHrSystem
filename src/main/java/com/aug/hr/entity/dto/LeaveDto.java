@@ -14,12 +14,13 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchLeave",
-			query="select l.id, l.date_from,l.date_to, l.time_from,l.time_to, m.name, l.employee_id, emp.employee_code, m.leavetype_id from emp_leave l, emp_employee emp, mas_leavetype  m where  l.employee_id = :empId and l.employee_id = emp.id and l.leavetype_id = m.leavetype_id",																																																																					
+			query="select l.id, l.start_date,l.end_date, l.start_time,l.end_time,l.reason, m.name, l.employee_id, emp.employee_code, m.leavetype_id from emp_leave l, emp_employee emp, mas_leavetype  m where  l.employee_id = :empId and l.employee_id = emp.id and l.leavetype_id = m.leavetype_id",																																																																					
 			resultClass = LeaveDto.class)
 			
 })
@@ -34,25 +35,29 @@ public class LeaveDto {
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DATE_FROM")
-	private Date dateFrom;
+	@Column(name = "START_DATE")
+	private Date startDate;
 	
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DATE_TO")
-	private Date dateTo;
+	@Column(name = "END_DATE")
+	private Date endDate;
 	
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="TIME_FROM")
-	private Date timeFrom;
+	@Column(name="START_TIME")
+	private Date startTime;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="TIME_TO")
-	private Date timeTo;
+	@Column(name="END_TIME")
+	private Date endTime;
+	
+	
+	@Column(name="REASON")
+	private String reason;
 	
 	@Column(name = "NAME")
 	private String masleavetype;
@@ -81,43 +86,56 @@ public class LeaveDto {
 
 
 
-	public Date getDateFrom() {
-		return dateFrom;
+	
+
+
+	public Date getStartDate() {
+		return startDate;
 	}
 
 
-	public void setDateFrom(Date dateFrom) {
-		this.dateFrom = dateFrom;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
 
-	public Date getDateTo() {
-		return dateTo;
+	public Date getEndDate() {
+		return endDate;
 	}
 
 
-	public void setDateTo(Date dateTo) {
-		this.dateTo = dateTo;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 
-	public Date getTimeFrom() {
-		return timeFrom;
+	public Date getStartTime() {
+		return startTime;
 	}
 
 
-	public void setTimeFrom(Date timeFrom) {
-		this.timeFrom = timeFrom;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
 
-	public Date getTimeTo() {
-		return timeTo;
+	public Date getEndTime() {
+		return endTime;
 	}
 
 
-	public void setTimeTo(Date timeTo) {
-		this.timeTo = timeTo;
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+
+	public String getReason() {
+		return reason;
+	}
+
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 
