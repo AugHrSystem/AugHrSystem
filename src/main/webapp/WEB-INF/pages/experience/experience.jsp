@@ -46,18 +46,19 @@
 <body>
 <div class="container">
 <f:form method="post" commandName="experience" class="form-horizontal" role="form">	
-		<div class="row">	
+		<div class="row-md-12">	
 			<h2 class="col-md-6">Experience</h2>
+			<br>
+			<div class="col-md-6">
 			<!-- Button trigger modal -->
-			<br>
-			<div class="col-md-6" align="right">
-			<button id="clearModal" type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
- 	 			New Record
-			</button>
-			<br>
-			<br>
-			</div>	
-		</div>
+				<div class="form-group" align="right">
+					<button id="clearModal" type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
+ 	 					New record
+					</button>
+				</div>
+				<br>
+				</div>	
+			</div>
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">

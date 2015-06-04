@@ -43,16 +43,19 @@
 <body>
 <div class="container">
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
-
-		<h2>Probation</h2>	
-		<br>
-		<!-- Button trigger modal -->
-		<div align="right">
-			<button id="clearModal"type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
- 	 			New Record
-			</button>
+		<div class="row-md-12">
+			<h2 class="col-md-6">Probation</h2>	
+			<br>
+			<div class="col-md-6">
+				<!-- Button trigger modal -->
+				<div class="form-group" align="right">
+					<button id="clearModal"type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
+ 	 					New record
+					</button>
+				</div>
+				<br>
+			</div>
 		</div>
-		<br>
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">
