@@ -551,17 +551,6 @@ public class Employee extends BaseEntity{
    @Transient
    private Integer technologyId;
    
-   
-   public Integer getIsManager() {
-	return isManager;
-}
-
-public void setIsManager(Integer isManager) {
-	this.isManager = isManager;
-}
-
-
-
 
 @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE})
    //@JsonBackReference
