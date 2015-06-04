@@ -563,6 +563,9 @@ public class Employee extends BaseEntity{
    
 	@OneToOne(fetch=FetchType.LAZY,mappedBy="employee")
 	private Login login;
+	
+	@OneToOne(mappedBy="employee")
+	private Health health; 
    
  //-------------------------------------- getter setter --------------------------------------------------//
 
@@ -1494,6 +1497,15 @@ public class Employee extends BaseEntity{
 
 	public void setIsManager(Integer isManager) {
 		this.isManager = isManager;
+	}
+
+	
+	public Health getHealth() {
+		return health;
+	}
+
+	public void setHealth(Health health) {
+		this.health = health;
 	}
 
 	

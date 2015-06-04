@@ -52,6 +52,8 @@
 		<mapping class="com.aug.hr.entity.Login" />
 		<mapping class="com.aug.hr.entity.MasRole" />
 		<mapping class="com.aug.hr.entity.Allowances" />
+		<mapping class="com.aug.hr.entity.Health" />
+
 
 	</session-factory>
         
