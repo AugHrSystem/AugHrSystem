@@ -21,6 +21,10 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+<!-- Validator -->
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
 <!-- Date Time Picker -->
 <script src="<c:url value="/resource/moment/js/moment.js" />"></script>
 <script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
