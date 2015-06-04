@@ -28,29 +28,29 @@ public class Experience extends BaseEntity {
 	@GeneratedValue
 	@Column(name = "ID")
 	private Integer id;
-	@Column(name = "COMPANY_NAME")
+	@Column(name = "COMPANY_NAME", nullable=false)
 	private String companyName;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@Column(name = "DATE_FROM")
+	@Column(name = "DATE_FROM", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateFrom;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@Column(name = "DATE_TO")
+	@Column(name = "DATE_TO", nullable=false)
 //	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateTo;
 	@Column(name = "ADDRESS")
 	private String address;
 	@Column(name = "TYPE_OF_BUSINESS")
 	private String businessType;
-	@Column(name = "POSITION")
+	@Column(name = "POSITION", nullable=false)
 	private String position;
 	@Column(name = "REFERENCE")
 	private String reference;
 	@Column(name = "RESPONSIBILITY")
 	private String responsibility;	
-	@Column(name = "SALARY")
+	@Column(name = "SALARY", nullable=false)
 	private Integer salary;	
-	@Column(name = "REASON_OF_REGISNATION")
+	@Column(name = "REASON_OF_REGISNATION", nullable=false)
 	private String reason;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

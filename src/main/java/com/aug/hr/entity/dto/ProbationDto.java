@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
                 		+ "pro.date_from, "
                 		+ "pro.date_to, "
                 		+ "pro.status,"
+                		+ "pro.reason,"
                 		+ "pro.employee_id, "
                 		+ "emp.employee_code "
                 		+ "from emp_probation as pro, emp_employee as emp "
@@ -44,6 +45,8 @@ public class ProbationDto {
     private Date dateTo;
     @Column(name = "STATUS")
     private String status;
+    @Column(name = "REASON")
+    private String reason;
     @Column(name = "EMPLOYEE_ID")
     private Integer employeeId;
     @Column(name = "EMPLOYEE_CODE")
@@ -96,6 +99,14 @@ public class ProbationDto {
     public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
 
 
 }

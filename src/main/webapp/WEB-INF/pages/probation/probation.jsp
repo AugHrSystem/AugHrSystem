@@ -14,6 +14,14 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+<!-- Validator -->
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
+<!-- Include Bootstrap-select CSS, JS -->
+<link href="<c:url value="/resource/select/css/bootstrap-select.min.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/select/js/bootstrap-select.min.js" />"></script>
+
 <!-- Date Time Picker -->
 <script src="<c:url value="/resource/moment/js/moment.js" />"></script>
 <script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
@@ -27,8 +35,7 @@
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
-
-<title>Experience</title>
+<title>Probation</title>
 <style>
 
 </style>
@@ -39,18 +46,23 @@
 
 		<h2>Probation</h2>	
 		<br>
-		<div id="message"></div>
+		<!-- Button trigger modal -->
+		<div align="right">
+			<button id="clearModal"type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
+ 	 			New Record
+			</button>
+		</div>
 		<br>
+		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>Date From</th>
-					<th>Date To</th>
+					<th>Start Date</th>
+					<th>End Date</th>
 					<th>Status</th>
-					<th>Employee Code</th>
-					<th></th>
+					<th>Reason</th>
+					<th>Action</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -59,15 +71,10 @@
 		</div>
 		
 </f:form>			
-	<!-- Button trigger modal -->
-	<div align="right">
-		<button id="clearModal"type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
- 	 	Add
-		</button>
-	</div>
 </div>			
 		
 <!-- Modal -->
+<f:form id="validate" method="post" commandName="probation">
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -75,43 +82,47 @@
        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Add Probation</h4>
       </div>
-      <div class="modal-body">
-      
-  		<div class="form-group">
+      <div class="modal-body row">
+  		<div class="form-group col-md-6">
     		<label>Start Date :</label>
   			<div class="input-group" id="dateTimeFrom">
-  				<input id="dateFrom" type="text" class="form-control" placeholder="Start Date">
+  				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="Start Date"/> 
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
 		
-		<div class="form-group">
+		<div class="form-group col-md-6">
     		<label>End Date :</label> 	
   			<div class="input-group" id="dateTimeTo">
-  				<input id="dateTo"type="text" class="form-control" placeholder="End Date">
+  				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="End Date"/>
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
   		
-  		<div class="form-group">
+  		<div class="form-group col-md-12">
     			<label>Status :</label>
-    				<select  id="status"  class="form-control">
-						<option value="-1">--Choose Status--</option>
+    				<f:select path="status" id="status"  class="form-control">
+						<option value="">--Choose Status--</option>
 						<option value="Pass">Pass</option>
 						<option value="Not Pass">Not Pass</option>
 						<option value="Extend">Extend</option>
-					</select>  
+					</f:select>  
 		</div>
   		
+  		<div class="form-group col-md-12">
+	    	<label>Reason :</label>
+	   		<input type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
+	  	</div>
       </div>
       <div class="form-group" align="center">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-info saveButton">Save</button>
       </div>
+
     </div>
   </div>
 </div>
-
+</f:form> 
 
 <!-- Modal Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -135,6 +146,44 @@
 var dt;
 	$(document).ready(function() {
 		var proId; 
+		$('#validate').find('[id="#status"]')
+        .selectpicker()
+        .change(function(e) {
+            // revalidate the color when it is changed
+            $('#bootstrapSelectForm').formValidation('revalidateField', '#status');
+        })
+        .end()
+        .bootstrapValidator({
+			message: 'This value is not valid',
+			 feedbackIcons: {
+		            valid: 'glyphicon glyphicon-ok',
+		            invalid: 'glyphicon glyphicon-remove',
+		            validating: 'glyphicon glyphicon-refresh'
+		        },
+		        fields: {
+		        	dateFrom: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'The Start Date is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            dateTo: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'The End Date is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            status: {
+		            	validators: {
+	                        notEmpty: {
+	                            message: 'Please select your Status.'
+	                        }
+	                    }
+		            }
+		        }
+		});
 		
     	$( "#dateTimeFrom" ).datetimepicker({
 			 viewMode: 'days',
@@ -149,7 +198,7 @@ var dt;
 			 //minDate: moment(),
 		});
     	dt=$("#tdResult").dataTable();
-    	
+ 	
  		listAll();
  		
      	$("#addModal").on("show.bs.modal", function(event){
@@ -166,8 +215,10 @@ var dt;
     				editProbation();
     			}
     			else {
+    				if($('#validate').bootstrapValidator('validate')){
     				//console.log("add : "+proId);
-    				addProbation();
+    					addProbation();
+    				}
     			}
     			
     		});
@@ -183,10 +234,12 @@ var dt;
     					 "status="+ $("#status option:selected").text()+
    					 "&employee.id="+ id 
    					,*/
+   					
     				 data : JSON.stringify({
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 status: $("#status option:selected").text(),
+    					 reason: $("#reason").val(),
     					 employeeId: id
     					}),
     				datatype: "json",
@@ -212,8 +265,10 @@ var dt;
     					listAll();
     				},
     				error : function(data,testStatus,jqXHR) {
-    					$('#addModal').modal('toggle');
-    					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
+    					$('#validate').bootstrapValidator('validate');
+    					$('#validate').bootstrapValidator('revalidateField', '#status');
+    					/* $('#addModal').modal('toggle');
+    					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
     					}
     				});
     		}
@@ -228,8 +283,8 @@ var dt;
 							$("#dateFrom").val(data.dateFrom);
 							$("#dateTo").val(data.dateTo);
 							$("#status").val(data.status);
+							$("#reason").val(data.reason);
 							employeeId: data.employeeId; 
-							//setModal(data);
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
@@ -249,6 +304,7 @@ var dt;
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 status: $("#status option:selected").text(),
+    					 reason: $("#reason").val(),
     					 employeeId: id
 					 }),
 					datatype: "json",
@@ -273,8 +329,10 @@ var dt;
 						listAll();
 					},
 					error : function(data,testStatus,jqXHR) {
-						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
+    					$('#validate').bootstrapValidator('validating');
+    					$('#validate').bootstrapValidator('revalidateField', '#status');
+						/* $('#addModal').modal('toggle');
+						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
 						}
 					});
 			}
@@ -283,7 +341,8 @@ var dt;
     			//console.log("test");
 				$("#dateFrom").val("");
 				$("#dateTo").val("");
-				$("#status").val("-1"); 
+				$("#status").val(""); 
+				$("#reason").val("");
 			});
     		/* function setModal(data){
 				$("#dataFrom").val(data.dateFrom);
@@ -337,8 +396,8 @@ var dt;
 					success : function(data) {
 					dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].id,data[i].dateFrom,data[i].dateTo,
-						              data[i].status,data[i].employeeCode,
+						dt.fnAddData([data[i].dateFrom,data[i].dateTo,
+						              data[i].status,data[i].reason,
 							'<button type="button" class="btn btn-warning btn-sm active" data-proId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-proId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				

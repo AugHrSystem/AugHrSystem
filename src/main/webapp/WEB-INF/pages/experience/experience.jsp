@@ -21,6 +21,10 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+<!-- Validator -->
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
 <!-- Date Time Picker -->
 <script src="<c:url value="/resource/moment/js/moment.js" />"></script>
 <script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
@@ -45,22 +49,27 @@
 
 		<h2>Experience</h2>
 		
-		<br><br>
+		<br>
+			<!-- Button trigger modal -->
+		<div align="right">
+			<button id="clearModal" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
+ 	 			New Record
+			</button>
+		</div>
+		<br>
 		
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">
 			<thead>
 				<tr>
-					<th>Id</th>
+					<th>Start Date</th>
+					<th>End Date</th>
 					<th>Company Name</th>
-					<th>Business Type</th>
 					<th>Position</th>
-					<th>Date From</th>
-					<th>Date To</th>
-					<th>Reference</th>
-					<th>Employee Code</th>
-					<th></th>
+					<th>Salary</th>
+					<th>Reason of Resign</th>
+					<th>Action</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -68,15 +77,10 @@
 		</table>
 		</div>
 </f:form>			
-	<!-- Button trigger modal -->
-	<div align="right">
-		<button id="clearModal" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
- 	 	Add
-		</button>
-	</div>
 </div>			
 		
 <!-- Modal -->
+<f:form id="validate" method="post" commandName="experience">
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -84,60 +88,59 @@
        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Add Experience</h4>
       </div>
-      <div class="modal-body">
-       
-        <div class="form-group">
+      <div class="modal-body row">
+      
+       	<div class="form-group col-md-6">
+    		<label>Start Date :</label>
+  			<div class="input-group" id="dateTimeFrom">
+  				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="Start Date" />
+  				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+		</div>
+		
+		<div class="form-group col-md-6">
+    		<label>End Date :</label> 	
+  			<div class="input-group" id="dateTimeTo">
+  				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="End Date" />
+  				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+		</div>
+        <div class="form-group col-md-6">
   			<label>Company Name :</label>
-  			<input type="text" class="form-control" id="cName" placeholder="Enter Company Name">
+  			<form:input path="companyName" type="text" class="form-control" id="cName" placeholder="Enter Company Name" />
   		</div>
-  		<div class="form-group">
+  		<div class="form-group col-md-6">
   			<label>Business Type:</label>
   			<input type="text" class="form-control" id="businessType" placeholder="Enter Business Type">
   		</div>
   		
-      	<div class="form-group">
+      	<div class="form-group col-md-6">
       		<label>Position :</label>
-  			<input type="text" class="form-control" id="position" placeholder="Enter Position">
+  			<f:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position" />
 		</div>
 		
-		<div class="form-group">
+		<div class="form-group col-md-6">
       		<label>Salary :</label>
-  			<input type="text" class="form-control" id="salary" placeholder="Enter Salary">
-		</div>
-		
-  		<div class="form-group">
-    		<label>Start Date :</label>
-  			<div class="input-group" id="dateTimeFrom">
-  				<input id="dateFrom" type="text" class="form-control" placeholder="Start Date">
-  				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-			</div>
-		</div>
-		
-		<div class="form-group">
-    		<label>End Date :</label> 	
-  			<div class="input-group" id="dateTimeTo">
-  				<input id="dateTo"type="text" class="form-control" placeholder="End Date">
-  				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-			</div>
+  			<f:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary" />
 		</div>
   		
-  		<div class="form-group">
-  			<label>Address :</label>
-  			<input type="text" class="form-control" id="address" placeholder="Enter Address">
-  		</div>
-  		
-		<div class="form-group">
+		<div class="form-group col-md-6">
   			<label>Responsibility :</label>
   			<input type="text" class="form-control" id="responsibility" placeholder="Enter Responsibility">
   		</div>
-  		<div class="form-group">
+  		<div class="form-group col-md-6">
   			<label>Reference :</label>
   			<input type="text" class="form-control" id="reference" placeholder="Enter Reference Name">
   		</div>
   		
-  		<div class="form-group">
+  		<div class="form-group col-md-12">
+  			<label>Address :</label>
+  			<input type="text" class="form-control" id="address" placeholder="Enter Address">
+  		</div>
+  		
+  		<div class="form-group col-md-12">
   			<label>Reason of Resignation:</label>
-  			<input type="text" class="form-control" id="reason" placeholder="Enter Reason of Resignation">
+  			<f:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason of Resignation" />
   		</div>
         
       </div>
@@ -148,7 +151,7 @@
     </div>
   </div>
 </div>
-
+</f:form>
 
 <!-- Modal Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -172,6 +175,60 @@
 var dt;
 	$(document).ready(function() {
 		var expId; 
+		$('#validate')
+        .bootstrapValidator({
+			message: 'This value is not valid',
+			 feedbackIcons: {
+		            valid: 'glyphicon glyphicon-ok',
+		            invalid: 'glyphicon glyphicon-remove',
+		            validating: 'glyphicon glyphicon-refresh'
+		        },
+		        fields: {
+		        	dateFrom: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'The Start Date is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            dateTo: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'The End Date is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            cName: {
+		            	validators: {
+	                        notEmpty: {
+	                            message: 'The Company Name is required and cannot be empty'
+	                        }
+	                    }
+		            },
+		            position: {
+		            	validators: {
+	                        notEmpty: {
+	                            message: 'The Position is required and cannot be empty'
+	                        }
+	                    }
+		            },
+		            salary: {
+		            	validators: {
+	                        notEmpty: {
+	                            message: 'The Salary is required and cannot be empty'
+	                        }
+	                    }
+		            },
+		            reason: {
+		            	validators: {
+	                        notEmpty: {
+	                            message: 'The Reason of Resignation is required and cannot be empty'
+	                        }
+	                    }
+		            }
+		        }
+		});
+		
     	$( "#dateTimeFrom" ).datetimepicker({
 			 viewMode: 'days',
 			 format : 'DD-MM-YYYY',
@@ -246,8 +303,9 @@ var dt;
     					listAll();
     				},
     				error : function(data,testStatus,jqXHR) {
-    					$('#addModal').modal('toggle');
-    					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+    					$('#validate').bootstrapValidator('validate');
+    					/* $('#addModal').modal('toggle');
+    					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); */
     					}
     				});
     		}
@@ -303,8 +361,9 @@ var dt;
 					datatype: "json",
 					contentType: "application/json",
 					success : function(data) {
-						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+						$('#validate').bootstrapValidator('validate');
+						/* $('#addModal').modal('toggle');
+						$("#message").html('<div class="alert alert-success" role="alert">Success</div>'); */
 						/* dt.fnClearTable();
 						dt.fnAddData([
 						    data.id,
@@ -354,7 +413,7 @@ var dt;
 						});
 				
 				function deleteExperience(button,expId){
-					alert("in fn");
+					//alert("in fn");
 					$.ajax({
 						url : "${pageContext.request.contextPath}/experience/delete/"+expId,
 						type : "POST",
@@ -386,9 +445,12 @@ var dt;
 					success : function(data) {
 					dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].id,data[i].companyName,data[i].businessType, 
-						              data[i].position,data[i].dateFrom,data[i].dateTo,
-						              data[i].reference,data[i].employeeCode,
+						dt.fnAddData([data[i].dateFrom,
+						              data[i].dateTo,
+						              data[i].companyName, 
+						              data[i].position,
+						              data[i].salary,
+						              data[i].reason,
 							'<button type="button" class="btn btn-warning btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
