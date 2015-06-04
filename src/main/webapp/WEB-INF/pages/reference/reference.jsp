@@ -45,14 +45,19 @@
 			<div style="padding-bottom: 10px">
 				<h2>Reference</h2>	
 			</div>
-			<div class="form-group"><br><br>
+			<div class="form-group">
+					<!-- Button trigger modal -->
+	<div class="form-group" align="right">
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
+	</div>
+			
 				<table id="tbResult" class="table">
 					<thead>	
 						<tr>								
-							<th>NAME</th>
-							<th>ADDRESS</th>
-							<th>tel</th>
-							<th>occupation</th>
+							<th>Fullname</th>
+							<!-- <th>ADDRESS</th> -->
+							<th>Telphone</th>
+							<!-- <th>OCCUPATION</th> -->
 							<th></th>
 							<th></th>
 						</tr>
@@ -63,11 +68,8 @@
 	   </form:form>		
 
 	<form:form id ="addForm" method="post" commandName="reference">
-		<!-- Button trigger modal -->
-	<div class="form-group" align="right">
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
-	</div>
 	
+
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
 		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">		
 			<div class="modal-dialog modal-md">
@@ -79,21 +81,21 @@
       																											
 				<div class="col col-lg-12 " style="padding-top: 10px">									
 					<div class="form-group " align="left">
-							<label for="name" >Name:</label>
+							<label for="name" >Fullname:</label>
 							<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
 				    </div>				    
-				    <div class="form-group "  align="left">
+				  <%--   <div class="form-group "  align="left">
 							<label for="address" >Address:</label>		
 							<form:textarea path="address" class="form-control" rows="1" id="address" placeholder="Address"/>		
-				    </div>				    
+				    </div>				     --%>
 				    <div class="form-group "  align="left">
-							<label for="tel" >tel:</label>
+							<label for="tel" >Telphone:</label>
 							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="tel"/>							
 				    </div>				    
-				    <div class="form-group "  align="left">
+				  <%--   <div class="form-group "  align="left">
 							<label for="occupation" >occupation:</label>
 							<form:input path="occupation" type="text" class="form-control" id="occupation" placeholder="occupation"/>							
-				    </div>
+				    </div> --%>
 					
 					<div class="form-group" align="center">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -149,13 +151,7 @@
 	                }
 	            },
 	            
-	            address: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'The salary is required and cannot be empty'
-	                    }
-	                }
-	            },
+	         
 	            
 	            tel: {
 	                validators: {
@@ -165,13 +161,7 @@
 	                }
 	            },
 	            
-	            occupation: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'The salary is required and cannot be empty'
-	                    }
-	                }
-	            }
+	     
 	        }
 	    });
 		
@@ -216,10 +206,10 @@
 
 		function clearModal(){
 			$("#name").val(""),
-			$("#address").val(""),
-			$("#Unit").val(""),
-			$("#tel").val(""),
-			$("#occupation").val("");
+		//	$("#address").val(""),
+		//	$("#Unit").val(""),
+			$("#tel").val("");
+		//	$("#occupation").val("");
 		}
 
 
@@ -230,9 +220,9 @@
 				url : "${pageContext.request.contextPath}/reference/add",
 				data : JSON.stringify({			
 					name : $("#name").val(),
-					address :$("#address").val(),
+					/* address :$("#address").val(), */
 					tel :$("#tel").val(),
-					occupation :$("#occupation").val(),
+					/* occupation :$("#occupation").val(), */
 					employeeId: id 
 				}),
 				type : "POST",
@@ -242,9 +232,9 @@
 					dt.fnClearTable();					
 					dt.fnAddData([
 								data.name,
-								data.address,
+								/* data.address, */
 								data.tel,
-								data.occupation,
+								/* data.occupation, */
 						
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -271,9 +261,9 @@
 					
 								id :referenceid,
 								name: $("#name").val(),	
-								address: $("#address").val(), 
+								/* address: $("#address").val(), */ 
 								tel :$("#tel").val(),
-								occupation: $("#occupation").val(),
+								/* occupation: $("#occupation").val(), */
 								employeeId: id 
 												
 					}),
@@ -285,9 +275,9 @@
 					var tr = button.closest("tr"); // หาเเถวจากปุ่ม
 									
 					dt.fnUpdate(data.name, tr, 0),
-					dt.fnUpdate(data.address, tr, 1),
-					dt.fnUpdate(data.tel, tr, 2),
-					dt.fnUpdate(data.occupation, tr, 3),
+					/* dt.fnUpdate(data.address, tr, 1), */
+					dt.fnUpdate(data.tel, tr, 1),
+					/* dt.fnUpdate(data.occupation, tr, 3), */
 					'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
 					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
 							
@@ -309,9 +299,9 @@
 				type : "POST", 
 				success : function(data) {
 					$("#name").val(data.name); 
-					$("#address").val(data.address);
+					/* $("#address").val(data.address); */
 					$("#tel").val(data.tel);
-					$("#occupation").val(data.occupation);
+					/* $("#occupation").val(data.occupation); */
 					employeeId: data.employeeId;					
 				},
 				error : function(jqXHR,	textStatus,	error) {	
@@ -350,9 +340,9 @@
 					success : function(data) {
 					dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
-						dt.fnAddData([data[i].name,data[i].address, 
-						              data[i].tel,data[i].occupation,
-							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						dt.fnAddData([data[i].name, 
+						              data[i].tel,							
+						    '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}
