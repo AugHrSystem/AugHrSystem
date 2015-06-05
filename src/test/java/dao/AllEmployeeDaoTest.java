@@ -32,7 +32,7 @@ public class AllEmployeeDaoTest {
 	private EmployeeDao empDao;
 	
 	@Test
-	//@Rollback(false)
+	@Rollback(false)
 	public void create(){
 		AllEmployeeDto allemp = new AllEmployeeDto();
 		allemp.setEmployeeCode("aaaa");
@@ -60,7 +60,8 @@ public class AllEmployeeDaoTest {
 		allemp.setMasCoreSkill(2);
 		allemp.setTechnology(3);
 		allemp.setOfficialId(1);
-		
+		allemp.setIsManager(1);
+		//allemp.setAimempid(null);
 		empDao.saveByNameQuery(allemp);
 	}
 	

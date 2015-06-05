@@ -52,6 +52,7 @@
 
 <input type="hidden" id="emp">
 <input type="hidden" id="empname">
+<input type="hidden" id="id">
 
  <div class="row">
          <div class="span12">
@@ -91,13 +92,15 @@
 				</h2>
 		 </div>
 		 
+		 
 		 <div class="col-md-12">
 		 <div class="col-md-7">
 			 <div class="col-md-12">
 
 							<div class="form-group">
 								<div class="col-md-6">
-									<label for="id"> ID :</label> <input id="id" name="id" disabled="true" type="text" class="form-control"
+									<!-- <label for="id"> ID :</label> -->
+									 <input id="id" name="id" disabled="true" type="hidden" class="form-control"
 									id="id" placeholder="Enter ID">
 								</div>
 							
@@ -168,7 +171,7 @@
 
 											<label> Upload File :</label> 
 										
-											<input type="file" id="uploadFile" accept="image/*"
+											<input type="file" id="uploadFile" name="fileupload" accept="image/*"
 												class="file" data-show-upload="false"
 												data-show-preview="false" data-initial-caption="Picture"
 												data-overwrite-initial="false" required> 
@@ -379,8 +382,8 @@
 								<div class="col-md-3">
 									<label> Sex :</label>
 									<div class="radio">
-     									 <label><input type="radio" name="sex" >Male</label>
-      									 <label><input type="radio" name="sex" >Female</label>
+     									 <label><input type="radio" name="sex" value="Male">Male</label>
+      									 <label><input type="radio" name="sex" value="Female">Female</label>
     								</div>
 								</div>
     						</div>	
