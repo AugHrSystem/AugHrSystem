@@ -27,7 +27,7 @@
 
     <mvc:default-servlet-handler />
     <mvc:resources mapping="/resources/**" location="/" />
-    <util:properties id="appProps" location="classpath:ApplicationResources.properties" />
+
     
 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
