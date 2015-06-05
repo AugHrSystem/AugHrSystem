@@ -25,35 +25,43 @@ public class AllowancesDto {
 	@Column(name ="ID")
 	@Id
 	private Integer id;
-	@Column(name = "ALLOWANCES_TYPE")
-	private String allowances_type;
-	@Column(name = "AMOUNT_ALLOWANCES")
-	private String amount_allowances;
+	@Column(name = "AMOUNT")
+	private Double amount;
+	@Column(name = "NAME" )
+	private String masallowances;
 	@Column(name ="EMPLOYEE_ID")
 	private Integer employeeId;
+	@Column(name ="AllO_ID")
+	private Integer masAllowancesId;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getAllowances_type() {
-		return allowances_type;
+	public String getMasallowances() {
+		return masallowances;
 	}
-	public void setAllowances_type(String allowances_type) {
-		this.allowances_type = allowances_type;
+	public Double getAmount() {
+		return amount;
 	}
-	public String getAmount_allowances() {
-		return amount_allowances;
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
-	public void setAmount_allowances(String amount_allowances) {
-		this.amount_allowances = amount_allowances;
+	public void setMasallowances(String masallowances) {
+		this.masallowances = masallowances;
 	}
 	public Integer getEmployeeId() {
 		return employeeId;
 	}
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
+	}
+	public Integer getMasAllowancesId() {
+		return masAllowancesId;
+	}
+	public void setMasAllowancesId(Integer masAllowancesId) {
+		this.masAllowancesId = masAllowancesId;
 	}
 	
 }

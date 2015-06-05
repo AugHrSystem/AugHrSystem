@@ -28,8 +28,8 @@ public class AllowancesDaoImpl extends GenericDaoImpl<Allowances, Integer> imple
 	@Override
 	public List<Allowances> findByCriteria(Allowances allowances) {
 		Criteria c = getCurrentSession().createCriteria(Allowances.class);
-		if (!StringUtils.isNullOrEmpty(allowances.getAllowances_type())) {
-			c.add(Restrictions.like("name", "%" + allowances.getAllowances_type() + "%"));
+		if (!StringUtils.isNullOrEmpty(allowances.getName())) {
+			c.add(Restrictions.like("name", "%" + allowances.getName() + "%"));
 		}
 		return c.list();
 	}

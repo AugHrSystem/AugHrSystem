@@ -34,9 +34,7 @@ public class MasDegreetype extends BaseEntity{
 	@Column(name = "ISACTIVE" ,nullable =false)
 	private Boolean isactive;
 	
-//	@JsonIgnore
 	@OneToMany(mappedBy = "masdegreetype")
-
 	private Set<Education> educations = new HashSet<Education>();
 
 	
