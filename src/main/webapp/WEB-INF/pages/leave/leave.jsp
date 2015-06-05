@@ -19,6 +19,12 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+<%-- <link href="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all"> --%>
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/jquery/jquery.min.js" />"></script> --%>
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/js/bootstrap.min.js" />"></script> --%>
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
 
 
 <!-- jQuery dataTable -->
@@ -68,8 +74,8 @@
 
 					<br>
 					<!-- Button trigger modal -->
-					<div align="right">
-						<button id="clearModal" type="button" class="btn btn-info btn-md"
+					<div class="form-group" align="right">
+						<button type="button" id="addBtnLe" class="btn btn-info btn-md"
 							data-toggle="modal" data-target="#addModal">New record</button>
 					</div>
 					</br>
@@ -95,8 +101,8 @@
 			<th>Leave_Type</th>
 			<th>Reason</th>
 			<!-- <th>AIM</th> -->
-			<th></th>
-			<th></th>
+			<th>Edit</th>
+			<th>Delete</th>
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -117,15 +123,14 @@
        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Add Leave</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body row">
    	
 
- <div class="col-md-12">
 
 <div class="col-md-6">
 	 <div class="form-group"> 
 	    <label>Start Date:</label>
-	    <div class='input-group date' id='dateFrom1'>
+	    <div class='input-group date' id='dateFrom'>
 	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
 	    <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
@@ -141,19 +146,17 @@
 
 			<div class="input-group clockpicker">
 
-				<input type="text" class="form-control" id="startTime"
-					placeholder="Enter startTime" value="09.00"> <span
+				<form:input path="startTime" type="text" class="form-control" id="startTime"
+					placeholder="Enter startTime" /> <span
 					class="input-group-addon"> <span
 					class="glyphicon glyphicon-time"></span>
 				</span>
 			</div>
 		</div>
 	    </div>
-	    </div>
 	    
 	    
 	    
-	     <div class="col-md-12">
 
 <div class="col-md-6">
  <div class="form-group">
@@ -173,19 +176,18 @@
 <div class="form-group">
 			<label>End Time:</label>
 
-			<div class="input-group clockpicker">
+			<div class="input-group clockpicker1">
 
-				<input type="text" class="form-control" id="endTime"
-					placeholder="Enter endTime" value="18.00"> <span
+				<form:input path="endTime" type="text" class="form-control" id="endTime"
+					placeholder="Enter endTime" /> <span
 					class="input-group-addon"> <span
 					class="glyphicon glyphicon-time"></span>
 				</span>
 			</div>
 		</div>
 </div>
-</div>
 		
-  		<div class="form-group">
+  		<div class="form-group col-md-12">
 	    <label>Leave type:</label>
 	    
 		<div class="form-group">
@@ -200,7 +202,7 @@
 	  
 	  
 	  
-	  <div class="form-group">
+	  <div class="form-group col-md-12">
 	    <label>Reason :</label>
 	    <form:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
 	  </div>
@@ -223,7 +225,7 @@
 		  <form:select path="Aim:" class="form-control"
 			id="Aim">
 			<form:option value="-1" label="---Select AIM---" />
-			<c:forEach var="obj" items="${ masleavetypeList }">
+			<c:forEach var="obj" items="${ aimList }">
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>
 		</form:select>
@@ -272,9 +274,84 @@
 var dt;
 $(document).ready(function() {
 	
-	$("#clearModal").on("click", function(){clearModal();});
 	
-	$( "#dateFrom1" ).datetimepicker({
+	
+	$("#addBtnLe").on("click", function(){
+		
+		clearModal();
+		/* $('#addForm').bootstrapValidator('resetForm', true);
+
+		 */
+	
+	
+	});
+	
+	
+	$('#addForm').bootstrapValidator({
+		
+		  message: 'This value is not valid',
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	masleavetype: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The masleavetype is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            
+            reason: {
+                validators: {
+                    notEmpty: {
+                        message: 'The reason is required and cannot be empty'
+                    }
+                }
+            },
+            
+            startDate: {
+                validators: {
+                    notEmpty: {
+                        message: 'The Start Date is required and cannot be empty'
+                    }
+                }
+            },
+            endDate: {
+                validators: {
+                    notEmpty: {
+                        message: 'The End Date is required and cannot be empty'
+                    }
+                }
+            },
+            startTime: {
+                validators: {
+                    notEmpty: {
+                        message: 'The Start Time is required and cannot be empty'
+                    }
+                }
+            },
+            endTime: {
+                validators: {
+                    notEmpty: {
+                        message: 'The End Time is required and cannot be empty'
+                    }
+                }
+            }
+            
+            
+            
+            }
+	         
+	      
+		
+	}); 
+	
+	
+	$( "#dateFrom" ).datetimepicker({
+		viewMode: 'days',
 		format : 'DD-MM-YYYY',
 	});
 	
@@ -296,8 +373,15 @@ $(document).ready(function() {
 		});
 	
 	
-	
-	
+	 $('.clockpicker1').clockpicker({
+			placement: 'bottom', // clock popover placement
+			align: 'left',       // popover arrow align
+			donetext: 'Done',     // done button text
+			autoclose: true,    // auto close when minute is selected
+			vibrate: true        // vibrate the device when dragging clock hand
+			});
+		
+		
 	
 	
 	
@@ -391,7 +475,8 @@ $(document).ready(function() {
 					listAll();
 				},
 				error : function() {
-					alert("ERROR");
+// 					alert("ERROR");
+					$('#addForm').bootstrapValidator('validate');
 				}
 			});
 		}

@@ -15,15 +15,23 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.aug.hr.entity.Employee;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchLeave",
 			query="select l.id, l.start_date,l.end_date, l.start_time,l.end_time,l.reason, m.name, l.employee_id, emp.employee_code, m.leavetype_id from emp_leave l, emp_employee emp, mas_leavetype  m where  l.employee_id = :empId and l.employee_id = emp.id and l.leavetype_id = m.leavetype_id",																																																																					
-			resultClass = LeaveDto.class)
+			resultClass = LeaveDto.class),
+			 
+
+			@NamedNativeQuery(
+		            name = "searchAim",
+		            query = "select emp.aim_emp_id,emp.name_eng from EMP_EMPLOYEE as emp where emp.aim_emp_id=emp.id;",
+		            resultClass = LeaveDto.class)
+		  })
 			
-})
+
 
 @Entity
 public class LeaveDto {
@@ -73,6 +81,11 @@ public class LeaveDto {
 	@Column(name = "LEAVETYPE_ID")
 	private Integer masleavetypeId;
 
+	
+	@Column(name="AIM")
+	private String aim;
+	
+	
 
 	public Integer getId() {
 		return id;
@@ -83,10 +96,6 @@ public class LeaveDto {
 		this.id = id;
 	}
 
-
-
-
-	
 
 
 	public Date getStartDate() {
@@ -176,6 +185,16 @@ public class LeaveDto {
 
 	public void setMasleavetypeId(Integer masleavetypeId) {
 		this.masleavetypeId = masleavetypeId;
+	}
+
+
+	public String getAim() {
+		return aim;
+	}
+
+
+	public void setAim(String aim) {
+		this.aim = aim;
 	}
 
 

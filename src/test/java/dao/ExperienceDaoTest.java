@@ -15,6 +15,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.dao.ExperienceDao;
 import com.aug.hr.entity.MasCoreSkill;
 import com.aug.hr.entity.Employee;
@@ -27,6 +29,8 @@ public class ExperienceDaoTest {
 	
 	@Autowired
 	private ExperienceDao experienceDao;
+	@Autowired
+	private EmployeeDao employeeDao;
 	
 	@Test
 	public void createExperience(){
@@ -40,38 +44,41 @@ public class ExperienceDaoTest {
 		experience.setCompanyName("LogicSpace co.,th");
 		experience.setCreatedTimeStamp(calendar.getTime());
 		experience.setDateFrom(dateFrom);
-		experience.setDateFrom(dateTo);
+		experience.setDateTo(dateTo);
 		experience.setPosition("JAVA Consultant");
 		experience.setId(1);
 		experience.setReference("Natechanok K.");
-		//experience.setEmployee(null);
+		experience.setSalary(18000);
+		experience.setReason("Boring");
+		Employee employee = employeeDao.find(1);
+		experience.setEmployee(employee);
 		experienceDao.getCurrentSession().save(experience);
 	}
 	
 	@Test
 	public void updateExperience(){
-		Experience experience = (Experience) experienceDao.getCurrentSession().get(Experience.class, 3);
+		Experience experience = (Experience) experienceDao.getCurrentSession().get(Experience.class, 1);
 		experience.setBusinessType("SAP");
 		experienceDao.getCurrentSession().update(experience);
 	}
 	
 	@Test
 	public void deleteExperience(){
-		Experience experience = (Experience) experienceDao.getCurrentSession().get(Experience.class, 3);
+		Experience experience = (Experience) experienceDao.getCurrentSession().get(Experience.class, 1);
 		experienceDao.getCurrentSession().delete(experience);
 	}
 	
 	@Test
 	public void findExperience(){
-		Experience experience = (Experience) experienceDao.getCurrentSession().get(Experience.class, 7);
+		Experience experience = (Experience) experienceDao.getCurrentSession().get(Experience.class, 1);
 		int id = experience.getId();
-		Assert.assertEquals(7, id);
+		Assert.assertEquals(1, id);
 	}
 	
 	@Test
 	public void findAllExperience(){
 		Criteria c = experienceDao.getCurrentSession().createCriteria(Experience.class);
 		List<Experience> experiences = c.list();
-		Assert.assertEquals(3, experiences.size());
+		Assert.assertEquals(1, experiences.size());
 	}
 }

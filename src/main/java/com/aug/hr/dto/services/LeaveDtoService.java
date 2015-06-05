@@ -25,4 +25,8 @@ public class LeaveDtoService {
 		return leaveDao.searchLeave(id);
 	}
 
+	
+	public List<LeaveDto>searchAim(){
+		return leaveDao.searchAim();
+	}
 }
