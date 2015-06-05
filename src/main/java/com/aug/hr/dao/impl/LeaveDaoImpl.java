@@ -53,13 +53,6 @@ public class LeaveDaoImpl extends GenericDaoImpl<Leave, Integer> implements Leav
 
 	}
 
-	@Override
-	public List<LeaveDto> searchAim() {
-		Query namedQuery = getCurrentSession().getNamedQuery("searchAim");
-		List<LeaveDto> leaDto = namedQuery.list();
-		return leaDto;
-	}
-
 	
 
 

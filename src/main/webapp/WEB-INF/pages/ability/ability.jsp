@@ -205,6 +205,14 @@
 var dt;
 $(document).ready(function(){
 	
+	$('#tbResult').dataTable({ 
+		"bLengthChange": false,
+		"iDisplayLength": 10,
+		"pagingType": "simple_numbers",
+		"ordering": false,
+		"info": false
+	});
+	
 	$("#addBtnAbi").on("click",function(){clearModal();});
 	
 	  
@@ -238,6 +246,8 @@ $(document).ready(function(){
 	        }
 		
 	});
+	
+	
 	
 	dt = $('#tbResult').dataTable();
 	listAll();

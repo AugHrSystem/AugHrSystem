@@ -139,11 +139,10 @@ public class Leave extends BaseEntity {
 	}
 
 
-	
+
 	
 	
 
-	
 	public String getAim() {
 		return aim;
 	}
@@ -160,6 +159,7 @@ public class Leave extends BaseEntity {
 		leaveDto.setEndDate(this.endDate);
 		leaveDto.setEndTime(this.endTime);
 		leaveDto.setReason(this.reason);
+		leaveDto.setAim(this.aim);
 		leaveDto.setEmployeeCode(this.employee.getEmployeeCode());
 		leaveDto.setEmployeeId(this.employee.getId());
 		leaveDto.setMasleavetypeId(this.masleavetype.getId());
@@ -175,6 +175,8 @@ public class Leave extends BaseEntity {
 		leave.setEndDate(leaveDto.getEndDate());
 		leave.setEndTime(leaveDto.getEndTime());
 		leave.setReason(leaveDto.getReason());
+		leave.setAim(leaveDto.getAim());
+		
 		
 		MasLeaveType masleavetype=new MasLeaveType();
 		masleavetype.setId(leaveDto.getMasleavetypeId());

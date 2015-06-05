@@ -187,7 +187,7 @@
 		</div>
 </div>
 		
-  		<div class="form-group col-md-12">
+  	<div class="col-md-6">
 	    <label>Leave type:</label>
 	    
 		<div class="form-group">
@@ -202,28 +202,18 @@
 	  
 	  
 	  
-	  <div class="form-group col-md-12">
+	<div class="col-md-6">
 	    <label>Reason :</label>
 	    <form:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
 	  </div>
 	  
-	 
-  			
 
-
-
-
-
-	
-	
-	
-
-							<%-- <div class="form-group">
+		<div class="form-group">
 	    <label>AIM:</label>
 	    
 		 <div class="form-group">
-		  <form:select path="Aim:" class="form-control"
-			id="Aim">
+		  <form:select path="aim" class="form-control"
+			id="aim">
 			<form:option value="-1" label="---Select AIM---" />
 			<c:forEach var="obj" items="${ aimList }">
 				<option value="${obj.id }">${ obj.name}</option>
@@ -231,7 +221,7 @@
 		</form:select>
 		</div>
 	  </div>
-  	 --%>
+  	
         
 		<!-- <div class="form-group">
   			<label>Employee ID :</label>
@@ -274,6 +264,13 @@
 var dt;
 $(document).ready(function() {
 	
+	$('#tbResult').dataTable({ 
+		"bLengthChange": false,
+		"iDisplayLength": 10,
+		"pagingType": "simple_numbers",
+		"ordering": false,
+		"info": false
+	});
 	
 	
 	$("#addBtnLe").on("click", function(){

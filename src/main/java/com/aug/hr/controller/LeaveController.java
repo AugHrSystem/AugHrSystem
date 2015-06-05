@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.LeaveDtoService;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.dto.LeaveDto;
@@ -34,14 +34,14 @@ public class LeaveController {
 	@Autowired private LeaveService leaveService;
 	@Autowired private MasLeaveTypeService masLeaveTypeService;
 	@Autowired private LeaveDtoService leaveDtoService;
-	
+	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
 	
 	
 	@RequestMapping(value="/leave",method={RequestMethod.GET,
 			RequestMethod.POST})
 	public String listleave(HttpSession session,Locale locale, ModelMap model){
 		model.addAttribute("masleavetypeList",masLeaveTypeService.findAll());
-		model.addAttribute("aimList",leaveDtoService.searchAim());		
+		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
 		return "/leave/leave";
 		
 		

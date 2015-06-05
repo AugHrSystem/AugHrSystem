@@ -25,10 +25,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 			resultClass = LeaveDto.class),
 			 
 
-			@NamedNativeQuery(
+		/*	@NamedNativeQuery(
 		            name = "searchAim",
-		            query = "select emp.aim_emp_id,emp.name_eng from EMP_EMPLOYEE as emp where emp.aim_emp_id=emp.id;",
-		            resultClass = LeaveDto.class)
+		            query = "select emp.aim_emp_id,emp.name_eng from EMP_EMPLOYEE as emp",
+		            resultClass = LeaveDto.class)*/
 		  })
 			
 
