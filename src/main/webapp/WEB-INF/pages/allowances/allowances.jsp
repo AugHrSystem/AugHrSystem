@@ -43,8 +43,8 @@
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>Allowances_Type</th>
-			<th>Amount_Allowances</th>
+			<th>Allowances Type</th>
+			<th>Amount Allowances</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -75,31 +75,18 @@
         
 	  <div class="form-group">
 	    <label>Allowances Type :</label>
-	    <form:select path="allowances_type" class="form-control" id="allowances_type">
-			<form:option value="-1" label="---Select Type---" />
-				<option value="2020">2020</option>
-				<option value="2019">2019</option>
-				<option value="2018">2018</option>
-				<option value="2017">2017</option>
-				<option value="2016">2016</option>
-				<option value="2015">2015</option>
-				<option value="2014">2014</option>
-				<option value="2013">2013</option>
-				<option value="2012">2012</option>
-				<option value="2011">2011</option>
-				<option value="2010">2010</option>
-				<option value="2009">2009</option>
-				<option value="2008">2008</option>
-				<option value="2007">2007</option>
-				<option value="2006">2006</option>
-				<option value="2005">2005</option>
-				<option value="2004">2004</option>
+	    <form:select path="masallowances" class="form-control"
+			id="masdegreetype">
+			<form:option value="-1" label="---Select Degree---" />
+			<c:forEach var="obj" items="${ masallowancesList }">
+				<option value="${obj.id }">${ obj.name}</option>
+			</c:forEach>
 		</form:select>
 	  </div>
 	  
 	  <div class="form-group">
 	    <label>Amount Allowances :</label>
-	    <form:input path="amount_allowances" type="text" class="form-control" id="amount_allowances" placeholder="Enter Amount Allowances"/>
+	    <form:input path="amount" type="text" class="form-control" id="amount" placeholder="Enter Amount Allowances"/>
 	  </div>
 	  
       </div>
@@ -195,8 +182,8 @@
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 		
 		function clearModal(){
-			$("#allowances_type").val("-1");
-			$("#amount_allowances").val("");
+			$("#masallowances").val("-1");
+			$("#amount").val("");
 		}
 		
 		function addAllowances(){
@@ -204,8 +191,8 @@
 			$.ajax({
 				url : "${pageContext.request.contextPath}/allowances/add",
 				data : JSON.stringify({
-					allowances_type : $("#allowances_type").val(),
-					amount_allowances :$("#amount_allowances").val(),
+					masallowances : $("#masallowances").val(),
+					amount :$("#amount").val(),
 					employeeId: id
 				}),
 				type : "POST",
@@ -223,8 +210,8 @@
 						$("#Unit").val(),
 						$("#Price").val(),
 						$("#Description").val(), */
-						data.allowances_type,
-						data.amount_allowances,
+						data.masallowances,
+						data.amount,
 						/* data.company,
 						data.salary,
 						data.time, */
@@ -249,8 +236,8 @@
 				url : "${pageContext.request.contextPath}/allowances/update",
 				data : JSON.stringify({
 					id : allowancesid,
-					allowances_type : $("#allowances_type").val(),
-					amount_allowances :$("#amount_allowances").val(),
+					masallowances : $("#masallowances").val(),
+					amount :$("#amount").val(),
 					employeeId : id
 					/* company :$("#company").val(),
 					salary :$("#salary").val(),
@@ -265,8 +252,8 @@
 					
 					var tr = button.closest("tr")
 					
-					dt.fnUpdate(data.allowances_type,tr,0);
-					dt.fnUpdate(data.amount_allowances,tr,1);
+					dt.fnUpdate(data.masallowances,tr,0);
+					dt.fnUpdate(data.amount,tr,1);
 					/* dt.fnUpdate(data.company, tr ,1);
 					dt.fnUpdate(data.salary, tr ,2);
 					dt.fnUpdate(data.time, tr ,3); */
@@ -287,8 +274,8 @@
 				success : function(data) {
 	 				//alert(JSON.stringify(data));
 					//alert("ok");
-					$("#allowances_type").val(data.allowances_type);
-					$("#amount_allowances").val(data.amount_allowances);
+					$("#masallowances").val(data.masallowances);
+					$("#amount").val(data.amount);
 					
 					/* employee: {id: data.position } */
 					/* $("#company").val(data.company),
@@ -355,8 +342,8 @@
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].allowances_type,
-					              data[i].amount_allowances,
+					dt.fnAddData([data[i].masallowances,
+					              data[i].amount,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			

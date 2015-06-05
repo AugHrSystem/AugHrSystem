@@ -36,7 +36,7 @@ public class History extends BaseEntity{
 	@Column(name = "SALARY" ,nullable =false)
 	private Double salary;
 	
-	@Column(name = "OLD_SALARY" ,nullable =false)
+	@Column(name = "OLD_SALARY")
 	private Double oldSalary;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
@@ -44,10 +44,10 @@ public class History extends BaseEntity{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfAdjustment;
 	
-	@Column(name = "REASON_OF_ADJUSTMENT" ,nullable =false)
+	@Column(name = "REASON_OF_ADJUSTMENT")
 	private String reasonOfAdjustment;
 	
-	@Column(name = "ADJUSTMENT_TIME" ,nullable =false)
+	@Column(name = "ADJUSTMENT_TIME")
 	private Integer adjustmentTime;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

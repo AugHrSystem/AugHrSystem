@@ -14,7 +14,7 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchAllowances",
-			query="select a.id,a.allowances_type,a.amount_allowances,a.employeeId from emp_allowances as a,emp_employee as emp where a.employee_id=:empId  and a.employee_id = emp.id",																																																																					
+			query="select a.id,a.amount,mas_allowances.name,a.employeeId,mas_allowances.allo_id from emp_allowances as a,emp_employee as emp where a.employee_id=:empId  and a.employee_id = emp.id a.allo_id=mas_allowances.allo_id",																																																																					
 			resultClass = EducationDto.class)
 			
 })

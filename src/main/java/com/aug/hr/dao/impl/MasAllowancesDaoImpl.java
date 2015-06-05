@@ -9,11 +9,13 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
+import com.aug.hr.dao.MasAllowancesDao;
 import com.aug.hr.entity.MasAllowances;
-import com.aug.hr.services.impl.MasAllowancesDao;
 import com.mysql.jdbc.StringUtils;
 
+@Repository
 public class MasAllowancesDaoImpl extends GenericDaoImpl<MasAllowances, Integer> implements MasAllowancesDao{
 
 	public MasAllowancesDaoImpl() {

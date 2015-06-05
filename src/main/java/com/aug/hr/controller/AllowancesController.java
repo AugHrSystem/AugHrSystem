@@ -22,6 +22,7 @@ import com.aug.hr.dto.services.AllowancesDtoService;
 import com.aug.hr.entity.Allowances;
 import com.aug.hr.entity.dto.AllowancesDto;
 import com.aug.hr.services.AllowancesService;
+import com.aug.hr.services.MasAllowancesService;
 
 @Controller
 public class AllowancesController {
@@ -32,9 +33,14 @@ public class AllowancesController {
 	@Autowired
 	private AllowancesDtoService allowancesDtoService;
 	
+	@Autowired
+	private MasAllowancesService masAllowancesService;
+	
 	@RequestMapping(value = "/allowances", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String init(ModelMap model) {
+		model.addAttribute("masallowancesList",
+				masAllowancesService.findAll());
 		return "/allowances/allowances";
 	}
 	
