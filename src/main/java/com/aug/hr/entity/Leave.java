@@ -55,6 +55,9 @@ public class Leave extends BaseEntity {
 	@Column(name="REASON")
 	private String reason;
 	
+	@Column(name="AIM")
+	private String aim;
+	
 	
 	@ManyToOne()
 	@JoinColumn(name = "LEAVETYPE_ID",nullable = false,referencedColumnName="LEAVETYPE_ID")
@@ -141,6 +144,14 @@ public class Leave extends BaseEntity {
 	
 
 	
+	public String getAim() {
+		return aim;
+	}
+
+	public void setAim(String aim) {
+		this.aim = aim;
+	}
+
 	public LeaveDto toLeaveDto(){
 		LeaveDto leaveDto = new LeaveDto();
 		leaveDto.setId(this.id);

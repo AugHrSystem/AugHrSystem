@@ -42,6 +42,11 @@
 <script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
 <link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
 
+<!-- clock Picker -->
+<script src="<c:url value="/resource/clockpicker/js/bootstrap-clockpicker.js" />"></script>
+<link href="<c:url value="/resource/clockpicker/css/bootstrap-clockpicker.css" />" rel="stylesheet" media="all">
+
+
 <!-- Browse-remove picture -->
 <script src="<c:url value="/resource/bootstrap/js/fileinput.min.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/fileinput.min.css" />" rel="stylesheet"	media="all">

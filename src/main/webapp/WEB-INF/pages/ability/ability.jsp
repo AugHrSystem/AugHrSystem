@@ -71,8 +71,8 @@
 			<!-- <th>#</th> -->
 			<th>Specialty</th>
 			<th>Rank</th>
-			<th></th>
-			<th></th>
+			<th>Edit</th>
+			<th>Delete</th>
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -91,7 +91,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Ability Add</h4>
+        <h4 class="modal-title" id="myModalLabel">Ability </h4>
       </div>
      
       
@@ -121,14 +121,40 @@
 	  
 	  <div class="form-group">
 								<div class="col-md-3">
-									<label> Rank :</label>
-									<input type="radio" name="rank" value="1">1</input>
-									<input type="radio" name="rank" value="2">2</input>
-									<input type="radio" name="rank" value="3">3</input>
+								
+								<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank1" name="rank" path="rank" value="1" checked="true"/>1</label>
+		 			     	
+		 			     	<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank2" name="rank" path="rank" value="2" />2</label>
+		 			     	
+		 			     	<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank3" name="rank" path="rank" value="3" />3</label>
+		 			     	
+		 			   		<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank4" name="rank" path="rank" value="4" />4</label>
+		 			     	
+		 			     	<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank5" name="rank" path="rank" value="5" />5</label>
+		 			     	
+		 			     	<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank6" name="rank" path="rank" value="6" />6</label>
+		 			     	
+		 			     	<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank7" name="rank" path="rank" value="7" />7</label>
+		 			     	
+		 			     	<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank8" name="rank" path="rank" value="8" />8</label>
+		 			     	
+		 			     	<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank9" name="rank" path="rank" value="9" />9</label>
+		 			     	
+		 			     	<label class="radio-inline" for="rank" > 
+		 			     	<form:radiobutton id="rank10" name="rank" path="rank" value="10" />10</label>
+		 			  
 								</div>
     						</div>	
-	  
-	  <input type='button' value='Display Selected' id='isSelect'>
+	
 	  
 
       </div>
@@ -181,19 +207,13 @@ $(document).ready(function(){
 	
 	$("#addBtnAbi").on("click",function(){clearModal();});
 	
-	  $("#isSelect").click(function () {
-		  
-			alert($('input:radio[name=rank]:checked').val());
-		 
-		    });
-	
+	  
 
 	
 	$('#addForm').bootstrapValidator({
 		
 		  message: 'This value is not valid',
 	        feedbackIcons: {
-	            valid: 'glyphicon glyphicon-ok',
 	            invalid: 'glyphicon glyphicon-remove',
 	            validating: 'glyphicon glyphicon-refresh'
 	        },
@@ -267,13 +287,61 @@ $(document).ready(function(){
 	/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 	
 	function addAbility(){
+		
+		
+		
+		if($('#rank1:checked').val()!=null){
+  			
+			rank = $('#rank1:checked').val();
+  			
+  		}else if($('#rank2:checked').val()!=null){
+  			
+  			rank = $('#rank2:checked').val();
+  			
+  		}else if($('#rank3:checked').val()!=null){
+  			
+  			rank = $('#rank3:checked').val();
+  			
+  		}else if($('#rank4:checked').val()!=null){
+  			
+  			rank = $('#rank4:checked').val();
+  			
+  		}else if($('#rank5:checked').val()!=null){
+  			
+  			rank = $('#rank5:checked').val();
+  			
+  		}else if($('#rank6:checked').val()!=null){
+  			
+  			rank = $('#rank6:checked').val();
+  			
+  		}else if($('#rank7:checked').val()!=null){
+  			
+  			rank = $('#rank7:checked').val();
+  			
+  		}else if($('#rank8:checked').val()!=null){
+  			
+  			rank = $('#rank8:checked').val();
+  			
+  		}else if($('#rank9:checked').val()!=null){
+  			
+  			rank = $('#rank9:checked').val();
+  			
+  		}else if($('#rank10:checked').val()!=null){
+  			
+  			rank = $('#rank10:checked').val();
+  			
+  		}
+		
+		
+		
+		
 		var id = getUrlParameter('Id');
 		$.ajax({
 			url : "${pageContext.request.contextPath}/ability/add",
 			data : JSON.stringify({
 				masspecialtyId : $("#masspecialty").val(), 
 				masspecialty : $("#masspecialty option:selected").text(),
-				rank : $("#rank").val(),
+				rank : rank,
 				employeeId :id
 			}),
 			type : "POST",
@@ -307,6 +375,49 @@ $(document).ready(function(){
 	
 function getId(abilityid){
 		
+	if($('#rank1:checked').val()!=null){
+			
+		rank = $('#rank1:checked').val();
+			
+		}else if($('#rank2:checked').val()!=null){
+			
+			rank = $('#rank2:checked').val();
+			
+		}else if($('#rank3:checked').val()!=null){
+			
+			rank = $('#rank3:checked').val();
+			
+		}else if($('#rank4:checked').val()!=null){
+			
+			rank = $('#rank4:checked').val();
+			
+		}else if($('#rank5:checked').val()!=null){
+			
+			rank = $('#rank5:checked').val();
+			
+		}else if($('#rank6:checked').val()!=null){
+			
+			rank = $('#rank6:checked').val();
+			
+		}else if($('#rank7:checked').val()!=null){
+			
+			rank = $('#rank7:checked').val();
+			
+		}else if($('#rank8:checked').val()!=null){
+			
+			rank = $('#rank8:checked').val();
+			
+		}else if($('#rank9:checked').val()!=null){
+			
+			rank = $('#rank9:checked').val();
+			
+		}else if($('#rank10:checked').val()!=null){
+			
+			rank = $('#rank10:checked').val();
+			
+		}
+		
+	
 		
 		$.ajax({
 			
@@ -317,7 +428,7 @@ function getId(abilityid){
 				//alert(JSON.stringify(data));
 				
 				$("#masspecialty").val(data.masspecialtyId);
-				$("#rank").val(data.rank);
+				rank.val(data.rank);
 				employeeId: data.employeeId;
 			},
 			error : function(data, textStatus, jqXML) {
@@ -330,7 +441,49 @@ function getId(abilityid){
 	}
 	
 function updateAbility(button,abilityid) {
-/* alert("fn up"); */
+	
+	if($('#rank1:checked').val()!=null){
+			
+		rank = $('#rank1:checked').val();
+			
+		}else if($('#rank2:checked').val()!=null){
+			
+			rank = $('#rank2:checked').val();
+			
+		}else if($('#rank3:checked').val()!=null){
+			
+			rank = $('#rank3:checked').val();
+			
+		}else if($('#rank4:checked').val()!=null){
+			
+			rank = $('#rank4:checked').val();
+			
+		}else if($('#rank5:checked').val()!=null){
+			
+			rank = $('#rank5:checked').val();
+			
+		}else if($('#rank6:checked').val()!=null){
+			
+			rank = $('#rank6:checked').val();
+			
+		}else if($('#rank7:checked').val()!=null){
+			
+			rank = $('#rank7:checked').val();
+			
+		}else if($('#rank8:checked').val()!=null){
+			
+			rank = $('#rank8:checked').val();
+			
+		}else if($('#rank9:checked').val()!=null){
+			
+			rank = $('#rank9:checked').val();
+			
+		}else if($('#rank10:checked').val()!=null){
+			
+			rank = $('#rank10:checked').val();
+			
+		}
+		
 	var id = getUrlParameter('Id');
 	$.ajax({
 		url : "${pageContext.request.contextPath}/ability/update",
@@ -338,7 +491,7 @@ function updateAbility(button,abilityid) {
 			id: abilityid,
 			masspecialtyId : $("#masspecialty").val(),
 			masspecialty : $("#masspecialty option:selected").text(),
-			rank : $("#rank").val(),
+			rank : rank,
 			//employee : {id:2},
 			employeeId: id
 		}),
@@ -411,12 +564,12 @@ function listAll(){
 		}); 
 	}
 	
-function clearModal(){
+	
+ function clearModal(){
 		
 		$("#masspecialty").val("-1"),
-		$("#rank").val("");
-	}
-	
+		$("#rank1").prop('checked','checked');
+	} 
 	
 	
  function getUrlParameter(sParam)

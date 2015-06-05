@@ -41,7 +41,7 @@ public class LeaveController {
 			RequestMethod.POST})
 	public String listleave(HttpSession session,Locale locale, ModelMap model){
 		model.addAttribute("masleavetypeList",masLeaveTypeService.findAll());
-		
+		model.addAttribute("aimList",leaveDtoService.searchAim());		
 		return "/leave/leave";
 		
 		
