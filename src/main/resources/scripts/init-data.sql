@@ -1,5 +1,12 @@
+--EMPLOYEE
+INSERT INTO EMP_EMPLOYEE (EMPLOYEE_CODE,NAME_THAI,NAME_ENG,TEL_HOME,TEL_MOBILE,EMERGENCY_CONTACT,
+EMERGENCY_CONTACT_PHONE_NUMBER,DATEOFBIRTH,ID_CARD,DIVISION_ID,JOBLEVEL_ID,TECHNOLOGY_ID,EMAIL) VALUES
+('TH2009188','Bill','Bill',0811111111,0822222222,'Mom',191,'1991-01-01',12345678,1,1,1,'bill@gmail.com'),
+('TH2009189','Parn','Parn',0800000000,0899999999,'Dad',191,'1992-02-02',12345678,2,2,1,'parn@gmail.com');
+
+
 --MASDIVISION
---INSERT INTO MAS_DIVISION (NAME,CODE,ISACTIVE) VALUES ('CEO Office of CEO','01',1);
+INSERT INTO MAS_DIVISION (NAME,CODE,ISACTIVE) VALUES ('CEO Office of CEO','01',1);
 INSERT INTO MAS_DIVISION (NAME,CODE,ISACTIVE) VALUES ('F&A Finance & Administration','02',1);
 INSERT INTO MAS_DIVISION (NAME,CODE,ISACTIVE) VALUES ('MKT Marketing','04',1);
 INSERT INTO MAS_DIVISION (NAME,CODE,ISACTIVE) VALUES ('MoH Ministry of Happiness','05',1);
@@ -62,7 +69,7 @@ VALUES
 ('Zend','42',1);
 
 
---JOBLEVEL
+--MASJOBLEVEL
 insert into MAS_JOBLEVEL(name,code,isactive) 
 values('Account Execute','AE',1),
 ('Account Manager','AM',1),
@@ -79,11 +86,13 @@ values('Account Execute','AE',1),
 ('Senior Professional','SP',1),
 ('Support Division Director','SDD',1);
 
+
 --ADDRESS
 INSERT INTO EMP_ADDRESS(ADDRESS1,ADDRESS2,ZIPCODE) VALUES ('200 MOO.6','BANGKOK','10800'),
 ('100 MOO.1','CHAINGMAI','10700'),
 ('50 MOO.5','CHAINGRAI','10500'),
 ('2/3 MOO.1','SAMUTPAKARN','10600');
+
 
 --MASADDRESSTYPE
 INSERT INTO MAS_ADDRESSTYPE(ADDRESSTYPENAME,CODE,ISACTIVE) VALUES ('Present address','P01',1),('Permanent address','M02',1),
@@ -102,8 +111,10 @@ VALUES
 INSERT INTO MAS_EMPLOYMENT(NAME,CODE,ISACTIVE) VALUES ('Permanent','A01',1);
 INSERT INTO MAS_EMPLOYMENT(NAME,CODE,ISACTIVE) VALUES ('Contract','A01',1);
 
+
 --OFFICIAL
 INSERT INTO EMP_OFFICIAL(START_DATE,POSITION_APPLIED_FOR,SALARY_EXPECTED) VALUES (NOW(),'Programmer',30000.00);
+
 
 --MASPROVINCE
 insert into MAS_PROVINCE (PROVINCENAME,CODE,ISACTIVE)
@@ -186,6 +197,7 @@ VALUES
 ('Satun','a',1),
 ('Surat Thani','a',1);
 
+
 --MasCoreSkill
 INSERT INTO MAS_CORESKILL (NAME,CODE,ISACTIVE) VALUES 
 ('Administration','AD',b'1'),
@@ -209,16 +221,6 @@ INSERT INTO MAS_CORESKILL (NAME,CODE,ISACTIVE) VALUES
 ('Transformation','TR',b'1');
 
 
-
-
---ADDEMPLOYEE
-INSERT INTO EMP_EMPLOYEE (EMPLOYEE_CODE,NAME_THAI,NAME_ENG,TEL_HOME,TEL_MOBILE,EMERGENCY_CONTACT,
-EMERGENCY_CONTACT_PHONE_NUMBER,DATEOFBIRTH,ID_CARD,DIVISION_ID,JOBLEVEL_ID,TECHNOLOGY_ID,EMAIL) VALUES
-('TH2009188','Bill','Bill',0811111111,0822222222,'Mom',191,'1991-01-01',12345678,1,1,1,'bill@gmail.com'),
-('TH2009189','Parn','Parn',0800000000,0899999999,'Dad',191,'1992-02-02',12345678,2,2,1,'parn@gmail.com');
-
-
-
 --Ability
 insert into EMP_ABILITY (RANK,SPECIALTY_ID,EMPLOYEE_ID)
 values
@@ -232,14 +234,15 @@ values
 --INSERT INTO EMP_EDUCATION (UNIVERSITY,GPA,FACULTY,MAJOR,DEGREETYPE_ID,CERTIFICATE,DESCRIPTION,EMPLOYEE_ID) VALUES 
 --('Silpakorn',4.00,'SCIENCE','IT',1,'JAVA','JAVA',2);
 
---MASELOCATION
+
+--MASLOCATION
 INSERT INTO MAS_LOCATION(NAME,CODE,ISACTIVE) VALUES ('Thailand','TH',1),
  ('Singapore','SG',1),
  ('Indonesia','ID',1),
  ('Jakarta','JK',1);
  
 
- --EXPERIENCE
+--EXPERIENCE
 INSERT INTO EMP_EXPERIENCE(COMPANY_NAME,DATE_FROM,DATE_TO,POSITION,SALARY,REASON_OF_REGISNATION,EMPLOYEE_ID)
 VALUES('Augmentis','2014-03-01','2014-07-01','Programmer',18000,'Boring',2);
 
@@ -263,13 +266,13 @@ VALUES
 (4,8,2);
 
 
- 
 --HISTORY
 --INSERT INTO EMP_HISTORY (POSITION,SALARY,OLD_SALARY,REASON_OF_ADJUSTMENT,ADJUSTMENT_TIME,EMPLOYEE_ID) 
 --VALUES 
 --('CEO',45000.00,4000.00,'one',4,2);
 
 
+--MASSTAFFTYPE
 INSERT INTO MAS_STAFFTYPE(
  AUDITFLAG,
  CREATEDBY,
@@ -282,7 +285,7 @@ values
 ('C',0,NOW(),'02A',true,'Back office');
 
 
-
+--MASRELATIONTYPE
 INSERT INTO MAS_RELATIONTYPE(
  AUDITFLAG,
  CODE,
@@ -295,7 +298,7 @@ INSERT INTO MAS_RELATIONTYPE(
 ('C','2',0,NOW(),true,'DAUGTHER');
 
 
-
+--EMPLOYEEFAMILY
 INSERT INTO EMP_EMPLOYEEFAMILY(
  AUDITFLAG,
  CREATEDBY,
@@ -311,10 +314,12 @@ INSERT INTO EMP_EMPLOYEEFAMILY(
 ) values
 ('C',0,NOW(),'7/7 m.8 nongsamwong nongsua pathumtani 12170',24,'apiva','Female','kimkatanom','0890851022',1,1);
 
+
 --PROBATION
 INSERT INTO EMP_PROBATION (DATE_FROM, DATE_TO, STATUS, EMPLOYEE_ID) VALUES
 ('2014-01-01','2014-03-01','Not Pass',1),
 ('2014-01-01','2014-03-01','Pass',2);
+
 
 --MASLEAVETYPE
 INSERT INTO MAS_LEAVETYPE (NAME,CODE,ISACTIVE) VALUES
@@ -339,6 +344,43 @@ INSERT INTO EMP_LOGIN ( AUDITFLAG, CREATEDBY,CREATEDTIMESTAMP,USERNAME,PASSWORD,
 ('C',0,NOW(),'parn01','password',2,2,2);
 
 
+--CERTIFICATION
 INSERT INTO  EMP_CERTIFICATION (YEAR,NAME,CERTIFICATION_FROM,DESCRIPTION,EMPLOYEE_ID)
 VALUES
 ('1111','JAVA','UNIVERSITY','CERTIFICATION',2);
+
+
+--MASALLOWANCES
+INSERT INTO MAS_ALLOWANCES (ALLOWANCES_TYPE,AMOUNT_ALLOWANCES,CODE,ISACTIVE) VALUES 
+('ลดหย่อนส่วนบุคคล-ผู้มีเงินได้',30000,'A1',1);
+('ลดหย่อนส่วนบุคคล-คู่สมรส (ที่ไม่มีเงินได้)',30000,'A2',1);
+('ลดหย่อนส่วนบุคคล-บุตรที่ศึกษาในประเทศ',17000,'A3',1);
+('ลดหย่อนส่วนบุคคล-บุตรที่ไม่ได้ศึกษาหรือศึกษาในต่างประเทศ',15000,'A4',1);
+('ลดหย่อนส่วนบุคคล-ค่าอุปการะเลี้ยงดูบิดา มารดาของผู้มีเงินได้',30000,'A5',1);
+('ลดหย่อนส่วนบุคคล-ค่าอุปการะเลี้ยงดูคนพิการหรือคนทุพพลภาพ ',60000,'A6',1);
+('ลดหย่อนและยกเว้น สำหรับเบี้ยประกันชีวิต-ผู้มีเงินได้',100000,'A7',1);
+('ลดหย่อนและยกเว้น สำหรับเบี้ยประกันชีวิต-คู่สมรสที่ไม่มีเงินได้',10000,'A8',1);
+('ยกเว้นเบี้ยประกันสุขภาพ บิดา มารดา ของผู้มีเงินได้ และบิดา มารดาของคู่สมรส ที่ไม่มีเงินได้',15000,'A9',1);
+('ลดหย่อนและยกเว้นเงินสะสมที่จ่ายเข้ากองทุนสำรองเลี้ยงชีพ',500000,'A10',1);
+('ยกเว้นค่าซื้อหน่วยลงทุนในกองทุนรวมเพื่อการเลี้ยงชีพ (RMF)',500000,'A11',1);
+('ยกเว้นค่าซื้อหน่วยลงทุนในกองทุนรวมหุ้นระยะยาว  (LTF)',500000,'A12',1);
+('ยกเว้นเงินสะสม กบข.',500000,'A13',1);
+('ยกเว้นเงินสะสมกองทุนสงเคราะห์ครูโรงเรียนเอกชน',500000,'A14',1);
+('ยกเว้นเงินค่าชดเชยที่ได้รับตามกฎหมายว่าด้วยการคุ้มครองแรงงาน',300000,'A15',1);
+('ลดหย่อนและยกเว้น สำหรับดอกเบี้ยเงินกู้ยืมเพื่อการมีที่อยู่อาศัย-ผู้มีเงินได้กู้ยืมคนเดียว',100000,'A16',1);
+('ลดหย่อนและยกเว้น สำหรับดอกเบี้ยเงินกู้ยืมเพื่อการมีที่อยู่อาศัย-ผู้มีเงินได้หลายคนร่วมกันกู้ยืม',100000,'A17',1);
+('ลดหย่อนเงินสมทบที่จ่ายเข้ากองทุนประกันสังคม',9000,'A18',1);
+('ลดหย่อนและยกเว้นเงินบริจาค-ยกเว้นค่าใช้จ่ายเพื่อสนับสนุนการศึกษา',,'A19',1);
+('ลดหย่อนและยกเว้นเงินบริจาค-ยกเว้นค่าใช้จ่ายและเงินบริจาค',,'A22',1);
+('ลดหย่อนและยกเว้นเงินบริจาค-ลดหย่อนเงินบริจาคทั่วไป',,'A23',1);
+('ลดหย่อนและยกเว้นเงินบริจาค-ลดหย่อนเงินบริจาคเพื่อช่วยเหลือผู้ประสบอุทกภัย',,'A24',1);
+('ยกเว้นเงินได้ที่ผู้มีเงินได้ซึ่งเป็นผู้อยู่ในไทย และมีอายุ ไม่ต่ำกว่า 65 ปี บริบูรณ์',190000,'A25',1);
+('ยกเว้นเงินได้ที่ผู้มีเงินได้ซึ่งเป็นคนพิการอยู่ในไทย และมีอายุไม่เกิน 65 ปี บริบูรณ์',190000,'A26',1);
+('ยกเว้นเงินได้จากการซื้ออสังหาริมทรัพย์ฯ',5000000,'A27',1);
+('ยกเว้นเงินได้ที่ได้จ่ายเป็นค่าซ่อมแซมบ้านที่ได้รับผลกระทบจากอุทกภัยที่เกิดขึ้นในระหว่างวันที่ 25 ก.ค. 2554  – 31 ธ.ค. 2554',100000,'A28',1);
+('ยกเว้นเงินได้ที่ได้จ่ายเป็นค่าซ่อมแซมรถยนต์ที่ได้รับผลกระทบจากอุทกภัยที่เกิดขึ้นในระหว่างวันที่ 25 ก.ค. 2554 – 31 ธ.ค. 2554',30000,'A29',1);
+
+
+
+
+

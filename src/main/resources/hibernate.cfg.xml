@@ -13,7 +13,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
 
-        <!-- <property name="hbm2ddl.auto">create-drop</property> -->
+        <property name="hbm2ddl.auto">create-drop</property>
         <!-- <property name="hbm2ddl.auto">update</property> -->
       	
 		<mapping class="com.aug.hr.entity.Employee" />
@@ -53,6 +53,7 @@
 		<mapping class="com.aug.hr.entity.MasRole" />
 		<mapping class="com.aug.hr.entity.Allowances" />
 		<mapping class="com.aug.hr.entity.Health" />
+		<mapping class="com.aug.hr.entity.MasAllowances" />
 
 
 	</session-factory>

@@ -28,7 +28,7 @@ public class MasDegreetypeDaoImpl extends GenericDaoImpl<MasDegreetype,Integer> 
 
 	@Override
 	public List<MasDegreetype> findByCriteria(MasDegreetype masDegreetype) {
-		Criteria c = getCurrentSession().createCriteria(Employee.class);
+		Criteria c = getCurrentSession().createCriteria(MasDegreetype.class);
 		if (!StringUtils.isNullOrEmpty(masDegreetype.getName())) {
 			c.add(Restrictions.like("Name", "%" + masDegreetype.getName() + "%"));
 		}

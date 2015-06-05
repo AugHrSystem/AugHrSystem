@@ -28,7 +28,7 @@ public class MasAllowances extends BaseEntity{
 	@Column(name = "ALLOWANCES_TYPE" ,nullable = false)
 	private String allowances_type;
 	
-	@Column(name = "AMOUNT_ALLOWANCES" ,nullable = false)
+	@Column(name = "AMOUNT_ALLOWANCES")
 	private Double amount_allowances;
 
 	@Column(name = "CODE",nullable =false)
