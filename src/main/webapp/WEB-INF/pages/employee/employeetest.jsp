@@ -994,7 +994,7 @@
 				vspace="0" hspace="0"></iframe>
 	       </div> 
 	
-<<<<<<< HEAD
+
 	<div class="tab-pane" id="card">
 		<iframe src="${pageContext.request.contextPath}/card"
 			style="width: 100%; height: 600px;" marginwidth="0"
@@ -1007,7 +1007,7 @@
 			style="width: 100%; height: 600px;" marginwidth="0"
 			marginheight="0" frameborder="0" vspace="0" hspace="0"></iframe>
 	</div>
-=======
+
 	
 	
 	
@@ -1016,7 +1016,7 @@
 			style="width: 100%; height: 600px;" marginwidth="0"marginheight="0" frameborder="0" 
 			vspace="0" hspace="0" scrolling="no"></iframe>
 		</div>
->>>>>>> defect reward and defect punish
+
 	       
 	       
 	       <div class="tab-pane" id="health">
