@@ -62,38 +62,41 @@
 
 </head>
 <body>
-<div class="container" style="padding-top: 5px"">
-	<div class="form-group">
-			<form:form id="listForm" method="post" commandName="reward">
-			<h2>Reward</h2><br><br>
-					<div class="form-group">
-						<table id="tbResult" class="table">
+	<div class="container" >
+			<form:form id="listForm" method="post" commandName="reward" class="form-horizontal" role="form">
+			<div class="row">
+			<h2 class="col-md-6">Reward</h2>
+			<br>
+					<div class="col-md-6" align="right">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
+					New Record
+					</button> 
+					<br>
+					<br>
+					</div>
+			</div>	
+				<div>
+					<table id="tbResult" class="table" class="form-group">
 							<thead>
 								<tr>
-									<th>NAME</th>
+									<th>Reward name</th>
 									<th>YEAR</th>
-									<th>DETAILREWARD</th>
+									<th>Description</th>
 									<th></th>
 									<th></th>
 								</tr>
 							</thead>
 							<tbody></tbody>
-						</table>
-					</div>
-			</form:form>
-
-	<form:form id="addForm" method="post" commandName="reward">
-				<!-- Button trigger modal -->
-				<div class="form-group" align="right">
-					<button type="button" class="btn btn-info" data-toggle="modal"
-						data-target="#addModal">Add</button>
+					</table>
 				</div>
-
+			</form:form>
+	</div>
+	<form:form id="addForm" method="post" commandName="reward">
+				
 				<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
 
-				<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
-					aria-labelledby="addModalLabel" aria-hidden="true">
-
+				<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-md">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -105,12 +108,12 @@
 							</div>
 						<div class="col col-lg-12 " style="padding-top: 10px">
 							<div class="form-group " align="left">
-									  <label>Type :</label>
+									  <label>Reward name :</label>
 										<form:input path="typereward" type="text" class="form-control" id="typereward" placeholder="Type" />
 							</div>
 								<div class="form-group " align="left">
 									 <label>Year :</label>
-									<form:select path="year" class="form-control" id="year">
+									<form:select path="year" class="form-control required" id="year">
 										<form:option value="-1" label="---Select year---" />
 										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>						
 										<option value="2020">2020</option>
@@ -239,8 +242,8 @@
 								</div>
 
 								<div class="form-group " align="left">
-									 <label>Reason :</label>
-									<form:input path="reason" type="text" class="form-control" id="reason" placeholder="reason" />
+									 <label>Description :</label>
+									<form:textarea path="reason" type="text" class="form-control" id="reason" placeholder="reason" />
 								</div>
 
 								<div class="form-group " align="right">
@@ -291,21 +294,21 @@
 		        	typereward: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The typereward: is required and cannot be empty'
+		                        message: 'The Reward name: is required and cannot be empty'
 		                    }
 		                }
 		            },
 		            year: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The  year is required and cannot be empty'
-		                    }
+		                        message: 'The  Year is required and cannot be empty'
+		                    },
 		                }
 		            },
 		            reason: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The reason is required and cannot be empty'
+		                        message: 'The Description is required and cannot be empty'
 		                    }
 		                }
 		            },
@@ -355,7 +358,7 @@
 
 			function clearModal() {
 				$("#typereward").val(""), 
-				$("#year").val("-1"), 
+				$("#year").val(""), 
 				$("#reason").val("");
 
 			}

@@ -9,9 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.aug.hr.entity.dto.ReferenceDto;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -26,10 +27,12 @@ public class Reference {
 	private Integer id;
 	
 	@Column(name = "NAME" ,nullable = false)
+	@NotEmpty 
 	private String name;
 //	@Column(name = "ADDRESS" ,nullable = false)
 //	private String address;
 	@Column(name = "TEL" ,nullable = false)
+	@NotEmpty
 	private String tel;
 //	@Column(name = "OCCUPATION" ,nullable = false)
 //	private String occupation;

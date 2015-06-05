@@ -78,7 +78,9 @@ public class PunishController {
 		
 		Punish entityLoaded = punishService.findById(punishDto.getId());
 		entityLoaded.setDatepunish(punishDto.getDatepunish());
-		entityLoaded.setDescription(punishDto.getDescription());		
+		entityLoaded.setDescription(punishDto.getDescription());	
+		entityLoaded.setPenalty(punishDto.getPenalty());
+		
 		punishService.update(entityLoaded);
 		return punishDto;
 	}

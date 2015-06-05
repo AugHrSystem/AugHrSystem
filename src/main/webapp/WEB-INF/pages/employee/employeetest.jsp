@@ -927,13 +927,13 @@
               <div class="tab-pane" id="reference">
                   <iframe src="${pageContext.request.contextPath}/reference" style="width: 100%; height: 600px; " 
 		marginwidth="0" marginheight="0" frameborder="0"
-		vspace="0" hspace="0"></iframe>
+		vspace="0" hspace="0" scrolling="no"></iframe>
               </div>
               
               <div class="tab-pane" id="reward">
                   <iframe src="${pageContext.request.contextPath}/reward" style="width: 100%; height: 600px; " 
 		marginwidth="0" marginheight="0" frameborder="0"
-		vspace="0" hspace="0"></iframe>
+		vspace="0" hspace="0" scrolling="no"></iframe>
               </div>
               
               <div class="tab-pane" id="history">
@@ -952,7 +952,7 @@
                      <div class="tab-pane" id="punish">
                   <iframe src="${pageContext.request.contextPath}/punish" style="width: 100%; height: 600px; " 
 		marginwidth="0" marginheight="0" frameborder="0"
-		vspace="0" hspace="0"></iframe>
+		vspace="0" hspace="0" scrolling="no"></iframe>
               </div>
               
               
@@ -994,6 +994,7 @@
 				vspace="0" hspace="0"></iframe>
 	       </div> 
 	
+<<<<<<< HEAD
 	<div class="tab-pane" id="card">
 		<iframe src="${pageContext.request.contextPath}/card"
 			style="width: 100%; height: 600px;" marginwidth="0"
@@ -1006,6 +1007,16 @@
 			style="width: 100%; height: 600px;" marginwidth="0"
 			marginheight="0" frameborder="0" vspace="0" hspace="0"></iframe>
 	</div>
+=======
+	
+	
+	
+		 <div class="tab-pane" id="card">
+		<iframe src="${pageContext.request.contextPath}/card"
+			style="width: 100%; height: 600px;" marginwidth="0"marginheight="0" frameborder="0" 
+			vspace="0" hspace="0" scrolling="no"></iframe>
+		</div>
+>>>>>>> defect reward and defect punish
 	       
 	       
 	       <div class="tab-pane" id="health">

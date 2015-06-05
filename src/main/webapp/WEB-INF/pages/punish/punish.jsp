@@ -47,18 +47,27 @@
 
 </head>
 <body>
-	<div class="container" style="padding-top: 5px"">
+	<div class="container">
 		<form:form id ="listForm" method="post" commandName="punish">	
-			<div style="padding-bottom: 10px">
-				<h2>Punish</h2>		
-			</div>
-			<div class="form-group">
-			<br><br>
+			<div class="row">
+			<h2 class="col-md-6">Punish</h2>
+			<br>
+					<div class="col-md-6" align="right">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
+					New Record
+					</button> 
+					<br>
+					<br>
+					</div>
+			</div>	
+				<div>
 				<table id="tbResult" class="table">
 					<thead>					
 						<tr>								
 							<th>DATE</th>
-							<th>Punish Description</th>					
+							<th>Description</th>	
+							<th>Penalty</th>				
 							<th></th>
 							<th></th>
 						</tr>
@@ -67,12 +76,9 @@
 				</table>
 			</div>		
 	   </form:form>		
+	 </div>	
 
 	<form:form id ="addForm" method="post" commandName="punish">
-		<!-- Button trigger modal -->
-	<div class="form-group" align="right">
-		<button type="button"  id="addBtn" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
-	</div>
 	
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
 	
@@ -91,11 +97,18 @@
 	   						 <form:input path="datepunish" type="text" class="form-control" id="datepunish"/>
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
-				    </div>			    
+				    </div>	
+				    		    
 				    <div class="form-group "  align="left">
-							<label for="description" >Punish Description:</label>
+							<label for="description" >Description:</label>
 							<form:input path="description" type="text" class="form-control" id="description" placeholder="Description"/>							
-				    </div>					
+				    </div>	
+				    	
+				     <div class="form-group "  align="left">
+							<label for="penalty" >Penalty:</label>
+							<form:input path="penalty" type="text" class="form-control" id="penalty" placeholder="Penalty"/>							
+				    </div>	
+				    			
 					<div class="form-group" align="center">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
@@ -145,24 +158,28 @@
 	        },
 	        fields: {
 	        	
-	            datepunish: {
+	        /* 	datepunish: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The datepunish of adjustment is required and cannot be empty'
+	                        message: 'The Date of adjustment is required and cannot be empty'
 	                    },
-	                    date: {
-	                        format: 'DD-MM-YYYY'
-	                    }
+	                   
 	                }
-	            },
+	            }, */
 	            description: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The description of adjustment is required and cannot be empty'
+	                        message: 'The Description of adjustment is required and cannot be empty'
 	                    }
 	                }
 	            },
-	           
+	            penalty: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The Penalty of adjustment is required and cannot be empty'
+	                    }
+	                }
+	            },
 	        }
 	    });
 		
@@ -219,6 +236,7 @@
 		function clearModal(){
 			$("#datepunish").val(""),
 			$("#description").val("");
+			$("#penalty").val("");
 		
 		}
 
@@ -229,6 +247,7 @@
 				data : JSON.stringify({
 					datepunish : $("#datepunish").val(),
 					description :$("#description").val(),
+					penalty :$("#penalty").val(),	
 					employeeId : id		
 				}),
 				type : "POST",
@@ -239,7 +258,8 @@
 					dt.fnClearTable();					
 					dt.fnAddData([             
 									data.datepunish,
-									data.description,										
+									data.description,	
+									data.penalty,
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 					]);
@@ -265,6 +285,7 @@
 								id :punishid,
 								datepunish: $("#datepunish").val(),	
 								description: $("#description").val(), 
+								penalty: $("#penalty").val(), 
 								employeeId: id 
 											
 					}),
@@ -278,6 +299,7 @@
 					
 					dt.fnUpdate(data.datepunish, tr, 0),
 					dt.fnUpdate(data.description, tr, 1),
+					dt.fnUpdate(data.penalty, tr, 2),
 				
 						$('#addModal').modal('toggle');
 						listAll();
@@ -299,6 +321,7 @@
 				success : function(data) {
 					$("#datepunish").val(data.datepunish); 
 					$("#description").val(data.description);
+					$("#penalty").val(data.penalty);
 					employeeId: data.employeeId;
 					
 					},
@@ -340,7 +363,8 @@
 						dt.fnClearTable();
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].datepunish,
-						              data[i].description, 					              
+						              data[i].description, 	
+						              data[i].penalty, 					             
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				

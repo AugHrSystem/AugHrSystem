@@ -40,13 +40,21 @@
 
 </head>
 <body>
-	<div class="container" style="padding-top: 5px"">
+	<div class="container" >
 		<form:form id ="listForm" method="post" commandName="card">	
-			<div style="padding-bottom: 10px">
-				<h2>Card</h2>		
-			</div>
-			<div class="form-group">
-			<br><br>
+				<div class="row">
+			<h2 class="col-md-6">Card</h2>
+			<br>
+					<div class="col-md-6" align="right">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
+					New Record
+					</button> 
+					<br>
+					<br>
+					</div>
+			</div>	
+				<div>
 				<table id="tbResult" class="table">
 					<thead>					
 						<tr>								
@@ -62,14 +70,10 @@
 					<tbody></tbody>
 				</table>
 			</div>		
-	   </form:form>		
+	   </form:form>	
+	 </div>	
 
 	<form:form id ="addForm" method="post" commandName="card">
-		<!-- Button trigger modal -->
-	<div class="form-group" align="right">
-		<button type="button"  id="addBtn" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
-	</div>
-	
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
 	
 		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">		

@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.aug.hr.entity.dto.CardDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -28,22 +30,27 @@ public class Card {
 	private Integer id;
 	
 	@Column(name = "CARDNO" ,nullable = false)
+	@NotEmpty 
 	private String card_no;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="DD-MM-YYYY")
-	@Column(name = "START_DATE")
+	@Column(name = "START_DATE" ,nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotEmpty
 	private Date startdate;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="DD-MM-YYYY")
-	@Column(name = "END_DATE")
+	@Column(name = "END_DATE"  ,nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotEmpty
 	private Date enddate;
 	
 	@Column(name = "STATUS" ,nullable = false)
+	@NotEmpty
 	private String status;
 	
 	@Column(name = "REMARK" ,nullable = false)
+	@NotEmpty
 	private String remark;
 
 	

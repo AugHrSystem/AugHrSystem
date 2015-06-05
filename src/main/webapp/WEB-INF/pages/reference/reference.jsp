@@ -40,18 +40,21 @@
 </head>
 
 <body>
-<div class="container" style="padding-top: 5px"">
-		<form:form id ="listForm" method="post" commandName="reference">		
-			<div style="padding-bottom: 10px">
-				<h2>Reference</h2>	
+<div class="container">
+		<form:form id ="listForm" method="post" commandName="reference" class="form-horizontal" action="reference">		
+		<div class="row">
+				<h2 class="col-md-6">Reference</h2>				
+				<br>
+				<div class="col-md-6" align="right">		
+				<button type="button" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">
+					New Record
+				</button> 
+				<br>
+				<br>
 			</div>
-			<div class="form-group">
-					<!-- Button trigger modal -->
-	<div class="form-group" align="right">
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
-	</div>
-			
-				<table id="tbResult" class="table">
+		</div>	
+		<div>
+				<table id="tbResult" class="table" class="form-group">
 					<thead>	
 						<tr>								
 							<th>Fullname</th>
@@ -64,8 +67,10 @@
 					</thead>
 					<tbody></tbody>
 				</table>
-			</div>			
-	   </form:form>		
+		</div>			
+						
+	   </form:form>	
+</div>	   	
 
 	<form:form id ="addForm" method="post" commandName="reference">
 	
@@ -146,7 +151,7 @@
 	        	name: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The position is required and cannot be empty'
+	                        message: 'The Fullname is required and cannot be empty'
 	                    }
 	                }
 	            },
@@ -156,7 +161,7 @@
 	            tel: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The salary is required and cannot be empty'
+	                        message: 'The Telphone is required and cannot be empty'
 	                    }
 	                }
 	            },

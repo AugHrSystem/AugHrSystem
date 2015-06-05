@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.aug.hr.entity.dto.RewardDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,9 +25,12 @@ public class Reward extends BaseEntity{
 	@GeneratedValue
 	private Integer id;
 	
+	
 	@Column(name = "TYPE_REWARD" ,nullable = false)
+	@NotEmpty 
 	private String typereward;
 	@Column(name = "YEAR" ,nullable = false)
+	@NotEmpty 
 	private String year;		
 	@Column(name = "REASON" ,nullable = true)
 	private String reason;	

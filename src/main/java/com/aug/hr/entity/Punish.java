@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.aug.hr.entity.dto.PunsihDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -28,16 +30,22 @@ public class Punish {
 	private Integer id;
 
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Column(name = "DATEPUNISH")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "DATEPUNISH" ,nullable = false)
+	//@Temporal(TemporalType.TIMESTAMP)
+	@NotEmpty 
 	private Date datepunish;
 		
-	@Column(name = "DESCRIPTION")
+	@Column(name = "DESCRIPTION" ,nullable = false)
+	@NotEmpty 
 	private String description;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="EMPLOYEE_ID" , referencedColumnName="id", nullable=true)
 	private Employee employee;
 
+	@Column(name = "PENALTY" ,nullable = false)
+	private String penalty;
+	
 	
 
 	public Integer getId() {
@@ -80,11 +88,22 @@ public class Punish {
 	}
 
 
+	public String getPenalty() {
+		return penalty;
+	}
+
+
+	public void setPenalty(String penalty) {
+		this.penalty = penalty;
+	}
+
+
 	public PunsihDto toPunishDto(){
 		PunsihDto punsihDto = new PunsihDto();
 		punsihDto.setId(this.id);
 		punsihDto.setDatepunish(this.datepunish);
 		punsihDto.setDescription(this.description);
+		punsihDto.setPenalty(this.penalty);
 		punsihDto.setEmployeeId(this.getId());
 		return punsihDto;
 	}
@@ -96,6 +115,7 @@ public class Punish {
 		punish.setId(punsihDto.getId());
 		punish.setDatepunish(punsihDto.getDatepunish());
 		punish.setDescription(punsihDto.getDescription());
+		punish.setPenalty(punsihDto.getPenalty());
 		
 		Employee employee = new Employee();
 		employee.setId(punsihDto.getEmployeeId());
