@@ -32,7 +32,7 @@ public class Education extends BaseEntity{
 	@Column(name = "UNIVERSITY" ,nullable = false)
 	private String university;
 	
-	@Column(name = "GPA" ,nullable =false)
+	@Column(name = "GPA")
 	private Double  gpa;
 	
 	@Column(name = "FACULTY" ,nullable =false)
@@ -41,10 +41,10 @@ public class Education extends BaseEntity{
 	@Column(name = "MAJOR" ,nullable =false)
 	private String major;
 	
-	@Column(name = "CERTIFICATE" ,nullable =false)
+	@Column(name = "CERTIFICATE")
 	private String certificate;
 	
-	@Column(name = "DESCRIPTION" ,nullable =false)
+	@Column(name = "DESCRIPTION")
 	private String description ;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")

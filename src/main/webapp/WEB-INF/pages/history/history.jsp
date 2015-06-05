@@ -14,23 +14,18 @@
 <!-- jQuery -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 
+<!-- Validate -->
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
 <!-- Bootstrap -->
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<%-- <link href="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all"> --%>
-<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
-
-<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/jquery/jquery.min.js" />"></script> --%>
-<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/js/bootstrap.min.js" />"></script> --%>
-<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
-
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" media="all">
 
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
@@ -46,21 +41,29 @@
 
 <form:form id ="listForm" method="post" commandName="history">
 
+<div class="row">
+<div class="col-md-6">
 <h2>History</h2> 
+</div>
+<br>
 
-<br></br>
+<!-- Button trigger modal -->
+<div class="form-group" align="right">
+<div class="col-md-6">
+<button type="button" id="addBtnHis" class="btn btn-info" data-toggle="modal" data-target="#addModal">New record</button> 
+</div>
+</div>
+</div>
 
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
+			<th>Approved date</th>
 			<th>Position</th>
 			<th>Salary</th>
-			<th>Old Salary</th>
-			<th>Date Of Adjustment</th>
 			<th>Reason Of Adjustment</th>
-			<th>Adjustment Time</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -73,11 +76,6 @@
 
 <form:form id ="addForm" method="post" commandName="history">
 
-<!-- Button trigger modal -->
-<div class="form-group" align="right">
-<button type="button" id="addBtnHis" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
-</div>
-
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -87,25 +85,10 @@
         <h4 class="modal-title" id="myModalLabel">History Add</h4>
       </div>
       
-      <div class="modal-body">
+      <div class="modal-body row">
         
-	  <div class="form-group">
-	    <label>Position :</label>
-	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position" />
-	  </div>
-	  
-	  <div class="form-group">
-	    <label>Salary :</label>
-	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary"/>
-	  </div>
-	  
-	  <div class="form-group">
-	    <label>Old Salary :</label>
-	    <form:input path="oldSalary" type="text" class="form-control" id="oldSalary" placeholder="Enter Old Salary"/>
-	  </div>
-	  
-	  <div class="form-group">
-	    <label>Date Of Adjustment :</label>
+      <div class="form-group col-md-6">
+	    <label>Approved date :</label>
 	    <div class='input-group date' id='datetimepicker1'>
 	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment" placeholder="DD-MM-YYYY"/>
 	  	<span class="input-group-addon">
@@ -114,16 +97,31 @@
 	  	
 	  	</div>
 	  </div>
-	  
-	  <div class="form-group">
-	    <label>Reason Of Adjustment :</label>
-	    <form:input path="reasonOfAdjustment" type="text" class="form-control" id="reasonOfAdjustment" placeholder="Enter Reason Of Adjustment"/>
+	    
+	  <div class="form-group col-md-6">
+	    <label>Position :</label>
+	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position" />
 	  </div>
 	  
-	  <div class="form-group">
+	  <div class="form-group col-md-6">
+	    <label>Salary :</label>
+	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary"/>
+	  </div>
+	  
+	  <div class="form-group col-md-6">
+	    <label>Old Salary :</label>
+	    <form:input path="oldSalary" type="text" class="form-control" id="oldSalary" placeholder="Enter Old Salary"/>
+	  </div>
+	  
+	  <div class="form-group col-md-6">
+	    <label>Reason Of Adjustment :</label>
+	    <form:textarea path="reasonOfAdjustment" type="text" class="form-control" id="reasonOfAdjustment" placeholder="Enter Reason Of Adjustment"/>
+	  </div>
+	  
+	  <%-- <div class="form-group col-md-6">
 	    <label>Adjustment Time :</label>
 	    <form:input path="adjustmentTime" type="text" class="form-control" id="adjustmentTime" placeholder="Enter Adjustment Time"/>
-	  </div>
+	  </div> --%>
 	  
 
       </div>
@@ -189,13 +187,6 @@
 //	        live: 'disabled',
 	        message: 'This value is not valid',
 	        container: 'tooltip',
-	        button: {
-	            // The submit buttons selector
-	            selector: '[type="submit"]',
-
-	            // The disabled class
-	            disabled: ''
-	        },
 	        feedbackIcons: {
 	            valid: 'glyphicon glyphicon-ok',
 	            invalid: 'glyphicon glyphicon-remove',
@@ -246,7 +237,7 @@
 	                    }
 	                }
 	            },
-	            adjustmentTime: {
+	            /* adjustmentTime: {
 	                validators: {
 	                    notEmpty: {
 	                        message: 'The adjustment time is required and cannot be empty'
@@ -255,7 +246,7 @@
 	                    	message: 'The adjustment time is number'
 	                    },
 	                }
-	            }
+	            } */
 	        }
 	    });
 	   
@@ -312,7 +303,7 @@
 			$("#oldSalary").val("");
 			$("#dateOfAdjustment").val("");
 			$("#reasonOfAdjustment").val("");
-			$("#adjustmentTime").val("");
+// 			$("#adjustmentTime").val("");
 		}
 		
 		function addHistory(){
@@ -325,7 +316,7 @@
 					oldSalary :$("#oldSalary").val(),
 					dateOfAdjustment :$("#dateOfAdjustment").val(),
 					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
-					adjustmentTime :$("#adjustmentTime").val(),
+// 					adjustmentTime :$("#adjustmentTime").val(),
 					employeeId: id
 				}),
 				type : "POST",
@@ -335,27 +326,27 @@
 					
 //	 				alert(JSON.stringify(data));
 						
-					dt.fnClearTable();
+// 					dt.fnClearTable();
 					
-					dt.fnAddData([
-						/* $("#Name").val(),
-						$("#ProductCategory").val(),
-						$("#Unit").val(),
-						$("#Price").val(),
-						$("#Description").val(), */
-						data.position,
-						data.salary,
-						data.oldSalary,
-						data.dateOfAdjustment,
-						data.reasonOfAdjustment,
-						data.adjustmentTime,
-						/* data.company,
-						data.salary,
-						data.time, */
+// 					dt.fnAddData([
+// 						/* $("#Name").val(),
+// 						$("#ProductCategory").val(),
+// 						$("#Unit").val(),
+// 						$("#Price").val(),
+// 						$("#Description").val(), */
+// 						data.position,
+// 						data.salary,
+// 						data.oldSalary,
+// 						data.dateOfAdjustment,
+// 						data.reasonOfAdjustment,
+// 						data.adjustmentTime,
+// 						/* data.company,
+// 						data.salary,
+// 						data.time, */
 						
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
-					]);
+// 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+// 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+// 					]);
 					
 					$('#addModal').modal('toggle');
 					listAll();
@@ -379,7 +370,7 @@
 					oldSalary :$("#oldSalary").val(),
 					dateOfAdjustment :$("#dateOfAdjustment").val(),
 					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
-					adjustmentTime :$("#adjustmentTime").val(),
+// 					adjustmentTime :$("#adjustmentTime").val(),
 					employeeId : id
 					/* company :$("#company").val(),
 					salary :$("#salary").val(),
@@ -392,19 +383,20 @@
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
 					
-					var tr = button.closest("tr")
+// 					var tr = button.closest("tr")
 					
-					dt.fnUpdate(data.position,tr,0);
-					dt.fnUpdate(data.salary,tr,1);
-					dt.fnUpdate(data.oldSalary,tr,2);
-					dt.fnUpdate(data.dateOfAdjustment,tr,3);
-					dt.fnUpdate(data.reasonOfAdjustment,tr,4);
-					dt.fnUpdate(data.adjustmentTime,tr,5);
-					/* dt.fnUpdate(data.company, tr ,1);
-					dt.fnUpdate(data.salary, tr ,2);
-					dt.fnUpdate(data.time, tr ,3); */
+// 					dt.fnUpdate(data.position,tr,0);
+// 					dt.fnUpdate(data.salary,tr,1);
+// 					dt.fnUpdate(data.oldSalary,tr,2);
+// 					dt.fnUpdate(data.dateOfAdjustment,tr,3);
+// 					dt.fnUpdate(data.reasonOfAdjustment,tr,4);
+// 					dt.fnUpdate(data.adjustmentTime,tr,5);
+// 					/* dt.fnUpdate(data.company, tr ,1);
+// 					dt.fnUpdate(data.salary, tr ,2);
+// 					dt.fnUpdate(data.time, tr ,3); */
 					
 					$('#addModal').modal('toggle');
+					listAll();
 				},
 				error : function() {
 					alert("ERROR");
@@ -425,7 +417,7 @@
 					$("#oldSalary").val(data.oldSalary);
 					$("#dateOfAdjustment").val(data.dateOfAdjustment);
 					$("#reasonOfAdjustment").val(data.reasonOfAdjustment);
-					$("#adjustmentTime").val(data.adjustmentTime);
+// 					$("#adjustmentTime").val(data.adjustmentTime);
 					
 					/* employee: {id: data.position } */
 					/* $("#company").val(data.company),
@@ -452,6 +444,7 @@
 					dt.fnDeleteRow(tr);
 					
 					$('#deleteModal').modal('toggle');
+					listAll();
 					
 				},
 				
@@ -492,12 +485,11 @@
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].position,
+					dt.fnAddData([
+								  data[i].dateOfAdjustment,
+					              data[i].position,
 					              data[i].salary,
-					              data[i].oldSalary, 
-					              data[i].dateOfAdjustment,
 					              data[i].reasonOfAdjustment,
-					              data[i].adjustmentTime,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			

@@ -15,24 +15,26 @@
 <!-- jQuery -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 
+<!-- Validate -->
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
 <!-- Bootstrap -->
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- Date Time Picker -->
-<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
-<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
-<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
-
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
 
 <!-- dataTable Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
+<!-- Date Time Picker -->
+<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
+<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
+<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
 
 </head>
 <body>
@@ -40,14 +42,18 @@
 
 <form:form id ="listForm" method="post" commandName="education" action="education">
 
-
+<div class="row">
+<div class="col-md-6">
 <h2>Education</h2>
-
-<!-- Button trigger modal -->
-<div class="form-group" align="right">
-<button type="button" id="addBtnEdu" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">New record</button> 
 </div>
-
+<!-- Button trigger modal -->
+<br>
+<div class="form-group" align="right">
+<div class="col-md-6">
+<button type="button" id="addBtnEdu" class="btn btn-info btnAdds" data-toggle="modal" data-target="#addModal">New record</button> 
+</div>
+</div>
+</div>
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
@@ -79,33 +85,49 @@
         <h4 class="modal-title" id="myModalLabel">Education Add</h4>
       </div>
       
-      <div class="modal-body">
+      <div class="modal-body row">
    
-   <div class="col-md-12">     
-	  <div class="form-group">
-	  <div class="col-md-6">
+   	  <div class="form-group col-md-6">
+	    <label>Start Date :</label>
+	    <div class='input-group date' id='datetimepickerStart'>
+	    <form:input path="startDate" type="text" class="form-control" id="startDate" placeholder="DD-MM-YYYY"/>
+	    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+	    </div>
+	   </div> 
+	   
+	   <div class="form-group col-md-6">
+	    <label>Finish Date :</label>
+	    <div class='input-group date' id='datetimepickerGrad'>
+	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate" placeholder="DD-MM-YYYY"/>
+	    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        </div>
+	  </div>
+	  
+	  <div class="form-group col-md-6">
 	    <label>University :</label>
 	    <form:input path="university" type="text" class="form-control" id="university" placeholder="Enter University"/>
 	  </div>
 	  
-	  <div class="col-md-6">
+	  <div class="form-group col-md-6">
 	    <label>GPA :</label>
 	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="Enter GPA"/>
 	  </div>
-	  </div>
-	</div>  
 	
-	  <div class="form-group">
+	  <div class="form-group col-md-6">
 	    <label>Faculty :</label>
 	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
 	  </div>
 	  
-	  <div class="form-group">
+	  <div class="form-group col-md-6">
 	    <label>Major :</label>
 	    <form:input path="major" type="text" class="form-control" id="major" placeholder="Enter Major"/>
 	  </div>
 	  
-	  <div class="form-group">
+	  <div class="form-group col-md-6">
 	    <label>Degree Type :</label>
 	    
 		  <form:select path="masdegreetype" class="form-control"
@@ -117,35 +139,16 @@
 		</form:select>
 	  </div>
 
-	  <div class="form-group">
+	  <div class="form-group col-md-6">
 	    <label>Certification :</label>
 	    <form:input path="certificate" type="text" class="form-control" id="certificate" placeholder="Enter Certificate"/>
 	  </div>
 	  
-	  <div class="form-group">
+	  <div class="form-group col-md-12">
 	    <label>Description :</label>
 	    <form:input path="description" type="text" class="form-control" id="description" placeholder="Enter Description"/>
 	  </div>
 	  
-	  <div class="form-group">
-	    <label>Start Date :</label>
-	    <div class='input-group date' id='datetimepickerStart'>
-	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
-	    <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-	    </div>
-	   </div> 
-	   
-	   <div class="form-group">
-	    <label>Finish Date :</label>
-	    <div class='input-group date' id='datetimepickerGrad'>
-	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate"/>
-	    <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-        </div>
-	  </div>
       </div>
       
       <div class="form-group" align="center">
@@ -288,27 +291,27 @@
 					
 //	 				alert(JSON.stringify(data));
 						
-					dt.fnClearTable();
+// 					dt.fnClearTable();
 					
-					dt.fnAddData([
-						/* $("#Name").val(),
-						$("#ProductCategory").val(),
-						$("#Unit").val(),
-						$("#Price").val(),
-						$("#Description").val(), */
-						data.university,
-						data.gpa,
-						data.faculty,
-						data.major,
-						data.masdegreetype,
-						data.certificate,
-						data.description,
-						data.startDate,
-						data.graduatedDate,
+// 					dt.fnAddData([
+// 						/* $("#Name").val(),
+// 						$("#ProductCategory").val(),
+// 						$("#Unit").val(),
+// 						$("#Price").val(),
+// 						$("#Description").val(), */
+// 						data.university,
+// 						data.gpa,
+// 						data.faculty,
+// 						data.major,
+// 						data.masdegreetype,
+// 						data.certificate,
+// 						data.description,
+// 						data.startDate,
+// 						data.graduatedDate,
 						
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
-					]);
+// 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+// 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+// 					]);
 					
 					$('#addModal').modal('toggle');
 					listAll();
@@ -345,7 +348,7 @@
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
 					
-					var tr = button.closest("tr")
+					/* var tr = button.closest("tr")
 					
 					dt.fnUpdate(data.university, tr ,0);
 					dt.fnUpdate(data.gpa, tr ,1);
@@ -355,9 +358,10 @@
 					dt.fnUpdate(data.certificate, tr ,5);
 					dt.fnUpdate(data.description, tr ,6);
 					dt.fnUpdate(data.startDate, tr ,7);
-					dt.fnUpdate(data.graduatedDate, tr ,8);
+					dt.fnUpdate(data.graduatedDate, tr ,8); */
 					
 					$('#addModal').modal('toggle');
+					listAll();
 				},
 				error : function() {
 					alert("ERROR");
@@ -404,6 +408,8 @@
 					
 					$('#deleteModal').modal('toggle');
 					
+					listAll();
+					
 				},
 				
 				error : function() {
@@ -423,15 +429,11 @@
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
 					dt.fnAddData([
+								  data[i].startDate,
+								  data[i].graduatedDate,
+								  data[i].masdegreetype,
 					              data[i].university,
-					              data[i].gpa,
-					              data[i].faculty,
 					              data[i].major,
-					              data[i].masdegreetype,
-					              data[i].certificate,
-					              data[i].description,
-					              data[i].startDate,
-					              data[i].graduatedDate,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
