@@ -5,11 +5,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
+import net.sf.jasperreports.engine.JRParameter;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
@@ -29,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Ability;
@@ -57,6 +63,7 @@ import com.aug.hr.services.MasLocationService;
 import com.aug.hr.services.MasProvinceService;
 import com.aug.hr.services.MasSpecialtyService;
 import com.aug.hr.services.MasStaffTypeService;
+import com.aug.hr.services.ReportService;
 import com.aug.hr.services.masTechnologyService;
 import com.aug.hr.services.utils.UploadService;
 
@@ -80,6 +87,7 @@ public class EmployeeController {
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
 	@Autowired private UploadService uploadService;
 	@Autowired private EmployeeCodeDtoService employeeCodeDtoService;
+	@Autowired private ReportService reportService;
 	
 	
 	private static final Logger logger = Logger.getLogger(Employee.class);
@@ -240,6 +248,22 @@ public class EmployeeController {
 
 		return null;
 	}
+	
+	//Report
+	@RequestMapping(value = "/employee/modalReport", method = RequestMethod.GET)
+	public String modalReport(ModelMap map) {
+		return "/employee/reportModal";
+	}
+	
+	@RequestMapping(value = "/employee/searchReport", method = {RequestMethod.POST})
+    public ModelAndView searchEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+		List<Employee> employeeList = employeeService.findByCriteria(employee);
+		Map<String,Object> parameterMap = new HashMap<String,Object>();
+		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
+		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+		ModelAndView mv = reportService.getReport(employeeList, "employeeReport", employee.getReportType(),parameterMap);
+        return mv;
+    }
 	
 	
 	@RequestMapping(value = "/employee/findRunningNo/{id}", method = RequestMethod.POST)
