@@ -32,7 +32,6 @@ public class Punish {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Column(name = "DATEPUNISH" ,nullable = false)
 	//@Temporal(TemporalType.TIMESTAMP)
-	@NotEmpty 
 	private Date datepunish;
 		
 	@Column(name = "DESCRIPTION" ,nullable = false)
@@ -44,6 +43,7 @@ public class Punish {
 	private Employee employee;
 
 	@Column(name = "PENALTY" ,nullable = false)
+	@NotEmpty 
 	private String penalty;
 	
 	

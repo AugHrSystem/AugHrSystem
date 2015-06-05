@@ -36,13 +36,11 @@ public class Card {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="DD-MM-YYYY")
 	@Column(name = "START_DATE" ,nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotEmpty
 	private Date startdate;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="DD-MM-YYYY")
 	@Column(name = "END_DATE"  ,nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotEmpty
 	private Date enddate;
 	
 	@Column(name = "STATUS" ,nullable = false)

@@ -145,6 +145,14 @@
 	var dt;
 	$(document).ready(function() {
 		
+		$('#tbResult').dataTable({ 
+			"bLengthChange": false,
+			"iDisplayLength": 10,
+			"pagingType": "simple_numbers",
+			"ordering": false,
+			"info": false
+		});
+		
 		$("#addBtn").on("click",function(){clearModal();});
 		
 			
@@ -158,14 +166,14 @@
 	        },
 	        fields: {
 	        	
-	        /* 	datepunish: {
+	         	datepunish: {
 	                validators: {
 	                    notEmpty: {
 	                        message: 'The Date of adjustment is required and cannot be empty'
 	                    },
 	                   
 	                }
-	            }, */
+	            }, 
 	            description: {
 	                validators: {
 	                    notEmpty: {

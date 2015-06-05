@@ -19,6 +19,16 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+
+<%-- <link href="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all"> --%>
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/jquery/jquery.min.js" />"></script> --%>
+<%-- <script src="<c:url value="/resource/bootstrapvalidator/vendor/bootstrap/js/bootstrap.min.js" />"></script> --%>
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
+
+
 <!-- jQuery dataTable -->
 <script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
 <link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
@@ -162,7 +172,73 @@
 	var dt;
 	$(document).ready(function() {
 		
+		$('#tbResult').dataTable({ 
+			"bLengthChange": false,
+			"iDisplayLength": 10,
+			"pagingType": "simple_numbers",
+			"ordering": false,
+			"info": false
+		});
+		
 		$("#addBtn").on("click",function(){clearModal();});
+		
+		
+		
+		$('#addForm').bootstrapValidator({
+//	        live: 'disabled',
+	        message: 'This value is not valid',
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	
+	        	card_no: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The Date of adjustment is required and cannot be empty'
+	                    },
+	                   
+	                }
+	            }, 
+	            startdate: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The Startdate of adjustment is required and cannot be empty'
+	                    },
+	                    date: {
+	                        format: 'DD-MM-YYYY'
+	                    }
+	                }
+	            },
+	            enddate: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The Enddate of adjustment is required and cannot be empty'
+	                    },
+	                    date: {
+	                        format: 'DD-MM-YYYY'
+	                    }
+	                }
+	            },
+	            status: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The Status of adjustment is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            remark: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The Remark of adjustment is required and cannot be empty'
+	                    }
+	                }
+	            },
+	        }
+	    });
+		
 		
 		$('#datetimepicker1').datetimepicker({
 			 
@@ -175,7 +251,6 @@
 			 format : 'DD-MM-YYYY',
 			 
 		 });
-		
 		
 	
 		dt = $('#tbResult').dataTable();	
@@ -263,8 +338,8 @@
 					$('#addModal').modal('toggle');
 					listAll();
 				},
-				error : function(jqXHR,	textStatus,	error) {	
-						alert("error");
+				error : function() {	
+					$('#addForm').bootstrapValidator('validate');
 				}
 			});
 		}

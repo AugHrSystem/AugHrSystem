@@ -137,6 +137,14 @@
 	var dt;	
 	$(document).ready(function(){
 		
+		$('#tbResult').dataTable({ 
+			"bLengthChange": false,
+			"iDisplayLength": 10,
+			"pagingType": "simple_numbers",
+			"ordering": false,
+			"info": false
+		});
+		
 		$("#addBtn").on("click",function(){clearModal();});
 		
 		$('#addForm').bootstrapValidator({
