@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class MasAllowances extends BaseEntity{
 
 	@Id
-	@Column(name = "AllO_ID")
+	@Column(name = "ALLO_ID")
 	@GeneratedValue
 	private Integer id;
 	

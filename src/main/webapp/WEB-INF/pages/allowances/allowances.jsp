@@ -34,9 +34,19 @@
 
 <form:form id ="listForm" method="post" commandName="allowances">
 
+<div class="row">
+<div class="col-md-6">
 <h2>Allowances</h2> 
+</div>
+<br>
 
-<br></br>
+<!-- Button trigger modal -->
+<div class="form-group" align="right">
+<div class="col-md-6">
+<button type="button" id="addBtnAll" class="btn btn-info" data-toggle="modal" data-target="#addModal">New record</button> 
+</div>
+</div>
+</div>
 
 <!-- Table -->
 <div class="form-group">
@@ -56,11 +66,6 @@
 </form:form>
 
 <form:form id ="addForm" method="post" commandName="allowances">
-
-<!-- Button trigger modal -->
-<div class="form-group" align="right">
-<button type="button" id="addBtnAll" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button> 
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -139,6 +144,14 @@
 	$(document).ready(function(){
 		
 		$("#addBtnAll").on("click",function(){clearModal();});
+		
+		$('#tbResult').dataTable({ 
+			"bLengthChange": false,
+			"iDisplayLength": 10,
+			"pagingType": "simple_numbers",
+			"ordering": false,
+			"info": false
+		});
 		
 		dt = $('#tbResult').dataTable();
 		listAll();

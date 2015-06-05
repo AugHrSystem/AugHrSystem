@@ -14,8 +14,20 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchAllowances",
-			query="select a.id,a.amount,mas_allowances.name,a.employeeId,mas_allowances.allo_id from emp_allowances as a,emp_employee as emp where a.employee_id=:empId  and a.employee_id = emp.id a.allo_id=mas_allowances.allo_id",																																																																					
-			resultClass = EducationDto.class)
+			query="select emp_allowances.id,"
+					+ "emp_allowances.amount,"
+					+ "emp_allowances.EMPLOYEE_ID,"
+					+ "mas_allowances.ALLOWANCES_TYPE,"
+					+ "emp_allowances.EMPLOYEE_ID,"
+					+ "mas_allowances.ALLO_ID "
+					+ "from emp_allowances,"
+					+ "emp_employee as emp ,"
+					+ "mas_allowances "
+					+ "where "
+					+ "emp_allowances.employee_id=:empId "
+					+ "and emp_allowances.employee_id = emp.id "
+					+ "and emp_allowances.MAS_ALLOWANCES_ID = mas_allowances.ALLO_ID",																																																																					
+			resultClass = AllowancesDto.class)
 			
 })
 
@@ -27,11 +39,11 @@ public class AllowancesDto {
 	private Integer id;
 	@Column(name = "AMOUNT")
 	private Double amount;
-	@Column(name = "NAME" )
+	@Column(name = "ALLOWANCES_TYPE" )
 	private String masallowances;
 	@Column(name ="EMPLOYEE_ID")
 	private Integer employeeId;
-	@Column(name ="AllO_ID")
+	@Column(name ="ALLO_ID")
 	private Integer masAllowancesId;
 	public Integer getId() {
 		return id;

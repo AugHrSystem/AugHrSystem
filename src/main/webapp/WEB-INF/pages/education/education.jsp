@@ -54,6 +54,7 @@
 </div>
 </div>
 </div>
+
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="table">
@@ -211,6 +212,14 @@
 			 format : 'DD-MM-YYYY',
 			 
 		 });
+		
+		$('#tbResult').dataTable({ 
+			"bLengthChange": false,
+			"iDisplayLength": 10,
+			"pagingType": "simple_numbers",
+			"ordering": false,
+			"info": false
+		});
 		
 		dt = $('#tbResult').dataTable();
 		
