@@ -424,7 +424,7 @@ $(function(){
 				  			           data[i].takeMedicineExplain,
 				  			           data[i].intolerance,
 				  			           data[i].intoleranceExplain,
-				  			          '<button type="button" class="btn btn-info btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
 				    					
 				  			           ]);
@@ -525,15 +525,26 @@ $(function(){
 
 <div class="container">
 
+<div class="row">
+	<div class="col-md-6">
+		<h2>Health</h2>
+	</div>
 
-<h2>Health</h2>
+    <div class="col-md-6">
+       <div class="form-group" align="right">
+        <br/>
+    		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">New Record</button>
+      	<br/>
+      </div>	
+	</div>
+</div>
 
-<br><br>
-<div id="message"></div>
-<div id="outputajax" class="form-group"></div>
+<div class="row">
+	<div id="message"></div>
+	<div id="outputajax" class="form-group"></div>
+</div>
 
-
- <table id="tableResult" class="table table-striped table-bordered">
+ <table id="tableResult">
 	    <thead>
             <tr> 
                 <th>Congenital Disease</th>
@@ -549,10 +560,6 @@ $(function(){
             </tr>
         </thead>
 </table>
-
- <div align="right">   
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">Add</button>
- </div>
 
 </div>
 
@@ -574,12 +581,8 @@ $(function(){
              
           
             <f:form id="formAddUpdate" name="healthForm" method="post" commandName="health" class="form-horizontal" role="form">	      	 
-	      
-	      
-	        <br/>
-	        <br/>
-	
-	
+	  
+	  
 		    <div class="form-group form-group-sm">
 		   
 		           
@@ -612,42 +615,48 @@ $(function(){
 		   
 			     <div class="row">
 			           
-			        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="congenitalDisease" >
+			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease" >
 				            Specified Congenital Disease1: 
 				    </label>	 		
 
      
-				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
 				        	<f:input  id="congenitalDiseaseExplain" path="congenitalDiseaseExplain" cssClass="form-control required" placeholder="Specified Genetic Disease1" />					     								
 				     </div>	
-				  </div>
-			  
+				  
 			     
-			     <div class="row">
-		           
-			         <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="congenitalDisease2" >
+			    
+			         <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="congenitalDisease2" >
 			           		Specified Congenital Disease2: 
 			   		 </label>	 		
 		     
-				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
 				        	<f:input  id="congenitalDiseaseExplain2" path="congenitalDiseaseExplain2" cssClass="form-control required" placeholder="Specified Genetic Disease2" />					     								
 				     </div>	
-			 	 </div>
 			 	 
-			 	  <div class="row">
-		           
-			         <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="congenitalDisease3" >
+			 	 
+			 	 </div>
+		   
+		   </div>
+		   
+		   
+		   
+		   
+		      <div class="form-group form-group-sm">
+		   
+			     <div class="row">
+		   
+			         <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease3" >
 			           		Specified Congenital Disease3: 
 			   		 </label>	 		
 		     
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				        	<f:input  id="congenitalDiseaseExplain3" path="congenitalDiseaseExplain3" cssClass="form-control required" placeholder="Specified Genetic Disease3" />					     								
 				     </div>	
-			 	 </div>
-			 	 
-			 	 
-		   
-		   </div>
+				 </div>
+			</div>
+			 	
+			 	
 		   
 		   
 		   
@@ -688,41 +697,45 @@ $(function(){
 		   
 			     <div class="row">
 			           
-			        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="geneticDisease" >
+			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="geneticDisease" >
 				           Specified Genetic Disease1: 
 				    </label>	 		
 
      
-				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
 				        	<f:input  id="geneticDiseaseExplain" path="geneticDiseaseExplain" cssClass="form-control required" placeholder="Specified Genetic Disease1" />					     								
 				     </div>	
-				  </div>
-			  
-			     
-			     <div class="row">
+				 
 		           
-			         <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="congenitalDisease2" >
+			         <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="congenitalDisease2" >
 			           		Specified Genetic Disease2: 
 			   		 </label>	 		
 		     
-				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
 				        	<f:input  id="geneticDiseaseExplain2" path="geneticDiseaseExplain2" cssClass="form-control required" placeholder="Specified Genetic Disease2" />					     								
-				     </div>	
-			 	 </div>
-			 	 
-			 	  <div class="row">
-		           
-			         <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="congenitalDisease3" >
-			           		Specified Genetic Disease3: 
-			   		 </label>	 		
-		     
-				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="geneticDiseaseExplain3" path="geneticDiseaseExplain3" cssClass="form-control required" placeholder="Specified Genetic Disease3" />					     								
-				     </div>	
+				     </div>			 	 			 
+			         
 			 	 </div>
 		   
 		   </div>
 		   
+		   
+		   
+		   
+		    <div class="form-group form-group-sm">
+		   
+			     <div class="row">
+		   
+				    <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease3" >
+					    Specified Genetic Disease3: 
+				    </label>	 		
+		     
+				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+				        	<f:input  id="geneticDiseaseExplain3" path="geneticDiseaseExplain3" cssClass="form-control required" placeholder="Specified Genetic Disease3" />					     								
+		 			</div>	
+		 		</div>
+		 	</div>
+			 	 
 		   
 		   
 		   
@@ -757,7 +770,7 @@ $(function(){
 			    
 			     <div class="form-group form-group-sm">
 			           
-			        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="takeMedicineExplain" >
+			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="takeMedicineExplain" >
 				           Specified Medicine: 
 				    </label>	 		
 
@@ -804,7 +817,7 @@ $(function(){
 			    
 			     <div class="form-group form-group-sm">
 			           
-			        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="intoleranceExplain" >
+			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="intoleranceExplain" >
 				          Specified Intolerance: 
 				    </label>	 		
 

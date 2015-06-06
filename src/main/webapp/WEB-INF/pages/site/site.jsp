@@ -26,16 +26,7 @@
 <link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
 
-
-
-
-
-
 <title>Site</title>
-
-
-
-
 
 
 <script>
@@ -45,17 +36,7 @@
 	$(function(){
 	
 	
-		dt = $('#tableResult').dataTable({
- 			 "columnDefs": [
- 			                { "width": "16%", "targets": 0 },
- 			                { "width": "16%", "targets": 1 },
- 			                { "width": "16%", "targets": 2 },
- 			                { "width": "16%", "targets": 3 },
- 			                { "width": "16%", "targets": 4 },
- 			               	{ "width": "10%", "targets": 5 },
- 			               	{ "width": "10%", "targets": 6 }
- 			              ]
-		});  
+		dt = $('#tableResult').dataTable();  
 		
 		doFindData();
 		
@@ -120,12 +101,13 @@
 		  			 	
 		  			        
 	  	        	   dt.fnAddData([ 
-				  			           data[i].projectName,
+				  			           
 				  			           data[i].startDate,
 				  			           data[i].endDate,
+				  			           data[i].projectName,
 				  			           data[i].projectOwner,
 				  			           data[i].projectOwnerContact,
-				  			          '<button type="button" class="btn btn-info btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
 				    					
 				  			           ]);
@@ -392,38 +374,42 @@
 
 <div class="container">
 
-<h2>Site</h2>
-		
-<br><br>
-		
-<div id="message"></div>
-<div id="outputajax" class="form-group"></div>	
+
+<div class="row">
+	<div class="col-md-6">
+		<h2>Client Sites</h2>
+	</div>
+
+    <div class="col-md-6">
+       <div class="form-group" align="right">
+        <br/>
+    		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">New Record</button> 
+      	<br/>
+      </div>	
+	</div>
+</div>
+
+<div class="row">
+	<div id="message"></div>
+	<div id="outputajax" class="form-group"></div>	
+</div>		
 
 
 
-
- <table id="tableResult" class="display"> 
+ <table id="tableResult"> 
 	    <thead>
             <tr> 
-                <th>Project Name</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th>Project</th>
                 <th>Project Owner</th> 
                 <th>Project Owner Contract</th>
-                <th></th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
  
    </table>
-   
-   <div align="right">    
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">Add</button> 
-   </div>
-
-   <br/>
-   <br/>
-   
+  
    
    
    
@@ -433,7 +419,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Site</h4>
+        <h4 class="modal-title" id="myModalLabel">Client Sites</h4>
       </div>
       <div class="modal-body">
           
@@ -441,24 +427,7 @@
           
             <f:form id="formAddUpdate" name="siteForm" method="post" commandName="site" class="form-horizontal" role="form">	      	 
 	      
-	        
-	        <br/>
-	        <br/>
-	       
-		    <div class="form-group form-group-sm">
-			    
-			        
-			      <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            Project Name:
-			      </label>	 		
-			     
-				     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  id="projectName" path="projectName" cssClass="form-control required" placeholder="Project Name" />			     		
-			     </div>
-		   </div>
-		   
-		   
+	   
 		   <div class="form-group form-group-sm">
 			    
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
@@ -470,9 +439,6 @@
 				     		<f:input id="startDate" path="startDate" cssClass="form-control"/>
 				     		<span class="input-group-addon">
 	                        	<span class="glyphicon glyphicon-calendar"></span>
-	                    	</span>
-	                    	<span class="input-group-addon">
-	                         	<span class="glyphicon glyphicon-remove"></span>
 	                    	</span>
 				     </div>
 				</div>
@@ -493,13 +459,24 @@
 				     		<span class="input-group-addon">
 	                        <span class="glyphicon glyphicon-calendar"></span>
 	                    </span>
-	                    <span class="input-group-addon">
-	                        <span class="glyphicon glyphicon-remove"></span>
-	                    </span>
 				     </div>
 				</div>		   
 		   </div>
 		   
+		   
+		   
+		     <div class="form-group form-group-sm">
+			    
+			        
+			      <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
+			            Project Name:
+			      </label>	 		
+			     
+				     
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
+			     		<f:input  id="projectName" path="projectName" cssClass="form-control required" placeholder="Project Name" />			     		
+			     </div>
+		   </div>
 		   
 		   
 		    <div class="form-group form-group-sm">
@@ -552,10 +529,10 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	    <div class="modal-header">
-	        <h4 class="modal-title" id="deleteModalLabel">Delete Site</h4>
+	        <h4 class="modal-title" id="deleteModalLabel">Delete Client Sites</h4>
 	      </div>
 	      <div class="modal-body">
-	      	Do you want to delete Site ?
+	      	Do you want to delete Client Sites?
 	      </div>
 	      <div class="modal-footer">
 			<button id="delete" type="button" class="btn btn-danger yesButton" >Yes</button>

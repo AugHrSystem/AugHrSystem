@@ -37,19 +37,12 @@
 <script src="<c:url value="/resources/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
 
 
-<style type="text/css">
-
-#tableResult {
-        width: 90%;
-        /* margin-top: 35%; */
-    }
- 
-#nav {
-       margin-top: 3%;
-    }
- 
+<!-- <style type="text/css">
+body {
+overflow: hidden;
+}
 </style>
-
+ -->
 
 
 <script>
@@ -116,20 +109,7 @@
 		
 		  
 
-	      dt = $('#tableResult').dataTable({
-
-	        	 "columnDefs": [
-		    	          		{
-		    	                     "targets": [ 0 ],
-		    	                     "visible": false
-		    	                 },
-		    	                 {
-		    	                     "targets": [ 6 ],
-		    	                     "visible": false
-		    	                 }
-		    	          		
-		    	             ]		
-	      });  	
+	      dt = $('#tableResult').dataTable();  	
 	      
 	      doFindData();
 	      
@@ -175,15 +155,12 @@
 		  	        	
 			  			 	
 			  			        
-		  	        	   dt.fnAddData([  data[i].id,
-					  			           data[i].firstName+" "+data[i].lastName,
-					  			           data[i].age,
-					  			           data[i].gender,
+		  	        	   dt.fnAddData([  
+					  			           data[i].firstName+" "+data[i].lastName,					  			          
 					  			           data[i].occupation,
 					  			           data[i].mobile,
-					  			           data[i].masRelationTypeId,
 					  			           data[i].masRelationTypeName,
-					  			          '<button type="button" class="btn btn-info btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+					  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+' '+
 					    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
 					    					
 					  			           ]);
@@ -504,32 +481,38 @@
 <body>
 <div class="container">
 
-<br/>
-<br/>
+<div class="row">
+	<div class="col-md-6">
+		<h2>Family</h2>
+	</div>
+
+    <div class="col-md-6">
+    	<br/>
+    	<div class="form-group" align="right">
+			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">New Record</button>
+		</div>
+		<br/>
+	</div>
+
+</div>
 
 
-<h2>Family</h2>
-		
-<br><br>
-		
+<div class="row">
 <div id="message"></div>
 <div id="outputajax" class="form-group"></div>	
+</div>
 
 
 
- <table id="tableResult" class="table table-striped table-bordered">
+<div class="form-group">
+ <table id="tableResult">
 	    <thead>
             <tr> 
-                <th>id</th>
-                <th>Family Name</th>
-                <th>Age</th>
-                <th>Gender</th>
+                <th>Fullname</th>
                 <th>Occupation</th> 
                 <th>Tel</th>
-                <th>RelationId</th> 
                 <th>Relation</th> 
-                <th></th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
 
@@ -539,16 +522,11 @@
 	   
 	   </tbody>
    </table>
-   
-   <div align="right">
-  	 <!-- <button id="create" type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-pencil">Create</span> </button> -->   
-     
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">Add</button>
-   </div>
+</div>   
 
-   <br/>
-   <br/>
-   
+</div>
+ 
+
    
    
  
@@ -559,30 +537,241 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%-- <spring:message code="label.add"/> --%>Add Family</h4>
+        <h4 class="modal-title" id="myModalLabel">Family</h4>
       </div>
       <div class="modal-body">
           
              
           
-            <f:form id="formAdd" name="FamilyForm" method="post" commandName="family" class="form-horizontal" role="form">	      	 
-	      
-	        
-	        <br/>
-	        <br/>
-	       
+         <f:form id="formAdd" name="FamilyForm" method="post" commandName="family" role="form" class="form-horizontal">	      	 
+	     
+
+			   <%-- <div class="form-group form-group-sm col-md-6">
+				    
+				
+					 <label>
+					            First Name: 
+					 </label>    
+						     			     	  
+					 <f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="First Name" />   		
+					     
+				     
+				</div>
+				
+				
+				
+				<div class="form-group form-group-sm col-md-6">
+				    
+						<label>
+			     			Last Name:
+			     		</label>	 		
+			    
+			     		<f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="Last Name" />		     		
+		     
+				</div>
+				
+				
+				
+				<div class="form-group form-group-sm col-md-12">
+				    
+				   <label>
+			     	  Gender:
+			       </label>	 		
+
+
+				     <label class="radio-inline" for="gender_male" > 
+		 			     	<f:radiobutton id="genderMale" name="gender" path="gender" value="Male" checked="true"/>Male
+		 			 </label>
+		 			 <label class="radio-inline" for="gender_female"> 
+		 			     <f:radiobutton id="genderFemale" name="gender" path="gender" value="Female"/>Female
+				     </label>  					     		 
+				  		     		
+		     
+				</div> --%>
+		
+		    
+		   
+	
+		   
+	     <div class="form-group form-group-sm">
+			    
+			<div class="row">
+			        
+			      <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3 control-label" >
+			            First Name: 
+			      </label>	 		
+			     
+				     
+			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">		  
+			     		<f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="First Name" />   		
+			     </div>
+		  
+		  
+		  	     <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label" >
+			     		Last Name:
+			     </label>	 		
+			    
+			     
+			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">
+			     		<f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="Last Name" />		     		
+			     </div>
+		  
+		  	</div>
+		   
+		   </div>
+	     
+	     
+	     
+	     
+	     <div class="form-group form-group-sm">
+			    
+			<div class="row">
+			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" >
+			     	  Gender:
+			     </label>	 		
+
+
+			      <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">					    
+				     	
+				     <label class="radio-inline" for="gender_male" > 
+		 			     	<f:radiobutton id="genderMale" name="gender" path="gender" value="Male" checked="true"/>Male
+		 			 </label>
+		 			 <label class="radio-inline" for="gender_female"> 
+		 			     <f:radiobutton id="genderFemale" name="gender" path="gender" value="Female"/>Female
+				     </label>  					     		 
+				  </div>
+		     </div>
+
+		   </div>
+		   
+		   
+		   
 		    <div class="form-group form-group-sm">
+			    
+			<div class="row">
+			        
+			      <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="age" >
+			       	 Age:
+			     </label>	 		
+			    
+			     
+			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">		    
+						<f:input  type="number" id="age" name="age" path="age" cssClass="form-control required" placeholder="Age" />		
+			     </div>		   
+		  
+		   
+		   
+			    <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label" for="mobile" >
+			    	Mobile:
+			    </label>	 		
+
+			    
+			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">		     		
+			     		<f:input  type="tel" id="mobile" name="mobile" path="mobile" cssClass="form-control required" placeholder="Mobile" />
+			     </div>		   
+		  
+		  	</div>
+		   
+		   </div>
+		   
+		   
+		   
+		   
+		   <div class="form-group">
+		   
+		      <div class="row">        
+			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="address" >
+			           Address:
+			     </label>	 		
+			    
+			     
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
+			     		<f:textarea rows="2" id="address" name="address"  path="address" cssClass="form-control required" placeholder="Address" />
+			   
+			     </div>	
+			  </div>   	   
+		  
+		   </div>
+	
+		   
+		   
+		   
+		   
+		   
+		   <div class="form-group form-group-sm">
+		   
+		     <div class="row">
+			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="occupation">
+			           Occupation:
+			     </label>	 		
+			    
+			     
+			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
+			     		<f:input id="occupation" name="occupation" path="occupation" cssClass="form-control" placeholder="Occupation" />	     		
+			     		
+			     </div>		   
+		   
+		 
+		         
+			     <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label" for="position">
+			     		Position:
+			     </label>	 		
+			    
+			     
+			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
+			     		<f:input id="position" name="position" path="position" cssClass="form-control" placeholder="Positon" />	     		
+			     	
+			     </div>		 
+			 </div>  
+		   
+		   </div>
+		   
+		   
+		   
+		   
+		   
+		    <div class="form-group form-group-sm">
+		   
+		           
+		      <div class="row">
+		        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="masRelation" >
+		        	   Relation:
+			          
+			    </label>	 		
+			    
+			     
+			     
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
+
+			     		 <f:select id="masRelation" path="masRelation" cssClass="form-control required" >
+						  <f:option  value="-1" label="please select data"/>								
+							<c:forEach var="obj" items="${ masRelationTypeList }">									
+									<option value="${obj.id}" >${obj.relationType}</option> 									
+							</c:forEach>
+						</f:select> 
+								
+			     </div>		 
+			     
+			</div>  
+		   
+		   </div> 
+		    
+		   
+		   
+		   
+	     
+	     
+		   <%--  <div class="form-group form-group-sm">
+			    
 			    
 			        
 			      <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            First Name: <%-- <spring:message code="family.form.firstname" var="firstName"/> ${firstName} : --%>
+			            First Name: 
 			      </label>	 		
 			     
 				     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		  
 			     		<f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="First Name" />   		
-			     		<%-- <f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="${firstName}" /> --%>
-			     		<%-- <f:errors path="firstName"/> --%>
 			     </div>
 		   </div>
 		   
@@ -591,24 +780,24 @@
 			    
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
 			     		Last Name:
-			            <%-- <spring:message code="family.form.lastname" var="lastName"/> ${lastName} : --%>
 			     </label>	 		
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">
 			     		<f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="Last Name" />		     		
-			     		<%-- <f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="${lastName}" />
-			     		<f:errors path="lastName"/> --%>
 			     </div>
 		   </div>
 		   
+		    
+		    
+		    
+		    
 		   
 		   <div class="form-group form-group-sm">
 			    
 			     
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
 			     	  Gender:
-			          <%-- <spring:message code="family.list.gender" var="gender"/> ${gender} : --%>
 			     </label>	 		
 
 
@@ -630,14 +819,11 @@
 		        
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="age" >
 			       	 Age:
-			         <%-- <spring:message code="family.list.age" var="age"/> ${age} : --%>
 			     </label>	 		
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		    
 						<f:input  type="number" id="age" name="age" path="age" cssClass="form-control required" placeholder="Age" />		
-			     		<%-- <f:input  type="number" id="age" name="age" path="age" cssClass="form-control required" placeholder="${age}" />
-			     		<f:errors path="age"/> --%>
 			     </div>		   
 		   
 		   </div>	
@@ -647,15 +833,12 @@
 		   
 		   
 			    <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="mobile" >
-			        <%-- <spring:message code="family.list.tel" var="mobile"/> ${mobile} : --%>
 			    	Mobile:
 			    </label>	 		
 
 			    
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 			     		<f:input  type="tel" id="mobile" name="mobile" path="mobile" cssClass="form-control required" placeholder="Mobile" />
-			     		<%-- <f:input  type="tel" id="mobile" name="mobile" path="mobile" cssClass="form-control required" placeholder="${mobile}" />
-			     		<f:errors path="mobile"/> --%>
 			     </div>		   
 		   
 		   </div>
@@ -669,14 +852,12 @@
 		              
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="address" >
 			           Address:
-			           <%-- <spring:message code="family.form.address" var="address"/> ${address} : --%>
 			     </label>	 		
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 			     		<f:textarea rows="3" id="address" name="address"  path="address" cssClass="form-control required" placeholder="Address" />
-			     		<%-- <f:textarea rows="3" id="address" name="address"  path="address" cssClass="form-control required" placeholder="${address}" />
-			     		<f:errors path="address"/> --%>
+			   
 			     </div>	
 			     	   
 		  
@@ -690,14 +871,12 @@
 		         
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label" for="occupation">
 			           Occupation:
-			           <%-- <spring:message code="family.list.occupation" var="occupation"/> ${occupation} : --%>
 			     </label>	 		
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 			     		<f:input id="occupation" name="occupation" path="occupation" cssClass="form-control" placeholder="Occupation" />	     		
-			     		<%-- <f:input id="occupation" name="occupation" path="occupation" cssClass="form-control" placeholder="${occupation}" />
-			     		<f:errors path="occupation"/> --%>
+			     		
 			     </div>		   
 		   
 		   </div>
@@ -709,14 +888,12 @@
 		         
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label" for="position">
 			     		Position:
-			           <%-- <spring:message code="family.form.position" var="position"/> ${position} : --%>
 			     </label>	 		
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 			     		<f:input id="position" name="position" path="position" cssClass="form-control" placeholder="Positon" />	     		
-			     		<%-- <f:input id="position" name="position" path="position" cssClass="form-control" placeholder="${position}" />
-			     		<f:errors path="position"/> --%>
+			     	
 			     </div>		   
 		   
 		   </div>
@@ -728,7 +905,7 @@
 		           
 		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="masRelation" >
 		        	   Relation:
-			           <%-- <spring:message code="family.list.relation" var="masRelation"/> ${masRelation} : --%>
+			          
 			    </label>	 		
 			    
 			     
@@ -745,12 +922,18 @@
 			     </div>		   
 		   
 		   </div>
-		   
+	--%>   
+	
 		  
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">Save</button>
 		      </div>
+		      
+		      <!-- <div class="form-group" align="center">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-info">Save</button>
+     		 </div> -->
  
       </f:form>
 	  
@@ -780,9 +963,6 @@
 </div>
  
 
- 
- 
- </div>
 
 </body>
 </html>
