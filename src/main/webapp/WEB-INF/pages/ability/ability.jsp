@@ -120,7 +120,7 @@
 	  
 	  
 	  <div class="form-group">
-								<div class="col-md-3">
+								
 								
 								<label class="radio-inline" for="rank" > 
 		 			     	<form:radiobutton id="rank1" name="rank" path="rank" value="1" checked="true"/>1</label>
@@ -152,7 +152,7 @@
 		 			     	<label class="radio-inline" for="rank" > 
 		 			     	<form:radiobutton id="rank10" name="rank" path="rank" value="10" />10</label>
 		 			  
-								</div>
+							
     						</div>	
 	
 	  

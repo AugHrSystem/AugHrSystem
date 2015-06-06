@@ -100,7 +100,7 @@
 			<th>End_Time</th>
 			<th>Leave_Type</th>
 			<th>Reason</th>
-			<!-- <th>AIM</th> -->
+			 <th>AIM</th> 
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
@@ -127,8 +127,8 @@
    	
 
 
-<div class="col-md-6">
-	 <div class="form-group"> 
+<div class="form-group col-md-6">
+	 <!-- <div class="form-group">  -->
 	    <label>Start Date:</label>
 	    <div class='input-group date' id='dateFrom'>
 	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
@@ -136,12 +136,12 @@
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
 	    </div>
-	    </div>
+	    <!-- </div> -->
 	    </div>
 	    
 	    
-	    <div class="col-md-6">
-	    <div class="form-group">
+	    <div class="form-group col-md-6">
+	    <!-- <div class="form-group"> -->
 			<label>Start Time :</label>
 
 			<div class="input-group clockpicker">
@@ -152,14 +152,14 @@
 					class="glyphicon glyphicon-time"></span>
 				</span>
 			</div>
-		</div>
+		<!-- </div> -->
 	    </div>
 	    
 	    
 	    
 
-<div class="col-md-6">
- <div class="form-group">
+<div  class="form-group col-md-6">
+ <!-- <div class="form-group"> -->
 	    <label>End Date :</label>
 	    <div class='input-group date' id='dateTo1'>
 	    <form:input path="endDate" type="text" class="form-control" id="endDate"/>
@@ -167,13 +167,13 @@
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
         </div>
-	  </div>
+	  <!-- </div> -->
 </div>
 
 
 
-<div class="col-md-6">
-<div class="form-group">
+<div class=" form-group col-md-6">
+<!-- <div class="form-group"> -->
 			<label>End Time:</label>
 
 			<div class="input-group clockpicker1">
@@ -184,10 +184,10 @@
 					class="glyphicon glyphicon-time"></span>
 				</span>
 			</div>
-		</div>
+		<!-- </div> -->
 </div>
 		
-  	<div class="col-md-6">
+  	<div  class=" form-group col-md-6">
 	    <label>Leave type:</label>
 	    
 		<div class="form-group">
@@ -202,38 +202,36 @@
 	  
 	  
 	  
-	<div class="col-md-6">
-	    <label>Reason :</label>
-	    <form:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
+	<div  class=" form-group col-md-6">
+	 <label>AIM:</label>
+		  <form:select path="aim" class="form-control"
+			id="aim">
+			<form:option  value="-1" label="--Select AIM--" />
+  		    <form:options items="${ aimList }"  itemValue="id" itemLabel="name_eng" />
+    		
+		</form:select>
+	  
 	  </div>
 	  
 
-		<div class="form-group">
-	    <label>AIM:</label>
-	    
-		 <div class="form-group">
-		  <form:select path="aim" class="form-control"
-			id="aim">
-			<form:option value="-1" label="---Select AIM---" />
-			<c:forEach var="obj" items="${ aimList }">
-				<option value="${obj.id }">${ obj.name}</option>
-			</c:forEach>
-		</form:select>
-		</div>
-	  </div>
-  	
+	     <div  class=" form-group col-md-12">
+		
+		
+		 <label>Reason :</label>
+	    <form:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
+		
+	
+  	</div>
         
-		<!-- <div class="form-group">
-  			<label>Employee ID :</label>
-  			<input type="text" class="form-control" id="employeeId" placeholder="Enter Employee Id">
-  		</div> -->
-      </div>
+		</div>
       <div class="form-group" align="center">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-info saveButton">Save</button>
       </div>
-    </div>
-  </div>
+    
+  
+</div>
+</div>
 </div>
 </form:form>
 
@@ -441,6 +439,7 @@ $(document).ready(function() {
 					startTime:$("#startTime").val(),
 					endTime:$("#endTime").val(),
 					reason:$("#reason").val(),
+					aim:$("#aim").val(),
 					employeeId :id 
 				}),
 				type : "POST",
@@ -462,6 +461,7 @@ $(document).ready(function() {
 						data.startTime,
 						data.endTime,
 						data.reason,
+						data.aim,
 					
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
@@ -495,6 +495,7 @@ $(document).ready(function() {
 					$("#startTime").val(data.startTime);
 					$("#endTime").val(data.endTime);
 					$("#reason").val(data.reason);
+					$("#aim").val(data.aim);
 					
 					employeeId: data.employeeId;
 				},
@@ -523,6 +524,7 @@ $(document).ready(function() {
 						startTime:$("#startTime").val(),
 						endTime:$("#endTime").val(),
 						reason:$("#reason").val(),
+						aim:$("#aim").val(),
 						employeeId: id
 					}),
 					type : "POST",
@@ -541,6 +543,7 @@ $(document).ready(function() {
 						dt.fnUpdate(data.endTime, tr, 3 );
 						dt.fnUpdate(data.masleavetype.name, tr, 4);
 						dt.fnUpdate(data.reason, tr, 5 );
+						dt.fnUpdate(data.aim, tr, 6 );
 						$('#addModal').modal('toggle');
 						listAll();
 					},
@@ -595,6 +598,7 @@ $(document).ready(function() {
 						              data[i].endTime,
 						              data[i].masleavetype,
 						              data[i].reason,
+						              data[i].aim,
 						              
 						              
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
@@ -615,8 +619,9 @@ $(document).ready(function() {
 				$("#startDate").val(""),
 				$("#endDate").val(""),
 				$("#startTime").val(""),
-				$("#endTime").val("");
-				$("#reason").val("");
+				$("#endTime").val(""),
+				$("#reason").val(""),
+				$("#aim").val("-1");
 				
 				
 				
