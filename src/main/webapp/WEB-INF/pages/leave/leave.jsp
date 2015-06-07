@@ -218,8 +218,8 @@
 		
 		
 		 <label>Reason :</label>
-	    <form:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
-		
+	    <form:textarea path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason Of Leave"/>
+	 
 	
   	</div>
         
@@ -332,6 +332,13 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'The End Time is required and cannot be empty'
+                    }
+                }
+            },
+            aim: {
+                validators: {
+                    notEmpty: {
+                        message: 'Aim is required and cannot be empty'
                     }
                 }
             }
