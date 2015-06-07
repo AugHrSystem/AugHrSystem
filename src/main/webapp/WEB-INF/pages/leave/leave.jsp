@@ -598,7 +598,7 @@ $(document).ready(function() {
 						              data[i].endTime,
 						              data[i].masleavetype,
 						              data[i].reason,
-						              data[i].aim,
+						              data[i].nameEng,
 						              
 						              
 							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
