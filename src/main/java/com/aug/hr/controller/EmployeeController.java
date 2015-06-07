@@ -33,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.dto.services.AimEmployeeDtoService;
+import com.aug.hr.dto.services.EmployeeCodeDtoService;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
@@ -77,7 +78,7 @@ public class EmployeeController {
 	@Autowired private EmployeeDtoService employeeDtoService;
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
 	@Autowired private UploadService uploadService;
-	
+	@Autowired private EmployeeCodeDtoService employeeCodeDtoService;
 	
 	
 	private static final Logger logger = Logger.getLogger(Employee.class);
@@ -118,6 +119,8 @@ public class EmployeeController {
 		model.addAttribute("locationList",masLocationService.findAll());
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
 		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+		model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
+
 
 		//return "/employee/employee";
 		 return "/employee/employeetest";

@@ -18,17 +18,11 @@
 <script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script>
 
 
-<!-- dialog -->
-<script src="<c:url value="/resources/resource/bootstrap/js/bootbox.js" />"></script>
-
-
 <!-- bootstrap version 3.3.4-->
 <link href="<c:url value="/resources/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resources/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resources/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- for show error massage and success massage-->
-<link href="<c:url value="/resources/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <!-- datatable version 1.10.6 -->
 <script src="<c:url value="/resources/resource/datatable/js/jquery.dataTables.js" />"></script>

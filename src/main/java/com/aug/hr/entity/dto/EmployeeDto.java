@@ -9,7 +9,7 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
             name = "searchEmployee",
-            query = "select emp.id, emp.employee_code, emp.name_eng, emp.surname_eng from emp_employee as emp", 
+            query = "select emp.ID, emp.EMPLOYEE_CODE, emp.NAME_ENG, emp.SURNAME_ENG from EMP_EMPLOYEE as emp", 
             resultClass = EmployeeDto.class)
   })
 @Entity

@@ -11,24 +11,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<!-- jquery and jquery validator -->
-<!-- jquery validator version 1.13.1 -->
+<!-- jquery-->
 <script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.2.js" />"></script> 
-<script src="<c:url value="/resources/resource/bootstrap/js/jquery.validate.js" />"></script>
-<script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script>
+<%-- <script src="<c:url value="/resources/resource/bootstrap/js/jquery.validate.js" />"></script>
+<script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script> --%>
 
-
-<!-- dialog -->
-<script src="<c:url value="/resources/resource/bootstrap/js/bootbox.js" />"></script>
-
+<!-- validate -->
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
 
 <!-- bootstrap version 3.3.4-->
 <link href="<c:url value="/resources/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resources/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resources/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<!-- for show error massage and success massage-->
-<link href="<c:url value="/resources/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <!-- datatable version 1.10.6 -->
 <script src="<c:url value="/resources/resource/datatable/js/jquery.dataTables.js" />"></script>
@@ -43,6 +39,16 @@ overflow: hidden;
 }
 </style>
  -->
+ 
+<style type="text/css">
+
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}  
+
+</style>
 
 
 <script>
@@ -53,60 +59,83 @@ overflow: hidden;
    
 	$(document).ready(function(){
 		
-		  
-		 $('#errormsg').hide();
-		 $('#successmsg').hide();
-		 
+	
+		
+		$("#saveBtn").on("click",function(){
+			
+			$('#formAdd').bootstrapValidator('resetForm', true);
+		
+		});
 		
 		
 		 
-		  /* $("#formAdd").validate({
-				
-				rules:{
-					 firstName:{
-			        	 required: true
-			         },
-			         lastName:{
-			        	 required: true
-			         },
-			         age:{
-			        	 required: true
-			         },
-			         mobile:{
-			        	 required: true
-			         },
-			         address:{
-			        	 required: true
-			         },
-			         masRelation:{
-			        	 required: true
-			         }
-			        
-				 },
-				messages: {
-					 firstName:{
-			            required:"First Name is required!!" 
-			         },
-					 lastName:{
-			         	required:"Last Name is required!!" 
-			         } ,
-			         age:{
-			        	required:"Age is required!!"  
-			         },
-			         mobile:{
-				        required:"Mobile is required!!"  
-				     },
-				     address:{
-					    required:"Address is required!!"  
-					 },
-					 masRelation:{
-						required:"Relation is required!!" 
-					 }  
-		           
-				},
-			}); */ 
-  	  
-		
+		   $("#formAdd").bootstrapValidator({
+			   
+			   message: 'This value is not valid',
+		        container: 'tooltip',
+		        feedbackIcons: {
+		            valid: 'glyphicon glyphicon-ok',
+		            invalid: 'glyphicon glyphicon-remove',
+		            validating: 'glyphicon glyphicon-refresh'
+		        },
+		        fields: {
+		        	
+		        	firstName: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'First name is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            lastName: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'Last name is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            age: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'Age is required and cannot be empty'
+		                    },
+		                    digits: {
+		                    	message: 'age is number'
+		                    },
+		                }
+		            },
+		            mobile: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'mobile is required and cannot be empty'
+		                    },
+		                  
+		                }
+		            },
+		            address: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'address is required and cannot be empty'
+		                    },
+		                  
+		                }
+		            },
+		            masRelation: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'Relation is required and cannot be empty'
+		                    },
+		                    digits: {
+		                    	min:0,
+		                    	message: 'Relation is required'
+		                    },
+		                  
+		                }
+		            },
+		        }
+		 
+    });
+			
 		  
 
 	      dt = $('#tableResult').dataTable();  	
@@ -264,8 +293,9 @@ overflow: hidden;
 		  	      error : function(data,testStatus,jqXHR) {  
 		  	           
 		  	    	  
-		  	    	   $('#addModal').modal('hide');
-		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	    	   /* $('#addModal').modal('hide');
+		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); */
+		  	    	   $('#formAdd').bootstrapValidator('validate');
 		  	     }  
 		  	    }); 
 		  	    
@@ -546,50 +576,6 @@ overflow: hidden;
          <f:form id="formAdd" name="FamilyForm" method="post" commandName="family" role="form" class="form-horizontal">	      	 
 	     
 
-			   <%-- <div class="form-group form-group-sm col-md-6">
-				    
-				
-					 <label>
-					            First Name: 
-					 </label>    
-						     			     	  
-					 <f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="First Name" />   		
-					     
-				     
-				</div>
-				
-				
-				
-				<div class="form-group form-group-sm col-md-6">
-				    
-						<label>
-			     			Last Name:
-			     		</label>	 		
-			    
-			     		<f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="Last Name" />		     		
-		     
-				</div>
-				
-				
-				
-				<div class="form-group form-group-sm col-md-12">
-				    
-				   <label>
-			     	  Gender:
-			       </label>	 		
-
-
-				     <label class="radio-inline" for="gender_male" > 
-		 			     	<f:radiobutton id="genderMale" name="gender" path="gender" value="Male" checked="true"/>Male
-		 			 </label>
-		 			 <label class="radio-inline" for="gender_female"> 
-		 			     <f:radiobutton id="genderFemale" name="gender" path="gender" value="Female"/>Female
-				     </label>  					     		 
-				  		     		
-		     
-				</div> --%>
-		
-		    
 		   
 	
 		   
@@ -597,7 +583,7 @@ overflow: hidden;
 			    
 			<div class="row">
 			        
-			      <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3 control-label" >
+			      <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3 control-label required" >
 			            First Name: 
 			      </label>	 		
 			     
@@ -607,7 +593,7 @@ overflow: hidden;
 			     </div>
 		  
 		  
-		  	     <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label" >
+		  	     <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" >
 			     		Last Name:
 			     </label>	 		
 			    
@@ -626,7 +612,7 @@ overflow: hidden;
 	     <div class="form-group form-group-sm">
 			    
 			<div class="row">
-			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" >
+			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" >
 			     	  Gender:
 			     </label>	 		
 
@@ -650,7 +636,7 @@ overflow: hidden;
 			    
 			<div class="row">
 			        
-			      <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="age" >
+			      <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="age" >
 			       	 Age:
 			     </label>	 		
 			    
@@ -661,7 +647,7 @@ overflow: hidden;
 		  
 		   
 		   
-			    <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label" for="mobile" >
+			    <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="mobile" >
 			    	Mobile:
 			    </label>	 		
 
@@ -680,7 +666,7 @@ overflow: hidden;
 		   <div class="form-group">
 		   
 		      <div class="row">        
-			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="address" >
+			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="address" >
 			           Address:
 			     </label>	 		
 			    
@@ -734,7 +720,7 @@ overflow: hidden;
 		   
 		           
 		      <div class="row">
-		        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="masRelation" >
+		        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="masRelation" >
 		        	   Relation:
 			          
 			    </label>	 		
@@ -743,7 +729,7 @@ overflow: hidden;
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 
-			     		 <f:select id="masRelation" path="masRelation" cssClass="form-control required" >
+			     		 <f:select id="masRelation" path="masRelation" cssClass="form-control">
 						  <f:option  value="-1" label="please select data"/>								
 							<c:forEach var="obj" items="${ masRelationTypeList }">									
 									<option value="${obj.id}" >${obj.relationType}</option> 									

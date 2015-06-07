@@ -301,6 +301,8 @@ public class AllEmployeeDto {
 	private Date probationDate;
 	
 	private Integer officialId;
+	
+	private EmployeeCodeDto employeeCodeDto;
     
 
 	public Integer getId() {
@@ -1060,6 +1062,18 @@ public class AllEmployeeDto {
 
 	public void setFileupload(MultipartFile fileupload) {
 		this.fileupload = fileupload;
+	}
+
+	
+	
+
+	public EmployeeCodeDto getEmployeeCodeDto() {
+		return employeeCodeDto;
+	}
+
+
+	public void setEmployeeCodeDto(EmployeeCodeDto employeeCodeDto) {
+		this.employeeCodeDto = employeeCodeDto;
 	}
 
 

@@ -96,6 +96,7 @@ public class FamilyController {
 		model.addAttribute("masRelationTypeList", masRelationTypeList);
 		
 		return "/family/familychange";
+
 	}
 	
 	

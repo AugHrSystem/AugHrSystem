@@ -16,8 +16,13 @@
 
 <!-- Date Picker -->
 <script src="<c:url value="/resource/moment/js/moment.js" />"></script>
-<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
+<%-- <script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
 <link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/moment/js/moment.js" />"></script> --%>
+
+<script src="<c:url value="/resource/daterangepicker/js/daterangepicker.js" />"></script>
+<link href="<c:url value="/resource/daterangepicker/css/daterangepicker-bs3.css" />" rel="stylesheet" media="all">
+
 
 
 <!-- Data Table -->
@@ -40,8 +45,28 @@
 		
 		doFindData();
 		
+		var defaultDate = new Date();
+		var defaultDateOne = new Date();
+		defaultDateOne.setDate(defaultDate.getDate()+1);
+		
+		
+		$('#startDate').daterangepicker({
+	        format: 'DD-MM-YYYY',
+	        startDate: defaultDate,
+	        endDate: defaultDateOne,
+	        dateLimit: { days: 6 }
+	    });
+		
+		
+		
+		//$('#startDate').daterangepicker({ startDate: '2014-03-05', endDate: '2014-03-06' });
+
+		//$('#startDate').data('daterangepicker').setStartDate('2014-03-01');
+		//$('#startDate').data('daterangepicker').setEndDate('2014-03-31');
+
+		
 	
-		$('#datetimepicker1').datetimepicker({
+		/* $('#datetimepicker1').datetimepicker({
 			 
 						 viewMode: 'days',
 						 format : 'DD-MM-YYYY',
@@ -65,17 +90,17 @@
 			 //ShowClear: true,
 			 showClose:true					 
 		
-		});
+		}); */
 	
 		
 		
- 		
+ 		/* 
  		$("#datetimepicker1").on("dp.change", function (e) {
  			var tempdate = new Date(e.date);
  			tempdate.setDate(tempdate.getDate()+1);
  			//alert(tempdate);
             $('#datetimepicker2').data("DateTimePicker").minDate(tempdate);
-        });
+        }); */
  		 
  		 
  		 
@@ -153,11 +178,11 @@
  		 
  		$('#addModal').on("hidden.bs.modal",function(event){
 			   
- 			 var d = new Date();
+ 			/*  var d = new Date();
  		     d.setDate(d.getDate()+1);
  			 
  			 $('#datetimepicker1').data("DateTimePicker").date(new Date());
- 			 $('#datetimepicker2').data("DateTimePicker").date(d);
+ 			 $('#datetimepicker2').data("DateTimePicker").date(d); */
  		
 			   		  
 	    });

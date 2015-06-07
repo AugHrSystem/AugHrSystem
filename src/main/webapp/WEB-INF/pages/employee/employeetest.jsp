@@ -87,6 +87,9 @@
 
 <!------------------------------------------------------ Start Information-------------------------------------------------------->
 		
+		 <input id="employeeCodeDto" name="employeeCodeDto.rungingNumber" type="text" class="form-control"  placeholder="Location ID" value="${ employeeCodeDto.rungingNumber}">
+		
+		
 		<div id="message"></div>
 		<div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
 				<h2 style="border-bottom: 1px solid #8f8f8f;">Information
@@ -613,7 +616,7 @@
 				<div class="form-group">
 					 <div class="col-md-3">
     					<label>Location :</label>
-    						<f:select  path="masLocation"  class="form-control">
+    						<f:select id="masLocation" path="masLocation"  class="form-control">
 							 	 <f:option  value="-1" label="--Select Location--" />
   								 <f:options items="${ locationList }"  itemValue="id" itemLabel="name" />
 							</f:select>
@@ -1162,6 +1165,30 @@ var getIndex = 0;
 // 	 		$('input[type=file]').change(function(e){
 // 				$('.element-to-paste-filename').attr('value',e.target.files[0].name);
 // 			});
+
+
+
+
+			    
+			    $('#masLocation').on('change', function() {
+			    	  var value = $("#masLocation :selected").text();
+			    	  //alert(value);
+			    	  if(value=="Thailand"){
+			    		  
+			    		  if($('employeeCodeDto').val()==null){
+			    		  
+			    		  	$('#employeeCode').val('TH10001');
+			    		  }
+			    		  
+			    	  }else if(value="Singapore"){
+			    		  
+			    	  }else if(value="Indonesia"){
+			    		  
+			    	  }
+			    });
+		
+
+
  		
  			$("#uploadFile").on("change", function()
 		    {
