@@ -247,7 +247,7 @@
 								</div>
 
 								<div class="form-group " align="right">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 									<button type="button" class="btn btn-info btnSave">Save</button>
 								</div>
 							</div>
@@ -279,13 +279,6 @@
 			var dt;			
 			$(document).ready(function(){
 
-				$('#tbResult').dataTable({ 
-					"bLengthChange": false,
-					"iDisplayLength": 10,
-					"pagingType": "simple_numbers",
-					"ordering": false,
-					"info": false
-				});
 				
 			$("#addBtn").on("click",function(){clearModal();});
 				
@@ -386,6 +379,8 @@
 							contentType : "application/json",
 							dataType : "json",
 							success : function(data) {
+								
+								$('#addForm').bootstrapValidator('resetForm', true);
 								dt.fnClearTable();
 								dt.fnAddData([
 												data.typereward,

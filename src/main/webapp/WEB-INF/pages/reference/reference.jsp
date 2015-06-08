@@ -103,7 +103,7 @@
 				    </div> --%>
 					
 					<div class="form-group" align="center">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
 				</div>
@@ -137,6 +137,7 @@
 	var dt;	
 	$(document).ready(function(){
 		
+		
 		$('#tbResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,
@@ -145,7 +146,11 @@
 			"info": false
 		});
 		
-		$("#addBtn").on("click",function(){clearModal();});
+		
+		$("#addBtn").on("click",function(){
+			clearModal();
+			
+		});
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
@@ -178,6 +183,7 @@
 	        }
 	    });
 		
+	
 		
 		dt = $('#tbResult').dataTable();	
 		 listAll();
@@ -198,6 +204,9 @@
 				}else{ 
 					addReference();					
 				 	} 			
+			});
+			$(this).find(".btnClose").off("click").on("click",function() {
+				$('#addForm').bootstrapValidator('resetForm', true);
 			});
 			
 		});				
@@ -242,14 +251,16 @@
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
+					
+					$('#addForm').bootstrapValidator('resetForm', true);
 					dt.fnClearTable();					
 					dt.fnAddData([
 								data.name,
 								/* data.address, */
 								data.tel,
 								/* data.occupation, */
-						
-						
+								
+	
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 					]);

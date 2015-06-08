@@ -121,9 +121,9 @@
 				    		
 				    		<div class="form-group " align="left">
 									 <label>Status :</label>
-									<form:select path="status" class="form-control" id="status">
-										<form:option value="-1" label="---Select status---" />
-										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>						
+									<form:select path="status" class="form-control" id="status">									
+										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>		
+										<option value="">---Select status---</option>				
 										<option value="Onsite">On site</option>
 										<option value="Office">Office</option>
 										<option value="Resign">Resign</option>	
@@ -137,7 +137,7 @@
 							<form:input path="remark" type="text" class="form-control" id="remark" placeholder="Remark"/>							
 				    </div>					
 					<div class="form-group" align="center">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
 				</div>
@@ -172,6 +172,9 @@
 	var dt;
 	$(document).ready(function() {
 		
+		$("#addBtn").on("click",function(){clearModal();});
+		
+		
 		$('#tbResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,
@@ -180,7 +183,7 @@
 			"info": false
 		});
 		
-		$("#addBtn").on("click",function(){clearModal();});
+	
 		
 		
 		
@@ -272,9 +275,12 @@
 					console.log("updatecard");
 				}else{ 
 					addcard();
-					console.log("addcard");
+					//console.log("addcard");
 				 } 
 				
+			});
+			$(this).find(".btnClose").off("click").on("click",function() {
+				$('#addForm').bootstrapValidator('resetForm', true);
 			});
 			
 		});
@@ -323,7 +329,7 @@
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
-
+					$('#addForm').bootstrapValidator('resetForm', true);
 					dt.fnClearTable();					
 					dt.fnAddData([             
 									data.card_no,

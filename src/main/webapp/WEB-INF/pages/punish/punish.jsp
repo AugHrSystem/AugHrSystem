@@ -110,7 +110,7 @@
 				    </div>	
 				    			
 					<div class="form-group" align="center">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
 				</div>
@@ -218,7 +218,10 @@
 					addpunish();
 					
 				 } 
-				
+				 
+		       });
+				 $(this).find(".btnClose").off("click").on("click",function() {
+						$('#addForm').bootstrapValidator('resetForm', true);
 			});
 			
 		});
@@ -239,6 +242,7 @@
 	 				})
 					
 	 			})
+		});
 								
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 		function clearModal(){
@@ -263,8 +267,10 @@
 				dataType: "json",
 				success : function(data) {
 
+					$('#addForm').bootstrapValidator('resetForm', true);
 					dt.fnClearTable();					
 					dt.fnAddData([             
+								
 									data.datepunish,
 									data.description,	
 									data.penalty,
@@ -386,8 +392,7 @@
 			
 			
 			
-			function getUrlParameter(sParam)
-			{
+			function getUrlParameter(sParam){
 				//alert("url "+document.referrer);
 			    var sPageURL = document.referrer;
 			    var sURLVariables = sPageURL.split('?');
@@ -403,8 +408,9 @@
 			        }
 			        //alert("Param2 "+parseInt(sParameterName[1]));			    
 			}	
-	});
-						
+	
+	
+	
 </script>
 	
 	
