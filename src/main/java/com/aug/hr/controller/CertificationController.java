@@ -44,15 +44,15 @@ public class CertificationController {
 	@RequestMapping(value = "/certification/add", method = RequestMethod.POST)
 	public @ResponseBody CertificationDto addCertification(@RequestBody CertificationDto certificationDto) {
 		Certification certification = new Certification();
-		certificationService.create(certification.fromCertificationDto(certificationDto));
+		certificationService.create(certification.fromCertificationDto(certification,certificationDto));
 		return certificationDto;
 	}
 
 	@RequestMapping(value = "/certification/update", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody CertificationDto updateCertification(@RequestBody CertificationDto certificationDto) {
-		Certification certification = new Certification();
-		certificationService.update(certification.fromCertificationDto(certificationDto));
-		return certificationDto;
+		Certification certification = certificationService.findById(certificationDto.getId());
+		certificationService.update(certification.fromCertificationDto(certification,certificationDto));
+		return certification.toCertificationDto();
 	}
 	
 	@RequestMapping(value = "/certification/findById", method = {RequestMethod.GET, RequestMethod.POST})

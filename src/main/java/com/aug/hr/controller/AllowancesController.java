@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.hr.dto.services.AllowancesDtoService;
 import com.aug.hr.entity.Allowances;
+import com.aug.hr.entity.MasAllowances;
 import com.aug.hr.entity.dto.AllowancesDto;
 import com.aug.hr.services.AllowancesService;
 import com.aug.hr.services.MasAllowancesService;
@@ -78,6 +79,12 @@ public class AllowancesController {
 		return "{success:true}";
 	}
 
+	@RequestMapping(value = "/allowances/findByIdMas", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody MasAllowances findByIdMas(@RequestParam Integer masAllowancesid) {
+		MasAllowances masAllowances = masAllowancesService.find(masAllowancesid);
+		return masAllowances;
+	}
+	
 	@ModelAttribute("allowances")
 	Allowances setupForm() {
 		return new Allowances();

@@ -14,7 +14,13 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchCertification",
-			query="select c.id,c.year,c.name,c.certification_from,c.employee_id from emp_certification as c,emp_employee where c.employee_id=:empId  and c.employee_id = emp_employee.id",																																																																					
+			query="select c.id,"
+					+ "c.year,"
+					+ "c.name,"
+					+ "c.certification_from,"
+					+ "c.description,"
+					+ "c.employee_id "
+					+ "from emp_certification as c,emp_employee where c.employee_id=:empId  and c.employee_id = emp_employee.id",																																																																					
 			resultClass = CertificationDto.class)
 			
 })
@@ -35,6 +41,17 @@ public class CertificationDto {
 	@Column(name = "CERTIFICATION_FROM")
 	private String certificationFrom;
 	
+	@Column(name = "DESCRIPTION")
+	private String description;
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Column(name = "EMPLOYEE_ID")
 	private Integer employeeId;
 

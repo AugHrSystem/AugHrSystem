@@ -62,6 +62,7 @@
 			<th>Year</th>
 			<th>Certification Name</th>
 			<th>Certification From</th>
+			<th>Description</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -88,8 +89,9 @@
 	  <div class="form-group">
 	    <label>Year :</label>
 	    <form:select path="year" class="form-control" id="year">
-										<form:option value="-1" label="---Select year---" />
-										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>						
+<%-- 										<form:option value="-1" label="---Select year---" /> --%>
+										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>
+										<option value="">---Select year---</option>						
 										<option value="2020">2020</option>
 										<option value="2019">2019</option>
 										<option value="2018">2018</option>
@@ -225,6 +227,11 @@
 	    <form:input path="certificationFrom" type="text" class="form-control" id="certificationFrom" placeholder="Enter Certification From"/>
 	  </div>
 	  
+	  <div class="form-group">
+	    <label>Description :</label>
+	    <form:textarea path="description" type="text" class="form-control" id="description" placeholder="Enter Description"/>
+	  </div>
+	  
       </div>
       
       <div class="form-group" align="center">
@@ -329,6 +336,7 @@
 			$("#year").val("");
 			$("#name").val("");
 			$("#certificationFrom").val("");
+			$("#description").val("");
 		}
 		
 		function addCertification(){
@@ -339,6 +347,7 @@
 					year : $("#year").val(),
 					name :$("#name").val(),
 					certificationFrom :$("#certificationFrom").val(),
+					description :$("#description").val(),
 					employeeId: id
 				}),
 				type : "POST",
@@ -348,24 +357,24 @@
 					
 //	 				alert(JSON.stringify(data));
 						
-					dt.fnClearTable();
+// 					dt.fnClearTable();
 					
-					dt.fnAddData([
-						/* $("#Name").val(),
-						$("#ProductCategory").val(),
-						$("#Unit").val(),
-						$("#Price").val(),
-						$("#Description").val(), */
-						data.year,
-						data.name,
-						data.certificationFrom,
-						/* data.company,
-						data.salary,
-						data.time, */
+// 					dt.fnAddData([
+// 						/* $("#Name").val(),
+// 						$("#ProductCategory").val(),
+// 						$("#Unit").val(),
+// 						$("#Price").val(),
+// 						$("#Description").val(), */
+// 						data.year,
+// 						data.name,
+// 						data.certificationFrom,
+// 						/* data.company,
+// 						data.salary,
+// 						data.time, */
 						
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
-					]);
+// 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+// 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+// 					]);
 					
 					$('#addModal').modal('toggle');
 					listAll();
@@ -386,6 +395,7 @@
 					year : $("#year").val(),
 					name :$("#name").val(),
 					certificationFrom :$("#certificationFrom").val(),
+					description :$("#description").val(),
 					employeeId : id
 					/* company :$("#company").val(),
 					salary :$("#salary").val(),
@@ -398,16 +408,17 @@
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
 					
-					var tr = button.closest("tr")
+// 					var tr = button.closest("tr")
 					
-					dt.fnUpdate(data.year,tr,0);
-					dt.fnUpdate(data.name,tr,1);
-					dt.fnUpdate(data.certificationFrom,tr,2);
+// 					dt.fnUpdate(data.year,tr,0);
+// 					dt.fnUpdate(data.name,tr,1);
+// 					dt.fnUpdate(data.certificationFrom,tr,2);
 					/* dt.fnUpdate(data.company, tr ,1);
 					dt.fnUpdate(data.salary, tr ,2);
 					dt.fnUpdate(data.time, tr ,3); */
 					
 					$('#addModal').modal('toggle');
+					listAll();
 				},
 				error : function() {
 					alert("ERROR");
@@ -426,7 +437,7 @@
 					$("#year").val(data.year);
 					$("#name").val(data.name);
 					$("#certificationFrom").val(data.certificationFrom);
-					
+					$("#description").val(data.description);
 					/* employee: {id: data.position } */
 					/* $("#company").val(data.company),
 					$("#salary").val(data.salary),
@@ -452,6 +463,7 @@
 					dt.fnDeleteRow(tr);
 					
 					$('#deleteModal').modal('toggle');
+					listAll();
 					
 				},
 				
@@ -495,6 +507,7 @@
 					dt.fnAddData([data[i].year,
 					              data[i].name,
 					              data[i].certificationFrom, 
+					              data[i].description, 
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			

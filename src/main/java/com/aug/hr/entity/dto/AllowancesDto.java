@@ -19,7 +19,8 @@ import javax.persistence.NamedNativeQuery;
 					+ "emp_allowances.EMPLOYEE_ID,"
 					+ "mas_allowances.ALLOWANCES_TYPE,"
 					+ "emp_allowances.EMPLOYEE_ID,"
-					+ "mas_allowances.ALLO_ID "
+					+ "mas_allowances.ALLO_ID, "
+					+ "mas_allowances.AMOUNT_ALLOWANCES "
 					+ "from emp_allowances,"
 					+ "emp_employee as emp ,"
 					+ "mas_allowances "
@@ -45,6 +46,8 @@ public class AllowancesDto {
 	private Integer employeeId;
 	@Column(name ="ALLO_ID")
 	private Integer masAllowancesId;
+	@Column(name ="AMOUNT_ALLOWANCES")
+	private Double masAllowancesAmount;
 	public Integer getId() {
 		return id;
 	}
@@ -74,6 +77,12 @@ public class AllowancesDto {
 	}
 	public void setMasAllowancesId(Integer masAllowancesId) {
 		this.masAllowancesId = masAllowancesId;
+	}
+	public Double getMasAllowancesAmount() {
+		return masAllowancesAmount;
+	}
+	public void setMasAllowancesAmount(Double masAllowancesAmount) {
+		this.masAllowancesAmount = masAllowancesAmount;
 	}
 	
 }

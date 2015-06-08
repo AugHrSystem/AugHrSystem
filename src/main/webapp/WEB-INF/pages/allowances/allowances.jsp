@@ -137,12 +137,36 @@
 
 </div>
 
+
 <script type="text/javascript">
 
 function myFunction(value) {
-	if (value == 1){
-		document.getElementById("amount").value = "30000";
-    } 
+	
+// 	alert(value);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/allowances/findByIdMas",
+		data : "masAllowancesid=" + value,
+		type : "POST",
+		success : function(data) {
+				//alert(JSON.stringify(data));
+			//alert("ok");
+			$("#amount").val(data.amount_allowances);
+			
+			/* employee: {id: data.position } */
+			/* $("#company").val(data.company),
+			$("#salary").val(data.salary),
+			$("#time").val(data.time); */
+	
+		},
+		error : function() {
+			alert("ERROR");
+		}
+	});
+	
+//		if (value == 1){
+//			document.getElementById("amount").value = "30000";
+//	    } 
 }
 
 </script>

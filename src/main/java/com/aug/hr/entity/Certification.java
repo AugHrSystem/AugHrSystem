@@ -39,10 +39,8 @@ public class Certification extends BaseEntity {
 	@Column(name = "DESCRIPTION" ,nullable = false)
 	private String description;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne()
 	@JoinColumn(name = "EMPLOYEE_ID", nullable = false,referencedColumnName="id")
-
-	
 	private Employee employee;
 
 	public Integer getId() {
@@ -94,14 +92,15 @@ public class Certification extends BaseEntity {
 	}
 	
 
-	public Certification fromCertificationDto(CertificationDto certificationDto) {
+	public Certification fromCertificationDto(Certification certification, CertificationDto certificationDto) {
 		
-		Certification certification = new Certification();
+//		Certification certification = new Certification();
 		
-		certification.setId(certificationDto.getId());
+//		certification.setId(certificationDto.getId());
 		certification.setYear(certificationDto.getYear());
 		certification.setName(certificationDto.getName());
 		certification.setCertificationFrom(certificationDto.getCertificationFrom());
+		certification.setDescription(certificationDto.getDescription());
 
 		Employee employee = new Employee();
 		employee.setId(certificationDto.getEmployeeId());
@@ -118,6 +117,7 @@ public class Certification extends BaseEntity {
 		certificationDto.setYear(this.year);
 		certificationDto.setName(this.name);
 		certificationDto.setCertificationFrom(this.certificationFrom);
+		certificationDto.setDescription(this.description);
 		certificationDto.setEmployeeId(this.employee.getId());
 		
 		return certificationDto;
