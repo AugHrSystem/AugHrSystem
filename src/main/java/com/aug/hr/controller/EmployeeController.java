@@ -122,8 +122,8 @@ public class EmployeeController {
 		model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
 
 
-		  return "/employee/employee";
-		 //return "/employee/employeetest";
+		 return "/employee/employee";
+		// return "/employee/employeetest";
 	}
 	
 
