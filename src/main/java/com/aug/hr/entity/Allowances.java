@@ -79,7 +79,7 @@ public class Allowances extends BaseEntity{
 		
 		MasAllowances masAllowances = new MasAllowances();
 		masAllowances.setId(allowancesDto.getMasAllowancesId());
-		masAllowances.setName(allowancesDto.getMasallowances());
+		masAllowances.setAllowances_type(allowancesDto.getMasallowances());
 		allowances.setMasallowances(masAllowances);
 		
 		return allowances;
@@ -94,7 +94,7 @@ public class Allowances extends BaseEntity{
 		allowancesDto.setAmount(this.amount);
 		allowancesDto.setEmployeeId(this.employee.getId());
 		allowancesDto.setMasAllowancesId(this.masallowances.getId());
-		allowancesDto.setMasallowances(this.masallowances.getName());
+		allowancesDto.setMasallowances(this.masallowances.getAllowances_type());
 		
 		return allowancesDto;
 	}

@@ -24,15 +24,15 @@ public class AllowancesDaoImpl extends GenericDaoImpl<Allowances, Integer> imple
 		super(Allowances.class);
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Allowances> findByCriteria(Allowances allowances) {
-		Criteria c = getCurrentSession().createCriteria(Allowances.class);
-		if (!StringUtils.isNullOrEmpty(allowances.getName())) {
-			c.add(Restrictions.like("name", "%" + allowances.getName() + "%"));
-		}
-		return c.list();
-	}
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public List<Allowances> findByCriteria(Allowances allowances) {
+//		Criteria c = getCurrentSession().createCriteria(Allowances.class);
+//		if (!StringUtils.isNullOrEmpty(allowances.getName())) {
+//			c.add(Restrictions.like("name", "%" + allowances.getName() + "%"));
+//		}
+//		return c.list();
+//	}
 
 	@Override
 	public Allowances deleteById(Integer id) {

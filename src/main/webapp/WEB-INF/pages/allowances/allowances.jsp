@@ -81,10 +81,10 @@
 	  <div class="form-group">
 	    <label>Allowances Type :</label>
 	    <form:select path="masallowances" class="form-control"
-			id="masdegreetype">
-			<form:option value="-1" label="---Select Degree---" />
+			id="masallowances" onchange="myFunction(this.value)">
+			<form:option value="-1" label="---Select Allowances---" />
 			<c:forEach var="obj" items="${ masallowancesList }">
-				<option value="${obj.id }">${ obj.name}</option>
+				<option value="${obj.id }">${ obj.allowances_type}</option>
 			</c:forEach>
 		</form:select>
 	  </div>
@@ -136,6 +136,16 @@
 </form:form>
 
 </div>
+
+<script type="text/javascript">
+
+function myFunction(value) {
+	if (value == 1){
+		document.getElementById("amount").value = "30000";
+    } 
+}
+
+</script>
 
 <script type="text/javascript">
 
@@ -204,7 +214,8 @@
 			$.ajax({
 				url : "${pageContext.request.contextPath}/allowances/add",
 				data : JSON.stringify({
-					masallowances : $("#masallowances").val(),
+					masAllowancesId : $("#masallowances").val(), 
+					masallowances : $("#masallowances option:selected").text(),
 					amount :$("#amount").val(),
 					employeeId: id
 				}),
@@ -215,23 +226,23 @@
 					
 //	 				alert(JSON.stringify(data));
 						
-					dt.fnClearTable();
+// 					dt.fnClearTable();
 					
-					dt.fnAddData([
-						/* $("#Name").val(),
-						$("#ProductCategory").val(),
-						$("#Unit").val(),
-						$("#Price").val(),
-						$("#Description").val(), */
-						data.masallowances,
-						data.amount,
-						/* data.company,
-						data.salary,
-						data.time, */
+// 					dt.fnAddData([
+// 						/* $("#Name").val(),
+// 						$("#ProductCategory").val(),
+// 						$("#Unit").val(),
+// 						$("#Price").val(),
+// 						$("#Description").val(), */
+// 						data.masallowances,
+// 						data.amount,
+// 						/* data.company,
+// 						data.salary,
+// 						data.time, */
 						
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
-					]);
+// 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
+// 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+// 					]);
 					
 					$('#addModal').modal('toggle');
 					listAll();
@@ -249,7 +260,8 @@
 				url : "${pageContext.request.contextPath}/allowances/update",
 				data : JSON.stringify({
 					id : allowancesid,
-					masallowances : $("#masallowances").val(),
+					masAllowancesId : $("#masallowances").val(), 
+					masallowances : $("#masallowances option:selected").text(),
 					amount :$("#amount").val(),
 					employeeId : id
 					/* company :$("#company").val(),
@@ -263,15 +275,16 @@
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
 					
-					var tr = button.closest("tr")
+// 					var tr = button.closest("tr")
 					
-					dt.fnUpdate(data.masallowances,tr,0);
-					dt.fnUpdate(data.amount,tr,1);
+// 					dt.fnUpdate(data.masallowances,tr,0);
+// 					dt.fnUpdate(data.amount,tr,1);
 					/* dt.fnUpdate(data.company, tr ,1);
 					dt.fnUpdate(data.salary, tr ,2);
 					dt.fnUpdate(data.time, tr ,3); */
 					
 					$('#addModal').modal('toggle');
+					listAll();
 				},
 				error : function() {
 					alert("ERROR");
@@ -287,7 +300,7 @@
 				success : function(data) {
 	 				//alert(JSON.stringify(data));
 					//alert("ok");
-					$("#masallowances").val(data.masallowances);
+					$("#masallowances").val(data.masAllowancesId);
 					$("#amount").val(data.amount);
 					
 					/* employee: {id: data.position } */
@@ -315,6 +328,8 @@
 					dt.fnDeleteRow(tr);
 					
 					$('#deleteModal').modal('toggle');
+					
+					listAll();
 					
 				},
 				
@@ -355,7 +370,8 @@
 				success : function(data) {
 					dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].masallowances,
+					dt.fnAddData([
+					              data[i].masallowances,
 					              data[i].amount,
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);

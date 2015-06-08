@@ -12,7 +12,7 @@ import com.aug.hr.entity.dto.AllowancesDto;
 
 public interface AllowancesDao extends GenericDao<Allowances, Integer>{
 
-	public List<Allowances> findByCriteria(Allowances allowances);
+//	public List<Allowances> findByCriteria(Allowances allowances);
 
 	public Allowances deleteById(Integer id);
 

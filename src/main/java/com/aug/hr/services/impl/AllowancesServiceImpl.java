@@ -47,10 +47,10 @@ public class AllowancesServiceImpl implements AllowancesService {
 		return allowancesDao.find(id);
 	}
 
-	@Override
-	public List<Allowances> findByCriteria(Allowances allowances) {
-		return allowancesDao.findByCriteria(allowances);
-	}
+//	@Override
+//	public List<Allowances> findByCriteria(Allowances allowances) {
+//		return allowancesDao.findByCriteria(allowances);
+//	}
 
 	@Override
 	public Allowances deleteById(Integer id) {

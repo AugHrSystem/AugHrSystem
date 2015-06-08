@@ -127,7 +127,7 @@
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
       	<button type="button" class="btn btn-info btnSave">Save</button>
       </div>
       
@@ -176,8 +176,8 @@
 		$("#addBtnHis").on("click",function(){
 			
 // 			$(this).removeData('bs.modal');
-			$('#addForm').bootstrapValidator('resetForm', true);
-// 			clearModal();
+// 			$('#addForm').bootstrapValidator('resetForm', true);
+			clearModal();
 // 			bootstrapValidator('validate').hide();
 			
 			
@@ -289,6 +289,10 @@
 				
 			});
 			
+			$(this).find(".btnClose").off("click").on("click",function() {
+				$('#addForm').bootstrapValidator('resetForm', true);
+			});
+			
 		});
 		
 		/* --- DeleteName --- */
@@ -332,6 +336,7 @@
 				dataType: "json",
 				success : function(data) {
 					
+					$('#addForm').bootstrapValidator('resetForm', true);
 //	 				alert(JSON.stringify(data));
 						
 // 					dt.fnClearTable();
