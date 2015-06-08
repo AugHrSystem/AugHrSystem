@@ -114,9 +114,8 @@
 							</div>
 								<div class="form-group " align="left">
 									 <label>Year :</label>
-									<form:select path="year" class="form-control required" id="year">
-										<form:option value="-1" label="---Select year---" />
-										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>						
+									<form:select path="year" id="year" class="form-control required" >
+										<option value="">--Choose Status--</option>						
 										<option value="2020">2020</option>
 										<option value="2019">2019</option>
 										<option value="2018">2018</option>
@@ -310,7 +309,7 @@
 		            year: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The  Year is required and cannot be empty'
+		                        message: 'The  Year is required and cannotR be empty'
 		                    },
 		                }
 		            },
