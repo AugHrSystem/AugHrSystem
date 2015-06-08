@@ -1041,6 +1041,22 @@
 
 
 </div>
+<div class="row">
+	<div class="col-sm-12">
+		<%-- 	 	<button class="btn btn-default btn-sm report" type="button"><spring:message code="label.report"/> </button> --%>
+		<a data-toggle="modal" data-backdrop="static" data-keyboard="false"
+			data-target="#reportModal"
+			href="<%=request.getContextPath()%>/employee/modalReport"></a>
+	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content"></div>
+	</div>
+</div>
 </div>    
 <!---------------------------------------------------------- Start JQuery ----------------------------------------------------->	  
 	    
