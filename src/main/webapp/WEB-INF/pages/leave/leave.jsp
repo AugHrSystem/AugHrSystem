@@ -219,7 +219,7 @@ $(document).ready(function() {
 	});
 	
 	
-	$("#addBtnLe").on("click", function(){
+/* 	$("#addBtnLe").on("click", function(){
 		
 		clearModal();
 		/* $('#addForm').bootstrapValidator('resetForm', true);
@@ -227,7 +227,16 @@ $(document).ready(function() {
 		 */
 	
 	
-	});
+	/* }); */
+	
+	$("#saveButton").on("click",function(){
+			
+			$('#addForm').bootstrapValidator();
+			$('#addForm').data('bootstrapValidator').resetForm();
+
+
+		});
+	
 	
 	
 	$('#addForm').bootstrapValidator({
@@ -243,7 +252,11 @@ $(document).ready(function() {
 	                validators: {
 	                    notEmpty: {
 	                        message: 'The masleavetype is required and cannot be empty'
-	                    }
+	                    },
+	        digits: {
+            	min:0,
+            	message: 'masspecialty is required'
+            },
 	                }
 	            },
 	            
@@ -287,9 +300,14 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'Aim is required and cannot be empty'
-                    }
+                    },
+            digits: {
+            	min:0,
+            	message: 'Aim is required'
+            },
                 }
-            }
+            },
+           
             
             
             

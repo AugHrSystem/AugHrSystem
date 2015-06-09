@@ -182,9 +182,19 @@ $(document).ready(function(){
 		"info": false
 	});
 	
-	$("#addBtnAbi").on("click",function(){clearModal();});
-	
-	  
+	/* $("#addBtnAbi").on("click",function(){clearModal();});
+	 */
+
+		$("#btnSave").on("click",function(){
+			
+			$('#addForm').bootstrapValidator();
+			$('#addForm').data('bootstrapValidator').resetForm();
+
+
+		});
+	 
+	 
+	 
 
 	
 	$('#addForm').bootstrapValidator({
@@ -199,7 +209,11 @@ $(document).ready(function(){
 	                validators: {
 	                    notEmpty: {
 	                        message: 'The masspecialty is required and cannot be empty'
-	                    }
+	                    },
+	                    digits: {
+	                    	min:0,
+	                    	message: 'masspecialty is required'
+	                    },
 	                }
 	            },
 	          
@@ -232,11 +246,27 @@ $(document).ready(function(){
 				updateAbility(button,abilityid);
 				
 			}else{ 
-				addAbility();
+				$('#addForm').bootstrapValidator();
+				$('#addForm').data('bootstrapValidator').validate();
+				if($('#addForm').data('bootstrapValidator').isValid()){
+					addAbility();
+				}
+				
 				
 			  } 
 			
 		});
+		
+		
+		
+		  $('#addModal').on("hide.bs.modal",function(event){
+			   
+			   $('#addForm')[0].reset();
+		       $('#addForm').bootstrapValidator();
+			   $('#addForm').data('bootstrapValidator').resetForm();
+
+		  
+		   });
 		
 		
 		$(this).find(".btnClose").off("click").on("click",function() {
