@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- Spring -->	
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
 <!-- Bootstrap -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
@@ -1171,23 +1171,76 @@ var getIndex = 0;
 
 			    
 			    $('#masLocation').on('change', function() {
-			    	  var value = $("#masLocation :selected").text();
-			    	  //alert(value);
-			    	  if(value=="Thailand"){
+			
+			    	var id = $("#masLocation").val();
+			    	var value = $("#masLocation :selected").text().toUpperCase();
+			    	 
+			    	  var location; 
+			    	  if($("#masLocation :selected").text()=='Thailand'){
+			    		  location = value.substring(0, 2);
 			    		  
-			    		  if($('employeeCodeDto').val()==null){
-			    		  
-			    		  	$('#employeeCode').val('TH10001');
-			    		  }
-			    		  
-			    	  }else if(value="Singapore"){
-			    		  
-			    	  }else if(value="Indonesia"){
-			    		  
+			    	  }else if($("#masLocation :selected").text()=='Singapore'){
+			    		  location = value.substring(0, 1)+value.substring(3, 4);
+			    		  //alert(value.substring(3, 4));
+			    	  }else if($("#masLocation :selected").text()=='Indonesia'){
+			    		  location = value.substring(0, 1)+ value.substring(2, 3);
+			    	  }else if($("#masLocation :selected").text()=='Australia'){
+			    		  location = value.substring(0, 2);
 			    	  }
+			    	  
+			    	  
+			    	  
+			    	
+			    	  $.ajax({  
+				  	      type : "POST",   
+				  	      url : "<%=request.getContextPath()%>/employee/findRunningNo/"+id,   
+				  	      //data:  JSON.stringify(id),
+				  	      dataType : 'json', 
+				  	      contentType :"application/json; charset=utf-8",
+				  	     
+				  	      success : function(data) {  
+				    		
+				  	        $('#employeeCodeDto').val(data.rungingNumber);
+				  	    	alert(JSON.stringify(data));
+				  	    	
+					    	  
+					    	  var empCode = parseInt($('#employeeCodeDto').val())+1;
+					    	  alert(value);
+					    	  alert(empCode);
+					    	  
+					    		  
+					    		  if($('#employeeCodeDto').val()==null&&$('#employeeCodeDto').val()===" "){
+					    		  
+					    		  	$('#employeeCode').val(location+'10'+'001');
+					    		  
+					    		  }else if(empCode.toString().length==1){
+					    			  $('#employeeCode').val(location+'10'+'00' +empCode.toString());
+					    			  
+					    		  }else if(empCode.toString().length==2){
+					    			 
+					    			  $('#employeeCode').val(location+'10'+'0'+empCode.toString());
+					    			  
+					    		  }else if(empCode.toString().length==3){
+					    			  $('#employeeCode').val(location+'10'+empCode.toString());
+					    			  
+					    		  }
+					    		  
+					  	    	 
+				  	     },  
+				  	      error : function(e) {  	
+				  	    	  
+				  	    	  alert(e);
+				  	    	
+				  	     }  
+				  	    }); 
+			    	  
+				  	   
 			    });
-		
-
+			    	
+			    	
+			    	
+			    	
+			    	 
 
  		
  			$("#uploadFile").on("change", function()
@@ -1600,7 +1653,7 @@ var getIndex = 0;
 				  dt.fnAddData([  id, 
 				                  addressId,
 				                  addressType,
-					              address1,
+					              address1+'  '+address2,
 					              address2,
 					              provinceId,
 					              province,
@@ -1788,7 +1841,7 @@ var getIndex = 0;
 				for (var i=0;i< data.length; i++) {
 					dt.fnAddData([data[i].id,
 					              data[i].addressType.name,
-					              data[i].address1,
+					              data[i].address1+' '+data[i].address2,
 					              data[i].address2, 
 					              data[i].zipcode,
 						'<button id="edit" type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',

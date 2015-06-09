@@ -42,6 +42,7 @@ import com.aug.hr.entity.MasProvince;
 import com.aug.hr.entity.Official;
 import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
+import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.entity.editor.AddressEditor;
@@ -119,11 +120,11 @@ public class EmployeeController {
 		model.addAttribute("locationList",masLocationService.findAll());
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
 		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
-		model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
+		//model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
 
 
-		 return "/employee/employee";
-		// return "/employee/employeetest";
+		 //return "/employee/employee";
+		return "/employee/employeetest";
 	}
 	
 
@@ -224,13 +225,13 @@ public class EmployeeController {
 		logger.info("infoooo: "+employee.getAddressList());
 		logger.info("file: "+employee.getFileupload().getOriginalFilename());
 		try {
-			uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+employee.getFileupload().getOriginalFilename(), employee.getFileupload());
+			uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+"_"+employee.getFileupload().getOriginalFilename(), employee.getFileupload());
 		} catch (RuntimeException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		employee.setImage(employee.getEmployeeCode()+employee.getFileupload().getOriginalFilename());
+		employee.setImage(employee.getEmployeeCode()+"_"+employee.getFileupload().getOriginalFilename());
 		
 		employeeService.saveEmpAndWithRelateTable(employee);
 	
@@ -239,6 +240,20 @@ public class EmployeeController {
 
 		return null;
 	}
+	
+	
+	@RequestMapping(value = "/employee/findRunningNo/{id}", method = RequestMethod.POST)
+	public @ResponseBody EmployeeCodeDto findRunningNo(@PathVariable("id") Integer id) {
+		EmployeeCodeDto empCodeDto = new EmployeeCodeDto();
+		try{
+		 empCodeDto = employeeCodeDtoService.serchRunningNo(id);
+		}catch(IndexOutOfBoundsException e){
+		 empCodeDto.setRungingNumber(0);
+		}
+		return empCodeDto;
+	}
+	
+	
 	
 	
 	@ModelAttribute("employee")

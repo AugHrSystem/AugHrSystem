@@ -635,7 +635,51 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             name = "searchIdEmptoAddress",
             //query = "select * from EMP_EMPLOYEE  ORDER BY createdTimeStamp LIMIT 1;", 
             query = "select * from EMP_EMPLOYEE  ORDER BY ID desc LIMIT 1;",
-            resultClass = Employee.class)
+            resultClass = Employee.class),
+            
+            
+            @NamedNativeQuery(
+                    name = "updateEmployee",
+                    query = "update EMP_EMPLOYEE set EMPLOYEE_CODE =:EMPLOYEE_CODE,"
+                    		+ "NAME_THAI =:NAME_THAI,"
+                    		+ "SURNAME_THAI =:SURNAME_THAI,"
+                    		+ "NICKNAME_THAI =:NICKNAME_THAI,"
+                    		+ "NAME_ENG =:NAME_ENG,"
+                    		+ "SURNAME_ENG =:SURNAME_ENG,"
+                    		+ "NICKNAME_ENG =:NICKNAME_ENG,"
+                    		+ "EMAIL =:EMAIL,"
+                    		+ "TEL_HOME =:TEL_HOME,"
+                    		+ "TEL_MOBILE =:TEL_MOBILE,"
+                    		+ "TEL_FAX =:TEL_FAX,"
+                    		+ "CONGENITAL_DISEASE =:CONGENITAL_DISEASE,"
+                    		+ "HOSPITAL =:HOSPITAL,"
+                    		+ "EMERGENCY_CONTACT =:EMERGENCY_CONTACT,"
+                    		+ "RELATIONSHIP_WITH_EMERGENCY_CONTACT =:RELATIONSHIP_WITH_EMERGENCY_CONTACT,"
+                    		+ "EMERGENCY_CONTACT_ADDRESS =:EMERGENCY_CONTACT_ADDRESS,"
+                    		+ "EMERGENCY_CONTACT_PHONE_NUMBER =:EMERGENCY_CONTACT_PHONE_NUMBER,"
+                    		+ "DATEOFBIRTH =:DATEOFBIRTH,"
+                    		+ "PLACEOFBIRTH =:PLACEOFBIRTH,"
+                    		+ "AGE =:AGE,"
+                    		+ "RELIGION =:RELIGION,"
+                    		+ "ID_CARD =:ID_CARD,"
+                    		+ "ISSUED_OFFICE =:ISSUED_OFFICE,"
+                    		+ "EXPIRY_DATE =:EXPIRY_DATE,"
+                    		+ "HEIGHT =:HEIGHT,"
+                    		+ "WEIGTH =:WEIGTH,"
+                    		+ "SEX =:SEX,"
+                    		+ "MARITAL_STATUS =:MARITAL_STATUS,"
+                    		+ "NUMBER_OF_CHILDREN =:NUMBER_OF_CHILDREN,"
+                    		+ "SPOUSE_NAME =:SPOUSE_NAME,"
+                    		+ "MARRIAGE_CERTIFICATE_NO =:MARRIAGE_CERTIFICATE_NO,"
+                    		+ "ISSUED_OFFICE2 =:ISSUED_OFFICE2,"
+                    		+ "ADDRESS =:ADDRESS,"
+                    		+ "OCCUPATION =:OCCUPATION,"
+                    		+ "KNOW_AUG_NEWSPAPER =:KNOW_AUG_NEWSPAPER,"
+                    		+ "DESCRIPTION_NEWSPAPER =:DESCRIPTION_NEWSPAPER,"
+                    		+ "",
+                    resultClass = Employee.class)
+            
+            
   })
 
 
