@@ -29,10 +29,21 @@
             
 		</ul> --%> 
 		    <ul class="nav navbar-nav navbar-right">
+		    	<li>
+		    		<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReport">Report</a>
+		    	</li>
 			    <li>
 			     	<a class="navbar-link" href="<%=request.getContextPath()%>/logout">Logout</a>
 			    </li>
 		    </ul>   
 	</div>
 	</nav> 
+	
+	<!-- Modal -->
+	<div class="modal fade" id="reportModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
 </div>
+

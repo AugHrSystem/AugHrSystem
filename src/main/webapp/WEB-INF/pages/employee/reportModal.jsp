@@ -12,6 +12,7 @@
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
+        	Search
         		${ searchfor }${ entity }
         	</div>
         	<div class="col-sm-6">
@@ -32,7 +33,7 @@
         
          <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	<spring:message code="label.doctype"/>
+        	Document Type
         	</div>
         	<div class="col-sm-6">
         		<label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>

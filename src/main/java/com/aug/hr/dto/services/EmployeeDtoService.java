@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.dto.EmployeeDto;
+import com.aug.hr.entity.dto.ReportEmployeeDto;
 
 @Service("employeeDtoService")
 @Transactional
@@ -17,5 +18,9 @@ public class EmployeeDtoService {
 	
 	public List<EmployeeDto> searchEmployee(){
 		return employeeDao.searchEmployee();
+	}
+	
+	public List<ReportEmployeeDto> reportEmployee(){
+		return employeeDao.reportEmployee();
 	}
 }

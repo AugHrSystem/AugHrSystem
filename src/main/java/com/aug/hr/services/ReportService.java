@@ -23,7 +23,7 @@ public class ReportService {
     public ModelAndView getReport(Collection<?> beanCollection , String reportName,String reportType,Map<String,Object> parameterMap) {
     	logger.info("Generate Report("+reportType+") ");
 //        Map<String,Object> parameterMap = new HashMap<String,Object>();
-        JRDataSource JRdataSource = new JRBeanCollectionDataSource(beanCollection);
+        JRDataSource JRdataSource = new JRBeanCollectionDataSource(beanCollection,false);
         parameterMap.put("datasource", JRdataSource);
         parameterMap.put("format", reportType);
         JasperReportsMultiFormatView view = new JasperReportsMultiFormatView();

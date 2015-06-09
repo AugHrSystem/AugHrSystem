@@ -51,6 +51,7 @@ import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.OfficialDto;
+import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
@@ -250,6 +251,11 @@ public class EmployeeController {
 	}
 	
 	//Report
+	@RequestMapping(value = "/employee/reportPopup", method = { RequestMethod.GET})
+	public String reportPopup(@ModelAttribute(value = "employee") ReportEmployeeDto reportEmployeeDto,Locale locale, ModelMap map) {
+		return "/employee/reportPopup";
+	}
+	
 	@RequestMapping(value = "/employee/modalReport", method = RequestMethod.GET)
 	public String modalReport(ModelMap map) {
 		return "/employee/reportModal";
@@ -257,7 +263,7 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/employee/searchReport", method = {RequestMethod.POST})
     public ModelAndView searchEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-		List<Employee> employeeList = employeeService.findByCriteria(employee);
+		List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
