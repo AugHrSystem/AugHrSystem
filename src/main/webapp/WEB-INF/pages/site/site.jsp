@@ -1,37 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
-<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
+<!-- Spring -->	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
-<!-- Date Picker -->
-<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
-<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
-<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
-
-<%-- <script src="<c:url value="/resource/daterangepicker/js/daterangepicker.js" />"></script>
-<link href="<c:url value="/resource/daterangepicker/css/daterangepicker-bs3.css" />" rel="stylesheet" media="all">
- --%>
-
-
-<!-- Data Table -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
-<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
-
-<title>Site</title>
+<jsp:include page="../employeeMenu.jsp"></jsp:include>
 
 
 <script>
@@ -393,12 +368,6 @@
 
 
 
-</head>
-<body>
-
-<div class="container">
-
-
 <div class="row">
 	<div class="col-md-6">
 		<h2>Client Sites</h2>
@@ -566,10 +535,3 @@
 	  </div>
 	</div>
 	   
-   
-   
-   
-</div>
-
-</body>
-</html>

@@ -1,28 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<!-- Spring -->	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
-<!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
-<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
-
-
-
-<!-- Data Table -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
-<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
+<jsp:include page="../employeeMenu.jsp"></jsp:include>
 
 <script>
 
@@ -514,16 +498,6 @@ $(function(){
 });
 </script>
 
-<title>health</title>
-
-
-</head>
-
-
-
-<body>
-
-<div class="container">
 
 <div class="row">
 	<div class="col-md-6">
@@ -560,10 +534,6 @@ $(function(){
             </tr>
         </thead>
 </table>
-
-</div>
-
-
 
 
 
@@ -864,9 +834,3 @@ $(function(){
 </div>
  
  
- </body>
- </html>
-
-
-
-

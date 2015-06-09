@@ -1,47 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
-<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
+<!-- Spring -->	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
-<!-- Validator -->
-<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+<jsp:include page="../employeeMenu.jsp"></jsp:include>
 
-<!-- Include Bootstrap-select CSS, JS -->
-<link href="<c:url value="/resource/select/css/bootstrap-select.min.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/select/js/bootstrap-select.min.js" />"></script>
-
-<!-- Date Time Picker -->
-<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
-<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
-<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
-
-<!-- Data Table -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
-
-<!-- dataTable Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
-
-<title>Probation</title>
-<style>
-
-</style>
-</head>
-<body>
-<div class="container">
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
 		<div class="row-md-12">
 			<h2 class="col-md-6">Probation</h2>	
@@ -74,7 +40,6 @@
 		</div>
 		
 </f:form>			
-</div>			
 		
 <!-- Modal -->
 <f:form id="validate" method="post" commandName="probation">
@@ -444,5 +409,3 @@ var dt;
   	});
   
   </script>
-</body>
-</html>
