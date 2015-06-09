@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_leave" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04a56c08-3c23-49ee-9913-861acffaa743">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="102"/>
+	<property name="ireport.y" value="169"/>
 	<queryString>
 		<![CDATA[select l.id,l.aim, l.start_date as startDate,l.end_date as endDate, l.start_time as startTime ,l.end_time as endTime
 ,l.reason, m.name, l.employee_id as employee, emp.employee_code as employeeCode, m.leavetype_id as id,aim.nameEng as nameEng,aim.nameThai as nameThai,aim.dateOfBirth as dateOfBirth
@@ -56,9 +56,6 @@ and l.leavetype_id = m.leavetype_id and aim.id=l.id]]>
 			<line>
 				<reportElement uuid="76d9cd80-89dd-4558-a492-e65e145f7017" x="49" y="1" width="1" height="90"/>
 			</line>
-			<rectangle>
-				<reportElement uuid="85024a33-c8ed-454a-8a9b-a95f6bef2829" x="0" y="1" width="555" height="140" forecolor="#000000" backcolor="#FFFFFF"/>
-			</rectangle>
 			<staticText>
 				<reportElement uuid="0307b4cb-ae03-4cfd-b0a2-014ebb58c14f" x="27" y="159" width="100" height="20"/>
 				<textElement/>
@@ -75,7 +72,7 @@ and l.leavetype_id = m.leavetype_id and aim.id=l.id]]>
 				<text><![CDATA[startDate]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="cc1d98e1-7513-4461-98f3-d14c5d4f6139" x="457" y="159" width="100" height="20"/>
+				<reportElement uuid="debf0dbf-3368-4728-9d99-8ca39e8c4867" x="457" y="159" width="100" height="20"/>
 				<textElement/>
 				<text><![CDATA[dateOfBirth]]></text>
 			</staticText>
@@ -88,11 +85,6 @@ and l.leavetype_id = m.leavetype_id and aim.id=l.id]]>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement uuid="1d25d138-9225-456f-bbf4-90e8d91a7afc" x="27" y="171" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[employee_code]]></text>
-			</staticText>
 			<textField>
 				<reportElement uuid="7e7d09e1-12c5-40c9-982c-4769115dcfb3" x="27" y="40" width="100" height="20"/>
 				<textElement/>
@@ -109,7 +101,7 @@ and l.leavetype_id = m.leavetype_id and aim.id=l.id]]>
 				<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="de37d8e9-c60a-496c-afc5-c4d2d25b4b58" x="457" y="40" width="100" height="20"/>
+				<reportElement uuid="e3c85ce1-6c13-4805-b33b-0b57b024d2fe" x="457" y="40" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{dateOfBirth}]]></textFieldExpression>
 			</textField>
