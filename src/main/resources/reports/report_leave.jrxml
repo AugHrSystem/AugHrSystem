@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_leave" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04a56c08-3c23-49ee-9913-861acffaa743">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="102"/>
+	<queryString>
+		<![CDATA[select l.id,l.aim, l.start_date as startDate,l.end_date as endDate, l.start_time as startTime ,l.end_time as endTime
+,l.reason, m.name, l.employee_id as employee, emp.employee_code as employeeCode, m.leavetype_id as id,aim.nameEng as nameEng,aim.nameThai as nameThai,aim.dateOfBirth as dateOfBirth
+
+from EMP_LEAVE l, EMP_EMPLOYEE emp,MAS_LEAVETYPE  m ,
+(select  e.NAME_ENG as nameEng,e.NAME_THAI as nameThai,e.DATEOFBIRTH as dateOfBirth,l.ID as id from EMP_LEAVE l
+join EMP_EMPLOYEE e on e.ID=l.AIM where l.AIM=e.ID) aim
+
+where  l.employee_id = emp.id and l.employee_id = emp.id
+and l.leavetype_id = m.leavetype_id and aim.id=l.id]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="employee" class="java.lang.Integer"/>
+	<field name="aim" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="employeeCode" class="java.lang.String"/>
+	<field name="nameEng" class="java.lang.String"/>
+	<field name="nameThai" class="java.lang.String"/>
+	<field name="startDate" class="java.sql.Timestamp"/>
+	<field name="endDate" class="java.sql.Timestamp"/>
+	<field name="startTime" class="java.sql.Timestamp"/>
+	<field name="endTime" class="java.sql.Timestamp"/>
+	<field name="dateOfBirth" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="179" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="287ac1b4-27bc-49e8-96ec-5143023d9c57" x="257" y="159" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[LeaveTypeName]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="76d9cd80-89dd-4558-a492-e65e145f7017" x="49" y="1" width="1" height="90"/>
+			</line>
+			<rectangle>
+				<reportElement uuid="85024a33-c8ed-454a-8a9b-a95f6bef2829" x="0" y="1" width="555" height="140" forecolor="#000000" backcolor="#FFFFFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0307b4cb-ae03-4cfd-b0a2-014ebb58c14f" x="27" y="159" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[employeeCode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f0190806-120a-446e-9b5b-08bd2e4e599b" x="127" y="159" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[nameEng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0db1c489-eb60-41b0-94d1-44b9883d70f4" x="357" y="159" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[startDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc1d98e1-7513-4461-98f3-d14c5d4f6139" x="457" y="159" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[dateOfBirth]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="234" splitType="Stretch">
+			<textField>
+				<reportElement uuid="445de1fe-c1b6-4eb8-bab0-619bc291f43d" x="257" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1d25d138-9225-456f-bbf4-90e8d91a7afc" x="27" y="171" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[employee_code]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7e7d09e1-12c5-40c9-982c-4769115dcfb3" x="27" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{employeeCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b5f683a9-fe7e-40af-8667-d88848762745" x="127" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nameEng}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="84acc2d9-d570-41e2-bfe5-96bd42746317" x="357" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="de37d8e9-c60a-496c-afc5-c4d2d25b4b58" x="457" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dateOfBirth}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

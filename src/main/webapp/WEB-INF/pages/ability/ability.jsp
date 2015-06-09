@@ -130,7 +130,7 @@
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
       	<button type="button" class="btn btn-info btnSave">Save</button>
       </div>
       
@@ -202,16 +202,7 @@ $(document).ready(function(){
 	                    }
 	                }
 	            },
-	          /*   rank: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'The rank is required and cannot be empty'
-	                    },
-	                    digits:{
-	                    	message:'Plase Number'
-	                    }
-	                }
-	            } */
+	          
 	        }
 		
 	});
@@ -246,6 +237,12 @@ $(document).ready(function(){
 			  } 
 			
 		});
+		
+		
+		$(this).find(".btnClose").off("click").on("click",function() {
+			$('#addForm').bootstrapValidator('resetForm', true);
+		});
+		
 		
 	});
 	
@@ -329,19 +326,24 @@ $(document).ready(function(){
 			dataType: "json",
 			success : function(data) {
 				
+				
+
+				$('#addForm').bootstrapValidator('resetForm', true);
+				
+				
 			//alert(JSON.stringify(data));
 					
 			
-				 dt.fnClearTable();
+				/*  dt.fnClearTable();
 				
 				dt.fnAddData([
 				
 					data.masspecialty,
-					data.rank,
+					data.rank, */
 					
 					'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 					'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
-				]);
+			/* 	]); */
 				
 				$('#addModal').modal('toggle');
 				listAll();

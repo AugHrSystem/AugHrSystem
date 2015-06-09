@@ -141,7 +141,7 @@
 	    
 		<div class="form-group">
 		  <form:select path="masleavetype" class="form-control" id="masleavetype">
-			<form:option value="" label="---Select Leavetype---" />
+			<form:option value="-1" label="---Select Leavetype---" />
 			<c:forEach var="obj" items="${masleavetypeList}">
 				<option value="${obj.id}">${ obj.name}</option>
 			</c:forEach>
@@ -155,7 +155,7 @@
 	 <label>AIM:</label>
 		  <form:select path="aim" class="form-control"
 			id="aim">
-			<form:option  value="" label="--Select AIM--" />
+			<form:option  value="-1" label="--Select AIM--" />
   		    <form:options items="${ aimList }"  itemValue="id" itemLabel="name_eng" />
     		
 		</form:select>
@@ -174,7 +174,7 @@
         
 		</div>
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btnClose " data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-info saveButton">Save</button>
       </div>
     
@@ -363,6 +363,12 @@ $(document).ready(function() {
 				
 			});
 			
+			$(this).find(".btnClose").off("click").on("click",function() {
+				$('#addForm').bootstrapValidator('resetForm', true);
+			
+				
+			});
+			
 		});
 		
 		
@@ -403,6 +409,8 @@ $(document).ready(function() {
 				dataType: "json",
 				success : function(data) {
 					
+
+					$('#addForm').bootstrapValidator('resetForm', true);
 				//alert(JSON.stringify(data));
 						
 				
