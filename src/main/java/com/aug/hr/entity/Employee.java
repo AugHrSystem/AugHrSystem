@@ -684,6 +684,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
                     		+ "OCCUPATION =:OCCUPATION,"
                     		+ "KNOW_AUG_NEWSPAPER =:KNOW_AUG_NEWSPAPER,"
                     		+ "DESCRIPTION_NEWSPAPER =:DESCRIPTION_NEWSPAPER,"
+                    		+ "KNOW_AUG_MAGAZINE =:KNOW_AUG_MAGAZINE,"
+                    		+ "DESCRIPTION_MAGAZINE =:DESCRIPTION_MAGAZINE,"
                     		+ "",
                     resultClass = Employee.class)
             
