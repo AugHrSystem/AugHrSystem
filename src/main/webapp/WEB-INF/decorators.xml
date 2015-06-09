@@ -11,22 +11,22 @@
         <pattern>/*modal*</pattern>;
         <pattern>/*Popup*</pattern>
         <pattern>/*view*</pattern>
-        <pattern>/*family*</pattern>
-        <pattern>/*education*</pattern>
-        <pattern>/*experience*</pattern>
-        <pattern>/*ability*</pattern>
-        <pattern>/*reference*</pattern>
-        <pattern>/*reward*</pattern>
-        <pattern>/*history*</pattern>
-        <pattern>/*probation*</pattern>
-        <pattern>/*punish*</pattern>
-        <pattern>/*leave*</pattern>
-        <pattern>/*skilllanguage*</pattern>
-        <pattern>/*site*</pattern>
-        <pattern>/*certification*</pattern>
-        <pattern>/*card*</pattern>
-        <pattern>/*allowances*</pattern>
-        <pattern>/*health*</pattern>
+<!--         <pattern>/*family*</pattern> -->
+<!--         <pattern>/*education*</pattern> -->
+<!--         <pattern>/*experience*</pattern> -->
+<!--         <pattern>/*ability*</pattern> -->
+<!--         <pattern>/*reference*</pattern> -->
+<!--         <pattern>/*reward*</pattern> -->
+<!--         <pattern>/*history*</pattern> -->
+<!--         <pattern>/*probation*</pattern> -->
+<!--         <pattern>/*punish*</pattern> -->
+<!--         <pattern>/*leave*</pattern> -->
+<!--         <pattern>/*skilllanguage*</pattern> -->
+<!--         <pattern>/*site*</pattern> -->
+<!--         <pattern>/*certification*</pattern> -->
+<!--         <pattern>/*card*</pattern> -->
+<!--         <pattern>/*allowances*</pattern> -->
+<!--         <pattern>/*health*</pattern> -->
   	</excludes>
     <decorator name="default" page="main.jsp">
         <pattern>/*</pattern>

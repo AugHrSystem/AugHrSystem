@@ -1,43 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>History</title>
 
 <!-- Spring -->	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<!-- jQuery -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
-
-<!-- Validate -->
-<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
-
-<!-- Bootstrap -->
-<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
-
-<!-- jQuery dataTable -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-
-<!-- dataTable Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
-
-<!-- Date Time Picker -->
-<script src="<c:url value="/resource/moment/js/moment.js" />"></script>
-<script src="<c:url value="/resource/datetimepicker/js/bootstrap-datetimepicker.js" />"></script>
-<link href="<c:url value="/resource/datetimepicker/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet" media="all">
-
-</head>
-<body>
-<div class="container">
+<jsp:include page="../employeeMenu.jsp"></jsp:include>
 
 <form:form id ="listForm" method="post" commandName="history">
 
@@ -165,7 +134,6 @@
 
 </form:form>
 
-</div>
 
 <script type="text/javascript">
 
@@ -395,7 +363,7 @@
 				dataType: "json",
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
-					
+					$('#addForm').bootstrapValidator('resetForm', true);
 // 					var tr = button.closest("tr")
 					
 // 					dt.fnUpdate(data.position,tr,0);
@@ -538,7 +506,3 @@
 	});
 	
 </script>
-
-</body>
-</html>
-
