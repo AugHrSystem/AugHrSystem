@@ -114,6 +114,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ "STAFFTYPE_ID,"
             		+ "LOCATION_ID,"
             		+ "OFFICIAL_ID "
+            		+ "STATUSEMP "
             		+ ") "
             		+ " values("
             		+ ":EMPLOYEE_CODE,"
@@ -185,6 +186,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ ":STAFFTYPE_ID,"
             		+ ":LOCATION_ID,"
             		+ ":OFFICIAL_ID "
+            		+ ":STATUSEMP "
             		+ ")"
             		,resultClass= Employee.class),
             		
@@ -260,6 +262,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            		+ "STAFFTYPE_ID,"
             	            		+ "LOCATION_ID,"
             	            		+ "OFFICIAL_ID "
+            	            		+ "STATUSEMP "
             	            		+ ") "
             	            		+ " values("
             	            		+ ":EMPLOYEE_CODE,"
@@ -331,6 +334,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            		+ ":STAFFTYPE_ID,"
             	            		+ ":LOCATION_ID,"
             	            		+ ":OFFICIAL_ID "
+            	            		+ ":STATUSEMP "
             	            		+ ")"
             	            		,resultClass= Employee.class),
             	            		
@@ -407,6 +411,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            		+ "STAFFTYPE_ID,"
             	            	            		+ "LOCATION_ID,"
             	            	            		+ "OFFICIAL_ID "
+            	            	            		+ "STATUSEMP "
             	            	            		+ ") "
             	            	            		+ " values("
             	            	            		+ ":EMPLOYEE_CODE,"
@@ -478,6 +483,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            		+ ":STAFFTYPE_ID,"
             	            	            		+ ":LOCATION_ID,"
             	            	            		+ ":OFFICIAL_ID "
+            	            	            		+ ":STATUSEMP "
             	            	            		+ ")"
             	            	            		,resultClass= Employee.class),
             	            	            		
@@ -554,6 +560,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            	            		+ "STAFFTYPE_ID,"
             	            	            	            		+ "LOCATION_ID,"
             	            	            	            		+ "OFFICIAL_ID "
+            	            	            	            		+ "STATUSEMP "
             	            	            	            		+ ") "
             	            	            	            		+ " values("
             	            	            	            		+ ":EMPLOYEE_CODE,"
@@ -625,6 +632,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            	            		+ ":STAFFTYPE_ID,"
             	            	            	            		+ ":LOCATION_ID,"
             	            	            	            		+ ":OFFICIAL_ID "
+            	            	            	            		+ ":STATUSEMP "
             	            	            	            		+ ")"
             	            	            	            		,resultClass= Employee.class),           	 
 
@@ -881,6 +889,9 @@ public class Employee extends BaseEntity{
 	@Column(name = "IMAGE",nullable = true)
 	private String image;
 	
+	@Column(name = "STATUSEMP",nullable = true)
+	private String statusemp;
+		
 	@Column(name = "ISMANAGER",nullable = true)
 	private Integer isManager;
 	
@@ -1990,5 +2001,22 @@ public class Employee extends BaseEntity{
 		this.health = health;
 	}
 
+	public String getStatusemp() {
+		return statusemp;
+	}
+
+	public void setStatusemp(String statusemp) {
+		this.statusemp = statusemp;
+	}
+
+	public Set<Card> getCards() {
+		return cards;
+	}
+
+	public void setCards(Set<Card> cards) {
+		this.cards = cards;
+	}
+
+	
 	
 }
