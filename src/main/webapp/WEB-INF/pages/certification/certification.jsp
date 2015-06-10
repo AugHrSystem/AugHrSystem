@@ -34,7 +34,6 @@
 			<th>Year</th>
 			<th>Certification Name</th>
 			<th>Certification From</th>
-			<th>Description</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -53,7 +52,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Certification Add</h4>
+        <h4 class="modal-title" id="myModalLabel">Certification</h4>
       </div>
       
       <div class="modal-body">
@@ -207,7 +206,7 @@
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
       	<button type="button" class="btn btn-info btnSave">Save</button>
       </div>
       
@@ -254,6 +253,74 @@
 		
 		$("#addBtnCer").on("click",function(){clearModal();});
 		
+		$('#addForm').bootstrapValidator({
+//	        live: 'disabled',
+	        message: 'This value is not valid',
+	        container: 'tooltip',
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	year: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The year is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            name: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The certification name is required and cannot be empty'
+	                    }
+	                }
+	            },
+// 	            oldSalary: {
+// 	                validators: {
+// 	                    notEmpty: {
+// 	                        message: 'The old salary is required and cannot be empty'
+// 	                    },
+// 	                    digits: {
+// 	                    	message: 'The old salary is number'
+// 	                    },
+// 	                }
+// 	            },
+	            certificationFrom: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The certification from is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            description: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The description is required and cannot be empty'
+	                    }
+	                }
+	            },
+// 	            reasonOfAdjustment: {
+// 	                validators: {
+// 	                    notEmpty: {
+// 	                        message: 'The reason of adjustment is required and cannot be empty'
+// 	                    }
+// 	                }
+// 	            },
+	            /* adjustmentTime: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The adjustment time is required and cannot be empty'
+	                    },
+	                    digits: {
+	                    	message: 'The adjustment time is number'
+	                    },
+	                }
+	            } */
+	        }
+	    });
+		
 		$('#tbResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,
@@ -279,12 +346,23 @@
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				if(certificationid != null){
-					updateCertification(button, certificationid);
+					$('#addForm').bootstrapValidator();
+    				$('#addForm').data('bootstrapValidator').validate();
+    				if($('#addForm').data('bootstrapValidator').isValid()){
+						updateCertification(button, certificationid);
+    				}
 				}else{
-					addCertification();
-					
+					$('#addForm').bootstrapValidator();
+    				$('#addForm').data('bootstrapValidator').validate();
+    				if($('#addForm').data('bootstrapValidator').isValid()){
+						addCertification();
+    				}
 				 }
 				
+			});
+			
+			$(this).find(".btnClose").off("click").on("click",function() {
+				$('#addForm').bootstrapValidator('resetForm', true);
 			});
 			
 		});
@@ -327,6 +405,8 @@
 				dataType: "json",
 				success : function(data) {
 					
+					$('#addForm').bootstrapValidator('resetForm', true);
+
 //	 				alert(JSON.stringify(data));
 						
 // 					dt.fnClearTable();
@@ -380,7 +460,8 @@
 				dataType: "json",
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
-					
+					$('#addForm').bootstrapValidator('resetForm', true);
+
 // 					var tr = button.closest("tr")
 					
 // 					dt.fnUpdate(data.year,tr,0);
@@ -480,7 +561,6 @@
 					dt.fnAddData([data[i].year,
 					              data[i].name,
 					              data[i].certificationFrom, 
-					              data[i].description, 
 						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			

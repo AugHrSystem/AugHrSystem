@@ -33,7 +33,7 @@ public class ExperienceController {
 	@Autowired private ExperienceService experienceService;
 	@Autowired private ExperienceDtoService experienceDtoService;
 	
-	@RequestMapping(value = "/experience", method =  RequestMethod.GET)
+	@RequestMapping(value = "/experience/{id}", method =  RequestMethod.GET)
     public String init(ModelMap model, 
 			@PathVariable Integer id, 
 			@ModelAttribute ExperienceDto experienceDto) {		

@@ -153,6 +153,7 @@
 			
 		});
 		
+		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
 	        message: 'This value is not valid',
@@ -180,16 +181,16 @@
 	                    },
 	                }
 	            },
-	            oldSalary: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'The old salary is required and cannot be empty'
-	                    },
-	                    digits: {
-	                    	message: 'The old salary is number'
-	                    },
-	                }
-	            },
+// 	            oldSalary: {
+// 	                validators: {
+// 	                    notEmpty: {
+// 	                        message: 'The old salary is required and cannot be empty'
+// 	                    },
+// 	                    digits: {
+// 	                    	message: 'The old salary is number'
+// 	                    },
+// 	                }
+// 	            },
 	            dateOfAdjustment: {
 	                validators: {
 	                    notEmpty: {
@@ -200,13 +201,13 @@
 	                    }
 	                }
 	            },
-	            reasonOfAdjustment: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'The reason of adjustment is required and cannot be empty'
-	                    }
-	                }
-	            },
+// 	            reasonOfAdjustment: {
+// 	                validators: {
+// 	                    notEmpty: {
+// 	                        message: 'The reason of adjustment is required and cannot be empty'
+// 	                    }
+// 	                }
+// 	            },
 	            /* adjustmentTime: {
 	                validators: {
 	                    notEmpty: {
@@ -251,10 +252,17 @@
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				if(historyid != null){
-					updateHistory(button, historyid);
+					$('#addForm').bootstrapValidator();
+    				$('#addForm').data('bootstrapValidator').validate();
+    				if($('#addForm').data('bootstrapValidator').isValid()){
+						updateHistory(button, historyid);
+    				}
 				}else{
-					addHistory();
-					
+					$('#addForm').bootstrapValidator();
+    				$('#addForm').data('bootstrapValidator').validate();
+    				if($('#addForm').data('bootstrapValidator').isValid()){
+						addHistory();
+    				}
 				 }
 				
 			});
@@ -333,13 +341,12 @@
 // 					]);
 					
 					$('#addModal').modal('toggle');
-					$('.modal-backdrop').remove();
 					listAll();
 					
 				},
 				error : function() {
-// 					alert("ERROR");
-					$('#addForm').bootstrapValidator('validate');
+					alert("ERROR");
+// 					$('#addForm').bootstrapValidator('validate');
 				}
 			});
 		}
@@ -382,11 +389,12 @@
 // 					dt.fnUpdate(data.time, tr ,3); */
 					
 					$('#addModal').modal('toggle');
-					$('.modal-backdrop').remove();
 					listAll();
 				},
 				error : function() {
 					alert("ERROR");
+// 					$('#addForm').bootstrapValidator('validate');
+
 				}
 			});
 		}

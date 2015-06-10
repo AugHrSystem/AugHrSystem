@@ -101,13 +101,19 @@
 	  <div class="form-group col-md-6">
 	    <label>Degree Type :</label>
 	    
-		  <form:select path="masdegreetype" class="form-control"
+		  <%-- <form:select path="masdegreetype" class="form-control"
 			id="masdegreetype">
 			<form:option value="-1" label="---Select Degree---" />
 			<c:forEach var="obj" items="${ masdegreetypeList }">
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>
-		</form:select>
+		</form:select> --%>
+		<form:select  id="masdegreetype" path="masdegreetype" cssClass="form-control">
+<%-- 		<form:option value="-1" label="--- Select  Degreetype ---"/> --%>
+		<option value="">--- Select  Degreetype ---</option>
+	    <form:options items="${masdegreetypeList}" itemValue="id" itemLabel="name"/>
+	    </form:select>
+	    
 	  </div>
 
 	  <div class="form-group col-md-6">
@@ -123,7 +129,7 @@
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
       	<button type="button" class="btn btn-info btnSave">Save</button>
       </div>
       
@@ -170,6 +176,88 @@
 
 		$("#addBtnEdu").on("click",function(){clearModal();});
 		
+		$('#addForm').bootstrapValidator({
+//	        live: 'disabled',
+	        message: 'This value is not valid',
+	        container: 'tooltip',
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	startDate: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The start date is required and cannot be empty'
+	                    },
+	                    date: {
+	                        format: 'DD-MM-YYYY'
+	                    }
+	                }
+	            },
+	            graduatedDate: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The finish date is required and cannot be empty'
+	                    },
+	                    date: {
+	                        format: 'DD-MM-YYYY'
+	                    }
+	                }
+	            },
+	            university: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The university is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            faculty: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The faculty is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            major: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The major is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            masdegreetype: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The degree type is required and cannot be empty'
+	                    }
+	                }
+	            },
+	            /* adjustmentTime: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The adjustment time is required and cannot be empty'
+	                    },
+	                    digits: {
+	                    	message: 'The adjustment time is number'
+	                    },
+	                }
+	            } */
+	        }
+	    });
+		
+// 		$('#startDate')
+//         .on('dp.change dp.show', function(e) {
+//             // Validate the date when user change it
+//             $('#addForm')
+//                 // Get the bootstrapValidator instance
+//                 .data('bootstrapValidator')
+//                 // Mark the field as not validated, so it'll be re-validated when the user change date
+//                 .updateStatus('datetimepickerStart', 'NOT_VALIDATED', null)
+//                 // Validate the field
+//                 .validateField('startDate');
+//         });
 		$('#datetimepickerStart').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
@@ -208,12 +296,23 @@
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				if(educationid != null){
-					updateEducation(button, educationid);
+					$('#addForm').bootstrapValidator();
+    				$('#addForm').data('bootstrapValidator').validate();
+    				if($('#addForm').data('bootstrapValidator').isValid()){
+						updateEducation(button, educationid);
+    				}
 				}else{
-					addEducation();
-					
+					$('#addForm').bootstrapValidator();
+    				$('#addForm').data('bootstrapValidator').validate();
+    				if($('#addForm').data('bootstrapValidator').isValid()){
+						addEducation();
+    				}
 				 }
 				
+			});
+			
+			$(this).find(".btnClose").off("click").on("click",function() {
+				$('#addForm').bootstrapValidator('resetForm', true);
 			});
 			
 		});
@@ -237,7 +336,7 @@
 			$("#gpa").val(""),
 			$("#faculty").val(""),
 			$("#major").val(""),
-			$("#masdegreetype").val("-1");
+			$("#masdegreetype").val("");
 			$("#certificate").val("");
 			$("#description").val("");
 			$("#startDate").val("");
@@ -268,6 +367,8 @@
 				dataType: "json",
 				success : function(data) {
 					
+					$('#addForm').bootstrapValidator('resetForm', true);
+
 //	 				alert(JSON.stringify(data));
 						
 // 					dt.fnClearTable();
@@ -298,6 +399,8 @@
 				},
 				error : function() {
 					alert("ERROR");
+// 					$('#addForm').bootstrapValidator('validate');
+
 				}
 			});
 		}
@@ -327,7 +430,8 @@
 				dataType: "json",
 				success : function(data) {
 //	 					alert(JSON.stringify(data));
-					
+					$('#addForm').bootstrapValidator('resetForm', true);
+
 					/* var tr = button.closest("tr")
 					
 					dt.fnUpdate(data.university, tr ,0);
@@ -345,6 +449,8 @@
 				},
 				error : function() {
 					alert("ERROR");
+// 					$('#addForm').bootstrapValidator('validate');
+
 				}
 			});
 		}
