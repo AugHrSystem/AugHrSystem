@@ -833,39 +833,6 @@
 
 
 	
-	
-	
-		 <div class="tab-pane" id="card">
-		<iframe src="${pageContext.request.contextPath}/card"
-			style="width: 100%; height: 600px;" marginwidth="0"marginheight="0" frameborder="0" 
-			vspace="0" hspace="0" scrolling="no"></iframe>
-		</div>
-
-	       
-	       
-	       <div class="tab-pane" id="health">
-	      	    <iframe src="${pageContext.request.contextPath}/health" style="width: 100%; height: 600px; "
-		            marginwidth="0" marginheight="0" frameborder="0"
-		            vspace="0" hspace="0">
-	      		</iframe>
-    	   </div>
-           
-
- </div>
-            
-            
-     <!-- Modal -->
-<div class="modal fade" id="reportModal" tabindex="-1">
-	<div class="modal-dialog">
-		<div class="modal-content"></div>
-	</div>
-</div>
-</div>    
-            
-
-	      
-            
-  
 
 <!---------------------------------------------------------- Start JQuery ----------------------------------------------------->	  
 	    
