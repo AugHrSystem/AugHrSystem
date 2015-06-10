@@ -26,6 +26,7 @@ public interface EmployeeService {
 	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto);
 	public AllEmployeeDto findEmployeeByEmployeeIdWithSetToDto(Integer id); 
 	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto);
+	public AllEmployeeDto findEmpInitEdit(Integer id);
 
 
 	

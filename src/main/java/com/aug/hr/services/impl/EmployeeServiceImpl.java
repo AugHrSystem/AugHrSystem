@@ -337,6 +337,105 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	
 	
+	public AllEmployeeDto findEmpInitEdit(Integer id) {
+		
+		Employee employee=employeeDao.find(id);		
+		AllEmployeeDto allEmpDto = new AllEmployeeDto();
+		List<AddressDto> addressDtoList = new ArrayList<AddressDto>();
+		for(Address addrerss:employee.getAddresses()){
+		//allEmpDto.setAddressList();
+			AddressDto addressDto = new AddressDto();
+			addressDto.setAddress1(addrerss.getAddress1());
+			addressDto.setAddress2(addrerss.getAddress2());
+			addressDto.setAddressTypeId(addrerss.getAddressType().getId());
+			addressDto.setId(addrerss.getId());
+			addressDto.setZipcode(addrerss.getZipcode());
+			addressDto.setMasaddresstypeName(addrerss.getAddressType().getName());
+			addressDto.setStatus("unmodified");
+			addressDtoList.add(addressDto);
+		}
+		allEmpDto.setId(employee.getId());
+		allEmpDto.setAddress(employee.getAddress());
+		allEmpDto.setEmployeeCode(employee.getEmployeeCode());
+		allEmpDto.setNameThai(employee.getNameThai());
+		allEmpDto.setSurnameThai(employee.getSurnameThai());
+		allEmpDto.setNicknameThai(employee.getNicknameThai());
+		allEmpDto.setNameEng(employee.getNameEng());
+		
+		allEmpDto.setSurnameEng(employee.getSurnameEng());
+		allEmpDto.setNicknameEng(employee.getNicknameEng());
+		allEmpDto.setEmail(employee.getEmail());
+		allEmpDto.setTelHome(employee.getTelHome());
+		allEmpDto.setTelMobile(employee.getTelMobile());
+		allEmpDto.setTelFax(employee.getTelFax());
+		
+		allEmpDto.setCongenitalDisease(employee.getCongenitalDisease());
+		allEmpDto.setHospital(employee.getHospital());
+		allEmpDto.setEmergencyContact(employee.getEmergencyContact());
+		allEmpDto.setRelationshipWithEmergencyContact(employee.getRelationshipWithEmergencyContact());
+		allEmpDto.setEmergencyContactAddress(employee.getEmergencyContactAddress());
+		allEmpDto.setEmergencyContactPhoneNumber(employee.getEmergencyContactPhoneNumber());
+		allEmpDto.setDateOfBirth(employee.getDateOfBirth());
+		allEmpDto.setPlaceOfBirth(employee.getPlaceOfBirth());
+		
+		allEmpDto.setAge(employee.getAge());
+		allEmpDto.setReligion(employee.getReligion());
+		allEmpDto.setIdCard(employee.getIdCard());
+		allEmpDto.setIssuedOffice(employee.getIssuedOffice());
+		allEmpDto.setExpiryDate(employee.getExpiryDate());
+		allEmpDto.setHeight(employee.getHeight());
+		allEmpDto.setWeigth(employee.getWeigth());
+		allEmpDto.setSex(employee.getSex());
+		
+		allEmpDto.setMaritalStatus(employee.getMaritalStatus());
+		allEmpDto.setIssuedOffice2(employee.getIssuedOffice2());
+		allEmpDto.setAddress(employee.getAddress());
+		allEmpDto.setOccupation(employee.getOccupation());
+		allEmpDto.setKnowAugNewspaper(employee.getKnowAugNewspaper());
+		allEmpDto.setDescriptionNewspaper(employee.getDescriptionNewspaper());
+		allEmpDto.setKnowAugMagazine(employee.getKnowAugMagazine());
+		allEmpDto.setDescriptionMagazine(employee.getDescriptionMagazine());
+		
+		allEmpDto.setKnowAugWebsite(employee.getKnowAugWebsite());
+		allEmpDto.setDescriptionWebsite(employee.getDescriptionWebsite());
+		allEmpDto.setKnowAugFriend(employee.getKnowAugFriend());
+		allEmpDto.setDescriptionFriend(employee.getDescriptionFriend());
+		allEmpDto.setKnowAugOther(employee.getKnowAugOther());
+		allEmpDto.setDescriptionOther(employee.getDescriptionOther());
+		allEmpDto.setKnowEmployedYes(employee.getKnowEmployedYes());
+		
+		allEmpDto.setMilitaryServiceYes(employee.getMilitaryServiceYes());
+		allEmpDto.setFromYear(employee.getFromYear());
+		allEmpDto.setToYear(employee.getToYear());
+		allEmpDto.setBranchOfService(employee.getBranchOfService());
+		allEmpDto.setServiceNo(employee.getServiceNo());
+		allEmpDto.setMilitaryServiceNo(employee.getMilitaryServiceNo());
+		allEmpDto.setReasonsNo(employee.getReasonsNo());
+		
+		allEmpDto.setDateToBeDrafted(employee.getDateToBeDrafted());
+		allEmpDto.setPreviousEmployerYes(employee.getPreviousEmployerYes());
+		allEmpDto.setPreviousEmployerNo(employee.getPreviousEmployerNo());
+		allEmpDto.setPreviousEmpreasonsNo(employee.getPreviousEmpreasonsNo());
+		allEmpDto.setImage(employee.getImage());
+		allEmpDto.setStatusemp(employee.getStatusemp());
+		
+		allEmpDto.setIsManager(employee.getIsManager());
+		if(employee.getAimempid()!=null){
+			allEmpDto.setAimempid(employee.getAimempid().getId());
+		}
+		allEmpDto.setOfficialId(employee.getOfficial().getId());
+		allEmpDto.setMasCoreSkill(employee.getMasCoreSkill().getId());
+		allEmpDto.setMasEmployment(employee.getMasEmployment().getId());
+		allEmpDto.setMasJoblevel(employee.getMasJoblevel().getId());
+		allEmpDto.setMasDivision(employee.getMasDivision().getId());
+		allEmpDto.setTechnology(employee.getTechnology().getId());
+		allEmpDto.setMasStaffType(employee.getMasStaffType().getId());
+		allEmpDto.setMasLocation(employee.getMasLocation().getCode());
+		
+		return allEmpDto;
+		
+	}
+	
 
 	@Override
 	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto) {

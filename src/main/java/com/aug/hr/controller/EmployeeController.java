@@ -13,19 +13,7 @@ import java.util.ResourceBundle;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
-
-
-
-
-
 import net.sf.jasperreports.engine.JRParameter;
-
-
-
-
-
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
@@ -253,6 +241,7 @@ public class EmployeeController {
 	
 
 
+    
 	//edit
 	@RequestMapping(value = "/employee/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Employee editEmployee(@RequestBody Employee emp) {

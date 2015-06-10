@@ -152,6 +152,7 @@ var empId;
 
 		var id = empId;
 		window.location = "${pageContext.request.contextPath}/employee/init/"+id;
+		window.location = "${pageContext.request.contextPath}/employee/"+empId;
 
 	/* 	$.ajax({
 			url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,

@@ -7,7 +7,6 @@
 package com.aug.hr.dao.impl;
 
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
@@ -519,7 +518,6 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		List<ReportStatusEmployeeDto> employee = query.list();	
 		return employee;
 	}
-
 
 	@Override
 	public List<ReportLeaveDto> reportLeave() {
