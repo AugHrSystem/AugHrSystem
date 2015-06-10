@@ -15,6 +15,8 @@ INSERT INTO MAS_TECHNOLOGY (ID,NAME,auditFlag,createdTimeStamp,createdBy,ISACTIV
 INSERT INTO MAS_TECHNOLOGY (ID,NAME,auditFlag,createdTimeStamp,createdBy,ISACTIVE,CODE) VALUES (5,'SAP','C',NOW(),0,true,1);
 
 
+
+
 --MASSPECIALTY
 insert into MAS_SPECIALTY (name,code,isactive)
 VALUES 
@@ -230,6 +232,8 @@ INSERT INTO MAS_CORESKILL (NAME,CODE,ISACTIVE) VALUES
 --('Silpakorn',4.00,'SCIENCE','IT',1,'JAVA','JAVA',2);
 
 
+
+
 --MASLOCATION
 INSERT INTO MAS_LOCATION(NAME,CODE,ISACTIVE) VALUES ('Thailand','TH',1),
  ('Singapore','SG',1),
@@ -245,6 +249,12 @@ EMERGENCY_CONTACT_PHONE_NUMBER,DATEOFBIRTH,ID_CARD,DIVISION_ID,JOBLEVEL_ID,TECHN
 ('TH2009188','Bill','Bill',0811111111,0822222222,'Mom',191,'1991-01-01',12345678,1,1,1,'bill@gmail.com',1,1),
 ('TH2009189','Parn','Parn',0800000000,0899999999,'Dad',191,'1992-02-02',12345678,2,2,1,'parn@gmail.com',2,2);
 
+
+--Site
+INSERT INTO EMP_SITE(projectName,startDate,endDate,projectOwner,projectOwnerContact,AUDITFLAG,EMPLOYEE_ID,createdTimeStamp,createdBy) VALUES 
+ ('HrSystem','1991-01-01','1991-02-02','a','tiwat','C',1,NOW(),0),
+ ('MarketingSystem','1991-01-01','1991-02-02','a','Anna','C',2,NOW(),0);
+ 
 
 
 --EXPERIENCE

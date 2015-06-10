@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+
 import net.sf.jasperreports.engine.JRParameter;
 
 import org.apache.log4j.Logger;
@@ -282,6 +283,24 @@ public class EmployeeController {
 		}
 		return empCodeDto;
 	}
+	
+	
+	
+//	
+//	@RequestMapping(value = "/employee/modalReport", method = RequestMethod.GET)
+//	public String modalReport(ModelMap map) {
+//		return "/employee/reportModalEmpStatus";
+//	}
+//	
+//	@RequestMapping(value = "/employee/searchReportEmpStatus", method = {RequestMethod.POST})
+//    public ModelAndView searchEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+//		List<Employee> employeeList = employeeService.findByCriteria(employee);
+//		Map<String,Object> parameterMap = new HashMap<String,Object>();
+//		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
+//		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+//		ModelAndView mv = reportService.getReport(employeeList, "employeeReport", employee.getReportType(),parameterMap);
+//        return mv;
+//    }
 	
 	
 	
