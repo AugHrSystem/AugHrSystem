@@ -14,8 +14,11 @@ import java.util.ResourceBundle;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+
 import net.sf.jasperreports.engine.JRParameter;
 
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -234,20 +237,28 @@ public class EmployeeController {
 
 		logger.info("infoooo: "+employee.getAddressList());
 		logger.info("file: "+employee.getFileupload().getOriginalFilename());
-		try {
-			uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+"_"+employee.getFileupload().getOriginalFilename(), employee.getFileupload());
-		} catch (RuntimeException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		employee.setImage(employee.getEmployeeCode()+"_"+employee.getFileupload().getOriginalFilename());
-		
-		employeeService.saveEmpAndWithRelateTable(employee);
-	
-		
-		
 
+		
+		try {
+			String[] result =  StringUtils.split(employee.getFileupload().getOriginalFilename(),'.');
+			logger.info("length: "+result.length);
+
+			if(result.length==2){
+			
+			logger.info("length: "+result.length);
+				
+			employee.setImage(employee.getEmployeeCode()+"."+result[1]);
+			uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+"."+result[1], employee.getFileupload());
+			employeeService.saveEmpAndWithRelateTable(employee);
+			
+			}
+			
+			} catch (RuntimeException | IOException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
 		return null;
 	}
 	
@@ -288,11 +299,11 @@ public class EmployeeController {
     }
 	
 	
-	@RequestMapping(value = "/employee/findRunningNo/{id}", method = RequestMethod.POST)
-	public @ResponseBody EmployeeCodeDto findRunningNo(@PathVariable("id") Integer id) {
+	@RequestMapping(value = "/employee/findRunningNo/{code}", method = RequestMethod.POST)
+	public @ResponseBody EmployeeCodeDto findRunningNo(@PathVariable("code") String code) {
 		EmployeeCodeDto empCodeDto = new EmployeeCodeDto();
 		try{
-		 empCodeDto = employeeCodeDtoService.serchRunningNo(id);
+		 empCodeDto = employeeCodeDtoService.serchRunningNo(code);
 		}catch(IndexOutOfBoundsException e){
 		 empCodeDto.setRungingNumber(0);
 		}

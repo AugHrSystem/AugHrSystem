@@ -176,13 +176,15 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		
 		query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 		query.setString("IMAGE", allEmployeeDto.getImage());
+		query.setString("STATUSEMP", allEmployeeDto.getStatusemp());
+		
 		query.setInteger("DIVISION_ID", allEmployeeDto.getMasDivision());
 		query.setInteger("JOBLEVEL_ID", allEmployeeDto.getMasDivision());
 		query.setInteger("EMPLOYMENT_ID", allEmployeeDto.getMasEmployment());
 		query.setInteger("TECHNOLOGY_ID", allEmployeeDto.getTechnology());
 		query.setInteger("MAS_CORE_SKILL_ID", allEmployeeDto.getMasCoreSkill());
 		query.setInteger("STAFFTYPE_ID", allEmployeeDto.getMasStaffType());
-		query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocation());
+		query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocationId());
 		query.setInteger("OFFICIAL_ID", allEmployeeDto.getOfficialId());	
 		query.executeUpdate();
 			
@@ -267,13 +269,15 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 			
 			query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 			query.setString("IMAGE", allEmployeeDto.getImage());
+			query.setString("STATUSEMP", allEmployeeDto.getStatusemp());
+			
 			query.setInteger("DIVISION_ID", allEmployeeDto.getMasDivision());
 			query.setInteger("JOBLEVEL_ID", allEmployeeDto.getMasDivision());
 			query.setInteger("EMPLOYMENT_ID", allEmployeeDto.getMasEmployment());
 			query.setInteger("TECHNOLOGY_ID", allEmployeeDto.getTechnology());
 			query.setInteger("MAS_CORE_SKILL_ID", allEmployeeDto.getMasCoreSkill());
 			query.setInteger("STAFFTYPE_ID", allEmployeeDto.getMasStaffType());
-			query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocation());
+			query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocationId());
 			query.setInteger("OFFICIAL_ID", allEmployeeDto.getOfficialId());	
 			query.setInteger("AIM_EMP_ID", allEmployeeDto.getAimempid());
 			query.executeUpdate();
@@ -365,13 +369,15 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 				
 				query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 				query.setString("IMAGE", allEmployeeDto.getImage());
+				query.setString("STATUSEMP", allEmployeeDto.getStatusemp());
+				
 				query.setInteger("DIVISION_ID", allEmployeeDto.getMasDivision());
 				query.setInteger("JOBLEVEL_ID", allEmployeeDto.getMasDivision());
 				query.setInteger("EMPLOYMENT_ID", allEmployeeDto.getMasEmployment());
 				query.setInteger("TECHNOLOGY_ID", allEmployeeDto.getTechnology());
 				query.setInteger("MAS_CORE_SKILL_ID", allEmployeeDto.getMasCoreSkill());
 				query.setInteger("STAFFTYPE_ID", allEmployeeDto.getMasStaffType());
-				query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocation());
+				query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocationId());
 				query.setInteger("OFFICIAL_ID", allEmployeeDto.getOfficialId());	
 				query.setInteger("ISMANAGER", allEmployeeDto.getIsManager());
 				query.executeUpdate();
@@ -380,7 +386,6 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 			}else if(allEmployeeDto.getAimempid()!=null){
 				
 				
-
 				Query query = getCurrentSession().getNamedQuery("insertEmployee");
 				query.setString("EMPLOYEE_CODE", allEmployeeDto.getEmployeeCode());
 				query.setString("NAME_THAI", allEmployeeDto.getNameThai());
@@ -460,13 +465,15 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 				
 				query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 				query.setString("IMAGE", allEmployeeDto.getImage());
+				query.setString("STATUSEMP", allEmployeeDto.getStatusemp());
+				
 				query.setInteger("DIVISION_ID", allEmployeeDto.getMasDivision());
 				query.setInteger("JOBLEVEL_ID", allEmployeeDto.getMasDivision());
 				query.setInteger("EMPLOYMENT_ID", allEmployeeDto.getMasEmployment());
 				query.setInteger("TECHNOLOGY_ID", allEmployeeDto.getTechnology());
 				query.setInteger("MAS_CORE_SKILL_ID", allEmployeeDto.getMasCoreSkill());
 				query.setInteger("STAFFTYPE_ID", allEmployeeDto.getMasStaffType());
-				query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocation());
+				query.setInteger("LOCATION_ID", allEmployeeDto.getMasLocationId());
 				query.setInteger("OFFICIAL_ID", allEmployeeDto.getOfficialId());	
 				query.setInteger("ISMANAGER", allEmployeeDto.getIsManager());
 				query.setInteger("AIM_EMP_ID", allEmployeeDto.getAimempid());
@@ -493,9 +500,9 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 
 
 	@Override
-	public EmployeeCodeDto serchRunningNo(Integer id) {
+	public EmployeeCodeDto serchRunningNo(String code) {
 		// TODO Auto-generated method stub
-		Query query = getCurrentSession().getNamedQuery("runningNo").setInteger("location",id);
+		Query query = getCurrentSession().getNamedQuery("runningNo").setString("location",code);
 		List<EmployeeCodeDto> employeeCode = query.list();	
 		return employeeCode.get(0);
 	}

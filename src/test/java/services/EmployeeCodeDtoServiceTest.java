@@ -21,7 +21,7 @@ public class EmployeeCodeDtoServiceTest {
 	@Test
 	public void showRunningNoTest(){
 		
-		Assert.assertNotNull(employeeCodeDtoService.serchRunningNo(1));
+		Assert.assertNotNull(employeeCodeDtoService.serchRunningNo("1"));
 		
 	}
 

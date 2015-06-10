@@ -18,6 +18,7 @@ import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasAddressType;
+import com.aug.hr.entity.MasLocation;
 import com.aug.hr.entity.MasProvince;
 import com.aug.hr.entity.Official;
 import com.aug.hr.entity.dto.AddressDto;
@@ -26,6 +27,7 @@ import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasAddressTypeService;
+import com.aug.hr.services.MasLocationService;
 import com.aug.hr.services.MasProvinceService;
 import com.aug.hr.services.OfficialService;
 
@@ -43,6 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private AddressService addressService;
 	@Autowired
 	private OfficialService afficialService;
+	@Autowired
+	private MasLocationService masLocationService;
 	
 	
 	@Override
@@ -119,11 +123,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto) {
 		// TODO Auto-generated method stub
 		
+		MasLocation location = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
 		
 		OfficialDto officialDto = new OfficialDto();
 		//Date dateOffi = new Date("12/05/2015");
 		Calendar cal = Calendar.getInstance();
-		officialDto.setStartDate(allEmployeeDto.getStartDate());
+		officialDto.setOfficialDate(allEmployeeDto.getOfficialDate());
+		officialDto.setStartWorkDate(allEmployeeDto.getStartWorkDate());
+		officialDto.setEndWorkDate(allEmployeeDto.getEndWorkDate());
 		officialDto.setPositionAppliedFor(allEmployeeDto.getPositionAppliedFor());
 		officialDto.setSalaryExpected(allEmployeeDto.getSalaryExpected());
 	
@@ -133,6 +140,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println(official1.getId());
 	
 		allEmployeeDto.setOfficialId(official1.getId());
+		allEmployeeDto.setMasLocationId(location.getId());
+		
 		
 		employeeDao.saveByNameQuery(allEmployeeDto);
 		

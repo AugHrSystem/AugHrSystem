@@ -9,6 +9,7 @@ package com.aug.hr.entity.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,43 +21,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 
-
-/*@NamedNativeQueries({
-	@NamedNativeQuery(
-            name = "employee",
-            query = "select EMPLOYEE_CODE,NAME_THAI,SURNAME_THAI,NICKNAME_THAI,NAME_ENG,SURNAME_ENG,NICKNAME_ENG,EMAIL,TEL_HOME,"
-            		+ "TEL_MOBILE,TEL_FAX,CONGENITAL_DISEASE,HOSPITAL,EMERGENCY_CONTACT,RELATIONSHIP_WITH_EMERGENCY_CONTACT,EMERGENCY_CONTACT_ADDRESS,EMERGENCY_CONTACT_PHONE_NUMBER,"
-            		+ "DATEOFBIRTH,PLACEOFBIRTH,AGE,RELIGION,ID_CARD,ISSUED_OFFICE,EXPIRY_DATE,HEIGHT,WEIGTH,SEX,MARITAL_STATUS,NUMBER_OF_CHILDREN,"
-            		+ "SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUED_OFFICE2,ADDRESS,OCCUPATION,KNOW_AUG_NEWSPAPER,DESCRIPTION_NEWSPAPER,KNOW_AUG_MAGAZINE,"
-            		+ "DESCRIPTION_MAGAZINE,KNOW_AUG_WEBSITE,DESCRIPTION_WEBSITE,KNOW_AUG_FRIEND,DESCRIPTION_FRIEND,KNOW_AUG_OTHER,"
-            		+ "DESCRIPTION_OTHER,KNOW_EMPLOYED_YES,DESCRIPTION_YES,KNOW_EMPLOYER_NO,MILITARY_SERVICE_YES,FROM_YEAR,TO_YEAR,BRANCH_OF_SERVICE,"
-            		+ "SERVICE_NO,MILITARY_SERVICE_NO,REASONS_NO,DATE_TO_BE_DRAFTED,PREVIOUS_EMPLOYER_YES,PREVIOUS_EMPLOYER_NO,PREVIOUSEMP_REASONS_NO,IMAGE"
-            		+ "from EMP_EMPLOYEE"
-            		,resultClass = AllEmployeeDto.class)
-		
-  })*/
-
-
-
 @Component
-//@Entity
 public class AllEmployeeDto {
 	
 	
-	//@Id
-	//@Column(name = "ID")
 	private Integer id;
-	
-	//@Column(name = "EMPLOYEE_CODE",nullable = false)
 	private String employeeCode;
-	
-	//@Column(name = "NAME_THAI",nullable = false)
 	private String nameThai;
-	
-	//@Column(name = "SURNAME_THAI",nullable = true)
 	private String surnameThai;
-	
-	//@Column(name = "NICKNAME_THAI",nullable = true)
 	private String nicknameThai;
 	
 	//@Column(name = "NAME_ENG",nullable = false)
@@ -184,24 +156,15 @@ public class AllEmployeeDto {
 	//@Column(name = "DESCRIPTION_OTHER",nullable = true)
 	private String descriptionOther;
 	
-	//@Column(name = "KNOW_EMPLOYED_YES",nullable = true)
 	private String knowEmployedYes;
-	
-	//@Column(name = "DESCRIPTION_YES",nullable = true)
 	private String descriptionYes;
-	
-	//@Column(name = "KNOW_EMPLOYER_NO",nullable = true)
 	private String knowEmployerNo;
-	
-	//@Column(name = "MILITARY_SERVICE_YES",nullable = true)
 	private String militaryServiceYes;
 	
-	//@Column(name = "FROM_YEAR",nullable = true)
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fromYear;
 	
-	//@Column(name = "TO_YEAR",nullable = true)
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date toYear;
@@ -235,7 +198,8 @@ public class AllEmployeeDto {
 	//@Column(name = "IMAGE",nullable = true)
 	private String image;
 	
-
+	private String statusemp;
+	
 	private MultipartFile fileupload;
 	
 
@@ -245,19 +209,40 @@ public class AllEmployeeDto {
 		return isManager;
 	}
 
+	public String getStatusemp() {
+		return statusemp;
+	}
+
+
+	public void setStatusemp(String statusemp) {
+		this.statusemp = statusemp;
+	}
+
 
 	public void setIsManager(Integer isManager) {
 		this.isManager = isManager;
 	}
 
 
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date startDate;
+	private Date officialDate;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date startWorkDate;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date endWorkDate;
 	
 	private String positionAppliedFor;
 	
 	private Double salaryExpected;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date probationDate;
 
 	//@Column(name="AIM_EMP_ID")
 	private Integer aimempid;
@@ -289,16 +274,44 @@ public class AllEmployeeDto {
     private Integer masStaffType;
 
 
-    //@Column(name= "LOCATION_ID")
-    private Integer masLocation;
+    private String masLocation;
+    private Integer masLocationId;
 
     
-    
-    
+	public Date getOfficialDate() {
+		return officialDate;
+	}
+
+
+	public void setOfficialDate(Date officialDate) {
+		this.officialDate = officialDate;
+	}
+
+
+	public Date getStartWorkDate() {
+		return startWorkDate;
+	}
+
+
+	public void setStartWorkDate(Date startWorkDate) {
+		this.startWorkDate = startWorkDate;
+	}
+
+
+	public Date getEndWorkDate() {
+		return endWorkDate;
+	}
+
+
+	public void setEndWorkDate(Date endWorkDate) {
+		this.endWorkDate = endWorkDate;
+	}
+
+
 	private List<AddressDto> addressList;
 	
 	
-	private Date probationDate;
+	//private Date probationDate;
 	
 	private Integer officialId;
 	
@@ -977,12 +990,12 @@ public class AllEmployeeDto {
 	}
 
 
-	public Integer getMasLocation() {
+	public String getMasLocation() {
 		return masLocation;
 	}
 
 
-	public void setMasLocation(Integer masLocation) {
+	public void setMasLocation(String masLocation) {
 		this.masLocation = masLocation;
 	}
 
@@ -1000,25 +1013,6 @@ public class AllEmployeeDto {
 
 
 	
-	public Date getProbationDate() {
-		return probationDate;
-	}
-
-
-	public void setProbationDate(Date probationDate) {
-		this.probationDate = probationDate;
-	}
-
-	
-	public Date getStartDate() {
-		return startDate;
-	}
-
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
 
 	public String getPositionAppliedFor() {
 		return positionAppliedFor;
@@ -1075,7 +1069,25 @@ public class AllEmployeeDto {
 	public void setEmployeeCodeDto(EmployeeCodeDto employeeCodeDto) {
 		this.employeeCodeDto = employeeCodeDto;
 	}
+	
+	
+	
 
+	public Integer getMasLocationId() {
+		return masLocationId;
+	}
+
+	public void setMasLocationId(Integer masLocationId) {
+		this.masLocationId = masLocationId;
+	}
+
+	public Date getProbationDate() {
+		return probationDate;
+	}
+
+	public void setProbationDate(Date probationDate) {
+		this.probationDate = probationDate;
+	}
 
 	@Override
 	public String toString() {
@@ -1120,17 +1132,20 @@ public class AllEmployeeDto {
 				+ ", previousEmployerYes=" + previousEmployerYes
 				+ ", previousEmployerNo=" + previousEmployerNo
 				+ ", previousEmpreasonsNo=" + previousEmpreasonsNo + ", image="
-				+ image + ", startDate=" + startDate + ", positionAppliedFor="
+				+ image + ", statusemp=" + statusemp + ", fileupload="
+				+ fileupload + ", isManager=" + isManager + ", officialDate="
+				+ officialDate + ", startWorkDate=" + startWorkDate
+				+ ", endWorkDate=" + endWorkDate + ", positionAppliedFor="
 				+ positionAppliedFor + ", salaryExpected=" + salaryExpected
-				+ ", aimempid=" + aimempid + ", masCoreSkill=" + masCoreSkill
-				+ ", masEmployment=" + masEmployment + ", masDivision="
-				+ masDivision + ", masJoblevel=" + masJoblevel
-				+ ", technology=" + technology + ", masStaffType="
-				+ masStaffType + ", masLocation=" + masLocation
-				+ ", addressList=" + addressList + ", probationDate="
-				+ probationDate + ", officialId=" + officialId + "]";
+				+ ", probationDate=" + probationDate + ", aimempid=" + aimempid
+				+ ", masCoreSkill=" + masCoreSkill + ", masEmployment="
+				+ masEmployment + ", masDivision=" + masDivision
+				+ ", masJoblevel=" + masJoblevel + ", technology=" + technology
+				+ ", masStaffType=" + masStaffType + ", masLocation="
+				+ masLocation + ", masLocationId=" + masLocationId
+				+ ", addressList=" + addressList + ", officialId=" + officialId
+				+ ", employeeCodeDto=" + employeeCodeDto + "]";
 	}
 
 
-	
 }

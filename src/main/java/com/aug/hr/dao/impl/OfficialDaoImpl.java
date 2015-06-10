@@ -51,9 +51,12 @@ public class OfficialDaoImpl extends GenericDaoImpl<Official, Integer> implement
 	public void saveOfficialByNameQuery(OfficialDto officialDto) {
 		
 		Query query = getCurrentSession().getNamedQuery("insertOfficial");
-		query.setDate("START_DATE", officialDto.getStartDate());
+		query.setDate("OFFICIAL_DATE", officialDto.getOfficialDate());
+		query.setDate("START_WORK_DATE", officialDto.getStartWorkDate());
+		query.setDate("END_WORK_DATE", officialDto.getEndWorkDate());
 		query.setString("POSITION_APPLIED_FOR", officialDto.getPositionAppliedFor());
 		query.setDouble("SALARY_EXPECTED", officialDto.getSalaryExpected());
+		query.setDate("PROBATION_DATE", officialDto.getProbationDate());
 		//query.setInteger("EMPLOYEE_ID", officialDto.getEmployeeId());
 		
 		query.executeUpdate();

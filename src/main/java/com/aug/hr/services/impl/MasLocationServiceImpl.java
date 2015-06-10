@@ -65,4 +65,10 @@ public class MasLocationServiceImpl implements MasLocationService{
 		return masLocationDao.deleteById(id);
 	}
 
+	@Override
+	public MasLocation findByLocationCode(String locationCode) {
+		
+		return masLocationDao.findByLocationCode(locationCode);
+	}
+
 }

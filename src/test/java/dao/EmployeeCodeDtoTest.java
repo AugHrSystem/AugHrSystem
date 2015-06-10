@@ -22,7 +22,7 @@ public class EmployeeCodeDtoTest {
 	@Test
 	public void showRunningNoTest(){
 		
-		Assert.assertNotNull(employeeDao.serchRunningNo(1));
+		Assert.assertNotNull(employeeDao.serchRunningNo("1"));
 		
 	}
 

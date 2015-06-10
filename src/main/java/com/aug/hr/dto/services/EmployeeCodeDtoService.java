@@ -15,8 +15,8 @@ public class EmployeeCodeDtoService {
 	private EmployeeDao employeeDao;
 	
 	
-	public EmployeeCodeDto serchRunningNo(Integer id){
-		return employeeDao.serchRunningNo(id);		
+	public EmployeeCodeDto serchRunningNo(String code){
+		return employeeDao.serchRunningNo(code);		
 	}
 
 }

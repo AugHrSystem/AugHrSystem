@@ -9,6 +9,7 @@ package com.aug.hr.dao;
 import java.util.List;
 
 
+
 import com.aug.hr.entity.MasLocation;
 
 public interface MasLocationDao extends GenericDao<MasLocation,Integer>{
@@ -17,5 +18,7 @@ public interface MasLocationDao extends GenericDao<MasLocation,Integer>{
 	public List<MasLocation> findByCriteria(MasLocation masLocation);
 
 	public MasLocation deleteById(Integer id);
+	
+	public MasLocation findByLocationCode(String locationCode);
 	
 }

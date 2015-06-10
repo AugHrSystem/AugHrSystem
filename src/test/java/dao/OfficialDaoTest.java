@@ -57,9 +57,12 @@ public class OfficialDaoTest {
 		OfficialDto offi = new OfficialDto();
 		//Date dateOffi = new Date("12/05/2015");
 		Calendar cal = Calendar.getInstance();
-		offi.setStartDate(cal.getTime());
+		offi.setOfficialDate(cal.getTime());
+		offi.setStartWorkDate(cal.getTime());
+		offi.setEndWorkDate(cal.getTime());
 		offi.setPositionAppliedFor("Developer");
 		offi.setSalaryExpected(20000.00);
+		offi.setProbationDate(cal.getTime());
 		//offi.setEmployeeId(1);
 		
 		officialDao.saveOfficialByNameQuery(offi);
@@ -74,16 +77,21 @@ public class OfficialDaoTest {
 		
 		
 		AllEmployeeDto allEmp = new AllEmployeeDto();
-		allEmp.setStartDate(Calendar.getInstance().getTime());
+		allEmp.setOfficialDate(Calendar.getInstance().getTime());
+		allEmp.setStartWorkDate(Calendar.getInstance().getTime());
+		allEmp.setEndWorkDate(Calendar.getInstance().getTime());
 		allEmp.setPositionAppliedFor("testtt");
 		allEmp.setSalaryExpected(1240D);
-		
+		allEmp.setProbationDate(Calendar.getInstance().getTime());
 		OfficialDto officialDto = new OfficialDto();
 		//Date dateOffi = new Date("12/05/2015");
 		Calendar cal = Calendar.getInstance();
-		officialDto.setStartDate(allEmp.getStartDate());
+		officialDto.setOfficialDate(allEmp.getOfficialDate());
+		officialDto.setStartWorkDate(allEmp.getStartWorkDate());
+		officialDto.setEndWorkDate(allEmp.getEndWorkDate());
 		officialDto.setPositionAppliedFor(allEmp.getPositionAppliedFor());
 		officialDto.setSalaryExpected(allEmp.getSalaryExpected());
+		officialDto.setProbationDate(allEmp.getProbationDate());
 	
 		officialDao.saveOfficialByNameQuery(officialDto);		
 		
@@ -104,7 +112,7 @@ public class OfficialDaoTest {
 		allEmp.setIdCard(111);
 		allEmp.setHeight(21);
 		allEmp.setWeigth(119);
-		allEmp.setMasLocation(1);
+		allEmp.setMasLocation("1");
 		allEmp.setMasJoblevel(1);
 		allEmp.setMasEmployment(2);
 		allEmp.setMasStaffType(1);

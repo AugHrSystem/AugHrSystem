@@ -11,9 +11,9 @@ import org.hibernate.annotations.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
             name = "runningNo",
-              query = "select LOCATION_ID,SUBSTRING(EMPLOYEE_CODE,5,3) as RUNNING_NO from EMP_EMPLOYEE "
-              		+ "where LOCATION_ID=:location "
-              		+ "order by ID desc "
+              query = "select emp.LOCATION_ID,SUBSTRING(EMPLOYEE_CODE,5,3) as RUNNING_NO from EMP_EMPLOYEE emp join MAS_LOCATION location on emp.LOCATION_ID=location.ID "
+              		+ "where location.CODE=:location "
+              		+ "order by emp.ID desc "
               		+ "LIMIT 1",
             resultClass = EmployeeCodeDto.class)
   })

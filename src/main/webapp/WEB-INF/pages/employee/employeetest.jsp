@@ -519,7 +519,7 @@
 								
 			 			<div class="col-md-3">
 									<label> Date :</label> 
-									<input type="text" class="form-control" id="date" name="date" placeholder="Enter Date">
+									<input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="Enter Date">
 								</div>
 			</div>
 			</div>
@@ -549,7 +549,7 @@
     					<label>Location :</label>
     						<f:select id="masLocation" path="masLocation"  class="form-control">
 							 	 <f:option  value="-1" label="--Select Location--" />
-  								 <f:options items="${ locationList }"  itemValue="id" itemLabel="name" />
+  								 <f:options items="${ locationList }"  itemValue="code" itemLabel="name" />
 							</f:select>
 						</div> 
 						
@@ -562,12 +562,12 @@
 				<div class="form-group">
 						<div class="col-md-3">
     						<label> Start Work Date :</label> <input type="text" class="form-control"
-									id="startWorkDate" placeholder="Enter Start Work Date">
+									id="startWorkDate" name="startWorkDate" placeholder="Enter Start Work Date">
 						</div>
 						
 						<div class="col-md-3">
     						<label> End Work Date :</label> <input type="text" class="form-control"
-									id="endWorkDate" placeholder="Enter End Work Date">
+									id="endWorkDate" name="endWorkDate" placeholder="Enter End Work Date">
 						</div>
   				</div>
 			
@@ -921,7 +921,7 @@ var getIndex = 0;
 			todayHighlight : true
 		});
     	
-    	var date6 = $( "#date" ).datepicker({
+    	var date6 = $( "#officialDate" ).datepicker({
 			clearBtn : true,
 			autoclose : true,
 			forceParse : false,
@@ -991,25 +991,56 @@ var getIndex = 0;
 // 				$('.element-to-paste-filename').attr('value',e.target.files[0].name);
 // 			});
 
+			    	
+			    	var code = $("#masLocation").val();
+			    	alert(code);
+			    	  
+			    	  
+			    	
+			    	  $.ajax({  
+				  	      type : "POST",   
+				  	      url : "<%=request.getContextPath()%>/employee/findRunningNo/"+code,   
+				  	      //data:  JSON.stringify(id),
+				  	      dataType : 'json', 
+				  	      contentType :"application/json; charset=utf-8",
+				  	     
+				  	      success : function(data) {  
+				    		
+				  	        $('#employeeCodeDto').val(data.rungingNumber);
+				  	    	alert(JSON.stringify(data));
+				  	    	
+					    	  
+					    	  var empCode = parseInt($('#employeeCodeDto').val())+1;
+					    	  //alert(value);
+					    	  alert(empCode);
+					    	  
+					    		  
+					    		  if($('#employeeCodeDto').val()==null&&$('#employeeCodeDto').val()===" "){
+					    		  
+					    		  	$('#employeeCode').val(code+'10'+'001');
+					    		  
+					    		  }else if(empCode.toString().length==1){
+					    			  $('#employeeCode').val(code+'10'+'00' +empCode.toString());
+					    			  
+					    		  }else if(empCode.toString().length==2){
+					    			 
+					    			  $('#employeeCode').val(code+'10'+'0'+empCode.toString());
+					    			  
+					    		  }else if(empCode.toString().length==3){
+					    			  $('#employeeCode').val(code+'10'+empCode.toString());
+					    			  
+					    		  }
+					    		  
+					  	    	 
+				  	     },  
+				  	      error : function(e) {  	
+				  	    	  
+				  	    	  alert(e);
+				  	    	
+				  	     }  
+				  	    }); 
+			    	  
 
-
-
-			    
-			    $('#masLocation').on('change', function() {
-			    	  var value = $("#masLocation :selected").text();
-			    	  //alert(value);
-			    	  if(value=="Thailand"){
-			    		  
-			    		  if($('employeeCodeDto').val()==null){
-			    		  
-			    		  	$('#employeeCode').val('TH10001');
-			    		  }
-			    		  
-			    	  }else if(value="Singapore"){
-			    		  
-			    	  }else if(value="Indonesia"){
-			    		  
-			    	  }
 			    });
 		
 
@@ -1639,7 +1670,7 @@ var getIndex = 0;
 				}); 
 		}
 	
-	});
+
 			
 			
   /* ---------------------------------------------------- Init Edit Function --------------------------------------------------- */				

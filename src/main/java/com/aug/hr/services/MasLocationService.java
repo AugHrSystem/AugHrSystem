@@ -20,4 +20,5 @@ public interface MasLocationService {
 	public List<MasLocation> findAll();
 	public List<MasLocation> findByCriteria(MasLocation masLocation);
 	public MasLocation deleteById(Integer id);
+	public MasLocation findByLocationCode(String locationCode);
 }
