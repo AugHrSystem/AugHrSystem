@@ -39,6 +39,10 @@
 		    			<li>
 		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpCode">Employee Code</a>
 		    			</li>
+		    			
+		    			<li>
+		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportStatusEmp">Employee Status</a>
+		    			</li>
 		    		</ul>
 		    	</li>
 			    <li>

@@ -52,7 +52,7 @@
 	$(document).ready(function() {
 		$(".submit").click(function() {
 			$("form[name='reportForm']").submit();
-			$("#reportModalStatusEmp").modal("hide");
+			$("#reportModal").modal("hide");
 		});
 	});
 </script>

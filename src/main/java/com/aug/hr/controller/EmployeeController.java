@@ -312,24 +312,24 @@ public class EmployeeController {
 	
 	
 	
-
+	
+	@RequestMapping(value = "/employee/modalReportStatusEmp", method = RequestMethod.GET)
+	public String modalReportStatusEmp(ModelMap map) {
+		return "/employee/reportModalStatusEmp";
+	}
 	
 	
-//	@RequestMapping(value = "/employee/modalReportStatusEmp", method = RequestMethod.GET)
-//	public String modalStatusReport(ModelMap map) {
-//		return "/employee/reportModalStatusEmp";
-//	}
-//	
-//	@RequestMapping(value = "/employee/searchReportEmpStatus", method = {RequestMethod.POST})
-//    public ModelAndView searchStatusEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-//		List<Employee> employeeList = employeeService.findByCriteria(employee);
-//		Map<String,Object> parameterMap = new HashMap<String,Object>();
-//		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
-//		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
-//		ModelAndView mv = reportService.getReport(employeeList, "employeeReport", employee.getReportType(),parameterMap);
-//        return mv;
-//    }
-//	
+	
+	@RequestMapping(value = "/employee/searchReportEmpStatus", method = {RequestMethod.POST})
+    public ModelAndView searchStatusEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+		List<Employee> employeeList = employeeService.findByCriteria(employee);
+		Map<String,Object> parameterMap = new HashMap<String,Object>();
+		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
+		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+		ModelAndView mv = reportService.getReport(employeeList, "employeeReport", employee.getReportType(),parameterMap);
+        return mv;
+    }
+	
 	
 
 
