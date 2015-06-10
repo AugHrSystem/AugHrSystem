@@ -35,10 +35,10 @@
  	<authentication-manager>
 	  <authentication-provider>
 		<jdbc-user-service data-source-ref="dataSource"
-		  users-by-username-query=
-		    "select  username as username,password as password,1 from emp_login where username=?"
+		   users-by-username-query=
+		    "SELECT USERNAME AS USERNAME,PASSWORD AS PASSWORD,1 FROM EMP_LOGIN WHERE USERNAME=?"
 		  authorities-by-username-query=
-		   "select emp_login.username,mas_role.type from mas_role,emp_login where (emp_login.role_id = mas_role.id) and emp_login.username=?" />
+		   "SELECT EMP_LOGIN.USERNAME,MAS_ROLE.TYPE FROM MAS_ROLE,EMP_LOGIN WHERE (EMP_LOGIN.ROLE_ID = MAS_ROLE.ID) AND EMP_LOGIN.USERNAME=?" />
 	  </authentication-provider>
 	</authentication-manager>
  
