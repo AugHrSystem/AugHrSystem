@@ -14,12 +14,144 @@ var dt;
 
 $(function(){
 	
+	$('#congenitalDisease_no').change(function() {
+		//alert("no");
+			
+		$("#congenitalDiseaseExplain").prop('readonly',true);
+		$('#congenitalDiseaseExplain2').prop('readonly',true);
+		$('#congenitalDiseaseExplain3').prop('readonly',true);
+			
+	});
+	
+	
+	$('#congenitalDisease_yes').change(function() {
+		//alert("yes");
+		if($('#congenitalDisease_yes').prop('checked')){
+			
+			 $("#congenitalDiseaseExplain").prop('readonly',false);
+			 $('#congenitalDiseaseExplain2').prop('readonly',false);
+			 $('#congenitalDiseaseExplain3').prop('readonly',false);
+				
+		} 
+			
+	});
+	
+	
+	  if($('#congenitalDisease_no').prop('checked')==true){
+			
+		    $("#congenitalDiseaseExplain").prop('readonly','readonly');
+			$('#congenitalDiseaseExplain2').prop('readonly','readonly');
+			$('#congenitalDiseaseExplain3').prop('readonly','readonly');
+			
+	   } 
+	 
+	 
+	 
+	 $('#geneticDisease_no').change(function() {
+			//alert("no");
+				
+			$("#geneticDiseaseExplain").prop('readonly','readonly');
+			$('#geneticDiseaseExplain2').prop('readonly','readonly');
+			$('#geneticDiseaseExplain3').prop('readonly','readonly');
+				
+	 });
+		
+	 
+	 
+	 $('#geneticDisease_yes').change(function() {
+			//alert("yes");
+		   if($('#geneticDisease_yes').prop('checked')){
+				
+				$("#geneticDiseaseExplain").prop('readonly',false);
+				$('#geneticDiseaseExplain2').prop('readonly',false);
+				$('#geneticDiseaseExplain3').prop('readonly',false);
+					
+			} 
+				
+	 });
+	 
+		
+	   if($('#geneticDisease_no').prop('checked')==true){
+			
+			$("#geneticDiseaseExplain").prop('readonly','readonly');
+			$('#geneticDiseaseExplain2').prop('readonly','readonly');
+			$('#geneticDiseaseExplain3').prop('readonly','readonly');
+			
+		} 
+	   
+	   
+	   
+	   
+	   
+	   $('#takeMedicine_no').change(function() {
+			//alert("no");
+			
+			$("#takeMedicineExplain").prop('readonly','readonly');
+				
+	   });
+		
+	 
+	 
+	  $('#takeMedicine_yes').change(function() {
+			//alert("yes");
+		   if($('#takeMedicine_yes').prop('checked')){
+				
+			   $("#takeMedicineExplain").prop('readonly',false);
+					
+			} 
+				
+	   });
+	 
+		
+	   if($('#takeMedicine_no').prop('checked')==true){
+			
+		   $("#takeMedicineExplain").prop('readonly','readonly');
+			
+		} 
+	 
+
+	   
+	   
+	   $('#intolerance_no').change(function() {
+			//alert("no");
+			
+			$("#intoleranceExplain").prop('readonly','readonly');
+				
+	   });
+		
+	 
+	 
+	   $('#intolerance_yes').change(function() {
+			//alert("yes");
+		   if($('#intolerance_yes').prop('checked')){
+				
+			   $("#intoleranceExplain").prop('readonly',false);
+					
+			} 
+				
+	   });
+	 
+		
+	   if($('#intolerance_no').prop('checked')==true){
+			
+		   $("#intoleranceExplain").prop('readonly','readonly');
+			
+	   } 
+	 
+	 
+	 
 	dt = $('#tableResult').dataTable();
 	 
 	 
 	doFindData(); 
 	
 	
+	
+	
+	 
+	 
+	 
+   
 	
 	
 	 $("#addModal").on("show.bs.modal", function(event){

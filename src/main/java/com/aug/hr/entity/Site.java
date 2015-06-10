@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="EMP_SITE")
 public class Site extends BaseEntity{
@@ -39,6 +41,7 @@ public class Site extends BaseEntity{
 	
 	
 	@Column(name="PROJECTNAME",nullable=false)
+	@NotEmpty
 	public String getProjectName() {
 		return projectName;
 	}
@@ -67,6 +70,7 @@ public class Site extends BaseEntity{
 	
 	
 	@Column(name="PROJECTOWNER",nullable=false)
+	@NotEmpty
 	public String getProjectOwner() {
 		return projectOwner;
 	}
@@ -76,6 +80,7 @@ public class Site extends BaseEntity{
 	
 	
 	@Column(name="PROJECTOWNERCONTACT",nullable=false)
+	@NotEmpty
 	public String getProjectOwnerContact() {
 		return projectOwnerContact;
 	}

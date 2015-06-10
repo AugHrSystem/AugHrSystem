@@ -12,12 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
-import com.aug.hr.entity.dto.Family2Dto;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
 
  @NamedNativeQueries({
 	@NamedNativeQuery(
@@ -96,6 +93,7 @@ public class Family extends BaseEntity implements Serializable {
 	
 	@Column(name="FIRSTNAME",length=50)	
 	@NotNull
+	@NotEmpty
 	public String getFirstName() {
 		return firstName;
 	}
@@ -109,6 +107,7 @@ public class Family extends BaseEntity implements Serializable {
 	
 	@Column(name="LASTNAME",length=50)
 	@NotNull
+	@NotEmpty
 	public String getLastName() {
 		return lastName;
 	}
@@ -120,6 +119,7 @@ public class Family extends BaseEntity implements Serializable {
 	
 	@Column(name="GENDER",length=10)
 	@NotNull
+	@NotEmpty
 	public String getGender() {
 		return gender;
 	}
@@ -146,6 +146,7 @@ public class Family extends BaseEntity implements Serializable {
 	
 	@Column(name="TEL",length=10)
 	@NotNull
+	@NotEmpty
 	public String getMobile() {
 		return mobile;
 	}
@@ -158,6 +159,7 @@ public class Family extends BaseEntity implements Serializable {
 
 	@Column(name="ADDRESS")
 	@NotNull
+	@NotEmpty
 	public String getAddress() {
 		return address;
 	}

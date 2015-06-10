@@ -1,7 +1,6 @@
 package com.aug.hr.entity;
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,15 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name="EMP_SKILLLANGUAGE")
+@Table(name="EMP_SKILLLANGUAGE",uniqueConstraints = {@UniqueConstraint(columnNames = {"MASSKILLLANGUAGE_ID"})})
+
 public class SkillLanguage extends BaseEntity{
 	
 	private Integer id;
@@ -86,7 +85,6 @@ public class SkillLanguage extends BaseEntity{
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="EMPLOYEE_ID",nullable=false)
-
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -100,8 +98,7 @@ public class SkillLanguage extends BaseEntity{
 
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="MASSKILLLANGUAGE_ID",nullable=false,unique=true)
-//	@JsonIgnore
+	@JoinColumn(name="MASSKILLLANGUAGE_ID",nullable=false)
 	public MasSkillLanguage getMasSkillLanguage() {
 		return masSkillLanguage;
 	}

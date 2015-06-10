@@ -10,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -38,7 +42,8 @@ public class MasSkillLanguage extends BaseEnityMasterData {
 		this.id = id;
 	}
 	
-	@Column(name="SKILL_LANGUAGE")
+	@Column(name="SKILL_LANGUAGE",nullable=false)
+	@NotEmpty
 	public String getSkillLanguageName() {
 		return skillLanguageName;
 	}

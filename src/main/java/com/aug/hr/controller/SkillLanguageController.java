@@ -4,6 +4,8 @@ package com.aug.hr.controller;
 import java.util.List;
 import java.util.Locale;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,7 +100,7 @@ public class SkillLanguageController {
 
 	@RequestMapping(value = "/skilllanguage/add", method =  {RequestMethod.POST})
 	public @ResponseBody SkillLanguageDto addData(Locale locale,
-				@ModelAttribute SkillLanguageDto skillLanguageInfo,
+				@Valid @ModelAttribute SkillLanguageDto skillLanguageInfo,
 				ModelMap model){
 		
 	    SkillLanguageDto skillLanguage = new SkillLanguageDto();

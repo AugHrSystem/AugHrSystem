@@ -6,12 +6,87 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
+
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
+
+
+<!-- jquery-->
+<%-- <script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.2.js" />"></script> 
+<script src="<c:url value="/resources/resource/bootstrap/js/jquery.validate.js" />"></script>
+<script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script> --%>
+
+<!-- validate -->
+<%-- <link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>--%>
+
+<!-- bootstrap version 3.3.4-->
+<%-- <link href="<c:url value="/resources/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resources/resource/bootstrap/js/bootstrap.js" />"></script> --%>
+
+
+<!-- datatable version 1.10.6 -->
+<%-- <script src="<c:url value="/resources/resource/datatable/js/jquery.dataTables.js" />"></script>
+<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resources/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>--%>
+
+
+<style type="text/css">
+
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}  
+
+</style>
+
 
 <script type="text/javascript">
     var dt;
     
 	$(document).ready(function(){
+		
+		
+
+		$("#saveBtn").on("click",function(){
+			
+			//$('#formAddUpdate').bootstrapValidator('resetForm', true);
+			$('#formAddUpdate').bootstrapValidator();
+			$('#formAddUpdate').data('bootstrapValidator').resetForm();
+
+
+		});
+		
+		
+		 
+		 $("#formAddUpdate").bootstrapValidator({
+			   
+			   message: 'This value is not valid',
+		        //container: 'tooltip',
+		        feedbackIcons: {
+		            valid: 'glyphicon glyphicon-ok',
+		            invalid: 'glyphicon glyphicon-remove',
+		            validating: 'glyphicon glyphicon-refresh'
+		        },
+		        fields: {
+		        
+		        	masSkillLanguage: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'Language is required and cannot be empty'
+		                    },
+		                    digits: {
+		                    	min:0,
+		                    	message: 'Language is required'
+		                    },
+		                  
+		                }
+		            },
+		        }
+		 
+    });
 	
 	
 		 dt=$('#tableResult').dataTable();
@@ -74,10 +149,18 @@
 	    		$(this).find("#saveBtn").off("click").on("click", function()
 	    		{
 	    			if(idUpdate != null){
-	    				 doEditDataPost(idUpdate);
+	    				$('#formAddUpdate').bootstrapValidator();
+	    				$('#formAddUpdate').data('bootstrapValidator').validate();
+	    				if($('#formAddUpdate').data('bootstrapValidator').isValid()){
+	    					 doEditDataPost(idUpdate);
+	    				}
 	    			}
 	    			else {
-	    				addSkilllanguage();
+	    				$('#formAddUpdate').bootstrapValidator();
+	    				$('#formAddUpdate').data('bootstrapValidator').validate();
+	    				if($('#formAddUpdate').data('bootstrapValidator').isValid()){
+	    					 addSkilllanguage();
+	    				}
 	    			}
 	    		});
 	    	  
@@ -86,9 +169,13 @@
 		
 			
 		   
-		   $('#addModal').on("hidden.bs.modal",function(event){
+		   $('#addModal').on("hide.bs.modal",function(event){
 			   
 			   $('#formAddUpdate')[0].reset();
+		       //$('#formAddUpdate').bootstrapValidator('resetForm', true);
+			   $('#formAddUpdate').bootstrapValidator();
+			   $('#formAddUpdate').data('bootstrapValidator').resetForm();
+
 		  
 		   });
 		   
@@ -214,7 +301,8 @@
 			  	           
 			  	    	  
 			  	    	   $('#addModal').modal('hide');			  	 
-			  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+			  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); 
+			  	    	   //$('#formAddUpdate').bootstrapValidator('validate');
 			  	     }  
 			  	    });   	
 		   }
@@ -443,6 +531,7 @@
 		  	      error : function(data,testStatus,jqXHR) {  	
 		  	    	  
 		  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	    	//$('#formAddUpdate').bootstrapValidator('validate');
 	
 		  	      }  
 		  	    }); 
@@ -591,7 +680,7 @@
 		    <div class="form-group form-group-sm">
 		   
 		           
-		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="" >
+		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="masSkillLanguage" >
 			           Skill language Name:
 			    </label>	 		
 			    
@@ -599,12 +688,20 @@
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 
-			     		 <f:select id="masSkillLanguage"  path="masSkillLanguage.id" cssClass="form-control required" >
-						  <f:option  value="-1" label="please select data"/>								
+			     		<%-- <f:select id="masSkillLanguage"  path="masSkillLanguage" cssClass="form-control" >
+						  <option  value="-1" label="please select data"/>								
 							<c:forEach var="obj" items="${ masSkillLanguageList }">									
 									<option value="${obj.id}" >${obj.skillLanguageName}</option> 									
 							</c:forEach>
-						</f:select> 
+						</f:select> --%> 
+						
+						
+						<f:select  id="masSkillLanguage" path="masSkillLanguage" cssClass="form-control">
+   						<f:option value="-1" label="--- Select ---"/>
+ 					    <f:options items="${masSkillLanguageList}" itemValue="id" itemLabel="skillLanguageName"/>
+ 					    </f:select>
+ 					    
+						
 								
 			     </div>	
 		   

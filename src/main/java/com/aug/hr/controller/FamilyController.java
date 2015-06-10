@@ -10,6 +10,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
@@ -21,6 +23,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -106,45 +109,7 @@ public class FamilyController {
 		    //@ModelAttribute(value = "family") Family family,
 			ModelMap model,
 			@PathVariable("id") Integer id){
-		
-		
-		//find data on database and set it to list
-		/*List<Family> familyList = familyService.findFamilyByEmployeeId(new Integer(1));
-		
-	    
-		List<FamilyDto> familyDtoList = new ArrayList<FamilyDto>();
-	
-		
-		//set data after get it from database and set it to dto 
-	
-		
-		for(int i=0;i<familyList.size();i++){
 			
-			 Family familyObj = new Family();
-			 familyObj = familyList.get(i);			
-			 FamilyDto familyDto = new FamilyDto();
-		     familyDto.setId(familyObj.getId());
-		     familyDto.setOccupation(familyObj.getOccupation());
-		     familyDto.setFirstName(familyObj.getFirstName());
-		     familyDto.setLastName(familyObj.getLastName());
-		     familyDto.setName(familyObj.getFirstName()+" "+familyObj.getLastName());
-		     familyDto.setRelationId(new Integer(familyObj.getMasRelation().getId()));
-		     familyDto.setRelation(familyObj.getMasRelation().getRelationType());
-			 familyDto.setAge(familyObj.getAge());
-			 familyDto.setGender(familyObj.getGender());
-			 familyDto.setMobile(familyObj.getMobile());		 
-			 familyDto.setAddress(familyObj.getAddress());
-			 familyDto.setPosition(familyObj.getPosition());			 
-			 familyDtoList.add(i,familyDto);
-			 
-		 }
-		 
-		//set map for return data type is json
-		Map<String,List<FamilyDto>>data = new HashMap<String,List<FamilyDto>>();
-		data.put("data", familyDtoList);
-	
-		return familyDtoList;*/
-		
 		List<Family2Dto> familyDtoTest = familyDtoServiceTest.listFamily(new Integer(id));
 		return familyDtoTest;
 		
@@ -156,63 +121,16 @@ public class FamilyController {
 	
 	@RequestMapping(value = "/family/add", method =  RequestMethod.POST)
 	public @ResponseBody Family2Dto Add(Locale locale,
-				@RequestBody Family2Dto familyDto,
+			    @RequestBody Family2Dto familyDto,
 				ModelMap model,
 				BindingResult result){
 		
-		/*logger.info("Info : " + family);
+	
+		familyService.createFindMasRelationAndEmployee(familyDto);
 		
-		MasRelationType masRelationType = new MasRelationType();
-		masRelationType = masRelationService.find(family.getMasRelation().getId());
-		family.setMasRelation(masRelationType);		
+	
 		
-		family.setAuditFlag("C");
-		family.setCreatedBy(0);
-		Calendar cal = Calendar.getInstance();
-		family.setCreatedTimeStamp(cal.getTime());
-		
-		
-		Employee employee = new Employee();
-		employee = familyService.findEmployeeById(new Integer(1));		
-		family.setEmployee(employee);
-		
-		
-		
-		familyService.create(family);
-		
-		
-		
-		logger.info("Employee info : " +employee);
-		
-		
-		List<Family> familyList = new ArrayList<Family>();
-		familyList = familyService.findAll();
-		Family familyforId = new Family();
-		
-		
-		familyforId = familyList.get(familyList.size()-1);
-		
-		
-		Family familyObj = new Family();
-		familyObj = familyService.findLastFamily(familyforId.getId());
-		FamilyDto familyDto = new FamilyDto();
-		familyDto.setId(familyObj.getId());
-		familyDto.setFirstName(familyObj.getFirstName());
-		familyDto.setLastName(familyObj.getLastName());
-		familyDto.setName(familyObj.getFirstName()+" "+familyObj.getLastName());
-		familyDto.setAge(familyObj.getAge());
-		familyDto.setGender(familyObj.getGender());
-		familyDto.setMobile(familyObj.getMobile());
-		familyDto.setOccupation(familyObj.getOccupation());	
-		familyDto.setRelationId(familyObj.getMasRelation().getId());
-    	familyDto.setRelation(familyObj.getMasRelation().getRelationType());
-		familyDto.setAddress(familyObj.getAddress());
-		familyDto.setPosition(familyObj.getPosition());
-		
-		return familyDto;*/
-		
-		
-		familyService.saveByNameQuery(familyDto);
+		//familyService.saveByNameQuery(familyDto);
 		return familyDto;
 		
 	}
@@ -222,37 +140,12 @@ public class FamilyController {
 	@RequestMapping(value = "/family/initedit", method = RequestMethod.POST)
 	public @ResponseBody Family2Dto initEdit(Locale locale,
 							@RequestBody Family2Dto family,
-							//@RequestBody String familyId,
-						    //@ModelAttribute Family2Dto family,
 							ModelMap modal) throws JSONException{
 		
-	    logger.info("edit");
-		logger.info("id json: "+family.getId());
-		
-		
-        /*JSONObject obj = new JSONObject(familyId);
-        String idStr = obj.get("id").toString();
-        int id = Integer.parseInt(idStr);*/
-	    
-        Family familyEdit = familyService.findLastFamily(new Integer(family.getId()));
-        Hibernate.initialize(familyEdit);
-       
-        logger.info("emp edit: "+familyEdit);	
-        Family2Dto familyDto = new Family2Dto();
-        familyDto.setId(familyEdit.getId());
-        familyDto.setFirstName(familyEdit.getFirstName());
-        familyDto.setLastName(familyEdit.getLastName());
-       //familyDto.setName(familyEdit.getFirstName()+" "+familyEdit.getLastName());
-        familyDto.setAge(familyEdit.getAge());
-        familyDto.setAddress(familyEdit.getAddress());
-        familyDto.setGender(familyEdit.getGender());
-        familyDto.setMobile(familyEdit.getMobile());
-        familyDto.setOccupation(familyEdit.getOccupation());
-        familyDto.setPosition(familyEdit.getPosition());
-        familyDto.setMasRelationTypeId(familyEdit.getMasRelation().getId());
-        familyDto.setMasRelationTypeName(familyEdit.getMasRelation().getRelationType());
+	    logger.info("init edit");
+	
         
-		return familyDto;
+		return familyService.findForInitEdit(family);
 		
 	}
 	
@@ -267,48 +160,8 @@ public class FamilyController {
 							ModelMap modal) throws JSONException{
 		
 	    logger.info("edit");
-		/*logger.info("info edit json: "+family);
-       
-		MasRelationType masRelationType = new MasRelationType();
-		masRelationType = masRelationService.find(family.getMasRelation().getId());
-		
-		Family familyObj = new Family();
-		familyObj = familyService.findLastFamily(family.getId());	
-		familyObj.setFirstName(family.getFirstName());
-		familyObj.setLastName(family.getLastName());
-		familyObj.setGender(family.getGender());
-		familyObj.setAge(family.getAge());
-		familyObj.setAddress(family.getAddress());
-		familyObj.setMobile(family.getMobile());
-		familyObj.setOccupation(family.getOccupation());
-		familyObj.setPosition(family.getPosition());
-		familyObj.setMasRelation(masRelationType);
-		Calendar cal = Calendar.getInstance();
-		familyObj.setUpdatedTimeStamp(cal.getTime());
-		familyObj.setAuditFlag("U");
-		
-		familyService.update(familyObj);
-		
-		
-		Family familySetDto = familyService.findLastFamily(family.getId());
-		FamilyDto familyDto = new FamilyDto();
-		familyDto.setId(familySetDto.getId());
-		familyDto.setFirstName(familySetDto.getFirstName());
-		familyDto.setLastName(familySetDto.getLastName());
-		familyDto.setName(familySetDto.getFirstName()+" "+familySetDto.getLastName());
-		familyDto.setGender(familySetDto.getGender());
-		familyDto.setAge(familySetDto.getAge());
-		familyDto.setAddress(familySetDto.getAddress());
-		familyDto.setMobile(familySetDto.getMobile());
-		familyDto.setOccupation(familySetDto.getOccupation());
-		familyDto.setPosition(familySetDto.getPosition());
-		familyDto.setRelationId(familySetDto.getMasRelation().getId());
-		familyDto.setRelation(familySetDto.getMasRelation().getRelationType());
-		
-        
-		return familyDto;*/
-		
-	    familyService.updateByNameQuery(familyDtoTest);	    
+
+	    familyService.updateFindMasRelationAndEmployee(familyDtoTest);
 	    return familyDtoTest;
 	}
 	
@@ -322,17 +175,7 @@ public class FamilyController {
 							ModelMap modal) throws JSONException{
 		
 	    logger.info("delete");
-		/*logger.info("id json delete: "+familyId);
-		
-		JSONObject obj = new JSONObject(familyId);
-	    String idStr = obj.get("Id").toString();
-	    int id = Integer.parseInt(idStr);
-	    
-        Family familyDelete = familyService.findLastFamily(new Integer(id));
-        familyService.delete(familyDelete);
-	    
-        Family family = new Family();
-	    family = familyService.find(new Integer(id));*/
+	
 	 
 	    familyService.deleteByNameQuery(familyDtoTest);
 		return familyDtoTest;		

@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <!-- Spring -->	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+
+<!-- Bootstrap -->
+<%-- <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
+
+
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
+
+
+<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script> --%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
@@ -12,8 +26,76 @@
 <script>
 
 	var dt;  	
+
 	
 	$(function(){
+		
+		
+		
+		$("#saveBtn").on("click",function(){
+			
+			$('#formAddUpdate').bootstrapValidator('resetForm', true);
+
+		});
+		
+		
+		 
+		 $("#formAddUpdate").bootstrapValidator({
+			   
+			   message: 'This value is not valid',
+		        //container: 'tooltip',
+		        feedbackIcons: {
+		            valid: 'glyphicon glyphicon-ok',
+		            invalid: 'glyphicon glyphicon-remove',
+		            validating: 'glyphicon glyphicon-refresh'
+		        },
+		        fields: {
+		        	
+		        	projectName: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'Project name is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            projectOwner: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'Project Owner is required and cannot be empty'
+		                    }
+		                }
+		            },
+		            projectOwnerContact: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'Project Owner Contact is required and cannot be empty'
+		                    },
+		                }
+		            },
+		            startDate: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'Start Date is required and cannot be empty'
+		                    },
+		                    date: {
+		                        format: 'DD-MM-YYYY'
+		                    }
+		                }
+		            },
+		            endDate: {
+		                validators: {
+		                    notEmpty: {
+		                        message: 'End date is required and cannot be empty'
+		                    },
+		                    date: {
+		                        format: 'DD-MM-YYYY'
+		                    }
+		                }
+		            },
+		           
+		        }
+		 
+    });
 	
 	
 		dt = $('#tableResult').dataTable();  
@@ -41,7 +123,7 @@
 
 		
 	
-	  $('#datetimepicker1').datetimepicker({
+	  $('#startDate').datetimepicker({
 			 
 						 viewMode: 'days',
 						 format : 'DD-MM-YYYY',
@@ -53,11 +135,11 @@
 						
 		});
 			 
-		var defaultDate = new Date($('#datetimepicker1').data("DateTimePicker").date());
+		var defaultDate = new Date($('#startDate').data("DateTimePicker").date());
 		defaultDate.setDate(defaultDate.getDate()+1);
 		
 		
-		$('#datetimepicker2').datetimepicker({			 
+		$('#endDate').datetimepicker({			 
 			 viewMode: 'days',
 			 format : 'DD-MM-YYYY',	 
 			 defaultDate: defaultDate,
@@ -69,11 +151,37 @@
 	
 		
 		
- 		$("#datetimepicker1").on("dp.change", function (e) {
+ 		$("#startDate").on("dp.change", function (e) {
+ 			
+ 			$('#formAddUpdate')
+            // Get the bootstrapValidator instance
+            .data('bootstrapValidator')
+            // Mark the field as not validated, so it'll be re-validated when the user change date
+            .updateStatus('startDate', 'NOT_VALIDATED', null)
+            // Validate the field
+            .validateField('startDate');
+ 			
+ 			
  			var tempdate = new Date(e.date);
  			tempdate.setDate(tempdate.getDate()+1);
- 			//alert(tempdate);
-            $('#datetimepicker2').data("DateTimePicker").minDate(tempdate);
+ 			//alert('temp: '+tempdate);
+            $('#endDate').data("DateTimePicker").minDate(tempdate);
+            
+            
+        }); 
+ 		
+ 		
+ 		
+		$("#endDate").on("dp.change", function (e) {
+ 			
+ 			$('#formAddUpdate')
+            // Get the bootstrapValidator instance
+            .data('bootstrapValidator')
+            // Mark the field as not validated, so it'll be re-validated when the user change date
+            .updateStatus('endDate', 'NOT_VALIDATED', null)
+            // Validate the field
+            .validateField('endDate');
+ 			
         }); 
  		 
  		 
@@ -125,7 +233,7 @@
  		
  		
  		 $("#addModal").on("show.bs.modal", function(event){
- 			 
+ 			  
  			 
 	    	    //clearModal();
 	    	    var button = $(event.relatedTarget);
@@ -139,10 +247,18 @@
 	    		$(this).find("#saveBtn").off("click").on("click", function()
 	    		{
 	    			if(idUpdate != null){
+	    				$('#formAddUpdate').bootstrapValidator();
+	    				$('#formAddUpdate').data('bootstrapValidator').validate();
+	    				if($('#formAddUpdate').data('bootstrapValidator').isValid()){
 	    				 doEdit(idUpdate);
+	    				}
 	    			}
 	    			else {
+	    				$('#formAddUpdate').bootstrapValidator();
+	    				$('#formAddUpdate').data('bootstrapValidator').validate();
+	    				if($('#formAddUpdate').data('bootstrapValidator').isValid()){
 	    				 addSite();
+	    				}
 	    			}
 	    		});
 	    	  
@@ -150,14 +266,30 @@
  		 
  		 
  		 
- 		$('#addModal').on("hidden.bs.modal",function(event){
+ 		$('#addModal').on("hide.bs.modal",function(event){
+ 			
+			   //$('#formAddUpdate').bootstrapValidator('resetForm', true);
+			   $('#formAddUpdate').bootstrapValidator();
+			   $('#formAddUpdate').data('bootstrapValidator').resetForm();
+			   $('#formAddUpdate')[0].reset();
+			   $("input[name='startDate']").val('');
+			   $("input[name='endDate']").val('');
 			   
- 		     var d = new Date();
- 		     d.setDate(d.getDate()+1);
- 			 
- 			 $('#datetimepicker1').data("DateTimePicker").date(new Date());
- 			 $('#datetimepicker2').data("DateTimePicker").date(d); 
- 		
+			  	   
+			   //alert(moment().format("DD-MM-YYYY"));
+			   
+			   $('#startDate').data("DateTimePicker").minDate(moment());
+			   $('#startDate').data("DateTimePicker").date(moment());
+			   $("input[name='startDate']").val($('#startDate').data("DateTimePicker").date().format('DD-MM-YYYY'));
+			   //$("input[name='startDate']").val(moment().format("DD-MM-YYYY"));
+			  
+ 		       var d = new Date();
+			   d.setDate(d.getDate()+1);
+			   //alert("d "+d);
+			   $('#endDate').data("DateTimePicker").minDate(d);
+           	   $('#endDate').data("DateTimePicker").date(d);
+           	   $("input[name='endDate']").val($('#endDate').data("DateTimePicker").date().format('DD-MM-YYYY'));
+
 			   		  
 	    });
  		 
@@ -176,8 +308,8 @@
 	  	      dataType : 'json', 
 	  	      data : JSON.stringify(
 	  	    		{"projectName":$('#projectName').val(),
-	    			"startDate" : $('#startDate').val(),
-  	    			"endDate": $('#endDate').val(),
+	    			"startDate" : $("input[name='startDate']").val(),
+  	    			"endDate": $("input[name='endDate']").val(),
   	    			"projectOwner":$('#projectOwner').val(),
   	    			"projectOwnerContact":$('#projectOwnerContact').val(),
   	    			"employeeId":id}
@@ -195,6 +327,7 @@
 	  	           
 	  	    	   $('#addModal').modal('hide');
 	  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+	  	    	   //$('#formAddUpdate').bootstrapValidator('validate');
 	  	     }  
 	  	    }); 
 	  	    
@@ -221,19 +354,17 @@
 	  	    	//alert(JSON.stringify(data));
 	  	    	
 	  	    	$('#projectName').val(data.projectName);
-	  	    	$('#startDate').val(data.startDate);
-	  	    	$('#endDate').val(data.endDate);
+	  	    	$("input[name='startDate']").val(data.startDate);
+	  	    	$("input[name='endDate']").val(data.endDate);
 	  	    	$('#projectOwner').val(data.projectOwner);
 	  	    	$('#projectOwnerContact').val(data.projectOwnerContact);
 	  	    	
+	  	    
 	  	    	
-	  	    	//$('#datetimepicker1').datetimepicker('minDate',date.startDate);
-	  	    	
-	  	    	$('#datetimepicker1').data("DateTimePicker").minDate(data.startDate);
-	  	    	
-	  	    	//$('#datetimepicker1').data("DateTimePicker").date('moment');
-	  	    	
-	  	    	$('#datetimepicker2').data("DateTimePicker").minDate($('#datetimepicker1').data("DateTimePicker").date());
+	  	    	$('#startDate').data("DateTimePicker").minDate(data.startDate).date(data.startDate);	  	    	
+	  	    	//$('#startDate').data("DateTimePicker").date(data.startDate);	  	    	
+	  	    	//$('#endDate').data("DateTimePicker").minDate($('#startDate').data("DateTimePicker"));
+	            $('#endDate').data("DateTimePicker").date(data.endDate);
 	  	    	
 	  	    	
 	  	    
@@ -264,8 +395,8 @@
 		  	      data : JSON.stringify({
 		  	    	  			"id":idUpdate,
 	  	    		  			"projectName":$('#projectName').val(),
-	  	    		    		"startDate":$('#startDate').val(),
-	  	    		   	 		"endDate":$('#endDate').val(),
+	  	    		    		"startDate":$("input[name='startDate']").val(),
+	  	    		   	 		"endDate":$("input[name='endDate']").val(),
 	  	    		    		"projectOwner":$('#projectOwner').val(),
 	  	    		    		"projectOwnerContact":$('#projectOwnerContact').val(),
 	  	    		    		"employeeId":id
@@ -286,8 +417,9 @@
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  
 
-		  	      $('#myModalUpdate').modal('hide');	   
-		  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	        $('#myModalUpdate').modal('hide');	   
+		  	        $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	        //$('#formAddUpdate').bootstrapValidator('validate');
 		  	     }  
 		  	    }); 	  	    
 		    }
@@ -428,8 +560,8 @@
 			     </label>	 		
 			    
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		
-				     <div  class="input-group date" id='datetimepicker1'>		     		
-				     		<f:input id="startDate" path="startDate" cssClass="form-control"/>
+				     <div  class="input-group date" id='startDate'>		     		
+				     		<f:input name="startDate" path="startDate" cssClass="form-control"/>
 				     		<span class="input-group-addon">
 	                        	<span class="glyphicon glyphicon-calendar"></span>
 	                    	</span>
@@ -447,8 +579,8 @@
 			     
 			   
 			    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		
-				     <div  class="input-group date" id='datetimepicker2'>		     		
-				     		<f:input id="endDate" path="endDate" cssClass="form-control"/>
+				     <div  class="input-group date" id='endDate'>		     		
+				     		<f:input name="endDate" path="endDate" cssClass="form-control"/>
 				     		<span class="input-group-addon">
 	                        <span class="glyphicon glyphicon-calendar"></span>
 	                    </span>
@@ -480,7 +612,7 @@
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="projectOwner" path="projectOwner" cssClass="form-control required"/>
+			     		<f:input id="projectOwner" path="projectOwner" cssClass="form-control required" placeholder="Project Owner"/>
 			     </div>
 		           
 		   </div>
@@ -495,7 +627,7 @@
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="projectOwnerContact" path="projectOwnerContact" cssClass="form-control required"/>
+			     		<f:input id="projectOwnerContact" path="projectOwnerContact" cssClass="form-control required" placeholder="Project Owner Contact"/>
 			     </div>
 		           
 		   </div>

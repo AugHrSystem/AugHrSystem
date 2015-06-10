@@ -6,8 +6,47 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
+
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<%-- 
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<!-- jquery-->
+<script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.2.js" />"></script> 
+<script src="<c:url value="/resources/resource/bootstrap/js/jquery.validate.js" />"></script>
+<script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script>
+
+<!-- validate -->
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
+
+<!-- bootstrap version 3.3.4-->
+<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resources/resource/bootstrap/js/bootstrap.js" />"></script>
+
+
+<!-- datatable version 1.10.6 -->
+<script src="<c:url value="/resources/resource/datatable/js/jquery.dataTables.js" />"></script>
+<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resources/resource/bootstrap/js/dataTables.bootstrap.js" />"></script> --%>
+
+
+ 
+<style type="text/css">
+
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}  
+
+</style>
 
 <script>
 
@@ -22,15 +61,15 @@
 		$("#saveBtn").on("click",function(){
 			
 			$('#formAdd').bootstrapValidator('resetForm', true);
-		
+
 		});
 		
 		
 		 
-		   $("#formAdd").bootstrapValidator({
+		 $("#formAdd").bootstrapValidator({
 			   
 			   message: 'This value is not valid',
-		        container: 'tooltip',
+		        //container: 'tooltip',
 		        feedbackIcons: {
 		            valid: 'glyphicon glyphicon-ok',
 		            invalid: 'glyphicon glyphicon-remove',
@@ -131,7 +170,7 @@
 		  	     
 		  	      success : function(data) {  
 		    		
-		  	      status="unmodified" 
+		  	      //status="unmodified" 
 		  	    	
 		  	    
 		  	        dt.fnClearTable();
@@ -178,12 +217,31 @@
 	    		$(this).find("#saveBtn").off("click").on("click", function()
 	    		{
 	    			if(idUpdate != null){
+	    				
+	    				$('#formAdd').bootstrapValidator();
+	    				$('#formAdd').data('bootstrapValidator').validate();
+	    				if($('#formAdd').data('bootstrapValidator').isValid()){
 	    				 doEditDataPost(idUpdate);
+	    				}
+	  		  	        
 	    			}
-	    			else {
-	    				addFamily();
+	    			else {	    				
+	    				
+	    				$('#formAdd').bootstrapValidator();
+	    				$('#formAdd').data('bootstrapValidator').validate();
+	    				if($('#formAdd').data('bootstrapValidator').isValid()){
+	    					addFamily();
+	    				}						
 	    			}
 	    		});
+	    	  
+	      });
+	      
+	      
+	      
+	      $("#addModal").on("hide.bs.modal", function(event){
+	    	  
+	    	  $('#formAdd').bootstrapValidator('resetForm', true);
 	    	  
 	      });
 	      
@@ -251,9 +309,10 @@
 		  	      error : function(data,testStatus,jqXHR) {  
 		  	           
 		  	    	  
-		  	    	   /* $('#addModal').modal('hide');
-		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); */
-		  	    	   $('#formAdd').bootstrapValidator('validate');
+		  	    	   $('#addModal').modal('hide');
+		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+			  	       //$('#formAdd').bootstrapValidator('validate');
+		  	    	  
 		  	     }  
 		  	    }); 
 		  	    
@@ -266,7 +325,8 @@
 	      
 	      
 	      function doInitEditDataPost(idUpdate) {  
-		   	   
+
+	    	  
 		  	    var Id = idUpdate;	    
 		  	    var json = {"id":idUpdate};
 		  	   
@@ -313,10 +373,11 @@
 		  	      error : function(data,testStatus,jqXHR) {  
 		  	    	  
 		  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	     }  
+		  	    	  
+		  	      }  
 		  	    }); 
-		  	   
-		    }
+   	    	  }
+	
 		      
 	      
 	      
@@ -361,20 +422,16 @@
 		  	     
 		  	      success : function(data) {  
 		  	    	
-		  	    	 
-		  	    	  
-		  	    	  //alert(JSON.stringify(data));
-		  	    	 
-		  	    	
 		  	       		 $('#addModal').modal('hide');	  
 		  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 		  	       	     doFindData();		  			 
 		  	        
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  
-
+				  
+		  	      //$('#formAdd').bootstrapValidator('validate');
 		  	      $('#myModalUpdate').modal('hide');	   
-		  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');  
 		  	     }  
 		  	    }); 	  	    
 		    }
@@ -422,8 +479,7 @@
 		  	    	 
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  	  	      
-		  	    	
-					  $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+					 $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 
 		  	     }  
 		  	    }); 
