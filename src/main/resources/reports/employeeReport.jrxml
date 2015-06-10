@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee" language="groovy" pageWidth="2100" pageHeight="612" orientation="Landscape" columnWidth="2060" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="896b97d3-bb7c-4822-aee2-a94621f66cf4">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="491"/>
+	<property name="ireport.zoom" value="0.5"/>
+	<property name="ireport.x" value="440"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[Select emp.employee_code as employeeCode,emp.dateofbirth as dateOfBirth, YEAR(CURDATE()) - YEAR(dateofbirth) -
@@ -41,11 +41,11 @@ join mas_technology on emp.technology_id = mas_technology.id;]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="0f472ce2-03c5-473e-bd74-569f37daea11" x="710" y="0" width="356" height="79"/>
+				<reportElement uuid="0f472ce2-03c5-473e-bd74-569f37daea11" x="758" y="0" width="422" height="79"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="30" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Employee Report]]></text>
+				<text><![CDATA[Employee Name Report]]></text>
 			</staticText>
 		</band>
 	</title>
