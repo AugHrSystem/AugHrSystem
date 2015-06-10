@@ -29,8 +29,17 @@
             
 		</ul> --%> 
 		    <ul class="nav navbar-nav navbar-right">
-		    	<li>
-		    		<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReport">Report</a>
+		    	<li class="dropdown">
+		    	 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<b class="caret"></b></a>
+	                <span class="dropdown-arrow"></span>
+		    		<ul class="dropdown-menu">
+		    			<li>
+		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpName">Employee Name</a>
+		    			</li>
+		    			<li>
+		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpCode">Employee Code</a>
+		    			</li>
+		    		</ul>
 		    	</li>
 			    <li>
 			     	<a class="navbar-link" href="<%=request.getContextPath()%>/logout">Logout</a>
@@ -46,4 +55,10 @@
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('body').on('hidden.bs.modal', '.modal', function () {
+			  $(this).removeData('bs.modal');
+		});
+	});
+</script>

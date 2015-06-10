@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee" language="groovy" pageWidth="2000" pageHeight="612" orientation="Landscape" columnWidth="1960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="896b97d3-bb7c-4822-aee2-a94621f66cf4">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee" language="groovy" pageWidth="2100" pageHeight="612" orientation="Landscape" columnWidth="2060" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="896b97d3-bb7c-4822-aee2-a94621f66cf4">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="1415"/>
+	<property name="ireport.x" value="491"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[Select emp.employee_code as employeeCode,emp.dateofbirth as dateOfBirth, emp.age as age, emp.name_thai as nameThai, emp.name_eng as nameEng, emp.nickname_eng as nicknameEng, emp.tel_mobile as telMobile, emp.email as email, mas_employment.name as employmentName, mas_division.name as divisionName, mas_technology.name as technologyName from emp_employee as emp
+		<![CDATA[Select emp.employee_code as employeeCode,emp.dateofbirth as dateOfBirth, YEAR(CURDATE()) - YEAR(dateofbirth) -
+IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateofbirth), '/', DAY(dateofbirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) AS year ,
+
+month(curdate()) - month(dateofbirth) -
+IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateofbirth), '/', DAY(dateofbirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as month ,
+
+day(curdate()) - day(dateofbirth) -
+ IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateofbirth), '/', DAY(dateofbirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as day, emp.name_thai as nameThai, emp.name_eng as nameEng, emp.nickname_eng as nicknameEng, emp.tel_mobile as telMobile, emp.email as email, mas_employment.name as employmentName, mas_division.name as divisionName, mas_technology.name as technologyName from emp_employee as emp
 join mas_employment on emp.employment_id = mas_employment.id
 join mas_division on emp.division_id = mas_division.id
 join mas_technology on emp.technology_id = mas_technology.id;]]>
@@ -13,9 +20,11 @@ join mas_technology on emp.technology_id = mas_technology.id;]]>
 	<field name="dateOfBirth" class="java.sql.Timestamp">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="age" class="java.lang.Integer">
+	<field name="year" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="month" class="java.lang.Integer"/>
+	<field name="day" class="java.lang.Integer"/>
 	<field name="nameThai" class="java.lang.String"/>
 	<field name="nameEng" class="java.lang.String"/>
 	<field name="nicknameEng" class="java.lang.String"/>
@@ -60,7 +69,7 @@ join mas_technology on emp.technology_id = mas_technology.id;]]>
 				<text><![CDATA[Date Start Work]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="6516608a-9197-46b9-aa5a-217c2a52fbfe" x="0" y="60" width="1960" height="1" forecolor="#666666"/>
+				<reportElement uuid="6516608a-9197-46b9-aa5a-217c2a52fbfe" x="0" y="60" width="2060" height="1" forecolor="#666666"/>
 			</line>
 			<staticText>
 				<reportElement uuid="0ea9b4c9-e5b1-451d-a948-44b10a1e2ae3" x="252" y="0" width="128" height="43"/>
@@ -182,28 +191,30 @@ join mas_technology on emp.technology_id = mas_technology.id;]]>
 				<text><![CDATA[Skill]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="bfd4f019-00a5-4a7d-891f-05821a6e6863" x="1790" y="0" width="170" height="61"/>
+				<reportElement uuid="bfd4f019-00a5-4a7d-891f-05821a6e6863" x="1903" y="0" width="157" height="61"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Certification Baht/Cert]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e7ff109a-2629-443d-bc60-6163a4a77334" x="1790" y="0" width="113" height="61"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salary]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="31" splitType="Stretch">
 			<line>
-				<reportElement uuid="68af5f06-18d3-4610-99e0-f7ab5f75cd7e" x="0" y="30" width="1960" height="1" forecolor="#FF6633"/>
+				<reportElement uuid="68af5f06-18d3-4610-99e0-f7ab5f75cd7e" x="0" y="30" width="2060" height="1" forecolor="#FF6633"/>
 			</line>
 			<textField>
 				<reportElement uuid="1531567b-0496-4ba9-aed5-cae7f882b334" x="0" y="0" width="114" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{employeeCode}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="042fdcc6-5409-44a7-bf3d-60cbb4260416" x="547" y="0" width="41" height="30"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="7c9175a7-b3ed-4ef3-a3fc-57141dac70b1" x="675" y="0" width="167" height="30"/>
@@ -249,6 +260,21 @@ join mas_technology on emp.technology_id = mas_technology.id;]]>
 				<reportElement uuid="edb2dc5f-8572-48cf-902e-28b8ee9e1b39" x="1714" y="0" width="76" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{technologyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6e6d34c4-3918-4d76-9b5e-05609d267fb6" x="547" y="0" width="41" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="86c99607-dab6-407e-bddf-deff4ce32da3" x="588" y="0" width="43" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cd982f1a-bf18-4235-b5f0-292352c04ce2" x="631" y="0" width="44" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{day}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

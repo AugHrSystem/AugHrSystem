@@ -5,9 +5,9 @@
 
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	<h4 class="modal-title">Employee Report</h4>
+	<h4 class="modal-title">Employee Name Report</h4>
 </div>
-<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReport" cssClass="form-horizontal">
+<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpName" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
@@ -25,7 +25,6 @@
         	</div>
         	<div class="col-sm-6">
         		<f:select path="sortingBy" cssClass="form-control">
-        			<f:option value="date">Date</f:option>
         			<f:option value="nameEng">Employee Name</f:option>
         		</f:select>
         	</div>

@@ -257,18 +257,33 @@ public class EmployeeController {
 		return "/employee/reportPopup";
 	}
 	
-	@RequestMapping(value = "/employee/modalReport", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee/modalReportEmpName", method = RequestMethod.GET)
 	public String modalReport(ModelMap map) {
-		return "/employee/reportModal";
+		return "/employee/reportModalEmpName";
 	}
 	
-	@RequestMapping(value = "/employee/searchReport", method = {RequestMethod.POST})
-    public ModelAndView searchEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+	@RequestMapping(value = "/employee/modalReportEmpCode", method = RequestMethod.GET)
+	public String modalReportEmpCode(ModelMap map) {
+		return "/employee/reportModalEmpCode";
+	}
+	
+	@RequestMapping(value = "/employee/searchReportEmpName", method = {RequestMethod.POST})
+    public ModelAndView searchEmployeeNameReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
 		List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
 		ModelAndView mv = reportService.getReport(employeeList, "employeeReport", employee.getReportType(),parameterMap);
+        return mv;
+    }
+	
+	@RequestMapping(value = "/employee/searchReportEmpCode", method = {RequestMethod.POST})
+    public ModelAndView searchEmployeeCodeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+		List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
+		Map<String,Object> parameterMap = new HashMap<String,Object>();
+		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
+		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+		ModelAndView mv = reportService.getReport(employeeList, "employeeCodeReport", employee.getReportType(),parameterMap);
         return mv;
     }
 	

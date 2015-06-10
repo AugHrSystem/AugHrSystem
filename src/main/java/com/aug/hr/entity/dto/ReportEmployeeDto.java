@@ -14,7 +14,9 @@ import javax.persistence.NamedNativeQuery;
             query = "Select emp.id, "
             		+ "emp.employee_code as employeeCode,"
             		+ "emp.dateofbirth as dateOfBirth, "
-            		+ "emp.age as age, "
+            		+ "YEAR(CURDATE()) - YEAR(dateofbirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateofbirth), '/', DAY(dateofbirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as year, "
+            		+ "MONTH(curdate()) - MONTH(dateofbirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateofbirth), '/', DAY(dateofbirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as month, "
+            		+ "DAY(curdate()) - DAY(dateofbirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateofbirth), '/', DAY(dateofbirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as day, "
             		+ "emp.name_thai as nameThai, "
             		+ "emp.name_eng as nameEng, "
             		+ "emp.nickname_eng as nicknameEng, "
@@ -47,8 +49,12 @@ public class ReportEmployeeDto {
 	private String nicknameEng;
 	@Column(name = "telMobile")
 	private Integer telMobile;
-	@Column(name = "age")
-	private Integer age;
+	@Column(name = "year")
+	private Integer year;
+	@Column(name = "month")
+	private Integer month;
+	@Column(name = "day")
+	private Integer day;
 	@Column(name = "email")
 	private String email;
 	@Column(name = "employmentName")
@@ -117,17 +123,29 @@ public class ReportEmployeeDto {
 	public void setDivisionName(String divisionName) {
 		this.divisionName = divisionName;
 	}
-	public Integer getAge() {
-		return age;
-	}
-	public void setAge(Integer age) {
-		this.age = age;
-	}
 	public String getTechnologyName() {
 		return technologyName;
 	}
 	public void setTechnologyName(String technologyName) {
 		this.technologyName = technologyName;
+	}
+	public Integer getYear() {
+		return year;
+	}
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+	public Integer getMonth() {
+		return month;
+	}
+	public void setMonth(Integer month) {
+		this.month = month;
+	}
+	public Integer getDay() {
+		return day;
+	}
+	public void setDay(Integer day) {
+		this.day = day;
 	}
 	
 	
