@@ -35,11 +35,15 @@ public class SiteController {
 	private SiteService siteService;
 	
 	
-	@RequestMapping(value = "/site", method = RequestMethod.GET)
+	@RequestMapping(value = "/site/{id}", method = RequestMethod.GET)
 	public String initSkillLanguage(Locale locale,
 			@ModelAttribute(value = "site") Site site,
-			ModelMap model){
+			ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute SiteDto siteDto){
 		
+		siteDto.setEmployeeId(id);
+		model.addAttribute("id", siteDto.getEmployeeId());
 		return "/site/site";
 	}
 

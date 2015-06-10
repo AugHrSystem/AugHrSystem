@@ -113,12 +113,13 @@ public class EmployeeController {
 	
 	
 	
-	@RequestMapping(value="/employee",method=RequestMethod.GET)
+	@RequestMapping(value="/employee/{id}",method=RequestMethod.GET)
 	//@Transactional
 	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
 						  HttpSession session,
 						  Locale locale,
-						  ModelMap model){
+						  ModelMap model,
+						  @PathVariable Integer id){
 	
 		//model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
 		//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
@@ -133,10 +134,13 @@ public class EmployeeController {
 		model.addAttribute("locationList",masLocationService.findAll());
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
 		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+		
+		allEmployeeDto.setId(id);
+		model.addAttribute("id",allEmployeeDto.getId());
 		//model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
 
 
-		 //return "/employee/employee";
+//		 return "/employee/employee";
 		return "/employee/employeetest";
 	}
 	
@@ -186,13 +190,13 @@ public class EmployeeController {
 //		return employee;
 //	}
 	
-    @Transactional
-	@RequestMapping(value = "/employee/{empId}",method =  RequestMethod.GET )
-	public String initEditEmployee(@PathVariable Integer empId, Model model) {	
-		Employee employee=employeeService.findById(empId);
-		model.addAttribute("employee", employee);
-		return "/employee/employee";
-	}
+//    @Transactional
+//	@RequestMapping(value = "/employee/{empId}",method =  RequestMethod.GET )
+//	public String initEditEmployee(@PathVariable Integer empId, Model model) {	
+//		Employee employee=employeeService.findById(empId);
+//		model.addAttribute("employee", employee);
+//		return "/employee/employee";
+//	}
 	//edit
 	@RequestMapping(value = "/employee/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Employee editEmployee(@RequestBody Employee emp) {

@@ -46,8 +46,13 @@ public class PunishController {
 	}
 	 
 
-	@RequestMapping(value = "/punish", method = {RequestMethod.GET,RequestMethod.POST})
-    public String list(HttpSession session,Locale locale, ModelMap model) {
+	@RequestMapping(value = "/punish/{id}", method = {RequestMethod.GET,RequestMethod.POST})
+    public String list(HttpSession session,Locale locale, ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute PunsihDto punsihDto) {
+		
+		punsihDto.setEmployeeId(id);
+		model.addAttribute("id", punsihDto.getEmployeeId());
 		return "/punish/punish";
 	}
 	

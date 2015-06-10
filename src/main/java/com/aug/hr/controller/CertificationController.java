@@ -28,9 +28,14 @@ public class CertificationController {
 	@Autowired
 	private CertificationService certificationService;
 	
-	@RequestMapping(value = "/certification", method = { RequestMethod.GET,
+	@RequestMapping(value = "/certification/{id}", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String init(ModelMap model) {
+	public String init(ModelMap model,
+			@PathVariable Integer id, 
+			@ModelAttribute CertificationDto certificationDto) {
+		
+		certificationDto.setEmployeeId(id);
+		model.addAttribute("id", certificationDto.getEmployeeId());
 		return "/certification/certification";
 	}
 	

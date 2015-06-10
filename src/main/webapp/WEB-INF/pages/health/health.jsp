@@ -7,7 +7,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
-
+<input id="empId" type="hidden" value="${id}">
 <script>
 
 var dt;  	
@@ -188,7 +188,8 @@ $(function(){
 	 
 	 function addHealth(){
 		 
-		    var id = getUrlParameter('Id');
+// 		    var id = getUrlParameter('Id');
+		    var id = $("#empId").val();
 		    //id=2;
 		    var congenitalDisease;
 		    var geneticDisease;
@@ -372,7 +373,7 @@ $(function(){
 	 
 	  function doEdit(idUpdate){
 		  
-		  var idemp = getUrlParameter('Id');
+		  var idemp =  $("#empId").val();
 		  //var idemp=2;
 		  var congenitalDisease;
 		  var geneticDisease;
@@ -481,10 +482,10 @@ $(function(){
 	
 	function doFindData() {  
 	   	  
-		  var id = getUrlParameter('Id');
+// 		  var id = getUrlParameter('Id');
 		  var congenitalDiseaseExplain;
 		  var geneticDiseaseExplain;
-   	     
+		  var id = $("#empId").val();
    	     
 	  	     $.ajax({  
 	  	      type : "POST",   

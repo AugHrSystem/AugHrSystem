@@ -50,8 +50,13 @@ public class RewardController {
     }	
 	
 
-	@RequestMapping(value = "/reward", method = {RequestMethod.GET,RequestMethod.POST})
-    public String list(HttpSession session,Locale locale, ModelMap model) {
+	@RequestMapping(value = "/reward/{id}", method = {RequestMethod.GET,RequestMethod.POST})
+    public String list(HttpSession session,Locale locale, ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute RewardDto rewardDto) {
+		
+		rewardDto.setEmployeeId(id);
+		model.addAttribute("id", rewardDto.getEmployeeId());
 		return "/reward/reward";
 	}
 	

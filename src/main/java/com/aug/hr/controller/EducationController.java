@@ -49,11 +49,16 @@ public class EducationController {
         binder.registerCustomEditor(Date.class, editor);
     }	
 	
-	@RequestMapping(value = "/education", method = { RequestMethod.GET,
+	@RequestMapping(value = "/education/{id}", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String init(ModelMap model) {
+	public String init(ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute EducationDto educationDto) {
 		model.addAttribute("masdegreetypeList",
 				masDegreetypeService.findAll());
+		
+		educationDto.setEmployeeId(id);
+		model.addAttribute("id", educationDto.getEmployeeId());
 		return "/education/education";
 	}
 	

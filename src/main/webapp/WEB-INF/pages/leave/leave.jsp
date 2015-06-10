@@ -7,7 +7,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
-
+<input id="empId" type="hidden" value="${id}">
 <form:form id ="listForm" method="post" commandName="leave">
 
 
@@ -381,7 +381,8 @@ $(document).ready(function() {
 		
 		
 		function addLeave(){
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url : "${pageContext.request.contextPath}/leave/add",
 				data : JSON.stringify({
@@ -467,7 +468,8 @@ $(document).ready(function() {
 		
 		function updateLeave(button,leaveid) {
 			/* alert("fn up"); */
-				var id = getUrlParameter('Id');
+// 				var id = getUrlParameter('Id');
+				var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/leave/update",
 					data : JSON.stringify({
@@ -536,7 +538,8 @@ $(document).ready(function() {
 		
 		function listAll(){
 			//var id=2;
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			//alert("id >>>>"+id);	
 			$.ajax({
 					url : "${pageContext.request.contextPath}/leave/listAll/"+id,

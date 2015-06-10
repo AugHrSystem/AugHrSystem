@@ -37,8 +37,14 @@ public class ProbationController {
 
 	@Autowired private ProbationDtoService probationDtoService;
 
-	@RequestMapping(value = "/probation", method =  RequestMethod.GET)
-    public String init(ModelMap model) {		
+	@RequestMapping(value = "/probation/{id}", method =  RequestMethod.GET)
+    public String init(ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute ProbationDto probationDto) {
+		
+		probationDto.setEmployeeId(id);
+		model.addAttribute("id", probationDto.getEmployeeId());
+		
 		return "probation/probation";
 	}
 	

@@ -7,7 +7,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
-
+<input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="card">	
 				<div class="row">
 			<h2 class="col-md-6">Card</h2>
@@ -268,7 +268,8 @@
 		}
 
 		function addcard(){
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url : "${pageContext.request.contextPath}/card/add",
 				data : JSON.stringify({
@@ -308,7 +309,8 @@
 		
 		
 		function updatecard(button,cardid) {
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url:'${pageContext.request.contextPath}/card/update',			
 				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
@@ -392,8 +394,9 @@
 		
 			function listAll(){
 				
-				var id = getUrlParameter('Id');
-				//alert("id >>>>"+id);				
+// 				var id = getUrlParameter('Id');
+				//alert("id >>>>"+id);			
+				var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/card/listAll"+id,
 					type : "POST",

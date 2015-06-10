@@ -48,6 +48,7 @@
 
 </style>
 
+<input id="empId" type="hidden" value="${id}">
 <script>
 
     var dt;
@@ -160,8 +161,8 @@
 		
 	      function doFindData() {  
 		   	   
-	    	     var id = getUrlParameter('Id');
-	    	     
+// 	    	     var id = getUrlParameter('Id');
+	    	     var id = $("#empId").val();
 		  	     $.ajax({  
 		  	      type : "POST",   
 		  	      url : "<%=request.getContextPath()%>/family/list/"+id,   
@@ -261,7 +262,8 @@
 	      function doSaveDataAjax() {  
 		   	   
 	    	    
-	    	    var id = getUrlParameter('Id');
+// 	    	    var id = getUrlParameter('Id');
+	    	    var id = $("#empId").val();
 		   	   		  		
 		  		var firstName = $('#firstName').val();
 		  		var lastName = $('#lastName').val();
@@ -383,7 +385,7 @@
 	      
 	      
 	      function doEditDataPost(idUpdate) {  
-	    	    var idEmp = getUrlParameter('Id');
+	    	    var idEmp = $("#empId").val();
 		    	var id = idUpdate;
 		  		var firstName = $('#firstName').val();
 		  		var lastName = $('#lastName').val();

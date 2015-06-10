@@ -40,8 +40,13 @@ public class CardController {
 		binder.registerCustomEditor(Date.class, editor);		
 	}
 	
-	@RequestMapping(value = "/card", method = {RequestMethod.GET,RequestMethod.POST})
-    public String list(HttpSession session,Locale locale, ModelMap model) {
+	@RequestMapping(value = "/card/{id}", method = {RequestMethod.GET,RequestMethod.POST})
+    public String list(HttpSession session,Locale locale, ModelMap model,
+    		@PathVariable Integer id, 
+			@ModelAttribute CardDto cardDto) {
+		
+		cardDto.setEmployeeId(id);
+		model.addAttribute("id", cardDto.getEmployeeId());
 		return "/card/card";
 	}
 	

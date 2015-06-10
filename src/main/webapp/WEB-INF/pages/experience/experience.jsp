@@ -8,6 +8,8 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<input id="empId" type="hidden" value="${id}">
+
 <f:form method="post" commandName="experience" class="form-horizontal" role="form">	
 		<div class="row-md-12">	
 			<h2 class="col-md-6">Experience</h2>
@@ -233,7 +235,8 @@ var dt;
     		});
     		
     		function addExperience() {
-    			var id = getUrlParameter('Id');
+//     			var id = getUrlParameter('Id');
+    			var id = $("#empId").val();
     			$.ajax({
     				url : "${pageContext.request.contextPath}/experience/add",
     				type : "POST",
@@ -309,7 +312,8 @@ var dt;
 			
     		
     		function editExperience() {
-    			var id = getUrlParameter('Id');
+//     			var id = getUrlParameter('Id');
+    			var id = $("#empId").val();
     			//alert(expId+" edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/edit",
@@ -406,8 +410,9 @@ var dt;
 			function listAll(){
 				
 				//alert("list experience");
-				var id = getUrlParameter('Id');
+// 				var id = getUrlParameter('Id');
 				//alert("id >>>>"+id);
+				var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/listAll/"+id,
 					/* data: "id="+getUrlParameter('Id'), */

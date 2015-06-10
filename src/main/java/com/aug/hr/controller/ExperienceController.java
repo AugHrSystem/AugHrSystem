@@ -34,7 +34,12 @@ public class ExperienceController {
 	@Autowired private ExperienceDtoService experienceDtoService;
 	
 	@RequestMapping(value = "/experience", method =  RequestMethod.GET)
-    public String init(ModelMap model) {		
+    public String init(ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute ExperienceDto experienceDto) {		
+		
+		experienceDto.setEmployeeId(id);
+		model.addAttribute("id", experienceDto.getEmployeeId());
 		return "experience/experience";
 	}
 	

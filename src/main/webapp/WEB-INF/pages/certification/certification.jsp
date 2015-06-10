@@ -8,6 +8,8 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<input id="empId" type="hidden" value="${id}">
+
 <form:form id ="listForm" method="post" commandName="certification">
 
 <div class="row">
@@ -309,7 +311,8 @@
 		}
 		
 		function addCertification(){
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url : "${pageContext.request.contextPath}/certification/add",
 				data : JSON.stringify({
@@ -356,7 +359,8 @@
 		}
 		
 		function updateCertification(button, certificationid){
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url : "${pageContext.request.contextPath}/certification/update",
 				data : JSON.stringify({
@@ -465,8 +469,8 @@
 		
 		function listAll(){
 			
-			var id = getUrlParameter('Id');
-			
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url : "${pageContext.request.contextPath}/certification/listAll/"+id,
 				type : "POST",

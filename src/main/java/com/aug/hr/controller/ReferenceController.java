@@ -39,8 +39,13 @@ public class ReferenceController {
 //	@Autowired
 //	private ReferenceValidator referenceValidator;
 	
-	@RequestMapping(value = "/reference", method = {RequestMethod.GET,RequestMethod.POST})
-    public String list(HttpSession session,Locale locale, ModelMap model) {
+	@RequestMapping(value = "/reference/{id}", method = {RequestMethod.GET,RequestMethod.POST})
+    public String list(HttpSession session,Locale locale, ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute ReferenceDto referenceDto) {
+		
+		referenceDto.setEmployeeId(id);
+		model.addAttribute("id", referenceDto.getEmployeeId());
 		return "/reference/reference";
 	}
 	

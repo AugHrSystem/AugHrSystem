@@ -21,7 +21,7 @@
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script> --%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
-
+<input id="empId" type="hidden" value="${id}">
 
 <script>
 
@@ -189,9 +189,9 @@
  		 
  		function doFindData() {  
 		   	   
-   	     var id = getUrlParameter('Id');
+//    	     var id = getUrlParameter('Id');
    	     
-   	     
+   	     	var id = $("#empId").val();
 	  	     $.ajax({  
 	  	      type : "POST",   
 	  	      url : "<%=request.getContextPath()%>/site/list/"+id,   
@@ -298,7 +298,8 @@
  		function addSite() {  
 		   	   
     	    
-    	    var id = getUrlParameter('Id');
+//     	    var id = getUrlParameter('Id');
+    	    var id = $("#empId").val();
     	    
 	  		
 	  	    
@@ -386,7 +387,8 @@
  		 
  		  function doEdit(idUpdate) {  
  			  
- 			   var id = getUrlParameter('Id');
+//  			   var id = getUrlParameter('Id');
+ 			  var id = $("#empId").val();
 	    	 
 		  	    $.ajax({  
 		  	      type : "POST",   

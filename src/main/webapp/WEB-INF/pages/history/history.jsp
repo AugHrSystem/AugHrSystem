@@ -8,6 +8,8 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<input id="empId" type="hidden" value="${id}">
+
 <form:form id ="listForm" method="post" commandName="history">
 
 <div class="row">
@@ -287,7 +289,8 @@
 		}
 		
 		function addHistory(){
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url : "${pageContext.request.contextPath}/history/add",
 				data : JSON.stringify({
@@ -330,6 +333,7 @@
 // 					]);
 					
 					$('#addModal').modal('toggle');
+					$('.modal-backdrop').remove();
 					listAll();
 					
 				},
@@ -341,7 +345,8 @@
 		}
 		
 		function updateHistory(button, historyid){
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url : "${pageContext.request.contextPath}/history/update",
 				data : JSON.stringify({
@@ -377,6 +382,7 @@
 // 					dt.fnUpdate(data.time, tr ,3); */
 					
 					$('#addModal').modal('toggle');
+					$('.modal-backdrop').remove();
 					listAll();
 				},
 				error : function() {
@@ -458,7 +464,8 @@
 		
 		function listAll(){
 			
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath}/history/listAll/"+id,

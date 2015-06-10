@@ -7,7 +7,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
-
+<input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="punish">	
 			<div class="row">
 			<h2 class="col-md-6">Punish</h2>
@@ -211,7 +211,8 @@
 		}
 
 		function addpunish(){
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url : "${pageContext.request.contextPath}/punish/add",
 				data : JSON.stringify({
@@ -249,7 +250,8 @@
 		
 		
 		function updatepunish(button,punishid) {
-			var id = getUrlParameter('Id');
+// 			var id = getUrlParameter('Id');
+			var id = $("#empId").val();
 			$.ajax({
 				url:'${pageContext.request.contextPath}/punish/update',			
 				data: JSON.stringify({    //แปลงจาก obj ของจาวาสคริปให้ไปเป็น string  ของเจสัน
@@ -326,8 +328,9 @@
 		
 			function listAll(){
 				
-				var id = getUrlParameter('Id');
-				//alert("id >>>>"+id);				
+// 				var id = getUrlParameter('Id');
+				//alert("id >>>>"+id);	
+				var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/punish/listAll"+id,
 					type : "POST",

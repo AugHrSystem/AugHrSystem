@@ -53,12 +53,15 @@ public class AbilityController {
 	
 	
 	
-	@RequestMapping(value="/ability",method={RequestMethod.GET,
+	@RequestMapping(value="/ability/{id}",method={RequestMethod.GET,
 			RequestMethod.POST})
-	public String listAbility(HttpSession session,Locale locale, ModelMap model){
+	public String listAbility(HttpSession session,Locale locale, ModelMap model,@PathVariable Integer id,
+			@ModelAttribute AbilityDto abilityDto){
 		model.addAttribute("masspecialtyList",
 				masSpecialtyService.findAll());
 		
+		abilityDto.setEmployeeId(id);
+		model.addAttribute("id", abilityDto.getEmployeeId());
 		return "/ability/ability";
 	}
 	

@@ -58,10 +58,12 @@ public class SkillLanguageController {
 	}
 	
 	
-	@RequestMapping(value = "/skilllanguage", method = RequestMethod.GET)
+	@RequestMapping(value = "/skilllanguage/{id}", method = RequestMethod.GET)
 	public String initSkillLanguage(Locale locale,
 			@ModelAttribute(value = "skillLanguage") SkillLanguage skillLanguage,
-			ModelMap model){
+			ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute SkillLanguageDto skillLanguageDto){
 		
 		
 		logger.info("Welcome to skill language locale: " + locale);
@@ -73,6 +75,9 @@ public class SkillLanguageController {
 		//model.addAttribute("skillLaguageList", skillLanguageList );
 		model.addAttribute("skillLaguage", skillLanguage);
 		model.addAttribute("masSkillLanguageList", masSkillLanguageList);
+		
+		skillLanguageDto.setEmployeeId(id);
+		model.addAttribute("id", skillLanguageDto.getEmployeeId());
 		
 		return "/skilllanguage/skilllanguage";
 	}

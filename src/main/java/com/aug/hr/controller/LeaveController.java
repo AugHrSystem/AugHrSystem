@@ -37,11 +37,16 @@ public class LeaveController {
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
 	
 	
-	@RequestMapping(value="/leave",method={RequestMethod.GET,
+	@RequestMapping(value="/leave/{id}",method={RequestMethod.GET,
 			RequestMethod.POST})
-	public String listleave(HttpSession session,Locale locale, ModelMap model){
+	public String listleave(HttpSession session,Locale locale, ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute LeaveDto leaveDto){
 		model.addAttribute("masleavetypeList",masLeaveTypeService.findAll());
 		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+		
+		leaveDto.setEmployeeId(id);
+		model.addAttribute("id", leaveDto.getEmployeeId());
 		return "/leave/leave";
 		
 		

@@ -37,11 +37,17 @@ public class AllowancesController {
 	@Autowired
 	private MasAllowancesService masAllowancesService;
 	
-	@RequestMapping(value = "/allowances", method = { RequestMethod.GET,
+	@RequestMapping(value = "/allowances/{id}", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String init(ModelMap model) {
+	public String init(ModelMap model,
+			@PathVariable Integer id,
+			@ModelAttribute AllowancesDto allowancesDto) {
 		model.addAttribute("masallowancesList",
 				masAllowancesService.findAll());
+		
+		allowancesDto.setEmployeeId(id);
+		model.addAttribute("id", allowancesDto.getEmployeeId());
+		
 		return "/allowances/allowances";
 	}
 	

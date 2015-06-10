@@ -34,15 +34,20 @@ public class HealthController {
 	private HealthDtoService healthDtoService;
 	
 	
-	@RequestMapping(value = "/health", method = RequestMethod.GET)
+	@RequestMapping(value = "/health/{id}", method = RequestMethod.GET)
 	public String initSkillLanguage(Locale locale,
 			@ModelAttribute(value = "health") Health health,
-			ModelMap model){
+			ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute HealthDto healthDto){
 		
 		
 		logger.info("Welcome to health locale: " + locale);
 		model.addAttribute("health", health);
 
+		healthDto.setEmployeeId(id);
+		model.addAttribute("id", healthDto.getEmployeeId());
+		
 		return "/health/health";
 	}
 	

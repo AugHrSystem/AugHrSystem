@@ -36,8 +36,8 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<!-- <label for="id"> ID :</label> -->
-									 <input id="id" name="id" disabled="true" type="hidden" class="form-control"
-									id="id" placeholder="Enter ID">
+									 <input id="id" name="id" type="text" class="form-control"
+									id="id" placeholder="Enter ID" value="${id}">
 								</div>
 							
 								<div class="col-md-6">

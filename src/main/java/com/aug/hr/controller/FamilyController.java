@@ -82,10 +82,12 @@ public class FamilyController {
 	
 	
 	
-	@RequestMapping(value = "/family", method = RequestMethod.GET)
+	@RequestMapping(value = "/family/{id}", method = RequestMethod.GET)
 	public String initEmpFamily(Locale locale,
 			@ModelAttribute(value = "family") Family family,
-			ModelMap model){
+			ModelMap model, 
+			@PathVariable Integer id, 
+			@ModelAttribute Family2Dto family2Dto){
 		
 		//init page for display page 
 		
@@ -98,6 +100,8 @@ public class FamilyController {
 		model.addAttribute("family", family);
 		model.addAttribute("masRelationTypeList", masRelationTypeList);
 		
+		family2Dto.setEmployeeId(id);
+		model.addAttribute("id", family2Dto.getEmployeeId());
 		return "/family/familychange";
 
 	}

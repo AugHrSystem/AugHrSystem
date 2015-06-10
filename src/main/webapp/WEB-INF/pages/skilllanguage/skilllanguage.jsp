@@ -43,6 +43,7 @@
 </style>
 
 
+<input id="empId" type="hidden" value="${id}">
 <script type="text/javascript">
     var dt;
     
@@ -95,8 +96,8 @@
 		 
 		   function doFindData() {  
 		   	   
-			     var id = getUrlParameter('Id');
-			  	  
+// 			     var id = getUrlParameter('Id');
+			  	  var id = $("#empId").val();
 		  	     $.ajax({  
 		  	      type : "POST",   
 		  	      url : "<%=request.getContextPath()%>/skilllanguage/list/"+id,   
@@ -282,7 +283,8 @@
 			  	    
 			  	    //var language =  "masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
 			  	     
-			  	    var id = getUrlParameter('Id');				
+// 			  	    var id = getUrlParameter('Id');	
+			  	  var id = $("#empId").val();
 			  	    var language =  "masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing+"&employeeId="+id;
 			 
 	                
@@ -508,7 +510,8 @@
 				
 				var masSkillLanguageName= $("#masSkillLanguage option:selected").text();
 		  	  
-				var id = getUrlParameter('Id');	
+// 				var id = getUrlParameter('Id');	
+				var id = $("#empId").val();
 				
 		  	    //var language =  "id="+idUpdate+"&masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
                 var language =  "id="+idUpdate+"&masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing+"&employeeId="+id;

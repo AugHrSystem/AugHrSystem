@@ -8,6 +8,7 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<input id="empId" type="hidden" value="${id}">
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
 		<div class="row-md-12">
 			<h2 class="col-md-6">Probation</h2>	
@@ -200,7 +201,8 @@ var dt;
     		
     		
     		function addProbation() {
-    			var id = getUrlParameter('Id');
+//     			var id = getUrlParameter('Id');
+    			var id = $("#empId").val();
     			$.ajax({
     				url : "${pageContext.request.contextPath}/probation/add",
     				type : "POST",
@@ -270,7 +272,8 @@ var dt;
     		
     		function editProbation() {
     			//alert(proId+" edit");
-    			var id = getUrlParameter('Id');
+//     			var id = getUrlParameter('Id');
+    			var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/edit",
 					type : "POST",
@@ -361,7 +364,8 @@ var dt;
 			function listAll(){
 				
 				//alert("list experience");
-				var id = getUrlParameter('Id');
+// 				var id = getUrlParameter('Id');
+				var id = $("#empId").val();
 				//var id = 2;
 				//alert("id >>>>"+id);
 				$.ajax({
