@@ -14,6 +14,7 @@ import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
+import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
 
 public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	
@@ -29,5 +30,6 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public Employee searhEmpIdtoAddress();
 	public EmployeeCodeDto serchRunningNo(Integer id);
 	public List<ReportEmployeeDto> reportEmployee();
+	public List<ReportStatusEmployeeDto> reportStatusEmployee();
 	
 }

@@ -1,17 +1,18 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	<h4 class="modal-title">EmployeeStatus Report</h4>
+	<h4 class="modal-title">Employee StatusReport</h4>
 </div>
 <f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpStatus" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
+        	Search
         		${ searchfor }${ entity }
         	</div>
         	<div class="col-sm-6">
@@ -32,7 +33,7 @@
         
          <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	<spring:message code="label.doctype"/>
+        	Document Type
         	</div>
         	<div class="col-sm-6">
         		<label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>
@@ -51,7 +52,7 @@
 	$(document).ready(function() {
 		$(".submit").click(function() {
 			$("form[name='reportForm']").submit();
-			$("#reportModal").modal("hide");
+			$("#reportModalStatusEmp").modal("hide");
 		});
 	});
-</script> --%>
+</script>

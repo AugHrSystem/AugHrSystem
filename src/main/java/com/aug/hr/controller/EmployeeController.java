@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-
 import net.sf.jasperreports.engine.JRParameter;
 
 import org.apache.log4j.Logger;
@@ -53,6 +52,7 @@ import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
+import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
@@ -301,14 +301,16 @@ public class EmployeeController {
 	
 	
 	
-//	
-//	@RequestMapping(value = "/employee/modalReport", method = RequestMethod.GET)
-//	public String modalReport(ModelMap map) {
-//		return "/employee/reportModalEmpStatus";
+
+	
+	
+//	@RequestMapping(value = "/employee/modalReportStatusEmp", method = RequestMethod.GET)
+//	public String modalStatusReport(ModelMap map) {
+//		return "/employee/reportModalStatusEmp";
 //	}
 //	
 //	@RequestMapping(value = "/employee/searchReportEmpStatus", method = {RequestMethod.POST})
-//    public ModelAndView searchEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+//    public ModelAndView searchStatusEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
 //		List<Employee> employeeList = employeeService.findByCriteria(employee);
 //		Map<String,Object> parameterMap = new HashMap<String,Object>();
 //		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
@@ -316,9 +318,10 @@ public class EmployeeController {
 //		ModelAndView mv = reportService.getReport(employeeList, "employeeReport", employee.getReportType(),parameterMap);
 //        return mv;
 //    }
+//	
 	
-	
-	
+
+
 	
 	@ModelAttribute("employee")
 	Employee setupForm() {

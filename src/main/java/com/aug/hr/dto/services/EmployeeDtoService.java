@@ -12,7 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
-import com.mysql.jdbc.StringUtils;
+
+
+import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
+
 
 @Service("employeeDtoService")
 @Transactional
@@ -26,6 +29,11 @@ public class EmployeeDtoService {
 	
 	public List<ReportEmployeeDto> reportEmployee(){
 		return employeeDao.reportEmployee();
+	}
+
+	
+	public List<ReportStatusEmployeeDto> reportStatusEmployee(){
+		return employeeDao.reportStatusEmployee();
 	}
 
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
@@ -25,6 +26,7 @@ import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
+import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
 import com.mysql.jdbc.StringUtils;
 
 /*@NamedNativeQueries({
@@ -506,6 +508,13 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		return employees;
 	}
 
+	
+	@Override
+	public List<ReportStatusEmployeeDto> reportStatusEmployee() {
+		Query query = getCurrentSession().getNamedQuery("reportStatusEmployee");
+		List<ReportStatusEmployeeDto> employee = query.list();	
+		return employee;
+	}
 
 	
 

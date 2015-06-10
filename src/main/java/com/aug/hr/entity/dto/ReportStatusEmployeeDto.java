@@ -23,10 +23,10 @@ import javax.persistence.NamedNativeQuery;
 						+"site.ENDDATE as endDate,"
 						+"from EMP_EMPLOYEE as emp"
 						+"join EMP_SITE as site on site.employee_ID = emp.ID",
-					resultClass = ReportEmployeeStatusDto.class)
+					resultClass = ReportStatusEmployeeDto.class)
 
 })
-public class ReportEmployeeStatusDto {
+public class ReportStatusEmployeeDto {
 	
 		@Id
 		@Column(name ="ID")
