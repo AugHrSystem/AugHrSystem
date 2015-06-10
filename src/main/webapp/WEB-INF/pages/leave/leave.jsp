@@ -175,7 +175,7 @@
 		</div>
       <div class="form-group" align="center">
         <button type="button" class="btn btn-default btnClose " data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info saveButton">Save</button>
+        <button id="saveButton" type="button" class="btn btn-info saveButton">Save</button>
       </div>
     
   
@@ -231,7 +231,7 @@ $(document).ready(function() {
 	
 	$("#saveButton").on("click",function(){
 			
-			$('#addForm').bootstrapValidator();
+			/* $('#addForm').bootstrapValidator(); */
 			$('#addForm').data('bootstrapValidator').resetForm();
 
 
@@ -351,7 +351,16 @@ $(document).ready(function() {
 		
 		
 	
-	
+	 $("#dateFrom").on("dp.change", function (e) {
+		  			
+					$('#addForm')
+		             // Get the bootstrapValidator instance
+		             .data('bootstrapValidator')
+		             // Mark the field as not validated, so it'll be re-validated when the user change date
+		            .updateStatus('dateFrom', 'NOT_VALIDATED', null)
+		             // Validate the field
+		            .validateField('dateFrom');
+	 });
 	
 	
 	dt=$("#tbResult").dataTable();

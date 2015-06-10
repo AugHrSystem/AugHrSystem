@@ -9,7 +9,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import com.aug.hr.entity.dto.LeaveDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -68,7 +68,9 @@ public class Leave extends BaseEntity {
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
 	//@JsonBackReference
 	private Employee employee;
-
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -176,6 +178,7 @@ public class Leave extends BaseEntity {
 		leave.setEndTime(leaveDto.getEndTime());
 		leave.setReason(leaveDto.getReason());
 		leave.setAim(leaveDto.getAim());
+		
 		
 		
 		MasLeaveType masleavetype=new MasLeaveType();
