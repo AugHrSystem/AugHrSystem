@@ -46,7 +46,26 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
             		+ ":PROVINCE_ID"
             		+ ")"
             	
-            		,resultClass= Address.class)
+            		,resultClass= Address.class),
+            		
+        @NamedNativeQuery(
+            name = "updateAddress",
+            query = "update EMP_ADDRESS set ADDRESS1 =:ADDRESS1,"
+            	     + "ADDRESS2 =:ADDRESS2,"
+            	     + "ZIPCODE =:ZIPCODE,"
+            	     + "EMPLOYEE_ID =:EMPLOYEE_ID,"
+            	     + "ADDRESSTYPE_ID =:ADDRESSTYPE_ID,"
+            	     + "PROVINCE_ID =:PROVINCE_ID, "
+            	     + "updatedTimeStamp = NOW(), "
+                	 + "updatedBy =:updatedBy,"
+                	 + "auditFlag ='U'"
+            	     + "where ID =:ID",
+            	     resultClass = Address.class),
+            	     
+         @NamedNativeQuery(
+             name = "deleteAddress",
+            	 query = "delete from EMP_ADDRESS where ID=:ID",
+            	 resultClass = Address.class),    	     
   })
 
 @Entity

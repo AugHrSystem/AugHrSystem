@@ -81,6 +81,27 @@ public class OfficialDaoImpl extends GenericDaoImpl<Official, Integer> implement
 		List<Official> official = query.list();
 		return official.get(0);
 	}
+
+
+
+	@Override
+	public void updateOfficialByNameQuery(OfficialDto officialDto) {
+		// TODO Auto-generated method stub
+
+		Query query = getCurrentSession().getNamedQuery("updateOfficial");
+		query.setDate("OFFICIAL_DATE", officialDto.getOfficialDate());
+		query.setDate("START_WORK_DATE", officialDto.getStartWorkDate());
+		query.setDate("END_WORK_DATE", officialDto.getEndWorkDate());
+		query.setString("POSITION_APPLIED_FOR", officialDto.getPositionAppliedFor());
+		query.setDouble("SALARY_EXPECTED", officialDto.getSalaryExpected());
+		query.setDate("PROBATION_DATE", officialDto.getProbationDate());
+		query.setInteger("updatedBy", officialDto.getEmployeeId());
+		query.setInteger("ID", officialDto.getId());
+		
+		query.executeUpdate();
+		
+		
+	}
 	
 
 

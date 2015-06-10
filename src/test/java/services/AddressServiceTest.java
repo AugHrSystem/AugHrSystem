@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.services.AddressService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -81,7 +82,7 @@ public class AddressServiceTest {
 	
 	@Test
 	public void findAddressByEmployee(){
-		List<Address> addressList = addressService.findAddressByEmployeeId(1);
+		List<AddressDto> addressList = addressService.findAddressByEmployeeId(1);
 		System.out.println(addressList.size());
 	}
 	

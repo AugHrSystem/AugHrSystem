@@ -58,7 +58,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQuery(
            name = "searchIdEmptoOfficial",
            query = "select * from EMP_OFFICIAL ORDER BY ID desc LIMIT 1;", 
-            resultClass = Official.class)
+            resultClass = Official.class),
+            
+            @NamedNativeQuery(
+                    name = "updateOfficial",
+                    query = "update EMP_OFFICIAL set OFFICIAL_DATE =:OFFICIAL_DATE,"
+                       		+ "START_WORK_DATE =:START_WORK_DATE, "
+                       		+ "END_WORK_DATE =:END_WORK_DATE, "
+                       		+ "POSITION_APPLIED_FOR =:POSITION_APPLIED_FOR, "
+                       		+ "SALARY_EXPECTED =:SALARY_EXPECTED, "
+                       		+ "PROBATION_DATE =:PROBATION_DATE, "
+                       		+ "updatedTimeStamp = NOW(), "
+                       		+ "updatedBy =:updatedBy,"
+                       		+ "auditFlag ='U' where ID =:ID", 
+                        resultClass = Official.class),
   })
 
 @Entity

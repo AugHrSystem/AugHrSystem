@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.aug.hr.dao.AddressDao;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.dto.AddressDto;
+import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.mysql.jdbc.StringUtils;
 
 @Repository
@@ -78,6 +79,27 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Integer> implements 
 		return c.list();
 	}
 	
-	
+	public void updateAddressByNameQuery(AddressDto addressDto){
+		
+		Query query = getCurrentSession().getNamedQuery("updateAddress");
+		query.setString("ADDRESS1", addressDto.getAddress1());
+		query.setString("ADDRESS2", addressDto.getAddress2());
+		query.setInteger("ZIPCODE", addressDto.getZipcode());
+		query.setInteger("EMPLOYEE_ID", addressDto.getEmployeeId());
+		query.setInteger("ADDRESSTYPE_ID", addressDto.getAddressTypeId());
+		query.setInteger("PROVINCE_ID", addressDto.getMasprovinceId());
+		query.setInteger("ID", addressDto.getId());		
+		query.setInteger("updatedBy", addressDto.getEmployeeId());
+		query.executeUpdate();
+	}
+
+	@Override
+	public void deleteAddressByNameQuery(AddressDto addressDto) {
+		// TODO Auto-generated method stub
+		Query query = getCurrentSession().getNamedQuery("deleteAddress");
+		query.setInteger("ID", addressDto.getId());
+		query.executeUpdate();
+	}
+		
 
 }

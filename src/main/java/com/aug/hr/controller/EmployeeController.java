@@ -224,6 +224,26 @@ public class EmployeeController {
 	}
 		
 		
+
+	//InitEdit
+//	@RequestMapping(value = "/employee/initEdit/{empId}", method = { RequestMethod.GET, RequestMethod.POST })
+//	@Transactional
+//	public @ResponseBody Employee initEditEmployee(@PathVariable("empId") Integer empId, Model model) {	
+//		Employee employee = employeeService.findById(empId);
+//		
+//		
+//		model.addAttribute("asdfaf",new Employee());
+//		
+//		Employee user = new Employee();
+//		
+//		user.setId(employee.getId());
+//		user.setName(employee.getName());
+//		
+//		return employee;
+//	}
+	
+
+
 	//edit
 	@RequestMapping(value = "/employee/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Employee editEmployee(@RequestBody Employee emp) {

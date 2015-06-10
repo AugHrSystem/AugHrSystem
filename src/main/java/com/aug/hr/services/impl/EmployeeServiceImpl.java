@@ -279,7 +279,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<AddressDto> addressDtoList = new ArrayList<AddressDto>();
 		
 
-	
 		allEmployeeDto.setMasLocationId(employee.getMasLocation().getId());
 		
 		
@@ -315,5 +314,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return allEmployeeDto;
 
 	}
+
 
 }

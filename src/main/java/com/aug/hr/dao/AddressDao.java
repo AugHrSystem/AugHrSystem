@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.dto.AddressDto;
+import com.aug.hr.entity.dto.AllEmployeeDto;
 
 
 
@@ -22,6 +23,9 @@ public interface AddressDao extends GenericDao<Address, Integer>{
 	public List<AddressDto> searchAddress(Integer id);
 	public void saveAddressByNameQuery(AddressDto addressDto);
 	public List<Address> findAddressByEmployeeId(Integer id);
+	public void updateAddressByNameQuery(AddressDto addressDto);
+	public void deleteAddressByNameQuery(AddressDto addressDto);
+
 	
 
 }

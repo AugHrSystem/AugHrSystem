@@ -19,5 +19,6 @@ public interface OfficialDao extends GenericDao<Official,Integer>{
 	public List<OfficialDto> searchOfficial();
 	public void saveOfficialByNameQuery(OfficialDto officialDto);
 	public Official searhEmpIdtoOfficial();
+	public void updateOfficialByNameQuery(OfficialDto officialDto);
 
 }

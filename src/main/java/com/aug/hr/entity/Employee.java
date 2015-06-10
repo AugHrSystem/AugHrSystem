@@ -717,7 +717,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
                     		+ "STAFFTYPE_ID =:STAFFTYPE_ID,"
                     		+ "LOCATION_ID =:LOCATION_ID,"
                     		+ "OFFICIAL_ID =:OFFICIAL_ID,"
-                    		+ "STATUSEMP =:STATUSEMP where ID =:EMPLOYEE_CODE ",
+                    		+ "STATUSEMP =:STATUSEMP,"
+                    		+"updatedTimeStamp = NOW(), "
+                        	+ "updatedBy =:id,"
+                        	+ "auditFlag ='U'"
+                    		+ "where ID =:id ",
                     		
                     resultClass = Employee.class)
             

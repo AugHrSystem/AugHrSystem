@@ -32,7 +32,7 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public List<ReportEmployeeDto> reportEmployee();
 	public List<ReportStatusEmployeeDto> reportStatusEmployee();
 	public EmployeeCodeDto serchRunningNo(String code);
-
 	public List<ReportLeaveDto> reportLeave();
+	public void updateByNameQuery(AllEmployeeDto allEmployeeDto);
 	
 }
