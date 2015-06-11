@@ -14,6 +14,8 @@ import java.util.List;
 
 
 
+
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
@@ -26,6 +28,7 @@ import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
+import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
 import com.mysql.jdbc.StringUtils;
 
@@ -523,6 +526,13 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		return employee;
 	}
 
+
+	@Override
+	public List<ReportLeaveDto> reportLeave() {
+		Query query = getCurrentSession().getNamedQuery("reportLeave");
+				List<ReportLeaveDto> leaves = query.list();	
+		return leaves;
+	}
 	
 
 	

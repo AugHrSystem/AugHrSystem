@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.LeaveDao;
 import com.aug.hr.entity.dto.LeaveDto;
-import com.aug.hr.entity.dto.ReportLeaveDto;
 
 
 @Service("leaveDtoService")
@@ -28,8 +27,5 @@ public class LeaveDtoService {
 		return leaveDao.searchLeave(id);
 	}
 
-	public List<ReportLeaveDto> reportLeave(){
-		return leaveDao.reportLeave();
-	}
-	
+
 }

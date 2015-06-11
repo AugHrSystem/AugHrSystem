@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.aug.hr.dao.LeaveDao;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.dto.LeaveDto;
-import com.aug.hr.entity.dto.ReportLeaveDto;
+
 import com.mysql.jdbc.StringUtils;
 
 
@@ -56,12 +56,7 @@ public class LeaveDaoImpl extends GenericDaoImpl<Leave, Integer> implements Leav
 
 	}
 
-	@Override
-	public List<ReportLeaveDto> reportLeave() {
-		Query query = getCurrentSession().getNamedQuery("reportLeave");
-				List<ReportLeaveDto> leaves = query.list();	
-		return leaves;
-	}
+
 
 	
 

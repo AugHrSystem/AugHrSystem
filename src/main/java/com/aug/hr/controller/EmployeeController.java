@@ -15,7 +15,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 
+
 import net.sf.jasperreports.engine.JRParameter;
+
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -46,6 +48,7 @@ import com.aug.hr.dto.services.EmployeeCodeDtoService;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.MasAddressType;
 import com.aug.hr.entity.MasProvince;
 import com.aug.hr.entity.Official;
@@ -55,7 +58,7 @@ import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
-import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
+import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
@@ -370,6 +373,26 @@ public class EmployeeController {
     }
 	
 	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/employee/modalReportLeave", method = RequestMethod.GET)
+	public String modalReportLeave(ModelMap map) {
+		return "/employee/reportModalEmpLeave";
+	}
+	
+	
+	@RequestMapping(value = "/employee/searchReportEmpLeave", method = {RequestMethod.POST})
+    public ModelAndView searchLeaveReport(@ModelAttribute(value="leave")  Leave leave, ModelMap map ,HttpSession session,Locale locale){
+		List<ReportLeaveDto> leaveList = employeeDtoService.reportLeave();
+		Map<String,Object> parameterMap = new HashMap<String,Object>();
+		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
+		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+		ModelAndView mv = reportService.getReport(leaveList, "leaveReport1", leave.getReportType(),parameterMap);
+        return mv;
+    }
 
 
 	

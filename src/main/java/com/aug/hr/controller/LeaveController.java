@@ -111,7 +111,7 @@ public class LeaveController {
 	
 	
 	
-	@RequestMapping(value = "/leave/modalReport", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/leave/modalReport", method = RequestMethod.GET)
 	public String modalReport(ModelMap map) {
 		return "/leave/reportModal";
 	}
@@ -124,7 +124,7 @@ public class LeaveController {
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
 		ModelAndView mv = reportService.getReport(leaveList, "leaveReport", leave.getReportType(),parameterMap);
         return mv;
-    }
+    }*/
 	
 	
 	@ModelAttribute("leave")

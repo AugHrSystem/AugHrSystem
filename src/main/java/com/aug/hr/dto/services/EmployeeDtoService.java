@@ -14,6 +14,7 @@ import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 
 
+import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
 
 
@@ -36,4 +37,8 @@ public class EmployeeDtoService {
 		return employeeDao.reportStatusEmployee();
 	}
 
+	
+	public List<ReportLeaveDto> reportLeave(){
+		return employeeDao.reportLeave();
+	}
 }

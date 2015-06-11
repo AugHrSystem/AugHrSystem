@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="leaveReport" language="groovy" pageWidth="2000" pageHeight="612" orientation="Landscape" columnWidth="1960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="896b97d3-bb7c-4822-aee2-a94621f66cf4">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="141"/>
+	<property name="ireport.x" value="1238"/>
+	<property name="ireport.y" value="240"/>
 	<queryString>
 		<![CDATA[select emp.employee_code as employeeCode,
 emp.dateofbirth as dateOfBirth,
@@ -16,19 +16,62 @@ emp.name_thai as nameThai,
 emp.name_eng as nameEng,
 l.START_DATE as startDate,
 l.end_date as endDate,
-mas_leavetype.NAME as masleavetype
+off.START_WORK_DATE as startWorkDate,
+
+YEAR(CURDATE()) - YEAR(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearWork ,
+MONTH(CURDATE()) - MONTH(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as monthWork ,
+DAY(CURDATE()) - DAY(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as dayWork,
+
+	SUM( CASE
+			when l.`leavetype_id`= 1
+			then DAY(l.end_date) - DAY(l.START_DATE)
+		else 0
+		end
+		) as 'dayAnnual',
+	SUM( CASE
+			when l.`leavetype_id`= 3
+			then DAY(l.end_date) - DAY(l.START_DATE)
+		else 0
+		end
+		) as 'daySick',
+	SUM( CASE
+			when l.`leavetype_id`= 4
+			then DAY(l.end_date) - DAY(l.START_DATE)
+		else 0
+		end
+		) as 'dayPersonal',
+	SUM((CASE
+			when l.`leavetype_id`= 4
+			then DAY(l.end_date) - DAY(l.START_DATE)
+		else 0
+		end)
+		+
+		(CASE
+			when l.`leavetype_id`= 3
+			then DAY(l.end_date) - DAY(l.START_DATE)
+		else 0
+		end)
+		+
+		CASE
+			when l.`leavetype_id`= 1
+			then DAY(l.end_date) - DAY(l.START_DATE)
+		else 0
+		end ) as totalDayLeave
+
+
 from emp_employee emp
-join emp_leave l on emp.id=l.employee_id
-join mas_leavetype mas_leavetype on mas_leavetype.LEAVETYPE_ID=l.LEAVETYPE_ID;
-				]]>
+join emp_official off
+join emp_leave l
+where emp.id = l.employee_id
+group by emp.employee_code]]>
 	</queryString>
 	<field name="employeeCode" class="java.lang.String"/>
 	<field name="dateOfBirth" class="java.sql.Timestamp">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="yearAge" class="java.lang.Long"/>
-	<field name="monthAge" class="java.lang.Long"/>
-	<field name="dayAge" class="java.lang.Long"/>
+	<field name="yearAge" class="java.lang.Integer"/>
+	<field name="monthAge" class="java.lang.Integer"/>
+	<field name="dayAge" class="java.lang.Integer"/>
 	<field name="age" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -36,7 +79,14 @@ join mas_leavetype mas_leavetype on mas_leavetype.LEAVETYPE_ID=l.LEAVETYPE_ID;
 	<field name="nameEng" class="java.lang.String"/>
 	<field name="startDate" class="java.sql.Timestamp"/>
 	<field name="endDate" class="java.sql.Timestamp"/>
-	<field name="masleavetype" class="java.lang.String"/>
+	<field name="startWorkDate" class="java.sql.Timestamp"/>
+	<field name="yearWork" class="java.lang.Integer"/>
+	<field name="monthWork" class="java.lang.Integer"/>
+	<field name="dayWork" class="java.lang.Integer"/>
+	<field name="dayAnnual" class="java.math.BigDecimal"/>
+	<field name="daySick" class="java.math.BigDecimal"/>
+	<field name="dayPersonal" class="java.math.BigDecimal"/>
+	<field name="totalDayLeave" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -193,44 +243,79 @@ join mas_leavetype mas_leavetype on mas_leavetype.LEAVETYPE_ID=l.LEAVETYPE_ID;
 				<reportElement uuid="68af5f06-18d3-4610-99e0-f7ab5f75cd7e" x="0" y="30" width="1960" height="1" forecolor="#FF6633"/>
 			</line>
 			<textField>
-				<reportElement uuid="3f8166e9-92c6-4da8-9a3f-8518db5d7a8a" x="14" y="10" width="100" height="20"/>
+				<reportElement uuid="17331267-6537-4141-a905-e7dc73dabfb6" x="14" y="10" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{employeeCode}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="47a3590f-d454-4edc-b5bc-6a1a600c34a2" x="1009" y="10" width="100" height="20"/>
+				<reportElement uuid="1c19bd4b-3791-4a3d-b83c-60ad683a7ced" x="132" y="10" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{masleavetype}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{startWorkDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="ccb523c4-e399-4706-94f5-645519fc9b1a" x="747" y="11" width="100" height="20"/>
+				<reportElement uuid="d0c8c2bb-48e1-40ec-a3d6-f2803c1b6317" x="252" y="10" width="41" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{nameThai}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{yearWork}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="6e4bfafe-f121-4f44-b88d-6e7732375475" x="922" y="11" width="100" height="20"/>
+				<reportElement uuid="d73207e3-3917-433d-8873-27c6cb2050fb" x="295" y="10" width="41" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{nameEng}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{monthWork}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="b3660fe3-6e02-43ec-a242-a4918f952c4f" x="418" y="0" width="100" height="20"/>
+				<reportElement uuid="1af3b3e1-dd4b-4d68-a3dd-d8c4edc4d740" x="336" y="10" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dayWork}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="99a922ad-ae69-475f-88b2-607dde46e839" x="416" y="10" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{dateOfBirth}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="03e110e4-5841-4962-91ef-9e8814f8d20c" x="631" y="0" width="44" height="20"/>
+				<reportElement uuid="b87fd9b6-3472-4afc-b68a-e651dc042551" x="547" y="10" width="41" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{dayAge}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{yearAge}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="7c90d42f-e1b9-412d-bf46-0a0b2e5448f5" x="588" y="0" width="43" height="20"/>
+				<reportElement uuid="28213c41-44e9-44cc-bece-95fe7e6fea73" x="588" y="10" width="43" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{monthAge}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="4d228b30-dade-4d78-acd8-5235be74ff0a" x="563" y="0" width="25" height="20"/>
+				<reportElement uuid="a263e1de-56b4-4c80-91aa-13b64fbd2184" x="631" y="10" width="44" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{yearAge}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dayAge}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a79d9a35-7a4d-426b-9358-c9117687e993" x="710" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nameThai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="42b2cbcc-5543-4c48-9036-ac9f5516b953" x="878" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nameEng}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ab08cf16-10b6-4b88-ab8a-851649cf7bda" x="1009" y="11" width="70" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dayAnnual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="60bc74c6-ce61-4bab-b23d-ced5a82df9f7" x="1079" y="11" width="63" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{daySick}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d4c9f4bd-0de0-4255-a8a0-1520b971256e" x="1142" y="11" width="71" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dayPersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b9a5e3c1-0913-4ebb-bdfb-9dcd1d8ad734" x="1259" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{totalDayLeave}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
