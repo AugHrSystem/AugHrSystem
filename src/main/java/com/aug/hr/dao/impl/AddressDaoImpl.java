@@ -9,6 +9,7 @@ package com.aug.hr.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -66,6 +67,15 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Integer> implements 
 		
 		query.executeUpdate();
 		
+	}
+
+	@Override
+	public List<Address> findAddressByEmployeeId(Integer id) {
+		Criteria c = getCurrentSession().createCriteria(Address.class,"address");
+		c.setFetchMode("employee", FetchMode.JOIN);
+		c.createCriteria("employee", "employee");
+		c.add(Restrictions.eq("address.employee.id", id));
+		return c.list();
 	}
 	
 	

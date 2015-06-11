@@ -6,6 +6,7 @@
 
 package com.aug.hr.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,31 @@ public class AddressServiceImpl implements AddressService{
 	public void saveAddressByNameQuery(AddressDto addressDto) {
 		// TODO Auto-generated method stub
 		addressDao.saveAddressByNameQuery(addressDto);
+	}
+
+	@Override
+	public List<AddressDto> findAddressByEmployeeId(Integer id) {
+		// TODO Auto-generated method stub
+		
+		List<Address> addressList = addressDao.findAddressByEmployeeId(id);
+		List<AddressDto> addressDtoList = new ArrayList<AddressDto>();
+		for(Address address:addressList){
+			
+		   AddressDto addressDto = new AddressDto();
+		   addressDto.setId(address.getId());
+		   addressDto.setAddress1(address.getAddress1());
+		   addressDto.setAddress2(address.getAddress2());
+		   addressDto.setAddressTypeId(address.getAddressType().getId());
+		   addressDto.setEmployeeId(id);
+		   addressDto.setMasaddresstypeName(address.getAddressType().getName());
+		   addressDto.setMasprovinceId(address.getProvince().getId());
+		   addressDto.setMasprovinceName(address.getProvince().getName());
+		   addressDto.setZipcode(address.getZipcode());
+		   
+		   addressDtoList.add(addressDto);
+			
+		}
+		return addressDtoList;
 	}
 	
 

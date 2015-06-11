@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aug.hr.entity.Employee;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
@@ -30,132 +31,54 @@ public class AllEmployeeDto {
 	private String nameThai;
 	private String surnameThai;
 	private String nicknameThai;
-	
-	//@Column(name = "NAME_ENG",nullable = false)
 	private String nameEng;
-	
-	//@Column(name = "SURNAME_ENG",nullable = true)
 	private String surnameEng;
-	
-	//@Column(name = "NICKNAME_ENG",nullable = true)
 	private String nicknameEng;
-
-	//@Column(name = "EMAIL",nullable = false)
 	private String email;
-	
-	//@Column(name = "TEL_HOME",nullable = false)
 	private Integer telHome;
-	
-	//@Column(name = "TEL_MOBILE",nullable = false)
 	private Integer telMobile;
-	
-	//@Column(name = "TEL_FAX",nullable = true)
 	private Integer telFax;
-	
-	//@Column(name = "CONGENITAL_DISEASE",nullable = false)
 	private String congenitalDisease;
-	
-	//@Column(name = "HOSPITAL",nullable = false)
 	private String hospital;
-	
-	//@Column(name = "EMERGENCY_CONTACT",nullable = false)
 	private String emergencyContact;
-	
-	//@Column(name = "RELATIONSHIP_WITH_EMERGENCY_CONTACT",nullable = true)
 	private String relationshipWithEmergencyContact;
-	
-	//@Column(name = "EMERGENCY_CONTACT_ADDRESS",nullable = true)
 	private String emergencyContactAddress;
-	
-	//@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER",nullable = false)
 	private String emergencyContactPhoneNumber;
 	
-	//@Column(name = "DATEOFBIRTH",nullable = false)
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBirth;
-	
-	//@Column(name = "PLACEOFBIRTH",nullable = true)
+
 	private String placeOfBirth;
-	
-	//@Column(name = "AGE",nullable = true)
 	private Integer age;
-	
-	//@Column(name = "RELIGION",nullable = true)
 	private String religion;
-	
-	//@Column(name = "ID_CARD",nullable = false)
 	private Integer idCard;
-	
-	//@Column(name = "ISSUED_OFFICE",nullable = true)
-	
 	private String issuedOffice;
 	
-	//@Column(name = "EXPIRY_DATE",nullable = true)
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date expiryDate;
 	
-	//@Column(name = "HEIGHT",nullable = true)
 	private Integer height;
-	
-	//@Column(name = "WEIGTH",nullable = true)
-	private Integer weigth;
-	
-	//@Column(name = "SEX",nullable = true)
+	private Integer weigth;	
 	private String sex;
-
-	//@Column(name = "MARITAL_STATUS",nullable = true)
 	private String maritalStatus;
-	
-	//@Column(name = "NUMBER_OF_CHILDREN",nullable = true)
 	private String numberOfChildren;
-	
-	//@Column(name = "SPOUSE_NAME",nullable = true)
 	private String spouseName;
-	
-	//@Column(name = "MARRIAGE_CERTIFICATE_NO",nullable = true)
 	private String marriageCertificateNo;
-	
-	//@Column(name = "ISSUED_OFFICE2",nullable = true)
 	private String issuedOffice2;
-	
-	//@Column(name = "ADDRESS",nullable = true)
 	private String address;
-	
-	//@Column(name = "OCCUPATION",nullable = true)
 	private String occupation;
-	
-	//@Column(name = "KNOW_AUG_NEWSPAPER",nullable = true)
 	private String knowAugNewspaper;
-	
-	//@Column(name = "DESCRIPTION_NEWSPAPER",nullable = true)
 	private String descriptionNewspaper;
-	
-	//@Column(name = "KNOW_AUG_MAGAZINE",nullable = true)
 	private String knowAugMagazine;
-	
-	//@Column(name = "DESCRIPTION_MAGAZINE",nullable = true)
 	private String descriptionMagazine;
-	
-	//@Column(name = "KNOW_AUG_WEBSITE",nullable = true)
 	private String knowAugWebsite;
-	
-	//@Column(name = "DESCRIPTION_WEBSITE",nullable = true)
 	private String descriptionWebsite;
-	
-	//@Column(name = "KNOW_AUG_FRIEND",nullable = true)
 	private String knowAugFriend;
-	
-	//@Column(name = "DESCRIPTION_FRIEND",nullable = true)
 	private String descriptionFriend;
-	
-	//@Column(name = "KNOW_AUG_OTHER",nullable = true)
 	private String knowAugOther;
-	
-	//@Column(name = "DESCRIPTION_OTHER",nullable = true)
-	private String descriptionOther;
-	
+	private String descriptionOther;	
 	private String knowEmployedYes;
 	private String descriptionYes;
 	private String knowEmployerNo;
@@ -167,42 +90,24 @@ public class AllEmployeeDto {
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
+	
 	private Date toYear;
-	
-	//@Column(name = "BRANCH_OF_SERVICE",nullable = true)
 	private String branchOfService;
-	
-	//@Column(name = "SERVICE_NO",nullable = true)
 	private String serviceNo;
-	
-	//@Column(name = "MILITARY_SERVICE_NO",nullable = true)
 	private String militaryServiceNo;
-	
-	//@Column(name = "REASONS_NO",nullable = true)
 	private String reasonsNo;
-	
-	//@Column(name = "DATE_TO_BE_DRAFTED",nullable = true)
+
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
 	
-	//@Column(name = "PREVIOUS_EMPLOYER_YES",nullable = true)
-	private String previousEmployerYes;
-	
-	//@Column(name = "PREVIOUS_EMPLOYER_NO",nullable = true)
-	private String previousEmployerNo;
-	
-	//@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
-	private String previousEmpreasonsNo;
-	
-	//@Column(name = "IMAGE",nullable = true)
-	private String image;
-	
-	private String statusemp;
-	
-	private MultipartFile fileupload;
-	
 
+	private String previousEmployerYes;
+	private String previousEmployerNo;
+	private String previousEmpreasonsNo;
+	private String image;	
+	private String statusemp;
+	private MultipartFile fileupload;
 	private Integer isManager;
 	
 	public Integer getIsManager() {
@@ -244,36 +149,13 @@ public class AllEmployeeDto {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date probationDate;
 
-	//@Column(name="AIM_EMP_ID")
 	private Integer aimempid;
-	
-	
-	 //@Column(name= "MAS_CORE_SKILL_ID")
-	 private Integer masCoreSkill;
-	 
-   
-    //@Column(name= "EMPLOYMENT_ID")
+    private Integer masCoreSkill;
     private Integer masEmployment;
-    
-    
-   // @Column(name= "DIVISION_ID",nullable = false)
     private Integer masDivision;
-    
-   
-    //@Column(name= "JOBLEVEL_ID", nullable = false)
     private Integer masJoblevel;
-    
-    
-    
-    //@Column(name= "TECHNOLOGY_ID",nullable = true)
     private Integer technology;
-    
-    
-  
-    //@Column(name= "STAFFTYPE_ID")
     private Integer masStaffType;
-
-
     private String masLocation;
     private Integer masLocationId;
 
@@ -1088,6 +970,9 @@ public class AllEmployeeDto {
 	public void setProbationDate(Date probationDate) {
 		this.probationDate = probationDate;
 	}
+	
+	
+	
 
 	@Override
 	public String toString() {

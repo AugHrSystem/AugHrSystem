@@ -6,6 +6,8 @@
 
 package dao;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.AddressDao;
+import com.aug.hr.entity.Address;
 import com.aug.hr.entity.dto.AddressDto;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,6 +40,18 @@ public class AddressDaoTest {
 		addre.setMasprovinceId(18);
 		
 		addressDao.saveAddressByNameQuery(addre);
+	}
+
+	
+	@Test
+	public void findByEmpId(){
+	
+		List<Address> addressList = addressDao.findAddressByEmployeeId(1);
+		System.out.println("size: "+addressList.size());
+		for(Address address:addressList){
+			System.out.println(address);
+		}
+		
 	}
 
 }

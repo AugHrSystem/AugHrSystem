@@ -152,7 +152,8 @@ var empId;
 		if(empId == null){
 			empId = 0;
 		}
-		window.location = "${pageContext.request.contextPath}/employee/"+empId;
+		var id = empId;
+		window.location = "${pageContext.request.contextPath}/employee/init/"+id;
 	/* 	$.ajax({
 			url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,
 			type : "GET",

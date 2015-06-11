@@ -9,7 +9,7 @@
 <div class="row">
 	<div class="span12">
 		<ul class="nav nav-tabs" id="myTabs">
-			<li><a href="${pageContext.request.contextPath}/employee/${id}" >Employee</a></li>
+			<li><a href="${pageContext.request.contextPath}/employee/init/${id}" >Employee</a></li>
 			<li><a href="${pageContext.request.contextPath}/family/${id}" >Family</a></li>
 			<li><a href="${pageContext.request.contextPath}/education/${id}" >Education</a></li>
 			<li><a href="${pageContext.request.contextPath}/experience/${id}" >Experience</a></li>

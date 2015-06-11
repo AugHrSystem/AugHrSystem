@@ -10,7 +10,7 @@
 
 <input type="hidden" id="emp">
 <input type="hidden" id="empname">
-<input type="hidden" id="id">
+<!-- <input type="hidden" id="id"> -->
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 <f:form method="post" commandName="allEmployeeDto" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/employee/submit" enctype="multipart/form-data">
@@ -36,14 +36,15 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<!-- <label for="id"> ID :</label> -->
-									 <input id="id" name="id" type="text" class="form-control"
-									id="id" placeholder="Enter ID" value="${id}">
+									 <input id="id" name="id" type="text" class="form-control" placeholder="Enter ID" value="${id}">
 								</div>
 							
 								<div class="col-md-6">
-									<label for="employeeCode"> Employee Code :</label> <input id="employeeCode" name="employeeCode" type="text" class="form-control"
-									id="employeeCode" name="employeeCode" placeholder="Enter Employee Code">
+									<label for="employeeCode"> Employee Code :</label> 
+									<input id="employeeCode" name="employeeCode" type="text" class="form-control" placeholder="Enter Employee Code" value="${allEmployeeDto.employeeCode}">
 								</div>
+								
+							    <%-- <c:out value="${allEmployeeDto.employeeCode}"/> --%>
 								
 							</div>
 							
@@ -55,16 +56,19 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-4">
-									<label> Name (Thai.) :</label> <input type="text" class="form-control"
-									id="nameThai"name="nameThai" placeholder="Enter Name (Thai)">
+									<label> Name (Thai.) :</label> 
+									<input type="text" class="form-control" 
+									id="nameThai"name="nameThai" placeholder="Enter Name (Thai)" value="${allEmployeeDto.nameThai}">
 								</div>
 								<div class="col-md-4">
-									<label> SurName (Thai.) :</label> <input type="text" class="form-control"
-									id="surnameThai" name="surnameThai" placeholder="Enter Surname (Thai)">
+									<label> SurName (Thai.) :</label> 
+									<input type="text" class="form-control" 
+									id="surnameThai" name="surnameThai" placeholder="Enter Surname (Thai)" value="${allEmployeeDto.surnameThai}">
 								</div>
 								<div class="col-md-4">
-									<label> NickName (Thai.) :</label> <input type="text" class="form-control"
-									id="nicknameThai" name="nicknameThai" placeholder="Enter Nickname (Thai)">
+									<label> NickName (Thai.) :</label> 
+									<input type="text" class="form-control" 
+									id="nicknameThai" name="nicknameThai" placeholder="Enter Nickname (Thai)" value="${allEmployeeDto.nicknameThai}">
 								</div>
 							</div>
 					
@@ -74,16 +78,16 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-4">
-									<label> Name (Eng.) :</label> <input type="text" class="form-control"
-									id="nameEng" name="nameEng" placeholder="Enter Name (Eng)">
+									<label> Name (Eng.) :</label> 
+									<input type="text" class="form-control" id="nameEng" name="nameEng" placeholder="Enter Name (Eng)" value="${allEmployeeDto.nameEng}">
 								</div>
 								<div class="col-md-4">
 									<label> SurName (Eng.) :</label> <input type="text" class="form-control"
-									id="surnameEng" name="surnameEng" placeholder="Enter Surname (Eng)">
+									id="surnameEng" name="surnameEng" placeholder="Enter Surname (Eng)" value="${allEmployeeDto.surnameEng}">
 								</div>
 								<div class="col-md-4">
 									<label> NickName (Eng.) :</label> <input type="text" class="form-control"
-									id="nicknameEng" name="nicknameEng" placeholder="Enter Nickname (Eng)">
+									id="nicknameEng" name="nicknameEng" placeholder="Enter Nickname (Eng)" value="${allEmployeeDto.nicknameEng}">
 								</div>
 							</div>
 					
@@ -140,7 +144,7 @@
 	    <div class="col-md-12">
 	    <label>Address:</label>
 	    <div class="form-group" align="right">
-	      <button type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+	      <button id="addaddress" type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
           Add</button>	
         </div>
         <div id="outputAddress">
@@ -186,19 +190,19 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Email :</label> <input type="text" class="form-control"
-									id="email" name="email" placeholder="Enter Email">
+									id="email" name="email" placeholder="Enter Email" value="${allEmployeeDto.email}">
 								</div>
 								<div class="col-md-3">
 									<label> Tel. (Home) :</label> <input type="text" class="form-control"
-									id="telHome" name="telHome" placeholder="xx-xxx-xxxx">
+									id="telHome" name="telHome" placeholder="xx-xxx-xxxx" value="${allEmployeeDto.telHome}">
 								</div>
 								<div class="col-md-3">
 									<label> Tel. (Mobile) :</label> <input type="text" class="form-control"
-									id="telMobile" name="telMobile" placeholder="xxx-xxx-xxxx">
+									id="telMobile" name="telMobile" placeholder="xxx-xxx-xxxx" value="${allEmployeeDto.telMobile}">
 								</div>
 								<div class="col-md-3">
 									<label> Tel. (Fax) :</label> <input type="text" class="form-control"
-									id="telFax" name="telFax" placeholder="xx-xxx-xxxx">
+									id="telFax" name="telFax" placeholder="xx-xxx-xxxx" value="${allEmployeeDto.telFax}">
 								</div>
 							</div>
 					
@@ -209,11 +213,11 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label> Health (Congenital Disease) :</label> <input type="text" class="form-control"
-									id="congenitalDisease" name="congenitalDisease" placeholder="Enter Congenital Disease">
+									id="congenitalDisease" name="congenitalDisease" placeholder="Enter Congenital Disease" value="${allEmployeeDto.congenitalDisease}">
 								</div>
 								<div class="col-md-6">
 									<label> Hospital :</label> <input type="text" class="form-control"
-									id="hospital" name="hospital" placeholder="Enter Hospital">
+									id="hospital" name="hospital" placeholder="Enter Hospital" value="${allEmployeeDto.hospital}">
 								</div>
 							</div>
 					
@@ -224,11 +228,12 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label> Emergency Contact :</label> <input type="text" class="form-control"
-									id="emergencyContact" name="emergencyContact" placeholder="Enter Emergency Name">
+									id="emergencyContact" name="emergencyContact" placeholder="Enter Emergency Name" value="${allEmployeeDto.emergencyContact}">
 								</div>
 								<div class="col-md-6">
 									<label> Relationship with Emergency Contact :</label> <input type="text" class="form-control"
-									id="relationshipWithEmergencyContact" name="relationshipWithEmergencyContact" placeholder="Enter Emergency Relation">
+									id="relationshipWithEmergencyContact" name="relationshipWithEmergencyContact" placeholder="Enter Emergency Relation"
+									value="${allEmployeeDto.relationshipWithEmergencyContact}">
 								</div>
 							</div>
 					
@@ -240,11 +245,11 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label> Emergency Contact Address :</label> <input type="text" class="form-control"
-									id="emergencyContactAddress" name="emergencyContactAddress" placeholder="Enter Emergency Address">
+									id="emergencyContactAddress" name="emergencyContactAddress" placeholder="Enter Emergency Address" value="${allEmployeeDto.emergencyContactAddress}">
 								</div>
 								<div class="col-md-3">
 									<label> Emergency Contact Phone Number  :</label> <input type="text" class="form-control"
-									id="emergencyContactPhoneNumber" name="emergencyContactPhoneNumber" placeholder="xxx-xxx-xxxx">
+									id="emergencyContactPhoneNumber" name="emergencyContactPhoneNumber" placeholder="xxx-xxx-xxxx" value="${allEmployeeDto.emergencyContactPhoneNumber}">
 								</div>
 							</div>
 					
@@ -256,19 +261,19 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<p><label> Date of Birth :</label> <input type="text" class="form-control"
-									id="dateOfBirth" name="dateOfBirth" placeholder="Enter DOB"></p>
+									id="dateOfBirth" name="dateOfBirth" placeholder="Enter DOB" value="${allEmployeeDto.dateOfBirth}"></p>
 								</div>
 								<div class="col-md-3">
 									<label> Place of Birth :</label> <input type="text" class="form-control"
-									id="placeOfBirth" name="placeOfBirth" placeholder="Enter POB">
+									id="placeOfBirth" name="placeOfBirth" placeholder="Enter POB" value="${allEmployeeDto.placeOfBirth}">
 								</div>
 								<div class="col-md-3">
 									<label> Age :</label> <input type="text" class="form-control"
-									id="age" name="age" placeholder="Enter Age">
+									id="age" name="age" placeholder="Enter Age" value="${allEmployeeDto.age}">
 								</div>
 								<div class="col-md-3">
 									<label> Religion :</label> <input type="text" class="form-control"
-									id="religion" name="religion" placeholder="Enter Religion">
+									id="religion" name="religion" placeholder="Enter Religion" value="${allEmployeeDto.religion}">
 								</div>
 								
 							</div>
@@ -281,15 +286,15 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> ID Card :</label> <input type="text" class="form-control"
-									id="idCard" name="idCard" placeholder="Enter Id Card">
+									id="idCard" name="idCard" placeholder="Enter Id Card" value="${allEmployeeDto.idCard}">
 								</div>
 								<div class="col-md-3">
 									<label> Issued Office :</label> <input type="text" class="form-control"
-									id="issuedOffice" name="issuedOffice" placeholder="Enter Issued Office">
+									id="issuedOffice" name="issuedOffice" placeholder="Enter Issued Office" value="${allEmployeeDto.issuedOffice}">
 								</div>
 								<div class="col-md-3">
 									<label> Expiry Date :</label> <input type="text" class="form-control"
-									id="expiryDate" name="expiryDate" placeholder="Enter Expiry Date">
+									id="expiryDate" name="expiryDate" placeholder="Enter Expiry Date" value="${allEmployeeDto.expiryDate}">
 								</div>
 							</div>
 					
@@ -301,11 +306,11 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Height (cms.) :</label> <input type="text" class="form-control"
-									id="height" name="height" placeholder="Enter Height">
+									id="height" name="height" placeholder="Enter Height" value="${allEmployeeDto.height}">
 								</div>
 								<div class="col-md-3">
 									<label> Weigth (kgs.) :</label> <input type="text" class="form-control"
-									id="weigth" name="weigth" placeholder="Enter Weigth">
+									id="weigth" name="weigth" placeholder="Enter Weigth" value="${allEmployeeDto.weigth}">
 								</div>
 							</div>
 					
@@ -318,8 +323,17 @@
 								<div class="col-md-3">
 									<label> Sex :</label>
 									<div class="radio">
-     									 <label><input type="radio" name="sex" value="Male">Male</label>
-      									 <label><input type="radio" name="sex" value="Female">Female</label>
+									  <c:if test="${not empty allEmployeeDto.sex}">
+										<c:choose>
+										    <c:when test="${allEmployeeDto.sex =='Male'}">
+										        <label><input type="radio" name="sex" value="Male" checked="checked">Male</label>
+										    </c:when>
+										   
+										    <c:otherwise>
+										       <label><input type="radio" name="sex" value="Female" checked="checked">Female</label>
+										    </c:otherwise>
+										</c:choose>
+									  </c:if>
     								</div>
 								</div>
     						</div>	
@@ -547,7 +561,7 @@
 				<div class="form-group">
 					 <div class="col-md-3">
     					<label>Location :</label>
-    						<f:select id="masLocation" path="masLocation"  class="form-control">
+    						<f:select id="masLocation" path="masLocation"  class="form-control" value="TH">
 							 	 <f:option  value="-1" label="--Select Location--" />
   								 <f:options items="${ locationList }"  itemValue="code" itemLabel="name" />
 							</f:select>
@@ -927,7 +941,7 @@ var getIndex = 0;
 		
     	dt=$("#tbResult").dataTable(
     			{ "columnDefs": [
-    	    	                 {
+    	    	                 /* {
     	    	                     "targets": [ 0 ],
     	    	                     "visible": false
     	    	                 },
@@ -939,7 +953,11 @@ var getIndex = 0;
     	    	                 {
     	    	                     "targets": [ 5 ],
     	    	                     "visible": false
-    	    	                 }
+    	    	                 } */
+    	    	                 
+    	    	                 
+    	    	                 
+    	    	                 
     	    	                 
     	    	                /*  {
     	    	                     "targets": [ 8 ],
@@ -954,15 +972,18 @@ var getIndex = 0;
     			
     			});
  		//listAll();
-// 	 		$('input[type=file]').change(function(e){
-// 				$('.element-to-paste-filename').attr('value',e.target.files[0].name);
-// 			});
+		//$('input[type=file]').change(function(e){
+		//$('.element-to-paste-filename').attr('value',e.target.files[0].name);
+		//});
 
 			    	
-			    	var code = $("#masLocation").val();
-			    	alert(code);
+		
 			    	  
-			    	  
+			    
+			       $("#masLocation").change(function() {
+			    	   
+			    	   var code = $("#masLocation").val();
+				       alert(code);
 			    	
 			    	  $.ajax({  
 				  	      type : "POST",   
@@ -1009,6 +1030,8 @@ var getIndex = 0;
 			    	  
 
 			    });
+			       
+			});
 		
 
 
@@ -1025,14 +1048,13 @@ var getIndex = 0;
 		            reader.onloadend = function(){ // set image data as background of div
 		            	
 		                $("#imagePreview").css("background-image", "url("+this.result+")");
-/* 		                $("#imagePreview2").css("background-image", "url("+this.result+")");
- */		            }
+   	              }
 		        }
 		        
 		    });
  		
  		
- 		var button = $(event.relatedTarget);
+ 		/* var button = $(event.relatedTarget);
     	var addId = button.data("addid"); 
     	var buttonemp = $(event.relatedTarget);
     	var empId = button.data("empid"); 
@@ -1047,18 +1069,49 @@ var getIndex = 0;
     				addEmployee();
     			}
     			
-    		});
+    		}); */
   		
   		
-  		
-  		$(this).find(".saveAddressButton").off("click").on("click", function()
+    		
+    		
+    $('body').on('click','#addaddress', function() {
+    	
+    	alert("add add")
+    		
+  		$("#saveAddressButton").off("click").on("click", function()
   				
-  				{
+  		{
 			
+  			    alert("add");
 				addAddress();
 			
 			
 		});
+    		
+    });		
+    		
+    	
+
+        $("#myModal").on("hide.bs.modal", function(event){
+        	
+        	clearDataModal();
+       
+        });
+    		
+    		
+    
+    	$("#deleteModal").on("show.bs.modal", function(event){
+   	    	  
+ 	    	    var button = $(event.relatedTarget);
+ 	    		var idDelete = button.data("iddelete"); 
+ 	    		
+ 	     		
+ 	    		$(this).find("#delete").off("click").on("click", function()
+ 	    		{
+ 	    			doDeleteDataPost(idDelete);
+ 	    		});
+ 	    	  
+ 	      });
   		
   		
  /* --------------------------------------------------- Clear Address Function --------------------------------------------------- */	  		
@@ -1071,338 +1124,14 @@ var getIndex = 0;
   			$('#zipcode').val('');
   			
   		}
-/* --------------------------------------------------- Add Employee Function --------------------------------------------------- */	
-    	
-			function addEmployee() {
-	alert("add");
-    			$.ajax({
-    				url : "${pageContext.request.contextPath}/employee/add",
-    				type : "POST",
-    				 data : JSON.stringify({
-    					 nameThai: $("#nameThai").val(),
-    					 surnameThai: $("#surnameThai").val(),
-    					 nicknameThai: $("#nicknameThai").val(),
-    					 nameEng: $("#nameEng").val(),
-    					 surnameEng: $("#surnameEng").val(),
-    					 nicknameEng: $("#nicknameEng").val(),
-    					 telHome: $("#telHome").val(),
-    					 telMobile: $("#telMobile").val(),
-    					 telFax: $("#telFax").val(),
-    					 emergencyContact: $("#emergencyContact").val(),
-    					 relationshipWithEmergencyContact: $("#relationshipWithEmergencyContact").val(),
-    					 emergencyContactAddress: $("#emergencyContactAddress").val(),
-    					 emergencyContactPhoneNumber: $("#emergencyContactPhoneNumber").val(),
-    					 dateOfBirth: $("#dateOfBirth").val(),
-    					 placeOfBirth: $("#placeOfBirth").val(),
-    					 age: $("#age").val(),
-    					 religion: $("#religion").val(),
-    					 idCard: $("#idCard").val(),
-    					 issuedOffice: $("#issuedOffice").val(),
-    					 expiryDate: $("#expiryDate").val(),
-    					 height: $("#height").val(),
-    					 weigth: $("#weigth").val(),
-    					 sex: $("#sex").val(),
-    					 maritalStatus: $("#maritalStatus").val(),
-    					 numberOfChildren: $("#numberOfChildren").val(),
-    					 spouseName: $("#spouseName").val(),
-    					 marriageCertificateNo: $("#marriageCertificateNo").val(),
-    					 issuedOffice2: $("#issuedOffice2").val(),
-    					 address: $("#address").val(),
-    					 occupation: $("#occupation").val(),
-    					 knowAugNewspaper: $("#knowAugNewspaper").val(),
-    					 descriptionNewspaper: $("#descriptionNewspaper").val(),
-    					 knowAugMagazine: $("#knowAugMagazine").val(),
-    					 descriptionMagazine: $("#descriptionMagazine").val(),
-    					 knowAugWebsite: $("#knowAugWebsite").val(),
-    					 descriptionWebsite: $("#descriptionWebsite").val(),
-    					 knowAugFriend: $("#knowAugFriend").val(),
-    					 descriptionFriend: $("#descriptionFriend").val(),
-    					 knowAugOther: $("#knowAugOther").val(),
-    					 descriptionOther: $("#descriptionOther").val(),
-    					 knowEmployedYes: $("#knowEmployedYes").val(),
-    					 descriptionYes: $("#descriptionYes").val(),
-    					 knowEmployerNo: $("#knowEmployerNo").val(),
-    					 militaryServiceYes: $("#militaryServiceYes").val(),
-    					 fromYear: $("#fromYear").val(),
-    					 toYear: $("#toYear").val(),
-    					 branchOfService: $("#branchOfService").val(),
-    					 serviceNo: $("#serviceNo").val(),
-    					 militaryServiceNo: $("#militaryServiceNo").val(),
-    					 reasonsNo: $("#reasonsNo").val(),
-    					 dateToBeDrafted: $("#dateToBeDrafted").val(),
-    					 previousEmployerYes: $("#previousEmployerYes").val(),
-    					 previousEmployerNo: $("#previousEmployerNo").val(),
-    					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val(),
-    					 
-    			
-    					}),
-    				 datatype: "json",
-    				 contentType: "application/json",
-    				success : function(data) {
-    					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-    					
-    					window.parent.document.getElementById('emp').value=data.id;
-						window.parent.document.getElementById('empname').value=data.nameEng;
-    					/* dt.fnClearTable();
-    					dt.fnAddData([
-    					       data.id,
-    					       data.employeeCode,
-    					       data.nameThai,
-    					       data.surnameThai,
-    					       data.nicknameThai,
-    					       data.nameEng,
-    					       data.surnameEng,
-    					       data.nicknameEng,
-    					       data.telHome,
-    					       data.telMobile,
-    					       data.telFax,
-    					       data.emergencyContact,
-    					       data.relationshipWithEmergencyContact,
-    					       data.emergencyContactAddress,
-    					       data.emergencyContactPhoneNumber,
-    					       data.dateOfBirth,
-    					       data.placeOfBirth,
-    					       data.age,
-    					       data.religion,
-    					       data.idCard,
-    					       data.issuedOffice,
-    					       data.expiryDate,
-    					       data.height,
-    					       data.weigth,
-    					       data.sex,
-    					       data.maritalStatus,
-    					       data.numberOfChildren,
-    					       data.spouseName,
-    					       data.marriageCertificateNo,
-    					       data.issuedOffice2,
-    					       data.address,
-    					       data.occupation,
-    					       data.knowAugNewspaper,
-    					       data.descriptionNewspaper,
-    					       data.knowAugMagazine,
-    					       data.descriptionMagazine,
-    					       data.knowAugWebsite,
-    					       data.descriptionWebsite,
-    					       data.knowAugFriend,
-    					       data.descriptionFriend,
-    					       data.knowAugOther,
-    					       data.descriptionOther,
-    					       data.knowEmployedYes,
-    					       data.descriptionYes,
-    					       data.knowEmployerNo,
-    					       data.militaryServiceYes,
-    					       data.fromYear,
-    					       data.toYear,
-    					       data.branchOfService,
-    					       data.serviceNo,
-    					       data.militaryServiceNo,
-    					       data.reasonsNo,
-    					       data.dateToBeDrafted,
-    					       data.previousEmployerYes,
-    					       data.previousEmployerNo,
-    					       data.previousEmpreasonsNo,
-    					       
-    					    '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-   	    					'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-    					              
-						]);               */
-    					              
-    				},
-    				error : function(data,testStatus,jqXHR) {
-    					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-    					}
-    				});
-    		}
-    		
-    		
-/* --------------------------------------------------- Edit Employee Function --------------------------------------------------- */		
-    		
-    		function editEmployee() {
-    			alert(empId+" edit");
-				$.ajax({
-					url : "${pageContext.request.contextPath}/employee/edit",
-					type : "POST",
-					data : JSON.stringify({
-						 id: empId,
-						 nameThai: $("#nameThai").val(),
-    					 surnameThai: $("#surnameThai").val(),
-    					 nicknameThai: $("#nicknameThai").val(),
-    					 nameEng: $("#nameEng").val(),
-    					 surnameEng: $("#surnameEng").val(),
-    					 nicknameEng: $("#nicknameEng").val(),
-    					 telHome: $("#telHome").val(),
-    					 telMobile: $("#telMobile").val(),
-    					 telFax: $("#telFax").val(),
-    					 emergencyContact: $("#emergencyContact").val(),
-    					 relationshipWithEmergencyContact: $("#relationshipWithEmergencyContact").val(),
-    					 emergencyContactAddress: $("#emergencyContactAddress").val(),
-    					 emergencyContactPhoneNumber: $("#emergencyContactPhoneNumber").val(),
-    					 dateOfBirth: $("#dateOfBirth").val(),
-    					 placeOfBirth: $("#placeOfBirth").val(),
-    					 age: $("#age").val(),
-    					 religion: $("#religion").val(),
-    					 idCard: $("#idCard").val(),
-    					 issuedOffice: $("#issuedOffice").val(),
-    					 expiryDate: $("#expiryDate").val(),
-    					 height: $("#height").val(),
-    					 weigth: $("#weigth").val(),
-    					 sex: $("#sex").val(),
-    					 maritalStatus: $("#maritalStatus").val(),
-    					 numberOfChildren: $("#numberOfChildren").val(),
-    					 spouseName: $("#spouseName").val(),
-    					 marriageCertificateNo: $("#marriageCertificateNo").val(),
-    					 issuedOffice2: $("#issuedOffice2").val(),
-    					 address: $("#address").val(),
-    					 occupation: $("#occupation").val(),
-    					 knowAugNewspaper: $("#knowAugNewspaper").val(),
-    					 descriptionNewspaper: $("#descriptionNewspaper").val(),
-    					 knowAugMagazine: $("#knowAugMagazine").val(),
-    					 descriptionMagazine: $("#descriptionMagazine").val(),
-    					 knowAugWebsite: $("#knowAugWebsite").val(),
-    					 descriptionWebsite: $("#descriptionWebsite").val(),
-    					 knowAugFriend: $("#knowAugFriend").val(),
-    					 descriptionFriend: $("#descriptionFriend").val(),
-    					 knowAugOther: $("#knowAugOther").val(),
-    					 descriptionOther: $("#descriptionOther").val(),
-    					 knowEmployedYes: $("#knowEmployedYes").val(),
-    					 descriptionYes: $("#descriptionYes").val(),
-    					 knowEmployerNo: $("#knowEmployerNo").val(),
-    					 militaryServiceYes: $("#militaryServiceYes").val(),
-    					 fromYear: $("#fromYear").val(),
-    					 toYear: $("#toYear").val(),
-    					 branchOfService: $("#branchOfService").val(),
-    					 serviceNo: $("#serviceNo").val(),
-    					 militaryServiceNo: $("#militaryServiceNo").val(),
-    					 reasonsNo: $("#reasonsNo").val(),
-    					 dateToBeDrafted: $("#dateToBeDrafted").val(),
-    					 previousEmployerYes: $("#previousEmployerYes").val(),
-    					 previousEmployerNo: $("#previousEmployerNo").val(),
-    					 previousEmpreasonsNo: $("#previousEmpreasonsNo").val(),
-    					  
-					 }),
-					datatype: "json",
-					contentType: "application/json",
-					success : function(data) {
-						$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-						dt.fnClearTable();
-    					/* dt.fnAddData([
-    					       data.id,
-    					       data.employeeCode,
-    					       data.nameThai,
-    					       data.surnameThai,
-    					       data.nicknameThai,
-    					       data.nameEng,
-    					       data.surnameEng,
-    					       data.nicknameEng,
-    					       data.telHome,
-    					       data.telMobile,
-    					       data.telFax,
-    					       data.emergencyContact,
-    					       data.relationshipWithEmergencyContact,
-    					       data.emergencyContactAddress,
-    					       data.emergencyContactPhoneNumber,
-    					       data.dateOfBirth,
-    					       data.placeOfBirth,
-    					       data.age,
-    					       data.religion,
-    					       data.idCard,
-    					       data.issuedOffice,
-    					       data.expiryDate,
-    					       data.height,
-    					       data.weigth,
-    					       data.sex,
-    					       data.maritalStatus,
-    					       data.numberOfChildren,
-    					       data.spouseName,
-    					       data.marriageCertificateNo,
-    					       data.issuedOffice2,
-    					       data.address,
-    					       data.occupation,
-    					       data.knowAugNewspaper,
-    					       data.descriptionNewspaper,
-    					       data.knowAugMagazine,
-    					       data.descriptionMagazine,
-    					       data.knowAugWebsite,
-    					       data.descriptionWebsite,
-    					       data.knowAugFriend,
-    					       data.descriptionFriend,
-    					       data.knowAugOther,
-    					       data.descriptionOther,
-    					       data.knowEmployedYes,
-    					       data.descriptionYes,
-    					       data.knowEmployerNo,
-    					       data.militaryServiceYes,
-    					       data.fromYear,
-    					       data.toYear,
-    					       data.branchOfService,
-    					       data.serviceNo,
-    					       data.militaryServiceNo,
-    					       data.reasonsNo,
-    					       data.dateToBeDrafted,
-    					       data.previousEmployerYes,
-    					       data.previousEmployerNo,
-    					       data.previousEmpreasonsNo, */
-    					       
-    					/*     '<button type="button" class="btn btn-info btn-sm active" data-empId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-   	    					'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-    					              
-						]);  */             
-					},
-					error : function(data,testStatus,jqXHR) {
-						
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-						}
-					});
-			}
-			
-			
+
+   
    	/* ----------------------------------------------------- Add Address Function --------------------------------------------------- */		
 			
 			function addAddress() {
 				alert("Do you want to Add Address ?");
 				
 				
-				
-    			/* $.ajax({
-    				url : "${pageContext.request.contextPath}/employee/addAddress",
-    				type : "POST",
-    				 data : JSON.stringify({
-    					 
-    					 addressType : {id:$("#addressType").val(), name: $("#addressType option:selected").text()},
-    					 address1: $("#address1").val(),
-    					 address2: $("#address2").val(),
-    					 province :{id:$("#province").val(), name: $("#province option:selected").text()},
-    					 zipcode: $("#zipcode").val(),
-    					 
-    				 }),
-    				 
-    			 datatype: "json",
-    			 contentType: "application/json",
-    			 success : function(data) {
-    					//$("#message").html('<div class="alert alert-success" role="alert">Success Address</div>');
-    					alert("kkk");
-    					dt.fnAddData([
-    					              data.addressType.name,
-    					              data.address1,
-    					              data.address2,
-    					              data.province.name,
-    					              data.zipcode,
-    					              
-    					              
-    					              
-    				 '<button type="button" class="btn btn-info btn-sm active" data-addId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-    			   	 '<button type="button" class="btn btn-danger btn-sm active" data-addId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-    				
-    			   	 ]);
-    					
-    					$('#myModal').modal('toggle');
-   	
-    			 },
- 				error : function(data,testStatus,jqXHR) {
- 					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
- 					}
- 				}); */
- 		
  				 var addressId = $("#addressType").val();
 				 var addressType = $("#addressType option:selected").text();
 				 
@@ -1416,9 +1145,6 @@ var getIndex = 0;
 				 
 				 var id=0;
 				 var status="add";
-				 
-				//alert("addressType: "+addressType+" address1: "+address1+" address2: "+address2+" province: "+province+" zipcode: "+zipcode);
-				//alert("Do you want to Add Address ?");
 				 
 				  dt.fnAddData([  id, 
 				                  addressId,
@@ -1457,7 +1183,6 @@ var getIndex = 0;
 		 	
 			$('#tbResult tbody').on( 'click', '#edit', function (){		   
 		    	
-				//alert("Do you want to Add Address ?");
 				
 		    	  rowUpdate = $(this).parents('tr');
 		    	  dataUpdate = dt.fnGetData($(this).parents('tr'));
@@ -1468,7 +1193,6 @@ var getIndex = 0;
 		  }); 
    	
    	
-			 //transection.push({id:id,address:{id:datarow[0],firstName:arrName[0],lastName:arrName[1],age:datarow[2],gender:datarow[3],mobile:datarow[5],address:datarow[6],occupation:datarow[4],position:datarow[7],relation:datarow[8],status:datarow[10]}});
 
    	
    	function editAddress(rowUpdate,dataUpdate){
@@ -1491,9 +1215,9 @@ var getIndex = 0;
    		var address1 = $("#address1").val();
    		var address2 = $("#address2").val();
    		
-   	   var provinceId = $("#province").val();
-	   var province = $("#province option:selected").text();
-	   var zipcode= $("#zipcode").val();
+   	    var provinceId = $("#province").val();
+	    var province = $("#province option:selected").text();
+	    var zipcode= $("#zipcode").val();
 	   
    		
    		
@@ -1510,10 +1234,10 @@ var getIndex = 0;
 		    dt.fnUpdate('edit', rowUpdate, 11);
 		    
 		    $("#dataaddressid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].id");
-		    $("#dataaddressid"+dataUpdate[8]).val(addressId);
+		    $("#dataaddressid"+dataUpdate[8]).val(id);
 		    
 		    $("#dataaddresstype"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].addressTypeId");
-		    $("#dataaddresstype"+dataUpdate[8]).val(addressType);
+		    $("#dataaddresstype"+dataUpdate[8]).val(addressId);
 		    
 		    $("#dataaddress1"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].address1");
 		    $("#dataaddress1"+dataUpdate[8]).val(address1);
@@ -1543,10 +1267,10 @@ var getIndex = 0;
 	    dt.fnUpdate(zipcode, rowUpdate, 7);
 	    
 	    $("#dataaddressid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].id");
-	    $("#dataaddressid"+dataUpdate[8]).val(addressId);
+	    $("#dataaddressid"+dataUpdate[8]).val(id);
 	    
 	    $("#dataaddresstype"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].addressTypeId");
-	    $("#dataaddresstype"+dataUpdate[8]).val(addressType);
+	    $("#dataaddresstype"+dataUpdate[8]).val(addressId);
 	    
 	    $("#dataaddress1"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].address1");
 	    $("#dataaddress1"+dataUpdate[8]).val(address1);
@@ -1590,6 +1314,7 @@ var getIndex = 0;
 	    	  dt.fnUpdate('delete', row, 11);
 	    	  $("#datastatus"+dataDelete[8]).attr('name', "addresses["+dataUpdate[8]+"].status");
 			  $("#datastatus"+dataDelete [8]).val('delete');
+			  $('#deleteModal').modal('toggle');
     	 	});
       }
    	 
@@ -1602,148 +1327,69 @@ var getIndex = 0;
    	
    	
    	
-   		function listAddress(){
+   	if($('#id').val()!=null||$('#id').val()!==""){
+   		
+   		
+   	    listAddress($('#id').val());
+   		
+   	}		
+   		
+   		
+   		
+   		
+   	
+   	
+   		function listAddress(id){
+   			
+   			alert('list address: '+id);
+   			
    			$.ajax({
-				url : "${pageContext.request.contextPath}/employee/listAll",
+				url : "${pageContext.request.contextPath}/employee/address/",
+				data: JSON.stringify({"employeeId":id}),
 				type : "POST",
+				dataType : 'json', 
+			  	//data : JSON.stringify({"id":id}),  
+			  	contentType :"application/json; charset=utf-8",
 				success : function(data) {
-					dt.fnClearTable();
+			    dt.fnClearTable();
 				for (var i=0;i< data.length; i++) {
-					dt.fnAddData([data[i].id,
-					              data[i].addressType.name,
+				
+						dt.fnAddData([
+						          data[i].id,
+					              data[i].addressTypeId,
+					              data[i].masaddresstypeName,
 					              data[i].address1,
 					              data[i].address2, 
+					              data[i].masprovinceId, 
+					              data[i].masprovinceName, 					              
 					              data[i].zipcode,
+					              getIndex,
 						'<button id="edit" type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
 						'<button id="delete" type="button" class="btn btn-danger btn-sm active" data-addId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>',
-						           "unmodified",
-						'<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].id" value="'+id+'">'+
-					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].addressTypeId" value="'+addressType+'">'+
-					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].address1" value="'+address1+'">'+
-					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].address2" value="'+address2+'">'+
-					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].masprovinceId" value="'+provinceId+'">'+
-					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].zipcode" value="'+zipcode+'">'+
-					    '<input id="dataaddress'+getIndex+'"type ="text" name = "addresses['+getIndex+'].status" value="'+status+'">']);
-					
+						 "unmodified",
+						'<input id="dataaddressid'+getIndex+'" type ="text" name = "addresses['+getIndex+'].id" value="'+data[i].id+'">'+
+					    '<input id="dataaddresstype'+getIndex+'" type ="text" name = "addresses['+getIndex+'].addressTypeId" value="'+ data[i].addressTypeId+'">'+
+					    '<input id="dataaddress1'+getIndex+'" type ="text" name = "addresses['+getIndex+'].address1" value="'+data[i].address1+'">'+
+					    '<input id="dataaddress2'+getIndex+'" type ="text" name = "addresses['+getIndex+'].address2" value="'+data[i].address2+'">'+
+					    '<input id="dataprovinceid'+getIndex+'" type ="text" name = "addresses['+getIndex+'].masprovinceId" value="'+data[i].masprovinceId+'">'+
+					    '<input id="datazipcode'+getIndex+'" type ="text" name = "addresses['+getIndex+'].zipcode" value="'+ data[i].zipcode+'">'+
+					    '<input id="datastatus'+getIndex+'" type ="text" name = "addresses['+getIndex+'].status" value="unmodified">']);
+					 
 						getIndex = getIndex+1; 
+						alert(getIndex);
 			
-					}
+				  }
 				},
 				
 				
 				error : function(data,testStatus,jqXHR) {
+					alert('err');
 					$("#outputajax").text(testStatus);
 					}
 				}); 
 		}
 	
-
-			
-			
-  /* ---------------------------------------------------- Init Edit Function --------------------------------------------------- */				
-			
-			function initEditEmployee(empId) {
-				alert(empId+" Init edit");
-				$.ajax({
-					url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,
-					type : "POST",
-					success : function(data) {
-						$("#nameThai").val(data.nameThai);
-						$("#surnameThai").val(data.surnameThai);
-						$("#nicknameThai").val(data.nicknameThai);
-						$("#nameEng").val(data.nameEng);
-						$("#surnameEng").val(data.surnameEng);
-						$("#nicknameEng").val(data.nicknameEng);
-						$("#telHome").val(data.telHome);
-						$("#telMobile").val(data.telMobile);
-						$("#telFax").val(data.telFax);
-						$("#emergencyContact").val(data.emergencyContact);
-						$("#relationshipWithEmergencyContact").val(data.relationshipWithEmergencyContact);
-						$("#emergencyContactAddress").val(data.emergencyContactAddress);
-						$("#emergencyContactPhoneNumber").val(data.emergencyContactPhoneNumber);
-						$("#dateOfBirth").val(data.dateOfBirth);
-						$("#placeOfBirth").val(data.placeOfBirth);
-						$("#age").val(data.age);
-						$("#religion").val(data.religion);
-						$("#idCard").val(data.idCard);
-						$("#issuedOffice").val(data.issuedOffice);
-						$("#expiryDate").val(data.expiryDate);
-						$("#height").val(data.height);
-						$("#weigth").val(data.weigth);
-						$("#sex").val(data.sex);
-						$("#maritalStatus").val(data.maritalStatus);
-						$("#numberOfChildren").val(data.numberOfChildren);
-						$("#spouseName").val(data.spouseName);
-						$("#marriageCertificateNo").val(data.marriageCertificateNo);
-						$("#issuedOffice2").val(data.issuedOffice2);
-						$("#address").val(data.address);
-						$("#occupation").val(data.occupation);
-						$("#knowAugNewspaper").val(data.knowAugNewspaper);
-						$("#descriptionNewspaper").val(data.descriptionNewspaper);
-						$("#knowAugMagazine").val(data.knowAugMagazine);
-						$("#descriptionMagazine").val(data.descriptionMagazine);
-						$("#knowAugWebsite").val(data.knowAugWebsite);
-						$("#descriptionWebsite").val(data.descriptionWebsite);
-						$("#knowAugFriend").val(data.knowAugFriend);
-						$("#descriptionFriend").val(data.descriptionFriend);
-						$("#knowAugOther").val(data.knowAugOther);
-						$("#descriptionOther").val(data.descriptionOther);
-						$("#knowEmployedYes").val(data.knowEmployedYes);
-						$("#descriptionYes").val(data.descriptionYes);
-						$("#knowEmployerNo").val(data.knowEmployerNo);
-						$("#militaryServiceYes").val(data.militaryServiceYes);
-						$("#fromYear").val(data.fromYear);
-						$("#toYear").val(data.toYear);
-						$("#branchOfService").val(data.branchOfService);
-						$("#serviceNo").val(data.serviceNo);
-						$("#militaryServiceNo").val(data.militaryServiceNo);
-						$("#reasonsNo").val(data.reasonsNo);
-						$("#dateToBeDrafted").val(data.dateToBeDrafted);
-						$("#previousEmployerYes").val(data.previousEmployerYes);
-						$("#previousEmployerNo").val(data.previousEmployerNo);
-						$("#previousEmpreasonsNo").val(data.previousEmpreasonsNo);
-						
-						 
-		
-					},
-					error : function(data,testStatus,jqXHR) {
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-						}
-					});
-			}
-			
-			
+   	
 	
-/* --------------------------------------------------- Delete Function --------------------------------------------------- */		
-			/* 
-			$("#deleteModal").on("show.bs.modal", function(event){
-				var button = $(event.relatedTarget);
-				var empId = button.data("empid");
-				alert("delete "+empId);
-				$(this).find(".yesButton").off("click").on("click", function()
-						{
-							deleteEmployee(button,empId);
-							alert("go fn");
-						});
-				
-				function deleteEmployee(button,empId){
-					alert("in fn");
-					$.ajax({
-						url : "${pageContext.request.contextPath}/employee/delete/"+empId,
-						type : "POST",
-						success : function(data) {
-							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
-						},
-						error : function(data,testStatus,jqXHR) {
-							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-							}
-						});
-				}
-    		   	
-			
-  	}); */
-  	
   
   </script>

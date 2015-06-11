@@ -97,6 +97,9 @@ public class EmployeeController {
 	
 	private static final Logger logger = Logger.getLogger(Employee.class);
 	
+	 
+	ModelMap modell;
+	
 	
 	@RequestMapping(value = "/listemployee", method =  {RequestMethod.GET,RequestMethod.POST})
     public String init(ModelMap model) {		
@@ -113,13 +116,14 @@ public class EmployeeController {
 	
 	
 	
-	@RequestMapping(value="/employee/{id}",method=RequestMethod.GET)
+	
+	@RequestMapping(value="/employee",method=RequestMethod.GET)
 	//@Transactional
 	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
 						  HttpSession session,
 						  Locale locale,
-						  ModelMap model,
-						  @PathVariable Integer id){
+						  ModelMap model){
+						  //@PathVariable Integer id){
 	
 		//model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
 		//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
@@ -135,8 +139,8 @@ public class EmployeeController {
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
 		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
 		
-		allEmployeeDto.setId(id);
-		model.addAttribute("id",allEmployeeDto.getId());
+		//allEmployeeDto.setId(id);
+		//model.addAttribute("id",allEmployeeDto.getId());
 		//model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
 
 
@@ -166,6 +170,19 @@ public class EmployeeController {
 	}
 	
 	
+	
+	//findAddress
+	@RequestMapping(value = "/employee/address", method = RequestMethod.POST )
+	public @ResponseBody List<AddressDto> findAddress(@RequestBody AddressDto addressDto,
+			@ModelAttribute("allEmployeeDto") AllEmployeeDto allEmployeeDto,
+			ModelMap model) {
+			//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
+			//model.addAttribute("provinceList",masProvinceService.findAll());
+			return addressService.findAddressByEmployeeId(addressDto.getEmployeeId());
+	}
+	
+	
+	
 	//Add Address
 		@RequestMapping(value = "/employee/addAddress", method = { RequestMethod.GET, RequestMethod.POST })
 		public @ResponseBody Address AddAddress(@RequestBody Address address) {
@@ -173,30 +190,34 @@ public class EmployeeController {
 			return address;
 		}
 	
-	//InitEdit
-//	@RequestMapping(value = "/employee/initEdit/{empId}", method = { RequestMethod.GET, RequestMethod.POST })
-//	@Transactional
-//	public @ResponseBody Employee initEditEmployee(@PathVariable("empId") Integer empId, Model model) {	
-//		Employee employee = employeeService.findById(empId);
-//		
-//		
-//		model.addAttribute("asdfaf",new Employee());
-//		
-//		Employee user = new Employee();
-//		
-//		user.setId(employee.getId());
-//		user.setName(employee.getName());
-//		
-//		return employee;
-//	}
-	
-//    @Transactional
-//	@RequestMapping(value = "/employee/{empId}",method =  RequestMethod.GET )
-//	public String initEditEmployee(@PathVariable Integer empId, Model model) {	
-//		Employee employee=employeeService.findById(empId);
-//		model.addAttribute("employee", employee);
-//		return "/employee/employee";
-//	}
+
+   
+   //initedit
+   @RequestMapping(value = "/employee/init/{id}",method =  RequestMethod.GET )
+		 public String initEditEmployee(@PathVariable("id") Integer empId, 
+				 @ModelAttribute("allEmployeeDto") AllEmployeeDto allEmployeeDto,
+				 Model model) {	
+		     
+	   
+	   			allEmployeeDto = employeeService.findEmployeeByEmployeeIdWithSetToDto(empId);
+    	
+	   			model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
+    			model.addAttribute("provinceList",masProvinceService.findAll());
+    			
+    			model.addAttribute("employmentList",masEmploymentService.findAll());
+    			model.addAttribute("divisionList", masDivisionService.findAll());
+    			model.addAttribute("technologyList", masTechnologyService.findAll());
+    			model.addAttribute("coreskillList",masCoreSkillService.findAll());
+    			model.addAttribute("joblevelList",joblevelService.findAll());
+    			model.addAttribute("locationList",masLocationService.findAll());
+    			model.addAttribute("staffTypeList",masStaffTypeService.findAll());
+    			model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
+				model.addAttribute("allEmployeeDto", allEmployeeDto);
+				
+			return "/employee/employeetest";
+	}
+		
+		
 	//edit
 	@RequestMapping(value = "/employee/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Employee editEmployee(@RequestBody Employee emp) {
@@ -236,7 +257,7 @@ public class EmployeeController {
 		
 		
 		logger.info("infoooo: "+employee);	
-
+	
 		logger.info("infoooo: ================================================================>"+employee.getAimempid());	
 
 		logger.info("infoooo: "+employee.getAddressList());
@@ -261,7 +282,12 @@ public class EmployeeController {
 			e.printStackTrace();
 		}catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
+		
+		
+		
+		
+		
 		
 		return null;
 	}
@@ -338,8 +364,9 @@ public class EmployeeController {
 
 
 	
-	@ModelAttribute("employee")
+	/*@ModelAttribute("employee")
 	Employee setupForm() {
 		return new Employee();
-	}
+	}*/
+	
 }

@@ -21,7 +21,7 @@ public interface AddressDao extends GenericDao<Address, Integer>{
 	
 	public List<AddressDto> searchAddress(Integer id);
 	public void saveAddressByNameQuery(AddressDto addressDto);
-	
+	public List<Address> findAddressByEmployeeId(Integer id);
 	
 
 }

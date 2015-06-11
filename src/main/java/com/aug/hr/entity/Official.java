@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
             		+ ":END_WORK_DATE,"
             		+ ":POSITION_APPLIED_FOR,"
             		+ ":SALARY_EXPECTED,"
-            		+ ":PROBATION_DATE"
+            		+ ":PROBATION_DATE,"
             		+ "NOW(),"
             		+ "0,"
             		+ "'C'"

@@ -77,5 +77,13 @@ public class AddressServiceTest {
 		int id = address.getId();
 		Assert.assertEquals(2, id);*/
 	}
+	
+	
+	@Test
+	public void findAddressByEmployee(){
+		List<Address> addressList = addressService.findAddressByEmployeeId(1);
+		System.out.println(addressList.size());
+	}
+	
 
 }
