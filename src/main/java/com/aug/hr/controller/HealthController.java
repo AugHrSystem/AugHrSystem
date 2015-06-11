@@ -38,7 +38,7 @@ public class HealthController {
 	public String initSkillLanguage(Locale locale,
 			@ModelAttribute(value = "health") Health health,
 			ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute HealthDto healthDto){
 		
 		

@@ -40,7 +40,7 @@ public class AllowancesController {
 	@RequestMapping(value = "/allowances/{id}", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String init(ModelMap model,
-			@PathVariable Integer id,
+			@PathVariable("id") Integer id,
 			@ModelAttribute AllowancesDto allowancesDto) {
 		model.addAttribute("masallowancesList",
 				masAllowancesService.findAll());

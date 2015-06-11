@@ -42,7 +42,7 @@ public class CardController {
 	
 	@RequestMapping(value = "/card/{id}", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model,
-    		@PathVariable Integer id, 
+    		@PathVariable("id") Integer id, 
 			@ModelAttribute CardDto cardDto) {
 		
 		cardDto.setEmployeeId(id);

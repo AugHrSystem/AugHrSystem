@@ -31,7 +31,7 @@ public class CertificationController {
 	@RequestMapping(value = "/certification/{id}", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String init(ModelMap model,
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute CertificationDto certificationDto) {
 		
 		certificationDto.setEmployeeId(id);

@@ -62,7 +62,7 @@ public class SkillLanguageController {
 	public String initSkillLanguage(Locale locale,
 			@ModelAttribute(value = "skillLanguage") SkillLanguage skillLanguage,
 			ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute SkillLanguageDto skillLanguageDto){
 		
 		

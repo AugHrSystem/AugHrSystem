@@ -86,7 +86,7 @@ public class FamilyController {
 	public String initEmpFamily(Locale locale,
 			@ModelAttribute(value = "family") Family family,
 			ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute Family2Dto family2Dto){
 		
 		//init page for display page 

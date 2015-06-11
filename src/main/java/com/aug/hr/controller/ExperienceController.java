@@ -35,7 +35,7 @@ public class ExperienceController {
 	
 	@RequestMapping(value = "/experience/{id}", method =  RequestMethod.GET)
     public String init(ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute ExperienceDto experienceDto) {		
 		
 		experienceDto.setEmployeeId(id);

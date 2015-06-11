@@ -52,7 +52,7 @@ public class EducationController {
 	@RequestMapping(value = "/education/{id}", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String init(ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute EducationDto educationDto) {
 		model.addAttribute("masdegreetypeList",
 				masDegreetypeService.findAll());

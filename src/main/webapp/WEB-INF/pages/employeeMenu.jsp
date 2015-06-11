@@ -9,7 +9,12 @@
 <div class="row">
 	<div class="span12">
 		<ul class="nav nav-tabs" id="myTabs">
+			<c:if test="${not empty id}">
 			<li><a href="${pageContext.request.contextPath}/employee/init/${id}" >Employee</a></li>
+			</c:if>
+			<c:if test="${ empty id}">
+			<li><a href="${pageContext.request.contextPath}/employee" >Employee</a></li>
+			</c:if>
 			<li><a href="${pageContext.request.contextPath}/family/${id}" >Family</a></li>
 			<li><a href="${pageContext.request.contextPath}/education/${id}" >Education</a></li>
 			<li><a href="${pageContext.request.contextPath}/experience/${id}" >Experience</a></li>

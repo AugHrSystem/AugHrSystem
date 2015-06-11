@@ -117,7 +117,7 @@ public class EmployeeController {
 	
 	
 	
-	@RequestMapping(value="/employee",method=RequestMethod.GET)
+	@RequestMapping(value="/employee",method=RequestMethod.POST)
 	//@Transactional
 	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
 						  HttpSession session,
@@ -288,8 +288,9 @@ public class EmployeeController {
 		
 		
 		
+		int id=1;
 		
-		return null;
+		return "redirect:/history/"+id;
 	}
 	
 	//Report

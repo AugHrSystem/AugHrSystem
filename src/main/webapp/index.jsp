@@ -52,13 +52,12 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-	<form action="${pageContext.request.contextPath}/employee">
-		<button type="submit" class="btn btn-primary btn-md addEmployee">
+	<f:form action="${pageContext.request.contextPath}/employee" method="POST" role="form">
+		<button type="submit" class="btn btn-primary btn-md">
  	 	Add
 		</button>
-	</form>
-	</div>
-		
+	</f:form>
+	</div> 
 
 <!-- Modal Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

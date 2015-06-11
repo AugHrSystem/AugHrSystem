@@ -46,10 +46,9 @@ public class HistoryController {
         binder.registerCustomEditor(Date.class, editor);
     }
 	
-	@RequestMapping(value = "/history/{id}", method = { RequestMethod.GET,
-			RequestMethod.POST })
+	@RequestMapping(value = "/history/{id}", method = { RequestMethod.GET })
 	public String init(ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute HistoryDto historyDto
 			) {
 

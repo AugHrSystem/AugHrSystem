@@ -39,7 +39,7 @@ public class ProbationController {
 
 	@RequestMapping(value = "/probation/{id}", method =  RequestMethod.GET)
     public String init(ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute ProbationDto probationDto) {
 		
 		probationDto.setEmployeeId(id);

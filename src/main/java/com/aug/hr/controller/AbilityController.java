@@ -55,7 +55,7 @@ public class AbilityController {
 	
 	@RequestMapping(value="/ability/{id}",method={RequestMethod.GET,
 			RequestMethod.POST})
-	public String listAbility(HttpSession session,Locale locale, ModelMap model,@PathVariable Integer id,
+	public String listAbility(HttpSession session,Locale locale, ModelMap model,@PathVariable("id") Integer id,
 			@ModelAttribute AbilityDto abilityDto){
 		model.addAttribute("masspecialtyList",
 				masSpecialtyService.findAll());

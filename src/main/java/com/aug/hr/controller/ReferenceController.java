@@ -41,7 +41,7 @@ public class ReferenceController {
 	
 	@RequestMapping(value = "/reference/{id}", method = {RequestMethod.GET,RequestMethod.POST})
     public String list(HttpSession session,Locale locale, ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute ReferenceDto referenceDto) {
 		
 		referenceDto.setEmployeeId(id);

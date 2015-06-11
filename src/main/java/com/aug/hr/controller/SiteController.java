@@ -39,7 +39,7 @@ public class SiteController {
 	public String initSkillLanguage(Locale locale,
 			@ModelAttribute(value = "site") Site site,
 			ModelMap model, 
-			@PathVariable Integer id, 
+			@PathVariable("id") Integer id, 
 			@ModelAttribute SiteDto siteDto){
 		
 		siteDto.setEmployeeId(id);
