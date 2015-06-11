@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportStatusEmp" language="groovy" pageWidth="1152" pageHeight="595" orientation="Landscape" columnWidth="1112" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="90f2bbd1-b769-4670-89ed-f1c57eef3981">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select 		emp.ID as id, emp.EMPLOYEE_CODE as employeeCode,
+			emp.NAME_THAI as nameThai,
+			emp.NAME_ENG as nameEng,
+            emp.DATEOFBIRTH as dateOfBirth,
+            emp.AGE as age,
+            emp.STATUSEMP as statusemp,
+            EMP_OFFICIAL.START_WORK_DATE as startWorkDate,
+            site.PROJECTOWNER as projectOwner,
+			site.STARTDATE as startDate, site.ENDDATE as endDate,
+            YEAR(CURDATE()) - YEAR(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as year,
+            MONTH(curdate()) - MONTH(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as month,
+            DAY(curdate()) - DAY(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as day,
+
+
+            YEAR(CURDATE()) - YEAR(START_WORK_DATE) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(START_WORK_DATE), '/', DAY(START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearwork,
+            MONTH(curdate()) - MONTH(START_WORK_DATE) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(START_WORK_DATE), '/', DAY(START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as monthwork,
+            DAY(curdate()) - DAY(START_WORK_DATE) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(START_WORK_DATE), '/', DAY(START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as daywork
+
+
+
+from EMP_EMPLOYEE as emp
+join EMP_SITE as site on site.employee_ID = emp.ID
+join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="employeeCode" class="java.lang.String"/>
+	<field name="nameThai" class="java.lang.String"/>
+	<field name="nameEng" class="java.lang.String"/>
+	<field name="dateOfBirth" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="age" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statusemp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="startWorkDate" class="java.sql.Timestamp"/>
+	<field name="projectOwner" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="startDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="endDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="year" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="month" class="java.lang.Long"/>
+	<field name="day" class="java.lang.Long"/>
+	<field name="yearwork" class="java.lang.Long"/>
+	<field name="monthwork" class="java.lang.Long"/>
+	<field name="daywork" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50"/>
+	</title>
+	<pageHeader>
+		<band height="50"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="65">
+			<rectangle>
+				<reportElement x="10" y="11" width="1092" height="46" uuid="112b31d9-32ae-4f01-bb49-eb601caa3bf8"/>
+			</rectangle>
+			<line>
+				<reportElement x="991" y="11" width="1" height="45" uuid="b04d3af7-2f0c-4398-a809-3860b4438d89"/>
+			</line>
+			<line>
+				<reportElement x="885" y="12" width="1" height="45" uuid="5284b56d-1e7f-4042-978f-b953f2332f35"/>
+			</line>
+			<line>
+				<reportElement x="797" y="10" width="1" height="45" uuid="b4a4d0b3-9371-45d0-8b6e-f3c98fadba19"/>
+			</line>
+			<line>
+				<reportElement x="590" y="12" width="1" height="45" uuid="beda2216-714f-4d25-9165-fc58d778380e"/>
+			</line>
+			<line>
+				<reportElement x="714" y="11" width="1" height="45" uuid="00fc741d-66b7-4883-8aef-11ac642e3520"/>
+			</line>
+			<line>
+				<reportElement x="321" y="12" width="1" height="45" uuid="dc2362c1-b012-4cb9-8ef1-0b76926075fd"/>
+			</line>
+			<line>
+				<reportElement x="452" y="11" width="1" height="45" uuid="a9560e35-379d-441f-af2a-dff0a3ce4c08"/>
+			</line>
+			<line>
+				<reportElement x="203" y="12" width="1" height="45" uuid="c48eba20-bb36-4402-bb99-daeef9fdcb2e"/>
+			</line>
+			<line>
+				<reportElement x="107" y="11" width="1" height="45" uuid="eb8eb5bf-ff3f-4ed9-895a-4db79b84a905"/>
+			</line>
+			<staticText>
+				<reportElement x="295" y="38" width="24" height="20" uuid="093bc9fe-2135-46e3-b5e7-a000ebbc396c"/>
+				<text><![CDATA[day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="37" width="35" height="20" uuid="76bb06eb-1f99-49d7-b5ad-5820aade3caa"/>
+				<text><![CDATA[month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="37" width="28" height="20" uuid="95a005df-e521-41cf-972c-2007bd7717a2"/>
+				<text><![CDATA[year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="558" y="39" width="24" height="20" uuid="ee728ff2-275e-4469-a905-0905501ce01c"/>
+				<text><![CDATA[day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="506" y="39" width="37" height="20" uuid="2325045f-cfaf-429b-88a7-d4ba399f30f9"/>
+				<text><![CDATA[month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="39" width="28" height="20" uuid="76ce2df9-b709-4d22-81a3-9f724a4b64c2"/>
+				<text><![CDATA[year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="727" y="29" width="70" height="20" uuid="16d31129-c7ae-41f9-aaac-13aeade43abd"/>
+				<text><![CDATA[nameEng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="621" y="28" width="65" height="20" uuid="c8651c81-290d-4599-ab79-2d234e5e00d8"/>
+				<text><![CDATA[nameThai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="507" y="16" width="23" height="17" uuid="5c07e9d5-44dc-428e-98ad-c8b7be7b674b"/>
+				<text><![CDATA[AGE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="29" width="56" height="20" uuid="708b3e50-e949-4edf-8cbf-756872997aa1"/>
+				<text><![CDATA[Birth Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="27" width="80" height="20" uuid="9afed371-24e7-4712-8ed1-330384aba023"/>
+				<text><![CDATA[Resource ID.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1002" y="29" width="100" height="20" uuid="483e383b-5460-45de-894a-8b581b6c35d7"/>
+				<text><![CDATA[endDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="905" y="28" width="71" height="20" uuid="4103b271-52ee-4bce-84c4-d9de4380c966"/>
+				<text><![CDATA[startDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="814" y="29" width="43" height="20" uuid="e8d6ee5a-bf42-49f5-8005-758208b64465"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="16" width="87" height="18" uuid="920c355d-9819-41a8-b260-95d868b1623f"/>
+				<text><![CDATA[Duration (work)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="117" y="28" width="86" height="20" uuid="abecbcf6-cc54-48ad-a7dc-208866c3907a"/>
+				<text><![CDATA[Date Start Work]]></text>
+			</staticText>
+			<line>
+				<reportElement x="204" y="30" width="118" height="1" uuid="64d4f8e5-66e2-475d-bd5b-896a4cf86424"/>
+			</line>
+			<line>
+				<reportElement x="453" y="30" width="137" height="1" uuid="054a7562-3948-4b94-8021-bb7d6c4536ac"/>
+			</line>
+			<line>
+				<reportElement x="242" y="36" width="1" height="19" uuid="73e4aa4c-222f-4634-9004-8860fc6f760c"/>
+			</line>
+			<line>
+				<reportElement x="286" y="37" width="1" height="19" uuid="8397f795-9df8-4f8c-9069-885eeba7d1f2"/>
+			</line>
+			<line>
+				<reportElement x="496" y="36" width="1" height="19" uuid="98cead63-2f7e-416d-adb4-f5415df47173"/>
+			</line>
+			<line>
+				<reportElement x="542" y="37" width="1" height="19" uuid="a6179dd9-c6e0-48b8-9ca7-77e9a0a6a9a4"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50">
+			<textField>
+				<reportElement x="24" y="19" width="74" height="20" uuid="efe16d71-5480-41df-800e-623f4ffbc8f1"/>
+				<textFieldExpression><![CDATA[$F{employeeCode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="348" y="19" width="87" height="20" uuid="ec20395a-baa7-4a6f-a2b7-ea5374a24999"/>
+				<textFieldExpression><![CDATA[$F{dateOfBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="621" y="19" width="71" height="20" uuid="c92b9f14-9817-4dd6-a102-a5ac22ba2dfd"/>
+				<textFieldExpression><![CDATA[$F{nameThai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="735" y="20" width="44" height="20" uuid="970eaf47-541f-422a-9347-3b23b42579ef"/>
+				<textFieldExpression><![CDATA[$F{nameEng}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="900" y="19" width="69" height="20" uuid="c8e23374-bcb7-4994-93e5-4d28b6bb2a3c"/>
+				<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1012" y="20" width="77" height="20" uuid="bf552dde-a07e-464c-b78c-833d2f9226d0"/>
+				<textFieldExpression><![CDATA[$F{endDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="464" y="20" width="36" height="20" uuid="f2dd3cf6-afeb-4a15-a364-3fd0f427fc9c"/>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="20" width="29" height="20" uuid="9ea2451b-27b5-4e75-8712-b062d10528cc"/>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="558" y="20" width="24" height="20" uuid="45d5b382-0662-4d14-83c2-e355a0781ff0"/>
+				<textFieldExpression><![CDATA[$F{day}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="19" width="67" height="20" uuid="70d4937e-16c2-4122-9e4f-ca2840d0eaca"/>
+				<textFieldExpression><![CDATA[$F{startWorkDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="814" y="20" width="59" height="20" uuid="9653ac16-1920-4927-acc0-ae6bad7c30fd"/>
+				<textFieldExpression><![CDATA[$F{statusemp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="19" width="30" height="20" uuid="a8e37dbc-07a7-4ae5-b4ba-492323cb3aa0"/>
+				<textFieldExpression><![CDATA[$F{yearwork}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="19" width="29" height="20" uuid="e227b538-c989-44fe-9c7e-14920f39b12c"/>
+				<textFieldExpression><![CDATA[$F{monthwork}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="19" width="27" height="20" uuid="185cacc8-46ba-4620-9bb0-2f929561cceb"/>
+				<textFieldExpression><![CDATA[$F{daywork}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

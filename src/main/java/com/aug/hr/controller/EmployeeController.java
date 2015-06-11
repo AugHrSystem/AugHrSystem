@@ -343,20 +343,28 @@ public class EmployeeController {
 	
 	
 	
+	
+	
+	
+//	//Report
+//		@RequestMapping(value = "/employee/reportPopup", method = { RequestMethod.GET})
+//		public String reportPopup(@ModelAttribute(value = "employee") ReportStatusEmployeeDto reportStatusEmployeeDto,Locale locale, ModelMap map) {
+//			return "/employee/reportPopup";
+//		}
+	
 	@RequestMapping(value = "/employee/modalReportStatusEmp", method = RequestMethod.GET)
 	public String modalReportStatusEmp(ModelMap map) {
 		return "/employee/reportModalStatusEmp";
 	}
 	
 	
-	
 	@RequestMapping(value = "/employee/searchReportEmpStatus", method = {RequestMethod.POST})
-    public ModelAndView searchStatusEmployeeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-		List<Employee> employeeList = employeeService.findByCriteria(employee);
+    public ModelAndView searchReportEmpStatus(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+		List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee();
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
-		ModelAndView mv = reportService.getReport(employeeList, "employeeReport", employee.getReportType(),parameterMap);
+		ModelAndView mv = reportService.getReport(employeeList, "reportStatusEmp", employee.getReportType(),parameterMap);
         return mv;
     }
 	

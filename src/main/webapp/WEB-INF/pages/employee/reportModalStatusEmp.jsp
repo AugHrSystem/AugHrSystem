@@ -25,7 +25,6 @@
         	</div>
         	<div class="col-sm-6">
         		<f:select path="sortingBy" cssClass="form-control">
-        			<f:option value="date">Date</f:option>
         			<f:option value="nameEng">Employee Name</f:option>
         		</f:select>
         	</div>
