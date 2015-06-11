@@ -92,7 +92,7 @@ public class Site extends BaseEntity{
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "EMPLOYEE_ID", nullable = false)
 	public Employee getEmployee() {
 		return employee;
 	}
