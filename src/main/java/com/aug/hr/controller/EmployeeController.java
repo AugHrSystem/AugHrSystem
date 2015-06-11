@@ -396,9 +396,9 @@ public class EmployeeController {
 
 
 	
-	/*@ModelAttribute("employee")
+	@ModelAttribute("employee")
 	Employee setupForm() {
 		return new Employee();
-	}*/
+	}
 	
 }
