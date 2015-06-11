@@ -27,7 +27,6 @@
 </head>
 <body>
 <f:form method="post" commandName="listemployee" class="form-horizontal" role="form">
-	<div class="container">
 		<!-- <ol class="breadcrumb">
 			<li role="presentation" class="active"><a href="#">Home</a></li>
  			<li role="presentation"><a href="employee.jsp" data-toggle="modal">Add Employee</a></li>
@@ -53,13 +52,12 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-	<form action="javascript:initEditEmployee(0);">
-		<button type="button submit" class="btn btn-primary btn-md addEmployee">
+	<form action="${pageContext.request.contextPath}/employee">
+		<button type="submit" class="btn btn-primary btn-md addEmployee">
  	 	Add
 		</button>
 	</form>
 	</div>
-</div>			
 		
 
 <!-- Modal Delete -->
