@@ -118,16 +118,33 @@
 												<br>
 											<label> Upload File :</label> 
 										
+										
 											<input type="file" id="uploadFile" name="fileupload" accept="image/*"
 												class="file" data-show-upload="false"
-												data-show-preview="false" data-initial-caption="Picture"
-												data-overwrite-initial="false" required> 
+												data-show-preview="false" data-initial-caption="${allEmployeeDto.image}"
+												data-overwrite-initial="false"> 
 												
 												<input type="hidden" name="image"
 												class="form-control element-to-paste-filename"
 												value="${allEmployeeDto.image}" />
+
 											
 										</div>
+
+
+   								        <%--    <c:if test="${empty allEmployeeDto.image}">
+										    	<div id="imagePreview" class="img-rounded img-responsive"
+												style="background-image:url('<c:url value="/resources/images/no_image.gif" />');"></div>
+										    </c:if>
+										    
+										    
+										    
+										    <c:if test="${not empty allEmployeeDto.image}">
+<!-- 										    <div id="imagePreview" class="img-rounded img-responsive" background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div> -->
+										    <div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div>
+										    </c:if> --%>
+										   
+
 										<!-- <div class="col-md-3"></div>
  -->
 
@@ -342,17 +359,25 @@
 								<div class="col-md-3">
 									<label> Sex :</label>
 									<div class="radio">
-									  <c:if test="${not empty allEmployeeDto.sex}">
-										<c:choose>
-										    <c:when test="${allEmployeeDto.sex =='Male'}">
-										        <label><input type="radio" name="sex" value="Male" checked="checked">Male</label>
-										    </c:when>
-										   
-										    <c:otherwise>
-										       <label><input type="radio" name="sex" value="Female" checked="checked">Female</label>
-										    </c:otherwise>
-										</c:choose>
+									 <c:if test="${empty allEmployeeDto.sex}">									
+									  		 <label><input type="radio" name="sex" value="Male">Male</label>
+									  		 <label><input type="radio" name="sex" value="Female">Female</label>
 									  </c:if>
+									  
+									  
+									  <c:if test="${not empty allEmployeeDto.sex}">
+
+										 <c:if test="${allEmployeeDto.sex =='Male'}">
+										        <label><input type="radio" name="sex" value="Male" checked="checked">Male</label>
+										        <label><input type="radio" name="sex" value="Female">Female</label>
+										  </c:if>
+										    
+										   <c:if test="${allEmployeeDto.sex =='Female'}">
+										       <label><input type="radio" name="sex" value="Male">Male</label>
+										       <label><input type="radio" name="sex" value="Female" checked="checked">Female</label>						  
+										   </c:if>
+									  </c:if>
+									 
     								</div>
 								</div>
     						</div>	
@@ -366,9 +391,41 @@
 								<div class="col-md-3">
 									<label> Marital Status :</label>
 									<div class="radio">
-     									 <label><input type="radio" name="maritalStatus">Single</label> 
-      									 <label><input type="radio" name="maritalStatus">Married</label>
-      									 <label><input type="radio" name="maritalStatus">Divorce</label>
+									  <c:if test="${empty allEmployeeDto.maritalStatus}">	
+     									 <label><input type="radio" name="maritalStatus" value="Single">Single</label> 
+      									 <label><input type="radio" name="maritalStatus" value="Married">Married</label>
+      									 <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+    								  </c:if>
+    								  <c:if test="${not empty allEmployeeDto.maritalStatus}">
+    								        
+    								        <c:choose>
+										    <c:when test="${allEmployeeDto.maritalStatus =='Single'}">
+										       <label><input type="radio" name="maritalStatus" value="Single" checked="checked">Single</label> 
+      									 	   <label><input type="radio" name="maritalStatus" value="Married">Married</label>
+      									       <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+										    </c:when>
+										    
+										     <c:when test="${allEmployeeDto.maritalStatus =='Married'}">
+										       <label><input type="radio" name="maritalStatus" value="Single">Single</label> 
+      									 	   <label><input type="radio" name="maritalStatus" value="Married" checked="checked">Married</label>
+      									       <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+										    </c:when>
+										    
+										    <c:when test="${allEmployeeDto.maritalStatus =='Divorce'}">
+										       <label><input type="radio" name="maritalStatus" value="Single">Single</label> 
+      									 	   <label><input type="radio" name="maritalStatus" value="Married" checked="checked">Married</label>
+      									       <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+										    </c:when>
+										    
+										    <c:otherwise>
+										       <label><input type="radio" name="maritalStatus" value="Single">Single</label> 
+      									 	   <label><input type="radio" name="maritalStatus" value="Married">Married</label>
+      									       <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+										    </c:otherwise>
+										   </c:choose>
+    								  
+    								  </c:if>
+    								  
     								</div>
 								</div>
     						</div>	
@@ -381,19 +438,19 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Number of Children :</label> <input type="text" class="form-control"
-									id="numberOfChildren" name="numberOfChildren" placeholder="Enter Number Of Children">
+									id="numberOfChildren" name="numberOfChildren" placeholder="Enter Number Of Children" value="${allEmployeeDto.numberOfChildren}">
 								</div>
 								<div class="col-md-3">
 									<label> Spouse: Name :</label> <input type="text" class="form-control"
-									id="spouseName" name="spouseName" placeholder="Enter Spouse Name">
+									id="spouseName" name="spouseName" placeholder="Enter Spouse Name" value="${allEmployeeDto.spouseName}">
 								</div>
 								<div class="col-md-3">
 									<label> Marriage certificate No. :</label> <input type="text" class="form-control"
-									id="marriageCertificateNo" name="marriageCertificateNo" placeholder="Enter Marriage Cert No.">
+									id="marriageCertificateNo" name="marriageCertificateNo" placeholder="Enter Marriage Cert No." value="${allEmployeeDto.marriageCertificateNo}">
 								</div>
 								<div class="col-md-3">
 									<label> Issued Office :</label> <input type="text" class="form-control"
-									id="issuedOffice2" name="issuedOffice2" placeholder="Enter Issue Office">
+									id="issuedOffice2" name="issuedOffice2" placeholder="Enter Issue Office" value="${allEmployeeDto.issuedOffice2}">
 								</div>
 							</div>
 					
@@ -405,11 +462,11 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Address :</label> <input type="text" class="form-control"
-									id="address" name="address" placeholder="Enter Address">
+									id="address" name="address" placeholder="Enter Address" value="${allEmployeeDto.address}">
 								</div>
 								<div class="col-md-3">
 									<label> Occupation :</label> <input type="text" class="form-control"
-									id="occupation" name="occupation" placeholder="Enter Occupation">
+									id="occupation" name="occupation" placeholder="Enter Occupation" value="${allEmployeeDto.occupation}">
 								</div>
 							</div>
 					
@@ -422,21 +479,73 @@
 								<div class="col-md-3">
 									<label> How do you know augmentis? :</label>
 									<div class="checkbox">
-     									 <label><input type="checkbox" name="knowAugNewspaper">Newspaper</label>
-     									 <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="Enter Newspaper">
-     									 
-      									 <label><input type="checkbox" name="knowAugMagazine">Magazine</label>
-      									 <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="Enter Magazine">
+									    
+									  
+    								  <c:if test="${empty allEmployeeDto.knowAugNewspaper}">	
+     									  <label><input type="checkbox" name="knowAugNewspaper" value="Newspaper">Newspaper</label>   										 
+     									  <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="Enter Newspaper" value="${allEmployeeDto.descriptionNewspaper}">
+     									
+    								  </c:if>
+    								 
+									  <c:if test="${not empty allEmployeeDto.knowAugNewspaper}">	
+     									   <label><input type="checkbox" name="knowAugNewspaper" value="Newspaper" checked="checked">Newspaper</label>
+    								  	   <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="Enter Newspaper" value="${allEmployeeDto.descriptionNewspaper}">
+    								  		
+    								  </c:if>
+    								 
+									  
+									  
+									  <c:if test="${empty allEmployeeDto.descriptionMagazine}">	
+     									 <label><input type="checkbox" name="knowAugMagazine" value="Magazine">Magazine</label>
+      									 <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="Enter Magazine" value="${allEmployeeDto.descriptionMagazine}">
       									 
-      									 <label><input type="checkbox" name="knowAugWebsite">Website</label>
-      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="Enter Website">
+    								  </c:if>
+    								 
+									  <c:if test="${not empty allEmployeeDto.descriptionMagazine}">	
+     									   <label><input type="checkbox" name="knowAugNewspaper" value="Newspaper" checked="checked">Newspaper</label>
+    								  	   <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="Enter Magazine" value="${allEmployeeDto.descriptionMagazine}">
       									 
-      									 <label><input type="checkbox" name="knowAugFriend">Friend</label>
-      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="Enter Friend">
+    								  </c:if>
+
+									  
+									 <c:if test="${empty allEmployeeDto.knowAugWebsite}">	
+     									 <label><input type="checkbox" name="knowAugWebsite" value="Website">Website</label>
+      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="Enter Website" value="${allEmployeeDto.descriptionWebsite}">
+      									
+    								  </c:if>
+    								 
+									  <c:if test="${not empty allEmployeeDto.knowAugWebsite}">	
+     									 <label><input type="checkbox" name="knowAugWebsite" value="Website" checked="checked">Website</label>
+      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="Enter Website" value="${allEmployeeDto.descriptionWebsite}">
+      									
+    								  </c:if>
+									
+									  
+									  <c:if test="${empty allEmployeeDto.knowAugFriend}">	
+     									 <label><input type="checkbox" name="knowAugFriend" value="Friend">Friend</label>
+      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="Enter Friend" value="${allEmployeeDto.descriptionFriend}">
+      									
+    								  </c:if>
+    								 
+									  <c:if test="${not empty allEmployeeDto.knowAugFriend}">	
+     									 <label><input type="checkbox" name="knowAugFriend" value="Friend" checked="checked">Friend</label>
+      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="Enter Friend" value="${allEmployeeDto.descriptionFriend}">
+      									
+    								  </c:if>
+									    
+									    
+									  <c:if test="${empty allEmployeeDto.knowAugOther}">	
+									    <label><input type="checkbox" name="knowAugOther" value="Other">Other (Please specify.)</label>
+      									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="Enter Other" value="${allEmployeeDto.descriptionOther}">
+    								  </c:if>
+									    
+									  <c:if test="${not empty allEmployeeDto.knowAugOther}">	
+									    <label><input type="checkbox" name="knowAugOther" value="Other" checked="checked">Other (Please specify.)</label>
+      									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="Enter Other" value="${allEmployeeDto.descriptionOther}">
+    								  </c:if>
+									    			 
       									 
-      									 <label><input type="checkbox" name="knowAugOther">Other (Please specify.)</label>
-      									 <input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="Enter Other">
-    								</div>
+      							    </div>
 								</div>
     						</div>	
 					
@@ -449,12 +558,30 @@
 								<div class="col-md-6">
 									<label> Do you know anyone now being employed by this company? :</label>
 									<div class="checkbox">
-     									 <label><input type="checkbox" name="knowEmployedYes">Yes</label>
-     									 <input type="text" class="form-control" id="descriptionYes" name="descriptionYes" placeholder="Enter Please write name,position and relation">
+									<c:if test="${ empty allEmployeeDto.knowEmployedYes}">	
+     									  <label><input type="checkbox" name="knowEmployedYes" value="Yes">Yes</label>
+    								</c:if>
+    								<c:if test="${not empty allEmployeeDto.knowEmployedYes}">	
+	    								<c:if test="${allEmployeeDto.knowEmployedYes=='Yes'}">	
+	     									  <label><input type="checkbox" name="knowEmployedYes" value="Yes" checked="checked">Yes</label>
+	    								</c:if>
+    								</c:if>
+     									 <input type="text" class="form-control" id="descriptionYes" name="descriptionYes" placeholder="Enter Please write name,position and relation" value="${allEmployeeDto.descriptionYes}">
     								</div>
     								
+    								
+    								
+    								
     								<div class="checkbox">
-     									 <label><input type="checkbox" name="knowEmployerNo">No</label>
+    								  <c:if test="${ empty allEmployeeDto.knowEmployerNo}">	
+     									 <label><input type="checkbox" name="knowEmployerNo" value="No">No</label>
+    								  </c:if>
+    								  
+    								  <c:if test="${not empty allEmployeeDto.knowEmployedYes}">	  								  
+    								 	<c:if test="${allEmployeeDto.knowEmployedYes=='No'}">	
+     									    <label><input type="checkbox" name="knowEmployerNo" value="No" checked="checked">No</label>
+    								   </c:if>
+    								  </c:if>
     								</div>
 								</div>
     						</div>	
@@ -473,29 +600,47 @@
 								
 									<label> Have you ever served in the military service? :</label>
     								<div class="checkbox">
-     									 <label><input type="checkbox" name="militaryServiceYes">Yes</label>
+    								 <c:if test="${ empty allEmployeeDto.militaryServiceYes}">	
+     									  <label><input type="checkbox" name="militaryServiceYes" value="Yes">Yes</label>
+    								  </c:if>
+    								  <c:if test="${not empty allEmployeeDto.militaryServiceYes}">	
+     									  <label><input type="checkbox" name="militaryServiceYes" value="Yes" checked="checked">Yes</label>
+    								   </c:if>
      								</div>
      								<div class="col-md-3">
     									 <label> From Year :</label>
+
     									 <div class='input-group date' id='fromYear'>
-    									 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="Enter From year">
-    								<span class="input-group-addon">
+    									 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="Enter From year" value="${allEmployeeDto.fromYear}">
+    								     <span class="input-group-addon">
 <span class="glyphicon glyphicon-calendar"></span>
 </span></div>
 </div>
     								<div class="col-md-3">
     									 <label> To Year :</label>
     									 <div class='input-group date' id='fromYear'>
-    									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="Enter To Year">
+    									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="Enter To Year" value="${allEmployeeDto.toYear}">
     								<span class="glyphicon glyphicon-calendar"></span>
 </div></div>
+
+
+
+    								<%-- 	 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="Enter From year" value="${allEmployeeDto.fromYear}">
+    								</div>
+    								<div class="col-md-3">
+    									 <label> To Year :</label>
+    									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="Enter To Year" value="${allEmployeeDto.toYear}">
+    								</div> --%>
+
+
+
     								<div class="col-md-3">
     									 <label> Branch of Service :</label>
-    									 <input type="text" class="form-control" id="branchOfService" name="branchOfService" placeholder="Enter Branch Of Service">
+    									 <input type="text" class="form-control" id="branchOfService" name="branchOfService" placeholder="Enter Branch Of Service" value="${allEmployeeDto.branchOfService}">
     								</div>
     								<div class="col-md-3">
      									 <label> Service No :</label>
-    									 <input type="text" class="form-control" id="serviceNo" name="serviceNo" placeholder="Enter Service No">
+    									 <input type="text" class="form-control" id="serviceNo" name="serviceNo" placeholder="Enter Service No" value="${allEmployeeDto.serviceNo}">
     							    </div>
     						</div>	
 					
@@ -506,19 +651,29 @@
 	         		
 							<div class="form-group">
     								<div class="checkbox">
-     									 <label><input type="checkbox" name="litaryServiceNo">No</label>
+    								 <c:if test="${ empty allEmployeeDto.militaryServiceNo}">	
+     									   <label><input type="checkbox" name="militaryServiceNo" value="No">No</label>
+    								  </c:if>
+    								  <c:if test="${not empty allEmployeeDto.militaryServiceNo}">	
+     									    <label><input type="checkbox" name="militaryServiceNo" value="No">No</label>     									       									 
+    								   </c:if>
      								</div>
      								<div class="col-md-6">
     									 <label> Please state the reasons :</label>
-    									 <input type="text" class="form-control" id="reasonsNo" name="reasonsNo" placeholder="Enter Reasons">
+    									 <input type="text" class="form-control" id="reasonsNo" name="reasonsNo" placeholder="Enter Reasons" value="${allEmployeeDto.reasonsNo}">
     								</div>
     								<div class="col-md-3">
     									 <label> Date to be drafted :</label>
+
     									 <div class='input-group date' id='dateToBeDrafted'>
-    									 <input type="text" class="form-control" id="dateToBeDrafted" name="dateToBeDrafted" placeholder="Enter Date Drafted">
-    								<span class="input-group-addon">
-<span class="glyphicon glyphicon-calendar"></span>
-</span></div></div>
+    									 <input type="text" class="form-control" id="dateToBeDrafted" name="dateToBeDrafted" placeholder="Enter Date Drafted" value="${allEmployeeDto.dateToBeDrafted}">
+    							      	 <span class="input-group-addon">
+										 <span class="glyphicon glyphicon-calendar"></span>
+										 </span></div></div>
+
+    									<%--  <input type="text" class="form-control" id="dateToBeDrafted" name="dateToBeDrafted" placeholder="Enter Date Drafted" value="${allEmployeeDto.dateToBeDrafted}">
+    									</div> --%>
+
     						</div>	
 					
 	        </div>
@@ -531,12 +686,23 @@
 							<label> May inquiry be made of your previous employers reguarding you character,qualification record of employment? :</label>
 								<div class="col-md-6">
 									<div class="checkbox">
-									 <label><input type="checkbox" name="previousEmployerYes">Yes</label>
+									<c:if test="${ empty allEmployeeDto.previousEmployerYes}">	
+     									 <label><input type="checkbox" name="previousEmployerYes" value="Yes">Yes</label>
+    								  </c:if>
+    								  <c:if test="${not empty allEmployeeDto.previousEmployerYes}">	
+     									  <label><input type="checkbox" name="previousEmployerYes" value="Yes" checked="checked">Yes</label>   									       									 
+    								   </c:if>
     								</div>
     								
     								<div class="checkbox">
-     									 <label><input type="checkbox" name="previousEmployerNo">No</label>
-     									 <input type="text" class="form-control" id="previousEmpreasonsNo" name="previousEmpreasonsNo" placeholder="Enter Give the reason">
+    								  <c:if test="${ empty allEmployeeDto.previousEmployerNo}">	
+     									   <label><input type="checkbox" name="previousEmployerNo" value="No">No</label>
+    								  </c:if>
+    								  <c:if test="${not empty allEmployeeDto.previousEmployerNo}">	
+     									     <label><input type="checkbox" name="previousEmployerNo" value="No" checked="checked">No</label>     									       									 
+    								   </c:if>
+     									
+     									 <input type="text" class="form-control" id="previousEmpreasonsNo" name="previousEmpreasonsNo" placeholder="Enter Give the reason" value="${allEmployeeDto.previousEmpreasonsNo}">
     									
     								</div>
 								</div>
@@ -563,11 +729,16 @@
 								
 			 			<div class="col-md-4">
 									<label> Date :</label> 
+
 									<div class='input-group date' id='officialDate'>
-									<input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="Enter Date">
-								<span class="input-group-addon">
-<span class="glyphicon glyphicon-calendar"></span>
-</span></div></div>
+									<input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="Enter Date" value="${allEmployeeDto.officialDate}">
+								    <span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+									</span></div></div>
+
+									<%-- <input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="Enter Date" value="${allEmployeeDto.officialDate}">
+							  	    </div> --%>
+
 			</div>
 			</div>
 			
@@ -575,11 +746,16 @@
 			<div class="col-md-12">	
 				<div class="col-md-4">
 									<label> Position Applied For :</label> 
-									<input type="text" class="form-control" id="positionAppliedFor" name="positionAppliedFor" placeholder="Enter Position">
+									<input type="text" class="form-control" id="positionAppliedFor" name="positionAppliedFor" placeholder="Enter Position" value="${allEmployeeDto.positionAppliedFor}">
 								</div>
 								
+
 				<div class="col-md-4">
-									<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary">
+				<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary" value="${allEmployeeDto.salaryExpected}">
+
+				<%-- <div class="col-md-6">
+									<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary" value="${allEmployeeDto.salaryExpected}">
+ 				--%>
 								</div>				
 							
 							</div>
@@ -607,10 +783,11 @@
 	      <div class="col-md-12">
 	         
 				<div class="form-group">
+
 						<div class="col-md-4">
     						<label> Start Work Date :</label> 
     						<div class='input-group date' id='startWorkDate'><input type="text" class="form-control"
-									id="startWorkDate" name="startWorkDate" placeholder="Enter Start Work Date">
+									id="startWorkDate" name="startWorkDate" placeholder="Enter Start Work Date" value="${allEmployeeDto.startWorkDate}">
 						<span class="input-group-addon">
 <span class="glyphicon glyphicon-calendar"></span>
 </span></div></div>
@@ -619,10 +796,23 @@
     						<label> End Work Date :</label>
     						<div class='input-group date' id='endWorkDate'>
     						 <input type="text" class="form-control"
-									id="endWorkDate" name="endWorkDate" placeholder="Enter End Work Date">
+									id="endWorkDate" name="endWorkDate" placeholder="Enter End Work Date" value="${allEmployeeDto.endWorkDate}">
 						<span class="input-group-addon">
 <span class="glyphicon glyphicon-calendar"></span>
 </span></div>
+
+
+					  <%-- 	<div class="col-md-3">
+    						<label> Start Work Date :</label> <input type="text" class="form-control"
+									id="startWorkDate" name="startWorkDate" placeholder="Enter Start Work Date" value="${allEmployeeDto.startWorkDate}">
+						</div>
+						
+						<div class="col-md-3">
+    						<label> End Work Date :</label> <input type="text" class="form-control"
+									id="endWorkDate" name="endWorkDate" placeholder="Enter End Work Date" value="${allEmployeeDto.endWorkDate}">
+						</div> --%>
+
+
   				</div>
 			
 	    </div>
@@ -742,6 +932,7 @@
      								<label><input type="checkbox" value = "1" name="isManager">isAIM</label>
 								</div>
 			</div>
+
   				</div>
 			
 	    </div>
@@ -749,7 +940,13 @@
 	    <div class="col-md-12">
 	    <div class="form-group">
 	    <div class="col-md-4">
-    				<label>AIM : ${aimList.size()}</label>
+    				
+    			<%-- <label>AIM : ${aimList.size()}</label> --%>
+
+
+				<%-- <div class="form-group">					
+    			<label>AIM :${aimList.size()}</label> --%>
+
     				
     				  <f:select  path="aimempid"  class="form-control">
     						 
@@ -762,11 +959,18 @@
     				
     		<div class="col-md-4">
 						
+
 						<label> Probation Date :</label> 
 						<div class='input-group date' id='dateOfBirth'><input type="text" class="form-control"
-									id="probationDate" name="probationDate" placeholder="Enter Probation Date">
+									id="probationDate" name="probationDate" placeholder="Enter Probation Date" value="${allEmployeeDto.probationDate}">
+
+
+						<%-- <label> Probation Date :</label> <input type="text" class="form-control"
+							 id="probationDate" name="probationDate" placeholder="Enter Probation Date" value="${allEmployeeDto.probationDate}">
+						 --%>
 						
-					<span class="input-group-addon">
+						
+<span class="input-group-addon">
 <span class="glyphicon glyphicon-calendar"></span>
 </span>	</div></div>
 	    </div>
@@ -891,6 +1095,7 @@ var dataUpdate;
 var getIndex = 0;
 
 	$(document).ready(function() {
+
 		var date1 = $( "#dateOfBirth" ).datetimepicker({
 			format : "DD/MM/YYYY",
 			viewMode : 'years'
@@ -900,6 +1105,17 @@ var getIndex = 0;
 			format : "DD/MM/YYYY",
 			viewMode : 'years'
 		});
+		
+		$('#tbResult').dataTable({
+			"searching": false,
+			"bLengthChange": false,
+			"iDisplayLength": 10,
+			"pagingType": "simple_numbers",
+			"ordering": false,
+			"info": false,
+			"paging": false
+		});
+		
 		
     	var date2 = $( "#expiryDate" ).datetimepicker({
     		format : "DD/MM/YYYY",
@@ -1043,6 +1259,8 @@ var getIndex = 0;
 			});
 		
 
+	
+	
 
  		
  			$("#uploadFile").on("change", function()

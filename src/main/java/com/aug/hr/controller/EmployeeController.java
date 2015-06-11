@@ -274,21 +274,12 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
-	public String manageSubmit(@ModelAttribute AllEmployeeDto employee
-			/*@RequestParam("fileupload") MultipartFile file*/) {
-	   
-		
-
-		
-		
-		
-		logger.info("infoooo: "+employee);	
+	public String manageSubmit(@ModelAttribute AllEmployeeDto employee) {
 	
+		logger.info("infoooo: "+employee.getId());		
 		logger.info("infoooo: ================================================================>"+employee.getAimempid());	
 
-		logger.info("infoooo: "+employee.getAddressList());
-		logger.info("file: "+employee.getFileupload().getOriginalFilename());
-
+	  if(employee.getId()==null){	
 		
 		try {
 			String[] result =  StringUtils.split(employee.getFileupload().getOriginalFilename(),'.');
@@ -310,7 +301,9 @@ public class EmployeeController {
 			e.printStackTrace();
 		}
 		
-		
+	  }else if(employee.getId()>0){
+		  logger.info("update emp");
+	  }
 		
 		
 		

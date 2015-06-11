@@ -35,7 +35,7 @@ public class EmployeeUpdateAndRelateTableTest {
 	@Autowired
 	private OfficialDao officialDao;
 
-	@Test
+	/*@Test
 	@Rollback(false)
 	public void updateEmployee() {
 
@@ -134,11 +134,11 @@ public class EmployeeUpdateAndRelateTableTest {
 
 		empDao.updateByNameQuery(allEmployeeDto);
 
-	}
+	}*/
 
 	@Test
 	public void  showData(){
-		Employee emp = empDao.find(2);
+		Employee emp = empDao.find(6);
 		System.out.println(emp.getAddresses().get(0).getAddressType().getId());
 	}
 }

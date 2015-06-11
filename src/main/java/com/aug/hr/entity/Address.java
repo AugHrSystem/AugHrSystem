@@ -35,7 +35,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
             		+ "ZIPCODE,"
             		+ "EMPLOYEE_ID,"
             		+ "ADDRESSTYPE_ID,"
-            		+ "PROVINCE_ID"
+            		+ "PROVINCE_ID,"
+            		+ "createdTimeStamp,"
+            	    + "createdBy,"
+            	    + "auditFlag "
             		+ ") "
             		+ " values("
             		+ ":ADDRESS1,"
@@ -43,7 +46,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
             		+ ":ZIPCODE,"
             		+ ":EMPLOYEE_ID,"
             		+ ":ADDRESSTYPE_ID,"
-            		+ ":PROVINCE_ID"
+            		+ ":PROVINCE_ID,"
+            		+ "NOW(),"
+            	    + "0,"
+            	    + "'C'" 
             		+ ")"
             	
             		,resultClass= Address.class),

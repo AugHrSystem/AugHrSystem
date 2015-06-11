@@ -95,6 +95,17 @@
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
- 
-
+  
+  
+   <servlet>
+    <description></description>
+    <display-name>DisplayImageServlet</display-name>
+    <servlet-name>DisplayImageServlet</servlet-name>
+    <servlet-class>com.aug.servlet.DisplayImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayImageServlet</servlet-name>
+    <url-pattern>/DisplayImageServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

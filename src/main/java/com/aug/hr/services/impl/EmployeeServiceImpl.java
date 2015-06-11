@@ -122,10 +122,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	@Transactional
 	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto) {
 		// TODO Auto-generated method stub
 		
+		
+		try{
 		MasLocation location = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
 		
 		OfficialDto officialDto = new OfficialDto();
@@ -136,6 +137,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		officialDto.setEndWorkDate(allEmployeeDto.getEndWorkDate());
 		officialDto.setPositionAppliedFor(allEmployeeDto.getPositionAppliedFor());
 		officialDto.setSalaryExpected(allEmployeeDto.getSalaryExpected());
+		officialDto.setProbationDate(allEmployeeDto.getProbationDate());
 	
 		afficialService.saveOfficialByNameQuery(officialDto);		
 		
@@ -154,13 +156,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println("empId: "+emp.getId());
     
 		for(AddressDto addressDto:allEmployeeDto.getAddressList()){
-			
-			addressDto.setEmployeeId(emp.getId());
-			addressService.saveAddressByNameQuery(addressDto);
+			if(addressDto!=null){
+				addressDto.setEmployeeId(emp.getId());
+				addressService.saveAddressByNameQuery(addressDto);
+			}
 			
 		}
+	 }catch(Exception e){
+		 
+		 e.printStackTrace();
+	 }
 		
-	}
+  }
 
 	
 
@@ -240,7 +247,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         allEmployeeDto.setDateToBeDrafted(employee.getDateToBeDrafted());
         allEmployeeDto.setPreviousEmployerYes(employee.getPreviousEmployerYes());
         allEmployeeDto.setPreviousEmployerNo(employee.getPreviousEmployerNo());
-        allEmployeeDto.setPreviousEmpreasonsNo(employee.getPreviousEmployerNo());
+        allEmployeeDto.setPreviousEmpreasonsNo(employee.getPreviousEmpreasonsNo());
         allEmployeeDto.setImage(employee.getImage());
         
         if(employee.getAimempid()!=null){
@@ -307,8 +314,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		
 		allEmployeeDto.setAddressList(addressDtoList);
-
-		//allEmployeeDto.setProbationDate(); 
+		allEmployeeDto.setProbationDate(employee.getOfficial().getProbationDate()); 
 		
 		
 		return allEmployeeDto;
