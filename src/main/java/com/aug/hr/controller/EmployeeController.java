@@ -16,7 +16,9 @@ import javax.servlet.http.HttpSession;
 
 
 
+
 import net.sf.jasperreports.engine.JRParameter;
+
 
 
 
@@ -59,6 +61,7 @@ import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
+import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.AddressService;
 import com.aug.hr.services.EmployeeService;
