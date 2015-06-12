@@ -17,7 +17,11 @@ import javax.servlet.http.HttpSession;
 
 
 
+
+
 import net.sf.jasperreports.engine.JRParameter;
+
+
 
 
 
@@ -48,6 +52,7 @@ import com.aug.hr.entity.Ability;
 import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeCodeDtoService;
 import com.aug.hr.dto.services.EmployeeDtoService;
+import com.aug.hr.dto.services.EmployeeIdDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Leave;
@@ -58,6 +63,7 @@ import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
+import com.aug.hr.entity.dto.EmployeeIdDto;
 import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
@@ -99,6 +105,7 @@ public class EmployeeController {
 	@Autowired private UploadService uploadService;
 	@Autowired private EmployeeCodeDtoService employeeCodeDtoService;
 	@Autowired private ReportService reportService;
+	@Autowired private EmployeeIdDtoService employeeIdService;
 	
 	
 	private static final Logger logger = Logger.getLogger(Employee.class);
@@ -279,7 +286,10 @@ public class EmployeeController {
 		logger.info("infoooo: "+employee);		
 		logger.info("infoooo: ================================================================>"+employee.getAimempid());	
 
-		
+	
+	  EmployeeIdDto employeeId = new EmployeeIdDto();
+	  employeeId = 	employeeIdService.findCurrentId();
+
 		
 	  if(employee.getId()==null){	
 		  
@@ -302,6 +312,12 @@ public class EmployeeController {
 					
 						employeeService.saveEmpAndWithRelateTable(employee);
 
+						if(employeeId.getId()<employeeIdService.findCurrentId().getId()){
+							employeeId.setId(employeeIdService.findCurrentId().getId());
+							return "redirect:/history/"+employeeId.getId();
+						}
+
+
 				 }
 				
 			} catch (RuntimeException | IOException e) {
@@ -311,14 +327,17 @@ public class EmployeeController {
 		}
 		
 	  }else if(employee.getId()>0){
+		  
 		  logger.info("update emp");
+		  employeeId.setId(employee.getId());
+		  
 	  }
 		
 		
 		
-		int id=1;
 		
-		return "redirect:/history/"+id;
+		
+		return "redirect:/history/"+employeeId;
 	}
 	
 	//Report
