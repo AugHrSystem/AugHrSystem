@@ -269,7 +269,7 @@ var dt;
     		function editProbation() {
     			//alert(proId+" edit");
 //     			var id = getUrlParameter('Id');
-    			//var id = $("#empId").val();
+    			var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/edit",
 					type : "POST",
