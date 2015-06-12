@@ -43,11 +43,11 @@ public class AllEmployeeDaoTest {
 		allemp.setEmergencyContactPhoneNumber("0895555");
 		Date dateFrom = new Date("10/09/2014");
 		allemp.setDateOfBirth(dateFrom);
-		allemp.setTelHome(022222);
-		allemp.setTelMobile(02);
-		allemp.setTelFax(11);
+		allemp.setTelHome("022222");
+		allemp.setTelMobile("02");
+		allemp.setTelFax("11");
 		allemp.setAge(21);
-		allemp.setIdCard(111);
+		allemp.setIdCard(111L);
 		allemp.setHeight(21);
 		allemp.setWeigth(119);
 		allemp.setMasDivision(new Integer(2));

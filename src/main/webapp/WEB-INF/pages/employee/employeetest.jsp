@@ -28,9 +28,7 @@
 		 </div>
 		 
 		 
-		 <div class="col-md-12">
 		 <div class="col-md-7">
-			 <div class="col-md-12">
 
 							<div class="form-group">
 									<!-- <label for="id"> ID :</label> -->
@@ -46,18 +44,18 @@
 							
 								<div class="col-md-6">
 									<label for="employeeCode"> Employee Code :</label> 
-									<input id="employeeCode" name="employeeCode" type="text" class="form-control" placeholder="Enter Employee Code" value="${allEmployeeDto.employeeCode}">
+									<input id="employeeCodefalse" name="employeeCodefalse" type="text" class="form-control" disabled placeholder="Enter Employee Code" value="${allEmployeeDto.employeeCode}">
 								</div>
+								
+									<input id="employeeCode" name="employeeCode" type="hidden" class="form-control"  value="${allEmployeeDto.employeeCode}">
 								
 							    <%-- <c:out value="${allEmployeeDto.employeeCode}"/> --%>
 								
 							</div>
 							
 					
-	        </div>
 	        
 	        
-	         <div class="col-md-12">
 	         		
 							<div class="form-group">
 								<div class="col-md-4">
@@ -77,9 +75,7 @@
 								</div>
 							</div>
 					
-	         </div>
 	         
-	         <div class="col-md-12">
 	         		
 							<div class="form-group">
 								<div class="col-md-4">
@@ -98,12 +94,6 @@
 					
 	         </div>
 	         
-	         
-	         
-	         </div>
-	         
-	         
-	         
 	       <!--   Upload image -->
 							<div class="col-md-5">
 								<div class="form-group">
@@ -111,9 +101,9 @@
 
 
 										<div class="col-md-3"></div>
-
-										<div class="col-md-9">
 										
+										<div class="col-md-9">
+										<div class="row" align="center">
 										   <c:if test="${empty allEmployeeDto.image}">
 												<div  id="imagePreview" class="img-rounded img-responsive"
 													style="background-image:url('<c:url value="/resources/images/no_image.gif" />');">
@@ -123,7 +113,7 @@
 											<c:if test="${not empty allEmployeeDto.image}">
 										   		 <div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div>
 										    </c:if>
-											
+											</div>
 											<br>
 											<label> Upload File :</label> 
 										
@@ -139,7 +129,7 @@
 
 											
 										</div>
-
+</div>
 
    								        <%--    <c:if test="${empty allEmployeeDto.image}">
 										    	<div id="imagePreview" class="img-rounded img-responsive"
@@ -159,9 +149,8 @@
 
 									</div>
 								</div>
-							</div>
 
-						</div>
+						
 	         
 	         
  <!-------------------------------------------------- Start Address-------------------------------------------------->
@@ -173,9 +162,11 @@
 	       </div>
 	       
 	    <div class="col-md-12">
+	    <div class="col-md-12">
 	    <div class="form-group" align="right">
 	      <button id="addaddress" type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
           New record</button>	
+        </div>
         </div>
         <div id="outputAddress">
 	       <table id="tbResult" class ="table">
@@ -190,10 +181,10 @@
 								<th>Province</th> 
 								<th>Zipcode</th>
 								<th>GetIndex</th>
-								<th>Edit</th>
-								<th>Delete</th>
+								<th>Action</th>
+<!-- 								<th>Delete</th> -->
 								<th>Status</th>
-								<th>HiddenIndex</th>
+							    <th>HiddenIndex</th> 
 							</tr>
 						
 						</thead>
@@ -299,7 +290,12 @@
 							        </span>
 							        </div>
 								</div>
+								
 								<div class="col-md-3">
+									<label> Place of Birth :</label> <input type="text" class="form-control"
+									id="placeOfBirth" name="placeOfBirth" placeholder="Enter POB">
+								</div>
+								<%-- <div class="col-md-3">
 								
 									<label> Place of Birth :</label>
 									<div class='input-group date' id='placeOfBirth'> <input type="text" class="form-control"
@@ -307,7 +303,7 @@
 								<span class="input-group-addon">
 <span class="glyphicon glyphicon-calendar"></span>
 </span></div>
-								</div>
+								</div> --%>
 								<div class="col-md-3">
 									<label> Age :</label> <input type="text" class="form-control"
 									id="age" name="age" placeholder="Enter Age" value="${allEmployeeDto.age}">
@@ -606,7 +602,7 @@
 	        <div class="col-md-12">
 	         		
 							<div class="form-group">
-								
+								<div class="col-md-12">
 									<label> Have you ever served in the military service? :</label>
     								<div class="checkbox">
     								 <c:if test="${ empty allEmployeeDto.militaryServiceYes}">	
@@ -615,6 +611,7 @@
     								  <c:if test="${not empty allEmployeeDto.militaryServiceYes}">	
      									  <label><input type="checkbox" name="militaryServiceYes" value="Yes" checked="checked">Yes</label>
     								   </c:if>
+     								</div>
      								</div>
      								<div class="col-md-3">
     									 <label> From Year :</label>
@@ -663,6 +660,7 @@
 	         <div class="col-md-12">
 	         		
 							<div class="form-group">
+							<div class="col-md-12">
     								<div class="checkbox">
     								 <c:if test="${ empty allEmployeeDto.militaryServiceNo}">	
      									   <label><input type="checkbox" name="militaryServiceNo" value="No">No</label>
@@ -670,6 +668,7 @@
     								  <c:if test="${not empty allEmployeeDto.militaryServiceNo}">	
      									    <label><input type="checkbox" name="militaryServiceNo" value="No">No</label>     									       									 
     								   </c:if>
+     								</div>
      								</div>
      								<div class="col-md-6">
     									 <label> Please state the reasons :</label>
@@ -696,7 +695,9 @@
 	         		
 							<div class="form-group">
 							<br></br>
+							<div class="col-md-12">
 							<label> May inquiry be made of your previous employers reguarding you character,qualification record of employment? :</label>
+							</div>	
 								<div class="col-md-6">
 									<div class="checkbox">
 									<c:if test="${ empty allEmployeeDto.previousEmployerYes}">	
@@ -834,7 +835,7 @@
   				</div>
 			
 	    </div>
-	    
+	    </div>
 	     <div class="col-md-12">
 	       
 				<div class="form-group">
@@ -964,8 +965,7 @@
 
 				<%-- <div class="form-group">					
     			<label>AIM :${aimList.size()}</label> --%>
-
-    				
+						<label>AIM : ${aimList.size()}</label>
     				  <f:select  path="aimempid"  class="form-control">
     						 
     						 <f:option  value="" label="--Select AIM--" />
@@ -979,18 +979,21 @@
 						
 
 						<label> Probation Date :</label> 
-						<div class='input-group date' id='dateOfBirth'><input type="text" class="form-control"
+						<div class='input-group date' id='probationDate'>
+						<input type="text" class="form-control"
 									id="probationDate" name="probationDate" placeholder="Enter Probation Date" value="${allEmployeeDto.probationDate}">
 
 
 						<%-- <label> Probation Date :</label> <input type="text" class="form-control"
 							 id="probationDate" name="probationDate" placeholder="Enter Probation Date" value="${allEmployeeDto.probationDate}">
 						 --%>
-						
-						
-<span class="input-group-addon">
-<span class="glyphicon glyphicon-calendar"></span>
-</span>	</div></div>
+
+
+					<span class="input-group-addon"> <span
+						class="glyphicon glyphicon-calendar"></span>
+					</span>
+				</div>
+				</div>
 	    </div>
 	    </div>
 	    
@@ -1000,7 +1003,6 @@
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
     			<button type="submit" class="btn btn-primary">Save&Continue</button>
 	    	</div>
-	</div>
 </f:form>   
     
 <!----------------------------------------------------------- Modal Address --------------------------------------------------->
@@ -1119,22 +1121,6 @@ var getIndex = 0;
 			viewMode : 'years'
 		});
 		
-		var date1 = $( "#placeOfBirth" ).datetimepicker({
-			format : "DD-MM-YYYY",
-			viewMode : 'years'
-		});
-		
-		$('#tbResult').dataTable({
-			"searching": false,
-			"bLengthChange": false,
-			"iDisplayLength": 10,
-			"pagingType": "simple_numbers",
-			"ordering": false,
-			"info": false,
-			"paging": false
-		});
-		
-		
     	var date2 = $( "#expiryDate" ).datetimepicker({
     		format : "DD-MM-YYYY",
     		viewMode : 'years'
@@ -1176,8 +1162,18 @@ var getIndex = 0;
 		});
     	
 		
-    	dt=$("#tbResult").dataTable(
-    			/* { "columnDefs": [
+    	 dt=$("#tbResult").dataTable( 
+    		 	 { 
+    		 		"searching": false,
+    				"bLengthChange": false,
+    				"iDisplayLength": 10,
+    				"pagingType": "simple_numbers",
+    				"ordering": false,
+    				"info": false,
+    				"paging": false,
+    		 		 
+    		 		 
+    		 		 "columnDefs": [
     	    	                  {
     	    	                     "targets": [ 0 ],
     	    	                     "visible": false
@@ -1187,7 +1183,7 @@ var getIndex = 0;
     	    	                     "visible": false
     	    	                 },
     	    	                 
-    	    	                 {
+    	    	                  {
     	    	                     "targets": [ 5 ],
     	    	                     "visible": false
     	    	                 }, 
@@ -1203,23 +1199,29 @@ var getIndex = 0;
     	    	                 },
     	    	                 
     	    	                 {
+    	    	                     "targets": [ 10 ],
+    	    	                     "visible": false
+    	    	                 }   
+    	    	                 
+    	    	                 ,   	    	                 
+    	    	                 {
     	    	                     "targets": [ 11 ],
     	    	                     "visible": false
-    	    	                 },
-    	    	                 
-    	    	                 {
-    	    	                     "targets": [ 12 ],
-    	    	                     "visible": false
     	    	                 } 
-    	    	             ]
+    	    	                 
+    	    	                 
+    	    	             ] 
     			
-    			} */);
+    			} ); 
  		//listAll();
 		//$('input[type=file]').change(function(e){
 		//$('.element-to-paste-filename').attr('value',e.target.files[0].name);
 		//});
 
 			    	
+		
+		
+		
 		
 			    	  
 			    
@@ -1249,16 +1251,20 @@ var getIndex = 0;
 					    		  if($('#employeeCodeDto').val()==null&&$('#employeeCodeDto').val()===" "){
 					    		  
 					    		  	$('#employeeCode').val(code+'10'+'001');
+					    		  	$('#employeeCodefalse').val(code+'10'+'001');
 					    		  
 					    		  }else if(empCode.toString().length==1){
 					    			  $('#employeeCode').val(code+'10'+'00' +empCode.toString());
+					    			  $('#employeeCodefalse').val(code+'10'+'00' +empCode.toString());
 					    			  
 					    		  }else if(empCode.toString().length==2){
 					    			 
 					    			  $('#employeeCode').val(code+'10'+'0'+empCode.toString());
+					    			  $('#employeeCodefalse').val(code+'10'+'0'+empCode.toString());
 					    			  
 					    		  }else if(empCode.toString().length==3){
 					    			  $('#employeeCode').val(code+'10'+empCode.toString());
+					    			  $('#employeeCodefalse').val(code+'10'+empCode.toString());
 					    			  
 					    		  }
 					    		  
@@ -1299,24 +1305,7 @@ var getIndex = 0;
 		    });
  		
  		
- 		/* var button = $(event.relatedTarget);
-    	var addId = button.data("addid"); 
-    	var buttonemp = $(event.relatedTarget);
-    	var empId = button.data("empid"); 
-  		$(this).find(".saveButton").off("click").on("click", function()
-  		
-  				
-    		{
-    			if(empId != null){
-    				editEmployee();
-    			}
-    			else {
-    				addEmployee();
-    			}
-    			
-    		}); */
-  		
-  		
+ 		
     		
     		
     $('body').on('click','#addaddress', function() {
@@ -1401,7 +1390,7 @@ var getIndex = 0;
 					              zipcode,
 					              getIndex,
 					              
-					              '<button id="edit" type="button" class="btn btn-info btn-sm active"  data-target="#addModal" data-toggle="modal">Edit</button>',
+					              '<button id="edit" type="button" class="btn btn-info btn-sm active"  data-target="#addModal" data-toggle="modal">Edit</button>'+
 				    			  '<button id="delete" type="button" class="btn btn-danger btn-sm active" data-target="#deleteModal" data-toggle="modal">Delete</button>',
 				    			  status,
 				    			  '<input id="dataaddressid'+getIndex+'" type ="text" name = "addressList['+getIndex+'].id" value="'+id+'">'+
@@ -1415,7 +1404,61 @@ var getIndex = 0;
 				    				
 			   	 ]); 
 				  
-				  				getIndex = getIndex+1; 
+				  
+				  $('<input>').attr({
+					    type: 'text',
+					    id: 'dataaddressid'+getIndex,
+					    name: 'addressList['+getIndex+'].id',
+					    value: id
+					}).appendTo('form');
+				  
+				  
+				  $('<input>').attr({
+					    type: 'text',
+					    id: 'dataaddresstype'+getIndex,
+					    name: 'addressList['+getIndex+'].addressTypeId',
+					    value: addressId
+					}).appendTo('form');
+				  
+				  $('<input>').attr({
+					    type: 'text',
+					    id: 'dataaddress1'+getIndex,
+					    name: 'addressList['+getIndex+'].address1',
+					    value: address1
+					}).appendTo('form');
+				  
+				  $('<input>').attr({
+					    type: 'text',
+					    id: 'dataaddress2'+getIndex,
+					    name: 'addressList['+getIndex+'].address2',
+					    value: address2
+					}).appendTo('form');
+				  
+				  $('<input>').attr({
+					    type: 'text',
+					    id: 'dataprovinceid'+getIndex,
+					    name: 'addressList['+getIndex+'].masprovinceId',
+					    value: provinceId
+					}).appendTo('form');
+				  
+				  $('<input>').attr({
+					    type: 'text',
+					    id: 'datazipcode'+getIndex,
+					    name: 'addressList['+getIndex+'].zipcode',
+					    value: zipcode
+					}).appendTo('form');
+				  
+				  $('<input>').attr({
+					    type: 'text',
+					    id: 'datastatus'+getIndex,
+					    name: 'addressList['+getIndex+'].status',
+					    value: status
+					}).appendTo('form');
+				  
+				 
+				 
+				  
+				  getIndex = getIndex+1; 
 				
 				 
 				  $('#myModal').modal('toggle');
@@ -1550,7 +1593,18 @@ var getIndex = 0;
 	   	 $('#yesButton').off("click").on("click",function(){ 
 	   	  
 		  dt.fnDeleteRow(row);
+		
+		  $( '#dataaddressid'+dataDelete[0] ).remove();
+		  $( '#dataaddresstype'+dataDelete[0] ).remove();
+		  $( '#dataaddress1'+dataDelete[0] ).remove();
+		  $( '#dataaddress2'+dataDelete[0] ).remove();
+		  $( '#dataprovinceid'+dataDelete[0] ).remove();
+		  $( '#datazipcode'+dataDelete[0] ).remove();
+		  $( '#datastatus'+dataDelete[0] ).remove();
+		 
+		 
 		  $('#deleteModal').modal('toggle');
+		  
 	   	});
 	 		
       }else{
@@ -1609,7 +1663,7 @@ var getIndex = 0;
 					              data[i].masprovinceName, 					              
 					              data[i].zipcode,
 					              getIndex,
-						'<button id="edit" type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button id="edit" type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 						'<button id="delete" type="button" class="btn btn-danger btn-sm active" data-addId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>',
 						 "unmodified",
 						'<input id="dataaddressid'+getIndex+'" type ="text" name = "addresses['+getIndex+'].id" value="'+data[i].id+'">'+

@@ -789,13 +789,13 @@ public class Employee extends BaseEntity{
 	private String email;
 	
 	@Column(name = "TEL_HOME",nullable = false)
-	private Integer telHome;
+	private String telHome;
 	
 	@Column(name = "TEL_MOBILE",nullable = false)
-	private Integer telMobile;
+	private String telMobile;
 	
 	@Column(name = "TEL_FAX",nullable = true)
-	private Integer telFax;
+	private String telFax;
 	
 	@Column(name = "CONGENITAL_DISEASE",nullable = true)
 	private String congenitalDisease;
@@ -830,7 +830,7 @@ public class Employee extends BaseEntity{
 	private String religion;
 	
 	@Column(name = "ID_CARD",nullable = false)
-	private Integer idCard;
+	private Long idCard;
 	
 	@Column(name = "ISSUED_OFFICE",nullable = true)
 	private String issuedOffice;
@@ -1227,32 +1227,32 @@ public class Employee extends BaseEntity{
 		this.hospital = hospital;
 	}
 
-	public Integer getTelHome() {
+	public String getTelHome() {
 		return telHome;
 	}
 
 
-	public void setTelHome(Integer telHome) {
+	public void setTelHome(String telHome) {
 		this.telHome = telHome;
 	}
 
 
-	public Integer getTelMobile() {
+	public String getTelMobile() {
 		return telMobile;
 	}
 
 
-	public void setTelMobile(Integer telMobile) {
+	public void setTelMobile(String telMobile) {
 		this.telMobile = telMobile;
 	}
 
 
-	public Integer getTelFax() {
+	public String getTelFax() {
 		return telFax;
 	}
 
 
-	public void setTelFax(Integer telFax) {
+	public void setTelFax(String telFax) {
 		this.telFax = telFax;
 	}
 
@@ -1338,13 +1338,13 @@ public class Employee extends BaseEntity{
 	}
 
 
-	public Integer getIdCard() {
+	public Long getIdCard() {
 		return idCard;
 
 	}
 
 
-	public void setIdCard(Integer idCard) {
+	public void setIdCard(Long idCard) {
 		this.idCard = idCard;
 	}
 

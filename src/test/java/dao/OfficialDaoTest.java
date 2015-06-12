@@ -105,11 +105,11 @@ public class OfficialDaoTest {
 		allEmp.setEmergencyContact("bbbbbbb");
 		allEmp.setEmergencyContactPhoneNumber("0895555");
 		allEmp.setDateOfBirth(Calendar.getInstance().getTime());
-		allEmp.setTelHome(022222);
-		allEmp.setTelMobile(02);
-		allEmp.setTelFax(11);
+		allEmp.setTelHome("022222");
+		allEmp.setTelMobile("02");
+		allEmp.setTelFax("11");
 		allEmp.setAge(21);
-		allEmp.setIdCard(111);
+		allEmp.setIdCard(111L);
 		allEmp.setHeight(21);
 		allEmp.setWeigth(119);
 		allEmp.setMasLocation("1");

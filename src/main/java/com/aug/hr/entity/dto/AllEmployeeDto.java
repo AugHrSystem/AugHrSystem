@@ -36,9 +36,9 @@ public class AllEmployeeDto {
 	private String surnameEng;
 	private String nicknameEng;
 	private String email;
-	private Integer telHome;
-	private Integer telMobile;
-	private Integer telFax;
+	private String telHome;
+	private String telMobile;
+	private String telFax;
 	private String congenitalDisease;
 	private String hospital;
 	private String emergencyContact;
@@ -53,7 +53,7 @@ public class AllEmployeeDto {
 	private String placeOfBirth;
 	private Integer age;
 	private String religion;
-	private Integer idCard;
+	private Long idCard;
 	private String issuedOffice;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
@@ -305,32 +305,32 @@ public class AllEmployeeDto {
 	}
 
 
-	public Integer getTelHome() {
+	public String getTelHome() {
 		return telHome;
 	}
 
 
-	public void setTelHome(Integer telHome) {
+	public void setTelHome(String telHome) {
 		this.telHome = telHome;
 	}
 
 
-	public Integer getTelMobile() {
+	public String getTelMobile() {
 		return telMobile;
 	}
 
 
-	public void setTelMobile(Integer telMobile) {
+	public void setTelMobile(String telMobile) {
 		this.telMobile = telMobile;
 	}
 
 
-	public Integer getTelFax() {
+	public String getTelFax() {
 		return telFax;
 	}
 
 
-	public void setTelFax(Integer telFax) {
+	public void setTelFax(String telFax) {
 		this.telFax = telFax;
 	}
 
@@ -436,12 +436,12 @@ public class AllEmployeeDto {
 	}
 
 
-	public Integer getIdCard() {
+	public Long getIdCard() {
 		return idCard;
 	}
 
 
-	public void setIdCard(Integer idCard) {
+	public void setIdCard(Long idCard) {
 		this.idCard = idCard;
 	}
 

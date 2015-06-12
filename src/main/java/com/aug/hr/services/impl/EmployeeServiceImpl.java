@@ -126,7 +126,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 	
 	
-		MasLocation location = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
+		/*MasLocation location = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
 		
 		OfficialDto officialDto = new OfficialDto();
 		//Date dateOffi = new Date("12/05/2015");
@@ -152,14 +152,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		Employee emp = employeeDao.searhEmpIdtoAddress();
 		
-		System.out.println("empId: "+emp.getId());
+		System.out.println("empId: "+emp.getId());*/
 		
 		
 		if(allEmployeeDto.getAddressList()!=null){
 			for(AddressDto addressDto:allEmployeeDto.getAddressList()){
 				if(addressDto.getId()!=null){
-					addressDto.setEmployeeId(emp.getId());
-					addressService.saveAddressByNameQuery(addressDto);
+					//addressDto.setEmployeeId(emp.getId());
+					//addressService.saveAddressByNameQuery(addressDto);
 				    System.out.println(addressDto);
 				}
 				

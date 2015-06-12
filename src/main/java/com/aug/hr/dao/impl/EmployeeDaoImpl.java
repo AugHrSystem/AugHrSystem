@@ -105,10 +105,10 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		
 		query.setString("NICKNAME_ENG", allEmployeeDto.getNicknameEng());
 		query.setString("EMAIL", allEmployeeDto.getEmail());
-		query.setInteger("TEL_HOME", allEmployeeDto.getTelHome());
+		query.setString("TEL_HOME", allEmployeeDto.getTelHome());
 		
-		query.setInteger("TEL_MOBILE", allEmployeeDto.getTelMobile());
-		query.setInteger("TEL_FAX", allEmployeeDto.getTelFax());
+		query.setString("TEL_MOBILE", allEmployeeDto.getTelMobile());
+		query.setString("TEL_FAX", allEmployeeDto.getTelFax());
 		query.setString("CONGENITAL_DISEASE", allEmployeeDto.getCongenitalDisease());
 		
 		query.setString("HOSPITAL", allEmployeeDto.getHospital());
@@ -123,7 +123,7 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		query.setInteger("AGE", allEmployeeDto.getAge());
 		query.setString("RELIGION", allEmployeeDto.getReligion());
 		
-		query.setInteger("ID_CARD", allEmployeeDto.getIdCard());
+		query.setLong("ID_CARD", allEmployeeDto.getIdCard());
 		query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 		query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 		
@@ -198,10 +198,10 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 			
 			query.setString("NICKNAME_ENG", allEmployeeDto.getNicknameEng());
 			query.setString("EMAIL", allEmployeeDto.getEmail());
-			query.setInteger("TEL_HOME", allEmployeeDto.getTelHome());
+			query.setString("TEL_HOME", allEmployeeDto.getTelHome());
 			
-			query.setInteger("TEL_MOBILE", allEmployeeDto.getTelMobile());
-			query.setInteger("TEL_FAX", allEmployeeDto.getTelFax());
+			query.setString("TEL_MOBILE", allEmployeeDto.getTelMobile());
+			query.setString("TEL_FAX", allEmployeeDto.getTelFax());
 			query.setString("CONGENITAL_DISEASE", allEmployeeDto.getCongenitalDisease());
 			
 			query.setString("HOSPITAL", allEmployeeDto.getHospital());
@@ -216,7 +216,7 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 			query.setInteger("AGE", allEmployeeDto.getAge());
 			query.setString("RELIGION", allEmployeeDto.getReligion());
 			
-			query.setInteger("ID_CARD", allEmployeeDto.getIdCard());
+			query.setLong("ID_CARD", allEmployeeDto.getIdCard());
 			query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 			query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 			
@@ -298,10 +298,10 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 				
 				query.setString("NICKNAME_ENG", allEmployeeDto.getNicknameEng());
 				query.setString("EMAIL", allEmployeeDto.getEmail());
-				query.setInteger("TEL_HOME", allEmployeeDto.getTelHome());
+				query.setString("TEL_HOME", allEmployeeDto.getTelHome());
 				
-				query.setInteger("TEL_MOBILE", allEmployeeDto.getTelMobile());
-				query.setInteger("TEL_FAX", allEmployeeDto.getTelFax());
+				query.setString("TEL_MOBILE", allEmployeeDto.getTelMobile());
+				query.setString("TEL_FAX", allEmployeeDto.getTelFax());
 				query.setString("CONGENITAL_DISEASE", allEmployeeDto.getCongenitalDisease());
 				
 				query.setString("HOSPITAL", allEmployeeDto.getHospital());
@@ -316,7 +316,7 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 				query.setInteger("AGE", allEmployeeDto.getAge());
 				query.setString("RELIGION", allEmployeeDto.getReligion());
 				
-				query.setInteger("ID_CARD", allEmployeeDto.getIdCard());
+				query.setLong("ID_CARD", allEmployeeDto.getIdCard());
 				query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 				query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 				
@@ -394,10 +394,10 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 				
 				query.setString("NICKNAME_ENG", allEmployeeDto.getNicknameEng());
 				query.setString("EMAIL", allEmployeeDto.getEmail());
-				query.setInteger("TEL_HOME", allEmployeeDto.getTelHome());
+				query.setString("TEL_HOME", allEmployeeDto.getTelHome());
 				
-				query.setInteger("TEL_MOBILE", allEmployeeDto.getTelMobile());
-				query.setInteger("TEL_FAX", allEmployeeDto.getTelFax());
+				query.setString("TEL_MOBILE", allEmployeeDto.getTelMobile());
+				query.setString("TEL_FAX", allEmployeeDto.getTelFax());
 				query.setString("CONGENITAL_DISEASE", allEmployeeDto.getCongenitalDisease());
 				
 				query.setString("HOSPITAL", allEmployeeDto.getHospital());
@@ -412,7 +412,7 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 				query.setInteger("AGE", allEmployeeDto.getAge());
 				query.setString("RELIGION", allEmployeeDto.getReligion());
 				
-				query.setInteger("ID_CARD", allEmployeeDto.getIdCard());
+				query.setLong("ID_CARD", allEmployeeDto.getIdCard());
 				query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 				query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 				
@@ -541,10 +541,10 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		
 		query.setString("NICKNAME_ENG", allEmployeeDto.getNicknameEng());
 		query.setString("EMAIL", allEmployeeDto.getEmail());
-		query.setInteger("TEL_HOME", allEmployeeDto.getTelHome());
+		query.setString("TEL_HOME", allEmployeeDto.getTelHome());
 		
-		query.setInteger("TEL_MOBILE", allEmployeeDto.getTelMobile());
-		query.setInteger("TEL_FAX", allEmployeeDto.getTelFax());
+		query.setString("TEL_MOBILE", allEmployeeDto.getTelMobile());
+		query.setString("TEL_FAX", allEmployeeDto.getTelFax());
 		query.setString("CONGENITAL_DISEASE", allEmployeeDto.getCongenitalDisease());
 		
 		query.setString("HOSPITAL", allEmployeeDto.getHospital());
@@ -559,7 +559,7 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		query.setInteger("AGE", allEmployeeDto.getAge());
 		query.setString("RELIGION", allEmployeeDto.getReligion());
 		
-		query.setInteger("ID_CARD", allEmployeeDto.getIdCard());
+		query.setLong("ID_CARD", allEmployeeDto.getIdCard());
 		query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 		query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 		
