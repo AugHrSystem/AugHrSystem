@@ -276,25 +276,34 @@ public class EmployeeController {
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
 	public String manageSubmit(@ModelAttribute AllEmployeeDto employee) {
 	
-		logger.info("infoooo: "+employee.getId());		
+		logger.info("infoooo: "+employee);		
 		logger.info("infoooo: ================================================================>"+employee.getAimempid());	
 
+		
+		
 	  if(employee.getId()==null){	
+		  
+	    logger.info("create employee");
 		
 		try {
-			String[] result =  StringUtils.split(employee.getFileupload().getOriginalFilename(),'.');
-			logger.info("length: "+result.length);
+			
+				if(employee.getFileupload().getOriginalFilename()!=null){
+					String[] result =  StringUtils.split(employee.getFileupload().getOriginalFilename(),'.');
+					logger.info("length: "+result.length);
+		
+						if(result.length==2){
+						
+							logger.info("length: "+result.length);
+								
+							employee.setImage(employee.getEmployeeCode()+"."+result[1]);
+							uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+"."+result[1], employee.getFileupload());
+							
+						}
+					
+						employeeService.saveEmpAndWithRelateTable(employee);
 
-			if(result.length==2){
-			
-			logger.info("length: "+result.length);
+				 }
 				
-			employee.setImage(employee.getEmployeeCode()+"."+result[1]);
-			uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+"."+result[1], employee.getFileupload());
-			employeeService.saveEmpAndWithRelateTable(employee);
-			
-			}
-			
 			} catch (RuntimeException | IOException e) {
 			e.printStackTrace();
 		}catch (Exception e) {
