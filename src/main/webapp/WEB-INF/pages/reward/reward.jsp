@@ -59,7 +59,7 @@
 								<div class="form-group " align="left">
 									 <label>Year :</label>
 									<form:select path="year" id="year" class="form-control required" >
-										<option value="">--Choose Status--</option>						
+										<option value="">--Select Status--</option>						
 										<option value="2020">2020</option>
 										<option value="2019">2019</option>
 										<option value="2018">2018</option>

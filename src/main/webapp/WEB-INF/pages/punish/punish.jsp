@@ -132,6 +132,9 @@
 	                    notEmpty: {
 	                        message: 'The Date of adjustment is required and cannot be empty'
 	                    },
+	                    date: {
+	                        format: 'DD-MM-YYYY'
+	                    }
 	                   
 	                }
 	            }, 
