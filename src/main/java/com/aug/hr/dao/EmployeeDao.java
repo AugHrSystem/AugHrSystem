@@ -13,6 +13,7 @@ import com.aug.hr.entity.dto.AimEmployeeDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
+import com.aug.hr.entity.dto.EmployeeIdDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -34,5 +35,6 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public EmployeeCodeDto serchRunningNo(String code);
 	public List<ReportLeaveDto> reportLeave();
 	public void updateByNameQuery(AllEmployeeDto allEmployeeDto);
+	public EmployeeIdDto findCurrentId();
 	
 }

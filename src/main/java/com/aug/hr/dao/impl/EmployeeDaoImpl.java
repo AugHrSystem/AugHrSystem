@@ -8,7 +8,6 @@ package com.aug.hr.dao.impl;
 
 import java.util.List;
 
-
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
@@ -21,6 +20,7 @@ import com.aug.hr.entity.dto.AimEmployeeDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
+import com.aug.hr.entity.dto.EmployeeIdDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -627,5 +627,21 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 	}
 
 
-	
+	@Override
+	public EmployeeIdDto findCurrentId() {
+		// TODO Auto-generated method stub
+		
+	    EmployeeIdDto employeeIdDto = new EmployeeIdDto();
+		Query query = getCurrentSession().getNamedQuery("findCurrentId");
+		if(query.list()!=null){
+			  employeeIdDto = (EmployeeIdDto) query.list().get(0);
+			  if(employeeIdDto.getId()!=null){
+				return employeeIdDto;
+			  }
+		}
+		
+		return employeeIdDto;
+	}
+
 }
+	
