@@ -30,8 +30,8 @@
 							<th>End Date</th>
 							<th>Status</th>
 							<th>Remark</th>
-							<th></th>
-							<th></th>
+							<th>Action</th>
+<!-- 							<th></th> -->
 						</tr>
 					</thead>
 					<tbody></tbody>
@@ -411,7 +411,7 @@
 						              data[i].enddate, 
 						              data[i].status, 
 						              data[i].remark, 
-							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}

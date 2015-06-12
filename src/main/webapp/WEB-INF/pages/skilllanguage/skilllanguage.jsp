@@ -125,7 +125,7 @@
 					  			           data[i].abilityWriting,
 					  			           data[i].abilityReading,
 					  			           data[i].abilityUnderstanding,
-					  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id+ '" data-target="#addModal" data-toggle="modal">Edit</button>'+' '+
+					  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id+ '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 					    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id+ '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
 					    					
 					  			           ]); 			  		

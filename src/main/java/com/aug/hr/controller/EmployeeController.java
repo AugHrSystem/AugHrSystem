@@ -273,9 +273,9 @@ public class EmployeeController {
 	
 	//delete
 	@RequestMapping(value = "/employee/delete/{empId}", method = RequestMethod.POST )
-	public String deleteEmployee(@PathVariable("empId") Integer empId) {
+	public @ResponseBody String deleteEmployee(@PathVariable("empId") Integer empId) {
 		employeeService.deleteById(empId);
-		return "redirect:/listemployee";
+		return "{success:true}";
 	}
 	
 	
@@ -318,7 +318,7 @@ public class EmployeeController {
 
 						if(employeeId.getId()<employeeIdService.findCurrentId().getId()){
 							employeeId.setId(employeeIdService.findCurrentId().getId());
-							return "redirect:/history/"+employeeId.getId();
+							return "redirect:/family/"+employeeId.getId();
 						}
 
 

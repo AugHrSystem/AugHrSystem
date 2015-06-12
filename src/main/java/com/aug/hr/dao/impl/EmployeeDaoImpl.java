@@ -630,17 +630,9 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 	@Override
 	public EmployeeIdDto findCurrentId() {
 		// TODO Auto-generated method stub
-		
-	    EmployeeIdDto employeeIdDto = new EmployeeIdDto();
+
 		Query query = getCurrentSession().getNamedQuery("findCurrentId");
-		if(query.list()!=null){
-			  employeeIdDto = (EmployeeIdDto) query.list().get(0);
-			  if(employeeIdDto.getId()!=null){
-				return employeeIdDto;
-			  }
-		}
-		
-		return employeeIdDto;
+		return (EmployeeIdDto) query.list().get(0);
 	}
 
 }

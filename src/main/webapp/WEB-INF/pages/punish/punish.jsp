@@ -28,8 +28,8 @@
 							<th>DATE</th>
 							<th>Description</th>	
 							<th>Penalty</th>				
-							<th></th>
-							<th></th>
+							<th>Action</th>
+<!-- 							<th></th> -->
 						</tr>
 					</thead>
 					<tbody></tbody>
@@ -343,7 +343,7 @@
 						dt.fnAddData([data[i].datepunish,
 						              data[i].description, 	
 						              data[i].penalty, 					             
-							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 				
 						}

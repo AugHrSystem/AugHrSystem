@@ -29,8 +29,8 @@
 									<th>Reward name</th>
 									<th>YEAR</th>
 									<th>Description</th>
-									<th></th>
-									<th></th>
+									<th>Action</th>
+<!-- 									<th></th> -->
 								</tr>
 							</thead>
 							<tbody></tbody>
@@ -442,7 +442,7 @@
 									dt.fnAddData([data[i].typereward,
 												  data[i].year,
 												  data[i].reason,
-													'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+													'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 													'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>' ]);
 								}
 							},

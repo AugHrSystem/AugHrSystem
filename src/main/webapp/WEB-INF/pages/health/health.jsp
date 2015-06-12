@@ -139,7 +139,13 @@ $(function(){
 	   } 
 	 
 	 
-	 
+	   $('#tableResult').dataTable({ 
+			"bLengthChange": false,
+			"iDisplayLength": 10,
+			"pagingType": "simple_numbers",
+			"ordering": false,
+			"info": false
+		});
 	dt = $('#tableResult').dataTable();
 	 
 	 
@@ -541,7 +547,7 @@ $(function(){
 				  			           data[i].takeMedicineExplain,
 				  			           data[i].intolerance,
 				  			           data[i].intoleranceExplain,
-				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
 				    					
 				  			           ]);
@@ -662,8 +668,8 @@ $(function(){
                 <th>Take Medicine Specified</th>
                 <th>Intolerance</th>
                 <th>Intolerance Specified</th>
-                <th></th>
-                <th></th>
+                <th>Action</th>
+<!--                 <th></th> -->
             </tr>
         </thead>
 </table>
