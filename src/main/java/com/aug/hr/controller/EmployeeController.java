@@ -307,10 +307,14 @@ public class EmployeeController {
 								
 							employee.setImage(employee.getEmployeeCode()+"."+result[1]);
 							uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+"."+result[1], employee.getFileupload());
+							employeeService.saveEmpAndWithRelateTable(employee);
+
+						}if(result.length==0){
 							
+							employeeService.saveEmpAndWithRelateTable(employee);
+
 						}
 					
-						employeeService.saveEmpAndWithRelateTable(employee);
 
 						if(employeeId.getId()<employeeIdService.findCurrentId().getId()){
 							employeeId.setId(employeeIdService.findCurrentId().getId());
