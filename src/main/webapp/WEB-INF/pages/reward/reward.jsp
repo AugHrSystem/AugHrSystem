@@ -8,7 +8,8 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 <input id="empId" type="hidden" value="${id}">
-			<form:form id="listForm" method="post" commandName="reward" class="form-horizontal" role="form">
+
+		<form:form id="listForm" method="post" commandName="reward" class="form-horizontal" role="form">
 			<div class="row">
 			<h2 class="col-md-6">Reward</h2>
 			<br>
@@ -48,7 +49,7 @@
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<h4 class="modal-title" id="addModalLabel">Add Reward</h4>
+								<h4 class="modal-title" id="addModalLabel">Reward</h4>
 							</div>
 						<div class="col col-lg-12 " style="padding-top: 10px">
 							<div class="form-group " align="left">
@@ -200,7 +201,7 @@
 	</form:form> 
 
 		<!------------------------------------------Button  modal 2-------------------------------------------------------->
-	<form:form id="deleteForm" commandName="history" method="post">	
+	<form:form id="deleteForm" commandName="reward" method="post">	
 		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-md">
@@ -220,6 +221,16 @@
 	<script type="text/javascript">
 			var dt;			
 			$(document).ready(function(){
+				
+				
+				$('#tbResult').dataTable({ 
+					"bLengthChange": false,
+					"iDisplayLength": 10,
+					"pagingType": "simple_numbers",
+					"ordering": false,
+					"info": false
+				});
+				
 
 				
 			$("#addBtn").on("click",function(){clearModal();});

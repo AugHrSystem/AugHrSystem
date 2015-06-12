@@ -48,7 +48,7 @@
 				
 					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Add Card</h4>
+       					 <h4 class="modal-title" id="addModalLabel">Card</h4>
       				</div>
       					
       		<div class="col col-lg-12 " style="padding-top: 10px">	
@@ -103,7 +103,7 @@
 	</form:form>
 	  
 <!------------------------------------------Button  modal 2----------------------------------------------------->
-	<form:form id="deleteForm" commandName="history" method="post">		
+	<form:form id="deleteForm" commandName="card" method="post">		
 		
 		<div class="modal fade" id="deleteModal" tabindex ="-1" role ="dialog" aria-labelledby ="myModalLabel" aria-hidden ="true">
 			<div class="modal-dialog modal-md">
