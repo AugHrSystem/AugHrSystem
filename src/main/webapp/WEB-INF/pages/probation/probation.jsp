@@ -23,7 +23,6 @@
 				<br>
 			</div>
 		</div>
-		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">
 			<thead>
@@ -54,7 +53,7 @@
       <div class="modal-body row">
   		<div class="form-group col-md-6">
     		<label>Start Date :</label>
-  			<div class="input-group" id="dateTimeFrom">
+  			<div class="input-group date" id="dateTimeFrom">
   				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="Start Date"/> 
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
@@ -62,7 +61,7 @@
 		
 		<div class="form-group col-md-6">
     		<label>End Date :</label> 	
-  			<div class="input-group" id="dateTimeTo">
+  			<div class="input-group date" id="dateTimeTo">
   				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="End Date"/>
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
@@ -122,13 +121,7 @@ var dt;
 			"info": false
 		});
 		var proId; 
-		$('#validate').find('[id="#status"]')
-        .selectpicker()
-        .change(function(e) {
-            // revalidate the color when it is changed
-            $('#bootstrapSelectForm').formValidation('revalidateField', '#status');
-        })
-        .end()
+		$('#validate')
         .bootstrapValidator({
 			message: 'This value is not valid',
 			 feedbackIcons: {
@@ -223,7 +216,8 @@ var dt;
     				contentType: "application/json",
     				success : function(data) {
     					$('#addModal').modal('toggle');
-    					$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();
+    					$('#validate').bootstrapValidator('resetForm', true);
+    					//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();
     					/* dt.fnClearTable();
     					dt.fnAddData([
     					    data.id,
@@ -243,7 +237,7 @@ var dt;
     				},
     				error : function(data,testStatus,jqXHR) {
     					$('#validate').bootstrapValidator('validate');
-    					$('#validate').bootstrapValidator('revalidateField', '#status');
+    					alert("ERROR");
     					/* $('#addModal').modal('toggle');
     					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
     					}
@@ -256,6 +250,7 @@ var dt;
 					url : "${pageContext.request.contextPath}/probation/initEdit/"+proId,
 					type : "POST",
 					success : function(data) {
+							//$('#validate').bootstrapValidator('revalidateField', '#status');
 							id:proId;
 							$("#dateFrom").val(data.dateFrom);
 							$("#dateTo").val(data.dateTo);
@@ -265,7 +260,8 @@ var dt;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
+						alert("ERROR");
+						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
 						}
 					});
 			}
@@ -273,7 +269,7 @@ var dt;
     		function editProbation() {
     			//alert(proId+" edit");
 //     			var id = getUrlParameter('Id');
-    			var id = $("#empId").val();
+    			//var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/edit",
 					type : "POST",
@@ -289,7 +285,8 @@ var dt;
 					contentType: "application/json",
 					success : function(data) {
 						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-success" role="alert">Success</div>').slideDown('fast').delay(5000).fadeOut().delay(4000);
+						//$('#validate').bootstrapValidator('revalidateField', '#status');
+						//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').slideDown('fast').delay(5000).fadeOut().delay(4000);
 						/* dt.fnClearTable();
 						dt.fnAddData([
 						    data.id,
@@ -308,8 +305,9 @@ var dt;
 					},
 					error : function(data,testStatus,jqXHR) {
     					$('#validate').bootstrapValidator('validating');
-    					$('#validate').bootstrapValidator('revalidateField', '#status');
-						/* $('#addModal').modal('toggle');
+    					//$('#validate').bootstrapValidator('revalidateField', '#status');
+    					alert("ERROR");
+    					/* $('#addModal').modal('toggle');
 						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
 						}
 					});
@@ -347,14 +345,15 @@ var dt;
 						type : "POST",
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();		
+							//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();		
 							/* var del = button.closet("tr");
 							dt.fnDeleteRow(del); */
 							listAll();
 						},
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
+							alert("ERROR");
+							//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
 							}
 						});
 				}

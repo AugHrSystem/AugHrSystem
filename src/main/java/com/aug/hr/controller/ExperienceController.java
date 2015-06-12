@@ -78,7 +78,8 @@ public class ExperienceController {
 //		employeeDto.setName(experience.getEmployee().getNameEng());
 //	Hibernate.initialize(experience.getEmployee().getNameEng());
 		Experience experience = new Experience();
-		experienceService.create(experience.fromExperienceDto(experience, experienceDto));
+		experience = experience.fromExperienceDto(experience, experienceDto);
+		experienceService.create(experience);
 		return experienceDto;
 	}
 	
@@ -101,10 +102,10 @@ public class ExperienceController {
 	}
 	
 	//delete
-	@RequestMapping(value = "/experience/delete/{expId}", method = RequestMethod.POST )
-	public String deleteExperience(@PathVariable("expId") Integer expId) {
+	@RequestMapping(value = "/experience/delete/{expId}", method = { RequestMethod.GET,RequestMethod.POST} )
+	public @ResponseBody String deleteExperience(@PathVariable("expId") Integer expId) {
 		experienceService.deleteById(expId);
-		return "redirect:/experience";
+		return "{success:true}";
 	}
 	
 	@ModelAttribute("experience")

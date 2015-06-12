@@ -24,7 +24,6 @@
 				<br>
 				</div>	
 			</div>
-		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">
 			<thead>
@@ -188,7 +187,10 @@ var dt;
 		            	validators: {
 	                        notEmpty: {
 	                            message: 'The Salary is required and cannot be empty'
-	                        }
+	                        },
+	                        digits: {
+		                    	message: 'The Salary is number'
+		                    },
 	                    }
 		            },
 		            reason: {
@@ -248,6 +250,7 @@ var dt;
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 responsibility: $("#responsibility").val(),
+    					 reference: $("#reference").val(),
     					 superVisor: $("#supervisor").val(),
     					 address: $("#address").val(),
     					 reason: $("#reason").val(),
@@ -256,8 +259,9 @@ var dt;
     				datatype: "json",
     				contentType: "application/json",
     				success : function(data) {
+    					$('#validate').bootstrapValidator('resetForm', true);
     					$('#addModal').modal('toggle');
-    					$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+    					//$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					/* dt.fnClearTable();
     					dt.fnAddData([
     					    data.id,
@@ -289,6 +293,7 @@ var dt;
 					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
 					type : "POST",
 					success : function(data) {
+						$('#validate').bootstrapValidator('resetForm', true);
 						id:expId;
 						$("#cName").val(data.companyName);
 						$("#businessType").val(data.businessType);
@@ -304,7 +309,8 @@ var dt;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+						alert("ERROR");
+						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 						}
 					});
 			}
@@ -335,9 +341,10 @@ var dt;
 					datatype: "json",
 					contentType: "application/json",
 					success : function(data) {
-						$('#validate').bootstrapValidator('validate');
-						/* $('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-success" role="alert">Success</div>'); */
+						$('#validate').bootstrapValidator('resetForm', true);
+						//$('#validate').bootstrapValidator('validate');
+						$('#addModal').modal('toggle');
+						//$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 						/* dt.fnClearTable();
 						dt.fnAddData([
 						    data.id,
@@ -356,7 +363,8 @@ var dt;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+						alert("ERROR");
+						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 						}
 					});
 			}
@@ -379,7 +387,6 @@ var dt;
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
 				var expId = button.data("expid");
-				//alert("delete "+expId);
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteExperience(button,expId);
@@ -388,19 +395,21 @@ var dt;
 				
 				function deleteExperience(button,expId){
 					//alert("in fn");
+					alert("delete "+expId);
 					$.ajax({
 						url : "${pageContext.request.contextPath}/experience/delete/"+expId,
 						type : "POST",
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
+							//$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
 							/* var del = button.closet("tr");
 							dt.fnDeleteRow(del); */
 							listAll();
 						},
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
-							$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+							alert("ERROR");
+							//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 							}
 						});
 				}
@@ -412,7 +421,7 @@ var dt;
 				//alert("list experience");
 // 				var id = getUrlParameter('Id');
 				//alert("id >>>>"+id);
-				var id = $("#empId").val();
+				//var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/listAll/"+id,
 					/* data: "id="+getUrlParameter('Id'), */

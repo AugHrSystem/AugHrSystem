@@ -104,9 +104,9 @@ public class ProbationController {
 	
 	//delete
 	@RequestMapping(value = "/probation/delete/{proId}", method = RequestMethod.POST )
-	public String deleteProbation(@PathVariable("proId") Integer proId) {
+	public @ResponseBody String deleteProbation(@PathVariable("proId") Integer proId) {
 		probationService.deleteById(proId);
-		return "redirect:/probation";
+		return "{success:true}";
 	}
 	
 	@ModelAttribute("probation")
