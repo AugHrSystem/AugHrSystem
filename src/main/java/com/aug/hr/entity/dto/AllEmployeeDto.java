@@ -6,6 +6,7 @@
 
 package com.aug.hr.entity.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,8 +46,8 @@ public class AllEmployeeDto {
 	private String emergencyContactAddress;
 	private String emergencyContactPhoneNumber;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBirth;
 
 	private String placeOfBirth;
@@ -55,8 +56,8 @@ public class AllEmployeeDto {
 	private Integer idCard;
 	private String issuedOffice;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date expiryDate;
 	
 	private Integer height;
@@ -84,12 +85,12 @@ public class AllEmployeeDto {
 	private String knowEmployerNo;
 	private String militaryServiceYes;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date fromYear;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	
 	private Date toYear;
 	private String branchOfService;
@@ -97,8 +98,8 @@ public class AllEmployeeDto {
 	private String militaryServiceNo;
 	private String reasonsNo;
 
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
 	
 
@@ -129,24 +130,24 @@ public class AllEmployeeDto {
 	}
 
 
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date officialDate;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date startWorkDate;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date endWorkDate;
 	
 	private String positionAppliedFor;
 	
 	private Double salaryExpected;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date probationDate;
 
 	private Integer aimempid;
@@ -198,8 +199,22 @@ public class AllEmployeeDto {
 	private Integer officialId;
 	
 	private EmployeeCodeDto employeeCodeDto;
-    
+	
+	/*private List<AddressDto>addresses = new ArrayList<AddressDto>();
+	
+	
+	public List<AddressDto> getAddresses() {
+		return addresses;
+	}
 
+	public void setAddresses(List<AddressDto> addresses) {
+		this.addresses = addresses;
+	}
+
+    */
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -974,7 +989,7 @@ public class AllEmployeeDto {
 	
 	
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "AllEmployeeDto [id=" + id + ", employeeCode=" + employeeCode
 				+ ", nameThai=" + nameThai + ", surnameThai=" + surnameThai
@@ -1030,7 +1045,7 @@ public class AllEmployeeDto {
 				+ masLocation + ", masLocationId=" + masLocationId
 				+ ", addressList=" + addressList + ", officialId=" + officialId
 				+ ", employeeCodeDto=" + employeeCodeDto + "]";
-	}
+	}*/
 
 
 }

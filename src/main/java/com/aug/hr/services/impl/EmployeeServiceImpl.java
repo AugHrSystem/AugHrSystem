@@ -124,9 +124,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto) {
 		// TODO Auto-generated method stub
-		
-		
-		try{
+	
+	
 		MasLocation location = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
 		
 		OfficialDto officialDto = new OfficialDto();
@@ -154,19 +153,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Employee emp = employeeDao.searhEmpIdtoAddress();
 		
 		System.out.println("empId: "+emp.getId());
-    
-		for(AddressDto addressDto:allEmployeeDto.getAddressList()){
-			if(addressDto!=null){
-				addressDto.setEmployeeId(emp.getId());
-				addressService.saveAddressByNameQuery(addressDto);
-			}
-			
-		}
-	 }catch(Exception e){
-		 
-		 e.printStackTrace();
-	 }
 		
+		
+		if(allEmployeeDto.getAddressList()!=null){
+			for(AddressDto addressDto:allEmployeeDto.getAddressList()){
+				if(addressDto.getId()!=null){
+					addressDto.setEmployeeId(emp.getId());
+					addressService.saveAddressByNameQuery(addressDto);
+				    System.out.println(addressDto);
+				}
+				
+			}
+		}
   }
 
 	
@@ -188,6 +186,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	    	allEmployeeDto.setPositionAppliedFor(employee.getOfficial().getPositionAppliedFor());
 			allEmployeeDto.setSalaryExpected(employee.getOfficial().getSalaryExpected());
 			allEmployeeDto.setOfficialId(employee.getOfficial().getId());
+			allEmployeeDto.setProbationDate(employee.getOfficial().getProbationDate()); 
+
 		}
 		
         allEmployeeDto.setEmployeeCode(employee.getEmployeeCode());
@@ -280,17 +280,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         
         if(employee.getMasLocation()!=null){
         	allEmployeeDto.setMasLocation(employee.getMasLocation().getCode());
+        	allEmployeeDto.setMasLocationId(employee.getMasLocation().getId());
         }
 
 
         List<AddressDto> addressDtoList = new ArrayList<AddressDto>();
 		
-
-		allEmployeeDto.setMasLocationId(employee.getMasLocation().getId());
 		
-		
-		for(Address address:employee.getAddresses()){
-			if(address!=null){
+	  if(employee.getAddresses()!=null){
+		for(Address address:employee.getAddresses()){		
 				AddressDto addressDto = new AddressDto();
 				addressDto.setId(address.getId());
 				addressDto.setAddress1(address.getAddress1());
@@ -309,13 +307,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 				addressDto.setZipcode(address.getZipcode());
 				
 				addressDtoList.add(addressDto);
-			}
 		}
 		
 		
 		allEmployeeDto.setAddressList(addressDtoList);
-		allEmployeeDto.setProbationDate(employee.getOfficial().getProbationDate()); 
 		
+	  }
 		
 		return allEmployeeDto;
 

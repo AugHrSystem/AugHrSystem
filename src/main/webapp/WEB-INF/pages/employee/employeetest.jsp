@@ -46,7 +46,7 @@
 							
 								<div class="col-md-6">
 									<label for="employeeCode"> Employee Code :</label> 
-									<input id="employeeCode" name="employeeCode" type="text" disabled class="form-control" placeholder="Enter Employee Code" value="${allEmployeeDto.employeeCode}">
+									<input id="employeeCode" name="employeeCode" type="text" class="form-control" placeholder="Enter Employee Code" value="${allEmployeeDto.employeeCode}">
 								</div>
 								
 							    <%-- <c:out value="${allEmployeeDto.employeeCode}"/> --%>
@@ -113,9 +113,18 @@
 										<div class="col-md-3"></div>
 
 										<div class="col-md-9">
-											<div  id="imagePreview" class="img-rounded img-responsive"
-												style="background-image:url('<c:url value="/resources/images/no_image.gif" />');"></div>
-												<br>
+										
+										   <c:if test="${empty allEmployeeDto.image}">
+												<div  id="imagePreview" class="img-rounded img-responsive"
+													style="background-image:url('<c:url value="/resources/images/no_image.gif" />');">
+												</div>
+											</c:if>
+											
+											<c:if test="${not empty allEmployeeDto.image}">
+										   		 <div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div>
+										    </c:if>
+											
+											<br>
 											<label> Upload File :</label> 
 										
 										
@@ -330,8 +339,8 @@
 									id="expiryDate" name="expiryDate" placeholder="Enter Expiry Date" value="${allEmployeeDto.expiryDate}">
 								
 								<span class="input-group-addon">
-<span class="glyphicon glyphicon-calendar"></span>
-</span></div></div>
+								<span class="glyphicon glyphicon-calendar"></span>
+								</span></div></div>
 							</div>
 					
 	        </div>
@@ -613,15 +622,19 @@
     									 <div class='input-group date' id='fromYear'>
     									 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="Enter From year" value="${allEmployeeDto.fromYear}">
     								     <span class="input-group-addon">
-<span class="glyphicon glyphicon-calendar"></span>
-</span></div>
-</div>
+										 <span class="glyphicon glyphicon-calendar"></span>
+										 </span></div>
+									</div>
+									
     								<div class="col-md-3">
     									 <label> To Year :</label>
-    									 <div class='input-group date' id='fromYear'>
+    									 <div class='input-group date' id='toYear'>
     									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="Enter To Year" value="${allEmployeeDto.toYear}">
-    								<span class="glyphicon glyphicon-calendar"></span>
-</div></div>
+    									 <span class="input-group-addon">    									 
+    									 <span class="glyphicon glyphicon-calendar"></span>
+    									 </span>
+										</div>
+									</div>
 
 
 
@@ -787,19 +800,24 @@
 						<div class="col-md-4">
     						<label> Start Work Date :</label> 
     						<div class='input-group date' id='startWorkDate'><input type="text" class="form-control"
-									id="startWorkDate" name="startWorkDate" placeholder="Enter Start Work Date" value="${allEmployeeDto.startWorkDate}">
-						<span class="input-group-addon">
-<span class="glyphicon glyphicon-calendar"></span>
-</span></div></div>
+							id="startWorkDate" name="startWorkDate" placeholder="Enter Start Work Date" value="${allEmployeeDto.startWorkDate}">
+							<span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+							</span></div></div>
+						
 						
 						<div class="col-md-4">
     						<label> End Work Date :</label>
     						<div class='input-group date' id='endWorkDate'>
-    						 <input type="text" class="form-control"
-									id="endWorkDate" name="endWorkDate" placeholder="Enter End Work Date" value="${allEmployeeDto.endWorkDate}">
-						<span class="input-group-addon">
-<span class="glyphicon glyphicon-calendar"></span>
-</span></div>
+    						<input type="text" class="form-control"
+							id="endWorkDate" name="endWorkDate" placeholder="Enter End Work Date" value="${allEmployeeDto.endWorkDate}">
+						    <span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+						
+						
+						<%-- ${allEmployeeDto.endWorkDate} --%> 
 
 
 					  <%-- 	<div class="col-md-3">
@@ -1097,12 +1115,12 @@ var getIndex = 0;
 	$(document).ready(function() {
 
 		var date1 = $( "#dateOfBirth" ).datetimepicker({
-			format : "DD/MM/YYYY",
+			format : "DD-MM-YYYY",
 			viewMode : 'years'
 		});
 		
 		var date1 = $( "#placeOfBirth" ).datetimepicker({
-			format : "DD/MM/YYYY",
+			format : "DD-MM-YYYY",
 			viewMode : 'years'
 		});
 		
@@ -1118,48 +1136,48 @@ var getIndex = 0;
 		
 		
     	var date2 = $( "#expiryDate" ).datetimepicker({
-    		format : "DD/MM/YYYY",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date3 = $( "#fromYear" ).datetimepicker({
-    		format : "DD/MM/YYYY",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date4 = $( "#toYear" ).datetimepicker({
-    		format : "DD/MM/YYYY",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date5 = $( "#dateToBeDrafted" ).datetimepicker({
-    		format : "DD/MM/YYYY",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#officialDate" ).datetimepicker({
-    		format : "DD/MM/YYYY",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#startWorkDate" ).datetimepicker({
-    		format : "DD/MM/YYYY",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#endWorkDate" ).datetimepicker({
-    		format : "DD/MM/YYYY",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#probationDate" ).datetimepicker({
-    		format : "DD/MM/YYYY",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
 		
     	dt=$("#tbResult").dataTable(
-    			{ "columnDefs": [
+    			/* { "columnDefs": [
     	    	                  {
     	    	                     "targets": [ 0 ],
     	    	                     "visible": false
@@ -1195,7 +1213,7 @@ var getIndex = 0;
     	    	                 } 
     	    	             ]
     			
-    			});
+    			} */);
  		//listAll();
 		//$('input[type=file]').change(function(e){
 		//$('.element-to-paste-filename').attr('value',e.target.files[0].name);
