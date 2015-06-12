@@ -387,47 +387,7 @@ $(document).ready(function(){
 	
 function getId(abilityid){
 		
-	if($('#rank1:checked').val()!=null){
-			
-		rank = $('#rank1:checked').val();
-			
-		}else if($('#rank2:checked').val()!=null){
-			
-			rank = $('#rank2:checked').val();
-			
-		}else if($('#rank3:checked').val()!=null){
-			
-			rank = $('#rank3:checked').val();
-			
-		}else if($('#rank4:checked').val()!=null){
-			
-			rank = $('#rank4:checked').val();
-			
-		}else if($('#rank5:checked').val()!=null){
-			
-			rank = $('#rank5:checked').val();
-			
-		}else if($('#rank6:checked').val()!=null){
-			
-			rank = $('#rank6:checked').val();
-			
-		}else if($('#rank7:checked').val()!=null){
-			
-			rank = $('#rank7:checked').val();
-			
-		}else if($('#rank8:checked').val()!=null){
-			
-			rank = $('#rank8:checked').val();
-			
-		}else if($('#rank9:checked').val()!=null){
-			
-			rank = $('#rank9:checked').val();
-			
-		}else if($('#rank10:checked').val()!=null){
-			
-			rank = $('#rank10:checked').val();
-			
-		}
+
 		
 	
 		
@@ -439,9 +399,55 @@ function getId(abilityid){
 			success : function(data) {
 				//alert(JSON.stringify(data));
 				
-				$("#masspecialty").val(data.masspecialtyId);
-				rank.val(data.rank);
-				employeeId: data.employeeId;
+				 $("#masspecialty").val(data.masspecialtyId);
+				/* rank.val(data.rank); */
+				employeeId: data.employeeId; 
+				
+				
+				if(data.rank == "1"){
+		  			$('#rank1').prop('checked', 'checked');
+		  			
+		  		}else if(data.rank == "2"){
+		  			
+		  			$('#rank2').prop('checked','checked');
+		  			
+		  		}else if(data.rank == "3"){
+		  			
+		  			$('#rank3').prop('checked','checked');
+		  			
+		  		}else if(data.rank == "4"){
+		  			
+		  			$('#rank4').prop('checked','checked');
+		  			
+		  		}else if(data.rank == "5"){
+		  			
+		  			$('#rank5').prop('checked','checked');
+		  			
+		  		}else if(data.rank == "6"){
+		  			
+		  			$('#rank6').prop('checked','checked');
+		  			
+		  		}else if(data.rank == "7"){
+		  			
+		  			$('#rank7').prop('checked','checked');
+		  			
+		  		}else if(data.rank == "8"){
+		  			
+		  			$('#rank8').prop('checked','checked');
+		  			
+		  		}else if(data.rank == "9"){
+		  			
+		  			$('#rank9').prop('checked','checked');
+		  			
+		  		}else if(data.rank == "10"){
+		  			
+		  			$('#rank10').prop('checked','checked');
+		  			
+		  		}
+		  		
+				
+				
+				
 			},
 			error : function(data, textStatus, jqXML) {
 				{
