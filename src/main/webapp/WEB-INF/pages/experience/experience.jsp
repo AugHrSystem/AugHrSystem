@@ -221,6 +221,7 @@ var dt;
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		expId = button.data("expid"); 
+    		//alert("Check"+expId);
     		if(expId != null){
 				initEditExperience(expId);
 			}
@@ -293,7 +294,7 @@ var dt;
 					url : "${pageContext.request.contextPath}/experience/initEdit/"+expId,
 					type : "POST",
 					success : function(data) {
-						$('#validate').bootstrapValidator('resetForm', true);
+						//$('#validate').bootstrapValidator('resetForm', true);
 						id:expId;
 						$("#cName").val(data.companyName);
 						$("#businessType").val(data.businessType);
@@ -395,7 +396,7 @@ var dt;
 				
 				function deleteExperience(button,expId){
 					//alert("in fn");
-					alert("delete "+expId);
+					//alert("delete "+expId);
 					$.ajax({
 						url : "${pageContext.request.contextPath}/experience/delete/"+expId,
 						type : "POST",
@@ -436,8 +437,8 @@ var dt;
 						              data[i].salary,
 						              data[i].reason,
 							 
-						 	'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-	    				  '<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+						 	'<button type="button" class="btn btn-warning btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
+	    				  '<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 	    					
 						}
 					},
