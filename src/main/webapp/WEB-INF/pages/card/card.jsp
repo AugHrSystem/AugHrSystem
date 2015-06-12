@@ -88,22 +88,25 @@
 								</div>
 				    						    		
 				    			    
-				    <div class="form-group "  align="left">
-							<label for="remark" >Remark:</label>
-							<form:input path="remark" type="text" class="form-control" id="remark" placeholder="Remark"/>							
-				    </div>					
+				  		  <div class="form-group "  align="left">
+								<label for="remark" >Remark:</label>
+								<form:input path="remark" type="text" class="form-control" id="remark" placeholder="Remark"/>							
+				   		 </div>	
+				    
+				  </div>		
+				  		
 					<div class="form-group" align="center">
 					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
-				</div>
+				
 			</div>			
 		</div>
 	</div>
 	</form:form>
 	  
 <!------------------------------------------Button  modal 2----------------------------------------------------->
-	<form:form id="deleteForm" commandName="card" method="post">		
+	<form:form id="deleteForm" commandName="history" method="post">		
 		
 		<div class="modal fade" id="deleteModal" tabindex ="-1" role ="dialog" aria-labelledby ="myModalLabel" aria-hidden ="true">
 			<div class="modal-dialog modal-md">

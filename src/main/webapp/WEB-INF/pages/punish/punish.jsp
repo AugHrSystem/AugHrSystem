@@ -57,6 +57,7 @@
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
 				    </div>	
+				    		  
 				    		    
 				    <div class="form-group "  align="left">
 							<label for="description" >Description:</label>
@@ -68,11 +69,13 @@
 							<form:input path="penalty" type="text" class="form-control" id="penalty" placeholder="Penalty"/>							
 				    </div>	
 				    			
+				</div>
+				
 					<div class="form-group" align="center">
 					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
-				</div>
+				
 				</div>			
 			</div>
 		</div>

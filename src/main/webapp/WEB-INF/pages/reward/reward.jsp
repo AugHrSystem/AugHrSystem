@@ -189,12 +189,13 @@
 									 <label>Description :</label>
 									<form:textarea path="reason" type="text" class="form-control" id="reason" placeholder="reason" />
 								</div>
-
-								<div class="form-group " align="right">
-								<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-info btnSave">Save</button>
-								</div>
 							</div>
+
+								 <div class="form-group" align="center" >
+      				 				 <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
+      								<button type="button" class="btn btn-info btnSave">Save</button>
+     				 			</div>
+		
 						</div>
 					</div>
 				</div>
