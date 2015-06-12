@@ -37,7 +37,7 @@
         	<div class="col-sm-6">
         		<label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>
 				<label class="radio-inline"><f:radiobutton path="reportType" value="xls"/>Xls</label>
-        	</div>1
+        	</div>
         </div>
       	
       </div>
