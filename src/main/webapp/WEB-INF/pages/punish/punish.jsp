@@ -46,7 +46,7 @@
 				<div class="modal-content">
 					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Add Punish</h4>
+       					 <h4 class="modal-title" id="addModalLabel">Punish</h4>
       					</div>
 																															
 				<div class="col col-lg-12 " style="padding-top: 10px">		
@@ -57,6 +57,7 @@
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
 				    </div>	
+				    		  
 				    		    
 				    <div class="form-group "  align="left">
 							<label for="description" >Description:</label>
@@ -68,18 +69,20 @@
 							<form:input path="penalty" type="text" class="form-control" id="penalty" placeholder="Penalty"/>							
 				    </div>	
 				    			
+				</div>
+				
 					<div class="form-group" align="center">
 					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
-				</div>
+				
 				</div>			
 			</div>
 		</div>
 	</form:form>
 	  
 <!------------------------------------------Button  modal 2----------------------------------------------------->
-	<form:form id="deleteForm" commandName="history" method="post">		
+	<form:form id="deleteForm" commandName="punish" method="post">		
 		
 		<div class="modal fade" id="deleteModal" tabindex ="-1" role ="dialog" aria-labelledby ="myModalLabel" aria-hidden ="true">
 			<div class="modal-dialog modal-md">

@@ -42,45 +42,45 @@
 	
 
 	<!-- ---------------------------------------Modal------------------------------------------------------------------ -->
-		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">		
+		
+	
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">		
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
 					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Add Reference</h4>
+       					 <h4 class="modal-title" id="addModalLabel">Reference</h4>
       				</div>		
-      																											
-				<div class="col col-lg-12 " style="padding-top: 10px">									
-					<div class="form-group " align="left">
-							<label for="name" >Fullname:</label>
-							<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
-				    </div>				    
-				  <%--   <div class="form-group "  align="left">
-							<label for="address" >Address:</label>		
-							<form:textarea path="address" class="form-control" rows="1" id="address" placeholder="Address"/>		
-				    </div>				     --%>
-				    <div class="form-group "  align="left">
+      				<br>																							
+					<div class="col col-lg-12 " >									
+						<div class="form-group ">
+								<label for="name" >Fullname:</label>
+								<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
+					    </div>	
+					    
+					    <div class="form-group " >
 							<label for="tel" >Telphone:</label>
 							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="tel"/>							
-				    </div>				    
-				  <%--   <div class="form-group "  align="left">
-							<label for="occupation" >occupation:</label>
-							<form:input path="occupation" type="text" class="form-control" id="occupation" placeholder="occupation"/>							
-				    </div> --%>
+				    	</div>		
+				    			    			    				  					    
+					    
+					</div>			    
 					
-					<div class="form-group" align="center">
-					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-info btnSave">Save</button>
-					</div>	
+					 <div class="form-group" align="center" >
+      				 	 <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
+      					<button type="button" class="btn btn-info btnSave">Save</button>
+     				 </div>
+					
+						
 				</div>
 			</div>			
 		</div>
-	</div>
+	</div> 
 	</form:form> 
 
 <!------------------------------------------Button  modal 2--------------------------------------------------------->
 		
-<form:form id="deleteForm" commandName="history" method="post">			
+<form:form id="deleteForm" commandName="reference" method="post">			
 		<div class="modal fade" id="deleteModal" tabindex ="-1" role ="dialog" aria-labelledby ="myModalLabel" aria-hidden ="true">
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">

@@ -48,7 +48,7 @@
 				
 					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Add Card</h4>
+       					 <h4 class="modal-title" id="addModalLabel">Card</h4>
       				</div>
       					
       		<div class="col col-lg-12 " style="padding-top: 10px">	
@@ -88,15 +88,18 @@
 								</div>
 				    						    		
 				    			    
-				    <div class="form-group "  align="left">
-							<label for="remark" >Remark:</label>
-							<form:input path="remark" type="text" class="form-control" id="remark" placeholder="Remark"/>							
-				    </div>					
+				  		  <div class="form-group "  align="left">
+								<label for="remark" >Remark:</label>
+								<form:input path="remark" type="text" class="form-control" id="remark" placeholder="Remark"/>							
+				   		 </div>	
+				    
+				  </div>		
+				  		
 					<div class="form-group" align="center">
 					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
-				</div>
+				
 			</div>			
 		</div>
 	</div>
