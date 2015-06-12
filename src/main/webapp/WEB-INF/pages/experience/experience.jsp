@@ -421,7 +421,7 @@ var dt;
 				//alert("list experience");
 // 				var id = getUrlParameter('Id');
 				//alert("id >>>>"+id);
-				//var id = $("#empId").val();
+				var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/experience/listAll/"+id,
 					/* data: "id="+getUrlParameter('Id'), */
