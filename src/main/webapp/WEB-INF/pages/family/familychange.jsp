@@ -134,7 +134,13 @@
 		 
     });
 			
-		  
+		 $('#tableResult').dataTable({ 
+				"bLengthChange": false,
+				"iDisplayLength": 10,
+				"pagingType": "simple_numbers",
+				"ordering": false,
+				"info": false
+			});
 
 	      dt = $('#tableResult').dataTable();  	
 	      
@@ -922,7 +928,7 @@
 	--%>   
 	
 		  
-		      <div class="modal-footer">
+		      <div class="form-group" align="center">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">Save</button>
 		      </div>

@@ -60,6 +60,9 @@
    
 	$(document).ready(function(){
 		
+		
+		
+		
 		  
 		 $('#errormsg').hide();
 		 $('#successmsg').hide();
@@ -113,6 +116,7 @@
 				},
 			}); 
   	  
+		
 		
 		  
 
@@ -764,10 +768,11 @@
 		   </div>
 		   
 		  
-		      <div class="modal-footer">
+		      <div class="form-group" align="center">
 		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close"/></button>
 		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save"/></button>
 		      </div>
+ 
  
       </f:form>
 	  

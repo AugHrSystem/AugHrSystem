@@ -35,8 +35,8 @@
 			<th>Position</th>
 			<th>Salary</th>
 			<th>Reason Of Adjustment</th>
-			<th></th>
-			<th></th>
+			<th>Action</th>
+			<!-- <th></th> -->
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -486,9 +486,9 @@
 					              data[i].position,
 					              data[i].salary,
 					              data[i].reasonOfAdjustment,
-						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
-			
+			 
 					}
 				},
 				error : function() {

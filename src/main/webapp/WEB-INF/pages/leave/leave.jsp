@@ -50,8 +50,8 @@
 			<th>Leave_Type</th>
 			<th>Reason</th>
 			 <th>AIM</th> 
-			<th>Edit</th>
-			<th>Delete</th>
+			<th>Action</th>
+			<!-- <th>Delete</th> -->
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -80,7 +80,7 @@
 	 <!-- <div class="form-group">  -->
 	    <label>Start Date:</label>
 	    <div class='input-group date' id='dateFrom'>
-	    <form:input path="startDate" type="text" class="form-control" id="startDate"/>
+	    <form:input path="startDate" type="text" class="form-control" id="startDate" placeholder="DD-MM-YYYY"/>
 	    <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -111,7 +111,7 @@
  <!-- <div class="form-group"> -->
 	    <label>End Date :</label>
 	    <div class='input-group date' id='dateTo1'>
-	    <form:input path="endDate" type="text" class="form-control" id="endDate"/>
+	    <form:input path="endDate" type="text" class="form-control" id="endDate" placeholder="DD-MM-YYYY"/>
 	    <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -272,6 +272,9 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'The Start Date is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'DD-MM-YYYY'
                     }
                 }
             },
@@ -279,6 +282,9 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'The End Date is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'DD-MM-YYYY'
                     }
                 }
             },
@@ -594,10 +600,9 @@ $(document).ready(function() {
 						              data[i].nameEng,
 						              
 						              
-							'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+							 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
-				
-						}
+				 	}
 					},
 					error : function() { 
 						alert("ERROR");

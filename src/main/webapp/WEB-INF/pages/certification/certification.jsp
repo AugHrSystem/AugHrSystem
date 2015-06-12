@@ -34,8 +34,8 @@
 			<th>Year</th>
 			<th>Certification Name</th>
 			<th>Certification From</th>
-			<th></th>
-			<th></th>
+			<th>Action</th>
+			<!-- <th></th> -->
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -561,7 +561,7 @@
 					dt.fnAddData([data[i].year,
 					              data[i].name,
 					              data[i].certificationFrom, 
-						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
 			
 					}

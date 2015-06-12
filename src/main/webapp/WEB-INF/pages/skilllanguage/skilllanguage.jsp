@@ -89,6 +89,14 @@
 		 
     });
 	
+		 $('#tableResult').dataTable({ 
+				"bLengthChange": false,
+				"iDisplayLength": 10,
+				"pagingType": "simple_numbers",
+				"ordering": false,
+				"info": false
+			});
+			
 	
 		 dt=$('#tableResult').dataTable();
 		 doFindData();
@@ -684,7 +692,7 @@
 		   
 		           
 		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="masSkillLanguage" >
-			           Skill language Name:
+			            Language Name:
 			    </label>	 		
 			    
 			     
@@ -824,7 +832,7 @@
 		   </div>
 		  
 		  
-		      <div class="modal-footer">
+		      <div class="form-group" align="center">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		     	<button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">Save</button>
 		      </div>

@@ -36,7 +36,7 @@
 					<th>Salary</th>
 					<th>Reason of Resign</th>
 					<th>Action</th>
-					<th></th>
+					<!-- <th></th> -->
 				</tr>
 			</thead>
 			<tbody></tbody>
@@ -426,9 +426,10 @@ var dt;
 						              data[i].position,
 						              data[i].salary,
 						              data[i].reason,
-							'<button type="button" class="btn btn-warning btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-							'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
-				
+							 
+						 	'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
+	    				  '<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+	    					
 						}
 					},
 					error : function(data,testStatus,jqXHR) {

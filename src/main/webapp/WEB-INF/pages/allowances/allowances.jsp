@@ -33,8 +33,8 @@
 		<tr>
 			<th>Allowances Type</th>
 			<th>Amount Allowances</th>
-			<th></th>
-			<th></th>
+			<th>Action</th>
+			<!-- <th></th> -->
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -51,7 +51,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Allowances Add</h4>
+        <h4 class="modal-title" id="myModalLabel">Allowances </h4>
       </div>
       
       <div class="modal-body">
@@ -159,7 +159,6 @@ function myFunction(value) {
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
 	        message: 'This value is not valid',
-	        container: 'tooltip',
 	        feedbackIcons: {
 	            valid: 'glyphicon glyphicon-ok',
 	            invalid: 'glyphicon glyphicon-remove',
@@ -427,9 +426,12 @@ function myFunction(value) {
 					dt.fnAddData([
 					              data[i].masallowances,
 					              data[i].amount,
-						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
-			
+			 
+			 
+			 
+					             
 					}
 				},
 				error : function() {

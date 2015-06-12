@@ -35,8 +35,8 @@
 			<th>Degree Type</th>
 			<th>University</th>
 			<th>Major</th>
-			<th></th>
-			<th></th>
+			<th>Action</th>
+			<!-- <th></th> -->
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -53,7 +53,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Education Add</h4>
+        <h4 class="modal-title" id="myModalLabel">Education </h4>
       </div>
       
       <div class="modal-body row">
@@ -84,11 +84,6 @@
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label>GPA :</label>
-	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="Enter GPA"/>
-	  </div>
-	
-	  <div class="form-group col-md-6">
 	    <label>Faculty :</label>
 	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
 	  </div>
@@ -115,7 +110,12 @@
 	    </form:select>
 	    
 	  </div>
-
+	  
+	   <div class="form-group col-md-6">
+	    <label>GPA :</label>
+	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="Enter GPA"/>
+	  </div>
+	  
 	  <div class="form-group col-md-6">
 	    <label>Certification :</label>
 	    <form:input path="certificate" type="text" class="form-control" id="certificate" placeholder="Enter Certificate"/>
@@ -179,7 +179,6 @@
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
 	        message: 'This value is not valid',
-	        container: 'tooltip',
 	        feedbackIcons: {
 	            valid: 'glyphicon glyphicon-ok',
 	            invalid: 'glyphicon glyphicon-remove',
@@ -521,10 +520,12 @@
 								  data[i].masdegreetype,
 					              data[i].university,
 					              data[i].major,
-						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
-			
-					}
+			 
+			 
+			 
+				}
 				},
 				error : function() {
 					alert("ERROR");

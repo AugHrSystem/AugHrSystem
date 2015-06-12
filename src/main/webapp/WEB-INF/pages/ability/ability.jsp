@@ -41,8 +41,8 @@
 			<!-- <th>#</th> -->
 			<th>Specialty</th>
 			<th>Rank</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th>Action</th>
+			<!-- <th>Delete</th> -->
 		</tr>
 	</thead>
 	<tbody></tbody>
@@ -574,9 +574,10 @@ function listAll(){
 			for (var i=0;i< data.length; i++) {
 				dt.fnAddData([data[i].masspecialty,
 				              data[i].rank,
-					'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
+					 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 					'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
-		
+		 
+		 
 				}
 			},
 			error : function() {
