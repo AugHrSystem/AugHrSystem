@@ -45,7 +45,7 @@
 		<tr>
 			<th>Start_Date</th>
 			<th>Start_Time</th>
-			<th>Start_Time</th>
+			<th>End_Date</th>
 			<th>End_Time</th>
 			<th>Leave_Type</th>
 			<th>Reason</th>
@@ -141,7 +141,7 @@
 	    
 		<div class="form-group">
 		  <form:select path="masleavetype" class="form-control" id="masleavetype">
-			<form:option value="-1" label="---Select Leavetype---" />
+			<form:option value="" label="---Select Leavetype---" />
 			<c:forEach var="obj" items="${masleavetypeList}">
 				<option value="${obj.id}">${ obj.name}</option>
 			</c:forEach>
@@ -155,7 +155,7 @@
 	 <label>AIM:</label>
 		  <form:select path="aim" class="form-control"
 			id="aim">
-			<form:option  value="-1" label="--Select AIM--" />
+			<form:option  value="" label="--Select AIM--" />
   		    <form:options items="${ aimList }"  itemValue="id" itemLabel="name_eng" />
     		
 		</form:select>
@@ -219,15 +219,15 @@ $(document).ready(function() {
 	});
 	
 	
-/* 	$("#addBtnLe").on("click", function(){
+	$("#addBtnLe").on("click", function(){
 		
 		clearModal();
-		/* $('#addForm').bootstrapValidator('resetForm', true);
+		 
 
-		 */
+		 
 	
 	
-	/* }); */
+ }); 
 	
 	$("#saveButton").on("click",function(){
 			
@@ -608,13 +608,13 @@ $(document).ready(function() {
 		
 		 function clearModal(){
 				
-				$("#masleavetype").val("-1"),
+				$("#masleavetype").val(""),
 				$("#startDate").val(""),
 				$("#endDate").val(""),
 				$("#startTime").val(""),
 				$("#endTime").val(""),
 				$("#reason").val(""),
-				$("#aim").val("-1");
+				$("#aim").val("");
 				
 				
 				

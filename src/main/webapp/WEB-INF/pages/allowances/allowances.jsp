@@ -60,7 +60,7 @@
 	    <label>Allowances Type :</label>
 	    <form:select path="masallowances" class="form-control"
 			id="masallowances" onchange="myFunction(this.value)">
-			<form:option value="-1" label="---Select Allowances---" />
+			<form:option value="" label="---Select Allowances---" />
 			<c:forEach var="obj" items="${ masallowancesList }">
 				<option value="${obj.id }">${ obj.allowances_type}</option>
 			</c:forEach>
@@ -75,7 +75,7 @@
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
       	<button type="button" class="btn btn-info btnSave">Save</button>
       </div>
       
@@ -155,6 +155,37 @@ function myFunction(value) {
 		
 		$("#addBtnAll").on("click",function(){clearModal();});
 		
+		
+		$('#addForm').bootstrapValidator({
+//	        live: 'disabled',
+	        message: 'This value is not valid',
+	        container: 'tooltip',
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	masallowances: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Masallowances is required and cannot be empty'
+	                    }
+	                   
+	                }
+	            },
+	            /* amount: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The amount is required and cannot be empty'
+	                    }
+	                }
+	            }, */
+	        }
+	    });
+		
+		
+		
 		$('#tbResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,
@@ -180,13 +211,29 @@ function myFunction(value) {
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
 				if(allowancesid != null){
-					updateAllowances(button, allowancesid);
+					$('#addForm').bootstrapValidator();
+    				$('#addForm').data('bootstrapValidator').validate();
+    				if($('#addForm').data('bootstrapValidator').isValid()){
+    					updateAllowances(button, allowancesid); 
+    				}	
 				}else{
-					addAllowances();
+					
+					$('#addForm').bootstrapValidator();
+    				$('#addForm').data('bootstrapValidator').validate();
+    				if($('#addForm').data('bootstrapValidator').isValid()){
+    					addAllowances();
+    				}
+					
+					
 					
 				 }
 				
 			});
+			
+			$(this).find(".btnClose").off("click").on("click",function() {
+				$('#addForm').bootstrapValidator('resetForm', true);
+			});
+			
 			
 		});
 		
@@ -205,7 +252,7 @@ function myFunction(value) {
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 		
 		function clearModal(){
-			$("#masallowances").val("-1");
+			$("#masallowances").val("");
 			$("#amount").val("");
 		}
 		
@@ -224,6 +271,9 @@ function myFunction(value) {
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
+					
+					
+					$('#addForm').bootstrapValidator('resetForm', true);
 					
 //	 				alert(JSON.stringify(data));
 						
@@ -275,6 +325,7 @@ function myFunction(value) {
 				contentType : "application/json",
 				dataType: "json",
 				success : function(data) {
+					$('#addForm').bootstrapValidator('resetForm', true);
 //	 					alert(JSON.stringify(data));
 					
 // 					var tr = button.closest("tr")
