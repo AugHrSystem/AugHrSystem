@@ -8,24 +8,16 @@ package com.aug.hr.controller;
 
 import java.util.List;
 import java.util.Locale;
-
 import javax.servlet.http.HttpSession;
-
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import org.springframework.web.bind.annotation.ResponseBody;
-
-
 import com.aug.hr.dto.services.AbilityDtoService;
 import com.aug.hr.entity.Ability;
 import com.aug.hr.entity.dto.AbilityDto;
@@ -82,38 +74,8 @@ public class AbilityController {
 	@RequestMapping(value="/ability/add",method=RequestMethod.POST)
 	public @ResponseBody AbilityDto addAbility(@RequestBody AbilityDto abilityDto){
 
-		//Hibernate.initialize(ability.getEmployee().getNameEng());
-		//Hibernate.initialize(ability.getEmployee().getNameEng());
-		
-		/*
-		
-		 * upload image
-		 
-		try {
-			if (image != null && image.getSize() > 0){
-					*//**
-					 * delete old upload picture
-					 *//*
-					if (!StringUtils.isEmpty(ability.getTmpImage()))
-						uploadService.deleteImage(Constants.ABILITY_MODULE, ability.getTmpImage());
-					
-					String extension[] = image.getOriginalFilename().split("\\.");
-					String fileName = ability.getName()+Calendar.getInstance().getTimeInMillis()+"."+extension[1];
-					ability.setPicture(fileName);
-					ability.setTmpImage(fileName);
-					*//**
-					 * upload new picture
-					 *//*
-					uploadService.uploadImage(Constants.ABILITY_MODULE, fileName, image);
-					
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.setAttribute("msgerror", e.getMessage());
-			return "/ability/ability";
-		}*/
 		Ability ability = new Ability();
-		abilityService.create(ability.fromAbilityDto(abilityDto));
+		abilityService.create(ability.fromAbilityDto(abilityDto, ability));
 		return abilityDto;
 		
 	}
@@ -127,7 +89,7 @@ public class AbilityController {
 	*/
 	
 	
-	@RequestMapping(value="/ability/findById/{abilityid}",method={ RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value="/ability/findById/{abilityid}",method={ RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody AbilityDto findById(@PathVariable("abilityid") Integer abilityid){
 		
 		Ability ability = abilityService.find(abilityid);
@@ -135,12 +97,21 @@ public class AbilityController {
 	}
 	
 	
-	@Transactional
+	/*@Transactional
 	@RequestMapping(value="/ability/update",method=RequestMethod.POST)
 	public @ResponseBody AbilityDto ubdateAbility(@RequestBody AbilityDto abilityDto){
 		Ability ability = new Ability();
 			abilityService.update(ability.fromAbilityDto(abilityDto));
 			return abilityDto;
+	}
+	*/
+	
+	@RequestMapping(value = "/ability/update", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody AbilityDto updateAbility(@RequestBody  AbilityDto abilityDto) {
+		Ability ability  = abilityService.find(abilityDto.getId());
+		Ability abilityUpdate = ability.fromAbilityDto(abilityDto, ability);
+		abilityService.update(abilityUpdate);
+		return ability.toAbilityDto();
 	}
 	
 	

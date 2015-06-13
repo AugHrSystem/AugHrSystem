@@ -75,7 +75,7 @@
 		<div class="form-group">
 		  <form:select path="masspecialty" class="form-control"
 			id="masspecialty">
-			<form:option value="-1" label="---Select Specialty---" />
+			<form:option value="" label="---Select Specialty---" />
 			<c:forEach var="obj" items="${ masspecialtyList }">
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>
@@ -201,6 +201,7 @@ $(document).ready(function(){
 		
 		  message: 'This value is not valid',
 	        feedbackIcons: {
+	        	 valid: 'glyphicon glyphicon-ok',
 	            invalid: 'glyphicon glyphicon-remove',
 	            validating: 'glyphicon glyphicon-refresh'
 	        },
@@ -520,12 +521,13 @@ function updateAbility(button,abilityid) {
 		success : function(data) {
 			//alert(abilityid);
 			//alert(JSON.stringify(data));
-			
-			var tr = button.closest("tr");
+			$('#addForm').bootstrapValidator('resetForm', true);
+
+			/* var tr = button.closest("tr");
 			
 			dt.fnUpdate(data.masspecialty.name, tr, 0);
 			dt.fnUpdate(data.rank, tr, 1 );
-			
+			 */
 			//alert(data.masspecialty.name);
 			
 			$('#addModal').modal('toggle');
@@ -589,7 +591,7 @@ function listAll(){
 	
  function clearModal(){
 		
-		$("#masspecialty").val("-1"),
+		$("#masspecialty").val(""),
 		$("#rank1").prop('checked','checked');
 	} 
 	

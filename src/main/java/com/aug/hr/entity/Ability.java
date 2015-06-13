@@ -103,9 +103,9 @@ public class Ability extends BaseEntity  {
 		
 	}
 	
-	public Ability fromAbilityDto (AbilityDto abilityDto){
-		Ability ability = new Ability();
-		ability.setId(abilityDto.getId());
+	public Ability fromAbilityDto (AbilityDto abilityDto,Ability ability){
+		//Ability ability = new Ability();
+		//ability.setId(abilityDto.getId());
 		ability.setRank(abilityDto.getRank());
 		
 		MasSpecialty masspecialty=new MasSpecialty();

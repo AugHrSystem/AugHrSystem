@@ -307,10 +307,7 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'Aim is required and cannot be empty'
                     },
-            digits: {
-            	min:0,
-            	message: 'Aim is required'
-            },
+           
                 }
             },
            
@@ -426,7 +423,7 @@ $(document).ready(function() {
 				url : "${pageContext.request.contextPath}/leave/add",
 				data : JSON.stringify({
 					
-					
+
 					masleavetypeId:$("#masleavetype").val(),
 					masleavetype:$("#masleavetype option:selected").text(),
 					startDate:$("#startDate").val(),
@@ -446,7 +443,7 @@ $(document).ready(function() {
 					$('#addForm').bootstrapValidator('resetForm', true);
 				//alert(JSON.stringify(data));
 						
-				
+				/* 
 					 dt.fnClearTable();
 					
 					dt.fnAddData([
@@ -463,7 +460,7 @@ $(document).ready(function() {
 						
 						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
 						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
-					]);
+					]); */
 					
 					$('#addModal').modal('toggle');
 					listAll();
@@ -532,16 +529,17 @@ $(document).ready(function() {
 						//alert(abilityid);
 						//alert(JSON.stringify(data));
 						
-						var tr = button.closest("tr");
-						
-						
+						$('#addForm').bootstrapValidator('resetForm', true);
+
+						/* 
+						var tr = button.closest("tr");						
 						dt.fnUpdate(data.startDate, tr, 0 );
 						dt.fnUpdate(data.startTime, tr, 1 );
 						dt.fnUpdate(data.endDate, tr, 2 );
 						dt.fnUpdate(data.endTime, tr, 3 );
 						dt.fnUpdate(data.masleavetype.name, tr, 4);
 						dt.fnUpdate(data.reason, tr, 5 );
-						dt.fnUpdate(data.aim, tr, 6 );
+						dt.fnUpdate(data.aim, tr, 6 ); */
 						$('#addModal').modal('toggle');
 						listAll();
 					},

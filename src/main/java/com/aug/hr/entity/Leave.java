@@ -55,7 +55,7 @@ public class Leave extends BaseEntity {
 	@Column(name="REASON")
 	private String reason;
 	
-	@Column(name="AIM")
+	@Column(name="AIM",nullable = false)
 	private String aim;
 	
 	
@@ -169,9 +169,9 @@ public class Leave extends BaseEntity {
 		return leaveDto;
 	}
 	
-	public Leave fromLeaveDto (LeaveDto leaveDto){
-		Leave leave = new Leave();
-		leave.setId(leaveDto.getId());
+	public Leave fromLeaveDto (LeaveDto leaveDto,Leave leave){
+		//Leave leave = new Leave();
+		//leave.setId(leaveDto.getId());
 		leave.setStartDate(leaveDto.getStartDate());
 		leave.setStartTime(leaveDto.getStartTime());
 		leave.setEndDate(leaveDto.getEndDate());
