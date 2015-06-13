@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.aug.hr.entity.dto.LeaveDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -56,6 +58,7 @@ public class Leave extends BaseEntity {
 	private String reason;
 	
 	@Column(name="AIM",nullable = false)
+	@NotEmpty
 	private String aim;
 	
 	
