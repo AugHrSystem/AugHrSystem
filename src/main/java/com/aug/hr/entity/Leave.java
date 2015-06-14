@@ -43,13 +43,13 @@ public class Leave extends BaseEntity {
 	private Date endDate;
 	
 
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
-	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm:ss")
+	@Temporal(TemporalType.TIME)
 	@Column(name="START_TIME")
 	private  Date startTime;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
-	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm:ss")
+	@Temporal(TemporalType.TIME)
 	@Column(name="END_TIME")
 	private Date endTime;
 	
@@ -58,7 +58,7 @@ public class Leave extends BaseEntity {
 	private String reason;
 	
 	@Column(name="AIM",nullable = false)
-	@NotEmpty
+	//@NotEmpty
 	private String aim;
 	
 	
