@@ -99,6 +99,12 @@ public class AddressServiceImpl implements AddressService{
 		}
 		return addressDtoList;
 	}
+
+	@Override
+	public List<AddressDto> searchAddress(Integer id) {
+		// TODO Auto-generated method stub
+		return addressDao.searchAddress(id);
+	}
 	
 
 }

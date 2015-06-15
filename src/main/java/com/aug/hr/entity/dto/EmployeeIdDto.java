@@ -9,7 +9,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
             name = "findCurrentId",
-              query = "select ID from EMP_EMPLOYEE"
+              query = "select ID from EMP_EMPLOYEE "
               		+ "order by createdTimeStamp desc "
               		+ "LIMIT 1",
             resultClass = EmployeeIdDto.class)

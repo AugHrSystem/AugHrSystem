@@ -9,7 +9,6 @@ package com.aug.hr.services;
 import java.util.List;
 
 import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 
 public interface EmployeeService {
@@ -26,6 +25,7 @@ public interface EmployeeService {
 	public Employee searhEmpIdtoAddress();
 	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto);
 	public AllEmployeeDto findEmployeeByEmployeeIdWithSetToDto(Integer id); 
+	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto);
 
 
 	

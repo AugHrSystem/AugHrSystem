@@ -192,28 +192,12 @@ public class AllEmployeeDto {
 
 
 	private List<AddressDto> addressList;
-	
-	
-	//private Date probationDate;
+
 	
 	private Integer officialId;
 	
 	private EmployeeCodeDto employeeCodeDto;
-	
-	/*private List<AddressDto>addresses = new ArrayList<AddressDto>();
-	
-	
-	public List<AddressDto> getAddresses() {
-		return addresses;
-	}
 
-	public void setAddresses(List<AddressDto> addresses) {
-		this.addresses = addresses;
-	}
-
-    */
-	
-	
 	
 	public Integer getId() {
 		return id;

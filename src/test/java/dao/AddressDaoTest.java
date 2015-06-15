@@ -53,5 +53,18 @@ public class AddressDaoTest {
 		}
 		
 	}
+	
+	
+
+	@Test
+	public void findAddressbyNameQuery(){
+	
+		List<AddressDto> addressList = addressDao.searchAddress(5);
+		System.out.println("size: "+addressList.size());
+		for(AddressDto address:addressList){
+			System.out.println(address);
+		}
+		
+	}
 
 }

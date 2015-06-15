@@ -121,7 +121,7 @@ public class EmployeeController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss",Locale.ENGLISH);
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         binder.registerCustomEditor(Date.class, editor);
         binder.registerCustomEditor(Address.class, addressEditor);
@@ -191,7 +191,9 @@ public class EmployeeController {
 			ModelMap model) {
 			//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 			//model.addAttribute("provinceList",masProvinceService.findAll());
+		
 			return addressService.findAddressByEmployeeId(addressDto.getEmployeeId());
+			//return addressService.searchAddress(addressDto.getEmployeeId());
 	}
 	
 	
@@ -281,47 +283,46 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
-	public String manageSubmit(@ModelAttribute AllEmployeeDto employee) {
+	public String manageSubmit(@ModelAttribute AllEmployeeDto allEmployeeDto) {
 	
-		logger.info("infoooo: "+employee);		
-		logger.info("infoooo: ================================================================>"+employee.getAimempid());	
-
+	   logger.info("infoooo: "+allEmployeeDto);		
+	   logger.info("infoooo: ================================================================>"+allEmployeeDto.getAimempid());	
+	  
+	   Employee employee = new Employee();
 	
-	  EmployeeIdDto employeeId = new EmployeeIdDto();
-	  employeeId = 	employeeIdService.findCurrentId();
-
-		
-	  if(employee.getId()==null){	
+			
+	  if(allEmployeeDto.getId()==null){	
 		  
 	    logger.info("create employee");
 		
 		try {
-			
-				if(employee.getFileupload().getOriginalFilename()!=null){
-					String[] result =  StringUtils.split(employee.getFileupload().getOriginalFilename(),'.');
+				if(allEmployeeDto.getFileupload().getOriginalFilename()==null){
+					
+					
+					
+					
+				}else if(allEmployeeDto.getFileupload().getOriginalFilename()!=null){
+					String[] result =  StringUtils.split(allEmployeeDto.getFileupload().getOriginalFilename(),'.');
 					logger.info("length: "+result.length);
 		
 						if(result.length==2){
 						
 							logger.info("length: "+result.length);
 								
-							employee.setImage(employee.getEmployeeCode()+"."+result[1]);
-							uploadService.uploadImage("EMPLOYEE",employee.getEmployeeCode()+"."+result[1], employee.getFileupload());
-							employeeService.saveEmpAndWithRelateTable(employee);
+							allEmployeeDto.setImage(allEmployeeDto.getEmployeeCode()+"."+result[1]);
+							uploadService.uploadImage("EMPLOYEE",allEmployeeDto.getEmployeeCode()+"."+result[1], allEmployeeDto.getFileupload());
+							employee = employeeService.createEmployeeAndReturnId(allEmployeeDto);
 
 						}if(result.length==0){
 							
-							employeeService.saveEmpAndWithRelateTable(employee);
+							employee = employeeService.createEmployeeAndReturnId(allEmployeeDto);
 
 						}
 					
 
-						if(employeeId.getId()<employeeIdService.findCurrentId().getId()){
-							employeeId.setId(employeeIdService.findCurrentId().getId());
-							return "redirect:/family/"+employeeId.getId();
-						}
-
-
+						
+							return "redirect:/family/"+employee.getId();
+						
 				 }
 				
 			} catch (RuntimeException | IOException e) {
@@ -330,10 +331,10 @@ public class EmployeeController {
 			e.printStackTrace();
 		}
 		
-	  }else if(employee.getId()>0){
+	  }else if(allEmployeeDto.getId()>0){
 		  
 		  logger.info("update emp");
-		  employeeId.setId(employee.getId());
+		  employee.setId(allEmployeeDto.getId());
 		  
 	  }
 		
@@ -341,7 +342,7 @@ public class EmployeeController {
 		
 		
 		
-		return "redirect:/history/"+employeeId;
+		return "redirect:/history/"+employee.getId();
 	}
 	
 	//Report

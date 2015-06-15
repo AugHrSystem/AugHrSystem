@@ -129,7 +129,8 @@
 
 											
 										</div>
-</div>
+									 </div>
+
 
    								        <%--    <c:if test="${empty allEmployeeDto.image}">
 										    	<div id="imagePreview" class="img-rounded img-responsive"
@@ -139,13 +140,12 @@
 										    
 										    
 										    <c:if test="${not empty allEmployeeDto.image}">
-<!-- 										    <div id="imagePreview" class="img-rounded img-responsive" background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div> -->
+											<!-- <div id="imagePreview" class="img-rounded img-responsive" background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div> -->
 										    <div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div>
 										    </c:if> --%>
 										   
 
-										<!-- <div class="col-md-3"></div>
- -->
+										<!-- <div class="col-md-3"></div> -->
 
 									</div>
 								</div>
@@ -283,8 +283,17 @@
 								<div class="col-md-3">
 									<label> Date of Birth :</label> 
 									<div class='input-group date' id='dateOfBirth'>
+									
+								
+									
 									<input type="text" class="form-control"
-									id="dateOfBirth" name="dateOfBirth" placeholder="Enter DOB" value="${allEmployeeDto.dateOfBirth}">
+									id="dateOfBirth" name="dateOfBirth" placeholder="Enter DOB" 
+									value="${allEmployeeDto.dateOfBirth}"/>
+									
+									
+									
+									
+									
 									<span class="input-group-addon">
 							            <span class="glyphicon glyphicon-calendar"></span>
 							        </span>
@@ -295,15 +304,19 @@
 									<label> Place of Birth :</label> <input type="text" class="form-control"
 									id="placeOfBirth" name="placeOfBirth" placeholder="Enter POB">
 								</div>
+								
+								
 								<%-- <div class="col-md-3">
 								
 									<label> Place of Birth :</label>
 									<div class='input-group date' id='placeOfBirth'> <input type="text" class="form-control"
 									id="placeOfBirth" name="placeOfBirth" placeholder="Enter POB" value="${allEmployeeDto.placeOfBirth}">
-								<span class="input-group-addon">
-<span class="glyphicon glyphicon-calendar"></span>
-</span></div>
+									<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+									</span></div>
 								</div> --%>
+								
+								
 								<div class="col-md-3">
 									<label> Age :</label> <input type="text" class="form-control"
 									id="age" name="age" placeholder="Enter Age" value="${allEmployeeDto.age}">
@@ -1117,47 +1130,47 @@ var getIndex = 0;
 	$(document).ready(function() {
 
 		var date1 = $( "#dateOfBirth" ).datetimepicker({
-			format : "DD-MM-YYYY",
+			format : "DD-MM-YYYY hh:mm:ss",
 			viewMode : 'years'
 		});
 		
     	var date2 = $( "#expiryDate" ).datetimepicker({
-    		format : "DD-MM-YYYY",
+    		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
     	
     	var date3 = $( "#fromYear" ).datetimepicker({
-    		format : "DD-MM-YYYY",
+    		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
     	
     	var date4 = $( "#toYear" ).datetimepicker({
-    		format : "DD-MM-YYYY",
+    		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
     	
     	var date5 = $( "#dateToBeDrafted" ).datetimepicker({
-    		format : "DD-MM-YYYY",
+    		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#officialDate" ).datetimepicker({
-    		format : "DD-MM-YYYY",
+    		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#startWorkDate" ).datetimepicker({
-    		format : "DD-MM-YYYY",
+    		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#endWorkDate" ).datetimepicker({
-    		format : "DD-MM-YYYY",
+    		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#probationDate" ).datetimepicker({
-    		format : "DD-MM-YYYY",
+    		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
     	

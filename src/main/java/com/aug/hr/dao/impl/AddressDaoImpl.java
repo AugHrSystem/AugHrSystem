@@ -49,9 +49,7 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Integer> implements 
 	@SuppressWarnings("unchecked")
 	public List<AddressDto> searchAddress(Integer id) {
 		Query namedQuery = getCurrentSession().getNamedQuery("searchAddress").setInteger("empId" ,id);
-		//namedQuery.executeUpdate();
-		List<AddressDto> addreDto = namedQuery.list();
-	     return addreDto;
+	    return  namedQuery.list();
 	}
 	
 

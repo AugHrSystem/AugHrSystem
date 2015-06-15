@@ -34,6 +34,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.aug.hr.entity.dto.ExperienceDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -816,6 +817,7 @@ public class Employee extends BaseEntity{
 	private String emergencyContactPhoneNumber;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
 	@Column(name = "DATEOFBIRTH",nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBirth;
@@ -836,8 +838,9 @@ public class Employee extends BaseEntity{
 	private String issuedOffice;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@Column(name = "EXPIRY_DATE",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+	@Column(name = "EXPIRY_DATE",nullable = true)
 	private Date expiryDate;
 	
 	@Column(name = "HEIGHT",nullable = true)
@@ -913,11 +916,13 @@ public class Employee extends BaseEntity{
 	private String militaryServiceYes;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
 	@Column(name = "FROM_YEAR",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fromYear;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
 	@Column(name = "TO_YEAR",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date toYear;
@@ -935,6 +940,7 @@ public class Employee extends BaseEntity{
 	private String reasonsNo;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
 	@Column(name = "DATE_TO_BE_DRAFTED",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
@@ -1107,7 +1113,7 @@ public class Employee extends BaseEntity{
    private Integer technologyId;
    
 
-@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE})
+   @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE})
    //@JsonBackReference
    private Set<SkillLanguage> skillLanguage = new HashSet<SkillLanguage>();
    
@@ -1917,65 +1923,6 @@ public class Employee extends BaseEntity{
 		this.punishs = punishs;
 	}
 	
-	
-
-
-
-	/*@Override
-	public String toString() {
-		return "Employee [id=" + id + ", employeeCode=" + employeeCode
-				+ ", nameThai=" + nameThai + ", surnameThai=" + surnameThai
-				+ ", nicknameThai=" + nicknameThai + ", nameEng=" + nameEng
-				+ ", surnameEng=" + surnameEng + ", nicknameEng=" + nicknameEng
-				+ ", telHome=" + telHome + ", telMobile=" + telMobile
-				+ ", telFax=" + telFax + ", emergencyContact="
-				+ emergencyContact + ", relationshipWithEmergencyContact="
-				+ relationshipWithEmergencyContact
-				+ ", emergencyContactAddress=" + emergencyContactAddress
-				+ ", emergencyContactPhoneNumber="
-				+ emergencyContactPhoneNumber + ", dateOfBirth=" + dateOfBirth
-				+ ", placeOfBirth=" + placeOfBirth + ", age=" + age
-				+ ", religion=" + religion + ", idCard=" + idCard
-				+ ", issuedOffice=" + issuedOffice + ", expiryDate="
-				+ expiryDate + ", height=" + height + ", weigth=" + weigth
-				+ ", sex=" + sex + ", maritalStatus=" + maritalStatus
-				+ ", numberOfChildren=" + numberOfChildren + ", spouseName="
-				+ spouseName + ", marriageCertificateNo="
-				+ marriageCertificateNo + ", issuedOffice2=" + issuedOffice2
-				+ ", address=" + address + ", occupation=" + occupation
-				+ ", knowAugNewspaper=" + knowAugNewspaper
-				+ ", descriptionNewspaper=" + descriptionNewspaper
-				+ ", knowAugMagazine=" + knowAugMagazine
-				+ ", descriptionMagazine=" + descriptionMagazine
-				+ ", knowAugWebsite=" + knowAugWebsite
-				+ ", descriptionWebsite=" + descriptionWebsite
-				+ ", knowAugFriend=" + knowAugFriend + ", descriptionFriend="
-				+ descriptionFriend + ", knowAugOther=" + knowAugOther
-				+ ", descriptionOther=" + descriptionOther
-				+ ", knowEmployedYes=" + knowEmployedYes + ", descriptionYes="
-				+ descriptionYes + ", knowEmployerNo=" + knowEmployerNo
-				+ ", militaryServiceYes=" + militaryServiceYes + ", fromYear="
-				+ fromYear + ", toYear=" + toYear + ", branchOfService="
-				+ branchOfService + ", serviceNo=" + serviceNo
-				+ ", militaryServiceNo=" + militaryServiceNo + ", reasonsNo="
-				+ reasonsNo + ", dateToBeDrafted=" + dateToBeDrafted
-				+ ", previousEmployerYes=" + previousEmployerYes
-				+ ", previousEmployerNo=" + previousEmployerNo
-				+ ", previousEmpreasonsNo=" + previousEmpreasonsNo
-				+ ", aimempid=" + aimempid + ", staffs=" + staffs
-				+ ", addresses=" + addresses + ", official=" + official
-				+ ", educations=" + educations + ", histories=" + histories
-				+ ", masCoreSkill=" + masCoreSkill + ", masEmployment="
-				+ masEmployment + ", abilities=" + abilities + ", references="
-				+ references + ", punishs=" + punishs + ", masDivision="
-				+ masDivision + ", masJoblevel=" + masJoblevel
-				+ ", experiences=" + experiences + ", technology=" + technology
-				+ ", families=" + families + ", masStaffType=" + masStaffType
-				+ ", masLocation=" + masLocation + ", probations=" + probations
-				+ ", status=" + status + ", masCoreSkillId=" + masCoreSkillId
-				+ ", technologyId=" + technologyId + "]";
-	}*/
-
 
 	public Set<Leave> getLeaves() {
 		return leaves;
@@ -1992,7 +1939,6 @@ public class Employee extends BaseEntity{
 	public void setSite(Set<Site> site) {
 		this.site = site;
 	}
-
 
 
 	public String getImage() {
@@ -2079,6 +2025,209 @@ public class Employee extends BaseEntity{
 		this.cards = cards;
 	}
 
+	public Set<Allowances> getAllowances() {
+		return allowances;
+	}
+
+	public void setAllowances(Set<Allowances> allowances) {
+		this.allowances = allowances;
+	}
+
+	
+	/*@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Employee [id=");
+		builder.append(id);
+		builder.append(", employeeCode=");
+		builder.append(employeeCode);
+		builder.append(", nameThai=");
+		builder.append(nameThai);
+		builder.append(", surnameThai=");
+		builder.append(surnameThai);
+		builder.append(", nicknameThai=");
+		builder.append(nicknameThai);
+		builder.append(", nameEng=");
+		builder.append(nameEng);
+		builder.append(", surnameEng=");
+		builder.append(surnameEng);
+		builder.append(", nicknameEng=");
+		builder.append(nicknameEng);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", telHome=");
+		builder.append(telHome);
+		builder.append(", telMobile=");
+		builder.append(telMobile);
+		builder.append(", telFax=");
+		builder.append(telFax);
+		builder.append(", congenitalDisease=");
+		builder.append(congenitalDisease);
+		builder.append(", hospital=");
+		builder.append(hospital);
+		builder.append(", emergencyContact=");
+		builder.append(emergencyContact);
+		builder.append(", relationshipWithEmergencyContact=");
+		builder.append(relationshipWithEmergencyContact);
+		builder.append(", emergencyContactAddress=");
+		builder.append(emergencyContactAddress);
+		builder.append(", emergencyContactPhoneNumber=");
+		builder.append(emergencyContactPhoneNumber);
+		builder.append(", dateOfBirth=");
+		builder.append(dateOfBirth);
+		builder.append(", placeOfBirth=");
+		builder.append(placeOfBirth);
+		builder.append(", age=");
+		builder.append(age);
+		builder.append(", religion=");
+		builder.append(religion);
+		builder.append(", idCard=");
+		builder.append(idCard);
+		builder.append(", issuedOffice=");
+		builder.append(issuedOffice);
+		builder.append(", expiryDate=");
+		builder.append(expiryDate);
+		builder.append(", height=");
+		builder.append(height);
+		builder.append(", weigth=");
+		builder.append(weigth);
+		builder.append(", sex=");
+		builder.append(sex);
+		builder.append(", maritalStatus=");
+		builder.append(maritalStatus);
+		builder.append(", numberOfChildren=");
+		builder.append(numberOfChildren);
+		builder.append(", spouseName=");
+		builder.append(spouseName);
+		builder.append(", marriageCertificateNo=");
+		builder.append(marriageCertificateNo);
+		builder.append(", issuedOffice2=");
+		builder.append(issuedOffice2);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append(", occupation=");
+		builder.append(occupation);
+		builder.append(", knowAugNewspaper=");
+		builder.append(knowAugNewspaper);
+		builder.append(", descriptionNewspaper=");
+		builder.append(descriptionNewspaper);
+		builder.append(", knowAugMagazine=");
+		builder.append(knowAugMagazine);
+		builder.append(", descriptionMagazine=");
+		builder.append(descriptionMagazine);
+		builder.append(", knowAugWebsite=");
+		builder.append(knowAugWebsite);
+		builder.append(", descriptionWebsite=");
+		builder.append(descriptionWebsite);
+		builder.append(", knowAugFriend=");
+		builder.append(knowAugFriend);
+		builder.append(", descriptionFriend=");
+		builder.append(descriptionFriend);
+		builder.append(", knowAugOther=");
+		builder.append(knowAugOther);
+		builder.append(", descriptionOther=");
+		builder.append(descriptionOther);
+		builder.append(", knowEmployedYes=");
+		builder.append(knowEmployedYes);
+		builder.append(", descriptionYes=");
+		builder.append(descriptionYes);
+		builder.append(", knowEmployerNo=");
+		builder.append(knowEmployerNo);
+		builder.append(", militaryServiceYes=");
+		builder.append(militaryServiceYes);
+		builder.append(", fromYear=");
+		builder.append(fromYear);
+		builder.append(", toYear=");
+		builder.append(toYear);
+		builder.append(", branchOfService=");
+		builder.append(branchOfService);
+		builder.append(", serviceNo=");
+		builder.append(serviceNo);
+		builder.append(", militaryServiceNo=");
+		builder.append(militaryServiceNo);
+		builder.append(", reasonsNo=");
+		builder.append(reasonsNo);
+		builder.append(", dateToBeDrafted=");
+		builder.append(dateToBeDrafted);
+		builder.append(", previousEmployerYes=");
+		builder.append(previousEmployerYes);
+		builder.append(", previousEmployerNo=");
+		builder.append(previousEmployerNo);
+		builder.append(", previousEmpreasonsNo=");
+		builder.append(previousEmpreasonsNo);
+		builder.append(", image=");
+		builder.append(image);
+		builder.append(", statusemp=");
+		builder.append(statusemp);
+		builder.append(", isManager=");
+		builder.append(isManager);
+		builder.append(", aimempid=");
+		builder.append(aimempid);
+		builder.append(", staffs=");
+		builder.append(staffs);
+		builder.append(", addresses=");
+		builder.append(addresses);
+		builder.append(", official=");
+		builder.append(official);
+		builder.append(", educations=");
+		builder.append(educations);
+		builder.append(", allowances=");
+		builder.append(allowances);
+		builder.append(", histories=");
+		builder.append(histories);
+		builder.append(", masCoreSkill=");
+		builder.append(masCoreSkill);
+		builder.append(", masEmployment=");
+		builder.append(masEmployment);
+		builder.append(", abilities=");
+		builder.append(abilities);
+		builder.append(", references=");
+		builder.append(references);
+		builder.append(", certifications=");
+		builder.append(certifications);
+		builder.append(", leaves=");
+		builder.append(leaves);
+		builder.append(", punishs=");
+		builder.append(punishs);
+		builder.append(", masDivision=");
+		builder.append(masDivision);
+		builder.append(", masJoblevel=");
+		builder.append(masJoblevel);
+		builder.append(", experiences=");
+		builder.append(experiences);
+		builder.append(", technology=");
+		builder.append(technology);
+		builder.append(", families=");
+		builder.append(families);
+		builder.append(", rewards=");
+		builder.append(rewards);
+		builder.append(", cards=");
+		builder.append(cards);
+		builder.append(", masStaffType=");
+		builder.append(masStaffType);
+		builder.append(", masLocation=");
+		builder.append(masLocation);
+		builder.append(", probations=");
+		builder.append(probations);
+		builder.append(", status=");
+		builder.append(status);
+		builder.append(", masCoreSkillId=");
+		builder.append(masCoreSkillId);
+		builder.append(", technologyId=");
+		builder.append(technologyId);
+		builder.append(", skillLanguage=");
+		builder.append(skillLanguage);
+		builder.append(", site=");
+		builder.append(site);
+		builder.append(", login=");
+		builder.append(login);
+		builder.append(", health=");
+		builder.append(health);
+		builder.append("]");
+		return builder.toString();
+	}*/
+
+	
 	
 	
 }
