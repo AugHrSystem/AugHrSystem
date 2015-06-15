@@ -61,6 +61,15 @@
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
 }
+body {
+background-image: url(resource/images/BG_W.jpg);
+-moz-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
+background-position: top center !important;
+background-repeat: no-repeat !important;
+background-attachment: fixed;
+} 
 </style>
 
 </head>

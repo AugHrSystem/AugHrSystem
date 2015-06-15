@@ -14,12 +14,37 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+<style type="text/css">
+body {
+background-image: url(resources/images/BG_Login.jpg);
+-moz-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
+background-position: top center !important;
+background-repeat: no-repeat !important;
+background-attachment: fixed;
+}
+.container{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login{
+background-color:white;
+/* opacity:0.95; */
+border-radius: 15px 15px 15px 15px;
+-moz-border-radius: 15px 15px 15px 15px;
+-webkit-border-radius: 15px 15px 15px 15px;
+border: 0px solid #635f63;
+}
+</style>
 <title>Login</title>
 </head>
 <body>
 	<div class="container">
 		<form name='loginForm' action="<c:url value='j_spring_security_check' />" method='POST'>
-		<div class="col col-lg-4 col-md-5 col-sm-6 col-xs-12 col-lg-offset-4 col-sm-offset-3">
+		<div class="col col-lg-4 col-md-5 col-sm-6 col-xs-12 col-lg-offset-4 col-sm-offset-3 login">
 		<div class="headLogo" >
 			<span><img style="width: 200px; text-align: left;" src="<c:url value="/resource/images/augmentis-logo.png" />" /></span>
 		</div>	
@@ -35,8 +60,8 @@
 			<div id="message">
 				${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 			</div>
+			<br>
 		</div>
-
 		</form>
 	</div>
 	
