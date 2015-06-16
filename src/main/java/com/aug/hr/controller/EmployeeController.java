@@ -130,7 +130,7 @@ public class EmployeeController {
 	
 	
 	
-	@RequestMapping(value="/employee",method=RequestMethod.POST)
+	@RequestMapping(value="/employee",method={RequestMethod.GET, RequestMethod.POST})
 	//@Transactional
 	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
 						  HttpSession session,
