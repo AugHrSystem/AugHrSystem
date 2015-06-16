@@ -62,7 +62,7 @@
     display: inline-block;
 }
 body {
-background-image: url(resource/images/BG_W.jpg);
+background-image: url(${pageContext.request.contextPath}/resource/images/BG_W.jpg);
 -moz-background-size: cover;
 -webkit-background-size: cover;
 background-size: cover;

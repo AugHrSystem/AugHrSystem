@@ -46,7 +46,7 @@ border: 0px solid #635f63;
 		<form name='loginForm' action="<c:url value='j_spring_security_check' />" method='POST'>
 		<div class="col col-lg-4 col-md-5 col-sm-6 col-xs-12 col-lg-offset-4 col-sm-offset-3 login">
 		<div class="headLogo" >
-			<span><img style="width: 200px; text-align: left;" src="<c:url value="/resource/images/augmentis-logo.png" />" /></span>
+			<span><img style="width: 200px; text-align: left;" src="<c:url value="resource/images/augmentis-logo.png" />" /></span>
 		</div>	
 			<div class="form-group">
 			      <label for="user">Username:</label>
