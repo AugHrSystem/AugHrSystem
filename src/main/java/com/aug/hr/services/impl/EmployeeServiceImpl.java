@@ -114,7 +114,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	@Transactional
 	public void createEmployeeAndAddress(Employee employee) {
-		// TODO Auto-generated method stub
 		employeeDao.create(employee);
 		for(Address address:employee.getAddresses()){
 			address.setEmployee(employee);
@@ -141,8 +140,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto) {
-		// TODO Auto-generated method stub
-	
 	
 		/*MasLocation location = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
 		
@@ -439,8 +436,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto) {
-		// TODO Auto-generated method stub
-		
 		
 		//Save Official 
 		Official official = new Official();

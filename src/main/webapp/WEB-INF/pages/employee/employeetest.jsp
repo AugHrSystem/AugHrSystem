@@ -13,7 +13,7 @@
 <!-- <input type="hidden" id="id"> -->
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-<f:form method="post" commandName="allEmployeeDto" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/employee/submit" enctype="multipart/form-data">
+<f:form method="post" id="addForm" commandName="allEmployeeDto" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/employee/submit" enctype="multipart/form-data">
 
 <!------------------------------------------------------ Start Information-------------------------------------------------------->
 		
@@ -32,7 +32,7 @@
 
 							<div class="form-group">
 									<!-- <label for="id"> ID :</label> -->
-									 <input id="id" name="id" type="hidden" class="form-control" placeholder="Enter ID" value="${id}">
+									 <input id="id" name="id" type="text" class="form-control" placeholder="Enter ID" value="${id}">
 								
 								<div class="col-md-6">
 		    					<label>Location :</label>
@@ -210,7 +210,7 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-3">
-									<label> Email :</label> <input type="text" class="form-control"
+									<label> Email :</label> <input type="email" class="form-control"
 									id="email" name="email" placeholder="Enter Email" value="${allEmployeeDto.email}">
 								</div>
 								<div class="col-md-3">
@@ -378,21 +378,21 @@
 									<label> Sex :</label>
 									<div class="radio">
 									 <c:if test="${empty allEmployeeDto.sex}">									
-									  		 <label><input type="radio" name="sex" value="Male">Male</label>
-									  		 <label><input type="radio" name="sex" value="Female">Female</label>
+									  		 <label><input type="radio" name="sex" id="Male" value="Male">Male</label>
+									  		 <label><input type="radio" name="sex" id="Female" value="Female">Female</label>
 									  </c:if>
 									  
 									  
 									  <c:if test="${not empty allEmployeeDto.sex}">
 
 										 <c:if test="${allEmployeeDto.sex =='Male'}">
-										        <label><input type="radio" name="sex" value="Male" checked="checked">Male</label>
-										        <label><input type="radio" name="sex" value="Female">Female</label>
+										        <label><input type="radio" name="sex" id="Male" value="Male" checked="checked">Male</label>
+										        <label><input type="radio" name="sex" id="Female" value="Female">Female</label>
 										  </c:if>
 										    
 										   <c:if test="${allEmployeeDto.sex =='Female'}">
-										       <label><input type="radio" name="sex" value="Male">Male</label>
-										       <label><input type="radio" name="sex" value="Female" checked="checked">Female</label>						  
+										       <label><input type="radio" name="sex" id="Male" value="Male">Male</label>
+										       <label><input type="radio" name="sex" id="Female" value="Female" checked="checked">Female</label>						  
 										   </c:if>
 									  </c:if>
 									 
@@ -410,35 +410,35 @@
 									<label> Marital Status :</label>
 									<div class="radio">
 									  <c:if test="${empty allEmployeeDto.maritalStatus}">	
-     									 <label><input type="radio" name="maritalStatus" value="Single">Single</label> 
-      									 <label><input type="radio" name="maritalStatus" value="Married">Married</label>
-      									 <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+     									 <label><input type="radio" name="maritalStatus" id="Single" value="Single">Single</label> 
+      									 <label><input type="radio" name="maritalStatus" id="Married" value="Married">Married</label>
+      									 <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce">Divorce</label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.maritalStatus}">
     								        
     								        <c:choose>
 										    <c:when test="${allEmployeeDto.maritalStatus =='Single'}">
-										       <label><input type="radio" name="maritalStatus" value="Single" checked="checked">Single</label> 
-      									 	   <label><input type="radio" name="maritalStatus" value="Married">Married</label>
-      									       <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+										       <label><input type="radio" name="maritalStatus" id="Single" value="Single" checked="checked">Single</label> 
+      									 	   <label><input type="radio" name="maritalStatus" id="Married" value="Married">Married</label>
+      									       <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce">Divorce</label>
 										    </c:when>
 										    
 										     <c:when test="${allEmployeeDto.maritalStatus =='Married'}">
-										       <label><input type="radio" name="maritalStatus" value="Single">Single</label> 
-      									 	   <label><input type="radio" name="maritalStatus" value="Married" checked="checked">Married</label>
-      									       <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+										       <label><input type="radio" name="maritalStatus" id="Single" value="Single">Single</label> 
+      									 	   <label><input type="radio" name="maritalStatus" id="Married" value="Married" checked="checked">Married</label>
+      									       <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce">Divorce</label>
 										    </c:when>
 										    
 										    <c:when test="${allEmployeeDto.maritalStatus =='Divorce'}">
-										       <label><input type="radio" name="maritalStatus" value="Single">Single</label> 
-      									 	   <label><input type="radio" name="maritalStatus" value="Married" checked="checked">Married</label>
-      									       <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+										       <label><input type="radio" name="maritalStatus" id="Single" value="Single">Single</label> 
+      									 	   <label><input type="radio" name="maritalStatus" id="Married" value="Married" checked="checked">Married</label>
+      									       <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce">Divorce</label>
 										    </c:when>
 										    
 										    <c:otherwise>
-										       <label><input type="radio" name="maritalStatus" value="Single">Single</label> 
-      									 	   <label><input type="radio" name="maritalStatus" value="Married">Married</label>
-      									       <label><input type="radio" name="maritalStatus" value="Divorce">Divorce</label>
+										       <label><input type="radio" name="maritalStatus" id="Single" value="Single">Single</label> 
+      									 	   <label><input type="radio" name="maritalStatus" id="Married" value="Married">Married</label>
+      									       <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce">Divorce</label>
 										    </c:otherwise>
 										   </c:choose>
     								  
@@ -500,13 +500,13 @@
 									    
 									  
     								  <c:if test="${empty allEmployeeDto.knowAugNewspaper}">	
-     									  <label><input type="checkbox" name="knowAugNewspaper" value="Newspaper">Newspaper</label>   										 
+     									  <label><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper">Newspaper</label>   										 
      									  <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="Enter Newspaper" value="${allEmployeeDto.descriptionNewspaper}">
      									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugNewspaper}">	
-     									   <label><input type="checkbox" name="knowAugNewspaper" value="Newspaper" checked="checked">Newspaper</label>
+     									   <label><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper" checked="checked">Newspaper</label>
     								  	   <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="Enter Newspaper" value="${allEmployeeDto.descriptionNewspaper}">
     								  		
     								  </c:if>
@@ -514,51 +514,51 @@
 									  
 									  
 									  <c:if test="${empty allEmployeeDto.descriptionMagazine}">	
-     									 <label><input type="checkbox" name="knowAugMagazine" value="Magazine">Magazine</label>
+     									 <label><input type="checkbox" id="Magazine" name="knowAugMagazine" value="Magazine">Magazine</label>
       									 <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="Enter Magazine" value="${allEmployeeDto.descriptionMagazine}">
       									 
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.descriptionMagazine}">	
-     									   <label><input type="checkbox" name="knowAugNewspaper" value="Newspaper" checked="checked">Newspaper</label>
+     									   <label><input type="checkbox" id="" name="knowAugNewspaper" value="Magazine" checked="checked">Magazine</label>
     								  	   <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="Enter Magazine" value="${allEmployeeDto.descriptionMagazine}">
       									 
     								  </c:if>
 
 									  
 									 <c:if test="${empty allEmployeeDto.knowAugWebsite}">	
-     									 <label><input type="checkbox" name="knowAugWebsite" value="Website">Website</label>
+     									 <label><input type="checkbox" id="Website" name="knowAugWebsite" value="Website">Website</label>
       									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="Enter Website" value="${allEmployeeDto.descriptionWebsite}">
       									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugWebsite}">	
-     									 <label><input type="checkbox" name="knowAugWebsite" value="Website" checked="checked">Website</label>
+     									 <label><input type="checkbox" id="Website" name="knowAugWebsite" value="Website" checked="checked">Website</label>
       									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="Enter Website" value="${allEmployeeDto.descriptionWebsite}">
       									
     								  </c:if>
 									
 									  
 									  <c:if test="${empty allEmployeeDto.knowAugFriend}">	
-     									 <label><input type="checkbox" name="knowAugFriend" value="Friend">Friend</label>
+     									 <label><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend">Friend</label>
       									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="Enter Friend" value="${allEmployeeDto.descriptionFriend}">
       									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugFriend}">	
-     									 <label><input type="checkbox" name="knowAugFriend" value="Friend" checked="checked">Friend</label>
+     									 <label><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend" checked="checked">Friend</label>
       									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="Enter Friend" value="${allEmployeeDto.descriptionFriend}">
       									
     								  </c:if>
 									    
 									    
 									  <c:if test="${empty allEmployeeDto.knowAugOther}">	
-									    <label><input type="checkbox" name="knowAugOther" value="Other">Other (Please specify.)</label>
+									    <label><input type="checkbox" id="Other" name="knowAugOther" value="Other">Other (Please specify.)</label>
       									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="Enter Other" value="${allEmployeeDto.descriptionOther}">
     								  </c:if>
 									    
 									  <c:if test="${not empty allEmployeeDto.knowAugOther}">	
-									    <label><input type="checkbox" name="knowAugOther" value="Other" checked="checked">Other (Please specify.)</label>
+									    <label><input type="checkbox" id="Other" name="knowAugOther" value="Other" checked="checked">Other (Please specify.)</label>
       									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="Enter Other" value="${allEmployeeDto.descriptionOther}">
     								  </c:if>
 									    			 
@@ -577,11 +577,11 @@
 									<label> Do you know anyone now being employed by this company? :</label>
 									<div class="checkbox">
 									<c:if test="${ empty allEmployeeDto.knowEmployedYes}">	
-     									  <label><input type="checkbox" name="knowEmployedYes" value="Yes">Yes</label>
+     									  <label><input type="checkbox" id="Yes" name="knowEmployedYes" value="Yes">Yes</label>
     								</c:if>
     								<c:if test="${not empty allEmployeeDto.knowEmployedYes}">	
 	    								<c:if test="${allEmployeeDto.knowEmployedYes=='Yes'}">	
-	     									  <label><input type="checkbox" name="knowEmployedYes" value="Yes" checked="checked">Yes</label>
+	     									  <label><input type="checkbox" id="Yes" name="knowEmployedYes" value="Yes" checked="checked">Yes</label>
 	    								</c:if>
     								</c:if>
      									 <input type="text" class="form-control" id="descriptionYes" name="descriptionYes" placeholder="Enter Please write name,position and relation" value="${allEmployeeDto.descriptionYes}">
@@ -592,12 +592,12 @@
     								
     								<div class="checkbox">
     								  <c:if test="${ empty allEmployeeDto.knowEmployerNo}">	
-     									 <label><input type="checkbox" name="knowEmployerNo" value="No">No</label>
+     									 <label><input type="checkbox" id="No" name="knowEmployerNo" value="No">No</label>
     								  </c:if>
     								  
     								  <c:if test="${not empty allEmployeeDto.knowEmployedYes}">	  								  
     								 	<c:if test="${allEmployeeDto.knowEmployedYes=='No'}">	
-     									    <label><input type="checkbox" name="knowEmployerNo" value="No" checked="checked">No</label>
+     									    <label><input type="checkbox" id="No" name="knowEmployerNo" value="No" checked="checked">No</label>
     								   </c:if>
     								  </c:if>
     								</div>
@@ -619,10 +619,10 @@
 									<label> Have you ever served in the military service? :</label>
     								<div class="checkbox">
     								 <c:if test="${ empty allEmployeeDto.militaryServiceYes}">	
-     									  <label><input type="checkbox" name="militaryServiceYes" value="Yes">Yes</label>
+     									  <label><input type="checkbox" id="militaryServiceYes" name="militaryServiceYes" value="Yes">Yes</label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.militaryServiceYes}">	
-     									  <label><input type="checkbox" name="militaryServiceYes" value="Yes" checked="checked">Yes</label>
+     									  <label><input type="checkbox" id="militaryServiceYes" name="militaryServiceYes" value="Yes" checked="checked">Yes</label>
     								   </c:if>
      								</div>
      								</div>
@@ -676,10 +676,10 @@
 							<div class="col-md-12">
     								<div class="checkbox">
     								 <c:if test="${ empty allEmployeeDto.militaryServiceNo}">	
-     									   <label><input type="checkbox" name="militaryServiceNo" value="No">No</label>
+     									   <label><input type="checkbox" id="militaryServiceNo" name="militaryServiceNo" value="No">No</label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.militaryServiceNo}">	
-     									    <label><input type="checkbox" name="militaryServiceNo" value="No">No</label>     									       									 
+     									    <label><input type="checkbox" id="militaryServiceNo" name="militaryServiceNo" value="No">No</label>     									       									 
     								   </c:if>
      								</div>
      								</div>
@@ -714,19 +714,19 @@
 								<div class="col-md-6">
 									<div class="checkbox">
 									<c:if test="${ empty allEmployeeDto.previousEmployerYes}">	
-     									 <label><input type="checkbox" name="previousEmployerYes" value="Yes">Yes</label>
+     									 <label><input type="checkbox" id="previousEmployerYes" name="previousEmployerYes" value="Yes">Yes</label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.previousEmployerYes}">	
-     									  <label><input type="checkbox" name="previousEmployerYes" value="Yes" checked="checked">Yes</label>   									       									 
+     									  <label><input type="checkbox" id="previousEmployerYes" name="previousEmployerYes" value="Yes" checked="checked">Yes</label>   									       									 
     								   </c:if>
     								</div>
     								
     								<div class="checkbox">
     								  <c:if test="${ empty allEmployeeDto.previousEmployerNo}">	
-     									   <label><input type="checkbox" name="previousEmployerNo" value="No">No</label>
+     									   <label><input type="checkbox" id="previousEmployerNo" name="previousEmployerNo" value="No">No</label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.previousEmployerNo}">	
-     									     <label><input type="checkbox" name="previousEmployerNo" value="No" checked="checked">No</label>     									       									 
+     									     <label><input type="checkbox" id="previousEmployerNo" name="previousEmployerNo" value="No" checked="checked">No</label>     									       									 
     								   </c:if>
      									
      									 <input type="text" class="form-control" id="previousEmpreasonsNo" name="previousEmpreasonsNo" placeholder="Enter Give the reason" value="${allEmployeeDto.previousEmpreasonsNo}">
@@ -855,7 +855,7 @@
 					 <div class="col-md-4">
     					<label>Employment :</label>
     					
-    						<f:select  path="masEmployment"  class="form-control">
+    						<f:select  id="masEmployment" path="masEmployment"  class="form-control">
     						
     						<f:option  value="-1" label="--Select Employment--" />
   							<f:options items="${ employmentList }"  itemValue="id" itemLabel="name" />
@@ -867,7 +867,7 @@
 						<div class="col-md-4">
     						<label>Division :</label>
     						
-    						<f:select  path="masDivision"  class="form-control">
+    						<f:select  id="masDivision" path="masDivision"  class="form-control">
     						
 	    						<f:option  value="-1" label="--Select Division--" />
 	  							<f:options items="${ divisionList }"  itemValue="id" itemLabel="name" />
@@ -891,7 +891,7 @@
 						<div class="col-md-4">
     						<label>Staff Type :</label>
     						
-    						<f:select  path="masStaffType"  class="form-control">
+    						<f:select  id="masStaffType" path="masStaffType"  class="form-control">
     						
 	    						<f:option  value="-1" label="--Select Staff Type--" />
 	  							<f:options items="${ staffTypeList }"  itemValue="id" itemLabel="name" />
@@ -904,7 +904,7 @@
   				<div class="col-md-4">
     						<label>Joblevel :</label>
     						
-    						<f:select  path="masJoblevel"  class="form-control" >
+    						<f:select  id="masJoblevel" path="masJoblevel"  class="form-control" >
     						
 	    						<f:option  value="-1" label="--Select Joblevel--" />
 	  							<f:options items="${ joblevelList }"  itemValue="id" itemLabel="name" />
@@ -925,7 +925,7 @@
 						<div class="col-md-4">
     						<label>Core Skill :</label>
     						
-    						 <f:select  path="masCoreSkill"  class="form-control">
+    						 <f:select  id="masCoreSkill" path="masCoreSkill"  class="form-control">
     						 
     						 	<f:option  value="-1" label="--Select Core Skill--" />
 	  							 <f:options items="${ coreskillList }"  itemValue="id" itemLabel="name" /> 
@@ -939,7 +939,7 @@
 						<div class="col-md-4">
     						<label>Technology :</label>
     						
-    						<f:select  path="technology"  class="form-control">
+    						<f:select  id="technology" path="technology"  class="form-control">
     						 
 	    						 <f:option  value="-1" label="--Select Technology--" />
 	  							 <f:options items="${ technologyList }"  itemValue="id" itemLabel="name" />
@@ -1129,6 +1129,486 @@ var getIndex = 0;
 
 	$(document).ready(function() {
 
+
+//------------------------------------------------------ Validate --------------------------------------------------------------------------------------------
+
+$('input.example').on('change', function() {
+    $('input.example').not(this).prop('checked', false);  
+});
+
+$('#addForm').bootstrapValidator({
+//    live: 'disabled',
+    message: 'This value is not valid',
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+    	nameThai: {
+             validators: {
+                 notEmpty: {
+                     message: 'The NameThai is required and cannot be empty'
+                 }
+             }
+         },
+         
+         surnameThai: {
+             validators: {
+                 notEmpty: {
+                     message: 'The SurnameThai is required and cannot be empty'
+                 }
+             }
+         },
+         
+         nicknameThai: {
+             validators: {
+                 notEmpty: {
+                     message: 'The NicknameThai is required and cannot be empty'
+                 }
+             }
+         },
+         
+         nameEng: {
+             validators: {
+                 notEmpty: {
+                     message: 'The NameEng is required and cannot be empty'
+                 }
+             }
+         },
+         
+         surnameEng: {
+             validators: {
+                 notEmpty: {
+                     message: 'The SurnameEng is required and cannot be empty'
+                 }
+             }
+         },
+         
+         nicknameEng: {
+             validators: {
+                 notEmpty: {
+                     message: 'The NicknameEng is required and cannot be empty'
+                 }
+             }
+         },
+         
+         email: {
+             validators: {
+            	 notEmpty: {
+                     message: 'The Email is required and cannot be empty'
+                 },
+            	 emailAddress: {
+                     message: 'The value is not a valid email address'
+                 },
+             }
+         },
+         
+         telHome: {
+             validators: {
+                 notEmpty: {
+                     message: 'The TelHome is required and cannot be empty'
+                 },
+                 digits: {
+                 	min:0,
+                 	message: 'TelHome is required'
+                 },
+             }
+         },
+         
+         telMobile: {
+             validators: {
+                 notEmpty: {
+                     message: 'The TelMobile is required and cannot be empty'
+                 },
+                 digits: {
+                 	min:0,
+                 	message: 'TelMobile is required'
+                 },
+             }
+         },
+         
+         telFax: {
+             validators: {
+                 notEmpty: {
+                     message: 'The TelFax is required and cannot be empty'
+                 },
+                 digits: {
+                 	min:0,
+                 	message: 'TelFax is required'
+                 },
+             }
+         },
+         
+         congenitalDisease: {
+             validators: {
+                 notEmpty: {
+                     message: 'The CongenitalDisease is required and cannot be empty'
+                 }
+             }
+         },
+         
+         hospital: {
+             validators: {
+                 notEmpty: {
+                     message: 'The Hospital is required and cannot be empty'
+                 }
+             }
+         },
+         
+         emergencyContact: {
+             validators: {
+                 notEmpty: {
+                     message: 'The EmergencyContact is required and cannot be empty'
+                 }
+             }
+         },
+         
+         relationshipWithEmergencyContact: {
+             validators: {
+                 notEmpty: {
+                     message: 'The RelationshipWithEmergencyContact is required and cannot be empty'
+                 }
+             }
+         },
+         
+         emergencyContactAddress: {
+             validators: {
+                 notEmpty: {
+                     message: 'The EmergencyContactAddress is required and cannot be empty'
+                 }
+             }
+         },
+         
+         emergencyContactPhoneNumber: {
+             validators: {
+                 notEmpty: {
+                     message: 'The EmergencyContactPhoneNumber is required and cannot be empty'
+                 },
+                 digits: {
+                  	min:0,
+                  	message: 'EmergencyContactPhoneNumber is required'
+                  },
+             }
+         },
+    	
+         dateOfBirth: {
+            validators: {
+                notEmpty: {
+                    message: 'The DateOfBirth is required and cannot be empty'
+                },
+                date: {
+                    format: 'DD-MM-YYYY'
+                }
+            }
+        },
+        
+        placeOfBirth: {
+            validators: {
+                notEmpty: {
+                    message: 'The PlaceOfBirth is required and cannot be empty'
+                }
+            }
+        },
+        
+        age: {
+            validators: {
+                notEmpty: {
+                    message: 'The Age is required and cannot be empty'
+                },
+                digits: {
+                  	min:0,
+                  	message: 'Age is required'
+                  },
+            }
+        },
+        
+        religion: {
+            validators: {
+                notEmpty: {
+                    message: 'The Religion is required and cannot be empty'
+                }
+            }
+        },
+        
+        idCard: {
+            validators: {
+                notEmpty: {
+                    message: 'The IdCard is required and cannot be empty'
+                },
+                digits: {
+                  	min:0,
+                  	message: 'IdCard is required'
+                  },
+            }
+        },
+        
+        issuedOffice: {
+            validators: {
+                notEmpty: {
+                    message: 'The IssuedOffice is required and cannot be empty'
+                }
+            }
+        },
+        
+        expiryDate: {
+            validators: {
+                notEmpty: {
+                    message: 'The ExpiryDate is required and cannot be empty'
+                },
+                date: {
+                    format: 'DD-MM-YYYY'
+                }
+            }
+        },
+        
+        height: {
+            validators: {
+                notEmpty: {
+                    message: 'The Height is required and cannot be empty'
+                },
+                digits: {
+                  	min:0,
+                  	message: 'Height is required'
+                  },
+            }
+        },
+        
+        weigth: {
+            validators: {
+                notEmpty: {
+                    message: 'The Weigth is required and cannot be empty'
+                },
+                digits: {
+                  	min:0,
+                  	message: 'Weigth is required'
+                  },
+            }
+        },
+        
+        sex: {
+            validators: {
+                notEmpty: {
+                    message: 'The Sex is required and cannot be empty'
+                }
+            }
+        },
+        
+        maritalStatus: {
+            validators: {
+                notEmpty: {
+                    message: 'The MaritalStatus is required and cannot be empty'
+                }
+            }
+        },
+        
+        numberOfChildren: {
+            validators: {
+                notEmpty: {
+                    message: 'The NumberOfChildren is required and cannot be empty'
+                },
+                digits: {
+                  	min:0,
+                  	message: 'NumberOfChildren is required'
+                  },
+            }
+        },
+        
+        spouseName: {
+            validators: {
+                notEmpty: {
+                    message: 'The SpouseName is required and cannot be empty'
+                }
+            }
+        },
+        
+        marriageCertificateNo: {
+            validators: {
+                notEmpty: {
+                    message: 'The MarriageCertificateNo is required and cannot be empty'
+                },
+                digits: {
+                  	min:0,
+                  	message: 'MarriageCertificateNo is required'
+                  },
+            }
+        },
+        
+        issuedOffice2: {
+            validators: {
+                notEmpty: {
+                    message: 'The IssuedOffice2 is required and cannot be empty'
+                }
+            }
+        },
+        
+        address: {
+            validators: {
+                notEmpty: {
+                    message: 'The Address is required and cannot be empty'
+                }
+            }
+        },
+        
+        occupation: {
+            validators: {
+                notEmpty: {
+                    message: 'The Occupation is required and cannot be empty'
+                }
+            }
+        },
+        
+        
+        officialDate: {
+            validators: {
+                notEmpty: {
+                    message: 'The OfficialDate is required and cannot be empty'
+                },
+                date: {
+                    format: 'DD-MM-YYYY'
+                }
+            }
+        },
+        
+        startWorkDate: {
+            validators: {
+                notEmpty: {
+                    message: 'The StartWorkDate is required and cannot be empty'
+                },
+                date: {
+                    format: 'DD-MM-YYYY'
+                }
+            }
+        },
+        
+        endWorkDate: {
+            validators: {
+                notEmpty: {
+                    message: 'The EndWorkDate is required and cannot be empty'
+                },
+                date: {
+                    format: 'DD-MM-YYYY'
+                }
+            }
+        },
+        
+        positionAppliedFor: {
+            validators: {
+                notEmpty: {
+                    message: 'The PositionAppliedFor is required and cannot be empty'
+                }
+            }
+        },
+        
+        salaryExpected: {
+            validators: {
+                notEmpty: {
+                    message: 'The Salary Expected is required and cannot be empty'
+                },
+                digits: {
+                  	min:0,
+                  	message: 'Salary Expected is required'
+                  },
+            }
+        },
+        
+        
+        masCoreSkill: {
+            validators: {
+                notEmpty: {
+                    message: 'The CoreSkill is required and cannot be empty'
+                }
+            }
+        },
+        
+        masEmployment: {
+            validators: {
+                notEmpty: {
+                    message: 'The Employment is required and cannot be empty'
+                }
+            }
+        },
+        
+        masDivision: {
+            validators: {
+                notEmpty: {
+                    message: 'The Division is required and cannot be empty'
+                }
+            }
+        },
+        
+        masJoblevel: {
+            validators: {
+                notEmpty: {
+                    message: 'The Joblevel is required and cannot be empty'
+                }
+            }
+        },
+        
+        technology: {
+            validators: {
+                notEmpty: {
+                    message: 'The Technology is required and cannot be empty'
+                }
+            }
+        },
+        
+        masStaffType: {
+            validators: {
+                notEmpty: {
+                    message: 'The StaffType is required and cannot be empty'
+                }
+            }
+        },
+        
+        address1: {
+            validators: {
+                notEmpty: {
+                    message: 'The Address1 is required and cannot be empty'
+                }
+            }
+        },
+        
+        address2: {
+            validators: {
+                notEmpty: {
+                    message: 'The Address2 is required and cannot be empty'
+                }
+            }
+        },
+        
+        zipcode: {
+            validators: {
+                notEmpty: {
+                    message: 'The Zipcode is required and cannot be empty'
+                },
+                digits: {
+                  	min:0,
+                  	message: 'Zipcode  is required'
+                  },
+            }
+        },
+        
+        addressType: {
+            validators: {
+                notEmpty: {
+                    message: 'The AddressType is required and cannot be empty'
+                }
+            }
+        },
+        
+        province: {
+            validators: {
+                notEmpty: {
+                    message: 'The Province is required and cannot be empty'
+                }
+            }
+        },
+        
+    }
+});
+
+
 		var date1 = $( "#dateOfBirth" ).datetimepicker({
 			format : "DD-MM-YYYY hh:mm:ss",
 			viewMode : 'years'
@@ -1226,6 +1706,11 @@ var getIndex = 0;
     	    	             ] 
     			
     			} ); 
+    	 
+    	 
+    	 $(this).find(".saveAddressButton").off("click").on("click",function() {
+ 			$('#addForm').bootstrapValidator();
+ 		});
  		//listAll();
 		//$('input[type=file]').change(function(e){
 		//$('.element-to-paste-filename').attr('value',e.target.files[0].name);
@@ -1233,7 +1718,65 @@ var getIndex = 0;
 
 			    	
 		
-		
+		$("#nameThai").val('bbb');
+		$("#surnameThai").val('aaa');
+		$("#nicknameThai").val('nnn');
+		$("#nameEng").val('mmm');
+		$("#surnameEng").val('ppp');
+		$("#nicknameEng").val('aaa');
+		$("#email").val('bb@hotmail.com');
+		$("#telHome").val('02356995');
+		$("#telMobile").val('02445533');
+		$("#telFax").val('0235996');
+		$("#congenitalDisease").val('help');
+		$("#hospital").val('rama');
+		$("#emergencyContact").val('bbaa');
+		$("#relationshipWithEmergencyContact").val('mom');
+		$("#emergencyContactAddress").val('adcd');
+		$("#emergencyContactPhoneNumber").val('0235660');
+		//$("#dateOfBirth").val(),
+		$("#placeOfBirth").val('home');
+		$("#age").val(25);
+		$("#religion").val('christ');
+		$("#idCard").val(122233333333);
+		$("#issuedOffice").val('bnn');
+		//$("#expiryDate").val(),
+		$("#height").val(160);
+		$("#weigth").val(45);
+		$("#Female").prop('checked','checked');
+		$("#Married").prop('checked','checked');
+		$("#numberOfChildren").val('5');
+		$("#spouseName").val('num');
+		$("#marriageCertificateNo").val('2');
+		$("#issuedOffice2").val('aa');
+		$("#address").val('aaa/bb');
+		$("#occupation").val('vvvv');
+		$("#Newspaper").prop('checked','checked');
+		$("#descriptionNewspaper").val('nn');
+		$("#Magazine").prop('checked','checked');
+		$("#descriptionMagazine").val('doo');
+		$("#Website").prop('checked','checked');
+		$("#descriptionWebsite").val('vv');
+		$("#Friend").prop('checked','checked');
+		$("#descriptionFriend").val('aa');
+		$("#Other").prop('checked','checked');
+		$("#descriptionOther").val('ll');
+		$("#Yes").prop('checked','checked');
+		$("#descriptionYes").val('yes');
+		$("#No").prop('checked','checked');
+		//$("#militaryServiceYes").prop('checked','checked');
+		//$("#fromYear").val(),
+		//$("#toYear").val(),
+		$("#branchOfService").val('gg');
+		$("#serviceNo").val('aa');
+		//$("#militaryServiceNo").prop('checked','checked');
+		$("#reasonsNo").val('bbb');
+		//$("#dateToBeDrafted").val();
+		$("#previousEmployerYes").prop('checked','checked');
+		$("#previousEmployerNo").prop('checked','checked');
+		$("#previousEmpreasonsNo").val('n');
+		$("#statusemp").val('office');
+
 		
 		
 			    	  
@@ -1687,6 +2230,57 @@ var getIndex = 0;
 					    '<input id="datazipcode'+getIndex+'" type ="text" name = "addresses['+getIndex+'].zipcode" value="'+ data[i].zipcode+'">'+
 					    '<input id="datastatus'+getIndex+'" type ="text" name = "addresses['+getIndex+'].status" value="unmodified">']);
 					 
+						
+						$('<input>').attr({
+						    type: 'text',
+						    id: 'dataaddressid'+getIndex,
+						    name: 'addressList['+getIndex+'].id',
+						    value: id
+						}).appendTo('form');
+					  
+					  
+					  $('<input>').attr({
+						    type: 'text',
+						    id: 'dataaddresstype'+getIndex,
+						    name: 'addressList['+getIndex+'].addressTypeId',
+						    value: addressId
+						}).appendTo('form');
+					  
+					  $('<input>').attr({
+						    type: 'text',
+						    id: 'dataaddress1'+getIndex,
+						    name: 'addressList['+getIndex+'].address1',
+						    value: address1
+						}).appendTo('form');
+					  
+					  $('<input>').attr({
+						    type: 'text',
+						    id: 'dataaddress2'+getIndex,
+						    name: 'addressList['+getIndex+'].address2',
+						    value: address2
+						}).appendTo('form');
+					  
+					  $('<input>').attr({
+						    type: 'text',
+						    id: 'dataprovinceid'+getIndex,
+						    name: 'addressList['+getIndex+'].masprovinceId',
+						    value: provinceId
+						}).appendTo('form');
+					  
+					  $('<input>').attr({
+						    type: 'text',
+						    id: 'datazipcode'+getIndex,
+						    name: 'addressList['+getIndex+'].zipcode',
+						    value: zipcode
+						}).appendTo('form');
+					  
+					  $('<input>').attr({
+						    type: 'text',
+						    id: 'datastatus'+getIndex,
+						    name: 'addressList['+getIndex+'].status',
+						    value: status
+						}).appendTo('form');
+						
 						getIndex = getIndex+1; 
 // 						alert(getIndex);
 			
