@@ -16,7 +16,7 @@
 
 <style type="text/css">
 body {
-background-image: url(resources/images/BG_Login.jpg);
+background-image: url(${pageContext.request.contextPath}/resource/images/BG_Login.jpg);
 
 -moz-background-size: cover;
 -webkit-background-size: cover;
