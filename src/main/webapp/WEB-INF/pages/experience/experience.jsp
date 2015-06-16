@@ -109,7 +109,7 @@
         
       </div>
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-info saveButton">Save</button>
       </div>
     </div>
@@ -159,6 +159,9 @@ var dt;
 		                validators: {
 		                    notEmpty: {
 		                        message: 'The Start Date is required and cannot be empty'
+		                    }, 
+		                    date: {
+		                        format: 'DD-MM-YYYY'
 		                    }
 		                }
 		            },
@@ -166,6 +169,9 @@ var dt;
 		                validators: {
 		                    notEmpty: {
 		                        message: 'The End Date is required and cannot be empty'
+		                    }, 
+		                    date: {
+		                        format: 'DD-MM-YYYY'
 		                    }
 		                }
 		            },
@@ -229,13 +235,25 @@ var dt;
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(expId != null){
-    				editExperience();
+    				$('#validate').bootstrapValidator();
+    				$('#validate').data('bootstrapValidator').validate();
+    				if($('#validate').data('bootstrapValidator').isValid()){
+    					editExperience();
+    				}
     			}
     			else {
-    				addExperience();
+    				$('#validate').bootstrapValidator();
+    				$('#validate').data('bootstrapValidator').validate();
+    				if($('#validate').data('bootstrapValidator').isValid()){
+    					addExperience();
+    				}
     			}
     			
     		});
+    		
+    		$(this).find(".closeButton").off("click").on("click",function() {
+				$('#validate').bootstrapValidator('resetForm', true);
+			});
     		
     		function addExperience() {
 //     			var id = getUrlParameter('Id');
@@ -281,7 +299,8 @@ var dt;
     					listAll();
     				},
     				error : function(data,testStatus,jqXHR) {
-    					$('#validate').bootstrapValidator('validate');
+    					//$('#validate').bootstrapValidator('validate');
+    					alert("ERROR");
     					/* $('#addModal').modal('toggle');
     					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); */
     					}
@@ -363,7 +382,7 @@ var dt;
 						listAll();
 					},
 					error : function(data,testStatus,jqXHR) {
-						$('#addModal').modal('toggle');
+						//$('#addModal').modal('toggle');
 						alert("ERROR");
 						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 						}

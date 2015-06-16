@@ -83,7 +83,7 @@
 	  	</div>
       </div>
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-info saveButton">Save</button>
       </div>
 
@@ -134,13 +134,20 @@ var dt;
 		                validators: {
 		                    notEmpty: {
 		                        message: 'The Start Date is required and cannot be empty'
+		                    }, 
+		                    date: {
+		                        format: 'DD-MM-YYYY'
 		                    }
+		        
 		                }
 		            },
 		            dateTo: {
 		                validators: {
 		                    notEmpty: {
 		                        message: 'The End Date is required and cannot be empty'
+		                    }, 
+		                    date: {
+		                        format: 'DD-MM-YYYY'
 		                    }
 		                }
 		            },
@@ -155,15 +162,15 @@ var dt;
 		});
 		
     	$( "#dateTimeFrom" ).datetimepicker({
-			 viewMode: 'days',
+			 //viewMode: 'days',
 			 format : 'DD-MM-YYYY',
-			 defaultDate: 'moment',
+			 //defaultDate: 'moment',
 			 //minDate: moment(),
 		});
     	$( "#dateTimeTo" ).datetimepicker({
-			 viewMode: 'days',
+			 //viewMode: 'days',
 			 format : 'DD-MM-YYYY',
-			 defaultDate: 'moment',
+			 //defaultDate: 'moment',
 			 //minDate: moment(),
 		});
     	dt=$("#tdResult").dataTable();
@@ -180,17 +187,26 @@ var dt;
     		$(this).find(".saveButton").off("click").on("click", function()
     		{
     			if(proId != null){
-    				//console.log(proId);
-    				editProbation();
+					$('#validate').bootstrapValidator();
+    				$('#validate').data('bootstrapValidator').validate();
+    				if($('#validate').data('bootstrapValidator').isValid()){
+    					editProbation();
+    				}
+    				
     			}
     			else {
-    				if($('#validate').bootstrapValidator('validate')){
-    				//console.log("add : "+proId);
+					$('#validate').bootstrapValidator();
+    				$('#validate').data('bootstrapValidator').validate();
+    				if($('#validate').data('bootstrapValidator').isValid()){
     					addProbation();
     				}
     			}
     			
     		});
+    		
+    		$(this).find(".closeButton").off("click").on("click",function() {
+				$('#validate').bootstrapValidator('resetForm', true);
+			});
     		
     		
     		function addProbation() {
@@ -215,8 +231,8 @@ var dt;
     				datatype: "json",
     				contentType: "application/json",
     				success : function(data) {
-    					$('#addModal').modal('toggle');
     					$('#validate').bootstrapValidator('resetForm', true);
+    					$('#addModal').modal('toggle');
     					//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();
     					/* dt.fnClearTable();
     					dt.fnAddData([
@@ -236,7 +252,7 @@ var dt;
     					listAll();
     				},
     				error : function(data,testStatus,jqXHR) {
-    					$('#validate').bootstrapValidator('validate');
+    					//$('#validate').bootstrapValidator('validate');
     					alert("ERROR");
     					/* $('#addModal').modal('toggle');
     					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
@@ -284,8 +300,8 @@ var dt;
 					datatype: "json",
 					contentType: "application/json",
 					success : function(data) {
+						$('#validate').bootstrapValidator('resetForm', true);
 						$('#addModal').modal('toggle');
-						//$('#validate').bootstrapValidator('revalidateField', '#status');
 						//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').slideDown('fast').delay(5000).fadeOut().delay(4000);
 						/* dt.fnClearTable();
 						dt.fnAddData([
@@ -304,7 +320,7 @@ var dt;
 						listAll();
 					},
 					error : function(data,testStatus,jqXHR) {
-    					$('#validate').bootstrapValidator('validating');
+    					//$('#validate').bootstrapValidator('validating');
     					//$('#validate').bootstrapValidator('revalidateField', '#status');
     					alert("ERROR");
     					/* $('#addModal').modal('toggle');
