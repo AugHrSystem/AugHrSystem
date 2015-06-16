@@ -17,6 +17,7 @@
 <style type="text/css">
 body {
 background-image: url(resources/images/BG_Login.jpg);
+
 -moz-background-size: cover;
 -webkit-background-size: cover;
 background-size: cover;
@@ -32,7 +33,6 @@ background-attachment: fixed;
 }
 .login{
 background-color:white;
-/* opacity:0.95; */
 border-radius: 15px 15px 15px 15px;
 -moz-border-radius: 15px 15px 15px 15px;
 -webkit-border-radius: 15px 15px 15px 15px;
