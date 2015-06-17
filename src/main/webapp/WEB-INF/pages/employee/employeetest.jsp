@@ -37,7 +37,7 @@
 								<div class="col-md-6">
 		    					<label>Location :</label>
 		    						<f:select id="masLocation" path="masLocation"  class="form-control" value="TH">
-									 	 <f:option  value="-1" label="--Select Location--" />
+									 	 <option  value="" label="--Select Location--" />
 		  								 <f:options items="${ locationList }"  itemValue="code" itemLabel="name" />
 									</f:select>
 								</div> 
@@ -106,7 +106,7 @@
 										<div class="row" align="center">
 										   <c:if test="${empty allEmployeeDto.image}">
 												<div  id="imagePreview" class="img-rounded img-responsive"
-													style="background-image:url('<c:url value="/resources/images/no_image.gif" />');">
+													style="background-image:url('<c:url value="/resource/images/no_image.gif" />');">
 												</div>
 											</c:if>
 											
@@ -855,7 +855,7 @@
     					
     						<f:select  id="masEmployment" path="masEmployment"  class="form-control">
     						
-    						<f:option  value="-1" label="--Select Employment--" />
+    						<option  value="" label="--Select Employment--" />
   							<f:options items="${ employmentList }"  itemValue="id" itemLabel="name" />
     						
 								
@@ -867,7 +867,7 @@
     						
     						<f:select  id="masDivision" path="masDivision"  class="form-control">
     						
-	    						<f:option  value="-1" label="--Select Division--" />
+	    						<option  value="" label="--Select Division--" />
 	  							<f:options items="${ divisionList }"  itemValue="id" itemLabel="name" />
 	    						
 								
@@ -891,7 +891,7 @@
     						
     						<f:select  id="masStaffType" path="masStaffType"  class="form-control">
     						
-	    						<f:option  value="-1" label="--Select Staff Type--" />
+	    						<option  value="" label="--Select Staff Type--" />
 	  							<f:options items="${ staffTypeList }"  itemValue="id" itemLabel="name" />
 	    						
 								
@@ -904,7 +904,7 @@
     						
     						<f:select  id="masJoblevel" path="masJoblevel"  class="form-control" >
     						
-	    						<f:option  value="-1" label="--Select Joblevel--" />
+	    						<option  value="" label="--Select Joblevel--" />
 	  							<f:options items="${ joblevelList }"  itemValue="id" itemLabel="name" />
 	    						
 								
@@ -925,7 +925,7 @@
     						
     						 <f:select  id="masCoreSkill" path="masCoreSkill"  class="form-control">
     						 
-    						 	<f:option  value="-1" label="--Select Core Skill--" />
+    						 	<option  value="" label="--Select Core Skill--" />
 	  							 <f:options items="${ coreskillList }"  itemValue="id" itemLabel="name" /> 
 	    						 
 								
@@ -939,7 +939,7 @@
     						
     						<f:select  id="technology" path="technology"  class="form-control">
     						 
-	    						 <f:option  value="-1" label="--Select Technology--" />
+	    						 <option  value="" label="--Select Technology--" />
 	  							 <f:options items="${ technologyList }"  itemValue="id" itemLabel="name" />
 	    						  
 								
@@ -1037,7 +1037,7 @@
 	    
 							<div class="form-group">
 		 					 <select class="form-control" id="addressType">
-								<option value="-1" label="---Select Address Type---" />
+								<option value="" label="---Select Address Type---" />
 								<c:forEach var="obj" items="${ masAddressTypeList }">
 									<option value="${obj.id }">${ obj.name}</option>
 								</c:forEach>
@@ -1065,7 +1065,7 @@
 	    
 						
 		 					 <select  class="form-control" id="province">
-								<option value="-1" label="---Select Province---" />
+								<option value="" label="---Select Province---" />
 								<c:forEach var="obj" items="${ provinceList }">
 									<option value="${obj.id }">${ obj.name}</option>
 								</c:forEach>
@@ -1905,10 +1905,10 @@ $('#addForm').bootstrapValidator({
  /* --------------------------------------------------- Clear Address Function --------------------------------------------------- */	  		
   		function clearDataModal(){
   			
-  			$('#addressType').val(-1);
+  			$('#addressType').val('');
   			$('#address1').val('');
   			$('#address2').val('');
-  			$("#province").val(-1);
+  			$("#province").val('');
   			$('#zipcode').val('');
   			
   		}
