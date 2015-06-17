@@ -5,22 +5,32 @@
  */
 package com.aug.hr.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.LeaveDtoService;
+import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.dto.LeaveDto;
+import com.aug.hr.entity.dto.SkillLanguageDto;
 import com.aug.hr.services.LeaveService;
 import com.aug.hr.services.MasLeaveTypeService;
 import com.aug.hr.services.ReportService;
@@ -33,6 +43,20 @@ public class LeaveController {
 	@Autowired private LeaveDtoService leaveDtoService;
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
 	@Autowired private ReportService reportService;
+	
+	
+	
+	
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm a",Locale.ENGLISH);
+        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+        binder.registerCustomEditor(Date.class, editor);
+      
+    }	
+	
+	
 	
 	@RequestMapping(value="/leave/{id}",method={RequestMethod.GET,
 			RequestMethod.POST})
@@ -58,12 +82,15 @@ public class LeaveController {
 	
 	
 	@RequestMapping(value="/leave/add",method=RequestMethod.POST)
-	public @ResponseBody LeaveDto addLeave(@RequestBody LeaveDto leaveDto){
-		//Hibernate.initialize(ability.getEmployee().getNameEng());
-		//Hibernate.initialize(leave.getEmployee().getNameEng());
+	public @ResponseBody LeaveDto addLeave(Locale locale,
+			@ModelAttribute LeaveDto leaveDate,
+			ModelMap model){
+
 		Leave leave = new Leave();
-		leaveService.create(leave.fromLeaveDto(leaveDto,leave));
-		return leaveDto;
+		System.out.println("AIM: "+leaveDate.getAim());
+		
+		leaveService.create(leave.fromLeaveDto(leaveDate,leave));
+		return leaveDate;
 	}
 	
 	
@@ -75,7 +102,7 @@ public class LeaveController {
 	}
 	
 	/*@Transactional
-	@RequestMapping(value="/leave/update",method=RequestMethod.POST)
+	@RequestMapping(value="/leave/update",method=RequestMet hod.POST)
 	public @ResponseBody LeaveDto ubdateLeave(@RequestBody LeaveDto leaveDto){
 			
 		Leave leave = new Leave();

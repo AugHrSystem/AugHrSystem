@@ -6,6 +6,7 @@
 package com.aug.hr.entity.dto;
 
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchLeave",
-					query="select l.id,l.aim, l.start_date,l.end_date, l.start_time,l.end_time,l.reason, m.name, l.employee_id, emp.employee_code, m.leavetype_id,aim.NAME_ENG as NAME_ENG "
+					query="select l.id,l.aim,l.start_time,l.end_time,l.reason, m.name, l.employee_id, emp.employee_code, m.leavetype_id,aim.NAME_ENG as NAME_ENG "
 							+ "from EMP_LEAVE l, EMP_EMPLOYEE emp,MAS_LEAVETYPE  m , (select  e.NAME_ENG as NAME_ENG,l.ID as id from EMP_LEAVE l join EMP_EMPLOYEE e on e.ID=l.AIM where l.AIM=e.ID) aim "
 							+ "where  l.employee_id = :empId and l.employee_id = emp.id and l.leavetype_id = m.leavetype_id and aim.id=l.id",																																																																					
 							resultClass = LeaveDto.class),
@@ -40,7 +41,7 @@ public class LeaveDto {
 	private Integer id;
 
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+/*	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "START_DATE")
 	private Date startDate;
@@ -50,14 +51,14 @@ public class LeaveDto {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "END_DATE")
 	private Date endDate;
+	*/
 	
-	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy hh:mm a")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="START_TIME")
 	private Date startTime;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy hh:mm a")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="END_TIME")
 	private Date endTime;
@@ -100,7 +101,7 @@ public class LeaveDto {
 	}
 
 
-
+/*
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -120,7 +121,7 @@ public class LeaveDto {
 		this.endDate = endDate;
 	}
 
-
+*/
 	public Date getStartTime() {
 		return startTime;
 	}
@@ -209,7 +210,6 @@ public class LeaveDto {
 	public void setNameEng(String nameEng) {
 		this.nameEng = nameEng;
 	}
-
 
 
 

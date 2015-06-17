@@ -31,7 +31,7 @@ public class Leave extends BaseEntity {
 	@GeneratedValue
 	private Integer id;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	/*@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Column(name = "START_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
@@ -41,15 +41,27 @@ public class Leave extends BaseEntity {
 	@Column(name = "END_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
-	
+	*/
 
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm:ss")
+	/*@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm:ss",timezone ="GMT+07:00")
 	@Temporal(TemporalType.TIME)
 	@Column(name="START_TIME")
 	private  Date startTime;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm:ss")
 	@Temporal(TemporalType.TIME)
+	@Column(name="END_TIME")
+	private Date endTime;*/
+	
+	
+	
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy hh:mm a")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="START_TIME")
+	private  Date startTime;
+	
+	//@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy hh:mm a")
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="END_TIME")
 	private Date endTime;
 	
@@ -64,12 +76,10 @@ public class Leave extends BaseEntity {
 	
 	@ManyToOne()
 	@JoinColumn(name = "LEAVETYPE_ID",nullable = false,referencedColumnName="LEAVETYPE_ID")
-	//@JsonBackReference
 	private MasLeaveType masleavetype;
 	
 	@ManyToOne()
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
-	//@JsonBackReference
 	private Employee employee;
 	
 	
@@ -83,7 +93,7 @@ public class Leave extends BaseEntity {
 	}
 
 
-	public Date getStartDate() {
+/*	public Date getStartDate() {
 		return startDate;
 	}
 
@@ -97,7 +107,7 @@ public class Leave extends BaseEntity {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
-	}
+	}*/
 
 	public Date getStartTime() {
 		return startTime;
@@ -159,9 +169,9 @@ public class Leave extends BaseEntity {
 	public LeaveDto toLeaveDto(){
 		LeaveDto leaveDto = new LeaveDto();
 		leaveDto.setId(this.id);
-		leaveDto.setStartDate(this.startDate);
+		//leaveDto.setStartDate(this.startDate);
 		leaveDto.setStartTime(this.startTime);
-		leaveDto.setEndDate(this.endDate);
+		//leaveDto.setEndDate(this.endDate);
 		leaveDto.setEndTime(this.endTime);
 		leaveDto.setReason(this.reason);
 		leaveDto.setAim(this.aim);
@@ -175,9 +185,9 @@ public class Leave extends BaseEntity {
 	public Leave fromLeaveDto (LeaveDto leaveDto,Leave leave){
 		//Leave leave = new Leave();
 		//leave.setId(leaveDto.getId());
-		leave.setStartDate(leaveDto.getStartDate());
+		//leave.setStartDate(leaveDto.getStartDate());
 		leave.setStartTime(leaveDto.getStartTime());
-		leave.setEndDate(leaveDto.getEndDate());
+		//leave.setEndDate(leaveDto.getEndDate());
 		leave.setEndTime(leaveDto.getEndTime());
 		leave.setReason(leaveDto.getReason());
 		leave.setAim(leaveDto.getAim());
