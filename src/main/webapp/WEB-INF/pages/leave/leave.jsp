@@ -566,7 +566,8 @@ $(document).ready(function() {
 					//$("#startDate").val(data.startDate);
 					//$("#endDate").val(data.endDate);
 					$("#startTime").val(data.startTimeString);
-					$("#endTime").val(data.endTime);
+					$("#endTime").val(data.endTimeString);
+					//$("#endTime").val(data.endTime);
 					$("#reason").val(data.reason);
 					$("#aim").val(data.aim);
 					
@@ -671,7 +672,8 @@ $(document).ready(function() {
 						              //data[i].startDate,
 						              data[i].startTimeString,
 						              //data[i].endDate,
-						              data[i].endTime,
+						             // data[i].endTime,
+						             data[i].endTimeString,
 						              data[i].masleavetype,
 						              data[i].reason,
 						              data[i].nameEng,

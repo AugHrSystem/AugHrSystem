@@ -17,11 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
 import com.aug.hr.entity.dto.LeaveDto;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Entity
 @Table(name="EMP_LEAVE")
@@ -87,6 +84,8 @@ public class Leave extends BaseEntity {
 	@Column(name="STARTTIMESTRING")
 	private String startTimeString;
 	
+	@Column(name="ENDTIMESTRING")
+	private String endTimeString;
 	
 	
 	public Integer getId() {
@@ -182,6 +181,18 @@ public class Leave extends BaseEntity {
 		this.startTimeString = startTimeString;
 	}
 
+	
+	
+	
+	
+	public String getEndTimeString() {
+		return endTimeString;
+	}
+
+	public void setEndTimeString(String endTimeString) {
+		this.endTimeString = endTimeString;
+	}
+
 	public LeaveDto toLeaveDto(){
 		LeaveDto leaveDto = new LeaveDto();
 		leaveDto.setId(this.id);
@@ -196,8 +207,12 @@ public class Leave extends BaseEntity {
 		leaveDto.setMasleavetypeId(this.masleavetype.getId());
 		leaveDto.setMasleavetype(this.masleavetype.getName());
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
-		String starttime = formatter.format(this.startTime);
-		leaveDto.setStartTimeString(starttime);
+		String startTime = formatter.format(this.startTime);
+		leaveDto.setStartTimeString(startTime);
+		
+		SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		String endTime = formatter2.format(this.endTime);
+		leaveDto.setEndTimeString(endTime);
 		
 		return leaveDto;
 	}
@@ -229,6 +244,11 @@ public class Leave extends BaseEntity {
 		leave.setStartTimeString(starttime);
 		
 
+		SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		String endTime = formatter2.format(this.endTime);
+		leave.setEndTimeString(endTime);
+		
+		
 		return leave;
 		
 	}

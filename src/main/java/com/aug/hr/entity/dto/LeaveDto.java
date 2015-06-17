@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="searchLeave",
-					query="select l.id,l.aim,l.start_time,l.end_time,l.reason, m.name, l.employee_id, emp.employee_code, m.leavetype_id,aim.NAME_ENG as NAME_ENG,l.STARTTIMESTRING "
+					query="select l.id,l.aim,l.start_time,l.end_time,l.reason, m.name, l.employee_id, emp.employee_code, m.leavetype_id,aim.NAME_ENG as NAME_ENG,l.STARTTIMESTRING,l.ENDTIMESTRING "
 							+ "from EMP_LEAVE l, EMP_EMPLOYEE emp,MAS_LEAVETYPE  m , (select  e.NAME_ENG as NAME_ENG,l.ID as id from EMP_LEAVE l join EMP_EMPLOYEE e on e.ID=l.AIM where l.AIM=e.ID) aim "
 							+ "where  l.employee_id = :empId and l.employee_id = emp.id and l.leavetype_id = m.leavetype_id and aim.id=l.id",																																																																					
 							resultClass = LeaveDto.class),
@@ -90,6 +90,11 @@ public class LeaveDto {
 	
 	@Column(name="STARTTIMESTRING")
 	private String startTimeString;
+	
+	
+	
+	@Column(name="ENDTIMESTRING")
+	private String endTimeString;
 	
 
 	public Integer getId() {
@@ -220,6 +225,16 @@ public class LeaveDto {
 
 	public void setStartTimeString(String startTimeString) {
 		this.startTimeString = startTimeString;
+	}
+
+
+	public String getEndTimeString() {
+		return endTimeString;
+	}
+
+
+	public void setEndTimeString(String endTimeString) {
+		this.endTimeString = endTimeString;
 	}
 
 
