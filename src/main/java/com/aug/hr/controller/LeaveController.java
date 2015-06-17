@@ -50,7 +50,7 @@ public class LeaveController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm a",Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm a",Locale.ENGLISH);
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         binder.registerCustomEditor(Date.class, editor);
       
@@ -88,6 +88,12 @@ public class LeaveController {
 
 		Leave leave = new Leave();
 		System.out.println("AIM: "+leaveDate.getAim());
+		
+		//SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		//String starttime = formatter.format(leaveDate.getStartTime());
+		//leaveDate.setStartTimeString(starttime);
+		//System.out.println(leaveDate.getStartTime());
+		//System.out.println(leaveDate.getStartTimeString());
 		
 		leaveService.create(leave.fromLeaveDto(leaveDate,leave));
 		return leaveDate;

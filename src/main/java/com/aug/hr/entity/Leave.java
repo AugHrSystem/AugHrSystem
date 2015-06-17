@@ -5,6 +5,7 @@
  */
 package com.aug.hr.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -81,6 +82,10 @@ public class Leave extends BaseEntity {
 	@ManyToOne()
 	@JoinColumn(name = "EMPLOYEE_ID",nullable = false,referencedColumnName="id")
 	private Employee employee;
+	
+	
+	@Column(name="STARTTIMESTRING")
+	private String startTimeString;
 	
 	
 	
@@ -165,6 +170,17 @@ public class Leave extends BaseEntity {
 	public void setAim(String aim) {
 		this.aim = aim;
 	}
+	
+	
+	
+
+	public String getStartTimeString() {
+		return startTimeString;
+	}
+
+	public void setStartTimeString(String startTimeString) {
+		this.startTimeString = startTimeString;
+	}
 
 	public LeaveDto toLeaveDto(){
 		LeaveDto leaveDto = new LeaveDto();
@@ -179,6 +195,10 @@ public class Leave extends BaseEntity {
 		leaveDto.setEmployeeId(this.employee.getId());
 		leaveDto.setMasleavetypeId(this.masleavetype.getId());
 		leaveDto.setMasleavetype(this.masleavetype.getName());
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		String starttime = formatter.format(this.startTime);
+		leaveDto.setStartTimeString(starttime);
+		
 		return leaveDto;
 	}
 	
@@ -203,6 +223,11 @@ public class Leave extends BaseEntity {
 		Employee employee = new Employee();
 		employee.setId(leaveDto.getEmployeeId());
 		leave.setEmployee(employee);
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		String starttime = formatter.format(this.startTime);
+		leave.setStartTimeString(starttime);
+		
 
 		return leave;
 		

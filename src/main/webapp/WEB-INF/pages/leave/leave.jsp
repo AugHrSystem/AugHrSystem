@@ -381,7 +381,7 @@ $(document).ready(function() {
     $('#startTime1').datetimepicker({
     	
     	// viewMode: 'days',
-		 format : 'DD-MM-YYYY hh:mm a',
+		 format : 'DD-MM-YYYY HH:mm a',
 		 //defaultDate: 'moment'
     }); 
 
@@ -565,7 +565,7 @@ $(document).ready(function() {
 					$("#masleavetype").val(data.masleavetypeId);
 					//$("#startDate").val(data.startDate);
 					//$("#endDate").val(data.endDate);
-					$("#startTime").val(data.startTime);
+					$("#startTime").val(data.startTimeString);
 					$("#endTime").val(data.endTime);
 					$("#reason").val(data.reason);
 					$("#aim").val(data.aim);
@@ -669,7 +669,7 @@ $(document).ready(function() {
 						              
 						             
 						              //data[i].startDate,
-						              data[i].startTime,
+						              data[i].startTimeString,
 						              //data[i].endDate,
 						              data[i].endTime,
 						              data[i].masleavetype,

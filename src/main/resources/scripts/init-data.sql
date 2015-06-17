@@ -434,5 +434,5 @@ INSERT INTO EMP_ADDRESS(ADDRESS1,ADDRESS2,ZIPCODE,PROVINCE_ID,ADDRESSTYPE_ID,EMP
 
 
 
-update emp_employee set ismanager=1 where id=1;
+update EMP_EMPLOYEE set ISMANAGER=1 where ID=1;
 
