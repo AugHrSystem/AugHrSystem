@@ -162,7 +162,6 @@
 	       </div>
 	       
 	    <div class="col-md-12">
-	    <div class="col-md-12">
 	    <div class="form-group" align="right">
 	      <button id="addaddress" type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
           New record</button>	
@@ -194,7 +193,6 @@
 						</tbody>
 					</table>
 					
-	     </div>
 	     </div>
 	     
  <!----------------------------------------- Start General------------------------------------------------------>
@@ -1718,7 +1716,7 @@ $('#addForm').bootstrapValidator({
 
 			    	
 		
-		$("#nameThai").val('bbb');
+	/* 	$("#nameThai").val('bbb');
 		$("#surnameThai").val('aaa');
 		$("#nicknameThai").val('nnn');
 		$("#nameEng").val('mmm');
@@ -1775,7 +1773,7 @@ $('#addForm').bootstrapValidator({
 		$("#previousEmployerYes").prop('checked','checked');
 		$("#previousEmployerNo").prop('checked','checked');
 		$("#previousEmpreasonsNo").val('n');
-		$("#statusemp").val('office');
+		$("#statusemp").val('office'); */
 
 		
 		
