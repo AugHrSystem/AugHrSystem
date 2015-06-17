@@ -300,6 +300,7 @@ var dt;
 					datatype: "json",
 					contentType: "application/json",
 					success : function(data) {
+						$('#validate').bootstrapValidator('revalidateField', '#status');
 						$('#validate').bootstrapValidator('resetForm', true);
 						$('#addModal').modal('toggle');
 						//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').slideDown('fast').delay(5000).fadeOut().delay(4000);
