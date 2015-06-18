@@ -13,7 +13,9 @@
 <!-- <input type="hidden" id="id"> -->
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-<f:form method="post" id="addForm" commandName="allEmployeeDto" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/employee/submit" enctype="multipart/form-data">
+<%-- <f:form method="post" id="addForm" commandName="allEmployeeDto" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/employee/submit" enctype="multipart/form-data"> --%>
+
+<f:form method="post" id="addForm" commandName="allEmployeeDto" class="form-horizontal" role="form" name="employeeForm" enctype="multipart/form-data">
 
 <!------------------------------------------------------ Start Information-------------------------------------------------------->
 		
@@ -575,11 +577,11 @@
 									<label> Do you know anyone now being employed by this company? :</label>
 									<div class="checkbox">
 									<c:if test="${ empty allEmployeeDto.knowEmployedYes}">	
-     									  <label><input type="checkbox" id="Yes" name="knowEmployedYes" value="Yes">Yes</label>
+     									  <label><input type="checkbox" id="Yes" name="knowEmployed[]" value="Yes">Yes</label>
     								</c:if>
     								<c:if test="${not empty allEmployeeDto.knowEmployedYes}">	
 	    								<c:if test="${allEmployeeDto.knowEmployedYes=='Yes'}">	
-	     									  <label><input type="checkbox" id="Yes" name="knowEmployedYes" value="Yes" checked="checked">Yes</label>
+	     									  <label><input type="checkbox" id="Yes" name="knowEmployed[]" value="Yes" checked="checked">Yes</label>
 	    								</c:if>
     								</c:if>
      									 <input type="text" class="form-control" id="descriptionYes" name="descriptionYes" placeholder="Enter Please write name,position and relation" value="${allEmployeeDto.descriptionYes}">
@@ -590,12 +592,12 @@
     								
     								<div class="checkbox">
     								  <c:if test="${ empty allEmployeeDto.knowEmployerNo}">	
-     									 <label><input type="checkbox" id="No" name="knowEmployerNo" value="No">No</label>
+     									 <label><input type="checkbox" id="No" name="knowEmployed[]" value="No">No</label>
     								  </c:if>
     								  
     								  <c:if test="${not empty allEmployeeDto.knowEmployedYes}">	  								  
     								 	<c:if test="${allEmployeeDto.knowEmployedYes=='No'}">	
-     									    <label><input type="checkbox" id="No" name="knowEmployerNo" value="No" checked="checked">No</label>
+     									    <label><input type="checkbox" id="No" name="knowEmployed[]" value="No" checked="checked">No</label>
     								   </c:if>
     								  </c:if>
     								</div>
@@ -743,8 +745,9 @@
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 			</h2>
 	   </div>
-	    <div class="form-group">
+	    
 	    <div class="col-md-12">
+	    <div class="form-group">
 							<div class="col-md-4">
 									
 								</div>
@@ -767,8 +770,9 @@
 			</div>
 			</div>
 			
-			<div class="form-group">
+			
 			<div class="col-md-12">	
+			<div class="form-group">
 				<div class="col-md-4">
 									<label> Position Applied For :</label> 
 									<input type="text" class="form-control" id="positionAppliedFor" name="positionAppliedFor" placeholder="Enter Position" value="${allEmployeeDto.positionAppliedFor}">
@@ -1012,7 +1016,8 @@
 			<div  align="center">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
-    			<button type="submit" class="btn btn-primary">Save&Continue</button>
+    			<button type="button" class="btn btn-primary" name="saveButton">Save&Continue</button>
+    			
 	    	</div>
 </f:form>   
     
@@ -1031,12 +1036,12 @@
 					</div>
 					<div class="modal-body">
 						
-					
+					<form id="validateAddress" name="validateAddress">
 						<div class="form-group">
 	    					<label>Address Type :</label>
 	    
 							<div class="form-group">
-		 					 <select class="form-control" id="addressType">
+		 					 <select class="form-control" id="addressType" name="addressType">
 								<option value="" label="---Select Address Type---" />
 								<c:forEach var="obj" items="${ masAddressTypeList }">
 									<option value="${obj.id }">${ obj.name}</option>
@@ -1048,13 +1053,13 @@
 
 							<div class="form-group">
 								<label>Address:</label>
-								<textarea class="form-control" rows="1" id="address1"></textarea>
+								<textarea class="form-control" rows="1" id="address1" name="address1"></textarea>
 							</div>
 
 
 							<div class="form-group">
 								<label>Address(Cont.):</label>
-								<textarea class="form-control" rows="1" id="address2"></textarea>
+								<textarea class="form-control" rows="1" id="address2" name="address2"></textarea>
 							</div>
 
 
@@ -1064,7 +1069,7 @@
 	    
 	    
 						
-		 					 <select  class="form-control" id="province">
+		 					 <select  class="form-control" id="province" name="province">
 								<option value="" label="---Select Province---" />
 								<c:forEach var="obj" items="${ provinceList }">
 									<option value="${obj.id }">${ obj.name}</option>
@@ -1075,20 +1080,20 @@
 
 							<div class="form-group">
 								<label>Zipcode:</label>
-								<textarea class="form-control" rows="1" id="zipcode"></textarea>
+								<textarea class="form-control" rows="1" id="zipcode" name="zipcode"></textarea>
 							</div>
 
 						
 						</div>
 						
 						<div class="form-group" align="center">
-							<button type="button" class="btn btn-default"
+							<button type="button" class="btn btn-default closeAddressButton" 
 								data-dismiss="modal">Close</button>
 							<button type="button" id= "saveAddressButton"class="btn btn-primary saveAddressButton">Save
 								changes</button>
 						</div>
 						
-					
+					</form>
 					</div>
 				</div>
 	    	</div>
@@ -1134,6 +1139,75 @@ $('input.example').on('change', function() {
     $('input.example').not(this).prop('checked', false);  
 });
 
+
+$(".closeAddressButton").off("click").on("click",function() {
+	$('#validateAddress').bootstrapValidator('resetForm', true);
+});
+
+
+$('#validateAddress').bootstrapValidator({
+//  live: 'disabled',
+  message: 'This value is not valid',
+  feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+  },
+  fields: {
+	  zipcode: {
+  
+	  validators: {
+          notEmpty: {
+              message: 'Zipcode is required and cannot be empty'
+         	 },
+         	digits: {
+              	message: 'Zipcode is required'
+              },
+              regexp: {
+                regexp: /^\d{5}$/,
+                message: 'The TH zipcode must contain 5 digits'
+              }
+              
+	  		}
+	  },
+	  addressType: {
+		  
+		  validators: {
+	          notEmpty: {
+	              message: 'AddressType is required and cannot be empty'
+	         	 }
+		  		}
+		  },
+		  address1: {
+			  
+			  validators: {
+		          notEmpty: {
+		              message: 'Address is required and cannot be empty'
+		         	 }
+			  		}
+			  },
+			  address2: {
+				  
+				  validators: {
+			          notEmpty: {
+			              message: 'Address is required and cannot be empty'
+			         	 }
+				  		}
+				  },
+				province: {
+					  
+					  validators: {
+				          notEmpty: {
+				              message: 'Province is required and cannot be empty'
+				         	 }
+					  		}
+					  },
+				  
+  }
+});
+
+
+
 $('#addForm').bootstrapValidator({
 //    live: 'disabled',
     message: 'This value is not valid',
@@ -1146,7 +1220,7 @@ $('#addForm').bootstrapValidator({
     	nameThai: {
              validators: {
                  notEmpty: {
-                     message: 'The NameThai is required and cannot be empty'
+                     message: 'FirstName(Thai) is required and cannot be empty'
                  }
              }
          },
@@ -1154,7 +1228,7 @@ $('#addForm').bootstrapValidator({
          surnameThai: {
              validators: {
                  notEmpty: {
-                     message: 'The SurnameThai is required and cannot be empty'
+                     message: 'Surname(Thai) is required and cannot be empty'
                  }
              }
          },
@@ -1162,7 +1236,7 @@ $('#addForm').bootstrapValidator({
          nicknameThai: {
              validators: {
                  notEmpty: {
-                     message: 'The NicknameThai is required and cannot be empty'
+                     message: 'Nickname(Thai) is required and cannot be empty'
                  }
              }
          },
@@ -1170,7 +1244,7 @@ $('#addForm').bootstrapValidator({
          nameEng: {
              validators: {
                  notEmpty: {
-                     message: 'The NameEng is required and cannot be empty'
+                     message: 'FirstName(Eng) is required and cannot be empty'
                  }
              }
          },
@@ -1178,7 +1252,7 @@ $('#addForm').bootstrapValidator({
          surnameEng: {
              validators: {
                  notEmpty: {
-                     message: 'The SurnameEng is required and cannot be empty'
+                     message: 'Surname(Eng) is required and cannot be empty'
                  }
              }
          },
@@ -1186,7 +1260,7 @@ $('#addForm').bootstrapValidator({
          nicknameEng: {
              validators: {
                  notEmpty: {
-                     message: 'The NicknameEng is required and cannot be empty'
+                     message: 'Nickname(Eng) is required and cannot be empty'
                  }
              }
          },
@@ -1194,7 +1268,7 @@ $('#addForm').bootstrapValidator({
          email: {
              validators: {
             	 notEmpty: {
-                     message: 'The Email is required and cannot be empty'
+                     message: 'Email is required and cannot be empty'
                  },
             	 emailAddress: {
                      message: 'The value is not a valid email address'
@@ -1205,36 +1279,36 @@ $('#addForm').bootstrapValidator({
          telHome: {
              validators: {
                  notEmpty: {
-                     message: 'The TelHome is required and cannot be empty'
+                     message: 'Tel. Home is required and cannot be empty'
                  },
-                 digits: {
-                 	min:0,
-                 	message: 'TelHome is required'
-                 },
+                  regexp: {
+                      regexp: /^\d{2}-\d{3}-\d{4}$/,
+                      message: 'Tel. Home must format xx-xxx-xxxx'
+                    }
              }
          },
          
          telMobile: {
              validators: {
                  notEmpty: {
-                     message: 'The TelMobile is required and cannot be empty'
+                     message: 'Tel. Mobile is required and cannot be empty'
                  },
-                 digits: {
-                 	min:0,
-                 	message: 'TelMobile is required'
-                 },
+                 regexp: {
+                     regexp: /^\d{3}-\d{3}-\d{4}$/,
+                     message: 'Tel. Mobile must format xxx-xxx-xxxx'
+                   }
              }
          },
          
          telFax: {
              validators: {
                  notEmpty: {
-                     message: 'The TelFax is required and cannot be empty'
+                     message: 'Fax is required and cannot be empty'
                  },
-                 digits: {
-                 	min:0,
-                 	message: 'TelFax is required'
-                 },
+                 regexp: {
+                     regexp: /^\d{2}-\d{3}-\d{4}$/,
+                     message: 'Fax must format xx-xxx-xxxx'
+                   }
              }
          },
          
@@ -1257,7 +1331,7 @@ $('#addForm').bootstrapValidator({
          emergencyContact: {
              validators: {
                  notEmpty: {
-                     message: 'The EmergencyContact is required and cannot be empty'
+                     message: 'The Emergency Contact is required and cannot be empty'
                  }
              }
          },
@@ -1265,7 +1339,7 @@ $('#addForm').bootstrapValidator({
          relationshipWithEmergencyContact: {
              validators: {
                  notEmpty: {
-                     message: 'The RelationshipWithEmergencyContact is required and cannot be empty'
+                     message: 'The Relationship With EmergencyContact is required and cannot be empty'
                  }
              }
          },
@@ -1273,7 +1347,7 @@ $('#addForm').bootstrapValidator({
          emergencyContactAddress: {
              validators: {
                  notEmpty: {
-                     message: 'The EmergencyContactAddress is required and cannot be empty'
+                     message: 'The Emergency Contact Address is required and cannot be empty'
                  }
              }
          },
@@ -1281,19 +1355,19 @@ $('#addForm').bootstrapValidator({
          emergencyContactPhoneNumber: {
              validators: {
                  notEmpty: {
-                     message: 'The EmergencyContactPhoneNumber is required and cannot be empty'
+                     message: 'The Emergency Contact PhoneNumber is required and cannot be empty'
                  },
-                 digits: {
-                  	min:0,
-                  	message: 'EmergencyContactPhoneNumber is required'
-                  },
+                 regexp: {
+                     regexp: /^\d{3}-\d{3}-\d{4}$/,
+                     message: 'Tel. Emergency must format xxx-xxx-xxxx'
+                   }
              }
          },
     	
          dateOfBirth: {
             validators: {
                 notEmpty: {
-                    message: 'The DateOfBirth is required and cannot be empty'
+                    message: 'The Date of Birth is required and cannot be empty'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1304,7 +1378,7 @@ $('#addForm').bootstrapValidator({
         placeOfBirth: {
             validators: {
                 notEmpty: {
-                    message: 'The PlaceOfBirth is required and cannot be empty'
+                    message: 'The Place of Birth is required and cannot be empty'
                 }
             }
         },
@@ -1312,19 +1386,28 @@ $('#addForm').bootstrapValidator({
         age: {
             validators: {
                 notEmpty: {
-                    message: 'The Age is required and cannot be empty'
+                    message: 'Age is required and cannot be empty'
                 },
                 digits: {
-                  	min:0,
                   	message: 'Age is required'
                   },
+                lessThan: {
+                      value: 100,
+                      inclusive: true,
+                      message: 'Age must to be less than 60'
+                  },
+                 greaterThan: {
+                      value: 10,
+                      inclusive: false,
+                      message: 'Age must to be greater than or equals to 18'
+                  }
             }
         },
         
         religion: {
             validators: {
                 notEmpty: {
-                    message: 'The Religion is required and cannot be empty'
+                    message: 'Religion is required and cannot be empty'
                 }
             }
         },
@@ -1332,19 +1415,23 @@ $('#addForm').bootstrapValidator({
         idCard: {
             validators: {
                 notEmpty: {
-                    message: 'The IdCard is required and cannot be empty'
+                    message: 'Id-Card is required and cannot be empty'
                 },
                 digits: {
                   	min:0,
-                  	message: 'IdCard is required'
+                  	message: 'Id-Card is required'
                   },
+                regexp: {
+                    regexp: /^\d{13}$/,
+                    message: 'Id-Card must contain 13 digits'
+                    }
             }
         },
         
         issuedOffice: {
             validators: {
                 notEmpty: {
-                    message: 'The IssuedOffice is required and cannot be empty'
+                    message: 'The Issued Office is required and cannot be empty'
                 }
             }
         },
@@ -1352,7 +1439,7 @@ $('#addForm').bootstrapValidator({
         expiryDate: {
             validators: {
                 notEmpty: {
-                    message: 'The ExpiryDate is required and cannot be empty'
+                    message: 'The Expiry Date is required and cannot be empty'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1363,7 +1450,7 @@ $('#addForm').bootstrapValidator({
         height: {
             validators: {
                 notEmpty: {
-                    message: 'The Height is required and cannot be empty'
+                    message: 'Height is required and cannot be empty'
                 },
                 digits: {
                   	min:0,
@@ -1375,7 +1462,7 @@ $('#addForm').bootstrapValidator({
         weigth: {
             validators: {
                 notEmpty: {
-                    message: 'The Weigth is required and cannot be empty'
+                    message: 'Weigth is required and cannot be empty'
                 },
                 digits: {
                   	min:0,
@@ -1387,7 +1474,7 @@ $('#addForm').bootstrapValidator({
         sex: {
             validators: {
                 notEmpty: {
-                    message: 'The Sex is required and cannot be empty'
+                    message: 'Sex is required and cannot be empty'
                 }
             }
         },
@@ -1395,7 +1482,7 @@ $('#addForm').bootstrapValidator({
         maritalStatus: {
             validators: {
                 notEmpty: {
-                    message: 'The MaritalStatus is required and cannot be empty'
+                    message: 'The Marital Status is required and cannot be empty'
                 }
             }
         },
@@ -1403,11 +1490,11 @@ $('#addForm').bootstrapValidator({
         numberOfChildren: {
             validators: {
                 notEmpty: {
-                    message: 'The NumberOfChildren is required and cannot be empty'
+                    message: 'The Number of Children is required and cannot be empty'
                 },
                 digits: {
                   	min:0,
-                  	message: 'NumberOfChildren is required'
+                  	message: 'The Number of Children is required'
                   },
             }
         },
@@ -1415,7 +1502,7 @@ $('#addForm').bootstrapValidator({
         spouseName: {
             validators: {
                 notEmpty: {
-                    message: 'The SpouseName is required and cannot be empty'
+                    message: 'Spouse Name is required and cannot be empty'
                 }
             }
         },
@@ -1423,11 +1510,11 @@ $('#addForm').bootstrapValidator({
         marriageCertificateNo: {
             validators: {
                 notEmpty: {
-                    message: 'The MarriageCertificateNo is required and cannot be empty'
+                    message: 'Marriage Certificate No. is required and cannot be empty'
                 },
                 digits: {
                   	min:0,
-                  	message: 'MarriageCertificateNo is required'
+                  	message: 'Marriage Certificate No. is required'
                   },
             }
         },
@@ -1435,7 +1522,7 @@ $('#addForm').bootstrapValidator({
         issuedOffice2: {
             validators: {
                 notEmpty: {
-                    message: 'The IssuedOffice2 is required and cannot be empty'
+                    message: 'The Issued Office is required and cannot be empty'
                 }
             }
         },
@@ -1443,7 +1530,7 @@ $('#addForm').bootstrapValidator({
         address: {
             validators: {
                 notEmpty: {
-                    message: 'The Address is required and cannot be empty'
+                    message: 'Address is required and cannot be empty'
                 }
             }
         },
@@ -1451,16 +1538,35 @@ $('#addForm').bootstrapValidator({
         occupation: {
             validators: {
                 notEmpty: {
-                    message: 'The Occupation is required and cannot be empty'
+                    message: 'Occupation is required and cannot be empty'
                 }
             }
         },
         
+        'knowEmployed[]': {
+            validators: {
+                choice: {
+                	min:1,
+                	max:1,
+                    message: 'Please Choose one'
+                },
+                notEmpty: {
+                    message: 'Not empty'
+                }
+            }
+        },
         
+        descriptionYes: {
+            validators: {
+                notEmpty: {
+                    message: 'Not empty'
+                }
+            }
+        },
         officialDate: {
             validators: {
                 notEmpty: {
-                    message: 'The OfficialDate is required and cannot be empty'
+                    message: 'Official Date is required and cannot be empty'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1471,7 +1577,7 @@ $('#addForm').bootstrapValidator({
         startWorkDate: {
             validators: {
                 notEmpty: {
-                    message: 'The StartWorkDate is required and cannot be empty'
+                    message: 'Start Work Date is required and cannot be empty'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1482,7 +1588,7 @@ $('#addForm').bootstrapValidator({
         endWorkDate: {
             validators: {
                 notEmpty: {
-                    message: 'The EndWorkDate is required and cannot be empty'
+                    message: 'End Work Date is required and cannot be empty'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1493,7 +1599,7 @@ $('#addForm').bootstrapValidator({
         positionAppliedFor: {
             validators: {
                 notEmpty: {
-                    message: 'The PositionAppliedFor is required and cannot be empty'
+                    message: 'Position Applied for is required and cannot be empty'
                 }
             }
         },
@@ -1501,7 +1607,7 @@ $('#addForm').bootstrapValidator({
         salaryExpected: {
             validators: {
                 notEmpty: {
-                    message: 'The Salary Expected is required and cannot be empty'
+                    message: 'Salary Expected is required and cannot be empty'
                 },
                 digits: {
                   	min:0,
@@ -1510,11 +1616,22 @@ $('#addForm').bootstrapValidator({
             }
         },
         
+        probationDate: {
+            validators: {
+                notEmpty: {
+                    message: 'Probation Date is required and cannot be empty'
+                },
+                date: {
+                    format: 'DD-MM-YYYY'
+                }
+            }
+        },
+        
         
         masCoreSkill: {
             validators: {
                 notEmpty: {
-                    message: 'The CoreSkill is required and cannot be empty'
+                    message: 'Core Skill is required and cannot be empty'
                 }
             }
         },
@@ -1522,7 +1639,7 @@ $('#addForm').bootstrapValidator({
         masEmployment: {
             validators: {
                 notEmpty: {
-                    message: 'The Employment is required and cannot be empty'
+                    message: 'Employment is required and cannot be empty'
                 }
             }
         },
@@ -1530,7 +1647,7 @@ $('#addForm').bootstrapValidator({
         masDivision: {
             validators: {
                 notEmpty: {
-                    message: 'The Division is required and cannot be empty'
+                    message: 'Division is required and cannot be empty'
                 }
             }
         },
@@ -1538,7 +1655,7 @@ $('#addForm').bootstrapValidator({
         masJoblevel: {
             validators: {
                 notEmpty: {
-                    message: 'The Joblevel is required and cannot be empty'
+                    message: 'Joblevel is required and cannot be empty'
                 }
             }
         },
@@ -1546,7 +1663,7 @@ $('#addForm').bootstrapValidator({
         technology: {
             validators: {
                 notEmpty: {
-                    message: 'The Technology is required and cannot be empty'
+                    message: 'Technology is required and cannot be empty'
                 }
             }
         },
@@ -1554,54 +1671,10 @@ $('#addForm').bootstrapValidator({
         masStaffType: {
             validators: {
                 notEmpty: {
-                    message: 'The StaffType is required and cannot be empty'
+                    message: 'Staff Type is required and cannot be empty'
                 }
             }
-        },
-        
-        address1: {
-            validators: {
-                notEmpty: {
-                    message: 'The Address1 is required and cannot be empty'
-                }
-            }
-        },
-        
-        address2: {
-            validators: {
-                notEmpty: {
-                    message: 'The Address2 is required and cannot be empty'
-                }
-            }
-        },
-        
-        zipcode: {
-            validators: {
-                notEmpty: {
-                    message: 'The Zipcode is required and cannot be empty'
-                },
-                digits: {
-                  	min:0,
-                  	message: 'Zipcode  is required'
-                  },
-            }
-        },
-        
-        addressType: {
-            validators: {
-                notEmpty: {
-                    message: 'The AddressType is required and cannot be empty'
-                }
-            }
-        },
-        
-        province: {
-            validators: {
-                notEmpty: {
-                    message: 'The Province is required and cannot be empty'
-                }
-            }
-        },
+        }
         
     }
 });
@@ -1651,6 +1724,18 @@ $('#addForm').bootstrapValidator({
     		format : "DD-MM-YYYY hh:mm:ss",
     		viewMode : 'years'
 		});
+    	
+	
+		
+    	$('[name="saveButton"]').click(function() {
+    				
+    				
+    				alert("aaaa");
+        			
+    				$('[name="employeeForm"]').attr('action',
+    						"${pageContext.request.contextPath}/employee/submit");
+    				$('[name="employeeForm"]').submit();
+    			});
     	
 		
     	 dt=$("#tbResult").dataTable( 
@@ -1706,9 +1791,7 @@ $('#addForm').bootstrapValidator({
     			} ); 
     	 
     	 
-    	 $(this).find(".saveAddressButton").off("click").on("click",function() {
- 			$('#addForm').bootstrapValidator();
- 		});
+    	
  		//listAll();
 		//$('input[type=file]').change(function(e){
 		//$('.element-to-paste-filename').attr('value',e.target.files[0].name);
@@ -1870,8 +1953,15 @@ $('#addForm').bootstrapValidator({
   				
   		{
 			
-//   			    alert("add");
-				addAddress();
+   			  //  alert("add");
+   				
+   			$('[name="validateAddress"]').submit();
+   			if($('#validateAddress').data('bootstrapValidator').isValid())
+   				{
+//    				alert("Error");
+   				addAddress();
+   				}
+			//	addAddress();
 			
 			
 		});
@@ -1917,8 +2007,7 @@ $('#addForm').bootstrapValidator({
    	/* ----------------------------------------------------- Add Address Function --------------------------------------------------- */		
 			
 			function addAddress() {
-				alert("Do you want to Add Address ?");
-				
+				alert("Do you want to Add Address ?"); 
 				
  				 var addressId = $("#addressType").val();
 				 var addressType = $("#addressType option:selected").text();
@@ -2017,6 +2106,7 @@ $('#addForm').bootstrapValidator({
 				 
 				  $('#myModal').modal('toggle');
 				  clearDataModal();
+				  $('#validateAddress').bootstrapValidator('resetForm', true);
    	
    	    }
    	
@@ -2050,6 +2140,11 @@ $('#addForm').bootstrapValidator({
    		
    		$('#saveAddressButton').off("click").on("click",function(){
    			
+   			$('[name="validateAddress"]').submit();
+   			if($('#validateAddress').data('bootstrapValidator').isValid()){
+	   			
+	   			
+   			
    		var id = dataUpdate[0];	
    		var addressId = $("#addressType").val();
 		var addressType = $("#addressType option:selected").text();
@@ -2062,7 +2157,7 @@ $('#addForm').bootstrapValidator({
 	    var zipcode= $("#zipcode").val();
 	   
    		
-   		
+	    
    		
    		if(dataUpdate[0]!=0){
    			
@@ -2096,7 +2191,8 @@ $('#addForm').bootstrapValidator({
 		    
 		    $("#datastatus"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].status");
 		    $("#datastatus"+dataUpdate[8]).val('edit');
-	    	
+		    
+		    
 		    
    	 }else{
    		 
@@ -2126,15 +2222,16 @@ $('#addForm').bootstrapValidator({
 	
 	    $("#datazipcode"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].zipcode");
 	    $("#datazipcode"+dataUpdate[8]).val(zipcode);
+
+   		
    	 }
    		
    		$('#myModal').modal('toggle');
-   		
-   	
+   			}
    		});
    	
    	
-   	}
+   	} 
    	
    	
    	
