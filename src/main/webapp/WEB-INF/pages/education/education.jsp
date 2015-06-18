@@ -83,17 +83,19 @@
 	    <form:input path="university" type="text" class="form-control" id="university" placeholder="Enter University"/>
 	  </div>
 	  
-	  <div class="form-group col-md-6">
-	    <label>Faculty :</label>
-	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
-	  </div>
+	  
 	  
 	  <div class="form-group col-md-6">
 	    <label>Major :</label>
 	    <form:input path="major" type="text" class="form-control" id="major" placeholder="Enter Major"/>
 	  </div>
 	  
-	  <div class="form-group col-md-6">
+	  <div class="form-group col-md-12">
+	    <label>Faculty :</label>
+	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
+	  </div>
+	  
+	  <div class="form-group col-md-12">
 	    <label>Degree Type :</label>
 	    
 		  <%-- <form:select path="masdegreetype" class="form-control"
@@ -188,7 +190,7 @@
 	        	startDate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The start date is required and cannot be empty'
+	                        message: 'The start date is required'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -198,7 +200,7 @@
 	            graduatedDate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The finish date is required and cannot be empty'
+	                        message: 'The finish date is required'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -208,28 +210,28 @@
 	            university: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The university is required and cannot be empty'
+	                        message: 'The university is required'
 	                    }
 	                }
 	            },
 	            faculty: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The faculty is required and cannot be empty'
+	                        message: 'The faculty is required'
 	                    }
 	                }
 	            },
 	            major: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The major is required and cannot be empty'
+	                        message: 'The major is required'
 	                    }
 	                }
 	            },
 	            masdegreetype: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The degree type is required and cannot be empty'
+	                        message: 'The degree type is required'
 	                    }
 	                }
 	            },
