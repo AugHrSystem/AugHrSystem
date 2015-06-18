@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,6 +53,7 @@
 		</div>
 </f:form>			
 	<!-- Button trigger modal -->
+	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_HR')">
 	<div align="right">
 	<f:form action="${pageContext.request.contextPath}/employee" method="POST" role="form">
 		<button type="submit" class="btn btn-primary btn-md">
@@ -58,6 +61,7 @@
 		</button>
 	</f:form>
 	</div> 
+	</sec:authorize>
 
 <!-- Modal Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

@@ -15,6 +15,7 @@
         <intercept-url pattern="/login" access="permitAll" />
         <intercept-url pattern="/logout" access="permitAll" />
         <intercept-url pattern="/accessdenied" access="permitAll" />
+        <intercept-url pattern="/index" access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF','ROLE_HR')" />
 <!--         <intercept-url pattern="/**" access="permitAll" /> -->
         <intercept-url pattern="/**" access="isAuthenticated()" />
         <form-login login-page="/login" default-target-url="/index.jsp" authentication-failure-url="/accessdenied" always-use-default-target="true" />
