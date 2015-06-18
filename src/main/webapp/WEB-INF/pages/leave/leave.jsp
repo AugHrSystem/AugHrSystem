@@ -77,30 +77,31 @@
       <div class="modal-body row">
    	
 
-<%-- 
-<div class="form-group col-md-6">
+
+<%-- <div class="form-group col-md-6">
 	 <!-- <div class="form-group">  -->
 	    <label>Start Date:</label>
-	    <div class='input-group date' id='dateFrom'>
+	    <div class='input-group date' id='dateFrom1'>
 	    <form:input path="startDate" type="text" class="form-control" id="startDate" placeholder="DD-MM-YYYY"/>
 	    <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
 	    </div>
 	    <!-- </div> -->
-	    </div> --%>
+	    </div>
 	    
 	    
-	  <%--   <div class="form-group col-md-6">
+	    <div class="form-group col-md-6">
 	    <!-- <div class="form-group"> -->
 			<label>Start Time :</label>
 
-			<div class="input-group clockpicker">
+			<!-- <div class="input-group clockpicker"> -->
+			<div class='input-group date' id='TimeFrom1'>
 
 				<form:input path="startTime" type="text" class="form-control" id="startTime"
 					placeholder="Enter startTime" /> <span
 					class="input-group-addon"> <span
-					class="glyphicon glyphicon-time"></span>
+					class="glyphicon glyphicon-calendar"></span>
 				</span>
 			</div>
 		<!-- </div> -->
@@ -123,13 +124,13 @@
                 
                 
                 
-<%--              
+             
 
-<div  class="form-group col-md-6">
+<%-- <div  class="form-group col-md-6">
  <!-- <div class="form-group"> -->
 	    <label>End Date :</label>
 	    <div class='input-group date' id='dateTo1'>
-	    <form:input path="endDate" type="text" class="form-control" id="endDate" placeholder="DD-MM-YYYY"/>
+	    <form:input path="endDate" class="form-control" id="endDate" placeholder="DD-MM-YYYY"/>
 	    <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -143,12 +144,12 @@
 <!-- <div class="form-group"> -->
 			<label>End Time:</label>
 
-			<div class="input-group clockpicker1">
-
-				<form:input path="endTime" type="text" class="form-control" id="endTime"
+			<!-- <div class="input-group clockpicker1"> -->
+			<div class='input-group date' id='TimeTo1'>
+				<form:input path="endTime" class="form-control" id="endTime"
 					placeholder="Enter endTime" /> <span
 					class="input-group-addon"> <span
-					class="glyphicon glyphicon-time"></span>
+					class="glyphicon glyphicon-calendar"></span>
 				</span>
 			</div>
 		<!-- </div> -->
@@ -156,7 +157,7 @@
 
 
 
-		<!--  <div class='col-sm-6'>
+		 <div class='col-sm-6'>
             <div class="form-group">
             <label>End Date-Time:</label>
                 <div class='input-group date' id="endTime1">
@@ -166,11 +167,11 @@
                     </span>
                 </div>
                 </div>
-                </div> -->
+                </div>
                 
                 
                 
-                  <div class='col-sm-6'>
+                 <%--  <div class='col-sm-6'>
             <div class="form-group">
             <label>Start End-Time:</label>
                 <div class='input-group date' id="endTime1">
@@ -180,7 +181,7 @@
                     </span>
                 </div>
                 </div>
-                </div>
+                </div> --%>
 
 
 		
@@ -261,14 +262,7 @@ $(document).ready(function() {
 	
 	
 	
-	 function duration(){
-		 var t1=$("#startTime").val();
-		 var t2=$("#endTime").val();
-		 
-		 alert("startTime"+t1);
-		 alert("endTime"+t2);
-		 }
-	
+	 
 	
 	$('#tbResult').dataTable({ 
 		"bLengthChange": false,
@@ -323,7 +317,7 @@ $(document).ready(function() {
                     }
                 }
             },
-       /*      
+             
             startDate: {
                 validators: {
                     notEmpty: {
@@ -343,7 +337,7 @@ $(document).ready(function() {
                         format: 'DD-MM-YYYY'
                     }
                 }
-            }, */
+            }, 
             startTime: {
                 validators: {
                     notEmpty: {
@@ -378,10 +372,10 @@ $(document).ready(function() {
 	}); 
 	
 	
-    $('#startTime1').datetimepicker({
+     $('#startTime1').datetimepicker({
     	
     	// viewMode: 'days',
-		 format : 'DD-MM-YYYY HH:mm a',
+		 format : 'DD-MM-YYYY HH:mm',
 		 //defaultDate: 'moment'
     }); 
 
@@ -390,27 +384,48 @@ $(document).ready(function() {
 	
 	$( '#endTime1').datetimepicker({
 		//viewMode: 'days',
-		format : 'DD-MM-YYYY hh:mm a',
+		format : 'DD-MM-YYYY HH:mm',
+	}); 
+	 
+	
+	
+	/*  $( "#dateTo1" ).datetimepicker({
+		format : 'DD-MM-YYYY',
 	}); 
 	
 	
+	 
+	 
+	 $( "#timeFrom1" ).datetimepicker({
+			format : 'HH:mm',
+		}); 
+	 
+	 
+
+	 $( "#timeTo1" ).datetimepicker({
+		format : 'HH:mm',
+	}); 
 	
-	/* $( "#dateTo1" ).datetimepicker({
-		format : 'DD-MM-YYYY',
-	}); */
 	
-	
+	 
+	 
+	 $( "#dateFrom1" ).datetimepicker({
+			format : 'DD-MM-YYYY',
+		});
+		 */
+	 
 //	$('.clockpicker').clockpicker();
 
   
-/*                     $('#datetimepicker2').datetimepicker({
+          /* $('#datetimepicker2').datetimepicker({
                     	 viewMode: 'days',
             			 format : 'DD-MM-YYYY',
             			 defaultDate: 'moment'
-                });
- */
+                }); */
+ 
 	
-	/*  $('.clockpicker').clockpicker({
+	  $('.clockpicker').clockpicker({
+		
 		placement: 'bottom', // clock popover placement
 		align: 'left',       // popover arrow align
 		donetext: 'Done',     // done button text
@@ -427,7 +442,7 @@ $(document).ready(function() {
 			autoclose: true,    // auto close when minute is selected
 			vibrate: true        // vibrate the device when dragging clock hand
 					
-	 }); */
+	 }); 
 		
 		
 	
@@ -496,7 +511,10 @@ $(document).ready(function() {
 		function addLeave(){
 // 			var id = getUrlParameter('Id');
 			var id = $("#empId").val();
+			//var leave="masleavetypeId="+$("#masleavetype").val()+"&masleavetype="+$("#masleavetype option:selected").text()+"&startDate="+$("#startDate").val()+"&endDate="+$("#endDate").val()+"&startTime="+$("#startTime").val()+"&endTime="+$("#endTime").val()+"&reason="+$("#reason").val()+"&aim="+$("#aim").val()+"&employeeId="+id;
 			var leave="masleavetypeId="+$("#masleavetype").val()+"&masleavetype="+$("#masleavetype option:selected").text()+"&startTime="+$("#startTime").val()+"&endTime="+$("#endTime").val()+"&reason="+$("#reason").val()+"&aim="+$("#aim").val()+"&employeeId="+id;
+
+			
 			$.ajax({
 				url : "${pageContext.request.contextPath}/leave/add",
 				data :leave,
@@ -588,23 +606,27 @@ $(document).ready(function() {
 			/* alert("fn up"); */
 // 				var id = getUrlParameter('Id');
 				var id = $("#empId").val();
+				
+				var leave="id="+leaveid+"&masleavetypeId="+$("#masleavetype").val()+"&masleavetype="+$("#masleavetype option:selected").text()+"&startTime="+$("#startTime").val()+"&endTime="+$("#endTime").val()+"&reason="+$("#reason").val()+"&aim="+$("#aim").val()+"&employeeId="+id;
+
 				$.ajax({
 					url : "${pageContext.request.contextPath}/leave/update",
-					data : JSON.stringify({
+					data : leave ,
+					/* JSON.stringify({
 						id:leaveid,
 						masleavetypeId : $("#masleavetype").val(),
 						masleavetype : $("#masleavetype option:selected").text(),
 						//startDate:$("#startDate").val(),
 						//endDate:$("#endDate").val(),
 						startTime:$("#startTime").val(),
-						endTime:$("#endTime").val(),
+					//	endTime:$("#endTime").val(),
 						reason:$("#reason").val(),
 						aim:$("#aim").val(),
 						employeeId: id
-					}),
+					}), */
 					type : "POST",
-					contentType : "application/json",
-					dataType : "json",
+					/* contentType : "application/json",
+					dataType : "json", */
 					success : function(data) {
 						//alert(abilityid);
 						//alert(JSON.stringify(data));

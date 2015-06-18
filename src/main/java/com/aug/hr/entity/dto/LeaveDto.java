@@ -41,7 +41,7 @@ public class LeaveDto {
 	private Integer id;
 
 	
-/*	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	/*@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "START_DATE")
 	private Date startDate;
@@ -95,6 +95,12 @@ public class LeaveDto {
 	
 	@Column(name="ENDTIMESTRING")
 	private String endTimeString;
+	
+	
+	
+
+
+	
 	
 
 	public Integer getId() {
@@ -238,7 +244,29 @@ public class LeaveDto {
 	}
 
 
+	
 
+	/*public Date getStartDate() {
+		return startDate;
+	}
+
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+
+*/
 
 
 

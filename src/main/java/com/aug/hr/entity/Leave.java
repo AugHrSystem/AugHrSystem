@@ -29,17 +29,17 @@ public class Leave extends BaseEntity {
 	@GeneratedValue
 	private Integer id;
 	
-	/*@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+/*	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Column(name = "START_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
 	
 
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@Column(name = "END_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date endDate;
-	*/
+	private Date endDate;*/
+	
 
 	/*@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm:ss",timezone ="GMT+07:00")
 	@Temporal(TemporalType.TIME)
@@ -86,6 +86,12 @@ public class Leave extends BaseEntity {
 	
 	@Column(name="ENDTIMESTRING")
 	private String endTimeString;
+	
+	
+	@Column(name="SUMTIME")
+	private Integer sumTime;
+	
+	
 	
 	
 	public Integer getId() {
@@ -185,12 +191,38 @@ public class Leave extends BaseEntity {
 	
 	
 	
+/*	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+*/
 	public String getEndTimeString() {
 		return endTimeString;
 	}
 
 	public void setEndTimeString(String endTimeString) {
 		this.endTimeString = endTimeString;
+	}
+	
+
+
+	public Integer getSumTime() {
+		return sumTime;
+	}
+
+	public void setSumTime(Integer sumTime) {
+		this.sumTime = sumTime;
 	}
 
 	public LeaveDto toLeaveDto(){
@@ -206,18 +238,19 @@ public class Leave extends BaseEntity {
 		leaveDto.setEmployeeId(this.employee.getId());
 		leaveDto.setMasleavetypeId(this.masleavetype.getId());
 		leaveDto.setMasleavetype(this.masleavetype.getName());
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		//leaveDto.setSumTime(this.sumTime);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 		String startTime = formatter.format(this.startTime);
 		leaveDto.setStartTimeString(startTime);
 		
-		SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 		String endTime = formatter2.format(this.endTime);
 		leaveDto.setEndTimeString(endTime);
 		
 		return leaveDto;
 	}
 	
-	public Leave fromLeaveDto (LeaveDto leaveDto,Leave leave){
+	public Leave fromLeaveDto (LeaveDto leaveDto,Leave leave,Integer sumtime){
 		//Leave leave = new Leave();
 		//leave.setId(leaveDto.getId());
 		//leave.setStartDate(leaveDto.getStartDate());
@@ -226,6 +259,8 @@ public class Leave extends BaseEntity {
 		leave.setEndTime(leaveDto.getEndTime());
 		leave.setReason(leaveDto.getReason());
 		leave.setAim(leaveDto.getAim());
+		leave.setSumTime(sumtime);
+		System.out.println("sumtime: "+leave.getSumTime());
 		
 		
 		
@@ -239,12 +274,12 @@ public class Leave extends BaseEntity {
 		employee.setId(leaveDto.getEmployeeId());
 		leave.setEmployee(employee);
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		SimpleDateFormat formatter = new SimpleDateFormat(" dd-MM-yyyy HH:mm");
 		String starttime = formatter.format(this.startTime);
 		leave.setStartTimeString(starttime);
 		
 
-		SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+		SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy HH:mm ");
 		String endTime = formatter2.format(this.endTime);
 		leave.setEndTimeString(endTime);
 		
