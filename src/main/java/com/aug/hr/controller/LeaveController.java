@@ -110,9 +110,12 @@ public class LeaveController {
 		
 		if(dateNumber==0){
 			
-			//if(leaveDate.getEndTime().getHours()>12&&leaveDate.getStartTime().getHours()<12){
+			if(leaveDate.getEndTime().getHours()>12&&leaveDate.getStartTime().getHours()<12){
 					hoursNo = (leaveDate.getEndTime().getHours() - leaveDate.getStartTime().getHours())-1;
-			//}
+			}else{
+					hoursNo = (leaveDate.getEndTime().getHours() - leaveDate.getStartTime().getHours());
+
+			}
 			System.out.println("hoursNo#####: "+hoursNo);
 			sum=hoursNo;
 		}else if(dateNumber!=0){
@@ -120,12 +123,21 @@ public class LeaveController {
 			for(int i=1;i<=dateNumber;i++){
 			
 			  if(i==1){
-				hoursNo = (18-leaveDate.getStartTime().getHours())-1;
-				System.out.println("aaa");
-				System.out.println("i: "+i);
+				  
+				if(leaveDate.getStartTime().getHours()<12){
+					hoursNo = (18-leaveDate.getStartTime().getHours())-1;
+					System.out.println("aaa");
+					System.out.println("i: "+i);
+				}else{
+					hoursNo = (18-leaveDate.getStartTime().getHours());
+				}
 			  }if(dateNumber==i){
 				System.out.println("i: "+i);
-				hoursNo2 = (leaveDate.getEndTime().getHours()-9)-1;
+				if(leaveDate.getEndTime().getHours()>12){
+					hoursNo2 = (leaveDate.getEndTime().getHours()-9)-1;
+				}else{
+					hoursNo2 = (leaveDate.getEndTime().getHours()-9);
+				}
 			  }if(i!=1){
 				 System.out.println("i: "+i);
 				 hoursNo3 = hoursNo3+8;
