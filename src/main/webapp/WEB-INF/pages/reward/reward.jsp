@@ -249,21 +249,21 @@
 		        	typereward: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The Reward name: is required and cannot be empty'
+		                        message: 'Reward name: is required and cannot be empty'
 		                    }
 		                }
 		            },
 		            year: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The  Year is required and cannotR be empty'
+		                        message: 'Year is required and cannotR be empty'
 		                    },
 		                }
 		            },
 		            reason: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The Description is required and cannot be empty'
+		                        message: 'Description is required and cannot be empty'
 		                    }
 		                }
 		            },

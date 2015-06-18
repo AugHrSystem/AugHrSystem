@@ -266,14 +266,14 @@
 	        	year: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The year is required and cannot be empty'
+	                        message: 'Year is required and cannot be empty'
 	                    }
 	                }
 	            },
 	            name: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The certification name is required and cannot be empty'
+	                        message: 'Certification Name is required and cannot be empty'
 	                    }
 	                }
 	            },
@@ -290,14 +290,14 @@
 	            certificationFrom: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The certification from is required and cannot be empty'
+	                        message: 'Certification From is required and cannot be empty'
 	                    }
 	                }
 	            },
 	            description: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The description is required and cannot be empty'
+	                        message: 'Description is required and cannot be empty'
 	                    }
 	                }
 	            },

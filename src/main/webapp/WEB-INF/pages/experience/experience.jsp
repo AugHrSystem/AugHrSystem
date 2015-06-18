@@ -158,7 +158,7 @@ var dt;
 		        	dateFrom: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The Start Date is required and cannot be empty'
+		                        message: 'Start Date is required and cannot be empty'
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -168,7 +168,7 @@ var dt;
 		            dateTo: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The End Date is required and cannot be empty'
+		                        message: 'End Date is required and cannot be empty'
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -178,31 +178,31 @@ var dt;
 		            cName: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'The Company Name is required and cannot be empty'
+	                            message: 'Company Name is required and cannot be empty'
 	                        }
 	                    }
 		            },
 		            position: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'The Position is required and cannot be empty'
+	                            message: 'Position is required and cannot be empty'
 	                        }
 	                    }
 		            },
 		            salary: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'The Salary is required and cannot be empty'
+	                            message: 'Salary is required and cannot be empty'
 	                        },
 	                        digits: {
-		                    	message: 'The Salary is number'
+		                    	message: 'Salary is number'
 		                    },
 	                    }
 		            },
 		            reason: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'The Reason of Resignation is required and cannot be empty'
+	                            message: 'Reason of Resignation is required and cannot be empty'
 	                        }
 	                    }
 		            }

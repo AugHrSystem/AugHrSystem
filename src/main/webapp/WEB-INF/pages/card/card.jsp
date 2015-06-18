@@ -158,7 +158,7 @@
 	        	card_no: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Date of adjustment is required and cannot be empty'
+	                        message: 'Date of adjustment is required and cannot be empty'
 	                    },
 	                   
 	                }
@@ -166,7 +166,7 @@
 	            startdate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Startdate of adjustment is required and cannot be empty'
+	                        message: 'Startdate of adjustment is required and cannot be empty'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -176,7 +176,7 @@
 	            enddate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Enddate of adjustment is required and cannot be empty'
+	                        message: 'Enddate of adjustment is required and cannot be empty'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -186,14 +186,14 @@
 	            status: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Status of adjustment is required and cannot be empty'
+	                        message: 'Status of adjustment is required and cannot be empty'
 	                    }
 	                }
 	            },
 	            remark: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Remark of adjustment is required and cannot be empty'
+	                        message: 'Remark of adjustment is required and cannot be empty'
 	                    }
 	                }
 	            },

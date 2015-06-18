@@ -130,7 +130,7 @@
 	         	datepunish: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Date of adjustment is required and cannot be empty'
+	                        message: 'Date of adjustment is required and cannot be empty'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -141,14 +141,14 @@
 	            description: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Description of adjustment is required and cannot be empty'
+	                        message: 'Description of adjustment is required and cannot be empty'
 	                    }
 	                }
 	            },
 	            penalty: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Penalty of adjustment is required and cannot be empty'
+	                        message: 'Penalty of adjustment is required and cannot be empty'
 	                    }
 	                }
 	            },

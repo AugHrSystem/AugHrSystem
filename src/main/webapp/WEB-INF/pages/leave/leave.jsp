@@ -307,11 +307,11 @@ $(document).ready(function() {
 	        	masleavetype: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The masleavetype is required and cannot be empty'
+	                        message: 'Masleavetype is required and cannot be empty'
 	                    },
 	        digits: {
             	min:0,
-            	message: 'masspecialty is required'
+            	message: 'Masspecialty is required'
             },
 	                }
 	            },
@@ -319,7 +319,7 @@ $(document).ready(function() {
             reason: {
                 validators: {
                     notEmpty: {
-                        message: 'The reason is required and cannot be empty'
+                        message: 'Reason is required and cannot be empty'
                     }
                 }
             },
@@ -347,14 +347,14 @@ $(document).ready(function() {
             startTime: {
                 validators: {
                     notEmpty: {
-                        message: 'The Start Date and Time is required and cannot be empty'
+                        message: 'Start Date and Time is required and cannot be empty'
                     }
                 }
             },
             endTime: {
                 validators: {
                     notEmpty: {
-                        message: 'The End  Date and Time  is required and cannot be empty'
+                        message: 'End  Date and Time  is required and cannot be empty'
                     }
                 }
             },

@@ -209,11 +209,11 @@ $(document).ready(function(){
 	        	masspecialty: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The masspecialty is required and cannot be empty'
+	                        message: 'Masspecialty is required and cannot be empty'
 	                    },
 	                    digits: {
 	                    	min:0,
-	                    	message: 'masspecialty is required'
+	                    	message: 'Masspecialty is required'
 	                    },
 	                }
 	            },

@@ -167,17 +167,17 @@
 	        	position: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The position is required and cannot be empty'
+	                        message: 'Position is required and cannot be empty'
 	                    }
 	                }
 	            },
 	            salary: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The salary is required and cannot be empty'
+	                        message: 'Salary is required and cannot be empty'
 	                    },
 	                    digits: {
-	                    	message: 'The salary is number'
+	                    	message: 'Salary is number'
 	                    },
 	                }
 	            },
@@ -194,7 +194,7 @@
 	            dateOfAdjustment: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The date of adjustment is required and cannot be empty'
+	                        message: 'Date Of Adjustment is required and cannot be empty'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'

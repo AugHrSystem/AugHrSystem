@@ -190,7 +190,7 @@
 	        	startDate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The start date is required'
+	                        message: 'Start Date is required'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -200,7 +200,7 @@
 	            graduatedDate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The finish date is required'
+	                        message: 'Finish Date is required'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -210,28 +210,28 @@
 	            university: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The university is required'
+	                        message: 'University is required'
 	                    }
 	                }
 	            },
 	            faculty: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The faculty is required'
+	                        message: 'Faculty is required'
 	                    }
 	                }
 	            },
 	            major: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The major is required'
+	                        message: 'Major is required'
 	                    }
 	                }
 	            },
 	            masdegreetype: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The degree type is required'
+	                        message: 'Degree type is required'
 	                    }
 	                }
 	            },

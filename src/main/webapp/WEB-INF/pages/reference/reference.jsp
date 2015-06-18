@@ -129,7 +129,7 @@
 	        	name: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Fullname is required and cannot be empty'
+	                        message: 'Fullname is required and cannot be empty'
 	                    }
 	                }
 	            },
@@ -139,7 +139,7 @@
 	            tel: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'The Telphone is required and cannot be empty'
+	                        message: 'Telphone is required and cannot be empty'
 	                    }
 	                }
 	            },

@@ -133,7 +133,7 @@ var dt;
 		        	dateFrom: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The Start Date is required and cannot be empty'
+		                        message: 'Start Date is required and cannot be empty'
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -144,7 +144,7 @@ var dt;
 		            dateTo: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'The End Date is required and cannot be empty'
+		                        message: 'End Date is required and cannot be empty'
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
