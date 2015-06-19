@@ -28,7 +28,7 @@
 <br>
 <div class="form-group" align="right">
 <div class="col-md-6">
-<button type="button" id="addBtnEdu" class="btn btn-info btnAdds" data-toggle="modal" data-target="#addModal">New record</button> 
+<button type="button" id="addBtnEdu" class="btn btn-info btnAdds" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 </div>
 </div>
 </div>
@@ -43,7 +43,7 @@
 			<th><spring:message code="education.deegreetype" /></th>
 			<th><spring:message code="education.university" /></th>
 			<th><spring:message code="education.major" /></th>
-			<th><spring:message code="education.start.date" /></th>
+			<th><spring:message code="label.action" /></th>
 			<!-- <th></th> -->
 		</tr>
 	</thead>
@@ -67,9 +67,10 @@
       <div class="modal-body row">
    		
    		<spring:message code="default.date" var="date"/>
+   		<spring:message code="default.enter" var="enter"/>
    		
    	  <div class="form-group col-md-6">
-	    <label><spring:message code="education.start.date" /> :</label>
+	    <label class="required"><spring:message code="education.start.date" /> :</label>
 	    <div class='input-group date' id='datetimepickerStart'>
 	    <form:input path="startDate" type="text" class="form-control" id="startDate" placeholder="${date}"/>
 	    <span class="input-group-addon">
@@ -79,7 +80,7 @@
 	   </div> 
 	   
 	   <div class="form-group col-md-6">
-	    <label><spring:message code="education.finish.date" /> :</label>
+	    <label class="required"><spring:message code="education.finish.date" /> :</label>
 	    <div class='input-group date' id='datetimepickerGrad'>
 	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate" placeholder="${date}"/>
 	    <span class="input-group-addon">
@@ -89,24 +90,24 @@
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label><spring:message code="education.university" /> :</label>
-	    <form:input path="university" type="text" class="form-control" id="university" placeholder="${date}"/>
+	    <label class="required"><spring:message code="education.university" var="university"/>${university} :</label>
+	    <form:input path="university" type="text" class="form-control" id="university" placeholder="${enter}${university}"/>
 	  </div>
 	  
 	  
 	  
 	  <div class="form-group col-md-6">
-	    <label><spring:message code="education.major" /> :</label>
-	    <form:input path="major" type="text" class="form-control" id="major" placeholder="${date}"/>
+	    <label class="required"><spring:message code="education.major" var="major"/>${major} :</label>
+	    <form:input path="major" type="text" class="form-control" id="major" placeholder="${enter}${major}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-12">
-	    <label><spring:message code="education.faculty" /> :</label>
-	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="${date}"/>
+	    <label class="required"><spring:message code="education.faculty" var="faculty"/>${faculty} :</label>
+	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="${enter}${faculty}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-12">
-	    <label><spring:message code="education.deegreetype" /> :</label>
+	    <label class="required"><spring:message code="education.deegreetype" /> :</label>
 	    
 		  <%-- <form:select path="masdegreetype" class="form-control"
 			id="masdegreetype">
@@ -124,18 +125,18 @@
 	  </div>
 	  
 	   <div class="form-group col-md-6">
-	    <label><spring:message code="education.gpa" /> :</label>
-	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="${date}"/>
+	    <label><spring:message code="education.gpa" var="gpa"/>${gpa} :</label>
+	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="${enter}${gpa}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label><spring:message code="education.certification" /> :</label>
-	    <form:input path="certificate" type="text" class="form-control" id="certificate" placeholder="${date}"/>
+	    <label><spring:message code="education.certification" var="certification"/>${certification} :</label>
+	    <form:input path="certificate" type="text" class="form-control" id="certificate" placeholder="${enter}${certification}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-12">
-	    <label><spring:message code="education.description" /> :</label>
-	    <form:input path="description" type="text" class="form-control" id="description" placeholder="${date}"/>
+	    <label><spring:message code="education.description" var="description"/>${description} :</label>
+	    <form:input path="description" type="text" class="form-control" id="description" placeholder="${enter}${description}"/>
 	  </div>
 	  
       </div>
@@ -163,15 +164,15 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Delete Education</h4>
+						<h4 class="modal-title" id="myModalLabel"><spring:message code="education.name" /></h4>
 					</div>
 					<div class="modal-body">
-						<h4>Are you sure?</h4>
+						<h4><spring:message code="default.delete.confirm" /></h4>
 						<form:hidden path="id"/>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger btnYes">Yes</button>
-						<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+						<button type="button" class="btn btn-danger btnYes"><spring:message code="default.yes" /></button>
+						<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
 					</div>
 				</div>
 			</div>
@@ -532,8 +533,8 @@
 								  data[i].masdegreetype,
 					              data[i].university,
 					              data[i].major,
-						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 			 
 			 
 			 

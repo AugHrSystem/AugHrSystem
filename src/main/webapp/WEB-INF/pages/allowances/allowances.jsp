@@ -20,14 +20,14 @@
 
 <div class="row">
 <div class="col-md-6">
-<h2>Allowances</h2> 
+<h2><spring:message code="allowances.name" /></h2> 
 </div>
 <br>
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
 <div class="col-md-6">
-<button type="button" id="addBtnAll" class="btn btn-info" data-toggle="modal" data-target="#addModal">New record</button> 
+<button type="button" id="addBtnAll" class="btn btn-info" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 </div>
 </div>
 </div>
@@ -37,9 +37,9 @@
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>Allowances Type</th>
-			<th>Amount Allowances</th>
-			<th>Action</th>
+			<th><spring:message code="allowances.masallowances" /></th>
+			<th><spring:message code="allowances.amount" /></th>
+			<th><spring:message code="label.action" /></th>
 			<!-- <th></th> -->
 		</tr>
 	</thead>
@@ -57,16 +57,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Allowances </h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="allowances.name" /> </h4>
       </div>
       
       <div class="modal-body">
         
 	  <div class="form-group">
-	    <label class="required">Allowances Type : </label>
+	    <label class="required"><spring:message code="allowances.masallowances" /> : </label>
 	    <form:select path="masallowances" class="form-control"
 			id="masallowances" onchange="myFunction(this.value)">
-			<form:option value="" label="---Select Allowances---" />
+			<option value=""><spring:message code="allowances.enter.allowances" /></option>
 			<c:forEach var="obj" items="${ masallowancesList }">
 				<option value="${obj.id }">${ obj.allowances_type}</option>
 			</c:forEach>
@@ -74,15 +74,15 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label class="required">Amount Allowances : </label>
-	    <form:input path="amount" type="text" class="form-control" id="amount" placeholder="Enter Amount Allowances"/>
+	    <label><spring:message code="allowances.amount" var="amount"/>${amount } : </label>
+	    <form:input path="amount" type="text" class="form-control" id="amount" placeholder="${enter }${amount }"/>
 	  </div>
 	  
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-      	<button type="button" class="btn btn-info btnSave">Save</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+      	<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
       </div>
       
     </div>
@@ -103,15 +103,15 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Delete</h4>
+						<h4 class="modal-title" id="myModalLabel"><spring:message code="allowances.name" /></h4>
 					</div>
 					<div class="modal-body">
-						<h4>Are you sure?</h4>
+						<h4><spring:message code="default.delete.confirm" /></h4>
 						<form:hidden path="id"/>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger btnYes">Yes</button>
-						<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+						<button type="button" class="btn btn-danger btnYes"><spring:message code="default.yes" /></button>
+						<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
 					</div>
 				</div>
 			</div>
@@ -174,7 +174,7 @@ function myFunction(value) {
 	        	masallowances: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Masallowances is required and cannot be empty'
+	                        message: '<spring:message code="allowances.required.masallowances" />'
 	                    }
 	                   
 	                }
@@ -432,8 +432,8 @@ function myFunction(value) {
 					dt.fnAddData([
 					              data[i].masallowances,
 					              data[i].amount,
-						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 			 
 			 
 			 

@@ -20,14 +20,14 @@
 
 <div class="row">
 <div class="col-md-6">
-<h2>History</h2> 
+<h2><spring:message code="history.name" /></h2> 
 </div>
 <br>
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
 <div class="col-md-6">
-<button type="button" id="addBtnHis" class="btn btn-info" data-toggle="modal" data-target="#addModal">New record</button> 
+<button type="button" id="addBtnHis" class="btn btn-info" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 </div>
 </div>
 </div>
@@ -37,11 +37,11 @@
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>Approved date</th>
-			<th>Position</th>
-			<th>Salary</th>
-			<th>Reason Of Adjustment</th>
-			<th>Action</th>
+			<th><spring:message code="history.dateOfAdjustment" var="dateOfAdjustment"/>${dateOfAdjustment }</th>
+			<th><spring:message code="history.position" var="position"/>${position }</th>
+			<th><spring:message code="history.salary" var="salary"/>${salary }</th>
+			<th><spring:message code="history.reasonOfAdjustment" var="reasonOfAdjustment"/>${reasonOfAdjustment }</th>
+			<th><spring:message code="label.action" /></th>
 			<!-- <th></th> -->
 		</tr>
 	</thead>
@@ -59,15 +59,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">History Add</h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="history.name" /></h4>
       </div>
       
       <div class="modal-body row">
         
+        <spring:message code="default.date" var="date"/>
+   		<spring:message code="default.enter" var="enter"/>
+   		
       <div class="form-group col-md-6">
-	    <label class="required">Approved date : </label>
+	    <label class="required">${dateOfAdjustment } : </label>
 	    <div class='input-group date' id='datetimepicker1'>
-	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment" placeholder="DD-MM-YYYY"/>
+	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment" placeholder="${date }"/>
 	  	<span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -76,23 +79,23 @@
 	  </div>
 	    
 	  <div class="form-group col-md-6">
-	    <label class="required">Position : </label>
-	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position" />
+	    <label class="required">${position } : </label>
+	    <form:input path="position" type="text" class="form-control" id="position" placeholder="${enter }${position }" />
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label class="required">Salary : </label>
-	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary"/>
+	    <label class="required">${ salary} : </label>
+	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="${enter }${salary }"/>
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label>Old Salary :</label>
-	    <form:input path="oldSalary" type="text" class="form-control" id="oldSalary" placeholder="Enter Old Salary"/>
+	    <label><spring:message code="history.oldSalary" var="oldSalary"/>${oldSalary } :</label>
+	    <form:input path="oldSalary" type="text" class="form-control" id="oldSalary" placeholder="${enter }${oldSalary }"/>
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label>Reason Of Adjustment :</label>
-	    <form:textarea path="reasonOfAdjustment" type="text" class="form-control" id="reasonOfAdjustment" placeholder="Enter Reason Of Adjustment"/>
+	    <label>${reasonOfAdjustment } :</label>
+	    <form:textarea path="reasonOfAdjustment" type="text" class="form-control" id="reasonOfAdjustment" placeholder="${enter }${reasonOfAdjustment }"/>
 	  </div>
 	  
 	  <%-- <div class="form-group col-md-6">
@@ -104,8 +107,8 @@
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-      	<button type="button" class="btn btn-info btnSave">Save</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+      	<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
       </div>
       
     </div>
@@ -126,15 +129,15 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Delete</h4>
+						<h4 class="modal-title" id="myModalLabel"><spring:message code="history.name" /></h4>
 					</div>
 					<div class="modal-body">
-						<h4>Are you sure?</h4>
+						<h4><spring:message code="default.delete.confirm" /></h4>
 						<form:hidden path="id"/>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger btnYes">Yes</button>
-						<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+						<button type="button" class="btn btn-danger btnYes"><spring:message code="default.yes" /></button>
+						<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
 					</div>
 				</div>
 			</div>
@@ -173,17 +176,17 @@
 	        	position: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Position is required and cannot be empty'
+	                        message: '<spring:message code="history.required.position" />'
 	                    }
 	                }
 	            },
 	            salary: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Salary is required and cannot be empty'
+	                        message: '<spring:message code="history.required.salary" />'
 	                    },
 	                    digits: {
-	                    	message: 'Salary is number'
+	                    	message: '<spring:message code="history.required.salary.num" />'
 	                    },
 	                }
 	            },
@@ -200,7 +203,7 @@
 	            dateOfAdjustment: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Date Of Adjustment is required and cannot be empty'
+	                        message: '<spring:message code="history.required.dateOfAdjustment" />'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -492,8 +495,8 @@
 					              data[i].position,
 					              data[i].salary,
 					              data[i].reasonOfAdjustment,
-						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+						 '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 			 
 					}
 				},
