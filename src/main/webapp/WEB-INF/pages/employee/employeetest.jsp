@@ -1763,9 +1763,9 @@ $('#addForm').bootstrapValidator({ */
     				"pagingType": "simple_numbers",
     				"ordering": false,
     				"info": false,
-    				"paging": false
+    				"paging": false,
     		 		 
-    		 		/*  
+    		 	 
     		 		 "columnDefs": [
     	    	                  {
     	    	                     "targets": [ 0 ],
@@ -1794,16 +1794,8 @@ $('#addForm').bootstrapValidator({ */
     	    	                 {
     	    	                     "targets": [ 10 ],
     	    	                     "visible": false
-    	    	                 }   
-    	    	                 
-    	    	                 /* ,   	    	                 
-    	    	                 {
-    	    	                     "targets": [ 11 ],
-    	    	                     "visible": false
-    	    	                 }  */
-    	    	                 
-    	    	                 
-    	    	          /*   ]  */
+    	    	                 }     	    	                 
+    	    	           ]  
     			
     			} ); 
     	 
