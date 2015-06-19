@@ -28,7 +28,7 @@
 <title>List Employee</title>
 </head>
 <body>
-<f:form method="post" commandName="listemployee" class="form-horizontal" role="form">
+<f:form method="post" commandName="listemployee"  role="form">
 		<!-- <ol class="breadcrumb">
 			<li role="presentation" class="active"><a href="#">Home</a></li>
  			<li role="presentation"><a href="employee.jsp" data-toggle="modal">Add Employee</a></li>

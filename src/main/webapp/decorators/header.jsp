@@ -28,7 +28,18 @@
             <li><a href="#certification1" data-toggle="tab">Certification</a></li>
             
 		</ul> --%> 
+		<ul class="nav navbar-nav navbar-left" >
+		<li>
+			     	<a class="navbar-link" href="<%=request.getContextPath()%>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+			    </li>
+		</ul>
 		    <ul class="nav navbar-nav navbar-right">
+		    <li>
+			     	<a class="navbar-link img-flag" href="<%=request.getRequestURL()%>?locale=th"><img class="img-flag" style="width: 25px; height: 25px;" src="<c:url value="/resource/images/flag_thailand.png" />"> </a>
+			    </li>
+			    <li>
+			     	<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=en"><img class="img-flag" style="width: 25px; height: 25px;" src="<c:url value="/resource/images/flag_usa.png" />"> </a>
+			    </li>
 		    	<li class="dropdown">
 		    	 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<b class="caret"></b></a>
 	                <span class="dropdown-arrow"></span>
@@ -50,6 +61,7 @@
 		    			
 		    		</ul>
 		    	</li>
+		    	
 			    <li>
 			     	<a class="navbar-link" href="<%=request.getContextPath()%>/logout">Logout</a>
 			    </li>

@@ -14,7 +14,7 @@
 
 <div class="row">
 <div class="col-md-6">
-<h2>Education</h2>
+<h2><spring:message code="education.name" /></h2>
 </div>
 <!-- Button trigger modal -->
 <br>
