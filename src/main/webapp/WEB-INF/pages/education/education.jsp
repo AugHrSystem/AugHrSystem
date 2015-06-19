@@ -38,12 +38,12 @@
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>Start Date</th>
-			<th>Finish Date</th>
-			<th>Degree Type</th>
-			<th>University</th>
-			<th>Major</th>
-			<th>Action</th>
+			<th><spring:message code="education.start.date" /></th>
+			<th><spring:message code="education.finish.date" /></th>
+			<th><spring:message code="education.deegreetype" /></th>
+			<th><spring:message code="education.university" /></th>
+			<th><spring:message code="education.major" /></th>
+			<th><spring:message code="education.start.date" /></th>
 			<!-- <th></th> -->
 		</tr>
 	</thead>
@@ -61,15 +61,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Education </h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="education.name" /> </h4>
       </div>
       
       <div class="modal-body row">
-   
+   		
+   		<spring:message code="default.date" var="date"/>
+   		
    	  <div class="form-group col-md-6">
-	    <label class="required">Start Date : </label>
+	    <label><spring:message code="education.start.date" /> :</label>
 	    <div class='input-group date' id='datetimepickerStart'>
-	    <form:input path="startDate" type="text" class="form-control" id="startDate" placeholder="DD-MM-YYYY"/>
+	    <form:input path="startDate" type="text" class="form-control" id="startDate" placeholder="${date}"/>
 	    <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -77,9 +79,9 @@
 	   </div> 
 	   
 	   <div class="form-group col-md-6">
-	    <label class="required">Finish Date : </label>
+	    <label><spring:message code="education.finish.date" /> :</label>
 	    <div class='input-group date' id='datetimepickerGrad'>
-	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate" placeholder="DD-MM-YYYY"/>
+	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate" placeholder="${date}"/>
 	    <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -87,24 +89,24 @@
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label class="required">University : </label>
-	    <form:input path="university" type="text" class="form-control" id="university" placeholder="Enter University"/>
+	    <label><spring:message code="education.university" /> :</label>
+	    <form:input path="university" type="text" class="form-control" id="university" placeholder="${date}"/>
 	  </div>
 	  
 	  
 	  
 	  <div class="form-group col-md-6">
-	    <label class="required">Major : </label>
-	    <form:input path="major" type="text" class="form-control" id="major" placeholder="Enter Major"/>
+	    <label><spring:message code="education.major" /> :</label>
+	    <form:input path="major" type="text" class="form-control" id="major" placeholder="${date}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-12">
-	    <label class="required">Faculty : </label>
-	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
+	    <label><spring:message code="education.faculty" /> :</label>
+	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="${date}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-12">
-	    <label class="required">Degree Type : </label>
+	    <label><spring:message code="education.deegreetype" /> :</label>
 	    
 		  <%-- <form:select path="masdegreetype" class="form-control"
 			id="masdegreetype">
@@ -115,32 +117,32 @@
 		</form:select> --%>
 		<form:select  id="masdegreetype" path="masdegreetype" cssClass="form-control">
 <%-- 		<form:option value="-1" label="--- Select  Degreetype ---"/> --%>
-		<option value="">--- Select  Degreetype ---</option>
+		<option value=""><spring:message code="education.enter.deegreetype" /></option>
 	    <form:options items="${masdegreetypeList}" itemValue="id" itemLabel="name"/>
 	    </form:select>
 	    
 	  </div>
 	  
 	   <div class="form-group col-md-6">
-	    <label>GPA :</label>
-	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="Enter GPA"/>
+	    <label><spring:message code="education.gpa" /> :</label>
+	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="${date}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label>Certification :</label>
-	    <form:input path="certificate" type="text" class="form-control" id="certificate" placeholder="Enter Certificate"/>
+	    <label><spring:message code="education.certification" /> :</label>
+	    <form:input path="certificate" type="text" class="form-control" id="certificate" placeholder="${date}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-12">
-	    <label>Description :</label>
-	    <form:input path="description" type="text" class="form-control" id="description" placeholder="Enter Description"/>
+	    <label><spring:message code="education.description" /> :</label>
+	    <form:input path="description" type="text" class="form-control" id="description" placeholder="${date}"/>
 	  </div>
 	  
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-      	<button type="button" class="btn btn-info btnSave">Save</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+      	<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
       </div>
       
     </div>
@@ -198,7 +200,7 @@
 	        	startDate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Start Date is required'
+	                        message: '<spring:message code="education.required.start.date" />'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -208,7 +210,7 @@
 	            graduatedDate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Finish Date is required'
+	                        message: '<spring:message code="education.required.finish.date" />'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -218,28 +220,28 @@
 	            university: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'University is required'
+	                        message: '<spring:message code="education.required.university" />'
 	                    }
 	                }
 	            },
 	            faculty: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Faculty is required'
+	                        message: '<spring:message code="education.required.faculty" />'
 	                    }
 	                }
 	            },
 	            major: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Major is required'
+	                        message: '<spring:message code="education.required.major" />'
 	                    }
 	                }
 	            },
 	            masdegreetype: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Degree type is required'
+	                        message: '<spring:message code="education.required.deegreetype" />'
 	                    }
 	                }
 	            },
