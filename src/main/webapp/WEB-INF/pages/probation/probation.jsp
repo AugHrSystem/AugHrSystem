@@ -8,6 +8,16 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<style type="text/css">
+
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}  
+
+</style>
+
 <input id="empId" type="hidden" value="${id}">
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
 		<div class="row-md-12">
@@ -52,7 +62,7 @@
       </div>
       <div class="modal-body row">
   		<div class="form-group col-md-6">
-    		<label>Start Date :</label>
+    		<label class="required">Start Date : </label>
   			<div class="input-group date" id="dateTimeFrom">
   				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="Start Date"/> 
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -60,7 +70,7 @@
 		</div>
 		
 		<div class="form-group col-md-6">
-    		<label>End Date :</label> 	
+    		<label class="required">End Date : </label> 	
   			<div class="input-group date" id="dateTimeTo">
   				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="End Date"/>
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -68,7 +78,7 @@
 		</div>
   		
   		<div class="form-group col-md-12">
-    			<label>Status :</label>
+    			<label class="required">Status : </label>
     				<f:select path="status" id="status"  class="form-control">
 						<option value="">--Choose Status--</option>
 						<option value="Pass">Pass</option>
@@ -78,7 +88,7 @@
 		</div>
   		
   		<div class="form-group col-md-12">
-	    	<label>Reason :</label>
+	    	<label>Reason : </label>
 	   		<input type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
 	  	</div>
       </div>

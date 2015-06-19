@@ -8,6 +8,13 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
 <input id="empId" type="hidden" value="${id}">
 
 <f:form method="post" commandName="experience" class="form-horizontal" role="form">	
@@ -55,7 +62,7 @@
       <div class="modal-body row">
       
        	<div class="form-group col-md-6">
-    		<label>Start Date :</label>
+    		<label class="required">Start Date : </label>
   			<div class="input-group" id="dateTimeFrom">
   				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="Start Date" />
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -63,14 +70,14 @@
 		</div>
 		
 		<div class="form-group col-md-6">
-    		<label>End Date :</label> 	
+    		<label class="required">End Date : </label> 	
   			<div class="input-group" id="dateTimeTo">
   				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="End Date" />
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
         <div class="form-group col-md-6">
-  			<label>Company Name :</label>
+  			<label class="required">Company Name : </label>
   			<f:input path="companyName" type="text" class="form-control" id="cName" placeholder="Enter Company Name" />
   		</div>
   		<div class="form-group col-md-6">
@@ -79,12 +86,12 @@
   		</div>
   		
       	<div class="form-group col-md-6">
-      		<label>Position :</label>
+      		<label class="required">Position : </label>
   			<f:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position" />
 		</div>
 		
 		<div class="form-group col-md-6">
-      		<label>Salary :</label>
+      		<label class="required">Salary : </label>
   			<f:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary" />
 		</div>
   		
@@ -103,7 +110,7 @@
   		</div>
   		
   		<div class="form-group col-md-12">
-  			<label>Reason of Resignation:</label>
+  			<label class="required">Reason of Resignation: </label>
   			<f:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason of Resignation" />
   		</div>
         
