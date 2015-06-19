@@ -9,6 +9,7 @@ package com.aug.hr.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -102,7 +103,17 @@ public class OfficialDaoImpl extends GenericDaoImpl<Official, Integer> implement
 		
 		
 	}
-	
+
+
+
+	@Override
+	public void deleteOfficialByNameQuery(Official official) {
+		// TODO Auto-generated method stub
+		Query query = getCurrentSession().getNamedQuery("deleteOfficial");
+		query.setInteger("id", official.getId());
+		query.executeUpdate();
+	}
+
 
 
 

@@ -24,7 +24,7 @@ public interface AddressDao extends GenericDao<Address, Integer>{
 	public void saveAddressByNameQuery(AddressDto addressDto);
 	public List<Address> findAddressByEmployeeId(Integer id);
 	public void updateAddressByNameQuery(AddressDto addressDto);
-	public void deleteAddressByNameQuery(AddressDto addressDto);
+	public void deleteAddressByNameQuery(Integer id);
 	
 
 }

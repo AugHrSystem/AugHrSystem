@@ -633,5 +633,39 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		return (EmployeeIdDto) query.list().get(0);
 	}
 
+
+	@Override
+	public Employee findEmployeeAndOfficial(Integer id) {
+		// TODO Auto-generated method stub
+		Criteria c = getCurrentSession().createCriteria(Employee.class,"employee");
+		c.setFetchMode("official", FetchMode.JOIN);
+		c.createAlias("official", "official");
+		c.add(Restrictions.eq("employee.id", id));				 
+		return (Employee) c.uniqueResult();
+	}
+
+
+	@Override
+	public void deleteEmployeeByNameQuery(Employee employee) {
+		// TODO Auto-generated method stub
+		Query query = getCurrentSession().getNamedQuery("deleteEmployee");
+		query.setInteger("id", employee.getId());
+		query.executeUpdate();
+		
+	}
+
+
+	@Override
+	public List<Employee> findAimRelateWithEmployee(Integer id) {
+		// TODO Auto-generated method stub
+		Criteria c = getCurrentSession().createCriteria(Employee.class,"employee");
+		c.setFetchMode("aimempid", FetchMode.JOIN)	;
+		c.createAlias("aimempid", "aimempid");
+		c.add(Restrictions.eq("aimempid.id", id));
+		return c.list();
+	}
+	
+	
+
 }
 	

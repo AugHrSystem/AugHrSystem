@@ -128,7 +128,7 @@ var empId;
 				function deleteEmployee(button,empId){
 					//alert("in fn");
 					$.ajax({
-						url : "${pageContext.request.contextPath}/employee/delete/"+empId,
+						url : "${pageContext.request.contextPath}/employee/deleteemp/"+empId,
 						type : "POST",
 						success : function(data) {
 							$('#deleteModal').modal('toggle');

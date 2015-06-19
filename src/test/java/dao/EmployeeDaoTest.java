@@ -12,10 +12,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -98,4 +100,34 @@ public class EmployeeDaoTest {
 		Assert.assertEquals(1, employees.size());
 
 	}*/
+	
+	
+	@Test
+	public void find() {
+		
+		Employee employee = employeeDao.find(1);
+		Hibernate.initialize(employee.getOfficial());
+		System.out.println(employee.getOfficial().getId());
+		
+	}
+	
+	
+	@Test
+	@Rollback(false)
+	public void deleteByHibernate(){
+		
+		Employee employee = employeeDao.find(1);
+		employeeDao.delete(employee);
+		
+	}
+	
+	
+	
+	@Test
+	public void findAimByEmployee(){
+		List<Employee> employee = employeeDao.findAimRelateWithEmployee(4);
+		for(Employee emp:employee){
+			System.out.println(emp.getId());
+		}
+	}
 }

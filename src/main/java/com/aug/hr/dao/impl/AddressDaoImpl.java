@@ -73,6 +73,10 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Integer> implements 
 		Criteria c = getCurrentSession().createCriteria(Address.class,"address");
 		c.setFetchMode("employee", FetchMode.JOIN);
 		c.createCriteria("employee", "employee");
+		c.setFetchMode("addressType",FetchMode.JOIN);
+		c.createAlias("addressType", "addressType");
+		c.setFetchMode("province",FetchMode.JOIN);
+		c.createAlias("province","province");
 		c.add(Restrictions.eq("address.employee.id", id));
 		return c.list();
 	}
@@ -92,10 +96,10 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Integer> implements 
 	}
 
 	@Override
-	public void deleteAddressByNameQuery(AddressDto addressDto) {
+	public void deleteAddressByNameQuery(Integer id) {
 		// TODO Auto-generated method stub
 		Query query = getCurrentSession().getNamedQuery("deleteAddress");
-		query.setInteger("ID", addressDto.getId());
+		query.setInteger("id",id);
 		query.executeUpdate();
 	}
 		

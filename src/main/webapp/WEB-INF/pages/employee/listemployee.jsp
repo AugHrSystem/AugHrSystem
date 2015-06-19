@@ -54,11 +54,12 @@
 </f:form>			
 	<!-- Button trigger modal -->
 	<div align="right">
-	<form action="javascript:initEditEmployee(0);">
-		<button type="button submit" class="btn btn-primary btn-md addEmployee">
+	<%-- <form:form action="javascript:initEditEmployee(0);"> --%>
+	 <f:form action="${pageContext.request.contextPath}/employee" method="POST" role="form">
+		<button type="submit" class="btn btn-primary btn-md addEmployee">
  	 	Add
 		</button>
-	</form>
+	</f:form>
 	</div>
 </div>			
 		
@@ -128,7 +129,7 @@ var empId;
 				function deleteEmployee(button,empId){
 					//alert("in fn");
 					$.ajax({
-						url : "${pageContext.request.contextPath}/employee/delete/"+empId,
+						url : "${pageContext.request.contextPath}/employee/deleteemp/"+empId,
 						type : "POST",
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
@@ -151,7 +152,7 @@ var empId;
 	/* --------------------------------------------------- EditFunction --------------------------------------------------- */		
 		function initEditEmployee(empId) {
 		//alert(empId+" Init edit");
-		window.location = "${pageContext.request.contextPath}/employee?Id="+empId;
+		window.location = "${pageContext.request.contextPath}/employee/init/"+empId;
 	/* 	$.ajax({
 			url : "${pageContext.request.contextPath}/employee/initEdit/"+empId,
 			type : "GET",

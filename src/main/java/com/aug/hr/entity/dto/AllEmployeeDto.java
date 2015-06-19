@@ -14,6 +14,7 @@ import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -86,12 +87,11 @@ public class AllEmployeeDto {
 	private String militaryServiceYes;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	//@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fromYear;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	//@Temporal(TemporalType.TIMESTAMP)
-	
+	@Temporal(TemporalType.TIMESTAMP)	
 	private Date toYear;
 	private String branchOfService;
 	private String serviceNo;
@@ -99,7 +99,7 @@ public class AllEmployeeDto {
 	private String reasonsNo;
 
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	//@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
 	
 
@@ -131,15 +131,18 @@ public class AllEmployeeDto {
 
 
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	//@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date officialDate;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	//@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date startWorkDate;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	//@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date endWorkDate;
 	
 	private String positionAppliedFor;
@@ -147,7 +150,8 @@ public class AllEmployeeDto {
 	private Double salaryExpected;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	//@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date probationDate;
 
 	private Integer aimempid;

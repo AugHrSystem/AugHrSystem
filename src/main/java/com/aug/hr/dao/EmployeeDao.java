@@ -36,5 +36,8 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public List<ReportLeaveDto> reportLeave();
 	public void updateByNameQuery(AllEmployeeDto allEmployeeDto);
 	public EmployeeIdDto findCurrentId();
+	public Employee findEmployeeAndOfficial(Integer id);
+	public void deleteEmployeeByNameQuery(Employee employee);
+	public List<Employee> findAimRelateWithEmployee(Integer id);
 	
 }

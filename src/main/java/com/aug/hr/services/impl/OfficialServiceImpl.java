@@ -77,4 +77,11 @@ public class OfficialServiceImpl implements OfficialService{
 		return officialDao.searhEmpIdtoOfficial();
 	}
 
+	@Override
+	public void deleteOfficialByNameQuery(Official official) {
+		// TODO Auto-generated method stub
+		officialDao.deleteOfficialByNameQuery(official);
+		
+	}
+
 }

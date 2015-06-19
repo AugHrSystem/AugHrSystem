@@ -105,6 +105,13 @@ public class AddressServiceImpl implements AddressService{
 		// TODO Auto-generated method stub
 		return addressDao.searchAddress(id);
 	}
+
+	@Override
+	public void deleteAddressByNameQuery(Integer id) {
+		// TODO Auto-generated method stub
+		addressDao.deleteAddressByNameQuery(id);
+		
+	}
 	
 
 }

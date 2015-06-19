@@ -6,12 +6,17 @@
 
 package com.aug.hr.services.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
@@ -39,6 +44,7 @@ import com.aug.hr.services.MasProvinceService;
 import com.aug.hr.services.MasStaffTypeService;
 import com.aug.hr.services.OfficialService;
 import com.aug.hr.services.masTechnologyService;
+import com.aug.hr.services.utils.UploadService;
 
 @Service("employeeService")
 @Transactional
@@ -68,6 +74,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private masTechnologyService masTechnologyService;
 	@Autowired
 	private MasStaffTypeService masStaffTypeService;
+	@Autowired
+	private UploadService uploadService;
 	
 	
 	@Override
@@ -188,6 +196,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public AllEmployeeDto findEmployeeByEmployeeIdWithSetToDto(Integer id) {
 		
 		Employee employee = employeeDao.find(id);
+		Hibernate.initialize(employee.getOfficial());
+		
+		//System.out.println(employee.getOfficial().getId());
 		
 		AllEmployeeDto allEmployeeDto = new AllEmployeeDto();
 		allEmployeeDto.setId(employee.getId());
@@ -195,6 +206,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		allEmployeeDto.setIsManager(employee.getIsManager()); 
 		
 		if(employee.getOfficial()!=null){
+			System.out.println("Official: "+employee.getOfficial().getPositionAppliedFor());
 	        allEmployeeDto.setOfficialDate(employee.getOfficial().getOfficialDate()); 
 	        allEmployeeDto.setStartWorkDate(employee.getOfficial().getStartWorkDate());
 	        allEmployeeDto.setEndWorkDate(employee.getOfficial().getEndWorkDate());
@@ -576,13 +588,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 			}
 		}
 		
+		employee.setOfficial(official);
+		employee.setAuditFlag("C");
+		employee.setCreatedBy(0);
+		employee.setCreatedTimeStamp(Calendar.getInstance().getTime());
+		
 		employeeDao.create(employee);
 		
 		
 		//Update CreatedBy Official
 		official.setCreatedBy(employee.getId());
 		afficialService.update(official);
-		
+				
 		
 		//Save Address
 		if(allEmployeeDto.getAddressList()!=null){
@@ -622,5 +639,389 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employee;
 	}
 
+	@Override
+	public Employee updateEmployeeAndReturnId(AllEmployeeDto allEmployeeDto) {
+		// TODO Auto-generated method stub
+		
+		Employee employee = employeeDao.find(allEmployeeDto.getId());
+		Hibernate.initialize(employee.getOfficial());
+		
+		//update official if id is null but id not null it change to save
+		
+		if(employee.getOfficial()==null){
+			Official official = new Official();
+			official.setAuditFlag("C");
+			official.setCreatedBy(0);
+			official.setCreatedTimeStamp(Calendar.getInstance().getTime());
+			official.setStartWorkDate(allEmployeeDto.getStartWorkDate());
+			official.setEndWorkDate(allEmployeeDto.getEndWorkDate());
+			official.setPositionAppliedFor(allEmployeeDto.getPositionAppliedFor());
+			official.setProbationDate(allEmployeeDto.getProbationDate());
+			official.setOfficialDate(allEmployeeDto.getOfficialDate());
+			official.setSalaryExpected(allEmployeeDto.getSalaryExpected());
+			
+			afficialService.create(official);
+			
+			employee.setOfficial(official);
+			
+		}else if(employee.getOfficial()!=null){
+			
+			  if(employee.getOfficial().getId()!=null){
+				Official official1 = afficialService.findById(employee.getOfficial().getId());
+				System.out.println("official id: "+employee.getOfficial().getId());
+				
+				official1.setOfficialDate(allEmployeeDto.getOfficialDate());
+				official1.setStartWorkDate(allEmployeeDto.getStartWorkDate());
+				official1.setEndWorkDate(allEmployeeDto.getEndWorkDate());
+				official1.setSalaryExpected(allEmployeeDto.getSalaryExpected());
+				official1.setPositionAppliedFor(allEmployeeDto.getPositionAppliedFor());
+				official1.setProbationDate(allEmployeeDto.getProbationDate());
+				official1.setAuditFlag("U");
+				official1.setUpdatedBy(allEmployeeDto.getId());
+				official1.setUpdatedTimeStamp(Calendar.getInstance().getTime());			
+				afficialService.update(official1);
+			  }
+			
+			}
+		
+		
+		
+		
+		//update employee
+		
+		employee.setEmployeeCode(allEmployeeDto.getEmployeeCode()); 
+		employee.setNameThai(allEmployeeDto.getNameThai());
+		employee.setSurnameThai(allEmployeeDto.getSurnameThai());
+		employee.setNicknameThai(allEmployeeDto.getNicknameThai());
+		employee.setNameEng(allEmployeeDto.getNameEng());
+		employee.setSurnameEng(allEmployeeDto.getSurnameEng()); 
+		employee.setNicknameEng(allEmployeeDto.getNicknameEng()); 
+		employee.setEmail(allEmployeeDto.getEmail());
+		employee.setCongenitalDisease(allEmployeeDto.getCongenitalDisease());
+		employee.setHospital(allEmployeeDto.getHospital());
+		employee.setTelHome(allEmployeeDto.getTelHome());
+		employee.setTelMobile(allEmployeeDto.getTelMobile());
+		employee.setTelFax(allEmployeeDto.getTelFax());
+		employee.setEmergencyContact(allEmployeeDto.getEmergencyContact());
+		employee.setRelationshipWithEmergencyContact(allEmployeeDto.getRelationshipWithEmergencyContact());
+		employee.setEmergencyContactAddress(allEmployeeDto.getEmergencyContactAddress());
+		employee.setEmergencyContactPhoneNumber(allEmployeeDto.getEmergencyContactPhoneNumber());
+		employee.setDateOfBirth(allEmployeeDto.getDateOfBirth());
+		employee.setPlaceOfBirth(allEmployeeDto.getPlaceOfBirth());
+		employee.setAge(allEmployeeDto.getAge());
+		employee.setReligion(allEmployeeDto.getReligion());
+		employee.setIdCard(allEmployeeDto.getIdCard());
+		employee.setIssuedOffice(allEmployeeDto.getIssuedOffice());
+		employee.setIssuedOffice2(allEmployeeDto.getIssuedOffice2()); 
+		employee.setExpiryDate(allEmployeeDto.getExpiryDate());
+		employee.setHeight(allEmployeeDto.getHeight());
+		employee.setWeigth(allEmployeeDto.getHeight());
+		employee.setSex(allEmployeeDto.getSex());
+		employee.setMaritalStatus(allEmployeeDto.getMaritalStatus());
+		employee.setNumberOfChildren(allEmployeeDto.getNumberOfChildren()); 
+		employee.setSpouseName(allEmployeeDto.getSpouseName()); 
+		employee.setMarriageCertificateNo(allEmployeeDto.getMarriageCertificateNo());
+		employee.setAddress(allEmployeeDto.getAddress()); 
+		employee.setOccupation(allEmployeeDto.getOccupation());
+		employee.setKnowAugNewspaper(allEmployeeDto.getKnowAugNewspaper());
+		employee.setDescriptionNewspaper(allEmployeeDto.getDescriptionNewspaper());
+		employee.setKnowAugMagazine(allEmployeeDto.getKnowAugMagazine());
+		employee.setDescriptionMagazine(allEmployeeDto.getDescriptionMagazine());
+		employee.setKnowAugWebsite(allEmployeeDto.getKnowAugWebsite());
+		employee.setDescriptionWebsite(allEmployeeDto.getDescriptionWebsite());
+		employee.setKnowAugFriend(allEmployeeDto.getKnowAugFriend()); 
+		employee.setDescriptionFriend(allEmployeeDto.getKnowAugFriend());
+		employee.setKnowAugOther(allEmployeeDto.getKnowAugOther()); 
+		employee.setDescriptionOther(allEmployeeDto.getDescriptionOther()); 
+		employee.setKnowEmployedYes(allEmployeeDto.getKnowEmployedYes());
+		employee.setDescriptionYes(allEmployeeDto.getDescriptionYes());
+		employee.setKnowEmployerNo(allEmployeeDto.getKnowEmployerNo());
+		employee.setMilitaryServiceYes(allEmployeeDto.getMilitaryServiceYes());
+		employee.setFromYear(allEmployeeDto.getFromYear());
+		employee.setToYear(allEmployeeDto.getToYear());
+		employee.setBranchOfService(allEmployeeDto.getBranchOfService());
+		employee.setMilitaryServiceNo(allEmployeeDto.getMilitaryServiceNo());
+		employee.setReasonsNo(allEmployeeDto.getReasonsNo());
+		employee.setDateToBeDrafted(allEmployeeDto.getDateToBeDrafted()); 
+		employee.setPreviousEmployerYes(allEmployeeDto.getPreviousEmployerYes());
+		employee.setPreviousEmployerNo(allEmployeeDto.getPreviousEmployerNo());
+		employee.setPreviousEmpreasonsNo(allEmployeeDto.getPreviousEmpreasonsNo());			
+		employee.setServiceNo(allEmployeeDto.getServiceNo());		
+		
+		if(allEmployeeDto.getMasCoreSkill()!=null){
+			MasCoreSkill masCoreSkill =  masCoreSkillService.find(allEmployeeDto.getMasCoreSkill());
+			if(masCoreSkill.getId()!=null){
+				employee.setMasCoreSkill(masCoreSkill);
+			}
+		}
+		
+		
+		if(allEmployeeDto.getMasEmployment()!=null){
+			MasEmployment masEmployment = masEmploymentService.findById(allEmployeeDto.getMasEmployment());
+			if(masEmployment.getId()!=null){
+				employee.setMasEmployment(masEmployment);
+			}
+		}
+		
+		if(allEmployeeDto.getMasDivision()!=null){
+			MasDivision masDevision = masDevisionService.findById(allEmployeeDto.getMasDivision());
+			if(masDevision.getId()!=null){
+				employee.setMasDivision(masDevision);
+			}
+		}
+
+		if(allEmployeeDto.getMasJoblevel()!=null){
+			MasJoblevel masJoblevel = masJoblevelService.find(allEmployeeDto.getMasJoblevel());
+			if(masJoblevel.getId()!=null){			
+				employee.setMasJoblevel(masJoblevel);						
+			}
+		}
+		
+		
+		if(allEmployeeDto.getTechnology()!=null){
+			MasTechnology masTechnology = masTechnologyService.find(allEmployeeDto.getTechnology());
+			if(masTechnology.getId()!=null){
+				employee.setTechnology(masTechnology);
+			}
+		}
+		
+		if(allEmployeeDto.getMasLocationId()!=null){
+			MasLocation masLocation = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
+			if(masLocation.getId()!=null){
+				employee.setMasLocation(masLocation); 
+			}
+		}
+		
+		employee.setStatusemp(allEmployeeDto.getStatusemp());
+		
+		if(allEmployeeDto.getMasStaffType()!=null){
+			MasStaffType masStaffType = masStaffTypeService.find(allEmployeeDto.getMasStaffType());
+			if(masStaffType.getId()!=null){
+				employee.setMasStaffType(masStaffType);
+			}
+		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		if(allEmployeeDto.getFileupload().getOriginalFilename()==null){
+			
+			if(employee.getImage()==null||employee.getImage().equals("")){
+				
+					employee.setImage(null);
+				
+			}else if(employee.getImage()!=null||employee.getImage().equals("")==false){
+				
+					employee.setImage(employee.getImage());
+				
+			}
+			
+		}else if(allEmployeeDto.getFileupload().getOriginalFilename()!=null){
+					
+					System.out.println("img name: "+allEmployeeDto.getImage());
+					System.out.println("original file name: "+allEmployeeDto.getFileupload().getOriginalFilename());
+					String[] result =  StringUtils.split(allEmployeeDto.getFileupload().getOriginalFilename(),'.');	
+				
+									
+					if(result.length==2){
+						
+						
+						if(employee.getImage()==null){
+							
+							
+							   
+							 //upload file
+								try {
+									uploadService.uploadImage("EMPLOYEE",allEmployeeDto.getEmployeeCode()+"."+result[1], allEmployeeDto.getFileupload());
+									employee.setImage(allEmployeeDto.getEmployeeCode()+"."+result[1]);
+								
+								} catch (RuntimeException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							
+								
+							
+						}else if(employee.getImage()!=null){
+							
+	
+						//delete file upload
+
+						   try {
+								uploadService .deleteImage("EMPLOYEE", employee.getImage());
+							} catch (RuntimeException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+									
+						  
+						   
+						 //upload file
+							try {
+								uploadService.uploadImage("EMPLOYEE",allEmployeeDto.getEmployeeCode()+"."+result[1], allEmployeeDto.getFileupload());
+								//allEmployeeDto.setImage(allEmployeeDto.getEmployeeCode()+"."+result[1]);
+								employee.setImage(allEmployeeDto.getEmployeeCode()+"."+result[1]);
+							
+							} catch (RuntimeException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+				
+						}
+						
+				
+				
+					}
+					
+					
+			
+			
+		}
+		
+		
+		
+		
+		employee.setIsManager(allEmployeeDto.getIsManager());
+		
+		if(allEmployeeDto.getAimempid()!=null){
+			Employee aim = employeeDao.find(allEmployeeDto.getAimempid());
+			if(aim.getId()!=null){
+				employee.setAimempid(aim);
+			}
+		}
+		
+		employee.setAuditFlag("U");
+		employee.setUpdatedBy(employee.getId());
+		employee.setUpdatedTimeStamp(Calendar.getInstance().getTime());
+				
+		employeeDao.update(employee);
+		
+		
+		
+		//update Address
+				if(allEmployeeDto.getAddressList()!=null){
+					
+					for(AddressDto addressDto:allEmployeeDto.getAddressList()){
+						if(addressDto.getId()!=null){
+							
+							System.out.println("address delete: "+addressDto.getStatus());
+							
+							if(addressDto.getStatus().equals("add")&&addressDto.getId()==0){
+							
+									Address address = new Address();		
+									address.setAddress1(addressDto.getAddress1());
+									address.setAddress2(addressDto.getAddress2());
+									
+									MasProvince masProvince = masProvinceService.find(addressDto.getMasprovinceId());
+									if(masProvince.getId()!=null){
+										address.setProvince(masProvince);
+									}
+									
+									MasAddressType masAddressType = masAddressTypeService.findById(addressDto.getAddressTypeId());
+									if(masProvince.getId()!=null){
+										address.setAddressType(masAddressType);
+									}
+									
+									address.setZipcode(addressDto.getZipcode());
+									address.setEmployee(employee);
+									address.setAuditFlag("C");
+									address.setCreatedBy(employee.getId());
+									address.setCreatedTimeStamp(Calendar.getInstance().getTime());
+									
+									List<Address> addressList = new ArrayList<Address>();
+									addressList.add(address);
+									employee.setAddresses(addressList);
+									addressService.create(address);
+							
+							}else if(addressDto.getStatus().equals("edit")){
+								
+									Address address = new Address();
+									address = addressService.find(addressDto.getId());
+									address.setAddress1(addressDto.getAddress1());
+									address.setAddress2(addressDto.getAddress2());
+									
+									MasProvince masProvince = masProvinceService.find(addressDto.getMasprovinceId());
+									if(masProvince.getId()!=null){
+										address.setProvince(masProvince);
+									}
+									
+									MasAddressType masAddressType = masAddressTypeService.findById(addressDto.getAddressTypeId());
+									if(masProvince.getId()!=null){
+										address.setAddressType(masAddressType);
+									}
+									
+									address.setZipcode(addressDto.getZipcode());
+									address.setEmployee(employee);
+									address.setAuditFlag("U");
+									address.setUpdatedBy(employee.getId());
+									address.setUpdatedTimeStamp(Calendar.getInstance().getTime());
+									
+									List<Address> addressList = new ArrayList<Address>();
+									addressList.add(address);
+									employee.setAddresses(addressList);
+									addressService.update(address);
+								
+								
+							}else if(addressDto.getStatus().equals("delete")){
+								
+
+									System.out.println("delete#1: "+addressDto.getStatus());
+									Address address = new Address();
+									address = addressService.find(addressDto.getId());
+									addressService.delete(address);
+								
+							}
+
+						}
+					}
+		
+		
+	}
+		return employee;
+  }
+
+	@Override
+	public void deleteEmployeeByHibernate(Employee employee) {
+		// TODO Auto-generated method stub
+		
+		
+		employeeDao.delete(employee);
+		
+	}
+
+	
+	@Override
+	public Employee findAndinitializeOfficial(Integer id) {
+		// TODO Auto-generated method stub
+		Employee employee = employeeDao.find(id);
+		Hibernate.initialize(employee.getOfficial());
+		Hibernate.initialize(employee.getAddresses());
+		Hibernate.initialize(employee.getLeaves());
+		return employee;
+	}
+
+	
+	@Override
+	public List<Employee> findAimRelateWithEmployee(Integer id) {
+		// TODO Auto-generated method stub
+		return employeeDao.findAimRelateWithEmployee(id);
+	}
+
+	
 
 }

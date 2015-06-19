@@ -63,7 +63,7 @@ public class AddressDto {
 	private Integer employeeId;	
 	
 	@Transient
-	private String Status;
+	private String status;
 
 
 	public Integer getId() {
@@ -156,12 +156,12 @@ public class AddressDto {
 
 
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 
 	public void setStatus(String status) {
-		Status = status;
+		this.status = status;
 	}
 
 
@@ -172,7 +172,7 @@ public class AddressDto {
 				+ address1 + ", address2=" + address2 + ", masprovinceId="
 				+ masprovinceId + ", masprovinceName=" + masprovinceName
 				+ ", zipcode=" + zipcode + ", employeeId=" + employeeId
-				+ ", Status=" + Status + "]";
+				+ ", status=" + status + "]";
 	}
 	
 	

@@ -5,6 +5,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
@@ -29,6 +31,9 @@
 				</h2>
 		 </div>
 		 
+		 Original : ${myDate }
+		 <br/>
+		 Result : <fmt:formatDate pattern="dd-MM-yyyy" value="${myDate}" />
 		 
 		 <div class="col-md-7">
 
@@ -183,9 +188,9 @@
 								<th>Zipcode</th>
 								<th>GetIndex</th>
 								<th>Action</th>
-<!-- 								<th>Delete</th> -->
+								<!-- <th>Delete</th> -->
 								<th>Status</th>
-							    <th>HiddenIndex</th> 
+							    <!-- <th>HiddenIndex</th>  -->
 							</tr>
 						
 						</thead>
@@ -282,23 +287,27 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> Date of Birth :</label> 
-									<div class='input-group date' id='dateOfBirth'>
+									<div class='input-group date'  id='dateOfBirth'>
 									
 								
 									
 									<input type="text" class="form-control"
-									id="dateOfBirth" name="dateOfBirth" placeholder="Enter DOB" 
-									value="${allEmployeeDto.dateOfBirth}"/>
-									
-									
-									
-									
+									id="dateOfBirth" name="dateOfBirth" placeholder="Enter DOB"            							 
+           							value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.dateOfBirth}" />' /> 
+           							           							
 									
 									<span class="input-group-addon">
 							            <span class="glyphicon glyphicon-calendar"></span>
 							        </span>
 							        </div>
 								</div>
+								
+									
+									aaa: <fmt:formatDate pattern="dd-MM-yyyy" 
+           							 value="${allEmployeeDto.dateOfBirth}" />
+									 
+									a:${allEmployeeDto.dateOfBirth}
+								
 								
 								<div class="col-md-3">
 									<label> Place of Birth :</label> <input type="text" class="form-control"
@@ -345,7 +354,8 @@
 								<div class="col-md-3">
 									<label> Expiry Date :</label>
 									<div class='input-group date' id='expiryDate'> <input type="text" class="form-control"
-									id="expiryDate" name="expiryDate" placeholder="Enter Expiry Date" value="${allEmployeeDto.expiryDate}">
+									id="expiryDate" name="expiryDate" placeholder="Enter Expiry Date" value='
+									<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.expiryDate}" />' />
 								
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
@@ -630,7 +640,8 @@
     									 <label> From Year :</label>
 
     									 <div class='input-group date' id='fromYear'>
-    									 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="Enter From year" value="${allEmployeeDto.fromYear}">
+    									 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="Enter From year"
+    									  value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.fromYear}" />' />
     								     <span class="input-group-addon">
 										 <span class="glyphicon glyphicon-calendar"></span>
 										 </span></div>
@@ -639,7 +650,8 @@
     								<div class="col-md-3">
     									 <label> To Year :</label>
     									 <div class='input-group date' id='toYear'>
-    									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="Enter To Year" value="${allEmployeeDto.toYear}">
+    									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="Enter To Year"
+    									  value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.toYear}" />'  />
     									 <span class="input-group-addon">    									 
     									 <span class="glyphicon glyphicon-calendar"></span>
     									 </span>
@@ -691,7 +703,8 @@
     									 <label> Date to be drafted :</label>
 
     									 <div class='input-group date' id='dateToBeDrafted'>
-    									 <input type="text" class="form-control" id="dateToBeDrafted" name="dateToBeDrafted" placeholder="Enter Date Drafted" value="${allEmployeeDto.dateToBeDrafted}">
+    									 <input type="text" class="form-control" id="dateToBeDrafted" name="dateToBeDrafted" placeholder="Enter Date Drafted" 
+    									 value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.dateToBeDrafted}" />'  />
     							      	 <span class="input-group-addon">
 										 <span class="glyphicon glyphicon-calendar"></span>
 										 </span></div></div>
@@ -759,7 +772,8 @@
 									<label> Date :</label> 
 
 									<div class='input-group date' id='officialDate'>
-									<input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="Enter Date" value="${allEmployeeDto.officialDate}">
+									<input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="Enter Date" 
+									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.officialDate}"/>' />
 								    <span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span></div></div>
@@ -781,6 +795,9 @@
 
 				<div class="col-md-4">
 				<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary" value="${allEmployeeDto.salaryExpected}">
+				
+				
+				allEmployeeDto.salaryExpected:${allEmployeeDto.salaryExpected}
 
 				<%-- <div class="col-md-6">
 									<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary" value="${allEmployeeDto.salaryExpected}">
@@ -816,7 +833,8 @@
 						<div class="col-md-4">
     						<label> Start Work Date :</label> 
     						<div class='input-group date' id='startWorkDate'><input type="text" class="form-control"
-							id="startWorkDate" name="startWorkDate" placeholder="Enter Start Work Date" value="${allEmployeeDto.startWorkDate}">
+							id="startWorkDate" name="startWorkDate" placeholder="Enter Start Work Date" 
+							value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.startWorkDate}"/>'  />
 							<span class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 							</span></div></div>
@@ -826,7 +844,8 @@
     						<label> End Work Date :</label>
     						<div class='input-group date' id='endWorkDate'>
     						<input type="text" class="form-control"
-							id="endWorkDate" name="endWorkDate" placeholder="Enter End Work Date" value="${allEmployeeDto.endWorkDate}">
+							id="endWorkDate" name="endWorkDate" placeholder="Enter End Work Date" 
+							value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.endWorkDate}"/>' />
 						    <span class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 							</span>
@@ -963,7 +982,14 @@
 				<div class="col-md-3">
 				<label> AIM :</label>
 								<div class="checkbox">
+     								
+     							<c:if test="${empty allEmployeeDto.isManager}">
      								<label><input type="checkbox" value = "1" name="isManager">isAIM</label>
+								</c:if>
+								<c:if test="${not empty allEmployeeDto.isManager}">
+     								<label><input type="checkbox" value = "1" name="isManager" checked="checked">isAIM</label>
+								</c:if>
+								
 								</div>
 			</div>
 
@@ -996,7 +1022,9 @@
 						<label> Probation Date :</label> 
 						<div class='input-group date' id='probationDate'>
 						<input type="text" class="form-control"
-									id="probationDate" name="probationDate" placeholder="Enter Probation Date" value="${allEmployeeDto.probationDate}">
+									id="probationDate" name="probationDate" placeholder="Enter Probation Date" 
+									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.probationDate}"/>' />
+									probatationdate: ${allEmployeeDto.probationDate}
 
 
 						<%-- <label> Probation Date :</label> <input type="text" class="form-control"
@@ -1681,47 +1709,47 @@ $('#addForm').bootstrapValidator({
 
 
 		var date1 = $( "#dateOfBirth" ).datetimepicker({
-			format : "DD-MM-YYYY hh:mm:ss",
+			format : "DD-MM-YYYY",
 			viewMode : 'years'
 		});
 		
     	var date2 = $( "#expiryDate" ).datetimepicker({
-    		format : "DD-MM-YYYY hh:mm:ss",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date3 = $( "#fromYear" ).datetimepicker({
-    		format : "DD-MM-YYYY hh:mm:ss",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date4 = $( "#toYear" ).datetimepicker({
-    		format : "DD-MM-YYYY hh:mm:ss",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date5 = $( "#dateToBeDrafted" ).datetimepicker({
-    		format : "DD-MM-YYYY hh:mm:ss",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#officialDate" ).datetimepicker({
-    		format : "DD-MM-YYYY hh:mm:ss",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#startWorkDate" ).datetimepicker({
-    		format : "DD-MM-YYYY hh:mm:ss",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#endWorkDate" ).datetimepicker({
-    		format : "DD-MM-YYYY hh:mm:ss",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#probationDate" ).datetimepicker({
-    		format : "DD-MM-YYYY hh:mm:ss",
+    		format : "DD-MM-YYYY",
     		viewMode : 'years'
 		});
     	
@@ -1746,9 +1774,9 @@ $('#addForm').bootstrapValidator({
     				"pagingType": "simple_numbers",
     				"ordering": false,
     				"info": false,
-    				"paging": false,
+    				"paging": false
     		 		 
-    		 		 
+    		 		/*  
     		 		 "columnDefs": [
     	    	                  {
     	    	                     "targets": [ 0 ],
@@ -1779,14 +1807,14 @@ $('#addForm').bootstrapValidator({
     	    	                     "visible": false
     	    	                 }   
     	    	                 
-    	    	                 ,   	    	                 
+    	    	                 /* ,   	    	                 
     	    	                 {
     	    	                     "targets": [ 11 ],
     	    	                     "visible": false
-    	    	                 } 
+    	    	                 }  */
     	    	                 
     	    	                 
-    	    	             ] 
+    	    	          /*   ]  */
     			
     			} ); 
     	 
@@ -2035,15 +2063,8 @@ $('#addForm').bootstrapValidator({
 					              
 					              '<button id="edit" type="button" class="btn btn-info btn-sm active"  data-target="#addModal" data-toggle="modal">Edit</button>'+
 				    			  '<button id="delete" type="button" class="btn btn-danger btn-sm active" data-target="#deleteModal" data-toggle="modal">Delete</button>',
-				    			  status,
-				    			  '<input id="dataaddressid'+getIndex+'" type ="text" name = "addressList['+getIndex+'].id" value="'+id+'">'+
-				    			  '<input id="dataaddresstype'+getIndex+'"type ="text" name = "addressList['+getIndex+'].addressTypeId" value="'+addressId+'">'+
-				    			  '<input id="dataaddress1'+getIndex+'"type ="text" name = "addressList['+getIndex+'].address1" value="'+address1+'">'+
-				    			  '<input id="dataaddress2'+getIndex+'"type ="text" name = "addressList['+getIndex+'].address2" value="'+address2+'">'+
-				    			  '<input id="dataprovinceid'+getIndex+'"type ="text" name = "addressList['+getIndex+'].masprovinceId" value="'+provinceId+'">'+
-				    			  '<input id="datazipcode'+getIndex+'"type ="text" name = "addressList['+getIndex+'].zipcode" value="'+zipcode+'">'+
-				    			  '<input id="datastatus'+getIndex+'"type ="text" name = "addressList['+getIndex+'].status" value="'+status+'">'
-				    			  
+				    			 
+				    			  status
 				    				
 			   	 ]); 
 				  
@@ -2168,7 +2189,7 @@ $('#addForm').bootstrapValidator({
 		    dt.fnUpdate(provinceId, rowUpdate, 5);
 		    dt.fnUpdate(province, rowUpdate, 6);
 		    dt.fnUpdate(zipcode, rowUpdate, 7);
-		    dt.fnUpdate('edit', rowUpdate, 11);
+		    dt.fnUpdate('edit', rowUpdate, 10);
 		    
 		    $("#dataaddressid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].id");
 		    $("#dataaddressid"+dataUpdate[8]).val(id);
@@ -2261,10 +2282,12 @@ $('#addForm').bootstrapValidator({
       }else{
     	  
     	  $('#yesButton').off("click").on("click",function(){ 
-	    	  dt.fnUpdate('delete', row, 11);
-	    	  $("#datastatus"+dataDelete[8]).attr('name', "addresses["+dataUpdate[8]+"].status");
+    		  
+    		  alert(dataDelete[8]);
+	    	  dt.fnUpdate('delete', row, 10);
+	    	  $("#datastatus"+dataDelete[8]).attr('name', "addressList["+dataDelete[8]+"].status");
 			  $("#datastatus"+dataDelete [8]).val('delete');
-			  $('#deleteModal').modal('toggle');
+			  //$('#deleteModal').modal('toggle');
     	 	});
       }
    	 
@@ -2292,6 +2315,7 @@ $('#addForm').bootstrapValidator({
    		function listAddress(id){
    			
 //    			alert('list address: '+id);
+				var status = 'unmodified';
    			
    			$.ajax({
 				url : "${pageContext.request.contextPath}/employee/address/",
@@ -2317,64 +2341,59 @@ $('#addForm').bootstrapValidator({
 						'<button id="edit" type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 						'<button id="delete" type="button" class="btn btn-danger btn-sm active" data-addId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>',
 						 "unmodified",
-						'<input id="dataaddressid'+getIndex+'" type ="text" name = "addresses['+getIndex+'].id" value="'+data[i].id+'">'+
-					    '<input id="dataaddresstype'+getIndex+'" type ="text" name = "addresses['+getIndex+'].addressTypeId" value="'+ data[i].addressTypeId+'">'+
-					    '<input id="dataaddress1'+getIndex+'" type ="text" name = "addresses['+getIndex+'].address1" value="'+data[i].address1+'">'+
-					    '<input id="dataaddress2'+getIndex+'" type ="text" name = "addresses['+getIndex+'].address2" value="'+data[i].address2+'">'+
-					    '<input id="dataprovinceid'+getIndex+'" type ="text" name = "addresses['+getIndex+'].masprovinceId" value="'+data[i].masprovinceId+'">'+
-					    '<input id="datazipcode'+getIndex+'" type ="text" name = "addresses['+getIndex+'].zipcode" value="'+ data[i].zipcode+'">'+
-					    '<input id="datastatus'+getIndex+'" type ="text" name = "addresses['+getIndex+'].status" value="unmodified">']);
+						]);
 					 
 						
-						$('<input>').attr({
-						    type: 'text',
-						    id: 'dataaddressid'+getIndex,
-						    name: 'addressList['+getIndex+'].id',
-						    value: id
-						}).appendTo('form');
-					  
-					  
-					  $('<input>').attr({
-						    type: 'text',
-						    id: 'dataaddresstype'+getIndex,
-						    name: 'addressList['+getIndex+'].addressTypeId',
-						    value: addressId
-						}).appendTo('form');
-					  
-					  $('<input>').attr({
-						    type: 'text',
-						    id: 'dataaddress1'+getIndex,
-						    name: 'addressList['+getIndex+'].address1',
-						    value: address1
-						}).appendTo('form');
-					  
-					  $('<input>').attr({
-						    type: 'text',
-						    id: 'dataaddress2'+getIndex,
-						    name: 'addressList['+getIndex+'].address2',
-						    value: address2
-						}).appendTo('form');
-					  
-					  $('<input>').attr({
-						    type: 'text',
-						    id: 'dataprovinceid'+getIndex,
-						    name: 'addressList['+getIndex+'].masprovinceId',
-						    value: provinceId
-						}).appendTo('form');
-					  
-					  $('<input>').attr({
-						    type: 'text',
-						    id: 'datazipcode'+getIndex,
-						    name: 'addressList['+getIndex+'].zipcode',
-						    value: zipcode
-						}).appendTo('form');
-					  
-					  $('<input>').attr({
-						    type: 'text',
-						    id: 'datastatus'+getIndex,
-						    name: 'addressList['+getIndex+'].status',
-						    value: status
-						}).appendTo('form');
+						  $('<input>').attr({
+							    type: 'text',
+							    id: 'dataaddressid'+getIndex,
+							    name: 'addressList['+getIndex+'].id',
+							    value: data[i].id
+							}).appendTo('form');
+						  
+						  
+						  $('<input>').attr({
+							    type: 'text',
+							    id: 'dataaddresstype'+getIndex,
+							    name: 'addressList['+getIndex+'].addressTypeId',
+							    value: data[i].addressTypeId
+							}).appendTo('form');
+						  
+						  $('<input>').attr({
+							    type: 'text',
+							    id: 'dataaddress1'+getIndex,
+							    name: 'addressList['+getIndex+'].address1',
+							    value: data[i].address1
+							}).appendTo('form');
+						  
+						  $('<input>').attr({
+							    type: 'text',
+							    id: 'dataaddress2'+getIndex,
+							    name: 'addressList['+getIndex+'].address2',
+							    value: data[i].address2
+							}).appendTo('form');
+						  
+						  $('<input>').attr({
+							    type: 'text',
+							    id: 'dataprovinceid'+getIndex,
+							    name: 'addressList['+getIndex+'].masprovinceId',
+							    value: data[i].masprovinceId
+							}).appendTo('form');
+						  
+						  $('<input>').attr({
+							    type: 'text',
+							    id: 'datazipcode'+getIndex,
+							    name: 'addressList['+getIndex+'].zipcode',
+							    value: data[i].zipcode
+							}).appendTo('form');
+						  
+						  $('<input>').attr({
+							    type: 'text',
+							    id: 'datastatus'+getIndex,
+							    name: 'addressList['+getIndex+'].status',
+							    value: status
+							}).appendTo('form');
+						
 						
 						getIndex = getIndex+1; 
 // 						alert(getIndex);

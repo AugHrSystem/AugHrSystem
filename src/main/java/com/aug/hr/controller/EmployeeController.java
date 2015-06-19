@@ -1,6 +1,8 @@
 package com.aug.hr.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,6 +19,8 @@ import net.sf.jasperreports.engine.JRParameter;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -99,17 +103,16 @@ public class EmployeeController {
 	private static final Logger logger = Logger.getLogger(Employee.class);
 	
 	 
-	ModelMap modell;
 	
-	
-	@RequestMapping(value = "/listemployee", method =  {RequestMethod.GET,RequestMethod.POST})
+	//@RequestMapping(value = "/listemployee", method =  {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/employee/list", method =  {RequestMethod.GET,RequestMethod.POST})
     public String init(ModelMap model) {		
 		return "/employee/listemployee";
 	}
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss",Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         binder.registerCustomEditor(Date.class, editor);
         binder.registerCustomEditor(Address.class, addressEditor);
@@ -118,7 +121,8 @@ public class EmployeeController {
 	
 	
 	
-	@RequestMapping(value="/employee",method={RequestMethod.GET, RequestMethod.POST})
+
+	@RequestMapping(value="/employee",method={RequestMethod.POST,RequestMethod.GET})
 	//@Transactional
 	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
 						  HttpSession session,
@@ -200,10 +204,14 @@ public class EmployeeController {
 		 public String initEditEmployee(@PathVariable("id") Integer empId, 
 				 @ModelAttribute("allEmployeeDto") AllEmployeeDto allEmployeeDto,
 				 Model model) {	
+	   
+	   			model.addAttribute("myDate", new Date());
 		     
+	   			System.out.println("date: "+allEmployeeDto.getDateOfBirth());
 	   
 	   			allEmployeeDto = employeeService.findEmployeeByEmployeeIdWithSetToDto(empId);
-    	
+	   			
+	   			
 	   			model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
     			model.addAttribute("provinceList",masProvinceService.findAll());
     			
@@ -216,6 +224,11 @@ public class EmployeeController {
     			model.addAttribute("staffTypeList",masStaffTypeService.findAll());
     			model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
 				model.addAttribute("allEmployeeDto", allEmployeeDto);
+				
+				new SimpleDateFormat("dd-MMM-yyyy").format(allEmployeeDto.getDateOfBirth());
+				System.out.println("date: "+allEmployeeDto.getDateOfBirth());
+
+
 				
 			return "/employee/employeetest";
 	}
@@ -287,7 +300,9 @@ public class EmployeeController {
 		try {
 				if(allEmployeeDto.getFileupload().getOriginalFilename()==null){
 					
-					
+					employee = employeeService.createEmployeeAndReturnId(allEmployeeDto);
+					return "redirect:/employee/init/"+employee.getId();
+
 					
 					
 				}else if(allEmployeeDto.getFileupload().getOriginalFilename()!=null){
@@ -309,21 +324,26 @@ public class EmployeeController {
 						}
 					
 
-						
-							return "redirect:/family/"+employee.getId();
+							
+							return "redirect:/employee/init/"+employee.getId();
 						
 				 }
 				
 			} catch (RuntimeException | IOException e) {
-			e.printStackTrace();
+				return "redirect:/employee";
+				//e.printStackTrace();
 		}catch (Exception e) {
-			e.printStackTrace();
+			return "redirect:/employee";
+			//e.printStackTrace();
 		}
 		
 	  }else if(allEmployeeDto.getId()>0){
 		  
 		  logger.info("update emp");
-		  employee.setId(allEmployeeDto.getId());
+		  		  
+		   
+		  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto);	  
+		  //employee.setId(allEmployeeDto.getId());
 		  
 	  }
 		
@@ -331,8 +351,68 @@ public class EmployeeController {
 		
 		
 		
-		return "redirect:/history/"+employee.getId();
+		return "redirect:/listemployee";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/employee/deleteemp/{id}", method = RequestMethod.POST )
+	public String deleteEmployeeAndRelateTable(@PathVariable("id") Integer id) {
+		
+		
+		Employee employee = new Employee();
+		employee =	employeeService.findAndinitializeOfficial(id);
+		
+		List<Employee> aimList = employeeService.findAimRelateWithEmployee(employee.getId());
+		if(aimList!=null||aimList.isEmpty()==false){
+			
+			for(Employee aim:aimList){
+
+				if(aim.getId()!=null){
+					System.out.println("not null aim");
+					aim = employeeService.findById(aim.getId());
+					aim.setAimempid(null);
+					System.out.println("id: "+aim.getId());
+					employeeService.update(aim);
+					
+				}
+				
+			}
+			
+		}
+		
+		employee =	employeeService.findAndinitializeOfficial(id);
+		
+		if(employee.getImage()!=null){
+			   try {
+					uploadService .deleteImage("EMPLOYEE", employee.getImage());
+				} catch (RuntimeException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		   }
+		
+		employeeService.deleteEmployeeByHibernate(employee);
+		return "redirect:/listemployee";
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//Report
 	@RequestMapping(value = "/employee/reportPopup", method = { RequestMethod.GET})

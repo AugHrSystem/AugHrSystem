@@ -55,10 +55,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
             	
             		,resultClass= Official.class),
             		
-@NamedNativeQuery(
-           name = "searchIdEmptoOfficial",
-           query = "select * from EMP_OFFICIAL ORDER BY ID desc LIMIT 1;", 
-            resultClass = Official.class),
+           @NamedNativeQuery(
+		           name = "searchIdEmptoOfficial",
+		           query = "select * from EMP_OFFICIAL ORDER BY ID desc LIMIT 1;", 
+		           resultClass = Official.class),
             
             @NamedNativeQuery(
                     name = "updateOfficial",
@@ -72,6 +72,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
                        		+ "updatedBy =:updatedBy,"
                        		+ "auditFlag ='U' where ID =:ID", 
                         resultClass = Official.class),
+                        
+             @NamedNativeQuery(
+                      name = "deleteOfficial",
+                      query = "delete from EMP_OFFICIAL where ID=:id", 
+                      resultClass = Official.class),    
   })
 
 @Entity

@@ -20,25 +20,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.aug.hr.entity.dto.ExperienceDto;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -664,11 +659,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
   		
  
 
-	@NamedNativeQuery(
-            name = "searchIdEmptoAddress",
-            //query = "select * from EMP_EMPLOYEE  ORDER BY createdTimeStamp LIMIT 1;", 
-            query = "select * from EMP_EMPLOYEE  ORDER BY ID desc LIMIT 1;",
-            resultClass = Employee.class),
+           @NamedNativeQuery(
+		            name = "searchIdEmptoAddress",
+		            //query = "select * from EMP_EMPLOYEE  ORDER BY createdTimeStamp LIMIT 1;", 
+		            query = "select * from EMP_EMPLOYEE  ORDER BY ID desc LIMIT 1;",
+		            resultClass = Employee.class),
             
             
             @NamedNativeQuery(
@@ -748,7 +743,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
                         	+ "auditFlag ='U'"
                     		+ "where ID =:id ",
                     		
+                    resultClass = Employee.class),
+	
+                    
+            
+            @NamedNativeQuery(
+                    name = "deleteEmployee",
+                    query = "delete from EMP_EMPLOYEE where ID=:id",                    		
                     resultClass = Employee.class)
+	
             
             
   })
@@ -816,8 +819,8 @@ public class Employee extends BaseEntity{
 	@Column(name = "EMERGENCY_CONTACT_PHONE_NUMBER",nullable = false)
 	private String emergencyContactPhoneNumber;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(name = "DATEOFBIRTH",nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBirth;
@@ -837,9 +840,9 @@ public class Employee extends BaseEntity{
 	@Column(name = "ISSUED_OFFICE",nullable = true)
 	private String issuedOffice;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(name = "EXPIRY_DATE",nullable = true)
 	private Date expiryDate;
 	
@@ -915,14 +918,14 @@ public class Employee extends BaseEntity{
 	@Column(name = "MILITARY_SERVICE_YES",nullable = true)
 	private String militaryServiceYes;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(name = "FROM_YEAR",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fromYear;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(name = "TO_YEAR",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date toYear;
@@ -939,8 +942,8 @@ public class Employee extends BaseEntity{
 	@Column(name = "REASONS_NO",nullable = true)
 	private String reasonsNo;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
-	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(name = "DATE_TO_BE_DRAFTED",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
@@ -968,7 +971,7 @@ public class Employee extends BaseEntity{
 	@JoinColumn(name="AIM_EMP_ID",referencedColumnName="id",nullable = true,insertable = true, updatable = true)
 	private Employee aimempid;
 	
-	@OneToMany(mappedBy="aimempid", fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(mappedBy="aimempid", fetch=FetchType.EAGER,cascade=CascadeType.REMOVE)
 //	@JsonIgnore
 	private Set<Employee> staffs = new HashSet<Employee>();
 	
@@ -999,24 +1002,24 @@ public class Employee extends BaseEntity{
 
 
 	@Column(name = "ADDRESS_ID",nullable = true)
-	@OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "employee", fetch=FetchType.LAZY,cascade=CascadeType.REMOVE)
 
 //	@JsonIgnore
 	private List<Address> addresses = new ArrayList<Address>();
 
 	 
-	 @OneToOne(fetch=FetchType.LAZY)
+	 @OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.REMOVE)
 	 @JoinColumn(name = "OFFICIAL_ID",nullable = true)
 	 private Official official;
 	 
 	 
-	 @OneToMany(mappedBy = "employee")
+	 @OneToMany(mappedBy = "employee", cascade=CascadeType.REMOVE)
 	 private Set<Education> educations = new HashSet<Education>();
 	 
-	 @OneToMany(mappedBy = "employee")
+	 @OneToMany(mappedBy = "employee", cascade=CascadeType.REMOVE)
 	 private Set<Allowances> allowances = new HashSet<Allowances>();
 	 
-	 @OneToMany(mappedBy = "employee")
+	 @OneToMany(mappedBy = "employee", cascade=CascadeType.REMOVE)
 	 private Set<History> histories = new HashSet<History>();
 	 
 	 @ManyToOne(fetch=FetchType.EAGER)
@@ -1031,22 +1034,22 @@ public class Employee extends BaseEntity{
     @JsonIgnore
     private MasEmployment masEmployment;
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
 
 //    @JsonIgnore
     private Set<Ability> abilities = new HashSet<Ability>();
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY,cascade=CascadeType.REMOVE)
     private Set<Reference> references = new HashSet<Reference>();
     
    
-    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
     private Set<Certification> certifications  = new HashSet<Certification>();
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
     private Set<Leave> leaves  = new HashSet<Leave>();
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
     private Set<Punish> punishs  = new HashSet<Punish>();
     
     @ManyToOne(fetch=FetchType.EAGER)
@@ -1060,7 +1063,7 @@ public class Employee extends BaseEntity{
 //    @JsonIgnore
     private MasJoblevel masJoblevel;
     
-    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
 
 //    @JsonIgnore
     private Set<Experience> experiences = new HashSet<Experience>();
@@ -1072,16 +1075,16 @@ public class Employee extends BaseEntity{
     private MasTechnology technology;
     
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.ALL,orphanRemoval=true)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.REMOVE)
     private Set<Family> families = new HashSet<Family>(); 
     
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.REMOVE)
     @JsonIgnore
     private Set<Reward> rewards  = new HashSet<Reward>();
     
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade=CascadeType.REMOVE)
     @JsonIgnore
     private Set<Card> cards = new HashSet<Card>();
     
@@ -1097,7 +1100,7 @@ public class Employee extends BaseEntity{
     @JoinColumn(name= "LOCATION_ID")
     private MasLocation masLocation;
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade=CascadeType.REMOVE)
     @JsonIgnore
     private Set<Probation> probations = new HashSet<Probation>();
    
@@ -1113,19 +1116,19 @@ public class Employee extends BaseEntity{
    private Integer technologyId;
    
 
-   @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE})
+   @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
    //@JsonBackReference
    private Set<SkillLanguage> skillLanguage = new HashSet<SkillLanguage>();
    
    
    
-   @OneToMany(mappedBy = "employee")
+   @OneToMany(mappedBy = "employee", cascade=CascadeType.REMOVE)
    private Set<Site> site = new HashSet<Site>();
    
-	@OneToOne(fetch=FetchType.LAZY,mappedBy="employee")
+	@OneToOne(fetch=FetchType.LAZY,mappedBy="employee",cascade=CascadeType.REMOVE)
 	private Login login;
 	
-	@OneToOne(mappedBy="employee")
+	@OneToOne(mappedBy="employee", cascade=CascadeType.REMOVE)
 	private Health health; 
    
  //-------------------------------------- getter setter --------------------------------------------------//

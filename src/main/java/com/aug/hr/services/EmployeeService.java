@@ -26,8 +26,8 @@ public interface EmployeeService {
 	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto);
 	public AllEmployeeDto findEmployeeByEmployeeIdWithSetToDto(Integer id); 
 	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto);
-	public AllEmployeeDto findEmpInitEdit(Integer id);
-
-
-	
+	public Employee updateEmployeeAndReturnId(AllEmployeeDto allEmployeeDto);
+	public void deleteEmployeeByHibernate(Employee employee);
+	public Employee findAndinitializeOfficial(Integer id);
+	public List<Employee> findAimRelateWithEmployee(Integer id);
 }

@@ -26,6 +26,8 @@ public interface AddressService {
 	public void saveAddressByNameQuery(AddressDto addressDto);
 	public List<AddressDto> findAddressByEmployeeId(Integer id);
 	public List<AddressDto> searchAddress(Integer id);
+	public void deleteAddressByNameQuery(Integer id);
+
 
 
 	

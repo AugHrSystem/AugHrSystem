@@ -70,7 +70,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
             	     
          @NamedNativeQuery(
              name = "deleteAddress",
-            	 query = "delete from EMP_ADDRESS where ID=:ID",
+            	 query = "delete from EMP_ADDRESS where ID=:id",
             	 resultClass = Address.class),    	     
   })
 
