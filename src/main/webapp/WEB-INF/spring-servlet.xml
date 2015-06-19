@@ -45,7 +45,7 @@
 
     <!-- Message Resource config -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="messages"></property>
+        <property name="basename" value="classpath:messages"></property>
         <property name="defaultEncoding" value="UTF-8"></property>
     </bean>
 
@@ -55,20 +55,14 @@
 		<property name="paramName" value="locale" />
 	</bean>
 	</mvc:interceptors>
-	
+		<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
 	
 	<!-- Configure the multipart resolver-->
  	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="5000000" />   
 	</bean>
-	
-
-    <!-- Locales -->
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<property name="defaultLocale" value="en" />
-	</bean>
-
-
 
     <!--<bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>-->
 

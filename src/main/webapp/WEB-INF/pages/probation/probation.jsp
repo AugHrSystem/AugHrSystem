@@ -21,13 +21,15 @@
 <input id="empId" type="hidden" value="${id}">
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
 		<div class="row-md-12">
-			<h2 class="col-md-6">Probation</h2>	
+			<h2 class="col-md-6">
+				<spring:message code="probation.name" />
+			</h2>	
 			<br>
 			<div class="col-md-6">
 				<!-- Button trigger modal -->
 				<div class="form-group" align="right">
 					<button id="clearModal"type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">
- 	 					New record
+ 	 					<spring:message code="label.newRecord" />
 					</button>
 				</div>
 				<br>
@@ -37,11 +39,11 @@
 		<table id="tdResult">
 			<thead>
 				<tr>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Status</th>
-					<th>Reason</th>
-					<th>Action</th>
+					<th><spring:message code="probation.dateFrom" /></th>
+					<th><spring:message code="probation.dateTo" /></th>
+					<th><spring:message code="probation.status" /></th>
+					<th><spring:message code="probation.reason" /></th>
+					<th><spring:message code="label.action" /></th>
 					<!-- <th></th> -->
 				</tr>
 			</thead>
@@ -58,11 +60,11 @@
     <div class="modal-content">
       <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Probation</h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="probation.name" /></h4>
       </div>
       <div class="modal-body row">
   		<div class="form-group col-md-6">
-    		<label class="required">Start Date : </label>
+    		<label class="required"><spring:message code="probation.dateFrom" /> : </label>
   			<div class="input-group date" id="dateTimeFrom">
   				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="Start Date"/> 
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -164,7 +166,7 @@ var dt;
 		            status: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'Please select your Status.'
+	                            message: 'Please select your Status'
 	                        }
 	                    }
 		            }

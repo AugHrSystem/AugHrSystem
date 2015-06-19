@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +40,7 @@ public class ProbationController {
 	@Autowired private ProbationDtoService probationDtoService;
 
 	@RequestMapping(value = "/probation/{id}", method =  RequestMethod.GET)
-    public String init(ModelMap model, 
+    public String init(HttpSession session,Locale locale,ModelMap model, 
 			@PathVariable("id") Integer id, 
 			@ModelAttribute ProbationDto probationDto) {
 		
