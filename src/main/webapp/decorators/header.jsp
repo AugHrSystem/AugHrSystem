@@ -41,29 +41,29 @@
 			     	<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=en"><img class="img-flag" style="width: 25px; height: 25px;" src="<c:url value="/resource/images/flag_usa.png" />"> </a>
 			    </li>
 		    	<li class="dropdown">
-		    	 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<b class="caret"></b></a>
+		    	 	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="label.report" var="report" />${report}<b class="caret"></b></a>
 	                <span class="dropdown-arrow"></span>
 		    		<ul class="dropdown-menu">
 		    			<li>
-		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpName">Employee Name</a>
+		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpName"><spring:message code="report.empName" /></a>
 		    			</li>
 		    			<li>
-		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpCode">Employee Code</a>
-		    			</li>
-		    			
-		    			<li>
-		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportStatusEmp">Employee Status</a>
+		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpCode"><spring:message code="report.empCode" /></a>
 		    			</li>
 		    			
 		    			<li>
-		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportLeave">Employee Leave</a>
+		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportStatusEmp"><spring:message code="report.empStatus" /></a>
+		    			</li>
+		    			
+		    			<li>
+		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportLeave"><spring:message code="report.empLeave" /></a>
 		    			</li>
 		    			
 		    		</ul>
 		    	</li>
 		    	
 			    <li>
-			     	<a class="navbar-link" href="<%=request.getContextPath()%>/logout">Logout</a>
+			     	<a class="navbar-link" href="<%=request.getContextPath()%>/logout"><spring:message code="label.logout" /></a>
 			    </li>
 		    </ul>   
 	</div>

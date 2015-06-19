@@ -6,28 +6,9 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
-<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
-
-<!-- Date Picker -->
-<script src="<c:url value="/resource/datepicker/js/bootstrap-datepicker.js" />"></script>
-<link href="<c:url value="/resource/datepicker/css/datepicker.css" />" rel="stylesheet" media="all">
-
-<!-- Data Table -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet">
-
-<title>List Employee</title>
-</head>
-<body>
 <f:form method="post" commandName="listemployee"  role="form">
 		<!-- <ol class="breadcrumb">
 			<li role="presentation" class="active"><a href="#">Home</a></li>
@@ -40,11 +21,11 @@
 		<table id="tdResult">
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>Employee Code</th>
-		 			<th>Firstname</th>
-					<th>Surname</th>
-					<th>Action</th>
+					<th><spring:message code="label.id" /></th>
+					<th><spring:message code="employee.code" /></th>
+		 			<th><spring:message code="employee.firstname" /></th>
+					<th><spring:message code="employee.surname" /></th>
+					<th><spring:message code="label.action" /></th>
 					<!-- <th></th> -->
 				</tr>
 			</thead>
@@ -71,11 +52,11 @@
         <h4 class="modal-title" id="deleteModalLabel">Delete Employee</h4>
     </div>
       <div class="modal-body">
-      	Do you want to delete employee ?
+      	<spring:message code="default.delete.confirm" />
       </div>
       <div class="modal-footer">
-      	<button type="button" class="btn btn-danger yesButton" >Yes</button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+      	<button type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
       </div>
     </div>
   </div>
@@ -102,8 +83,8 @@ var empId;
     				for (var i=0;i< data.length; i++) {
     					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameEng, 
     					              data[i].surnameEng,
-    						 '<button type="button" class="btn btn-info btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')">Edit</button>'+
-    						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+    						 '<button type="button" class="btn btn-info btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')"><spring:message code="label.edit" /></button>'+
+    						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
     			 
     					}
     				},
@@ -176,7 +157,5 @@ var empId;
 
   
   </script>
-</body>
-</html>
 
 
