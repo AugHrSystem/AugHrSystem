@@ -8,6 +8,14 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
 <input id="empId" type="hidden" value="${id}">
 
 <form:form id ="listForm" method="post" commandName="education" action="education">
@@ -59,7 +67,7 @@
       <div class="modal-body row">
    
    	  <div class="form-group col-md-6">
-	    <label>Start Date :</label>
+	    <label class="required">Start Date : </label>
 	    <div class='input-group date' id='datetimepickerStart'>
 	    <form:input path="startDate" type="text" class="form-control" id="startDate" placeholder="DD-MM-YYYY"/>
 	    <span class="input-group-addon">
@@ -69,7 +77,7 @@
 	   </div> 
 	   
 	   <div class="form-group col-md-6">
-	    <label>Finish Date :</label>
+	    <label class="required">Finish Date : </label>
 	    <div class='input-group date' id='datetimepickerGrad'>
 	    <form:input path="graduatedDate" type="text" class="form-control" id="graduatedDate" placeholder="DD-MM-YYYY"/>
 	    <span class="input-group-addon">
@@ -79,24 +87,24 @@
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label>University :</label>
+	    <label class="required">University : </label>
 	    <form:input path="university" type="text" class="form-control" id="university" placeholder="Enter University"/>
 	  </div>
 	  
 	  
 	  
 	  <div class="form-group col-md-6">
-	    <label>Major :</label>
+	    <label class="required">Major : </label>
 	    <form:input path="major" type="text" class="form-control" id="major" placeholder="Enter Major"/>
 	  </div>
 	  
 	  <div class="form-group col-md-12">
-	    <label>Faculty :</label>
+	    <label class="required">Faculty : </label>
 	    <form:input path="faculty" type="text" class="form-control" id="faculty" placeholder="Enter Faculty"/>
 	  </div>
 	  
 	  <div class="form-group col-md-12">
-	    <label>Degree Type :</label>
+	    <label class="required">Degree Type : </label>
 	    
 		  <%-- <form:select path="masdegreetype" class="form-control"
 			id="masdegreetype">

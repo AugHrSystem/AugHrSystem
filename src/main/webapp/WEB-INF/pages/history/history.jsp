@@ -7,7 +7,13 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
-
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
 <input id="empId" type="hidden" value="${id}">
 
 <form:form id ="listForm" method="post" commandName="history">
@@ -59,7 +65,7 @@
       <div class="modal-body row">
         
       <div class="form-group col-md-6">
-	    <label>Approved date :</label>
+	    <label class="required">Approved date : </label>
 	    <div class='input-group date' id='datetimepicker1'>
 	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment" placeholder="DD-MM-YYYY"/>
 	  	<span class="input-group-addon">
@@ -70,12 +76,12 @@
 	  </div>
 	    
 	  <div class="form-group col-md-6">
-	    <label>Position :</label>
+	    <label class="required">Position : </label>
 	    <form:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position" />
 	  </div>
 	  
 	  <div class="form-group col-md-6">
-	    <label>Salary :</label>
+	    <label class="required">Salary : </label>
 	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary"/>
 	  </div>
 	  

@@ -7,7 +7,13 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
-
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
 <input id="empId" type="hidden" value="${id}">
 
 <form:form id ="listForm" method="post" commandName="allowances">
@@ -57,7 +63,7 @@
       <div class="modal-body">
         
 	  <div class="form-group">
-	    <label>Allowances Type :</label>
+	    <label class="required">Allowances Type : </label>
 	    <form:select path="masallowances" class="form-control"
 			id="masallowances" onchange="myFunction(this.value)">
 			<form:option value="" label="---Select Allowances---" />
@@ -68,7 +74,7 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Amount Allowances :</label>
+	    <label class="required">Amount Allowances : </label>
 	    <form:input path="amount" type="text" class="form-control" id="amount" placeholder="Enter Amount Allowances"/>
 	  </div>
 	  
