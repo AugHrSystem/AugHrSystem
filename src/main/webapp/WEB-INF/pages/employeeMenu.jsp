@@ -20,7 +20,7 @@
 			<li class="disabled disabledTab"><a>Reference</a></li>
 			<li class="disabled disabledTab"><a>Reward</a></li>
 			<li class="disabled disabledTab"><a>History</a></li>
-			<li class="disabled disabledTab"><a>Probation</a></li>
+			<li class="disabled disabledTab"><a><spring:message code="probation.name" /></a></li>
 			<li class="disabled disabledTab"><a>Punish</a></li>
 			<li class="disabled disabledTab"><a>Leave</a></li>
 			<li class="disabled disabledTab"><a>SkillLanguage</a></li>
@@ -40,7 +40,7 @@
 			<li><a href="${pageContext.request.contextPath}/reference/${id}" >Reference</a></li>
 			<li><a href="${pageContext.request.contextPath}/reward/${id}" >Reward</a></li>
 			<li><a href="${pageContext.request.contextPath}/history/${id}" >History</a></li>
-			<li><a href="${pageContext.request.contextPath}/probation/${id}" >Probation</a></li>
+			<li><a href="${pageContext.request.contextPath}/probation/${id}" ><spring:message code="probation.name" /></a></li>
 			<li><a href="${pageContext.request.contextPath}/punish/${id}" >Punish</a></li>
 			<li><a href="${pageContext.request.contextPath}/leave/${id}" >Leave</a></li>
 			<li><a href="${pageContext.request.contextPath}/skilllanguage/${id}" >SkillLanguage</a></li>

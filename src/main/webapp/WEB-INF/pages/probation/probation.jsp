@@ -64,25 +64,31 @@
       </div>
       <div class="modal-body row">
   		<div class="form-group col-md-6">
-    		<label class="required"><spring:message code="probation.dateFrom" /> : </label>
+  		<spring:message code="default.enter" var="enter" />
+  		<spring:message code="default.date" var="date" />
+    		<label class="required">
+    			<spring:message code="probation.dateFrom" var="dateFrom" /> ${dateFrom} : 
+    		</label>
   			<div class="input-group date" id="dateTimeFrom">
-  				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="Start Date"/> 
+  				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="${date}"/> 
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
 		
 		<div class="form-group col-md-6">
-    		<label class="required">End Date : </label> 	
+    		<label class="required">
+    			<spring:message code="probation.dateTo" var="dateTo" /> ${dateTo} : 
+    		</label> 	
   			<div class="input-group date" id="dateTimeTo">
-  				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="End Date"/>
+  				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="${date}"/>
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
   		
   		<div class="form-group col-md-12">
-    			<label class="required">Status : </label>
+    			<label class="required"><spring:message code="probation.status" var="status" /> ${status} : </label>
     				<f:select path="status" id="status"  class="form-control">
-						<option value="">--Choose Status--</option>
+						<option value=""><spring:message code="probation.chooseStatus" /></option>
 						<option value="Pass">Pass</option>
 						<option value="Not Pass">Not Pass</option>
 						<option value="Extend">Extend</option>
@@ -90,13 +96,13 @@
 		</div>
   		
   		<div class="form-group col-md-12">
-	    	<label>Reason : </label>
-	   		<input type="text" class="form-control" id="reason" placeholder="Enter Reason"/>
+	    	<label><spring:message code="probation.reason" var="reason" /> ${reason} : </label>
+	   		<input type="text" class="form-control" id="reason" placeholder="${enter}${reason}"/>
 	  	</div>
       </div>
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info saveButton">Save</button>
+        <button type="button" class="btn btn-default closeButton" data-dismiss="modal"><spring:message code="label.close" /></button>
+        <button type="button" class="btn btn-info saveButton"><spring:message code="label.save" /></button>
       </div>
 
     </div>
@@ -109,14 +115,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel">Delete Probation</h4>
+        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="label.delete" /> <spring:message code="probation.name" /></h4>
       </div>
       <div class="modal-body">
-      	Do you want to delete probation ?
+      		<spring:message code="default.delete.confirm" />
       </div>
       <div class="modal-footer">
-		<button type="button" class="btn btn-danger yesButton" >Yes</button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+		<button type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
       </div>
     </div>
   </div>
@@ -405,8 +411,8 @@ var dt;
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].dateFrom,data[i].dateTo,
 						              data[i].status,data[i].reason,
-							 '<button type="button" class="btn btn-warning btn-sm active" data-proId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-							'<button type="button" class="btn btn-danger btn-sm active" data-proId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+							 '<button type="button" class="btn btn-warning btn-sm active" data-proId="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+							'<button type="button" class="btn btn-danger btn-sm active" data-proId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 				 
 						}
 					},

@@ -19,13 +19,13 @@
 
 <f:form method="post" commandName="experience" class="form-horizontal" role="form">	
 		<div class="row-md-12">	
-			<h2 class="col-md-6">Experience</h2>
+			<h2 class="col-md-6"><spring:message code="experience.name" /></h2>
 			<br>
 			<div class="col-md-6">
 			<!-- Button trigger modal -->
 				<div class="form-group" align="right">
 					<button id="clearModal" type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
- 	 					New record
+ 	 					<spring:message code="label.newRecord" />
 					</button>
 				</div>
 				<br>
@@ -35,13 +35,13 @@
 		<table id="tdResult">
 			<thead>
 				<tr>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Company Name</th>
-					<th>Position</th>
-					<th>Salary</th>
-					<th>Reason of Resign</th>
-					<th>Action</th>
+					<th><spring:message code="experience.dateFrom" /></th>
+					<th><spring:message code="experience.dateTo" /></th>
+					<th><spring:message code="experience.companyName" /></th>
+					<th><spring:message code="experience.position" /></th>
+					<th><spring:message code="experience.salary" /></th>
+					<th><spring:message code="experience.reason" /></th>
+					<th><spring:message code="label.action" /></th>
 					<!-- <th></th> -->
 				</tr>
 			</thead>
@@ -57,67 +57,68 @@
     <div class="modal-content">
       <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Experience</h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="experience.name" /></h4>
       </div>
       <div class="modal-body row">
-      
+        <spring:message code="default.enter" var="enter" />
+  		<spring:message code="default.date" var="date" />
        	<div class="form-group col-md-6">
-    		<label class="required">Start Date : </label>
+    		<label class="required"><spring:message code="experience.dateFrom" var="dateFrom" /> ${dateFrom} : </label>
   			<div class="input-group" id="dateTimeFrom">
-  				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="Start Date" />
+  				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="${date}" />
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
 		
 		<div class="form-group col-md-6">
-    		<label class="required">End Date : </label> 	
+    		<label class="required"><spring:message code="experience.dateTo" var="dateTo" /> ${dateTo} : </label> 	
   			<div class="input-group" id="dateTimeTo">
-  				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="End Date" />
+  				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="${date}" />
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
         <div class="form-group col-md-6">
-  			<label class="required">Company Name : </label>
-  			<f:input path="companyName" type="text" class="form-control" id="cName" placeholder="Enter Company Name" />
+  			<label class="required"><spring:message code="experience.companyName" var="cName" /> ${cName} : </label>
+  			<f:input path="companyName" type="text" class="form-control" id="cName" placeholder="${enter}${cName}" />
   		</div>
   		<div class="form-group col-md-6">
-  			<label>Business Type:</label>
-  			<input type="text" class="form-control" id="businessType" placeholder="Enter Business Type">
+  			<label><spring:message code="experience.businessType" var="businessType" /> ${businessType} : </label>
+  			<input type="text" class="form-control" id="businessType" placeholder="${businessType}">
   		</div>
   		
       	<div class="form-group col-md-6">
-      		<label class="required">Position : </label>
-  			<f:input path="position" type="text" class="form-control" id="position" placeholder="Enter Position" />
+      		<label class="required"><spring:message code="experience.position" var="position" /> ${position} : </label>
+  			<f:input path="position" type="text" class="form-control" id="position" placeholder="${enter}${position}" />
 		</div>
 		
 		<div class="form-group col-md-6">
-      		<label class="required">Salary : </label>
-  			<f:input path="salary" type="text" class="form-control" id="salary" placeholder="Enter Salary" />
+      		<label class="required"><spring:message code="experience.salary" var="salary" /> ${salary} : </label>
+  			<f:input path="salary" type="text" class="form-control" id="salary" placeholder="${enter}${salary}" />
 		</div>
   		
 		<div class="form-group col-md-6">
-  			<label>Responsibility :</label>
-  			<input type="text" class="form-control" id="responsibility" placeholder="Enter Responsibility">
+  			<label><spring:message code="experience.responsibility" var="responsibility" /> ${responsibility} : </label>
+  			<input type="text" class="form-control" id="responsibility" placeholder="${enter}${responsibility}">
   		</div>
   		<div class="form-group col-md-6">
-  			<label>Reference :</label>
-  			<input type="text" class="form-control" id="reference" placeholder="Enter Reference Name">
+  			<label><spring:message code="experience.reference" var="reference" /> ${reference} : </label>
+  			<input type="text" class="form-control" id="reference" placeholder="${enter}${reference}">
   		</div>
   		
   		<div class="form-group col-md-12">
-  			<label>Address :</label>
-  			<input type="text" class="form-control" id="address" placeholder="Enter Address">
+  			<label><spring:message code="experience.address" var="address" /> ${address} : </label>
+  			<input type="text" class="form-control" id="address" placeholder="${enter}${address} ">
   		</div>
   		
   		<div class="form-group col-md-12">
-  			<label class="required">Reason of Resignation: </label>
-  			<f:input path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason of Resignation" />
+  			<label class="required"><spring:message code="experience.reason" var="reason" /> ${reason} : </label>
+  			<f:input path="reason" type="text" class="form-control" id="reason" placeholder="${enter}${reason}" />
   		</div>
         
       </div>
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info saveButton">Save</button>
+        <button type="button" class="btn btn-default closeButton" data-dismiss="modal"><spring:message code="label.close" /></button>
+        <button type="button" class="btn btn-info saveButton"><spring:message code="label.save" /></button>
       </div>
     </div>
   </div>
@@ -135,8 +136,8 @@
       	Do you want to delete experience ?
       </div>
       <div class="modal-footer">
-		<button type="button" class="btn btn-danger yesButton" >Yes</button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+		<button type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
       </div>
     </div>
   </div>
@@ -463,8 +464,8 @@ var dt;
 						              data[i].salary,
 						              data[i].reason,
 							 
-						 	'<button type="button" class="btn btn-warning btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-	    				  '<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+						 	'<button type="button" class="btn btn-warning btn-sm active" data-expId="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+	    				  '<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 	    					
 						}
 					},

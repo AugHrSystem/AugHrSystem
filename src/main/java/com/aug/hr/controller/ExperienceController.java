@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -34,7 +36,7 @@ public class ExperienceController {
 	@Autowired private ExperienceDtoService experienceDtoService;
 	
 	@RequestMapping(value = "/experience/{id}", method =  RequestMethod.GET)
-    public String init(ModelMap model, 
+    public String init(HttpSession session,Locale locale,ModelMap model, 
 			@PathVariable("id") Integer id, 
 			@ModelAttribute ExperienceDto experienceDto) {		
 		
