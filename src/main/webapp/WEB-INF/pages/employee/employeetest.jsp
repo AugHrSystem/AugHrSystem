@@ -31,15 +31,12 @@
 				</h2>
 		 </div>
 		 
-		 Original : ${myDate }
-		 <br/>
-		 Result : <fmt:formatDate pattern="dd-MM-yyyy" value="${myDate}" />
 		 
 		 <div class="col-md-7">
 
 							<div class="form-group">
 									<!-- <label for="id"> ID :</label> -->
-									 <input id="id" name="id" type="text" class="form-control" placeholder="Enter ID" value="${id}">
+									 <input id="id" name="id" type="hidden" class="form-control" placeholder="Enter ID" value="${id}">
 								
 								<div class="col-md-6">
 		    					<label>Location :</label>
@@ -301,12 +298,7 @@
 							        </span>
 							        </div>
 								</div>
-								
-									
-									aaa: <fmt:formatDate pattern="dd-MM-yyyy" 
-           							 value="${allEmployeeDto.dateOfBirth}" />
-									 
-									a:${allEmployeeDto.dateOfBirth}
+																	
 								
 								
 								<div class="col-md-3">
@@ -796,9 +788,7 @@
 				<div class="col-md-4">
 				<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary" value="${allEmployeeDto.salaryExpected}">
 				
-				
-				allEmployeeDto.salaryExpected:${allEmployeeDto.salaryExpected}
-
+			
 				<%-- <div class="col-md-6">
 									<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary" value="${allEmployeeDto.salaryExpected}">
  				--%>
@@ -1024,7 +1014,6 @@
 						<input type="text" class="form-control"
 									id="probationDate" name="probationDate" placeholder="Enter Probation Date" 
 									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.probationDate}"/>' />
-									probatationdate: ${allEmployeeDto.probationDate}
 
 
 						<%-- <label> Probation Date :</label> <input type="text" class="form-control"
@@ -1169,13 +1158,13 @@ $('input.example').on('change', function() {
 
 
 $(".closeAddressButton").off("click").on("click",function() {
-	$('#validateAddress').bootstrapValidator('resetForm', true);
+	//$('#validateAddress').bootstrapValidator('resetForm', true);
 });
 
 
-$('#validateAddress').bootstrapValidator({
+//$('#validateAddress').bootstrapValidator({
 //  live: 'disabled',
-  message: 'This value is not valid',
+ /*  message: 'This value is not valid',
   feedbackIcons: {
       valid: 'glyphicon glyphicon-ok',
       invalid: 'glyphicon glyphicon-remove',
@@ -1236,9 +1225,9 @@ $('#validateAddress').bootstrapValidator({
 
 
 
-$('#addForm').bootstrapValidator({
+$('#addForm').bootstrapValidator({ */
 //    live: 'disabled',
-    message: 'This value is not valid',
+   /*  message: 'This value is not valid',
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
         invalid: 'glyphicon glyphicon-remove',
@@ -1705,7 +1694,7 @@ $('#addForm').bootstrapValidator({
         }
         
     }
-});
+}); */
 
 
 		var date1 = $( "#dateOfBirth" ).datetimepicker({
@@ -1975,21 +1964,19 @@ $('#addForm').bootstrapValidator({
     		
     $('body').on('click','#addaddress', function() {
     	
-//     	alert("add add")
     		
   		$("#saveAddressButton").off("click").on("click", function()
   				
   		{
 			
-   			  //  alert("add");
+   			
    				
-   			$('[name="validateAddress"]').submit();
-   			if($('#validateAddress').data('bootstrapValidator').isValid())
+   			//$('[name="validateAddress"]').submit();
+   			/* if($('#validateAddress').data('bootstrapValidator').isValid())
    				{
-//    				alert("Error");
    				addAddress();
-   				}
-			//	addAddress();
+   				} */
+			addAddress();
 			
 			
 		});
@@ -2070,7 +2057,7 @@ $('#addForm').bootstrapValidator({
 				  
 				  
 				  $('<input>').attr({
-					    type: 'text',
+					    type: 'hidden',
 					    id: 'dataaddressid'+getIndex,
 					    name: 'addressList['+getIndex+'].id',
 					    value: id
@@ -2078,42 +2065,42 @@ $('#addForm').bootstrapValidator({
 				  
 				  
 				  $('<input>').attr({
-					    type: 'text',
+					    type: 'hidden',
 					    id: 'dataaddresstype'+getIndex,
 					    name: 'addressList['+getIndex+'].addressTypeId',
 					    value: addressId
 					}).appendTo('form');
 				  
 				  $('<input>').attr({
-					    type: 'text',
+					    type: 'hidden',
 					    id: 'dataaddress1'+getIndex,
 					    name: 'addressList['+getIndex+'].address1',
 					    value: address1
 					}).appendTo('form');
 				  
 				  $('<input>').attr({
-					    type: 'text',
+					    type: 'hidden',
 					    id: 'dataaddress2'+getIndex,
 					    name: 'addressList['+getIndex+'].address2',
 					    value: address2
 					}).appendTo('form');
 				  
 				  $('<input>').attr({
-					    type: 'text',
+					    type: 'hidden',
 					    id: 'dataprovinceid'+getIndex,
 					    name: 'addressList['+getIndex+'].masprovinceId',
 					    value: provinceId
 					}).appendTo('form');
 				  
 				  $('<input>').attr({
-					    type: 'text',
+					    type: 'hidden',
 					    id: 'datazipcode'+getIndex,
 					    name: 'addressList['+getIndex+'].zipcode',
 					    value: zipcode
 					}).appendTo('form');
 				  
 				  $('<input>').attr({
-					    type: 'text',
+					    type: 'hidden',
 					    id: 'datastatus'+getIndex,
 					    name: 'addressList['+getIndex+'].status',
 					    value: status
@@ -2127,7 +2114,7 @@ $('#addForm').bootstrapValidator({
 				 
 				  $('#myModal').modal('toggle');
 				  clearDataModal();
-				  $('#validateAddress').bootstrapValidator('resetForm', true);
+				  //$('#validateAddress').bootstrapValidator('resetForm', true);
    	
    	    }
    	
@@ -2161,8 +2148,8 @@ $('#addForm').bootstrapValidator({
    		
    		$('#saveAddressButton').off("click").on("click",function(){
    			
-   			$('[name="validateAddress"]').submit();
-   			if($('#validateAddress').data('bootstrapValidator').isValid()){
+   			/* $('[name="validateAddress"]').submit();
+   			if($('#validateAddress').data('bootstrapValidator').isValid()){ */
 	   			
 	   			
    			
@@ -2191,26 +2178,26 @@ $('#addForm').bootstrapValidator({
 		    dt.fnUpdate(zipcode, rowUpdate, 7);
 		    dt.fnUpdate('edit', rowUpdate, 10);
 		    
-		    $("#dataaddressid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].id");
+		    $("#dataaddressid"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].id");
 		    $("#dataaddressid"+dataUpdate[8]).val(id);
 		    
-		    $("#dataaddresstype"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].addressTypeId");
+		    $("#dataaddresstype"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].addressTypeId");
 		    $("#dataaddresstype"+dataUpdate[8]).val(addressId);
 		    
-		    $("#dataaddress1"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].address1");
+		    $("#dataaddress1"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].address1");
 		    $("#dataaddress1"+dataUpdate[8]).val(address1);
 		    
-		    $("#dataaddress2"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].address2");
+		    $("#dataaddress2"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].address2");
 		    $("#dataaddress2"+dataUpdate[8]).val(address2);
 		    
-		    $("#dataprovinceid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].masprovinceId");
+		    $("#dataprovinceid"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].masprovinceId");
 		    $("#dataprovinceid"+dataUpdate[8]).val(provinceId);
 		    
 		
-		    $("#datazipcode"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].zipcode");
+		    $("#datazipcode"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].zipcode");
 		    $("#datazipcode"+dataUpdate[8]).val(zipcode);
 		    
-		    $("#datastatus"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].status");
+		    $("#datastatus"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].status");
 		    $("#datastatus"+dataUpdate[8]).val('edit');
 		    
 		    
@@ -2225,30 +2212,30 @@ $('#addForm').bootstrapValidator({
 	    dt.fnUpdate(province, rowUpdate, 6);
 	    dt.fnUpdate(zipcode, rowUpdate, 7);
 	    
-	    $("#dataaddressid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].id");
+	    $("#dataaddressid"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].id");
 	    $("#dataaddressid"+dataUpdate[8]).val(id);
 	    
-	    $("#dataaddresstype"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].addressTypeId");
+	    $("#dataaddresstype"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].addressTypeId");
 	    $("#dataaddresstype"+dataUpdate[8]).val(addressId);
 	    
-	    $("#dataaddress1"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].address1");
+	    $("#dataaddress1"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].address1");
 	    $("#dataaddress1"+dataUpdate[8]).val(address1);
 	    
-	    $("#dataaddress2"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].address2");
+	    $("#dataaddress2"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].address2");
 	    $("#dataaddress2"+dataUpdate[8]).val(address2);
 	    
-	    $("#dataprovinceid"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].provinceId");
+	    $("#dataprovinceid"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].masprovinceId");
 	    $("#dataprovinceid"+dataUpdate[8]).val(provinceId);
 	    
 	
-	    $("#datazipcode"+dataUpdate[8]).attr('name', "addresses["+dataUpdate[8]+"].zipcode");
+	    $("#datazipcode"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].zipcode");
 	    $("#datazipcode"+dataUpdate[8]).val(zipcode);
 
    		
    	 }
    		
    		$('#myModal').modal('toggle');
-   			}
+   			//}
    		});
    	
    	
@@ -2345,7 +2332,7 @@ $('#addForm').bootstrapValidator({
 					 
 						
 						  $('<input>').attr({
-							    type: 'text',
+							    type: 'hidden',
 							    id: 'dataaddressid'+getIndex,
 							    name: 'addressList['+getIndex+'].id',
 							    value: data[i].id
@@ -2353,42 +2340,42 @@ $('#addForm').bootstrapValidator({
 						  
 						  
 						  $('<input>').attr({
-							    type: 'text',
+							    type: 'hidden',
 							    id: 'dataaddresstype'+getIndex,
 							    name: 'addressList['+getIndex+'].addressTypeId',
 							    value: data[i].addressTypeId
 							}).appendTo('form');
 						  
 						  $('<input>').attr({
-							    type: 'text',
+							    type: 'hidden',
 							    id: 'dataaddress1'+getIndex,
 							    name: 'addressList['+getIndex+'].address1',
 							    value: data[i].address1
 							}).appendTo('form');
 						  
 						  $('<input>').attr({
-							    type: 'text',
+							    type: 'hidden',
 							    id: 'dataaddress2'+getIndex,
 							    name: 'addressList['+getIndex+'].address2',
 							    value: data[i].address2
 							}).appendTo('form');
 						  
 						  $('<input>').attr({
-							    type: 'text',
+							    type: 'hidden',
 							    id: 'dataprovinceid'+getIndex,
 							    name: 'addressList['+getIndex+'].masprovinceId',
 							    value: data[i].masprovinceId
 							}).appendTo('form');
 						  
 						  $('<input>').attr({
-							    type: 'text',
+							    type: 'hidden',
 							    id: 'datazipcode'+getIndex,
 							    name: 'addressList['+getIndex+'].zipcode',
 							    value: data[i].zipcode
 							}).appendTo('form');
 						  
 						  $('<input>').attr({
-							    type: 'text',
+							    type: 'hidden',
 							    id: 'datastatus'+getIndex,
 							    name: 'addressList['+getIndex+'].status',
 							    value: status

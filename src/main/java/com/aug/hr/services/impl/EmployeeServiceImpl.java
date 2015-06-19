@@ -562,8 +562,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 			}
 		}
 		
-		if(allEmployeeDto.getMasLocationId()!=null){
+		if(allEmployeeDto.getMasLocation()!=null||allEmployeeDto.getMasLocation().isEmpty()==false){
 			MasLocation masLocation = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
+			System.out.println("id location: "+masLocation.getId());
 			if(masLocation.getId()!=null){
 				employee.setMasLocation(masLocation); 
 			}
@@ -785,7 +786,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			}
 		}
 		
-		if(allEmployeeDto.getMasLocationId()!=null){
+		if(allEmployeeDto.getMasLocation()!=null||allEmployeeDto.getMasLocation().isEmpty()==false){
 			MasLocation masLocation = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
 			if(masLocation.getId()!=null){
 				employee.setMasLocation(masLocation); 
@@ -914,9 +915,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		
 		//update Address
-				if(allEmployeeDto.getAddressList()!=null){
+				
+		
+			if(allEmployeeDto.getAddressList()!=null){
+		
+		     System.out.println(allEmployeeDto.getAddressList().get(0));
 					
 					for(AddressDto addressDto:allEmployeeDto.getAddressList()){
+						
+						
+						
 						if(addressDto.getId()!=null){
 							
 							System.out.println("address delete: "+addressDto.getStatus());
@@ -950,6 +958,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 							
 							}else if(addressDto.getStatus().equals("edit")){
 								
+								
+								   System.out.println("address edit: "+addressDto.getStatus());
+
+								
 									Address address = new Address();
 									address = addressService.find(addressDto.getId());
 									address.setAddress1(addressDto.getAddress1());
@@ -979,7 +991,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 								
 							}else if(addressDto.getStatus().equals("delete")){
 								
-
+									
 									System.out.println("delete#1: "+addressDto.getStatus());
 									Address address = new Address();
 									address = addressService.find(addressDto.getId());
