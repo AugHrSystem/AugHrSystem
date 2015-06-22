@@ -10,6 +10,14 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
 <input type="hidden" id="emp">
 <input type="hidden" id="empname">
 <!-- <input type="hidden" id="id"> -->
@@ -21,7 +29,7 @@
 
 <!------------------------------------------------------ Start Information-------------------------------------------------------->
 		
-		 <input id="employeeCodeDto" name="employeeCodeDto.rungingNumber" type="hidden" class="form-control"  placeholder="Location ID" value="${ employeeCodeDto.rungingNumber}">
+		 <input id="employeeCodeDto" name="employeeCodeDto.rungingNumber" type="hidden" class="form-control required"  placeholder="Location ID" value="${ employeeCodeDto.rungingNumber}">
 		
 		
 		<div id="message"></div>
@@ -39,7 +47,7 @@
 									 <input id="id" name="id" type="hidden" class="form-control" placeholder="Enter ID" value="${id}">
 								
 								<div class="col-md-6">
-		    					<label>Location :</label>
+		    					<label class="required">Location : </label>
 		    						<f:select id="masLocation" path="masLocation"  class="form-control" value="TH">
 									 	 <option  value="" label="--Select Location--" />
 		  								 <f:options items="${ locationList }"  itemValue="code" itemLabel="name" />
@@ -47,7 +55,7 @@
 								</div> 
 							
 								<div class="col-md-6">
-									<label for="employeeCode"> Employee Code :</label> 
+									<label for="employeeCode" class="required"> Employee Code : </label> 
 									<input id="employeeCodefalse" name="employeeCodefalse" type="text" class="form-control" disabled placeholder="Enter Employee Code" value="${allEmployeeDto.employeeCode}">
 								</div>
 								
@@ -63,12 +71,12 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-4">
-									<label> Name (Thai.) :</label> 
+									<label class="required"> Name (Thai.) : </label> 
 									<input type="text" class="form-control" 
 									id="nameThai"name="nameThai" placeholder="Enter Name (Thai)" value="${allEmployeeDto.nameThai}">
 								</div>
 								<div class="col-md-4">
-									<label> SurName (Thai.) :</label> 
+									<label> SurName (Thai.) : </label> 
 									<input type="text" class="form-control" 
 									id="surnameThai" name="surnameThai" placeholder="Enter Surname (Thai)" value="${allEmployeeDto.surnameThai}">
 								</div>
@@ -83,7 +91,7 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-4">
-									<label> Name (Eng.) :</label> 
+									<label class="required"> Name (Eng.) : </label> 
 									<input type="text" class="form-control" id="nameEng" name="nameEng" placeholder="Enter Name (Eng)" value="${allEmployeeDto.nameEng}">
 								</div>
 								<div class="col-md-4">
@@ -212,15 +220,15 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-3">
-									<label> Email :</label> <input type="email" class="form-control"
+									<label class="required"> Email : </label> <input type="email" class="form-control"
 									id="email" name="email" placeholder="Enter Email" value="${allEmployeeDto.email}">
 								</div>
 								<div class="col-md-3">
-									<label> Tel. (Home) :</label> <input type="text" class="form-control"
+									<label class="required"> Tel. (Home) : </label> <input type="text" class="form-control"
 									id="telHome" name="telHome" placeholder="xx-xxx-xxxx" value="${allEmployeeDto.telHome}">
 								</div>
 								<div class="col-md-3">
-									<label> Tel. (Mobile) :</label> <input type="text" class="form-control"
+									<label class="required"> Tel. (Mobile) : </label> <input type="text" class="form-control"
 									id="telMobile" name="telMobile" placeholder="xxx-xxx-xxxx" value="${allEmployeeDto.telMobile}">
 								</div>
 								<div class="col-md-3">
@@ -250,7 +258,7 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-6">
-									<label> Emergency Contact :</label> <input type="text" class="form-control"
+									<label class="required"> Emergency Contact : </label> <input type="text" class="form-control"
 									id="emergencyContact" name="emergencyContact" placeholder="Enter Emergency Name" value="${allEmployeeDto.emergencyContact}">
 								</div>
 								<div class="col-md-6">
@@ -271,7 +279,7 @@
 									id="emergencyContactAddress" name="emergencyContactAddress" placeholder="Enter Emergency Address" value="${allEmployeeDto.emergencyContactAddress}">
 								</div>
 								<div class="col-md-3">
-									<label> Emergency Contact Phone Number  :</label> <input type="text" class="form-control"
+									<label class="required"> Emergency Contact Phone Number  : </label> <input type="text" class="form-control"
 									id="emergencyContactPhoneNumber" name="emergencyContactPhoneNumber" placeholder="xxx-xxx-xxxx" value="${allEmployeeDto.emergencyContactPhoneNumber}">
 								</div>
 							</div>
@@ -283,7 +291,7 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-3">
-									<label> Date of Birth :</label> 
+									<label class="required"> Date of Birth : </label> 
 									<div class='input-group date'  id='dateOfBirth'>
 									
 								
@@ -336,7 +344,7 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-3">
-									<label> ID Card :</label> <input type="text" class="form-control"
+									<label class="required"> ID Card : </label> <input type="text" class="form-control"
 									id="idCard" name="idCard" placeholder="Enter Id Card" value="${allEmployeeDto.idCard}">
 								</div>
 								<div class="col-md-3">
