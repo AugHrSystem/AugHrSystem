@@ -6,6 +6,13 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
 
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
@@ -18,7 +25,7 @@
 		<div class="row-md-12">
 
 				<div class="col-md-6">
-					<h2>Leave</h2> 
+					<h2><spring:message code="leave.name" /> </h2> 
 
 				</div>
 
@@ -28,7 +35,7 @@
 					<!-- Button trigger modal -->
 					<div class="form-group" align="right">
 						<button type="button" id="addBtnLe" class="btn btn-info btn-md"
-							data-toggle="modal" data-target="#addModal">New record</button>
+							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
 					</div>
 
 
@@ -46,13 +53,13 @@
 	<thead>
 		<tr>
 			<!-- <th>Start_Date</th> -->
-			<th>Start_Date-Time</th>
+			<th><spring:message code="leave.start.date.time" /></th>
 			<!-- <th>End_Date</th> -->
-			<th>End_Date-Time</th>
-			<th>Leave_Type</th>
-			<th>Reason</th>
-			 <th>AIM</th> 
-			<th>Action</th>
+			<th><spring:message code="leave.end.date.time" /></th>
+			<th><spring:message code="leave.leavetype" /></th>
+			<th><spring:message code="leave.reason" /></th>
+			 <th><spring:message code="leave.aim" /></th> 
+			<th><spring:message code="leave.action" /></th>
 			<!-- <th>Delete</th> -->
 		</tr>
 	</thead>
@@ -72,7 +79,7 @@
     <div class="modal-content">
       <div class="modal-header">
        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Leave</h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="leave.name" /></h4>
       </div>
       <div class="modal-body row">
    	
@@ -112,7 +119,7 @@
 	    
 	     <div class='col-sm-6'>
             <div class="form-group">
-            <label>Start Date-Time:</label>
+            <label  class="required"><spring:message code="leave.start.date.time" />:</label>
                 <div class='input-group date' id="startTime1">
 				    <form:input id="startTime" name="startTime" path="startTime" cssClass="form-control"/>
                     <span class="input-group-addon">
@@ -159,7 +166,7 @@
 
 		 <div class='col-sm-6'>
             <div class="form-group">
-            <label>End Date-Time:</label>
+            <label  class="required">  <spring:message code="leave.end.date.time" />:</label>
                 <div class='input-group date' id="endTime1">
                     <input type='text' class="form-control"  id="endTime"/>
                     <span class="input-group-addon">
@@ -186,7 +193,7 @@
 
 		
   	<div  class=" form-group col-md-6">
-	    <label>Leave type:</label>
+	    <label  class="required"><spring:message code="leave.leavetype" />:</label>
 	    
 		<div class="form-group">
 		  <form:select path="masleavetype" class="form-control" id="masleavetype">
@@ -201,7 +208,7 @@
 	  
 	  
 	<div  class=" form-group col-md-6">
-	 <label>AIM:</label>
+	 <label  class="required"><spring:message code="leave.aim" />:</label>
 		  <form:select path="aim" class="form-control"
 			id="aim">
 			<form:option  value="" label="--Select AIM--" />
@@ -215,7 +222,7 @@
 	     <div  class=" form-group col-md-12">
 		
 		
-		 <label>Reason :</label>
+		 <label  class="required"><spring:message code="leave.reason" /> :</label>
 	    <form:textarea path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason Of Leave"/>
 	 
 	
@@ -223,8 +230,8 @@
         
 		</div>
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default btnClose " data-dismiss="modal">Close</button>
-        <button id="saveButton" type="button" class="btn btn-info saveButton">Save</button>
+        <button type="button" class="btn btn-default btnClose " data-dismiss="modal"><spring:message code="label.close" /></button>
+        <button id="saveButton" type="button" class="btn btn-info saveButton"><spring:message code="label.save" /></button>
       </div>
     
   
@@ -240,14 +247,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel">Delete Leave</h4>
+        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="leave.name" /></h4>
       </div>
       <div class="modal-body">
-      	Do you want to delete leave ?
+      <spring:message code="default.delete.confirm" />
       </div>
       <div class="modal-footer">
-		<button type="button" class="btn btn-danger yesButton" >Yes</button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+		<button type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
       </div>
     </div>
   </div>
@@ -279,7 +286,7 @@ $(document).ready(function() {
 	
  }); 
 	
-	$("#saveButton").on("click",function(){
+	$("#Button").on("click",function(){
 			
 			/* $('#addForm').bootstrapValidator(); */
 			$('#addForm').data('bootstrapValidator').resetForm();
@@ -301,24 +308,20 @@ $(document).ready(function() {
 	        	masleavetype: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Masleavetype is required and cannot be empty'
-	                    },
-	        digits: {
-            	min:0,
-            	message: 'Masspecialty is required'
-            },
+	                        message: '<spring:message code="leave.required.masleavetype" />'
+	                    }
 	                }
 	            },
 	            
             reason: {
                 validators: {
                     notEmpty: {
-                        message: 'Reason is required and cannot be empty'
+                        message: '<spring:message code="leave.required.reason" />'
                     }
                 }
             },
              
-            startDate: {
+           /*  startDate: {
                 validators: {
                     notEmpty: {
                         message: 'The Start Date is required and cannot be empty'
@@ -337,25 +340,25 @@ $(document).ready(function() {
                         format: 'DD-MM-YYYY'
                     }
                 }
-            }, 
+            },  */
             startTime: {
                 validators: {
                     notEmpty: {
-                        message: 'Start Date and Time is required and cannot be empty'
+                        message: '<spring:message code="leave.required.start.date.time" />'
                     }
                 }
             },
             endTime: {
                 validators: {
                     notEmpty: {
-                        message: 'End  Date and Time  is required and cannot be empty'
+                        message: '<spring:message code="leave.required.end.date.time" />'
                     }
                 }
             },
             aim: {
                 validators: {
                     notEmpty: {
-                        message: 'Aim is required and cannot be empty'
+                        message: '<spring:message code="leave.required.aim" />'
                     },
            
                 }
@@ -424,7 +427,7 @@ $(document).ready(function() {
                 }); */
  
 	
-	  $('.clockpicker').clockpicker({
+/* 	  $('.clockpicker').clockpicker({
 		
 		placement: 'bottom', // clock popover placement
 		align: 'left',       // popover arrow align
@@ -443,7 +446,7 @@ $(document).ready(function() {
 			vibrate: true        // vibrate the device when dragging clock hand
 					
 	 }); 
-		
+		 */
 		
 	
 	 $("#dateFrom").on("dp.change", function (e) {

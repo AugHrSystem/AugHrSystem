@@ -6,6 +6,15 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
+
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
 <input id="empId" type="hidden" value="${id}">
@@ -15,7 +24,7 @@
 			<div class="row-md-12">
 
 				<div class="col-md-6">
-					<h2>Ability</h2>
+					<h2><spring:message code="ability.name" /></h2>
 
 				</div>
 
@@ -25,7 +34,7 @@
 					<!-- Button trigger modal -->
 					<div class="form-group" align="right">
 						<button type="button" id="addBtnAbi" class="btn btn-info"
-							data-toggle="modal" data-target="#addModal">New record</button>
+							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
 					</div>
 
 
@@ -39,9 +48,9 @@
 	<thead>
 		<tr>
 			<!-- <th>#</th> -->
-			<th>Specialty</th>
-			<th>Rank</th>
-			<th>Action</th>
+			<th><spring:message code="ability.specialty" /></th>
+			<th><spring:message code="ability.rank" /></th>
+			<th><spring:message code="ability.action" /></th>
 			<!-- <th>Delete</th> -->
 		</tr>
 	</thead>
@@ -61,7 +70,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Ability </h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="ability.name" /> </h4>
       </div>
      
       
@@ -70,7 +79,7 @@
 	
 	  
 	  <div class="form-group">
-	    <label>Specialty :</label>
+	    <label class="required"><spring:message code="ability.specialty" /> :</label>
 	    
 		<div class="form-group">
 		  <form:select path="masspecialty" class="form-control"
@@ -130,8 +139,8 @@
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-      	<button type="button" class="btn btn-info btnSave">Save</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+      	<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
       </div>
       
     </div>
@@ -153,15 +162,15 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Delete Ability</h4>
+						<h4 class="modal-title" id="myModalLabel"><spring:message code="ability.name" /></h4>
 					</div>
 					<div class="modal-body">
-						<h4>Are you sure?</h4>
+						<h4><spring:message code="default.delete.confirm" /></h4>
 						<form:hidden path="id"/>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger btnYes">Yes</button>
-						<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+						<button type="button" class="btn btn-danger btnYes"><spring:message code="default.yes" /></button>
+						<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
 					</div>
 				</div>
 			</div>
@@ -209,12 +218,8 @@ $(document).ready(function(){
 	        	masspecialty: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Masspecialty is required and cannot be empty'
-	                    },
-	                    digits: {
-	                    	min:0,
-	                    	message: 'Masspecialty is required'
-	                    },
+	                        message: '<spring:message code="ability.required.masspecialty" />'
+	                    }
 	                }
 	            },
 	          

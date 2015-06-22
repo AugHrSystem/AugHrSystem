@@ -16,13 +16,13 @@
 			<li class="disabled disabledTab"><a>Family</a></li>
 			<li class="disabled disabledTab"><a><spring:message code="education.name" /></a></li>
 			<li class="disabled disabledTab"><a><spring:message code="experience.name" /></a></li>
-			<li class="disabled disabledTab"><a>Ability</a></li>
+			<li class="disabled disabledTab"><a><spring:message code="ability.name" /></a></li>
 			<li class="disabled disabledTab"><a>Reference</a></li>
 			<li class="disabled disabledTab"><a>Reward</a></li>
 			<li class="disabled disabledTab"><a><spring:message code="history.name" /></a></li>
 			<li class="disabled disabledTab"><a><spring:message code="probation.name" /></a></li>
 			<li class="disabled disabledTab"><a>Punish</a></li>
-			<li class="disabled disabledTab"><a>Leave</a></li>
+			<li class="disabled disabledTab"><a><spring:message code="leave.name" /></a></li>
 			<li class="disabled disabledTab"><a>SkillLanguage</a></li>
 			<li class="disabled disabledTab"><a>Site</a></li>
 			<li class="disabled disabledTab"><a><spring:message code="certification.name" /></a></li>
