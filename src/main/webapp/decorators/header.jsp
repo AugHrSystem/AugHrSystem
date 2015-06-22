@@ -30,7 +30,7 @@
 		</ul> --%> 
 		<ul class="nav navbar-nav navbar-left" >
 		<li>
-			     	<a class="navbar-link" href="<%=request.getContextPath()%>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+			     	<a class="navbar-link" href="<%=request.getContextPath()%>/listemployee"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
 			    </li>
 		</ul>
 		    <ul class="nav navbar-nav navbar-right">

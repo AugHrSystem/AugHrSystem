@@ -115,7 +115,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="label.delete" /> <spring:message code="probation.name" /></h4>
+        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="label.delete" /><spring:message code="probation.name" /></h4>
       </div>
       <div class="modal-body">
       		<spring:message code="default.delete.confirm" />

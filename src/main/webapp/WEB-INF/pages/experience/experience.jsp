@@ -130,10 +130,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel">Delete Experience</h4>
+        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="label.delete" /><spring:message code="experience.name" /></h4>
       </div>
       <div class="modal-body">
-      	Do you want to delete experience ?
+      	<spring:message code="default.delete.confirm" />
       </div>
       <div class="modal-footer">
 		<button type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
