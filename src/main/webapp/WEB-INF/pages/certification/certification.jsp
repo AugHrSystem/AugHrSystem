@@ -8,20 +8,28 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
 <input id="empId" type="hidden" value="${id}">
 
 <form:form id ="listForm" method="post" commandName="certification">
 
 <div class="row">
 <div class="col-md-6">
-<h2>Certification</h2> 
+<h2><spring:message code="certification.name"/></h2> 
 </div>
 <br>
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
 <div class="col-md-6">
-<button type="button" id="addBtnCer" class="btn btn-info" data-toggle="modal" data-target="#addModal">New record</button> 
+<button type="button" id="addBtnCer" class="btn btn-info" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord"/></button> 
 </div>
 </div>
 </div>
@@ -31,10 +39,10 @@
 <table id="tbResult" class="table">
 	<thead>
 		<tr>
-			<th>Year</th>
-			<th>Certification Name</th>
-			<th>Certification From</th>
-			<th>Action</th>
+			<th><spring:message code="certification.year" /></th>
+			<th><spring:message code="certification.certification.name" /></th>
+			<th><spring:message code="certification.certification.from" /></th>
+			<th><spring:message code="label.action"/></th>
 			<!-- <th></th> -->
 		</tr>
 	</thead>
@@ -52,17 +60,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Certification</h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="certification.name"/></h4>
       </div>
       
       <div class="modal-body">
         
+        <spring:message code="default.enter" var="enter"/>
+        
 	  <div class="form-group">
-	    <label>Year :</label>
+	    <label class="required"><spring:message code="certification.year"/> :</label>
 	    <form:select path="year" class="form-control" id="year">
 <%-- 										<form:option value="-1" label="---Select year---" /> --%>
 										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>
-										<option value="">---Select year---</option>						
+										<option value=""><spring:message code="certification.enter.year" /></option>						
 										<option value="2020">2020</option>
 										<option value="2019">2019</option>
 										<option value="2018">2018</option>
@@ -189,25 +199,25 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Certification Name :</label>
-	    <form:input path="name" type="text" class="form-control" id="name" placeholder="Enter Certification Name"/>
+	    <label class="required"><spring:message code="certification.certification.name" var="name"/>${name} :</label>
+	    <form:input path="name" type="text" class="form-control" id="name" placeholder="${enter }${name}"/>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Certification From :</label>
-	    <form:input path="certificationFrom" type="text" class="form-control" id="certificationFrom" placeholder="Enter Certification From"/>
+	    <label class="required"><spring:message code="certification.certification.from" var="certificationFrom"/>${certificationFrom} :</label>
+	    <form:input path="certificationFrom" type="text" class="form-control" id="certificationFrom" placeholder="${enter }${certificationFrom }"/>
 	  </div>
 	  
 	  <div class="form-group">
-	    <label>Description :</label>
-	    <form:textarea path="description" type="text" class="form-control" id="description" placeholder="Enter Description"/>
+	    <label class="required"><spring:message code="certification.description" var="description"/>${description} :</label>
+	    <form:textarea path="description" type="text" class="form-control" id="description" placeholder="${enter }${description}"/>
 	  </div>
 	  
       </div>
       
       <div class="form-group" align="center">
-        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-      	<button type="button" class="btn btn-info btnSave">Save</button>
+        <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+      	<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
       </div>
       
     </div>
@@ -228,15 +238,15 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Delete</h4>
+						<h4 class="modal-title" id="myModalLabel"><spring:message code="certification.name" /></h4>
 					</div>
 					<div class="modal-body">
-						<h4>Are you sure?</h4>
+						<h4><spring:message code="default.delete.confirm" /></h4>
 						<form:hidden path="id"/>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger btnYes">Yes</button>
-						<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+						<button type="button" class="btn btn-danger btnYes"><spring:message code="default.yes" /></button>
+						<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
 					</div>
 				</div>
 			</div>
@@ -266,14 +276,14 @@
 	        	year: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Year is required and cannot be empty'
+	                        message: '<spring:message code="certification.required.year" />'
 	                    }
 	                }
 	            },
 	            name: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Certification Name is required and cannot be empty'
+	                        message: '<spring:message code="certification.required.certification.name" />'
 	                    }
 	                }
 	            },
@@ -290,14 +300,14 @@
 	            certificationFrom: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Certification From is required and cannot be empty'
+	                        message: '<spring:message code="certification.required.certification.from" />'
 	                    }
 	                }
 	            },
 	            description: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Description is required and cannot be empty'
+	                        message: '<spring:message code="certification.required.description" />'
 	                    }
 	                }
 	            },
@@ -561,8 +571,8 @@
 					dt.fnAddData([data[i].year,
 					              data[i].name,
 					              data[i].certificationFrom, 
-						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+						'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 			
 					}
 				},

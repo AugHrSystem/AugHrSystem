@@ -6,6 +6,7 @@
 package com.aug.hr.controller;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,7 @@ public class CertificationController {
 	
 	@RequestMapping(value = "/certification/{id}", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String init(ModelMap model,
+	public String init(ModelMap model,Locale locale,
 			@PathVariable("id") Integer id, 
 			@ModelAttribute CertificationDto certificationDto) {
 		

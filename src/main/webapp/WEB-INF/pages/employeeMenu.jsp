@@ -25,7 +25,7 @@
 			<li class="disabled disabledTab"><a>Leave</a></li>
 			<li class="disabled disabledTab"><a>SkillLanguage</a></li>
 			<li class="disabled disabledTab"><a>Site</a></li>
-			<li class="disabled disabledTab"><a>Certification</a></li>
+			<li class="disabled disabledTab"><a><spring:message code="certification.name" /></a></li>
 			<li class="disabled disabledTab"><a>Card</a></li>
 			<li class="disabled disabledTab"><a><spring:message code="allowances.name" /></a></li>
 			<li class="disabled disabledTab"><a>Health</a></li>
@@ -45,7 +45,7 @@
 			<li><a href="${pageContext.request.contextPath}/leave/${id}" >Leave</a></li>
 			<li><a href="${pageContext.request.contextPath}/skilllanguage/${id}" >SkillLanguage</a></li>
 			<li><a href="${pageContext.request.contextPath}/site/${id}" >Site</a></li>
-			<li><a href="${pageContext.request.contextPath}/certification/${id}" >Certification</a></li>
+			<li><a href="${pageContext.request.contextPath}/certification/${id}" ><spring:message code="certification.name" /></a></li>
 			<li><a href="${pageContext.request.contextPath}/card/${id}" >Card</a></li>
 			<li><a href="${pageContext.request.contextPath}/allowances/${id}" ><spring:message code="allowances.name" /></a></li>
 			<li><a href="${pageContext.request.contextPath}/health/${id}" >Health</a></li>
