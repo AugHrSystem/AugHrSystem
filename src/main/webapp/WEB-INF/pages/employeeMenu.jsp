@@ -23,8 +23,8 @@
 			<li class="disabled disabledTab"><a><spring:message code="probation.name" /></a></li>
 			<li class="disabled disabledTab"><a>Punish</a></li>
 			<li class="disabled disabledTab"><a><spring:message code="leave.name" /></a></li>
-			<li class="disabled disabledTab"><a>SkillLanguage</a></li>
-			<li class="disabled disabledTab"><a>Site</a></li>
+			<li class="disabled disabledTab"><a><spring:message code="skilllanguage.name" /></a></li>
+			<li class="disabled disabledTab"><a><spring:message code="site.name" /></a></li>
 			<li class="disabled disabledTab"><a><spring:message code="certification.name" /></a></li>
 			<li class="disabled disabledTab"><a>Card</a></li>
 			<li class="disabled disabledTab"><a><spring:message code="allowances.name" /></a></li>
@@ -43,8 +43,8 @@
 			<li><a href="${pageContext.request.contextPath}/probation/${id}" ><spring:message code="probation.name" /></a></li>
 			<li><a href="${pageContext.request.contextPath}/punish/${id}" >Punish</a></li>
 			<li><a href="${pageContext.request.contextPath}/leave/${id}" >Leave</a></li>
-			<li><a href="${pageContext.request.contextPath}/skilllanguage/${id}" >SkillLanguage</a></li>
-			<li><a href="${pageContext.request.contextPath}/site/${id}" >Site</a></li>
+			<li><a href="${pageContext.request.contextPath}/skilllanguage/${id}" ><spring:message code="skilllanguage.name" /></a></li>
+			<li><a href="${pageContext.request.contextPath}/site/${id}" ><spring:message code="site.name" /></a></li>
 			<li><a href="${pageContext.request.contextPath}/certification/${id}" ><spring:message code="certification.name" /></a></li>
 			<li><a href="${pageContext.request.contextPath}/card/${id}" >Card</a></li>
 			<li><a href="${pageContext.request.contextPath}/allowances/${id}" ><spring:message code="allowances.name" /></a></li>

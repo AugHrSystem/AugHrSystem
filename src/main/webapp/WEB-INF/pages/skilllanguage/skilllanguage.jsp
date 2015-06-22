@@ -76,11 +76,11 @@
 		        	masSkillLanguage: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Language is required and cannot be empty'
+		                        message: '<spring:message code="skilllanguage.required.masSkillLanguage" />'
 		                    },
 		                    digits: {
 		                    	min:0,
-		                    	message: 'Language is required'
+		                    	message: '<spring:message code="skilllanguage.required.Language" />'
 		                    },
 		                  
 		                }
@@ -636,13 +636,15 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<h2>Language</h2>
+		<h2><spring:message code="skilllanguage.name" />
+</h2>
 	</div>
 
     <div class="col-md-6">
     	<br/>
     	<div class="form-group" align="right">
-					<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">New Record</button>
+					<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" />
+</button>
 		</div>
 		<br/>
 	</div>
@@ -656,12 +658,18 @@
  <table id="tableResult">
 	    <thead>
             <tr> 
-                <th>Language</th>
-                <th>Speaking</th>
-                <th>Writing</th>
-                <th>Reading</th> 
-                <th>Understanding</th>
-                <th>Action</th>
+                <th><spring:message code="skilllanguage.name" var="Language"/>
+                ${Language}</th>
+                <th><spring:message code="skilllanguage.Speaking" var="Speaking"/>
+                ${Speaking}</th>
+                <th><spring:message code="skilllanguage.Writing" var="Writing"/>
+                ${Writing}</th>
+                <th><spring:message code="skilllanguage.Reading" var="Reading"/>
+                ${Reading}</th> 
+                <th><spring:message code="skilllanguage.Understanding" var="Understanding"/>
+                ${Understanding}</th>
+                <th><spring:message code="label.action" />
+</th>
             </tr>
         </thead>
 </table>
@@ -679,7 +687,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Language</h4>
+        <h4 class="modal-title" id="myModalLabel">${Language}</h4>
       </div>
       <div class="modal-body">
           
@@ -692,7 +700,8 @@
 		   
 		           
 		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="masSkillLanguage" >
-			            Language Name:
+			            <spring:message code="skilllanguage.name.lang" />
+:
 			    </label>	 		
 			    
 			     
@@ -706,9 +715,10 @@
 							</c:forEach>
 						</f:select> --%> 
 						
+						<spring:message code="skilllanguage.enter.skill" var="skill"/>
 						
 						<f:select  id="masSkillLanguage" path="masSkillLanguage" cssClass="form-control">
-   						<f:option value="-1" label="--- Select ---"/>
+   						<f:option value="-1" label="${skill }"/>
  					    <f:options items="${masSkillLanguageList}" itemValue="id" itemLabel="skillLanguageName"/>
  					    </f:select>
  					    
@@ -724,22 +734,22 @@
 			    
 			     
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			          Speaking:
+			          ${Speaking}:
 			     </label>	 		
 
 
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				       <label class="radio-inline" for=abilitySpeaking > 
 		 			     	<f:radiobutton id="excSpeaking" name="speaking" path="abilitySpeaking" value="Excellent"/>
-		 			  		Excellent
+		 			  		${Excellent}
 		 			   </label>
 		 			 <label class="radio-inline" for="abilitySpeaking"> 
 		 			     <f:radiobutton id="goodSpeaking" name="speaking" path="abilitySpeaking" value="Good"/>
-				     		Good
+				     		${Good}
 				     </label> 
 				     <label class="radio-inline" for="abilitySpeaking"> 
 		 			     <f:radiobutton id="fairSpeaking" name="speaking" path="abilitySpeaking" value="Fair" checked="true"/>
-				    		Fair
+				    		${Fair}
 				     </label> 	
 				     			     		 
 				  </div> 
@@ -753,22 +763,22 @@
 			    
 			     
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >			        
-			          Writing:
+			          ${Writing}:
 			     </label>	 		
 
 
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				       <label class="radio-inline" for="abilityWriting" > 
 		 			     	<f:radiobutton id="excWriting" name="writing" path="abilityWriting" value="Excellent"/>
-		 			  		Excellent
+		 			  		${Excellent}
 		 			   </label>
 		 			 <label class="radio-inline" for="abilityWriting"> 
 		 			     <f:radiobutton id="goodWriting" name="writing" path="abilityWriting" value="Good"/>
-				     		Good
+				     		${Good}
 				     </label> 
 				     <label class="radio-inline" for="abilityWriting"> 
 		 			     <f:radiobutton id="fairWriting" name="writing" path="abilityWriting" value="Fair" checked="true"/>
-				    		Fair
+				    		${Fair}
 				     </label> 	
 				     			     		 
 				  </div> 
@@ -781,22 +791,22 @@
 			    
 			     
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			           Reading:
+			           ${Reading}:
 			     </label>	 		
 
 
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				       <label class="radio-inline" for="abilityReading" > 
 		 			     	<f:radiobutton id="excReading" name="reading" path="abilityReading" value="Excellent"/>
-		 			  		Excellent
+		 			  		${Excellent}
 		 			   </label>
 		 			 <label class="radio-inline" for="abilityReading"> 
 		 			     <f:radiobutton id="goodReading" name="reading" path="abilityReading" value="Good"/>
-				     		Good
+				     		${Good}
 				     </label> 
 				     <label class="radio-inline" for="abilityReading"> 
 		 			     <f:radiobutton id="fairReading" name="reading" path="abilityReading" value="Fair" checked="true"/>
-				    		Fair
+				    		${Fair}
 				     </label> 	
 				     			     		 
 				  </div> 
@@ -809,22 +819,22 @@
 			    
 			     
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			          Understanding:
+			          ${Understanding}:
 			     </label>	 		
 
 
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				       <label class="radio-inline" for="abilityUnderstanding" > 
 		 			     	<f:radiobutton id="excUnderstanding" name="understanding" path="abilityUnderstanding" value="Excellent"/>
-		 			  		Excellent
+		 			  		${Excellent}
 		 			   </label>
 		 			 <label class="radio-inline" for="abilityUnderstanding"> 
 		 			     <f:radiobutton id="goodUnderstanding" name="understanding" path="abilityUnderstanding" value="Good"/>
-				     		Good
+				     		${Good}
 				     </label> 
 				     <label class="radio-inline" for="abilityUnderstanding"> 
 		 			     <f:radiobutton id="fairUnderstanding" name="understanding" path="abilityUnderstanding" value="Fair"  checked="true"/>
-				    		Fair
+				    		${Fair}
 				     </label> 	
 				     			     		 
 				  </div> 
@@ -833,8 +843,8 @@
 		  
 		  
 		      <div class="form-group" align="center">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		     	<button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">Save</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
+		     	<button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
 		      </div>
  
       </f:form>
@@ -851,14 +861,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel">Delete language</h4>
+        <h4 class="modal-title" id="deleteModalLabel">${Language}</h4>
       </div>
       <div class="modal-body">
-      	Do you want to delete language?
+      	<spring:message code="default.delete.confirm" />
       </div>
       <div class="modal-footer">
-		<button id="delete" type="button" class="btn btn-danger yesButton" >Yes</button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+		<button id="delete" type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
       </div>
     </div>
   </div>

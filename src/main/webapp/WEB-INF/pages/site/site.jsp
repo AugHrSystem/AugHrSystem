@@ -20,6 +20,14 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script> --%>
 
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 <input id="empId" type="hidden" value="${id}">
 
@@ -54,28 +62,28 @@
 		        	projectName: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Project name is required and cannot be empty'
+		                        message: '<spring:message code="site.required.projectname" />'
 		                    }
 		                }
 		            },
 		            projectOwner: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Project Owner is required and cannot be empty'
+		                        message: '<spring:message code="site.required.projectOwner" />'
 		                    }
 		                }
 		            },
 		            projectOwnerContact: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Project Owner Contact is required and cannot be empty'
+		                        message: '<spring:message code="site.required.projectOwnerContact" />'
 		                    },
 		                }
 		            },
 		            startDate: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Start Date is required and cannot be empty'
+		                        message: '<spring:message code="site.required.startDate" />'
 		                    },
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -85,7 +93,7 @@
 		            endDate: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'End date is required and cannot be empty'
+		                        message: '<spring:message code="site.required.endDate" />'
 		                    },
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -221,8 +229,8 @@
 				  			           data[i].projectName,
 				  			           data[i].projectOwner,
 				  			           data[i].projectOwnerContact,
-				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>'
 				    					
 				  			           ]);
 		  		
@@ -511,13 +519,13 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<h2>Client Sites</h2>
+		<h2><spring:message code="site.name" /></h2>
 	</div>
 
     <div class="col-md-6">
        <div class="form-group" align="right">
         <br/>
-    		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">New Record</button> 
+    		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
       	<br/>
       </div>	
 	</div>
@@ -533,12 +541,12 @@
  <table id="tableResult"> 
 	    <thead>
             <tr> 
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Project</th>
-                <th>Project Owner</th> 
-                <th>Project Owner Contract</th>
-                <th>Action</th>
+                <th><spring:message code="site.startDate" var="startDate"/>${startDate }</th>
+                <th><spring:message code="site.endDate" var="endDate"/>${endDate }</th>
+                <th><spring:message code="site.projectname" var="projectname"/>${projectname }</th>
+                <th><spring:message code="site.projectOwner" var="projectOwner"/>${projectOwner }</th> 
+                <th><spring:message code="site.projectOwnerContact" var="projectOwnerContact"/>${projectOwnerContact }</th>
+                <th><spring:message code="label.action" /></th>
             </tr>
         </thead>
  
@@ -553,7 +561,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Client Sites</h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="site.name" /></h4>
       </div>
       <div class="modal-body">
           
@@ -565,7 +573,7 @@
 		   <div class="form-group form-group-sm">
 			    
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            Start Date:
+			            ${startDate}:
 			     </label>	 		
 			    
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		
@@ -582,7 +590,7 @@
 		   <div class="form-group form-group-sm">
 			    
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            End Date:
+			            ${endDate}:
 			     </label>	 		
 			    
 			     
@@ -603,12 +611,12 @@
 			    
 			        
 			      <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            Project Name:
+			            ${projectname}:
 			      </label>	 		
 			     
 				     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input  id="projectName" path="projectName" cssClass="form-control required" placeholder="Project Name" />			     		
+			     		<f:input  id="projectName" path="projectName" cssClass="form-control required" placeholder="${projectname}" />			     		
 			     </div>
 		   </div>
 		   
@@ -616,12 +624,12 @@
 		    <div class="form-group form-group-sm">
 			    
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            Project Owner:
+			            ${projectOwner}:
 			     </label>	 		
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="projectOwner" path="projectOwner" cssClass="form-control required" placeholder="Project Owner"/>
+			     		<f:input id="projectOwner" path="projectOwner" cssClass="form-control required" placeholder="${projectOwner}"/>
 			     </div>
 		           
 		   </div>
@@ -631,12 +639,12 @@
 		  <div class="form-group form-group-sm">
 			    
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			            Project Owner Contact:
+			            ${projectOwnerContact}:
 			     </label>	 		
 			    
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
-			     		<f:input id="projectOwnerContact" path="projectOwnerContact" cssClass="form-control required" placeholder="Project Owner Contact"/>
+			     		<f:input id="projectOwnerContact" path="projectOwnerContact" cssClass="form-control required" placeholder="${projectOwnerContact}"/>
 			     </div>
 		           
 		   </div>
@@ -644,8 +652,8 @@
 		   
 		  
 		      <div class="form-group" align="center">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">Save</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
+		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
 		      </div>
  
       </f:form>
@@ -663,14 +671,14 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	    <div class="modal-header">
-	        <h4 class="modal-title" id="deleteModalLabel">Delete Client Sites</h4>
+	        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="site.name" /></h4>
 	      </div>
 	      <div class="modal-body">
-	      	Do you want to delete Client Sites?
+	      	<spring:message code="default.delete.confirm" />
 	      </div>
 	      <div class="modal-footer">
-			<button id="delete" type="button" class="btn btn-danger yesButton" >Yes</button>
-	      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+			<button id="delete" type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
+	      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
 	      </div>
 	    </div>
 	  </div>
