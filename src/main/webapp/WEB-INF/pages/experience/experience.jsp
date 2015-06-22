@@ -166,7 +166,7 @@ var dt;
 		        	dateFrom: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Start Date is required and cannot be empty'
+		                        message: '<spring:message code="experience.required.dateFrom" />'
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -176,7 +176,7 @@ var dt;
 		            dateTo: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'End Date is required and cannot be empty'
+		                        message: '<spring:message code="experience.required.dateTo" />'
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -186,31 +186,31 @@ var dt;
 		            cName: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'Company Name is required and cannot be empty'
+	                            message: '<spring:message code="experience.required.companyName" />'
 	                        }
 	                    }
 		            },
 		            position: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'Position is required and cannot be empty'
+	                            message: '<spring:message code="experience.required.position" />'
 	                        }
 	                    }
 		            },
 		            salary: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'Salary is required and cannot be empty'
+	                            message: '<spring:message code="experience.required.salary" />'
 	                        },
 	                        digits: {
-		                    	message: 'Salary is number'
+		                    	message: '<spring:message code="experience.required.salary.digits" />'
 		                    },
 	                    }
 		            },
 		            reason: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'Reason of Resignation is required and cannot be empty'
+	                            message: '<spring:message code="experience.required.reason" />'
 	                        }
 	                    }
 		            }

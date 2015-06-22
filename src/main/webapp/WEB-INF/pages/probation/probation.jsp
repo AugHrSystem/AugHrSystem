@@ -89,9 +89,9 @@
     			<label class="required"><spring:message code="probation.status" var="status" /> ${status} : </label>
     				<f:select path="status" id="status"  class="form-control">
 						<option value=""><spring:message code="probation.chooseStatus" /></option>
-						<option value="Pass">Pass</option>
-						<option value="Not Pass">Not Pass</option>
-						<option value="Extend">Extend</option>
+						<option value="Pass"><spring:message code="probation.pass" /></option>
+						<option value="Not Pass"><spring:message code="probation.notPass" /></option>
+						<option value="Extend"><spring:message code="probation.extend" /></option>
 					</f:select>  
 		</div>
   		
@@ -151,7 +151,7 @@ var dt;
 		        	dateFrom: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Start Date is required and cannot be empty'
+		                        message: '<spring:message code="probation.required.dateFrom" />'
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -162,7 +162,7 @@ var dt;
 		            dateTo: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'End Date is required and cannot be empty'
+		                        message: '<spring:message code="probation.required.dateTo" />'
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -172,7 +172,7 @@ var dt;
 		            status: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: 'Please select your Status'
+	                            message: '<spring:message code="probation.required.status" />'
 	                        }
 	                    }
 		            }
