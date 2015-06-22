@@ -547,8 +547,8 @@ $(function(){
 				  			           data[i].takeMedicineExplain,
 				  			           data[i].intolerance,
 				  			           data[i].intoleranceExplain,
-				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>'
 				    					
 				  			           ]);
 	  	        	   
@@ -640,13 +640,13 @@ $(function(){
 
 <div class="row">
 	<div class="col-md-6">
-		<h2>Health</h2>
+		<h2><spring:message code="health.name" /></h2>
 	</div>
 
     <div class="col-md-6">
        <div class="form-group" align="right">
         <br/>
-    		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">New Record</button>
+    		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
       	<br/>
       </div>	
 	</div>
@@ -660,15 +660,15 @@ $(function(){
  <table id="tableResult">
 	    <thead>
             <tr> 
-                <th>Congenital Disease</th>
-                <th>Congenital Disease Specified</th>
-                <th>Genetic Disease</th>
-                <th>Genetic Disease Specified</th> 
-                <th>Take Medicine</th>
-                <th>Take Medicine Specified</th>
-                <th>Intolerance</th>
-                <th>Intolerance Specified</th>
-                <th>Action</th>
+                <th><spring:message code="health.congenitalDisease" /></th>
+                <th><spring:message code="health.congenitaldiseaseSpecified" /></th>
+                <th><spring:message code="health.GeneticDisease" /></th>
+                <th><spring:message code="health.GeneticDiseaseSpecified" /></th> 
+                <th><spring:message code="health.TakeMedicine" /></th>
+                <th><spring:message code="health.TakeMedicineSpecified" /></th>
+                <th><spring:message code="health.Intolerance" /></th>
+                <th><spring:message code="health.IntoleranceSpecified" /></th>
+                <th><spring:message code="label.action" /></th>
 <!--                 <th></th> -->
             </tr>
         </thead>
@@ -683,7 +683,7 @@ $(function(){
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Health</h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="health.name" /></h4>
       </div>
       <div class="modal-body">
           
@@ -696,7 +696,7 @@ $(function(){
 		   
 		           
 		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="congenitalDisease" >
-			            Do you have any congenital disease?
+			            <spring:message code="health.question.congenitalDisease" />?
 			    </label>	 		
 			    
 			     
@@ -705,11 +705,11 @@ $(function(){
 			     
 			        <label class="radio-inline" for=congenitalDisease > 
 		 			     	<f:radiobutton id="congenitalDisease_no" name="congenitalDisease" path="congenitalDisease" value="No" checked="true"/>
-		 			  		No
+		 			  		<spring:message code="default.no" />
 		 			 </label>
 		 			 <label class="radio-inline" for="congenitalDisease"> 
 		 			     <f:radiobutton id="congenitalDisease_yes" name="congenitalDisease" path="congenitalDisease" value="Yes"/>
-				     		Yes
+				     		<spring:message code="default.yes" />
 				     </label> 	     		
 				     								
 			     </div>	
@@ -725,22 +725,22 @@ $(function(){
 			     <div class="row">
 			           
 			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease" >
-				            Specified Congenital Disease1: 
+				            <spring:message code="health.congenitalDiseaseExplain1" var="congenitalDiseaseExplain1"/>${congenitalDiseaseExplain1 }:
 				    </label>	 		
 
      
 				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
-				        	<f:input  id="congenitalDiseaseExplain" path="congenitalDiseaseExplain" cssClass="form-control required" placeholder="Specified Genetic Disease1" />					     								
+				        	<f:input  id="congenitalDiseaseExplain" path="congenitalDiseaseExplain" cssClass="form-control required" placeholder="${congenitalDiseaseExplain1 }" />					     								
 				     </div>	
 				  
 			     
 			    
 			         <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="congenitalDisease2" >
-			           		Specified Congenital Disease2: 
+			           		<spring:message code="health.congenitalDiseaseExplain2" var="congenitalDiseaseExplain2"/>${congenitalDiseaseExplain2 }: 
 			   		 </label>	 		
 		     
 				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
-				        	<f:input  id="congenitalDiseaseExplain2" path="congenitalDiseaseExplain2" cssClass="form-control required" placeholder="Specified Genetic Disease2" />					     								
+				        	<f:input  id="congenitalDiseaseExplain2" path="congenitalDiseaseExplain2" cssClass="form-control required" placeholder="${congenitalDiseaseExplain2 }" />					     								
 				     </div>	
 			 	 
 			 	 
@@ -756,11 +756,11 @@ $(function(){
 			     <div class="row">
 		   
 			         <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease3" >
-			           		Specified Congenital Disease3: 
+			           		<spring:message code="health.congenitalDiseaseExplain3" var="congenitalDiseaseExplain3"/>${congenitalDiseaseExplain3 }: 
 			   		 </label>	 		
 		     
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="congenitalDiseaseExplain3" path="congenitalDiseaseExplain3" cssClass="form-control required" placeholder="Specified Genetic Disease3" />					     								
+				        	<f:input  id="congenitalDiseaseExplain3" path="congenitalDiseaseExplain3" cssClass="form-control required" placeholder="${congenitalDiseaseExplain3 }" />					     								
 				     </div>	
 				 </div>
 			</div>
@@ -776,7 +776,7 @@ $(function(){
 		   
 		           
 		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="geneticDisease" >
-			           Do you have relative is genetic disease?
+			           <spring:message code="health.question.GeneticDisease" />?
 			    </label>	 		
 			    
 			     
@@ -785,11 +785,11 @@ $(function(){
 			     
 			        <label class="radio-inline" for=geneticDisease > 
 		 			     	<f:radiobutton id="geneticDisease_no" name="geneticDisease" path="geneticDisease" value="No" checked="true"/>
-		 			  		No
+		 			  		<spring:message code="default.no" />
 		 			 </label>
 		 			 <label class="radio-inline" for="congenitalDisease"> 
 		 			     <f:radiobutton id="geneticDisease_yes" name="geneticDisease" path="geneticDisease" value="Yes"/>
-				     		Yes
+				     		<spring:message code="default.yes" />
 				     </label> 	     		
 				     								
 			     </div>	
@@ -807,21 +807,21 @@ $(function(){
 			     <div class="row">
 			           
 			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="geneticDisease" >
-				           Specified Genetic Disease1: 
+				           <spring:message code="health.geneticDiseaseExplain1" var="geneticDiseaseExplain1"/>${geneticDiseaseExplain1 }: 
 				    </label>	 		
 
      
 				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
-				        	<f:input  id="geneticDiseaseExplain" path="geneticDiseaseExplain" cssClass="form-control required" placeholder="Specified Genetic Disease1" />					     								
+				        	<f:input  id="geneticDiseaseExplain" path="geneticDiseaseExplain" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" />					     								
 				     </div>	
 				 
 		           
 			         <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="congenitalDisease2" >
-			           		Specified Genetic Disease2: 
+			           		<spring:message code="health.geneticDiseaseExplain2" var="geneticDiseaseExplain2"/>${geneticDiseaseExplain2 }: 
 			   		 </label>	 		
 		     
 				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
-				        	<f:input  id="geneticDiseaseExplain2" path="geneticDiseaseExplain2" cssClass="form-control required" placeholder="Specified Genetic Disease2" />					     								
+				        	<f:input  id="geneticDiseaseExplain2" path="geneticDiseaseExplain2" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" />					     								
 				     </div>			 	 			 
 			         
 			 	 </div>
@@ -836,11 +836,11 @@ $(function(){
 			     <div class="row">
 		   
 				    <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease3" >
-					    Specified Genetic Disease3: 
+					    <spring:message code="health.geneticDiseaseExplain3" var="geneticDiseaseExplain3"/>${geneticDiseaseExplain3 }: 
 				    </label>	 		
 		     
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="geneticDiseaseExplain3" path="geneticDiseaseExplain3" cssClass="form-control required" placeholder="Specified Genetic Disease3" />					     								
+				        	<f:input  id="geneticDiseaseExplain3" path="geneticDiseaseExplain3" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" />					     								
 		 			</div>	
 		 		</div>
 		 	</div>
@@ -854,7 +854,7 @@ $(function(){
 		     
 		           
 			        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="geneticDisease" >
-				          Do you have to take medication regularly?			          
+				          <spring:message code="health.question.TakeMedicine" />?			          
 				    </label>	 		
 				    
 				     
@@ -863,11 +863,11 @@ $(function(){
 				     
 				        <label class="radio-inline" for=takeMedicine > 
 			 			     	<f:radiobutton id="takeMedicine_no" name="takeMedicine" path="takeMedicine" value="No" checked="true"/>
-			 			  		No
+			 			  		<spring:message code="default.no" />
 			 			 </label>
 			 			 <label class="radio-inline" for="congenitalDisease"> 
 			 			     <f:radiobutton id="takeMedicine_yes" name="takeMedicine" path="takeMedicine" value="Yes"/>
-					     		Yes
+					     		<spring:message code="default.yes" />
 					     </label> 	     							     								
 				     </div>	
 				     
@@ -880,12 +880,12 @@ $(function(){
 			     <div class="form-group form-group-sm">
 			           
 			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="takeMedicineExplain" >
-				           Specified Medicine: 
+				           <spring:message code="health.takeMedicineExplain1" var="takeMedicineExplain1"/>${takeMedicineExplain1 }: 
 				    </label>	 		
 
      
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="takeMedicineExplain" path="takeMedicineExplain" cssClass="form-control required" placeholder="Specified Medicine" />					     								
+				        	<f:input  id="takeMedicineExplain" path="takeMedicineExplain" cssClass="form-control required" placeholder="${takeMedicineExplain1 }" />					     								
 				     </div>	
 				
 			    </div>
@@ -901,7 +901,7 @@ $(function(){
 		     
 		           
 			        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="intolerance" >
-				          Have you got drug allergy?
+				          <spring:message code="health.question.Intolerance" />?
 				    </label>	 		
 				    
 				     
@@ -910,11 +910,11 @@ $(function(){
 				     
 				        <label class="radio-inline" for=intolerance > 
 			 			     	<f:radiobutton id="intolerance_no" name="intolerance" path="intolerance" value="No" checked="true"/>
-			 			  		No
+			 			  		<spring:message code="default.no" />
 			 			 </label>
 			 			 <label class="radio-inline" for="congenitalDisease"> 
 			 			     <f:radiobutton id="intolerance_yes" name="intolerance" path="intolerance" value="Yes"/>
-					     		Yes
+					     		<spring:message code="default.yes" />
 					     </label> 	     							     								
 				     </div>	
 				     
@@ -927,12 +927,12 @@ $(function(){
 			     <div class="form-group form-group-sm">
 			           
 			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="intoleranceExplain" >
-				          Specified Intolerance: 
+				          <spring:message code="health.intoleranceExplain" var="intoleranceExplain"/>${intoleranceExplain }: 
 				    </label>	 		
 
      
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="intoleranceExplain" path="intoleranceExplain" cssClass="form-control required" placeholder="Specified Intolerance" />					     								
+				        	<f:input  id="intoleranceExplain" path="intoleranceExplain" cssClass="form-control required" placeholder="${intoleranceExplain }" />					     								
 				     </div>	
 				
 			    </div>
@@ -941,8 +941,8 @@ $(function(){
 		
 		  
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">add</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
+		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
 		      </div>
  
       </f:form>
@@ -959,14 +959,14 @@ $(function(){
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel">Delete Health</h4>
+        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="health.name" /></h4>
       </div>
       <div class="modal-body">
-      	Do you want to delete experience ?
+      	<spring:message code="default.delete.confirm" />
       </div>
       <div class="modal-footer">
-		<button id="delete" type="button" class="btn btn-danger yesButton" >Yes</button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+		<button id="delete" type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
       </div>
     </div>
   </div>
