@@ -1046,9 +1046,9 @@
 	    
 	
 			<div  align="center">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.cancel" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
-    			<button type="button" class="btn btn-primary" name="saveButton">Save&Continue</button>
+    			<button type="button" class="btn btn-primary" name="saveButton"><spring:message code="label.saveAndCon" /></button>
     			
 	    	</div>
 </f:form>   
@@ -1073,8 +1073,9 @@
 	    					<label><spring:message code="address.type"></spring:message> :</label>
 	    
 							<div class="form-group">
+							<spring:message code="address.enter.selectaddresstype" var="addressType"/>
 		 					 <select class="form-control" id="addressType" name="addressType">
-								<option value="" label="---Select Address Type---" />
+								<option value="" label="${addressType}" />
 								<c:forEach var="obj" items="${ masAddressTypeList }">
 									<option value="${obj.id }">${ obj.name}</option>
 								</c:forEach>
@@ -1100,9 +1101,9 @@
 	    				<label><spring:message code="address.province"></spring:message> :</label>
 	    
 	    
-						
+						<spring:message code="address.enter.province" var="province"/>
 		 					 <select  class="form-control" id="province" name="province">
-								<option value="" label="---Select Province---" />
+								<option value="" label="${province}" />
 								<c:forEach var="obj" items="${ provinceList }">
 									<option value="${obj.id }">${ obj.name}</option>
 								</c:forEach>
@@ -1120,9 +1121,8 @@
 						
 						<div class="form-group" align="center">
 							<button type="button" class="btn btn-default closeAddressButton" 
-								data-dismiss="modal">Close</button>
-							<button type="button" id= "saveAddressButton"class="btn btn-primary saveAddressButton">Save
-								changes</button>
+								data-dismiss="modal"><spring:message code="label.close"></spring:message></button>
+							<button type="button" id= "saveAddressButton"class="btn btn-primary saveAddressButton"><spring:message code="label.saveAndCon"></spring:message></button>
 						</div>
 						
 					</form>
@@ -1138,14 +1138,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel">Delete Address</h4>
+        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="label.delete" /><spring:message code="address.name" /></h4>
       </div>
       <div class="modal-body">
-      	Do you want to delete address ?
+      	<spring:message code="default.delete.confirm"></spring:message>
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-      <button type="button"id="yesButton" class="btn btn-primary yesButton">Yes</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="default.no" /></button>
+      <button type="button"id="yesButton" class="btn btn-primary yesButton"><spring:message code="default.yes" /></button>
       </div>
     </div>
   </div>
