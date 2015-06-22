@@ -28,15 +28,15 @@ import javax.persistence.NamedNativeQuery;
 				+ "YEAR(CURDATE()) - YEAR(dateOfBirth) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearAge ,"
 				+ "MONTH(CURDATE()) - MONTH(dateOfBirth) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as monthAge, "
 				+ "DAY(CURDATE()) - DAY(dateOfBirth) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as dayAge,"
-				+ "emp.age as age,emp.name_thai as nameThai,emp.name_eng as nameEng,l.START_DATE as startDate,l.end_date as endDate,off.START_WORK_DATE as startWorkDate,"
+				+ "emp.age as age,emp.name_thai as nameThai,emp.name_eng as nameEng,l.sumTime as sumTime,off.START_WORK_DATE as startWorkDate,"
 				+ "YEAR(CURDATE()) - YEAR(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as dayWork ,"
 				+ "MONTH(CURDATE()) - MONTH(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as monthWork ,"
 				+ "DAY(CURDATE()) - DAY(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearWork,"
-				+ "SUM( CASE when l.`leavetype_id`= 1 then DAY(l.end_date) - DAY(l.START_DATE) else 0 end	) as 'dayAnnual',"
-				+ "SUM( CASE when l.`leavetype_id`= 3 then DAY(l.end_date) - DAY(l.START_DATE) else 0 end) as 'daySick',"
-				+ "SUM( CASE when l.`leavetype_id`= 4 then DAY(l.end_date) - DAY(l.START_DATE) else 0 end) as 'dayPersonal',"
-				+ "SUM((CASE when l.`leavetype_id`= 4 then DAY(l.end_date) - DAY(l.START_DATE) else 0 end)+(CASE when l.`leavetype_id`= 3 then DAY(l.end_date) - DAY(l.START_DATE)else 0 end)+"
-				+ "(CASE when l.`leavetype_id`= 1 then DAY(l.end_date) - DAY(l.START_DATE) else 0 end )) as totalDayLeave "
+				+ "SUM( CASE when l.`leavetype_id`= 1 then (l.sumTime/8) else 0 end	) as 'dayAnnual',"
+				+ "SUM( CASE when l.`leavetype_id`= 3 then (l.sumTime/8) else 0 end) as 'daySick',"
+				+ "SUM( CASE when l.`leavetype_id`= 4 then (l.sumTime/8) else 0 end) as 'dayPersonal',"
+				+ "SUM((CASE when l.`leavetype_id`= 4 then (l.sumTime/8) else 0 end)+(CASE when l.`leavetype_id`= 3 then (l.sumTime/8)else 0 end)+"
+				+ "(CASE when l.`leavetype_id`= 1 then (l.sumTime/8) else 0 end )) as totalDayLeave "
 				+ "from emp_employee emp join emp_official off join emp_leave as l where emp.id = l.employee_id group by emp.employee_code",
 
             resultClass = ReportLeaveDto.class)
@@ -60,10 +60,6 @@ public class ReportLeaveDto {
 	private String nameThai;
 	@Column(name = "age")
 	private Integer age;
-	@Column(name = "startDate")
-	private Date startDate;
-	@Column(name = "endDate")
-	private Date endDate;	
 	@Column(name = "startWorkDate")
 	private Date startWorkDate;
 	@Column(name = "dayWork")
@@ -86,6 +82,10 @@ public class ReportLeaveDto {
 	private Integer dayPersonal;	
 	@Column(name = "totalDayLeave")
 	private Integer totalDayLeave;
+	
+	
+	@Column(name="sumtime")
+	private Integer sumTime;
 		
 	public Integer getId() {
 		return id;
@@ -123,18 +123,7 @@ public class ReportLeaveDto {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-	public Date getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-	public Date getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+	
 	public Integer getDayWork() {
 		return dayWork;
 	}
@@ -200,6 +189,12 @@ public class ReportLeaveDto {
 	}
 	public void setStartWorkDate(Date startWorkDate) {
 		this.startWorkDate = startWorkDate;
+	}
+	public Integer getSumTime() {
+		return sumTime;
+	}
+	public void setSumTime(Integer sumTime) {
+		this.sumTime = sumTime;
 	}
 	
 	

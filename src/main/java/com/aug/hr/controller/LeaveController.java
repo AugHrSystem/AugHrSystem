@@ -8,10 +8,14 @@ package com.aug.hr.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpSession;
+
+import net.sf.jasperreports.engine.JRParameter;
 
 import org.apache.commons.beanutils.converters.DateConverter;
 import org.apache.commons.lang3.time.DateUtils;
@@ -32,12 +36,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.LeaveDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.dto.LeaveDto;
+import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.SkillLanguageDto;
 import com.aug.hr.services.LeaveService;
 import com.aug.hr.services.MasLeaveTypeService;
@@ -50,7 +56,6 @@ public class LeaveController {
 	@Autowired private MasLeaveTypeService masLeaveTypeService;
 	@Autowired private LeaveDtoService leaveDtoService;
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
-	@Autowired private ReportService reportService;
 	
 	
 	
@@ -117,7 +122,7 @@ public class LeaveController {
 
 			}
 			System.out.println("hoursNo#####: "+hoursNo);
-			sum=hoursNo;
+			sum+=hoursNo;
 		}else if(dateNumber!=0){
 			
 			for(int i=1;i<=dateNumber;i++){
@@ -147,11 +152,12 @@ public class LeaveController {
 				System.out.println("hoursNo#1: "+hoursNo);
 				System.out.println("hoursNo#2: "+hoursNo2);
 				System.out.println("hoursNo#3: "+hoursNo3);
-				sum=hoursNo+hoursNo2+hoursNo3;
+				sum+=hoursNo+hoursNo2+hoursNo3;
 				System.out.println("sum: "+leave.getSumTime());
 
 			}
 		}
+		
 		
 		leaveService.create(leave.fromLeaveDto(leaveDate,leave,new Integer(sum)));
 		return leaveDate;
@@ -217,7 +223,7 @@ public class LeaveController {
 			  
 				System.out.println("hoursNo#1: "+hoursNo);
 				System.out.println("hoursNo#2: "+hoursNo2);
-				System.out.println("hoursNo#3: "+hoursNo3);
+				System.out.println("hoursNo#3: "+hoursNo3); 
 				sum=hoursNo+hoursNo2+hoursNo3;
 				System.out.println("sum: "+leave.getSumTime());
 
@@ -247,20 +253,7 @@ public class LeaveController {
 	
 	
 	
-	/*@RequestMapping(value = "/leave/modalReport", method = RequestMethod.GET)
-	public String modalReport(ModelMap map) {
-		return "/leave/reportModal";
-	}
 	
-	@RequestMapping(value = "/leave/searchReport", method = {RequestMethod.POST})
-    public ModelAndView searchLeaveReport(@ModelAttribute(value="leave")  Leave leave, ModelMap map ,HttpSession session,Locale locale){
-		List<ReportLeaveDto> leaveList = leaveDtoService.reportLeave();
-		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
-		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
-		ModelAndView mv = reportService.getReport(leaveList, "leaveReport", leave.getReportType(),parameterMap);
-        return mv;
-    }*/
 	
 	
 	@ModelAttribute("leave")

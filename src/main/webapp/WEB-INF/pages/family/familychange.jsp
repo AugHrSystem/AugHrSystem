@@ -81,31 +81,31 @@
 		        	firstName: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'First name is required and cannot be empty'
+		                        message: '<spring:message code="family.required.firstName" />'
 		                    }
 		                }
 		            },
 		            lastName: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Last name is required and cannot be empty'
+		                        message: '<spring:message code="family.required.lastName" />'
 		                    }
 		                }
 		            },
 		            age: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Age is required and cannot be empty'
+		                        message: '<spring:message code="family.required.age" />'
 		                    },
 		                    digits: {
-		                    	message: 'age is number'
+		                    	message: '<spring:message code="family.required.age.num" />'
 		                    },
 		                }
 		            },
 		            mobile: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'mobile is required and cannot be empty'
+		                        message: '<spring:message code="family.required.mobile" />'
 		                    },
 		                  
 		                }
@@ -113,7 +113,7 @@
 		            address: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'address is required and cannot be empty'
+		                        message: '<spring:message code="family.required.address" />'
 		                    },
 		                  
 		                }
@@ -121,12 +121,9 @@
 		            masRelation: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Relation is required and cannot be empty'
+		                        message: '<spring:message code="family.required.masRelation" />'
 		                    },
-		                    digits: {
-		                    	min:0,
-		                    	message: 'Relation is required'
-		                    },
+		                  
 		                  
 		                }
 		            },
@@ -532,13 +529,13 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<h2>Family</h2>
+		<h2><spring:message code="family.name" /></h2>
 	</div>
 
     <div class="col-md-6">
     	<br/>
     	<div class="form-group" align="right">
-			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal">New Record</button>
+			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
 		</div>
 	</div>
 
@@ -556,11 +553,11 @@
  <table id="tableResult">
 	    <thead>
             <tr> 
-                <th>Fullname</th>
-                <th>Occupation</th> 
-                <th>Tel</th>
-                <th>Relation</th> 
-                <th>Action</th>
+                <th><spring:message code="label.fullname" /></th>
+                <th><spring:message code="family.occupation" /></th> 
+                <th><spring:message code="label.telephone" /></th>
+                <th><spring:message code="family.relation" /></th> 
+                <th><spring:message code="family.action" /></th>
             </tr>
         </thead>
 
@@ -584,7 +581,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Family</h4>
+        <h4 class="modal-title" id="myModalLabel"><spring:message code="family.name" /></h4>
       </div>
       <div class="modal-body">
           
@@ -601,7 +598,7 @@
 			<div class="row">
 			        
 			      <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3 control-label required" >
-			            First Name: 
+			           <spring:message code="label.firstname" />: 
 			      </label>	 		
 			     
 				     
@@ -611,7 +608,7 @@
 		  
 		  
 		  	     <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" >
-			     		Last Name:
+			     		 <spring:message code="label.lastname" />:
 			     </label>	 		
 			    
 			     
@@ -630,17 +627,17 @@
 			    
 			<div class="row">
 			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" >
-			     	  Gender:
+			     	  <spring:message code="family.gender" />:
 			     </label>	 		
 
 
 			      <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">					    
 				     	
 				     <label class="radio-inline" for="gender_male" > 
-		 			     	<f:radiobutton id="genderMale" name="gender" path="gender" value="Male" checked="true"/>Male
+		 			     	<f:radiobutton id="genderMale" name="gender" path="gender" value="Male" checked="true"/><spring:message code="family.gender.male" />
 		 			 </label>
 		 			 <label class="radio-inline" for="gender_female"> 
-		 			     <f:radiobutton id="genderFemale" name="gender" path="gender" value="Female"/>Female
+		 			     <f:radiobutton id="genderFemale" name="gender" path="gender" value="Female"/><spring:message code="family.gender.female" />
 				     </label>  					     		 
 				  </div>
 		     </div>
@@ -654,7 +651,7 @@
 			<div class="row">
 			        
 			      <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="age" >
-			       	 Age:
+			       	 <spring:message code="family.age" />:
 			     </label>	 		
 			    
 			     
@@ -665,7 +662,7 @@
 		   
 		   
 			    <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="mobile" >
-			    	Mobile:
+			    	 <spring:message code="label.mobile" />:
 			    </label>	 		
 
 			    
@@ -684,7 +681,7 @@
 		   
 		      <div class="row">        
 			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="address" >
-			           Address:
+			           <spring:message code="label.address" />:
 			     </label>	 		
 			    
 			     
@@ -705,7 +702,7 @@
 		   
 		     <div class="row">
 			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="occupation">
-			           Occupation:
+			           <spring:message code="family.occupation" />:
 			     </label>	 		
 			    
 			     
@@ -717,7 +714,7 @@
 		 
 		         
 			     <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label" for="position">
-			     		Position:
+			     		<spring:message code="family.position" />:
 			     </label>	 		
 			    
 			     
@@ -738,7 +735,7 @@
 		           
 		      <div class="row">
 		        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="masRelation" >
-		        	   Relation:
+		        	   <spring:message code="family.relation" />:
 			          
 			    </label>	 		
 			    
@@ -929,8 +926,8 @@
 	
 		  
 		      <div class="form-group" align="center">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary">Save</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
+		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
 		      </div>
 		      
 		      <!-- <div class="form-group" align="center">
@@ -952,14 +949,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title" id="deleteModalLabel">Delete Family</h4>
+        <h4 class="modal-title" id="deleteModalLabel"><spring:message code="family.name" /></h4>
       </div>
       <div class="modal-body">
-      	Do you want to delete family ?
+      	<spring:message code="default.delete.confirm" />
       </div>
       <div class="modal-footer">
-		<button id="delete" type="button" class="btn btn-danger yesButton" >Yes</button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+		<button id="delete" type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
       </div>
     </div>
   </div>
