@@ -126,7 +126,7 @@
 	  
 	   <div class="form-group col-md-6">
 	    <label><spring:message code="education.gpa" var="gpa"/>${gpa} :</label>
-	    <form:input path="gpa" type="text" class="form-control" id="gpa" placeholder="${enter}${gpa}"/>
+	    <form:input path="gpa" type="text" class="form-control" name="gpa" id="gpa" placeholder="${enter}${gpa}"/>
 	  </div>
 	  
 	  <div class="form-group col-md-6">
@@ -188,6 +188,10 @@
 	$(document).ready(function(){
 
 		$("#addBtnEdu").on("click",function(){clearModal();});
+		
+		$('#startDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		$('#graduatedDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		$('#gpa').mask("9.99",{placeholder:"0.00"});
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',

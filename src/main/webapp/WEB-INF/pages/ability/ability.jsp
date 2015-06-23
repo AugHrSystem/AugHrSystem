@@ -76,6 +76,7 @@
       
       <div class="modal-body">
         
+        <spring:message code="ability.enter.specialty" var="specialty"/>
 	
 	  
 	  <div class="form-group">
@@ -84,7 +85,7 @@
 		<div class="form-group">
 		  <form:select path="masspecialty" class="form-control"
 			id="masspecialty">
-			<form:option value="" label="---Select Specialty---" />
+			<form:option value="" label="${ specialty}" />
 			<c:forEach var="obj" items="${ masspecialtyList }">
 				<option value="${obj.id }">${ obj.name}</option>
 			</c:forEach>

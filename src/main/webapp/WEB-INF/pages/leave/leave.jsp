@@ -83,6 +83,7 @@
       </div>
       <div class="modal-body row">
    	
+   	<spring:message code="default.date" var="date"/>
 
 
 <%-- <div class="form-group col-md-6">
@@ -121,7 +122,7 @@
             <div class="form-group">
             <label  class="required"><spring:message code="leave.start.date.time" />:</label>
                 <div class='input-group date' id="startTime1">
-				    <form:input id="startTime" name="startTime" path="startTime" cssClass="form-control"/>
+				    <form:input id="startTime" name="startTime" path="startTime" cssClass="form-control" placeholder="${date}"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -168,7 +169,7 @@
             <div class="form-group">
             <label  class="required">  <spring:message code="leave.end.date.time" />:</label>
                 <div class='input-group date' id="endTime1">
-                    <input type='text' class="form-control"  id="endTime" name="endTime"/>
+                    <input type='text' class="form-control"  id="endTime" name="endTime" placeholder="${date}"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -190,14 +191,16 @@
                 </div>
                 </div> --%>
 
-
+	<spring:message code="leave.enter.masleavetype" var="masleavetype"/>
+	<spring:message code="leave.enter.aim" var="aim"/>
+	<spring:message code="default.enter" var="enter"/>
 		
   	<div  class=" form-group col-md-6">
 	    <label  class="required"><spring:message code="leave.leavetype" />:</label>
 	    
 		<div class="form-group">
 		  <form:select path="masleavetype" class="form-control" id="masleavetype">
-			<form:option value="" label="---Select Leavetype---" />
+			<form:option value="" label="${masleavetype }" />
 			<c:forEach var="obj" items="${masleavetypeList}">
 				<option value="${obj.id}">${ obj.name}</option>
 			</c:forEach>
@@ -211,7 +214,7 @@
 	 <label  class="required"><spring:message code="leave.aim" />:</label>
 		  <form:select path="aim" class="form-control"
 			id="aim">
-			<form:option  value="" label="--Select AIM--" />
+			<form:option  value="" label="${aim }" />
   		    <form:options items="${ aimList }"  itemValue="id" itemLabel="name_eng" />
     		
 		</form:select>
@@ -222,8 +225,8 @@
 	     <div  class=" form-group col-md-12">
 		
 		
-		 <label  class="required"><spring:message code="leave.reason" /> :</label>
-	    <form:textarea path="reason" type="text" class="form-control" id="reason" placeholder="Enter Reason Of Leave"/>
+		 <label  class="required"><spring:message code="leave.reason" var="reason"/>${reason } :</label>
+	    <form:textarea path="reason" type="text" class="form-control" id="reason" placeholder="${enter }${reason }"/>
 	 
 	
   	</div>
@@ -373,6 +376,9 @@ $(document).ready(function() {
 	      
 		
 	}); 
+	
+	$('#startTime').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+	$('#endTime').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 	
 	$('#startTime1')
     .on('dp.change dp.show', function(e) {
