@@ -378,8 +378,8 @@ $(document).ready(function() {
 		
 	}); 
 	
-	$('#startTime').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
-	$('#endTime').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+	$('#startTime').mask("99-99-9999 99:99",{placeholder:"DD-MM-YYYY HH:MM"});
+	$('#endTime').mask("99-99-9999 99:99",{placeholder:"DD-MM-YYYY HH:MM"});
 	
 	$('#startTime1')
     .on('dp.change dp.show', function(e) {

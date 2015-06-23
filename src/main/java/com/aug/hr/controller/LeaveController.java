@@ -149,13 +149,12 @@ public class LeaveController {
 				  
 			  }
 			  
-				System.out.println("hoursNo#1: "+hoursNo);
-				System.out.println("hoursNo#2: "+hoursNo2);
-				System.out.println("hoursNo#3: "+hoursNo3);
-				sum+=hoursNo+hoursNo2+hoursNo3;
-				System.out.println("sum: "+leave.getSumTime());
-
 			}
+			System.out.println("hoursNo#1: "+hoursNo);
+			System.out.println("hoursNo#2: "+hoursNo2);
+			System.out.println("hoursNo#3: "+hoursNo3);
+			sum+=hoursNo+hoursNo2+hoursNo3;
+			System.out.println("sum: "+leave.getSumTime());
 		}
 		
 		
