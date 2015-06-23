@@ -168,7 +168,7 @@
             <div class="form-group">
             <label  class="required">  <spring:message code="leave.end.date.time" />:</label>
                 <div class='input-group date' id="endTime1">
-                    <input type='text' class="form-control"  id="endTime"/>
+                    <input type='text' class="form-control"  id="endTime" name="endTime"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -374,11 +374,35 @@ $(document).ready(function() {
 		
 	}); 
 	
+	$('#startTime1')
+    .on('dp.change dp.show', function(e) {
+        // Validate the date when user change it
+        $('#addForm')
+            // Get the bootstrapValidator instance
+            .data('bootstrapValidator')
+            // Mark the field as not validated, so it'll be re-validated when the user change date
+            .updateStatus('startTime', 'NOT_VALIDATED', null)
+            // Validate the field
+            .validateField('startTime');
+    });
+	
+	$('#endTime1')
+    .on('dp.change dp.show', function(e) {
+        // Validate the date when user change it
+        $('#addForm')
+            // Get the bootstrapValidator instance
+            .data('bootstrapValidator')
+            // Mark the field as not validated, so it'll be re-validated when the user change date
+            .updateStatus('endTime', 'NOT_VALIDATED', null)
+            // Validate the field
+            .validateField('endTime');
+    });
 	
      $('#startTime1').datetimepicker({
     	
     	// viewMode: 'days',
 		 format : 'DD-MM-YYYY HH:mm',
+// 		 minDate: 'moment'
 		 //defaultDate: 'moment'
     }); 
 
@@ -388,6 +412,7 @@ $(document).ready(function() {
 	$( '#endTime1').datetimepicker({
 		//viewMode: 'days',
 		format : 'DD-MM-YYYY HH:mm',
+// 		minDate: 'moment'
 	}); 
 	 
 	
