@@ -51,6 +51,9 @@
 <script src="<c:url value="/resource/bootstrap/js/fileinput.min.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/fileinput.min.css" />" rel="stylesheet"	media="all">
 
+<!-- Mask Plugin -->
+<script src="<c:url value="/resource/mask/js/jquery.maskedinput.js" />"></script>
+
 <style >
 
 #imagePreview {

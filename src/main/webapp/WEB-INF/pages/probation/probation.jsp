@@ -128,9 +128,12 @@
   </div>
 </div>
 
-<script>
+<script type="text/javascript">
 var dt;
 	$(document).ready(function() {
+		
+		$('#dateFrom').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		$('#dateTo').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		$('#tdResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,
@@ -179,6 +182,29 @@ var dt;
 		        }
 		});
 		
+		$('#dateTimeFrom')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#validate')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('dateFrom', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('dateFrom');
+        });
+		
+		$('#dateTimeTo')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#validate')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('dateTo', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('dateTo');
+        });
     	$( "#dateTimeFrom" ).datetimepicker({
 			 //viewMode: 'days',
 			 format : 'DD-MM-YYYY',

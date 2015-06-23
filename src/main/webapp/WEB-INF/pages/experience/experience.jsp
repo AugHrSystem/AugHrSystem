@@ -62,9 +62,10 @@
       <div class="modal-body row">
         <spring:message code="default.enter" var="enter" />
   		<spring:message code="default.date" var="date" />
+       	
        	<div class="form-group col-md-6">
     		<label class="required"><spring:message code="experience.dateFrom" var="dateFrom" /> ${dateFrom} : </label>
-  			<div class="input-group" id="dateTimeFrom">
+  			<div class="input-group date" id="dateTimeFrom">
   				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="${date}" />
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
@@ -72,8 +73,8 @@
 		
 		<div class="form-group col-md-6">
     		<label class="required"><spring:message code="experience.dateTo" var="dateTo" /> ${dateTo} : </label> 	
-  			<div class="input-group" id="dateTimeTo">
-  				<f:input path="dateTo" id="dateTo" type="text" class="form-control" placeholder="${date}" />
+  			<div class="input-group date" id="dateTimeTo">
+  				<f:input path="dateTo" type="text" class="form-control" id="dateTo" placeholder="${date}" />
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
@@ -143,9 +144,12 @@
   </div>
 </div>
 
-<script>
+<script type="text/javascript">
 var dt;
 	$(document).ready(function() {
+		
+		$('#dateFrom').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		$('#dateTo').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		$('#tdResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,
@@ -154,8 +158,7 @@ var dt;
 			"info": false
 		});
 		var expId; 
-		$('#validate')
-        .bootstrapValidator({
+		$('#validate').bootstrapValidator({
 			message: 'This value is not valid',
 			 feedbackIcons: {
 		            valid: 'glyphicon glyphicon-ok',
@@ -217,16 +220,40 @@ var dt;
 		        }
 		});
 		
+		$('#dateTimeFrom')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#validate')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('dateFrom', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('dateFrom');
+        });
+		
+		$('#dateTimeTo')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#validate')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('dateTo', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('dateTo');
+        });
+		
     	$( "#dateTimeFrom" ).datetimepicker({
-			 viewMode: 'days',
+			// viewMode: 'days',
 			 format : 'DD-MM-YYYY',
-			 defaultDate: 'moment',
+			 //defaultDate: 'moment',
 			 //minDate: moment(),
 		});
     	$( "#dateTimeTo" ).datetimepicker({
-			 viewMode: 'days',
+			 //viewMode: 'days',
 			 format : 'DD-MM-YYYY',
-			 defaultDate: 'moment',
+			// defaultDate: 'moment',
 			 //minDate: moment(),
 		});
     	dt=$("#tdResult").dataTable();
