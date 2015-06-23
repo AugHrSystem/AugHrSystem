@@ -140,12 +140,12 @@
 	
 	  $('#startDate').datetimepicker({
 			 
-						 viewMode: 'days',
+// 						 viewMode: 'days',
 						 format : 'DD-MM-YYYY',
-						 defaultDate: 'moment',
-						 minDate: 'moment',
+// 						 defaultDate: 'moment',
+// 						 minDate: 'moment',
 						 //showClear: true,
-						 showClose:true,
+// 						 showClose:true,
 			
 						
 		});
@@ -155,12 +155,12 @@
 		
 		
 		$('#endDate').datetimepicker({			 
-			 viewMode: 'days',
+// 			 viewMode: 'days',
 			 format : 'DD-MM-YYYY',	 
-			 defaultDate: defaultDate,
-			 minDate: defaultDate,
+// 			 defaultDate: defaultDate,
+// 			 minDate: 'moment',
 			 //ShowClear: true,
-			 showClose:true					 
+// 			 showClose:true					 
 		
 		});
 	
@@ -177,10 +177,10 @@
             .validateField('startDate');
  			
  			
- 			var tempdate = new Date(e.date);
- 			tempdate.setDate(tempdate.getDate()+1);
- 			//alert('temp: '+tempdate);
-            $('#endDate').data("DateTimePicker").minDate(tempdate);
+//  			var tempdate = new Date(e.date);
+//  			tempdate.setDate(tempdate.getDate()+1);
+//  			//alert('temp: '+tempdate);
+//             $('#endDate').data("DateTimePicker").minDate(tempdate);
             
             
         }); 
@@ -569,7 +569,7 @@
           
             <f:form id="formAddUpdate" name="siteForm" method="post" commandName="site" class="form-horizontal" role="form">	      	 
 	      
-	   
+	   <spring:message code="default.date" var="date"/>
 		   <div class="form-group form-group-sm">
 			    
 			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
@@ -578,7 +578,7 @@
 			    
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		
 				     <div  class="input-group date" id='startDate'>		     		
-				     		<f:input name="startDate" path="startDate" cssClass="form-control"/>
+				     		<f:input name="startDate" path="startDate" cssClass="form-control" placeholder="${date}"/>
 				     		<span class="input-group-addon">
 	                        	<span class="glyphicon glyphicon-calendar"></span>
 	                    	</span>
@@ -597,7 +597,7 @@
 			   
 			    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		
 				     <div  class="input-group date" id='endDate'>		     		
-				     		<f:input name="endDate" path="endDate" cssClass="form-control"/>
+				     		<f:input name="endDate" path="endDate" cssClass="form-control" placeholder="${date}"/>
 				     		<span class="input-group-addon">
 	                        <span class="glyphicon glyphicon-calendar"></span>
 	                    </span>

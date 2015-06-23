@@ -230,9 +230,22 @@
 	        }
 	    });
 	   
+		$('#datetimepicker1')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#addForm')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('dateOfAdjustment', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('dateOfAdjustment');
+        });
+		
 		$('#datetimepicker1').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
+// 			 minDate: 'moment'
 			 
 		 });
 		
