@@ -212,22 +212,23 @@ public class LeaveController {
 				hoursNo = (18-leaveDto.getStartTime().getHours())-1;
 				System.out.println("aaa");
 				System.out.println("i: "+i);
-			  }if(dateNumber==i){
+			  }else if(dateNumber==i){
 				System.out.println("i: "+i);
 				hoursNo2 = (leaveDto.getEndTime().getHours()-9)-1;
-			  }if(i!=1){
+			  }else if(i!=1){
 				 System.out.println("i: "+i);
-				 hoursNo3 = hoursNo3+8;
+				 hoursNo3 = 8;
 				  
-			  }
-			  
-				System.out.println("hoursNo#1: "+hoursNo);
-				System.out.println("hoursNo#2: "+hoursNo2);
-				System.out.println("hoursNo#3: "+hoursNo3); 
-				sum=hoursNo+hoursNo2+hoursNo3;
-				System.out.println("sum: "+leave.getSumTime());
-
+			  }		  
+				
 			}
+			
+			System.out.println("hoursNo#1: "+hoursNo);
+			System.out.println("hoursNo#2: "+hoursNo2);
+			System.out.println("hoursNo#3: "+hoursNo3); 
+			sum=hoursNo+hoursNo2+hoursNo3;
+			System.out.println("sum: "+leave.getSumTime());
+
 		}
 		
 		Leave leaveUpdate = leave.fromLeaveDto(leaveDto,leave,new Integer(sum));

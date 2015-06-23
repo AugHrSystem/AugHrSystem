@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="leaveReport" language="groovy" pageWidth="2000" pageHeight="612" orientation="Landscape" columnWidth="1960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="896b97d3-bb7c-4822-aee2-a94621f66cf4">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="1424"/>
-	<property name="ireport.y" value="145"/>
+	<property name="ireport.x" value="1374"/>
+	<property name="ireport.y" value="193"/>
 	<queryString>
 		<![CDATA[select emp.id, emp.employee_code as employeeCode,emp.dateofbirth as dateOfBirth,
 YEAR(CURDATE()) - YEAR(dateOfBirth) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearAge ,
 MONTH(CURDATE()) - MONTH(dateOfBirth) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as monthAge,
 DAY(CURDATE()) - DAY(dateOfBirth) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as dayAge,
 emp.age as age,emp.name_thai as nameThai,emp.name_eng as nameEng,l.sumTime as sumTime,off.START_WORK_DATE as startWorkDate,
+
 YEAR(CURDATE()) - YEAR(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as dayWork ,
 MONTH(CURDATE()) - MONTH(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as monthWork ,
 DAY(CURDATE()) - DAY(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearWork,
-SUM( CASE when l.`leavetype_id`= 1 then (l.sumTime/8) else 0 end	) as 'dayAnnual',
-SUM( CASE when l.`leavetype_id`= 3 then (l.sumTime/8) else 0 end) as 'daySick',
-SUM( CASE when l.`leavetype_id`= 4 then (l.sumTime/8) else 0 end) as 'dayPersonal',
-SUM((CASE when l.`leavetype_id`= 4 then (l.sumTime/8) else 0 end)+(CASE when l.`leavetype_id`= 3 then (l.sumTime/8)else 0 end)+
-(CASE when l.`leavetype_id`= 1 then (l.sumTime/8) else 0 end )) as totalDayLeave
-from emp_employee emp join emp_official off join emp_leave as l where emp.id = l.employee_id group by emp.employee_code]]>
+SUM( CASE when l.leavetype_id= 1 then (l.sumTime/8) else 0 end) as 'dayAnnual',
+SUM( CASE when l.leavetype_id= 3 then (l.sumTime/8) else 0 end) as 'dayPersonal',
+SUM( CASE when l.leavetype_id= 4 then (l.sumTime/8) else 0 end) as 'daySick',
+SUM((CASE when l.leavetype_id= 4 then (l.sumTime/8) else 0 end)+(CASE when l.leavetype_id= 3 then (l.sumTime/8)else 0 end)+
+(CASE when l.leavetype_id= 1 then (l.sumTime/8) else 0 end )) as totalDayLeave
+from emp_employee emp
+join emp_official off on emp.`OFFICIAL_ID`=off.`ID`
+join emp_leave as l where emp.id = l.employee_id
+group by emp.employee_code]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -42,8 +46,8 @@ from emp_employee emp join emp_official off join emp_leave as l where emp.id = l
 	<field name="monthWork" class="java.lang.Integer"/>
 	<field name="yearWork" class="java.lang.Integer"/>
 	<field name="dayAnnual" class="java.math.BigDecimal"/>
-	<field name="daySick" class="java.math.BigDecimal"/>
 	<field name="dayPersonal" class="java.math.BigDecimal"/>
+	<field name="daySick" class="java.math.BigDecimal"/>
 	<field name="totalDayLeave" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -201,77 +205,79 @@ from emp_employee emp join emp_official off join emp_leave as l where emp.id = l
 				<reportElement uuid="68af5f06-18d3-4610-99e0-f7ab5f75cd7e" x="0" y="30" width="1960" height="1" forecolor="#FF6633"/>
 			</line>
 			<textField>
-				<reportElement uuid="5aee6933-8a61-428d-a620-a640924b36e1" x="0" y="10" width="100" height="20"/>
+				<reportElement uuid="cf155926-a2c4-4e21-b8cf-c5de655a02c2" x="0" y="11" width="114" height="19"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{employeeCode}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="12e41ca0-0a93-44a9-838b-7cfa3038e98e" x="137" y="10" width="100" height="20"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{startWorkDate}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="33bcb6d1-6988-4553-a803-6a55490a3f77" x="336" y="10" width="44" height="20"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{dayWork}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="496308e1-debb-4de6-97b7-d230918a3986" x="252" y="11" width="41" height="20"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{yearWork}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="b598a83b-c129-4ab9-8788-4f2273dafccf" x="293" y="10" width="43" height="20"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{monthWork}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="1cf2407e-d542-4648-b9f8-7327994be767" x="380" y="10" width="167" height="20"/>
+				<reportElement uuid="4e5af069-0949-4a7f-86d0-341c088696e9" x="380" y="10" width="167" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{dateOfBirth}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="ee3f9545-f1fe-43aa-b733-7f407629aade" x="547" y="11" width="41" height="20"/>
+				<reportElement uuid="ebf03daa-1cc7-4b75-bb69-34acab106259" x="114" y="11" width="138" height="20"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{yearAge}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{startWorkDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="86cc3274-2ab7-41ae-81f9-2487b81ef002" x="588" y="11" width="43" height="20"/>
+				<reportElement uuid="7ced6566-9607-4c8b-9f05-ba183144fa4a" x="336" y="11" width="44" height="20"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{monthAge}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dayWork}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="6c20d3d4-11e1-4224-aa12-036afa88fd5f" x="631" y="11" width="44" height="20"/>
+				<reportElement uuid="9f0b2c73-3844-42b4-8dfb-1eca8e8ec7cd" x="252" y="11" width="41" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{yearWork}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="36580df5-5dd1-46ce-b16a-555c52edb4b1" x="293" y="11" width="43" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{monthWork}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b725338e-20fd-440e-a2b6-4a1ca1165ba7" x="631" y="10" width="44" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{dayAge}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="d4471ee8-c5d3-4853-885a-0c81d30adb20" x="842" y="10" width="167" height="20"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{nameEng}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="0f50b55a-65e3-4a01-b919-fde0f6c7468e" x="675" y="11" width="167" height="20"/>
+				<reportElement uuid="7cad72bd-78d9-4074-8984-56197764b944" x="675" y="10" width="167" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{nameThai}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="18cf8250-0e12-4754-9d19-7e430b6bbd26" x="1213" y="11" width="167" height="20"/>
+				<reportElement uuid="bdb23cae-3c3d-46ad-a3f6-81d10b281499" x="842" y="11" width="167" height="20"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nameEng}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="729929d5-592b-483b-b697-cc4a255cc401" x="588" y="11" width="43" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{monthAge}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9a415ceb-a361-4c36-81db-dae20bff800f" x="547" y="11" width="41" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{yearAge}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="598c3ac3-176b-4e77-9307-771aceb9e530" x="1213" y="11" width="167" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{totalDayLeave}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="4cd3a091-9d61-43ca-b029-674e49224c8d" x="1142" y="11" width="71" height="20"/>
+				<reportElement uuid="c93f0f53-b964-4b74-97f1-b5a3bef39b97" x="1142" y="11" width="71" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{dayPersonal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="02de22f5-0799-405a-b46c-bdefb11d06f7" x="1079" y="11" width="63" height="20"/>
+				<reportElement uuid="28685c21-0512-4071-864a-ae30dd409bc6" x="1079" y="11" width="63" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{daySick}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="d7aafb4f-6725-493c-9441-cd5de2a6cebf" x="1009" y="10" width="70" height="20"/>
+				<reportElement uuid="65474c1b-33b5-4392-a594-ab2291ea0894" x="1009" y="10" width="70" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{dayAnnual}]]></textFieldExpression>
 			</textField>

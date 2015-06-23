@@ -33,8 +33,8 @@ import javax.persistence.NamedNativeQuery;
 				+ "MONTH(CURDATE()) - MONTH(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as monthWork ,"
 				+ "DAY(CURDATE()) - DAY(off.START_WORK_DATE) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(off.START_WORK_DATE), '/', DAY(off.START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearWork,"
 				+ "SUM( CASE when l.`leavetype_id`= 1 then (l.sumTime/8) else 0 end	) as 'dayAnnual',"
-				+ "SUM( CASE when l.`leavetype_id`= 3 then (l.sumTime/8) else 0 end) as 'daySick',"
-				+ "SUM( CASE when l.`leavetype_id`= 4 then (l.sumTime/8) else 0 end) as 'dayPersonal',"
+				+ "SUM( CASE when l.`leavetype_id`= 3 then (l.sumTime/8) else 0 end) as 'dayPersonal',"
+				+ "SUM( CASE when l.`leavetype_id`= 4 then (l.sumTime/8) else 0 end) as 'daySick',"
 				+ "SUM((CASE when l.`leavetype_id`= 4 then (l.sumTime/8) else 0 end)+(CASE when l.`leavetype_id`= 3 then (l.sumTime/8)else 0 end)+"
 				+ "(CASE when l.`leavetype_id`= 1 then (l.sumTime/8) else 0 end )) as totalDayLeave "
 				+ "from emp_employee emp join emp_official off join emp_leave as l where emp.id = l.employee_id group by emp.employee_code",

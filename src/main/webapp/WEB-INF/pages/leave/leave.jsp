@@ -169,7 +169,8 @@
             <div class="form-group">
             <label  class="required">  <spring:message code="leave.end.date.time" />:</label>
                 <div class='input-group date' id="endTime1">
-                    <input type='text' class="form-control"  id="endTime" name="endTime" placeholder="${date}"/>
+          <form:input type='text' class="form-control" name="endTime" path="endTime" id="endTime" placeholder="${date}"/>
+
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
