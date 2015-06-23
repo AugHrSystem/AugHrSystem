@@ -298,7 +298,7 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label class="required"> <spring:message code="employee.dateOfBirth"></spring:message> :</label> 
-									<div class='input-group date'  id='dateOfBirth'>
+									<div class='input-group date'  id='dateOfBirth1'>
 									
 								
 									
@@ -359,7 +359,7 @@
 								</div>
 								<div class="col-md-3">
 									<label> <spring:message code="employee.expiryDate"></spring:message> :</label>
-									<div class='input-group date' id='expiryDate'> <input type="text" class="form-control"
+									<div class='input-group date' id='expiryDate1'> <input type="text" class="form-control"
 									id="expiryDate" name="expiryDate" placeholder="${enter} <spring:message code="employee.expiryDate"></spring:message>" value='
 									<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.expiryDate}" />' />
 								
@@ -708,7 +708,7 @@
     								<div class="col-md-3">
     									 <label> <spring:message code="employee.dateToBeDrafted"></spring:message> :</label>
 
-    									 <div class='input-group date' id='dateToBeDrafted'>
+    									 <div class='input-group date' id='dateToBeDrafted1'>
     									 <input type="text" class="form-control" id="dateToBeDrafted" name="dateToBeDrafted" placeholder="${enter} <spring:message code="employee.datedrafted"></spring:message>" 
     									 value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.dateToBeDrafted}" />'  />
     							      	 <span class="input-group-addon">
@@ -777,7 +777,7 @@
 			 			<div class="col-md-4">
 									<label> <spring:message code="official.officialDate"></spring:message> :</label> 
 
-									<div class='input-group date' id='officialDate'>
+									<div class='input-group date' id='officialDate1'>
 									<input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="${enter} <spring:message code="official.officialDate"></spring:message>" 
 									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.officialDate}"/>' />
 								    <span class="input-group-addon">
@@ -837,7 +837,7 @@
 
 						<div class="col-md-4">
     						<label> <spring:message code="official.startWorkDate"></spring:message> :</label> 
-    						<div class='input-group date' id='startWorkDate'><input type="text" class="form-control"
+    						<div class='input-group date' id='startWorkDate1'><input type="text" class="form-control"
 							id="startWorkDate" name="startWorkDate" placeholder="${enter} <spring:message code="official.startWorkDate"></spring:message>" 
 							value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.startWorkDate}"/>'  />
 							<span class="input-group-addon">
@@ -847,7 +847,7 @@
 						
 						<div class="col-md-4">
     						<label> <spring:message code="official.endWorkDate"></spring:message> :</label>
-    						<div class='input-group date' id='endWorkDate'>
+    						<div class='input-group date' id='endWorkDate1'>
     						<input type="text" class="form-control"
 							id="endWorkDate" name="endWorkDate" placeholder="${enter} <spring:message code="official.endWorkDate"></spring:message>" 
 							value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.endWorkDate}"/>' />
@@ -1025,7 +1025,7 @@
 						
 
 						<label> <spring:message code="employee.probationdate"></spring:message> :</label> 
-						<div class='input-group date' id='probationDate'>
+						<div class='input-group date' id='probationDate1'>
 						<input type="text" class="form-control"
 									id="probationDate" name="probationDate" placeholder="${enter} <spring:message code="employee.probationdate"></spring:message>" 
 									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.probationDate}"/>' />
@@ -1711,15 +1711,87 @@ $('#addForm').bootstrapValidator({
     }
 }); 
 
+			
+$('#probationDate1')
+.on('dp.change dp.show', function(e) {
+    // Validate the date when user change it
+    $('#addForm')
+        // Get the bootstrapValidator instance
+        .data('bootstrapValidator')
+        // Mark the field as not validated, so it'll be re-validated when the user change date
+        .updateStatus('probationDate', 'NOT_VALIDATED', null)
+        // Validate the field
+        .validateField('probationDate');
+});
 
-		var date1 = $( "#dateOfBirth" ).datetimepicker({
+$('#endWorkDate1')
+.on('dp.change dp.show', function(e) {
+    // Validate the date when user change it
+    $('#addForm')
+        // Get the bootstrapValidator instance
+        .data('bootstrapValidator')
+        // Mark the field as not validated, so it'll be re-validated when the user change date
+        .updateStatus('endWorkDate', 'NOT_VALIDATED', null)
+        // Validate the field
+        .validateField('endWorkDate');
+});
+
+$('#startWorkDate1')
+.on('dp.change dp.show', function(e) {
+    // Validate the date when user change it
+    $('#addForm')
+        // Get the bootstrapValidator instance
+        .data('bootstrapValidator')
+        // Mark the field as not validated, so it'll be re-validated when the user change date
+        .updateStatus('startWorkDate', 'NOT_VALIDATED', null)
+        // Validate the field
+        .validateField('startWorkDate');
+});
+
+$('#officialDate1')
+.on('dp.change dp.show', function(e) {
+    // Validate the date when user change it
+    $('#addForm')
+        // Get the bootstrapValidator instance
+        .data('bootstrapValidator')
+        // Mark the field as not validated, so it'll be re-validated when the user change date
+        .updateStatus('officialDate', 'NOT_VALIDATED', null)
+        // Validate the field
+        .validateField('officialDate');
+});
+
+$('#expiryDate1')
+.on('dp.change dp.show', function(e) {
+    // Validate the date when user change it
+    $('#addForm')
+        // Get the bootstrapValidator instance
+        .data('bootstrapValidator')
+        // Mark the field as not validated, so it'll be re-validated when the user change date
+        .updateStatus('expiryDate', 'NOT_VALIDATED', null)
+        // Validate the field
+        .validateField('expiryDate');
+});
+
+$('#dateOfBirth1')
+.on('dp.change dp.show', function(e) {
+    // Validate the date when user change it
+    $('#addForm')
+        // Get the bootstrapValidator instance
+        .data('bootstrapValidator')
+        // Mark the field as not validated, so it'll be re-validated when the user change date
+        .updateStatus('dateOfBirth', 'NOT_VALIDATED', null)
+        // Validate the field
+        .validateField('dateOfBirth');
+});
+
+		var date1 = $( "#dateOfBirth1" ).datetimepicker({
 			format : "DD-MM-YYYY",
 			viewMode : 'years'
 		});
 		
-    	var date2 = $( "#expiryDate" ).datetimepicker({
+    	var date2 = $( "#expiryDate1" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		viewMode : 'years'
+//     		viewMode : 'years'
 		});
     	
     	var date3 = $( "#fromYear" ).datetimepicker({
@@ -1732,29 +1804,29 @@ $('#addForm').bootstrapValidator({
     		viewMode : 'years'
 		});
     	
-    	var date5 = $( "#dateToBeDrafted" ).datetimepicker({
+    	var date5 = $( "#dateToBeDrafted1" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		viewMode : 'years'
+//     		viewMode : 'years'
 		});
     	
-    	var date6 = $( "#officialDate" ).datetimepicker({
+    	var date6 = $( "#officialDate1" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		viewMode : 'years'
+//     		viewMode : 'years'
 		});
     	
-    	var date6 = $( "#startWorkDate" ).datetimepicker({
+    	var date6 = $( "#startWorkDate1" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		viewMode : 'years'
+//     		viewMode : 'years'
 		});
     	
-    	var date6 = $( "#endWorkDate" ).datetimepicker({
+    	var date6 = $( "#endWorkDate1" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		viewMode : 'years'
+//     		viewMode : 'years'
 		});
     	
-    	var date6 = $( "#probationDate" ).datetimepicker({
+    	var date6 = $( "#probationDate1" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		viewMode : 'years'
+//     		viewMode : 'years'
 		});
     	
 	

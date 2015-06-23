@@ -131,6 +131,8 @@
 		 
     });
 			
+		 $('#mobile').mask("999-999-9999",{placeholder:"xxx-xxx-xxxx"});
+		 
 		 $('#tableResult').dataTable({ 
 				"bLengthChange": false,
 				"iDisplayLength": 10,
@@ -157,7 +159,7 @@
 	          $('#position').val("");
 	          $('#age').val("");
 	          $('#mobile').val("");
-	          $('#masRelation').val(-1);
+	          $('#masRelation').val("");
 	          
 	      } 
 	      
@@ -726,7 +728,7 @@
 		   
 		   </div>
 		   
-		   
+		   <spring:message code="family.enter.Relation" var="Relation"/>
 		   
 		   
 		   
@@ -744,7 +746,7 @@
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 
 			     		 <f:select id="masRelation" path="masRelation" cssClass="form-control">
-						  <f:option  value="-1" label="please select data"/>								
+						  <option  value="">${Relation }</option>							
 							<c:forEach var="obj" items="${ masRelationTypeList }">									
 									<option value="${obj.id}" >${obj.relationType}</option> 									
 							</c:forEach>

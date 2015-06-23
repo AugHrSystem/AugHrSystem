@@ -136,7 +136,8 @@
 		//$('#startDate').data('daterangepicker').setStartDate('2014-03-01');
 		//$('#startDate').data('daterangepicker').setEndDate('2014-03-31');
 
-		
+		$('#startDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		$('#endDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 	
 	  $('#startDate').datetimepicker({
 			 
