@@ -7,16 +7,25 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
+
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
 <input id="empId" type="hidden" value="${id}">
 
 		<form:form id="listForm" method="post" commandName="reward" class="form-horizontal" role="form">
 			<div class="row">
-			<h2 class="col-md-6">Reward</h2>
+			<h2 class="col-md-6"><spring:message code="reward.name" /></h2>
 			<br>
 					<div class="col-md-6" align="right">
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
-					New Record
+					<spring:message code="label.newRecord" />
 					</button> 
 					<br>
 					<br>
@@ -26,10 +35,10 @@
 					<table id="tbResult" class="table" class="form-group">
 							<thead>
 								<tr>
-									<th>Reward name</th>
-									<th>YEAR</th>
-									<th>Description</th>
-									<th>Action</th>
+									<th><spring:message code="reward.reward.name" /></th>
+									<th><spring:message code="reward.year" /></th>
+									<th><spring:message code="reward.description" /></th>
+									<th><spring:message code="label.action" /></th>
 <!-- 									<th></th> -->
 								</tr>
 							</thead>
@@ -49,17 +58,20 @@
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<h4 class="modal-title" id="addModalLabel">Reward</h4>
+								<h4 class="modal-title" id="addModalLabel"><spring:message code="reward.name" /></h4>
 							</div>
 						<div class="col col-lg-12 " style="padding-top: 10px">
 							<div class="form-group " align="left">
-									  <label>Reward name :</label>
-										<form:input path="typereward" type="text" class="form-control" id="typereward" placeholder="Type" />
+							
+									  <spring:message code="default.enter" var="enter"/>
+									  
+									  <label class="required" ><spring:message code="reward.reward.name" var="rewardname"/>${rewardname} :</label>
+										<form:input path="typereward" type="text" class="form-control" id="typereward" placeholder="${enter}${rewardname}" />
 							</div>
 								<div class="form-group " align="left">
-									 <label>Year :</label>
+									 <label class="required"><spring:message code="reward.year" var="year"/>${year} :</label>
 									<form:select path="year" id="year" class="form-control required" >
-										<option value="">--Select Status--</option>						
+										<option value=""><spring:message code="reward.selectyear" var="year"/>${year}</option>						
 										<option value="2020">2020</option>
 										<option value="2019">2019</option>
 										<option value="2018">2018</option>
@@ -186,14 +198,14 @@
 								</div>
 
 								<div class="form-group " align="left">
-									 <label>Description :</label>
-									<form:textarea path="reason" type="text" class="form-control" id="reason" placeholder="reason" />
+									 <label><spring:message code="reward.description" var="description"/>${description} :</label>
+									<form:textarea path="reason" type="text" class="form-control" id="reason" placeholder="${enter}${description}" />
 								</div>
 							</div>
 
 								 <div class="form-group" align="center" >
-      				 				 <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-      								<button type="button" class="btn btn-info btnSave">Save</button>
+      				 				 <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+      								<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
      				 			</div>
 		
 						</div>
@@ -208,11 +220,11 @@
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
 					<div class="modal-body">
-						<label>ARE YOU DELETE !!</label>
+						<label><spring:message code="default.delete.confirm" /></label>
 					</div>
 					<div class="modal-footer">
-					<button type="button" class="btn btn-danger DeleteButton">Yes</button>
-						<button type="button" class="btn btn-info" data-dismiss="modal">NO</button>
+					<button type="button" class="btn btn-danger DeleteButton"><spring:message code="default.yes" /></button>
+						<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
 					</div>
 				</div>
 			</div>

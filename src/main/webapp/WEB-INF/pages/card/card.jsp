@@ -7,15 +7,24 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
+
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
 <input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="card">	
 				<div class="row">
-			<h2 class="col-md-6">Card</h2>
+			<h2 class="col-md-6"><spring:message code="card.name" /></h2>
 			<br>
 					<div class="col-md-6" align="right">
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
-					New Record
+					<spring:message code="label.newRecord" />
 					</button> 
 					<br>
 					<br>
@@ -25,12 +34,12 @@
 				<table id="tbResult" class="table">
 					<thead>					
 						<tr>								
-							<th>Card No.</th>
-							<th>Start Date</th>					
-							<th>End Date</th>
-							<th>Status</th>
-							<th>Remark</th>
-							<th>Action</th>
+							<th><spring:message code="card.cardno" /></th>
+							<th><spring:message code="card.startdate" /></th>					
+							<th><spring:message code="card.enddate" /></th>
+							<th><spring:message code="card.status" /></th>
+							<th><spring:message code="card.remark" /></th>
+							<th><spring:message code="label.action" /></th>
 <!-- 							<th></th> -->
 						</tr>
 					</thead>
@@ -48,38 +57,42 @@
 				
 					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Card</h4>
+       					 <h4 class="modal-title" id="addModalLabel"><spring:message code="card.name" /></h4>
       				</div>
       					
       		<div class="col col-lg-12 " style="padding-top: 10px">	
       			<div class="form-group "  align="left">
-							<label for="cardno" >Card No.:</label>
-							<form:input path="card_no" type="text" class="form-control" id="cardno" placeholder="Card No."/>							
+      			
+      						<spring:message code="default.date" var="date"/>
+   							 <spring:message code="default.enter" var="enter"/>
+   							 
+							<label class="required" ><spring:message code="card.cardno" var="cardno" />${cardno} :</label>
+							<form:input path="card_no" type="text" class="form-control" id="cardno" placeholder="${enter}${cardno}"/>							
 				</div>			
       					
 																																		
 				    <div class="form-group "  align="left">
-							<label for="startdate">Start Date:</label>
+							<label class="required"><spring:message code="card.startdate" var="startdate"/>${startdate} :</label>
 						<div class='input-group date' id='datetimepicker1'>
-	   						 <form:input path="startdate" type="text" class="form-control" id="startdate"/>
+	   						 <form:input path="startdate" type="text" class="form-control" id="startdate"  placeholder="${date}"/>
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
 					</div>
 				    		
 			
 				    <div class="form-group "  align="left">
-							<label for="enddate">End Date:</label>
+							<label class="required"><spring:message code="card.enddate" var="enddate"/>${enddate} :</label>
 						<div class='input-group date' id='datetimepicker2'>
-	   						 <form:input path="enddate" type="text" class="form-control" id="enddate"/>
+	   						 <form:input path="enddate" type="text" class="form-control" id="enddate" placeholder="${date}"/>
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
 					</div>    		
 				    		
 				    		<div class="form-group " align="left">
-									 <label>Status :</label>
+									 <label class="required"><spring:message code="card.status" var="status"/>${status} :</label>
 									<form:select path="status" class="form-control" id="status">									
 										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>		
-										<option value="">---Select status---</option>				
+										<option value=""><spring:message code="card.selectsite" var="selectsite"/>${selectsite}</option>				
 										<option value="Onsite">On site</option>
 										<option value="Office">Office</option>
 										<option value="Resign">Resign</option>	
@@ -89,8 +102,8 @@
 				    						    		
 				    			    
 				  		  <div class="form-group "  align="left">
-								<label for="remark" >Remark:</label>
-								<form:input path="remark" type="text" class="form-control" id="remark" placeholder="Remark"/>							
+								<label for="remark" ><spring:message code="card.remark" var="remark" />${remark} :</label>
+								<form:input path="remark" type="text" class="form-control" id="remark" placeholder="${enter}${remark}"/>							
 				   		 </div>	
 				    
 				  </div>		
@@ -113,12 +126,12 @@
 				<div class="modal-content">
 					<div class="modal-body">
 
-						<label >ARE YOU DELETE !!</label>
+						<label ><spring:message code="default.delete.confirm" /></label>
 
 					</div>
 						<div class="modal-footer">
-						<button type="button" class="btn btn-danger DeleteButton"> Yes </button>
-						  <button type="button" class="btn btn-info" data-dismiss ="modal"> NO </button>
+						<button type="button" class="btn btn-danger DeleteButton"><spring:message code="default.yes" /></button>
+						  <button type="button" class="btn btn-info" data-dismiss ="modal"><spring:message code="default.no" /></button>
 					   </div>
 				</div>
 			</div>			

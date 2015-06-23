@@ -7,14 +7,23 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
+
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
 <input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="reference" class="form-horizontal" action="reference">		
 		<div class="row">
-				<h2 class="col-md-6">Reference</h2>				
+				<h2 class="col-md-6"><spring:message code="reference.name" /></h2>				
 				<br>
 				<div class="col-md-6" align="right">		
 				<button type="button" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">
-					New Record
+					<spring:message code="label.newRecord" />
 				</button> 
 				<br>
 				<br>
@@ -24,11 +33,11 @@
 				<table id="tbResult" class="table" class="form-group">
 					<thead>	
 						<tr>								
-							<th>Fullname</th>
+							<th><spring:message code="reference.fullname" /></th>
 							<!-- <th>ADDRESS</th> -->
-							<th>Telphone</th>
+							<th><spring:message code="reference.telphone" /></th>
 							<!-- <th>OCCUPATION</th> -->
-							<th>Action</th>
+							<th><spring:message code="label.action" /></th>
 <!-- 							<th></th> -->
 						</tr>
 					</thead>
@@ -49,33 +58,36 @@
 				<div class="modal-content">
 					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Reference</h4>
+       					 <h4 class="modal-title" id="addModalLabel"><spring:message code="reference.name" /></h4>
       				</div>		
       				<br>																							
-					<div class="col col-lg-12 " >									
+					<div class="col col-lg-12 " >		
+							
+							<spring:message code="default.enter" var="enter"/>
+												
 						<div class="form-group ">
-								<label for="name" >Fullname:</label>
-								<form:input path="name" type="text" class="form-control" id="name" placeholder="Name"/>					
+								<label class="required" ><spring:message code="reference.fullname" var="fullname"/>${fullname} :</label>
+								<form:input path="name" type="text" class="form-control" id="name" placeholder="${enter}${fullname}"/>					
 					    </div>	
 					    
 					    <div class="form-group " >
-							<label for="tel" >Telphone:</label>
-							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="tel"/>							
+							<label class="required" ><spring:message code="reference.telphone" var="telphone" />${telphone} :</label>
+							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="${enter}${telphone}"/>							
 				    	</div>		
 				    			    			    				  					    
 					    
 					</div>			    
 					
 					 <div class="form-group" align="center" >
-      				 	 <button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-      					<button type="button" class="btn btn-info btnSave">Save</button>
+      				 	 <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+      					<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
      				 </div>
 					
 						
 				</div>
 			</div>			
 		</div>
-	</div> 
+	 
 	</form:form> 
 
 <!------------------------------------------Button  modal 2--------------------------------------------------------->
@@ -85,11 +97,11 @@
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
 					<div class="modal-body">
-						<label >ARE YOU DELETE !!</label>
+						<label ><spring:message code="default.delete.confirm" /></label>
 					</div>
 						<div class="modal-footer">
-						<button type="button" class="btn btn-danger DeleteButton"> Yes </button>
-						  <button type="button" class="btn btn-info" data-dismiss ="modal"> NO </button>
+						<button type="button" class="btn btn-danger DeleteButton"><spring:message code="default.yes" /></button>
+						  <button type="button" class="btn btn-info" data-dismiss ="modal"><spring:message code="default.no" /></button>
 					   </div>
 				</div>		
 			</div>

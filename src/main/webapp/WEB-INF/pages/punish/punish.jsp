@@ -7,15 +7,24 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
+
+<style>
+.required:after {
+  margin-bottom: 0px;
+  content:"*";
+  color:red;
+}
+</style>
+
 <input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="punish">	
 			<div class="row">
-			<h2 class="col-md-6">Punish</h2>
+			<h2 class="col-md-6"><spring:message code="reference.name" /></h2>
 			<br>
 					<div class="col-md-6" align="right">
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
-					New Record
+					<spring:message code="label.newRecord" />
 					</button> 
 					<br>
 					<br>
@@ -25,10 +34,10 @@
 				<table id="tbResult" class="table">
 					<thead>					
 						<tr>								
-							<th>DATE</th>
-							<th>Description</th>	
-							<th>Penalty</th>				
-							<th>Action</th>
+							<th><spring:message code="punish.date" /></th>
+							<th><spring:message code="punish.description" /></th>	
+							<th><spring:message code="punish.penalty" /></th>				
+							<th><spring:message code="label.action" /></th>
 <!-- 							<th></th> -->
 						</tr>
 					</thead>
@@ -46,34 +55,40 @@
 				<div class="modal-content">
 					<div class="modal-header">			
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       					 <h4 class="modal-title" id="addModalLabel">Punish</h4>
+       					 <h4 class="modal-title" id="addModalLabel"><spring:message code="punish.name" /></h4>
       					</div>
-																															
+														
+														
+																														
 				<div class="col col-lg-12 " style="padding-top: 10px">		
 				    <div class="form-group "  align="left">
-							<label for="date" >Date:</label>
+				    
+				    		 <spring:message code="default.date" var="date"/>
+   							 <spring:message code="default.enter" var="enter"/>
+   							 
+							<label class="required" ><spring:message code="punish.dateform" var="dateform"/>${dateform} :</label>
 						<div class='input-group date' id='datetimepicker1'>
-	   						 <form:input path="datepunish" type="text" class="form-control" id="datepunish"/>
+	   						 <form:input path="datepunish" type="text" class="form-control" id="datepunish"  placeholder="${date}"/>
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
 				    </div>	
 				    		  
 				    		    
 				    <div class="form-group "  align="left">
-							<label for="description" >Description:</label>
-							<form:input path="description" type="text" class="form-control" id="description" placeholder="Description"/>							
+							<label class="required" ><spring:message code="punish.description" var="description"/>${description} :</label>
+							<form:input path="description" type="text" class="form-control" id="description" placeholder="${enter}${description}"/>							
 				    </div>	
 				    	
 				     <div class="form-group "  align="left">
-							<label for="penalty" >Penalty:</label>
-							<form:input path="penalty" type="text" class="form-control" id="penalty" placeholder="Penalty"/>							
+							<label class="required" ><spring:message code="punish.penalty" var="penalty"/>${penalty} :</label>
+							<form:input path="penalty" type="text" class="form-control" id="penalty" placeholder="${enter}${penalty}"/>							
 				    </div>	
 				    			
 				</div>
 				
 					<div class="form-group" align="center">
-					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-info btnSave">Save</button>
+					<button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+						<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
 					</div>	
 				
 				</div>			
@@ -89,12 +104,12 @@
 				<div class="modal-content">
 					<div class="modal-body">
 
-						<label >ARE YOU DELETE !!</label>
+						<label ><spring:message code="default.delete.confirm" /></label>
 
 					</div>
 						<div class="modal-footer">
-						<button type="button" class="btn btn-danger DeleteButton"> Yes </button>
-						  <button type="button" class="btn btn-info" data-dismiss ="modal"> NO </button>
+						<button type="button" class="btn btn-danger DeleteButton"><spring:message code="default.yes" /></button>
+						  <button type="button" class="btn btn-info" data-dismiss ="modal"><spring:message code="default.no" /></button>
 					   </div>
 				</div>
 			</div>			
