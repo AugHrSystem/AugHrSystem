@@ -35,7 +35,7 @@
 						<tr>								
 							<th><spring:message code="reference.fullname" /></th>
 							<!-- <th>ADDRESS</th> -->
-							<th><spring:message code="reference.telphone" /></th>
+							<th><spring:message code="reference.telephoneheader" /></th>
 							<!-- <th>OCCUPATION</th> -->
 							<th><spring:message code="label.action" /></th>
 <!-- 							<th></th> -->
@@ -70,9 +70,10 @@
 								<form:input path="name" type="text" class="form-control" id="name" placeholder="${enter}${fullname}"/>					
 					    </div>	
 					    
+					    <spring:message code="reference.telephone" var="telephone" />
 					    <div class="form-group " >
-							<label class="required" ><spring:message code="reference.telphone" var="telphone" />${telphone} :</label>
-							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="${enter}${telphone}"/>							
+							<label class="required" ><spring:message code="reference.telephoneheader" var="telephoneheader" />${telephoneheader} :</label>
+							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="${telephone}"/>							
 				    	</div>		
 				    			    			    				  					    
 					    
@@ -113,7 +114,8 @@
 
 	var dt;	
 	$(document).ready(function(){
-		
+			
+		 $('#tel').mask("999-999-9999",{placeholder:"xxx-xxx-xxxx"});
 		
 		$('#tbResult').dataTable({ 
 			"bLengthChange": false,
@@ -153,6 +155,7 @@
 	                    notEmpty: {
 	                        message: 'Telphone is required and cannot be empty'
 	                    }
+	            	
 	                }
 	            },
 	            

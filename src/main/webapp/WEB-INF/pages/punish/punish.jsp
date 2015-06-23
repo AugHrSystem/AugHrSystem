@@ -19,7 +19,7 @@
 <input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="punish">	
 			<div class="row">
-			<h2 class="col-md-6"><spring:message code="reference.name" /></h2>
+			<h2 class="col-md-6"><spring:message code="punish.name" /></h2>
 			<br>
 					<div class="col-md-6" align="right">
 					<!-- Button trigger modal -->
@@ -120,6 +120,8 @@
 
 	var dt;
 	$(document).ready(function() {
+		
+		$('#datepunish').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		
 		$('#tbResult').dataTable({ 
 			"bLengthChange": false,

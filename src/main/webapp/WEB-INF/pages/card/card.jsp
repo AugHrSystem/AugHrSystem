@@ -143,6 +143,9 @@
 	var dt;
 	$(document).ready(function() {
 		
+		$('#startdate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		$('#enddate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		
 		$("#addBtn").on("click",function(){clearModal();});
 		
 		
