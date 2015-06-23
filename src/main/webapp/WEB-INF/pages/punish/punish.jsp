@@ -147,7 +147,7 @@
 	         	datepunish: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Date of adjustment is required and cannot be empty'
+	                    	message: '<spring:message code="punish.required.date" />'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
@@ -158,17 +158,11 @@
 	            description: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Description of adjustment is required and cannot be empty'
+	                    	message: '<spring:message code="punish.required.description" />'
 	                    }
 	                }
 	            },
-	            penalty: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'Penalty of adjustment is required and cannot be empty'
-	                    }
-	                }
-	            },
+	          
 	        }
 	    });
 		

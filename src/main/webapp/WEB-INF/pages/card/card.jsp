@@ -174,7 +174,7 @@
 	        	card_no: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Date of adjustment is required and cannot be empty'
+	                    	message: '<spring:message code="card.required.cardno" />'
 	                    },
 	                   
 	                }
@@ -182,37 +182,16 @@
 	            startdate: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Startdate of adjustment is required and cannot be empty'
+	                    	message: '<spring:message code="card.required.startdate" />'
 	                    },
 	                    date: {
 	                        format: 'DD-MM-YYYY'
 	                    }
 	                }
 	            },
-	            enddate: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'Enddate of adjustment is required and cannot be empty'
-	                    },
-	                    date: {
-	                        format: 'DD-MM-YYYY'
-	                    }
-	                }
-	            },
-	            status: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'Status of adjustment is required and cannot be empty'
-	                    }
-	                }
-	            },
-	            remark: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'Remark of adjustment is required and cannot be empty'
-	                    }
-	                }
-	            },
+	         
+	           
+	        
 	        }
 	    });
 		

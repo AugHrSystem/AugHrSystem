@@ -261,24 +261,18 @@
 		        	typereward: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Reward name: is required and cannot be empty'
+		                    	message: '<spring:message code="reward.required.name" />'
 		                    }
 		                }
 		            },
 		            year: {
 		                validators: {
 		                    notEmpty: {
-		                        message: 'Year is required and cannotR be empty'
+		                    	message: '<spring:message code="reward.required.year" />'
 		                    },
 		                }
 		            },
-		            reason: {
-		                validators: {
-		                    notEmpty: {
-		                        message: 'Description is required and cannot be empty'
-		                    }
-		                }
-		            },
+		           
 		           
 		        }
 		    });

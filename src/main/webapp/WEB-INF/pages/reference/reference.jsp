@@ -143,7 +143,7 @@
 	        	name: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Fullname is required and cannot be empty'
+	                    	message: '<spring:message code="reference.required.fullname" />'
 	                    }
 	                }
 	            },
@@ -153,7 +153,7 @@
 	            tel: {
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Telphone is required and cannot be empty'
+	                    	message: '<spring:message code="reference.required.telephone" />'
 	                    }
 	            	
 	                }
