@@ -20,6 +20,7 @@ import net.sf.jasperreports.engine.JRParameter;
 import org.apache.commons.beanutils.converters.DateConverter;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -39,14 +40,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aug.hr.dto.services.AimEmployeeDtoService;
+import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.dto.services.LeaveDtoService;
+import com.aug.hr.dto.services.OfficialDtoService;
 import com.aug.hr.entity.Address;
+import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.dto.LeaveDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.SkillLanguageDto;
 import com.aug.hr.services.LeaveService;
 import com.aug.hr.services.MasLeaveTypeService;
+import com.aug.hr.services.OfficialService;
 import com.aug.hr.services.ReportService;
 
 @Controller
@@ -56,8 +62,10 @@ public class LeaveController {
 	@Autowired private MasLeaveTypeService masLeaveTypeService;
 	@Autowired private LeaveDtoService leaveDtoService;
 	@Autowired private AimEmployeeDtoService aimEmployeeDtoService;
+	@Autowired private EmployeeDtoService employeeDtoService;
 	
-	
+	private final static Logger logger = Logger
+			.getLogger(Leave.class);
 	
 	
 	
@@ -252,6 +260,19 @@ public class LeaveController {
 	}
 	
 	
+	
+	public int findOfficial(Integer id){
+		
+		Employee employeeOff = employeeDtoService.findOfficial(id);
+		
+		employeeOff.getOfficial().getStartWorkDate();
+		
+		logger.info(""+employeeOff.getOfficial().getStartWorkDate());
+		int a=1;
+		
+		return a;
+		
+	}
 	
 	
 	

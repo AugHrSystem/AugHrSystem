@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.EmployeeDao;
+import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 
@@ -41,4 +42,12 @@ public class EmployeeDtoService {
 	public List<ReportLeaveDto> reportLeave(){
 		return employeeDao.reportLeave();
 	}
+	
+	
+	
+	
+	public Employee findOfficial(Integer id){
+		return employeeDao.findOfficial(id);
+	}
+	
 }

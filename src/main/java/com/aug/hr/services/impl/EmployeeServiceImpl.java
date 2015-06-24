@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.hr.dao.EmployeeDao;
+
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasAddressType;
@@ -1032,6 +1033,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public List<Employee> findAimRelateWithEmployee(Integer id) {
 		// TODO Auto-generated method stub
 		return employeeDao.findAimRelateWithEmployee(id);
+	}
+
+	@Override
+	public Employee findOfficial(Integer id) {
+		// TODO Auto-generated method stub
+		return employeeDao.findOfficial(id);
 	}
 
 	

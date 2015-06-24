@@ -21,5 +21,7 @@ public interface OfficialDao extends GenericDao<Official,Integer>{
 	public Official searhEmpIdtoOfficial();
 	public void updateOfficialByNameQuery(OfficialDto officialDto);
 	public void deleteOfficialByNameQuery(Official official); 
+	
+	
 
 }

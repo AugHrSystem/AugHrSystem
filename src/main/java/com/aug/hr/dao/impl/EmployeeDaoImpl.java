@@ -7,6 +7,7 @@
 package com.aug.hr.dao.impl;
 
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Employee;
+import com.aug.hr.entity.Official;
 import com.aug.hr.entity.dto.AimEmployeeDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
@@ -84,6 +86,20 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> implement
 		
 	}
 
+	
+	
+
+	
+public Employee findOfficial(Integer id) {
+		
+		Criteria c = getCurrentSession().createCriteria(Employee.class,"employee");
+		c.setFetchMode("official",FetchMode.JOIN);
+		c.createAlias("official", "official");
+		c.add(Restrictions.eq("employee.id", id));
+		return (Employee) c.uniqueResult();
+		
+	}
+	
 
 	@Override
 	public void saveByNameQuery(AllEmployeeDto allEmployeeDto) {

@@ -8,6 +8,7 @@ package com.aug.hr.dao;
 
 import java.util.List;
 
+
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.dto.AimEmployeeDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
@@ -39,5 +40,6 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public Employee findEmployeeAndOfficial(Integer id);
 	public void deleteEmployeeByNameQuery(Employee employee);
 	public List<Employee> findAimRelateWithEmployee(Integer id);
+	public Employee findOfficial(Integer id);
 	
 }
