@@ -15,7 +15,9 @@ import java.util.ResourceBundle;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
 import net.sf.jasperreports.engine.JRParameter;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
@@ -46,17 +48,22 @@ import com.aug.hr.dto.services.EmployeeCodeDtoService;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeIdDtoService;
 import com.aug.hr.entity.Address;
+import com.aug.hr.entity.Education;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.MasAddressType;
 import com.aug.hr.entity.MasProvince;
 import com.aug.hr.entity.Official;
+import com.aug.hr.entity.Reference;
+import com.aug.hr.entity.dto.AbilityDto;
 import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
+import com.aug.hr.entity.dto.EducationDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.EmployeeIdDto;
 import com.aug.hr.entity.dto.OfficialDto;
+import com.aug.hr.entity.dto.ReferenceDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -474,9 +481,9 @@ public class EmployeeController {
 //			return "/employee/reportPopup";
 //		}
 	
-	@RequestMapping(value = "/employee/modalReportStatusEmp", method = RequestMethod.GET)
-	public String modalReportStatusEmp(ModelMap map) {
-		return "/employee/reportModalStatusEmp";
+	@RequestMapping(value = "/employee/ReportStatusEmp", method =  RequestMethod.GET)
+	public String ReportStatusEmp(ModelMap map) {
+		return "/employee/reportStatusEmp";
 	}
 	
 	
@@ -492,7 +499,26 @@ public class EmployeeController {
 	
 	
 	
+	@RequestMapping(value = "/employee/searchEmpStatus", method = {RequestMethod.POST})
+    public String searchEmpStatus(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+		List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee();
+		ReportStatusEmployeeDto reportStatusEmployeeDto = new ReportStatusEmployeeDto();
+		map.addAttribute("employeeList",employeeList);
+		map.addAttribute("reportStatusEmployeeDto",reportStatusEmployeeDto);
+		return "/employee/reportStatusEmp";
+    }
 	
+
+
+	@RequestMapping(value = "/employee/listAllReportStatusEmp", method = RequestMethod.GET)
+	public @ResponseBody List<ReportStatusEmployeeDto> listAllReportStatusEmp(@RequestBody Employee reportStatusEmployeeDto) {
+		List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee();
+		
+		return employeeList;
+	}
+	
+	
+
 	
 	
 	
@@ -511,7 +537,9 @@ public class EmployeeController {
 		ModelAndView mv = reportService.getReport(leaveList, "leaveReport1", leave.getReportType(),parameterMap);
         return mv;
     }
-
+	
+	
+	
 
 	
 	@ModelAttribute("employee")

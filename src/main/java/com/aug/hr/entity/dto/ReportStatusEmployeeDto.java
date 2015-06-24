@@ -11,6 +11,7 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -82,6 +83,12 @@ public class ReportStatusEmployeeDto {
 		private Integer monthwork;
 //		@Column(name = "daywork")
 		private Integer daywork;
+		
+		@Transient
+		private String searchreport;
+		@Transient
+		private String orderbyreport;
+		
 		public Integer getId() {
 			return id;
 		}
@@ -183,6 +190,18 @@ public class ReportStatusEmployeeDto {
 		}
 		public void setDaywork(Integer daywork) {
 			this.daywork = daywork;
+		}
+		public String getSearchreport() {
+			return searchreport;
+		}
+		public void setSearchreport(String searchreport) {
+			this.searchreport = searchreport;
+		}
+		public String getOrderbyreport() {
+			return orderbyreport;
+		}
+		public void setOrderbyreport(String orderbyreport) {
+			this.orderbyreport = orderbyreport;
 		}
 	
 		
