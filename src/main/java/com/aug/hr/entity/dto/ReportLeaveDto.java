@@ -91,18 +91,27 @@ public class ReportLeaveDto {
 	private Integer monthAge;
 	@Column(name = "yearAge")
 	private Integer yearAge;
+	
 	@Column(name = "dayAnnual")
-	private Integer dayAnnual;
+	/*private Integer dayAnnual;*/
+	private Float dayAnnual;
+	
 	@Column(name = "daySick")
-	private Integer daySick;
+	/*private Integer daySick;*/
+	private Float daySick;
+	
 	@Column(name = "dayPersonal")
-	private Integer dayPersonal;	
+	/*private Integer dayPersonal;*/	
+	private Float dayPersonal;
+	
 	@Column(name = "totalDayLeave")
-	private Integer totalDayLeave;
+	/*private Integer totalDayLeave;*/
+	private Float totalDayLeave;
 	
 	
 	@Column(name="sumtime")
-	private Integer sumTime;
+	/*private Integer sumTime;*/
+	private Float sumTime;
 		
 	public Integer getId() {
 		return id;
@@ -177,7 +186,7 @@ public class ReportLeaveDto {
 	public void setYearAge(Integer yearAge) {
 		this.yearAge = yearAge;
 	}
-	public Integer getDayAnnual() {
+	/*public Integer getDayAnnual() {
 		return dayAnnual;
 	}
 	public void setDayAnnual(Integer dayAnnual) {
@@ -200,20 +209,50 @@ public class ReportLeaveDto {
 	}
 	public void setTotalDayLeave(Integer totalDayLeave) {
 		this.totalDayLeave = totalDayLeave;
-	}
+	}*/
 	public Date getStartWorkDate() {
 		return startWorkDate;
 	}
 	public void setStartWorkDate(Date startWorkDate) {
 		this.startWorkDate = startWorkDate;
 	}
-	public Integer getSumTime() {
+	/*public Integer getSumTime() {
 		return sumTime;
 	}
 	public void setSumTime(Integer sumTime) {
 		this.sumTime = sumTime;
 	}
-	
+	*/
+	public Float getDayAnnual() {
+		return dayAnnual;
+	}
+	public void setDayAnnual(Float dayAnnual) {
+		this.dayAnnual = dayAnnual;
+	}
+	public Float getDaySick() {
+		return daySick;
+	}
+	public void setDaySick(Float daySick) {
+		this.daySick = daySick;
+	}
+	public Float getDayPersonal() {
+		return dayPersonal;
+	}
+	public void setDayPersonal(Float dayPersonal) {
+		this.dayPersonal = dayPersonal;
+	}
+	public Float getTotalDayLeave() {
+		return totalDayLeave;
+	}
+	public void setTotalDayLeave(Float totalDayLeave) {
+		this.totalDayLeave = totalDayLeave;
+	}
+	public Float getSumTime() {
+		return sumTime;
+	}
+	public void setSumTime(Float sumTime) {
+		this.sumTime = sumTime;
+	}
 	
 	
 	
