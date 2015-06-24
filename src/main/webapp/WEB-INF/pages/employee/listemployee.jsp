@@ -15,7 +15,16 @@
  			<li role="presentation"><a href="employee.jsp" data-toggle="modal">Add Employee</a></li>
 		</ol> -->
 				
+
 		<h2><spring:message code="employee.name" /></h2>
+		<br/>
+		
+		<c:if test="${ not empty msgerror }">
+			<div class="alert alert-danger" >
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>&nbsp;${msgerror }</div>
+		</c:if>
+		
+
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult">

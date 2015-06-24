@@ -768,7 +768,7 @@ public class Employee extends BaseEntity{
 	@Column(name = "ID")
 	private Integer id;
 	
-	@Column(name = "EMPLOYEE_CODE",nullable = false)
+	@Column(name = "EMPLOYEE_CODE",nullable = false,unique=true)
 	private String employeeCode;
 	
 	@Column(name = "NAME_THAI",nullable = false)

@@ -10,11 +10,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.aug.hr.dao.EmployeeDao;
-import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.services.EmployeeService;
 
@@ -25,8 +21,7 @@ public class EmployeeServiceTest {
 	
 	@Autowired
 	private EmployeeService employeeService;
-	@Autowired
-	private EmployeeDao employeeDao;
+	
 	
 	/*@Test
 	public void listAddressByEmployeeId(){
@@ -86,5 +81,23 @@ public class EmployeeServiceTest {
 		
 	}
 	
+	
+	@Test
+	public void findEmployeeCode(){
+		Employee employee = employeeService.findEmployeeCode(2);		
+		System.out.println(employee.getId());
+
+	}
+	
+	
+	@Test
+	public void generateEmployeeCode(){
+		
+		AllEmployeeDto allEmployeeDto = new AllEmployeeDto();
+		allEmployeeDto.setMasLocation("TH");
+		String employeeCode = employeeService.generateEmployeeCode(allEmployeeDto);
+		System.out.println("employeeCode: "+employeeCode);
+	}
+
 
 }

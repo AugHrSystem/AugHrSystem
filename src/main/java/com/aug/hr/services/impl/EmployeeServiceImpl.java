@@ -7,13 +7,29 @@
 package com.aug.hr.services.impl;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.InvalidTransactionException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.TransactionManager;
+
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Hibernate;
+import org.hibernate.JDBCException;
+import org.hibernate.Transaction;
+import org.hibernate.util.JDBCExceptionReporter;
+import org.omg.CORBA.portable.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +64,7 @@ import com.aug.hr.services.masTechnologyService;
 import com.aug.hr.services.utils.UploadService;
 
 @Service("employeeService")
-@Transactional
+@Transactional(rollbackFor=Exception.class)
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
@@ -448,7 +464,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 
 	@Override
-	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto) {
+	@Transactional
+	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto,String employeeCode) throws JDBCException{
+		
+		
+		//List<AllEmployeeDto> allEDtos = new ArrayList<AllEmployeeDto>();
+		
 		
 		//Save Official 
 		Official official = new Official();
@@ -467,7 +488,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		//Save Employee
 		Employee employee = new Employee();
-		employee.setEmployeeCode(allEmployeeDto.getEmployeeCode()); 
+		
+
+		employee.setEmployeeCode(employeeCode); 
 		employee.setNameThai(allEmployeeDto.getNameThai());
 		employee.setSurnameThai(allEmployeeDto.getSurnameThai());
 		employee.setNicknameThai(allEmployeeDto.getNicknameThai());
@@ -595,7 +618,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setCreatedBy(0);
 		employee.setCreatedTimeStamp(Calendar.getInstance().getTime());
 		
-		employeeDao.create(employee);
+		
+		try{
+			
+			employeeDao.create(employee);
+		
+		}catch(JDBCException jdbce){
+			
+			
+			System.out.println("state: "+jdbce.getSQLState());
+			if(jdbce.getSQLState().equals("23000")){
+				
+				
+				System.out.println("SQLState: "+jdbce.getSQLState());
+				throw jdbce;
+											
+			}
+			
+			
+		}
+		
 		
 		
 		//Update CreatedBy Official
@@ -642,7 +684,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee updateEmployeeAndReturnId(AllEmployeeDto allEmployeeDto) {
+	public Employee updateEmployeeAndReturnId(AllEmployeeDto allEmployeeDto,String employeeCode) throws DataIntegrityViolationException {
 		// TODO Auto-generated method stub
 		
 		Employee employee = employeeDao.find(allEmployeeDto.getId());
@@ -691,7 +733,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		//update employee
 		
-		employee.setEmployeeCode(allEmployeeDto.getEmployeeCode()); 
+		employee.setEmployeeCode(employeeCode); 
 		employee.setNameThai(allEmployeeDto.getNameThai());
 		employee.setSurnameThai(allEmployeeDto.getSurnameThai());
 		employee.setNicknameThai(allEmployeeDto.getNicknameThai());
@@ -911,7 +953,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setUpdatedBy(employee.getId());
 		employee.setUpdatedTimeStamp(Calendar.getInstance().getTime());
 				
-		employeeDao.update(employee);
+		
+		try{
+			
+			employeeDao.update(employee);
+		
+		}catch(DataIntegrityViolationException jdbce){
+			
+			
+			   System.out.println("massge exception: "+jdbce.getMessage());
+			   if(jdbce.getMessage()!=null){
+								
+				//System.out.println("SQLState: "+jdbce.getSQLState());
+				throw jdbce;
+											
+			   }			
+		}
+		
+		
+		
 		
 		
 		
@@ -1035,12 +1095,68 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDao.findAimRelateWithEmployee(id);
 	}
 
-	@Override
+	
+	@Override	
 	public Employee findOfficial(Integer id) {
 		// TODO Auto-generated method stub
 		return employeeDao.findOfficial(id);
 	}
 
+
+	public Employee findEmployeeCode(Integer locationId) {
+		// TODO Auto-generated method stub
+		return employeeDao.findEmployeeCode(locationId);
+	}
 	
+	
+
+	@Override
+	@Transactional
+	public String generateEmployeeCode(AllEmployeeDto allEmployeeDto){
+		
+		   Employee employeeForCode = new Employee();
+		   String empCode = null;
+		   System.out.print("masloc# "+allEmployeeDto.getMasLocation());
+		
+		   if(masLocationService.findByLocationCode(allEmployeeDto.getMasLocation())==null){
+			   
+			   System.out.println("----null location id-----");
+		   }
+		   else if(masLocationService.findByLocationCode(allEmployeeDto.getMasLocation())!=null){
+			   MasLocation masLocation = masLocationService.findByLocationCode(allEmployeeDto.getMasLocation());
+			   System.out.println("id: "+masLocation.getId());
+			   employeeForCode = employeeDao.findEmployeeCode(masLocation.getId());
+			   		   
+			   
+			   if(employeeForCode==null){
+				   
+				   empCode = allEmployeeDto.getMasLocation()+"10"+"001";
+				   System.out.println("empCode: "+empCode);
+				   
+				   
+			   }else if(employeeForCode!=null){
+				   
+				   			    		   
+				    		   StringBuilder myNumbers = new StringBuilder();
+				    		    for (int i = 0; i < employeeForCode.getEmployeeCode().length(); i++) {
+				    		        if (Character.isDigit(employeeForCode.getEmployeeCode().charAt(i))) {
+				    		            myNumbers.append(employeeForCode.getEmployeeCode().charAt(i));
+				    		            System.out.println(employeeForCode.getEmployeeCode().charAt(i) + " is a digit.");
+				    		        } else {
+				    		            System.out.println(employeeForCode.getEmployeeCode().charAt(i) + " not a digit.");
+				    		        }
+				    		    }
+				    		    System.out.println("Your numbers: " + myNumbers.toString());
+				    		    int employeeCodePlusOne = Integer.parseInt(myNumbers.toString())+1;
+				    		    empCode = allEmployeeDto.getMasLocation()+Integer.toString(employeeCodePlusOne);
+				    		    System.out.println("empCode: "+empCode);
+				    		   
+				    	   }
+				   
+			   }
+		   
+		return empCode;
+				
+	}
 
 }

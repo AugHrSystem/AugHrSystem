@@ -130,4 +130,16 @@ public class EmployeeDaoTest {
 			System.out.println(emp.getId());
 		}
 	}
+
+
+	@Test
+	public void findEmployeeCode(){
+		Employee employee = employeeDao.findEmployeeCode(2);
+		System.out.println(employee.getId());
+		
+	}
+
+
+
+
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -717,8 +718,15 @@ public Employee findOfficial(Integer id) {
 	}
 
 
-
-	
+	@Override
+	public Employee findEmployeeCode(Integer locationId) {
+		// TODO Auto-generated method stub
+		Criteria c = getCurrentSession().createCriteria(Employee.class,"employee");
+		c.add(Restrictions.eq("employee.masLocation.id",locationId));
+		c.addOrder(Order.desc("employee.createdTimeStamp"));
+	    c.setMaxResults(1);
+		return  (Employee) c.uniqueResult();
+	}
 
 }
 	
