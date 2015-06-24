@@ -34,7 +34,7 @@
 				<table id="tbResult" class="table">
 					<thead>					
 						<tr>								
-							<th><spring:message code="punish.date" /></th>
+							<th><spring:message code="punish.dateform" /></th>
 							<th><spring:message code="punish.description" /></th>	
 							<th><spring:message code="punish.penalty" /></th>				
 							<th><spring:message code="label.action" /></th>
