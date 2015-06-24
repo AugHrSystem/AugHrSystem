@@ -7,6 +7,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<script src="<c:url value="/resource/mask/jquery.maskedinput.js" />"></script>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
@@ -43,6 +44,7 @@
 		 <div class="col-md-7">
 		 
 		 	<spring:message code="default.enter" var="enter"/>
+		 	<spring:message code="default.please" var="please"/>
 
 							<div class="form-group">
 									<!-- <label for="id"> ID :</label> -->
@@ -60,7 +62,7 @@
 								<div class="col-md-6">
 
 									<label for="employeeCode" class="required"> <spring:message code="employee.code"></spring:message> : </label> 
-									<input id="employeeCodefalse" name="employeeCodefalse" type="text" class="form-control" disabled placeholder="${enter} <spring:message code="employee.code"></spring:message>" value="${allEmployeeDto.employeeCode}">
+									<input id="employeeCodefalse" name="employeeCodefalse" type="text" class="form-control" disabled placeholder="${please} ${enter} <spring:message code="employee.code"></spring:message>" value="${allEmployeeDto.employeeCode}">
 								</div>
 								
 									<input id="employeeCode" name="employeeCode" type="hidden" class="form-control"  value="${allEmployeeDto.employeeCode}">
@@ -77,18 +79,18 @@
 								<div class="col-md-4">
 									<label class="required"> <spring:message code="employee.nameThai" ></spring:message> :</label> 
 									<input type="text" class="form-control" 
-									id="nameThai"name="nameThai" placeholder="${enter} <spring:message code="employee.nameThai"></spring:message>" value="${allEmployeeDto.nameThai}">
+									id="nameThai"name="nameThai" placeholder="${please}${enter}<spring:message code="employee.nameThai"></spring:message>" value="${allEmployeeDto.nameThai}">
 								</div>
 								<div class="col-md-4">
 
 									<label> <spring:message code="employee.surnameThai"></spring:message> :</label> 
 									<input type="text" class="form-control" 
-									id="surnameThai" name="surnameThai" placeholder="${enter} <spring:message code="employee.surnameThai"></spring:message>" value="${allEmployeeDto.surnameThai}">
+									id="surnameThai" name="surnameThai" placeholder="${please}${enter}<spring:message code="employee.surnameThai"></spring:message>" value="${allEmployeeDto.surnameThai}">
 								</div>
 								<div class="col-md-4">
 									<label> <spring:message code="employee.nicknameThai"></spring:message> :</label> 
 									<input type="text" class="form-control" 
-									id="nicknameThai" name="nicknameThai" placeholder="${enter} <spring:message code="employee.nicknameThai"></spring:message>" value="${allEmployeeDto.nicknameThai}">
+									id="nicknameThai" name="nicknameThai" placeholder="${please}${enter}<spring:message code="employee.nicknameThai"></spring:message>" value="${allEmployeeDto.nicknameThai}">
 								</div>
 							</div>
 					
@@ -97,15 +99,15 @@
 							<div class="form-group">
 								<div class="col-md-4">
 									<label class="required"> <spring:message code="employee.nameEng"></spring:message> :</label> 
-									<input type="text" class="form-control" id="nameEng" name="nameEng" placeholder="${enter} <spring:message code="employee.nameEng"></spring:message>" value="${allEmployeeDto.nameEng}">
+									<input type="text" class="form-control" id="nameEng" name="nameEng" placeholder="${please}${enter}<spring:message code="employee.nameEng"></spring:message>" value="${allEmployeeDto.nameEng}">
 								</div>
 								<div class="col-md-4">
 									<label> <spring:message code="employee.surnameEng"></spring:message> :</label> <input type="text" class="form-control"
-									id="surnameEng" name="surnameEng" placeholder="${enter} <spring:message code="employee.surnameEng"></spring:message>" value="${allEmployeeDto.surnameEng}">
+									id="surnameEng" name="surnameEng" placeholder="${please}${enter}<spring:message code="employee.surnameEng"></spring:message>" value="${allEmployeeDto.surnameEng}">
 								</div>
 								<div class="col-md-4">
 									<label> <spring:message code="employee.nicknameEng"></spring:message> :</label> <input type="text" class="form-control"
-									id="nicknameEng" name="nicknameEng" placeholder="${enter} <spring:message code="employee.nicknameEng"></spring:message>" value="${allEmployeeDto.nicknameEng}">
+									id="nicknameEng" name="nicknameEng" placeholder="${please}${enter}<spring:message code="employee.nicknameEng"></spring:message>" value="${allEmployeeDto.nicknameEng}">
 								</div>
 							</div>
 					
@@ -227,7 +229,7 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label class="required"> <spring:message code="employee.email"></spring:message> :</label> <input type="email" class="form-control"
-									id="email" name="email" placeholder="${enter} <spring:message code="employee.email"></spring:message>" value="${allEmployeeDto.email}">
+									id="email" name="email" placeholder="${please} ${enter} <spring:message code="employee.email"></spring:message>" value="${allEmployeeDto.email}">
 								</div>
 								<div class="col-md-3">
 									<label class="required"> <spring:message code="employee.telHome"></spring:message> :</label> <input type="text" class="form-control"
@@ -250,11 +252,11 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label> <spring:message code="employee.congenitalDisease"></spring:message> :</label> <input type="text" class="form-control"
-									id="congenitalDisease" name="congenitalDisease" placeholder="${enter} <spring:message code="employee.congen"></spring:message>" value="${allEmployeeDto.congenitalDisease}">
+									id="congenitalDisease" name="congenitalDisease" placeholder="${please} ${enter} <spring:message code="employee.congen"></spring:message>" value="${allEmployeeDto.congenitalDisease}">
 								</div>
 								<div class="col-md-6">
 									<label> <spring:message code="employee.hospital"></spring:message> :</label> <input type="text" class="form-control"
-									id="hospital" name="hospital" placeholder="${enter} <spring:message code="employee.hospital"></spring:message>" value="${allEmployeeDto.hospital}">
+									id="hospital" name="hospital" placeholder="${please} ${enter} <spring:message code="employee.hospital"></spring:message>" value="${allEmployeeDto.hospital}">
 								</div>
 							</div>
 					
@@ -265,11 +267,11 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label class="required"> <spring:message code="employee.emergencyContact"></spring:message> :</label> <input type="text" class="form-control"
-									id="emergencyContact" name="emergencyContact" placeholder="${enter} <spring:message code="employee.emergencyname"></spring:message>" value="${allEmployeeDto.emergencyContact}">
+									id="emergencyContact" name="emergencyContact" placeholder="${please} ${enter} <spring:message code="employee.emergencyname"></spring:message>" value="${allEmployeeDto.emergencyContact}">
 								</div>
 								<div class="col-md-6">
 									<label> <spring:message code="employee.relationshipWithEmergencyContact"></spring:message> :</label> <input type="text" class="form-control"
-									id="relationshipWithEmergencyContact" name="relationshipWithEmergencyContact" placeholder="${enter} <spring:message code="employee.relationshipWithEmergencyContact"></spring:message>"
+									id="relationshipWithEmergencyContact" name="relationshipWithEmergencyContact" placeholder="${please} ${enter} <spring:message code="employee.relationshipWithEmergencyContact"></spring:message>"
 									value="${allEmployeeDto.relationshipWithEmergencyContact}">
 								</div>
 							</div>
@@ -282,7 +284,7 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label> <spring:message code="employee.emergencyContactAddress"></spring:message> :</label> <input type="text" class="form-control"
-									id="emergencyContactAddress" name="emergencyContactAddress" placeholder="${enter} <spring:message code="employee.emergencyAddress"></spring:message> " value="${allEmployeeDto.emergencyContactAddress}">
+									id="emergencyContactAddress" name="emergencyContactAddress" placeholder="${please} ${enter} <spring:message code="employee.emergencyAddress"></spring:message> " value="${allEmployeeDto.emergencyContactAddress}">
 								</div>
 								<div class="col-md-3">
 									<label class="required"> <spring:message code="employee.emergencyContactPhoneNumber"></spring:message>  :</label> <input type="text" class="form-control"
@@ -303,7 +305,7 @@
 								
 									
 									<input type="text" class="form-control"
-									id="dateOfBirth" name="dateOfBirth" placeholder="${enter} <spring:message code="employee.dob"></spring:message>"            							 
+									id="dateOfBirth" name="dateOfBirth" placeholder="${please} ${enter} <spring:message code="employee.dob"></spring:message>"            							 
            							value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.dateOfBirth}" />' /> 
            							           							
 									
@@ -317,7 +319,7 @@
 								
 								<div class="col-md-3">
 									<label> <spring:message code="employee.placeOfBirth"></spring:message> :</label> <input type="text" class="form-control"
-									id="placeOfBirth" name="placeOfBirth" placeholder="${enter} <spring:message code="employee.pob"></spring:message>">
+									id="placeOfBirth" name="placeOfBirth" placeholder="${please} ${enter} <spring:message code="employee.pob"></spring:message>">
 								</div>
 								
 								
@@ -334,11 +336,11 @@
 								
 								<div class="col-md-3">
 									<label> <spring:message code="employee.age"></spring:message> :</label> <input type="text" class="form-control"
-									id="age" name="age" placeholder="${enter} <spring:message code="employee.age"></spring:message>" value="${allEmployeeDto.age}">
+									id="age" name="age" placeholder="${please} ${enter} <spring:message code="employee.age"></spring:message>" value="${allEmployeeDto.age}">
 								</div>
 								<div class="col-md-3">
 									<label> <spring:message code="employee.religion"></spring:message> :</label> <input type="text" class="form-control"
-									id="religion" name="religion" placeholder="${enter} <spring:message code="employee.religion"></spring:message>" value="${allEmployeeDto.religion}">
+									id="religion" name="religion" placeholder="${please} ${enter} <spring:message code="employee.religion"></spring:message>" value="${allEmployeeDto.religion}">
 								</div>
 								
 							</div>
@@ -351,17 +353,25 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label class="required"> <spring:message code="employee.idCard"></spring:message> :</label> <input type="text" class="form-control"
-									id="idCard" name="idCard" placeholder="${enter} <spring:message code="employee.idCard"></spring:message>" value="${allEmployeeDto.idCard}">
+									id="idCard" name="idCard" placeholder="${please} ${enter} <spring:message code="employee.idCard"></spring:message>" value="${allEmployeeDto.idCard}">
 								</div>
 								<div class="col-md-3">
 									<label> <spring:message code="employee.issuedOffice"></spring:message> :</label> <input type="text" class="form-control"
-									id="issuedOffice" name="issuedOffice" placeholder="${enter} <spring:message code="employee.issuedOffice"></spring:message>" value="${allEmployeeDto.issuedOffice}">
+									id="issuedOffice" name="issuedOffice" placeholder="${please} ${enter} <spring:message code="employee.issuedOffice"></spring:message>" value="${allEmployeeDto.issuedOffice}">
 								</div>
+								
 								<div class="col-md-3">
 									<label> <spring:message code="employee.expiryDate"></spring:message> :</label>
+<<<<<<< HEAD
 									<div class='input-group date' id='expiryDate1'> <input type="text" class="form-control"
 									id="expiryDate" name="expiryDate" placeholder="${enter} <spring:message code="employee.expiryDate"></spring:message>" value='
 									<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.expiryDate}" />' />
+=======
+									<div class='input-group date' id='expiryDate'> 
+									<input type="text" class="form-control"
+									id="expiryDate" name="expiryDate" placeholder="${please} ${enter} <spring:message code="employee.expiryDate"></spring:message>" 
+									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.expiryDate}" />' />
+>>>>>>> edit message emp
 								
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
@@ -376,11 +386,11 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> <spring:message code="employee.height"></spring:message> :</label> <input type="text" class="form-control"
-									id="height" name="height" placeholder="${enter} <spring:message code="employee.height"></spring:message>" value="${allEmployeeDto.height}">
+									id="height" name="height" placeholder="${please} ${enter} <spring:message code="employee.height"></spring:message>" value="${allEmployeeDto.height}">
 								</div>
 								<div class="col-md-3">
 									<label> <spring:message code="employee.weigth"></spring:message> :</label> <input type="text" class="form-control"
-									id="weigth" name="weigth" placeholder="${enter} <spring:message code="employee.weigth"></spring:message>" value="${allEmployeeDto.weigth}">
+									id="weigth" name="weigth" placeholder="${please} ${enter} <spring:message code="employee.weigth"></spring:message>" value="${allEmployeeDto.weigth}">
 								</div>
 							</div>
 					
@@ -472,19 +482,19 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> <spring:message code="employee.numberOfChildren"></spring:message> :</label> <input type="text" class="form-control"
-									id="numberOfChildren" name="numberOfChildren" placeholder="${enter} <spring:message code="employee.numberOfChildren"></spring:message>" value="${allEmployeeDto.numberOfChildren}">
+									id="numberOfChildren" name="numberOfChildren" placeholder="${please} ${enter} <spring:message code="employee.numberOfChildren"></spring:message>" value="${allEmployeeDto.numberOfChildren}">
 								</div>
 								<div class="col-md-3">
 									<label> <spring:message code="employee.spouseName"></spring:message> :</label> <input type="text" class="form-control"
-									id="spouseName" name="spouseName" placeholder="${enter} <spring:message code="employee.spouseName"></spring:message>" value="${allEmployeeDto.spouseName}">
+									id="spouseName" name="spouseName" placeholder="${please} ${enter} <spring:message code="employee.spouseName"></spring:message>" value="${allEmployeeDto.spouseName}">
 								</div>
 								<div class="col-md-3">
 									<label> <spring:message code="employee.marriageCertificateNo"></spring:message> :</label> <input type="text" class="form-control"
-									id="marriageCertificateNo" name="marriageCertificateNo" placeholder="${enter} <spring:message code="employee.marcertno"></spring:message>" value="${allEmployeeDto.marriageCertificateNo}">
+									id="marriageCertificateNo" name="marriageCertificateNo" placeholder="${please} ${enter} <spring:message code="employee.marcertno"></spring:message>" value="${allEmployeeDto.marriageCertificateNo}">
 								</div>
 								<div class="col-md-3">
 									<label> <spring:message code="employee.issuedOffice"></spring:message> :</label> <input type="text" class="form-control"
-									id="issuedOffice2" name="issuedOffice2" placeholder="${enter} <spring:message code="employee.issuedOffice"></spring:message>" value="${allEmployeeDto.issuedOffice2}">
+									id="issuedOffice2" name="issuedOffice2" placeholder="${please} ${enter} <spring:message code="employee.issuedOffice"></spring:message>" value="${allEmployeeDto.issuedOffice2}">
 								</div>
 							</div>
 					
@@ -496,11 +506,11 @@
 							<div class="form-group">
 								<div class="col-md-3">
 									<label> <spring:message code="employee.address"></spring:message> :</label> <input type="text" class="form-control"
-									id="address" name="address" placeholder="${enter} <spring:message code="employee.address"></spring:message>" value="${allEmployeeDto.address}">
+									id="address" name="address" placeholder="${please} ${enter} <spring:message code="employee.address"></spring:message>" value="${allEmployeeDto.address}">
 								</div>
 								<div class="col-md-3">
 									<label> <spring:message code="employee.occupation"></spring:message> :</label> <input type="text" class="form-control"
-									id="occupation" name="occupation" placeholder="${enter} <spring:message code="employee.occupation"></spring:message>" value="${allEmployeeDto.occupation}">
+									id="occupation" name="occupation" placeholder="${please} ${enter} <spring:message code="employee.occupation"></spring:message>" value="${allEmployeeDto.occupation}">
 								</div>
 							</div>
 					
@@ -517,13 +527,13 @@
 									  
     								  <c:if test="${empty allEmployeeDto.knowAugNewspaper}">	
      									  <label><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper"><spring:message code="employee.newspaper"></spring:message></label>   										 
-     									  <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
+     									  <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${please} ${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
      									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugNewspaper}">	
      									   <label><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper" checked="checked"><spring:message code="employee.newspaper"></spring:message></label>
-    								  	   <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
+    								  	   <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${please} ${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
     								  		
     								  </c:if>
     								 
@@ -531,51 +541,51 @@
 									  
 									  <c:if test="${empty allEmployeeDto.descriptionMagazine}">	
      									 <label><input type="checkbox" id="Magazine" name="knowAugMagazine" value="Magazine"><spring:message code="employee.magazine"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
+      									 <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${please} ${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
       									 
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.descriptionMagazine}">	
      									   <label><input type="checkbox" id="" name="knowAugNewspaper" value="Magazine" checked="checked"><spring:message code="employee.magazine"></spring:message></label>
-    								  	   <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
+    								  	   <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${please} ${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
       									 
     								  </c:if>
 
 									  
 									 <c:if test="${empty allEmployeeDto.knowAugWebsite}">	
      									 <label><input type="checkbox" id="Website" name="knowAugWebsite" value="Website"><spring:message code="employee.website"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="${enter} <spring:message code="employee.website"></spring:message>" value="${allEmployeeDto.descriptionWebsite}">
+      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="${please} ${enter} <spring:message code="employee.website"></spring:message>" value="${allEmployeeDto.descriptionWebsite}">
       									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugWebsite}">	
      									 <label><input type="checkbox" id="Website" name="knowAugWebsite" value="Website" checked="checked"><spring:message code="employee.website"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="${enter} <spring:message code="employee.website"></spring:message>" value="${allEmployeeDto.descriptionWebsite}">
+      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="${please} ${enter} <spring:message code="employee.website"></spring:message>" value="${allEmployeeDto.descriptionWebsite}">
       									
     								  </c:if>
 									
 									  
 									  <c:if test="${empty allEmployeeDto.knowAugFriend}">	
      									 <label><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend"><spring:message code="employee.friend"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="${enter} <spring:message code="employee.friend"></spring:message>" value="${allEmployeeDto.descriptionFriend}">
+      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="${please} ${enter} <spring:message code="employee.friend"></spring:message>" value="${allEmployeeDto.descriptionFriend}">
       									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugFriend}">	
      									 <label><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend" checked="checked"><spring:message code="employee.friend"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="${enter} <spring:message code="employee.friend"></spring:message>" value="${allEmployeeDto.descriptionFriend}">
+      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="${please} ${enter} <spring:message code="employee.friend"></spring:message>" value="${allEmployeeDto.descriptionFriend}">
       									
     								  </c:if>
 									    
 									    
 									  <c:if test="${empty allEmployeeDto.knowAugOther}">	
 									    <label><input type="checkbox" id="Other" name="knowAugOther" value="Other"><spring:message code="employee.other"></spring:message></label>
-      									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
+      									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${please} ${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
     								  </c:if>
 									    
 									  <c:if test="${not empty allEmployeeDto.knowAugOther}">	
 									    <label><input type="checkbox" id="Other" name="knowAugOther" value="Other" checked="checked"><spring:message code="employee.other"></spring:message></label>
-      									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
+      									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${please} ${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
     								  </c:if>
 									    			 
       									 
@@ -591,29 +601,29 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label> <spring:message code="employee.doyouknow"></spring:message> :</label>
-									<div class="checkbox">
+									<div class="radio">
 									<c:if test="${ empty allEmployeeDto.knowEmployedYes}">	
-     									  <label><input type="checkbox" id="Yes" name="knowEmployed[]" value="Yes"><spring:message code="employee.yes"></spring:message></label>
+     									  <label><input type="radio" id="Yes" name="knowEmployed[]" value="Yes"><spring:message code="employee.yes"></spring:message></label>
     								</c:if>
     								<c:if test="${not empty allEmployeeDto.knowEmployedYes}">	
 	    								<c:if test="${allEmployeeDto.knowEmployedYes=='Yes'}">	
-	     									  <label><input type="checkbox" id="Yes" name="knowEmployed[]" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
+	     									  <label><input type="radio" id="Yes" name="knowEmployed[]" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
 	    								</c:if>
     								</c:if>
-     									 <input type="text" class="form-control" id="descriptionYes" name="descriptionYes" placeholder="${enter} <spring:message code="employee.pleasewrite"></spring:message>" value="${allEmployeeDto.descriptionYes}">
+     									 <input type="text" class="form-control" id="descriptionYes" name="descriptionYes" placeholder="${please} ${enter} <spring:message code="employee.pleasewrite"></spring:message>" value="${allEmployeeDto.descriptionYes}">
     								</div>
     								
     								
     								
     								
-    								<div class="checkbox">
+    								<div class="radio">
     								  <c:if test="${ empty allEmployeeDto.knowEmployerNo}">	
-     									 <label><input type="checkbox" id="No" name="knowEmployed[]" value="No"><spring:message code="employee.no"></spring:message></label>
+     									 <label><input type="radio" id="No" name="knowEmployed[]" value="No"><spring:message code="employee.no"></spring:message></label>
     								  </c:if>
     								  
     								  <c:if test="${not empty allEmployeeDto.knowEmployedYes}">	  								  
     								 	<c:if test="${allEmployeeDto.knowEmployedYes=='No'}">	
-     									    <label><input type="checkbox" id="No" name="knowEmployed[]" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>
+     									    <label><input type="radio" id="No" name="knowEmployed[]" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>
     								   </c:if>
     								  </c:if>
     								</div>
@@ -622,31 +632,26 @@
 					
 	        </div>
 	        
-	        <div class="col-md-12">
-	         		
-							<div class="form-group">
-							</div>
-			</div>
 	        
 	        <div class="col-md-12">
 	         		
 							<div class="form-group">
-								<div class="col-md-12">
+							
 									<label> <spring:message code="employee.haveyoueverserved"></spring:message> :</label>
-    								<div class="checkbox">
+    								<div class="radio">
     								 <c:if test="${ empty allEmployeeDto.militaryServiceYes}">	
-     									  <label><input type="checkbox" id="militaryServiceYes" name="militaryServiceYes" value="Yes"><spring:message code="employee.yes"></spring:message></label>
+     									  <label><input type="radio" id="militaryServiceYes" name="militaryServiceYes" value="Yes"><spring:message code="employee.yes"></spring:message></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.militaryServiceYes}">	
-     									  <label><input type="checkbox" id="militaryServiceYes" name="militaryServiceYes" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
-    								   </c:if>
-     								</div>
+    								  <c:if test="${allEmployeeDto.militaryServiceYes=='Yes'}">
+     									  <label><input type="radio" id="militaryServiceYes" name="militaryServiceYes" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
+    								   </c:if></c:if>
      								</div>
      								<div class="col-md-3">
     									 <label> <spring:message code="employee.fromYear"></spring:message> :</label>
 
     									 <div class='input-group date' id='fromYear'>
-    									 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="${enter} <spring:message code="employee.fromYear"></spring:message>"
+    									 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="${please} ${enter} <spring:message code="employee.fromYear"></spring:message>"
     									  value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.fromYear}" />' />
     								     <span class="input-group-addon">
 										 <span class="glyphicon glyphicon-calendar"></span>
@@ -656,7 +661,7 @@
     								<div class="col-md-3">
     									 <label> <spring:message code="employee.toYear"></spring:message> :</label>
     									 <div class='input-group date' id='toYear'>
-    									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="${enter} <spring:message code="employee.toYear"></spring:message>"
+    									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="${please} ${enter} <spring:message code="employee.toYear"></spring:message>"
     									  value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.toYear}" />'  />
     									 <span class="input-group-addon">    									 
     									 <span class="glyphicon glyphicon-calendar"></span>
@@ -666,44 +671,30 @@
 
 
 
-    								<%-- 	 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="Enter From year" value="${allEmployeeDto.fromYear}">
-    								</div>
-    								<div class="col-md-3">
-    									 <label> To Year :</label>
-    									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="Enter To Year" value="${allEmployeeDto.toYear}">
-    								</div> --%>
-
 
 
     								<div class="col-md-3">
     									 <label> <spring:message code="employee.branchOfService"></spring:message> :</label>
-    									 <input type="text" class="form-control" id="branchOfService" name="branchOfService" placeholder="${enter} <spring:message code="employee.branchOfService"></spring:message>" value="${allEmployeeDto.branchOfService}">
+    									 <input type="text" class="form-control" id="branchOfService" name="branchOfService" placeholder="${please} ${enter} <spring:message code="employee.branchOfService"></spring:message>" value="${allEmployeeDto.branchOfService}">
     								</div>
     								<div class="col-md-3">
      									 <label> <spring:message code="employee.serviceNo"></spring:message> :</label>
-    									 <input type="text" class="form-control" id="serviceNo" name="serviceNo" placeholder="${enter} <spring:message code="employee.serviceNo"></spring:message>" value="${allEmployeeDto.serviceNo}">
+    									 <input type="text" class="form-control" id="serviceNo" name="serviceNo" placeholder="${please} ${enter} <spring:message code="employee.serviceNo"></spring:message>" value="${allEmployeeDto.serviceNo}">
     							    </div>
-    						</div>	
 					
-	        </div>
 	        
-	        
-	         <div class="col-md-12">
-	         		
-							<div class="form-group">
-							<div class="col-md-12">
-    								<div class="checkbox">
+    								<div class="radio">
     								 <c:if test="${ empty allEmployeeDto.militaryServiceNo}">	
-     									   <label><input type="checkbox" id="militaryServiceNo" name="militaryServiceNo" value="No"><spring:message code="employee.no"></spring:message></label>
+     									   <label><input type="radio" id="militaryServiceNo" name="militaryServiceNo" value="No" ><spring:message code="employee.no"></spring:message></label>
     								  </c:if>
-    								  <c:if test="${not empty allEmployeeDto.militaryServiceNo}">	
-     									    <label><input type="checkbox" id="militaryServiceNo" name="militaryServiceNo" value="No"><spring:message code="employee.no"></spring:message></label>     									       									 
-    								   </c:if>
-     								</div>
+    								  <c:if test="${not empty allEmployeeDto.militaryServiceYes}">	
+    								  <c:if test="${allEmployeeDto.militaryServiceYes=='No'}">
+     									    <label><input type="radio" id="militaryServiceNo" name="militaryServiceNo" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
+    								   </c:if></c:if>
      								</div>
      								<div class="col-md-6">
     									 <label> <spring:message code="employee.pleasestatethereasons"></spring:message> :</label>
-    									 <input type="text" class="form-control" id="reasonsNo" name="reasonsNo" placeholder="${enter} <spring:message code="employee.pleasestatethereasons"></spring:message>" value="${allEmployeeDto.reasonsNo}">
+    									 <input type="text" class="form-control" id="reasonsNo" name="reasonsNo" placeholder="${please} ${enter} <spring:message code="employee.pleasestatethereasons"></spring:message>" value="${allEmployeeDto.reasonsNo}">
     								</div>
     								<div class="col-md-3">
     									 <label> <spring:message code="employee.dateToBeDrafted"></spring:message> :</label>
@@ -731,24 +722,24 @@
 							<label> <spring:message code="employee.mayinquiry"></spring:message> :</label>
 							</div>	
 								<div class="col-md-6">
-									<div class="checkbox">
+									<div class="radio">
 									<c:if test="${ empty allEmployeeDto.previousEmployerYes}">	
-     									 <label><input type="checkbox" id="previousEmployerYes" name="previousEmployerYes" value="Yes"><spring:message code="employee.yes"></spring:message></label>
+     									 <label><input type="radio" id="previousEmployerYes" name="previousEmployerYes" value="Yes"><spring:message code="employee.yes"></spring:message></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.previousEmployerYes}">	
-     									  <label><input type="checkbox" id="previousEmployerYes" name="previousEmployerYes" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>   									       									 
+     									  <label><input type="radio" id="previousEmployerYes" name="previousEmployerYes" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>   									       									 
     								   </c:if>
     								</div>
     								
-    								<div class="checkbox">
+    								<div class="radio">
     								  <c:if test="${ empty allEmployeeDto.previousEmployerNo}">	
-     									   <label><input type="checkbox" id="previousEmployerNo" name="previousEmployerNo" value="No"><spring:message code="employee.no"></spring:message></label>
+     									   <label><input type="radio" id="previousEmployerNo" name="previousEmployerNo" value="No"><spring:message code="employee.no"></spring:message></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.previousEmployerNo}">	
-     									     <label><input type="checkbox" id="previousEmployerNo" name="previousEmployerNo" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
+     									     <label><input type="radio" id="previousEmployerNo" name="previousEmployerNo" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
     								   </c:if>
      									
-     									 <input type="text" class="form-control" id="previousEmpreasonsNo" name="previousEmpreasonsNo" placeholder="${enter} <spring:message code="employee.givethereason"></spring:message>" value="${allEmployeeDto.previousEmpreasonsNo}">
+     									 <input type="text" class="form-control" id="previousEmpreasonsNo" name="previousEmpreasonsNo" placeholder="${please} ${enter} <spring:message code="employee.givethereason"></spring:message>" value="${allEmployeeDto.previousEmpreasonsNo}">
     									
     								</div>
 								</div>
@@ -795,13 +786,13 @@
 			<div class="form-group">
 				<div class="col-md-4">
 									<label> <spring:message code="official.positionAppliedFor"></spring:message> :</label> 
-									<input type="text" class="form-control" id="positionAppliedFor" name="positionAppliedFor" placeholder="${enter} <spring:message code="official.position"></spring:message>" value="${allEmployeeDto.positionAppliedFor}">
+									<input type="text" class="form-control" id="positionAppliedFor" name="positionAppliedFor" placeholder="${please} ${enter} <spring:message code="official.position"></spring:message>" value="${allEmployeeDto.positionAppliedFor}">
 								</div>
 								
 
 				<div class="col-md-4">
 				<label> <spring:message code="official.salaryExpected"></spring:message> :</label> 
-				<input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="${enter} <spring:message code="official.salary"></spring:message>" value="${allEmployeeDto.salaryExpected}">
+				<input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="${please} ${enter} <spring:message code="official.salary"></spring:message>" value="${allEmployeeDto.salaryExpected}">
 				
 			
 				<%-- <div class="col-md-6">
@@ -849,7 +840,7 @@
     						<label> <spring:message code="official.endWorkDate"></spring:message> :</label>
     						<div class='input-group date' id='endWorkDate1'>
     						<input type="text" class="form-control"
-							id="endWorkDate" name="endWorkDate" placeholder="${enter} <spring:message code="official.endWorkDate"></spring:message>" 
+							id="endWorkDate" name="endWorkDate" placeholder="${please} ${enter} <spring:message code="official.endWorkDate"></spring:message>" 
 							value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.endWorkDate}"/>' />
 						    <span class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
@@ -1027,7 +1018,7 @@
 						<label> <spring:message code="employee.probationdate"></spring:message> :</label> 
 						<div class='input-group date' id='probationDate1'>
 						<input type="text" class="form-control"
-									id="probationDate" name="probationDate" placeholder="${enter} <spring:message code="employee.probationdate"></spring:message>" 
+									id="probationDate" name="probationDate" placeholder="${please} ${enter} <spring:message code="employee.probationdate"></spring:message>" 
 									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.probationDate}"/>' />
 
 
@@ -1086,13 +1077,12 @@
 
 							<div class="form-group">
 								<label><spring:message code="address.address1"></spring:message> :</label>
-								<textarea class="form-control" rows="1" id="address1" name="address1"></textarea>
+								<textarea class="form-control" rows="1" id="address1" name="address1" placeholder="${please} ${enter} <spring:message code="address.address1"></spring:message>"></textarea>
 							</div>
-
 
 							<div class="form-group">
 								<label><spring:message code="address.address2"></spring:message>:</label>
-								<textarea class="form-control" rows="1" id="address2" name="address2"></textarea>
+								<textarea class="form-control" rows="1" id="address2" name="address2" placeholder="${please} ${enter} <spring:message code="address.address2"></spring:message>"></textarea>
 							</div>
 
 
@@ -1113,7 +1103,7 @@
 
 							<div class="form-group">
 								<label><spring:message code="address.zipcode"></spring:message> :</label>
-								<textarea class="form-control" rows="1" id="zipcode" name="zipcode"></textarea>
+								<textarea class="form-control" rows="1" id="zipcode" name="zipcode" placeholder="${please} ${enter} <spring:message code="address.zipcode"></spring:message>"></textarea>
 							</div>
 
 						
@@ -1709,7 +1699,17 @@ $('#addForm').bootstrapValidator({
         }
         
     }
-}); 
+});
+
+		$("#telHome").mask("(99) 999-9999");
+		$("#telMobile").mask("(999) 999-9999");
+		$("#telFax").mask("(99) 999-9999");
+		$("#emergencyContactPhoneNumber").mask("(999) 999-9999");
+		
+		
+		
+
+
 
 			
 $('#probationDate1')
@@ -1833,8 +1833,22 @@ $('#dateOfBirth1')
 		
     	$('[name="saveButton"]').click(function() {
     				
+    		if($('.dataTables_empty').length ==1){
+    			 if($('#validateAddress').data('bootstrapValidator').isValid())
     				
-    				alert("aaaa");
+    				alert("bill");
+    		   		var addressId = $("#addressType").val();
+    				var addressType = $("#addressType option:selected").text();
+    				
+    		   		var address1 = $("#address1").val();
+    		   		var address2 = $("#address2").val();
+    		   		
+    		   	    var provinceId = $("#province").val();
+    			    var province = $("#province option:selected").text();
+    			    var zipcode= $("#zipcode").val();
+    		}
+    		
+//     				alert("aaaa");
         			
     				$('[name="employeeForm"]').attr('action',
     						"${pageContext.request.contextPath}/employee/submit");

@@ -10,9 +10,9 @@
 	<div class="span12">
 		<ul class="nav nav-tabs" id="myTabs">
 
-
 			<c:if test="${ id == 0 || id == null}">
-			<li><a href="${pageContext.request.contextPath}/employee" >Employee</a></li>
+
+			<li><a href="${pageContext.request.contextPath}/employee" ><spring:message code="employee.name" /></a></li>
 			<li class="disabled disabledTab"><a><spring:message code="family.name" /></a></li>
 			<li class="disabled disabledTab"><a><spring:message code="education.name" /></a></li>
 			<li class="disabled disabledTab"><a><spring:message code="experience.name" /></a></li>
