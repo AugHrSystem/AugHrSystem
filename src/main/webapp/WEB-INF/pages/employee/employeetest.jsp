@@ -1696,10 +1696,10 @@ $('#addForm').bootstrapValidator({
     }
 });
 
-		$("#telHome").mask("(99) 999-9999");
-		$("#telMobile").mask("(999) 999-9999");
-		$("#telFax").mask("(99) 999-9999");
-		$("#emergencyContactPhoneNumber").mask("(999) 999-9999");
+		$("#telHome").mask("99-999-9999");
+		$("#telMobile").mask("999-999-9999");
+		$("#telFax").mask("99-999-9999");
+		$("#emergencyContactPhoneNumber").mask("999-999-9999");
 		
 		
 		
@@ -1827,28 +1827,26 @@ $('#dateOfBirth1')
 	
 		
     	$('[name="saveButton"]').click(function() {
-    				
-    		if($('.dataTables_empty').length ==1){
-    			 if($('#validateAddress').data('bootstrapValidator').isValid())
-    				
-    				alert("bill");
-    		   		var addressId = $("#addressType").val();
-    				var addressType = $("#addressType option:selected").text();
-    				
-    		   		var address1 = $("#address1").val();
-    		   		var address2 = $("#address2").val();
-    		   		
-    		   	    var provinceId = $("#province").val();
-    			    var province = $("#province option:selected").text();
-    			    var zipcode= $("#zipcode").val();
+//     		$("#addForm").submit();
+    		if($('.dataTables_empty').length >0){
+				$('#addForm').data('bootstrapValidator').validate();
+    			alert("bill");
     		}
-    		
-//     				alert("aaaa");
+    		else{
+    			$('#addForm').bootstrapValidator();
+				$('#addForm').data('bootstrapValidator').validate();
+    			 if($('#addForm').data('bootstrapValidator').isValid()){
+    				
+					alert("aaaa");
         			
-    				$('[name="employeeForm"]').attr('action',
-    						"${pageContext.request.contextPath}/employee/submit");
-    				$('[name="employeeForm"]').submit();
-    			});
+					$('[name="employeeForm"]').submit();
+//     				$('[name="employeeForm"]').attr('action',
+//     						"${pageContext.request.contextPath}/employee/submit");
+    				
+    		}
+    		}
+    			
+    	});
     	
 		
     	 dt=$("#tbResult").dataTable( 
@@ -2060,11 +2058,14 @@ $('#dateOfBirth1')
    			
    				
    			 $('[name="validateAddress"]').submit();
+   	//		$('#addForm').bootstrapValidator();
+	//		$('#addForm').data('bootstrapValidator').validate();
+			
    			 if($('#validateAddress').data('bootstrapValidator').isValid())
    				{
    				addAddress();
    				} 
-			addAddress();
+			
 			
 			
 		});
