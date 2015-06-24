@@ -5,7 +5,7 @@
 
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	<h4 class="modal-title">Employee StatusReport</h4>
+	<h4 class="modal-title">Employee Status Report</h4>
 </div>
 <f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpStatus" cssClass="form-horizontal">
 
