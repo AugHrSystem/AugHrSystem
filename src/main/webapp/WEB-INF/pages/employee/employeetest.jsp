@@ -362,16 +362,11 @@
 								
 								<div class="col-md-3">
 									<label> <spring:message code="employee.expiryDate"></spring:message> :</label>
-<<<<<<< HEAD
+
 									<div class='input-group date' id='expiryDate1'> <input type="text" class="form-control"
 									id="expiryDate" name="expiryDate" placeholder="${enter} <spring:message code="employee.expiryDate"></spring:message>" value='
 									<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.expiryDate}" />' />
-=======
-									<div class='input-group date' id='expiryDate'> 
-									<input type="text" class="form-control"
-									id="expiryDate" name="expiryDate" placeholder="${please} ${enter} <spring:message code="employee.expiryDate"></spring:message>" 
-									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.expiryDate}" />' />
->>>>>>> edit message emp
+
 								
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
