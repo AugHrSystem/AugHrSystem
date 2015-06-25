@@ -330,7 +330,7 @@ public class EmployeeController {
 				if(allEmployeeDto.getFileupload().getOriginalFilename()==null||allEmployeeDto.getFileupload().getOriginalFilename().isEmpty()==true){
 					
 					try{
-						employeeCode = allEmployeeDto.getEmployeeCode();
+						employeeCode = employeeService.generateEmployeeCode(allEmployeeDto);
 						employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
 					}catch(JDBCException je){
 						
@@ -367,6 +367,7 @@ public class EmployeeController {
 							
 							
 							try{
+								employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
 								employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
 							}catch(JDBCException jdbce){
 								
@@ -389,6 +390,7 @@ public class EmployeeController {
 						}if(result.length==0){
 							
 							try{
+								employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
 								employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
 								
 							}catch(JDBCException jdbce){
@@ -429,14 +431,28 @@ public class EmployeeController {
 		  logger.info("update emp");
 		  		  
 		  try{
-			  //employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-			  employeeCode = allEmployeeDto.getEmployeeCode();
-			  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);	  
+			 
+			  System.out.println("empcode: "+allEmployeeDto.getEmployeeCode());
+			  if(allEmployeeDto.getEmployeeCode()==null||allEmployeeDto.getEmployeeCode().isEmpty()==true){
+				  employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
+				  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);				 
+			  }else if(allEmployeeDto.getEmployeeCode()!=null||allEmployeeDto.getEmployeeCode().isEmpty()==false){
+				  
+				  employeeCode = allEmployeeDto.getEmployeeCode();
+				  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);
+			  }
 			  //employee.setId(allEmployeeDto.getId());
+			  
 		  }catch(DataIntegrityViolationException jdbce){
 			  try{
-				  employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-				  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);
+				  if(allEmployeeDto.getEmployeeCode()==null||allEmployeeDto.getEmployeeCode().isEmpty()==true){
+					  employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
+					  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);				 
+				  }else if(allEmployeeDto.getEmployeeCode()!=null||allEmployeeDto.getEmployeeCode().isEmpty()==false){
+					  
+					  employeeCode = allEmployeeDto.getEmployeeCode();
+					  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);
+				  }
 			  }catch(DataIntegrityViolationException je){
 					redirectAttributes.addFlashAttribute("msgerror", "dupicate employeecode");
 					//redirectAttributes.addFlashAttribute("allEmployeeDto", allEmployeeDto);
