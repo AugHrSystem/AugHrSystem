@@ -7,7 +7,7 @@
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 	<h4 class="modal-title">Employee Status Report</h4>
 </div>
-<f:form method="post" name="reportForm" target="_blank" commandName="employee"  cssClass="form-horizontal">
+<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpStatus" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
@@ -80,8 +80,9 @@
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		<button type="button" class="btn btn-default" value="search" id="btn_search">Search</button>
-		<button type="button" class="btn btn-default" value="print" id="printreport">Print</button>
+		<button type="button" class="btn btn-default submit" value="print">Print</button>
 		
+		<%-- href="<%=request.getContextPath()%>/employee/searchReportEmpStatus" --%>
 	</div>
 </f:form>
 
@@ -104,6 +105,13 @@ ${reportStatusEmployeeDto.employeeCode}
 <script type="text/javascript">
 $(document).ready(function () {
 	
+	 $(".submit").click(function() {
+			 $("form[name='reportForm']").submit();
+			/* $('[name="reportForm"]').attr */
+				/* ('action',"${pageContext.request.contextPath}/employee/searchReportEmpStatus"); */
+			/* $('[name="reportForm"]').submit();  */
+	
+		});
 	
 	
 	$('#tbResult').dataTable({ 
@@ -117,9 +125,10 @@ $(document).ready(function () {
 
 	dt = $('#tbResult').dataTable();	
 	 listAll();
-		 
-	
-	
+	 
+	 
+
+
 	function listAll(){
 
 		$.ajax({

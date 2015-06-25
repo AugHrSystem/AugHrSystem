@@ -495,30 +495,27 @@ public class EmployeeController {
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
 		ModelAndView mv = reportService.getReport(employeeList, "reportStatusEmp", employee.getReportType(),parameterMap);
-        return mv;
+       System.out.println("AAA");
+		return mv;
     }
 	
 	
 	
-	@RequestMapping(value = "/employee/searchEmpStatus", method = {RequestMethod.POST})
-    public String searchEmpStatus(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-		List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee();
-		ReportStatusEmployeeDto reportStatusEmployeeDto = new ReportStatusEmployeeDto();
-		map.addAttribute("employeeList",employeeList);
-		map.addAttribute("reportStatusEmployeeDto",reportStatusEmployeeDto);
-		return "/employee/reportStatusEmp";
-    }
-	
-
 	//------------------------------listReportEmpstatus--------------------------
 	
-	@RequestMapping(value = "/employee/searchEmpStatusforlist", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/employee/sear chEmpStatusforlist", method = {RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody List<ReportStatusEmployeeDto> searchEmpStatusforlist(){
 		return employeeDtoService.reportStatusEmployee();
     }
 	
+	//------------------------------FindCriReportEmpstatus--------------------------
 	
 	
+	
+	
+	
+
+
 	
 	
 	@RequestMapping(value = "/employee/modalReportLeave", method = RequestMethod.GET)
