@@ -48,7 +48,7 @@
 		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpName"><spring:message code="report.empName" /></a>
 		    			</li>
 		    			<li>
-		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpCode"><spring:message code="report.empCode" /></a>
+		    				<a href="<%=request.getContextPath()%>/employee/reportEmpCode"><spring:message code="report.empCode" /></a>
 		    			</li>
 		    			
 		    			<%-- <li>
