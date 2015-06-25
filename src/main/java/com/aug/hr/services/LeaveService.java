@@ -7,6 +7,7 @@ package com.aug.hr.services;
 
 import java.util.List;
 
+
 import com.aug.hr.entity.Leave;
 
 
@@ -20,5 +21,5 @@ public interface LeaveService {
 	public Leave  findById(Integer id);
 	public List<Leave> findByCriteria(Leave leave);
 	public Leave deleteById(Integer id);
-	
+	public List<Leave> findLeaveType(Integer idLeave,Integer idEmp);
 }

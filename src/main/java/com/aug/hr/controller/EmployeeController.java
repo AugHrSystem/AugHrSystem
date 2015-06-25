@@ -347,8 +347,8 @@ public class EmployeeController {
 		
 	  }else if(allEmployeeDto.getId()>0){
 		  
-		  logger.info("update emp");
-		  		  
+		  /*logger.info("update emp");
+		  		  */
 		   
 		  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto);	  
 		  //employee.setId(allEmployeeDto.getId());

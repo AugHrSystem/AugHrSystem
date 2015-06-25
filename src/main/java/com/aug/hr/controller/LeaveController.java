@@ -5,25 +5,18 @@
  */
 package com.aug.hr.controller;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpSession;
 
-import net.sf.jasperreports.engine.JRParameter;
-
-import org.apache.commons.beanutils.converters.DateConverter;
-import org.apache.commons.lang3.time.DateUtils;
-import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.apache.log4j.Logger;
-import org.apache.poi.ss.usermodel.DateUtil;
 import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.joda.time.Hours;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -33,27 +26,18 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.dto.services.LeaveDtoService;
-import com.aug.hr.dto.services.OfficialDtoService;
-import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.dto.LeaveDto;
-import com.aug.hr.entity.dto.ReportLeaveDto;
-import com.aug.hr.entity.dto.SkillLanguageDto;
 import com.aug.hr.services.LeaveService;
 import com.aug.hr.services.MasLeaveTypeService;
-import com.aug.hr.services.OfficialService;
-import com.aug.hr.services.ReportService;
 
 @Controller
 public class LeaveController {
@@ -97,6 +81,7 @@ public class LeaveController {
 	@RequestMapping(value ="/leave/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<LeaveDto> listAll(@PathVariable("id") Integer id){
 		
+		findOfficial(id);
 		return (List<LeaveDto>) leaveDtoService.searchLeave(id);
 	}
 	
@@ -109,6 +94,10 @@ public class LeaveController {
 			ModelMap model){
 
 		Leave leave = new Leave();
+		List<Leave> findLeaveTypeAmount =new ArrayList<Leave>();
+		findLeaveTypeAmount=leaveService.findLeaveType(leaveDate.getMasleavetypeId(),leaveDate.getEmployeeId());
+		
+
 		
 		int dateNo;
 		int hoursNo = 0;
@@ -116,6 +105,8 @@ public class LeaveController {
 		int hoursNo3 = 0;
 		int sum=0;
 
+		
+		
 	 	DateTime dt1 = new DateTime(leaveDate.getStartTime());
 		DateTime dt2 = new DateTime(leaveDate.getEndTime());
 		int dateNumber = Hours.hoursBetween(dt1, dt2).getHours() / 24;
@@ -166,7 +157,25 @@ public class LeaveController {
 		}
 		
 		
+		int perSumTime =0 ;
+		
+		for(Leave Leave:findLeaveTypeAmount)
+			
+		{
+			
+			perSumTime+=leave.getSumTime();
+			logger.info("perSumTime"+" "+perSumTime);
+			
+			/*logger.info("findLeaveTypeAmount"+" "+Leave.getSumTime());*/
+			
+		
+		}
+		
+	
+		
+		
 		leaveService.create(leave.fromLeaveDto(leaveDate,leave,new Integer(sum)));
+		
 		return leaveDate;
 	}
 	
@@ -265,9 +274,102 @@ public class LeaveController {
 		
 		Employee employeeOff = employeeDtoService.findOfficial(id);
 		
-		employeeOff.getOfficial().getStartWorkDate();
+		Date startWork =	employeeOff.getOfficial().getStartWorkDate();
 		
-		logger.info(""+employeeOff.getOfficial().getStartWorkDate());
+		GregorianCalendar startWorkCalendar	 = new GregorianCalendar();
+		startWorkCalendar.setTime(startWork);
+		
+		
+		GregorianCalendar currentCalendar	 = new GregorianCalendar();
+		currentCalendar.setTime(new Date());
+		
+		System.out.println("===================diffYear :"+(currentCalendar.get(Calendar.YEAR)- startWorkCalendar.get(Calendar.YEAR)));
+		System.out.println("===================diffMOnth :"+(currentCalendar.get(Calendar.MONTH)- startWorkCalendar.get(Calendar.MONTH)));
+		int sumMonth=((currentCalendar.get(Calendar.YEAR)- startWorkCalendar.get(Calendar.YEAR))*12)+
+				(currentCalendar.get(Calendar.MONTH)- startWorkCalendar.get(Calendar.MONTH));
+		int dayForAnnual=0;
+		
+		
+		if(sumMonth<5){
+			
+			dayForAnnual=0;
+			
+		}else if(sumMonth==5){
+			
+			dayForAnnual=3;
+			
+		}else if(sumMonth==6){
+			
+			dayForAnnual=4;
+			
+		}else if(sumMonth==7){
+			
+			dayForAnnual=5;
+			
+		}else if(sumMonth==8){
+			
+			dayForAnnual=6;
+			
+		}else if(sumMonth==9){
+			dayForAnnual=7;
+			
+		}else if(sumMonth==10){
+			dayForAnnual=8;
+			
+		}else if(sumMonth==11){
+			dayForAnnual=9;
+			
+		}else if(sumMonth==12){
+			dayForAnnual=10;
+			
+		}else if(sumMonth>12 || sumMonth<=60){
+			dayForAnnual=10;
+			
+		}else if(sumMonth>60){
+			dayForAnnual=15;
+		}
+		
+		logger.info("sumMonth"+" "+sumMonth);
+		logger.info("dayForAnnual"+" "+dayForAnnual);
+		
+		
+//		Integer currentYear=gc.get(Calendar.YEAR);
+//		Integer currentMonth=gc.get(Calendar.MONTH)+1;
+		
+		 /*Calendar cal = Calendar.getInstance();
+			
+		Integer currentYear1=cal.get(Calendar.YEAR);
+		Integer currentMonth1=cal.get(Calendar.MONTH);*/
+		
+	
+		
+//		Integer	years=gc.get(Calendar.YEAR);
+		
+	
+		
+		
+	/*	Integer	years1=employeeOff.getOfficial().getStartWorkDate().getYear();
+		*/
+	/*	
+		Integer	months=startWork.getMonth()+1;
+		
+		
+		
+		Integer diffYear=currentYear-startWork.getYear();
+		Integer diffMonth=currentMonth-months;
+		
+		
+		logger.info("findOfficial"+" "+startWork);
+		logger.info("currentYear"+" "+currentYear);
+		logger.info("currentYear1"+" "+currentYear1);
+		logger.info("years"+" "+years);
+		logger.info("years1"+" "+years1);
+		logger.info("diffYear"+" "+diffYear);
+		
+		logger.info("currentMonth"+" "+currentMonth);
+		logger.info("currentMonth1"+""+currentMonth1);
+		logger.info("months"+" "+months);
+		logger.info("diffMonth"+" "+diffMonth);*/
 		int a=1;
 		
 		return a;

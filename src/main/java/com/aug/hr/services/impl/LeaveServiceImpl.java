@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.hr.dao.LeaveDao;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.services.LeaveService;
+
 @Service("leaveService")
 @Transactional
 public class LeaveServiceImpl implements LeaveService {
@@ -62,6 +63,12 @@ public class LeaveServiceImpl implements LeaveService {
 	public Leave deleteById(Integer id) {
 		
 		return leaveDao.deleteById(id);
+	}
+
+	@Override
+	public List<Leave> findLeaveType(Integer idLeave,Integer idEmp) {
+		// TODO Auto-generated method stub
+		return leaveDao.findLeaveType(idLeave,idEmp);
 	}
 
 }
