@@ -123,7 +123,7 @@ $(document).ready(function () {
 	function listAll(){
 
 		$.ajax({
-			url : "${pageContext.request.contextPath}/employee/searchEmpStatus",
+			url : "${pageContext.request.contextPath}/employee/searchEmpStatusforlist",
 			type : "POST",
 			success : function(data) {
 			dt.fnClearTable();

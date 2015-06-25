@@ -512,10 +512,12 @@ public class EmployeeController {
 
 	//------------------------------listReportEmpstatus--------------------------
 	
-	@RequestMapping(value = "/employee/searchEmpStatus", method = {RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody List<ReportStatusEmployeeDto> searchEmpStatus(){
+	@RequestMapping(value = "/employee/searchEmpStatusforlist", method = {RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody List<ReportStatusEmployeeDto> searchEmpStatusforlist(){
 		return employeeDtoService.reportStatusEmployee();
     }
+	
+	
 	
 	
 	
