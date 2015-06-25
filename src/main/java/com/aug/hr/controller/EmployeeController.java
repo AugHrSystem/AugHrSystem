@@ -433,7 +433,10 @@ public class EmployeeController {
 		return "/employee/reportModalEmpName";
 	}
 	
-	
+	@RequestMapping(value = "/employee/modalReportEmpCode", method = RequestMethod.GET)
+	public String modalReportEmpCode(ModelMap map) {
+		return "/employee/reportModalEmpCode";
+	}
 	
 	@RequestMapping(value = "/employee/searchReportEmpName", method = {RequestMethod.POST})
     public ModelAndView searchEmployeeNameReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
@@ -445,11 +448,6 @@ public class EmployeeController {
         return mv;
     }
 	
-	@RequestMapping(value = "/employee/reportEmpCode", method = RequestMethod.GET)
-	public String ReportEmpCode(ModelMap map) {
-		return "/employee/reportEmpCode";
-	}
-	
 	@RequestMapping(value = "/employee/searchReportEmpCode", method = {RequestMethod.POST})
     public ModelAndView searchEmployeeCodeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
 		List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
@@ -460,18 +458,6 @@ public class EmployeeController {
         return mv;
     }
 	
-	@RequestMapping(value = "/employee/searchEmpCode", method = {RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody List<ReportEmployeeDto> searchEmpCode(){
-		return employeeDtoService.reportEmployee();
-    }
-//	R
-//	@RequestMapping(value ="/history/listAll", method = {RequestMethod.GET, RequestMethod.POST})
-//	public @ResponseBody List<History> listAll(){
-//		History historyid = new History();
-//		historyid.setPosition("");
-//		return historyService.findByCriteria(historyid);
-//	
-//	}
 	
 	@RequestMapping(value = "/employee/findRunningNo/{code}", method = RequestMethod.POST)
 	public @ResponseBody EmployeeCodeDto findRunningNo(@PathVariable("code") String code) {
@@ -524,19 +510,9 @@ public class EmployeeController {
     }
 	
 
-
-//	@RequestMapping(value = "/employee/listAllReportStatusEmp/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-//	
-//	public @ResponseBody List<ReportStatusEmployeeDto> listAllReportStatusEmp(ReportStatusEmployeeDto reportStatusEmployeeDto) {
-//		return(List<ReportStatusEmployeeDto>) reportStatusEmpService.findAll();
-//		
-//	    //public @ResponseBody List<ReportStatusEmployeeDto> listAllReportStatusEmp(@RequestBody Employee reportStatusEmployeeDto) {
-//	   //List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee();	
-//	  //return employeeList;
-//	
-//	}
+	//------------------------------listReportEmpstatus--------------------------
 	
-	@RequestMapping(value = "/employee/searchEmpCode", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/employee/searchEmpStatus", method = {RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody List<ReportStatusEmployeeDto> searchEmpStatus(){
 		return employeeDtoService.reportStatusEmployee();
     }
