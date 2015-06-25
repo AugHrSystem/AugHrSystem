@@ -136,35 +136,53 @@
 		//$('#startDate').data('daterangepicker').setStartDate('2014-03-01');
 		//$('#startDate').data('daterangepicker').setEndDate('2014-03-31');
 
-		$('#startDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
-		$('#endDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		//$('#startDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		//$('#endDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		
+		
 	
 	  $('#startDate').datetimepicker({
 			 
-// 						 viewMode: 'days',
+ //						 viewMode: 'days',
 						 format : 'DD-MM-YYYY',
-// 						 defaultDate: 'moment',
-// 						 minDate: 'moment',
-						 //showClear: true,
+   				 	     defaultDate: 'moment',
+ //			 			 minDate: 'moment',
+//						 showClear: true,
 // 						 showClose:true,
 			
 						
 		});
+	  
+	  
+	  
+	  $('#startDate').data("DateTimePicker").date(moment());
+	  $("input[name='startDate']").val($('#startDate').data("DateTimePicker").date().format('DD-MM-YYYY'));
+	  
+	  
+	  
+	  
+	  
 			 
-		var defaultDate = new Date($('#startDate').data("DateTimePicker").date());
+		var defaultDate = new Date();
 		defaultDate.setDate(defaultDate.getDate()+1);
 		
 		
 		$('#endDate').datetimepicker({			 
 // 			 viewMode: 'days',
 			 format : 'DD-MM-YYYY',	 
-// 			 defaultDate: defaultDate,
-// 			 minDate: 'moment',
+			 defaultDate: defaultDate,
+ 			 minDate: 'moment',
 			 //ShowClear: true,
 // 			 showClose:true					 
 		
 		});
-	
+		
+		  $('#endDate').data("DateTimePicker").minDate(defaultDate);
+		  $('#endDate').data("DateTimePicker").date(defaultDate);
+		  $("input[name='endDate']").val($('#endDate').data("DateTimePicker").date().format('DD-MM-YYYY')); 
+		  
+		  
+
 		
 		
  		$("#startDate").on("dp.change", function (e) {
@@ -178,10 +196,10 @@
             .validateField('startDate');
  			
  			
-//  			var tempdate = new Date(e.date);
-//  			tempdate.setDate(tempdate.getDate()+1);
-//  			//alert('temp: '+tempdate);
-//             $('#endDate').data("DateTimePicker").minDate(tempdate);
+    			var tempdate = new Date(e.date);
+    			tempdate.setDate(tempdate.getDate()+1);
+				//alert('temp: '+tempdate);
+                $('#endDate').data("DateTimePicker").minDate(tempdate);
             
             
         }); 
@@ -294,15 +312,20 @@
 			  	   
 			   //alert(moment().format("DD-MM-YYYY"));
 			   
-			   $('#startDate').data("DateTimePicker").minDate(moment());
+			   /*for set date*/
+			   //$('#startDate').data("DateTimePicker").minDate(moment());
 			   $('#startDate').data("DateTimePicker").date(moment());
 			   $("input[name='startDate']").val($('#startDate').data("DateTimePicker").date().format('DD-MM-YYYY'));
 			   //$("input[name='startDate']").val(moment().format("DD-MM-YYYY"));
 			  
- 		       var d = new Date();
+ 		       var d = new Date($('#startDate').data("DateTimePicker").date());
 			   d.setDate(d.getDate()+1);
 			   //alert("d "+d);
-			   $('#endDate').data("DateTimePicker").minDate(d);
+			   //$('#endDate').data("DateTimePicker").minDate(d);
+           	   //$('#endDate').data("DateTimePicker").date(d);
+           	   
+           	   
+           	   $('#endDate').data("DateTimePicker").minDate(d);
            	   $('#endDate').data("DateTimePicker").date(d);
            	   $("input[name='endDate']").val($('#endDate').data("DateTimePicker").date().format('DD-MM-YYYY'));
 
@@ -378,9 +401,13 @@
 	  	    	
 	  	    
 	  	    	
-	  	    	$('#startDate').data("DateTimePicker").minDate(data.startDate).date(data.startDate);	  	    	
-	  	    	//$('#startDate').data("DateTimePicker").date(data.startDate);	  	    	
-	  	    	//$('#endDate').data("DateTimePicker").minDate($('#startDate').data("DateTimePicker"));
+	  	    	//$('#startDate').data("DateTimePicker").minDate(data.startDate).date(data.startDate);	  	    	
+	  	    	$('#startDate').data("DateTimePicker").date(data.startDate);	  	    	
+	  	    	
+	  	    	var date = new Date();
+	  	    	date.setDate($('#startDate').data("DateTimePicker").date());
+	  	    	date.setDate(date.getDate()+1);
+	  	    	$('#endDate').data("DateTimePicker").minDate(data.startDate+1);
 	            $('#endDate').data("DateTimePicker").date(data.endDate);
 	  	    	
 	  	    	
