@@ -27,8 +27,8 @@ public class EmployeeDtoService {
 		return employeeDao.searchEmployee();
 	}
 	
-	public List<ReportEmployeeDto> reportEmployee(){
-		return employeeDao.reportEmployee();
+	public List<ReportEmployeeDto> reportEmployee(String nameEng){
+		return employeeDao.reportEmployee(nameEng);
 	}
 
 	

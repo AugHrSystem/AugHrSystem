@@ -6,26 +6,16 @@
 <div class="modal-header">
 	<h4 class="modal-title">Employee Name Report</h4>
 </div>
-<f:form method="post" name="reportForm" target="_blank" commandName="employee"  cssClass="form-horizontal">
+<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpName" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	Search
+        	Search by Employee Name
         		${ searchfor }${ entity }
         	</div>
         	<div class="col-sm-6">
-        		<f:input id="name" path="name" cssClass="form-control" placeholder="${ searchfor }${ entity }"/>
-        	</div>
-        </div>
-        <div class="form-group form-group-sm">
-        	<div class="col-sm-3">
-        	Order By
-        	</div>
-        	<div class="col-sm-6">
-        		<f:select id="sortingBy" path="sortingBy" cssClass="form-control">
-        			<f:option value="nameEng">Employee Name</f:option>
-        		</f:select>
+        		<f:input id="searchText" path="nameEng" cssClass="form-control" placeholder="${ searchfor }${ entity }"/>
         	</div>
         </div>
         
@@ -88,9 +78,12 @@ $(document).ready(function () {
 	
 	//Search By Position and Show function 
 	$('#btn_search').on('click', function(){
+		var searchText = $("#searchText").val();
+		if(searchText == ""){
+			searchText = "forEmptySearch";
+		}
 		$.ajax({
-			url : "${pageContext.request.contextPath}/report/searchName",
-			/* data: "id="+getUrlParameter('Id'), */
+			url : "${pageContext.request.contextPath}/employee/searchName/"+searchText,
 			type : "POST",
 			success : function(data) {
 			dt.fnClearTable();
@@ -110,11 +103,21 @@ $(document).ready(function () {
 	});
 	$('#btn_print').on('click', function(){
 		$("form[name='reportForm']").submit();
- 		$.ajax({
-		url : "${pageContext.request.contextPath}/employee/searchReportEmpName",
-		type : "POST"
-		});
-	});
+/* 		var searchText = $("#searchText").val();
+		if(searchText == ""){
+			searchText = "forEmptySearch";
+		}
+  		$.ajax({
+		url : "${pageContext.request.contextPath}/employee/searchReportEmpName/"+searchText,
+		type : "POST",
+		success : function(data) {
+			
+		},
+		error : function(data,testStatus,jqXHR) {
+			$("#outputajax").text(testStatus);
+			}
+		}); */
+	}); 
 	
 });
 	

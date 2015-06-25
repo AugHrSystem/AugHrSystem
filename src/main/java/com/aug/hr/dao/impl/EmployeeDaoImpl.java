@@ -521,8 +521,8 @@ public Employee findOfficial(Integer id) {
 
 
 	@Override
-	public List<ReportEmployeeDto> reportEmployee() {
-		Query query = getCurrentSession().getNamedQuery("reportEmployee");
+	public List<ReportEmployeeDto> reportEmployee(String nameEng) {
+		Query query = getCurrentSession().getNamedQuery("reportEmployee").setString("name","%"+ nameEng +"%");;
 		List<ReportEmployeeDto> employees = query.list();	
 		return employees;
 	}

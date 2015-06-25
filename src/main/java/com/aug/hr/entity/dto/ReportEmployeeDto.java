@@ -28,7 +28,8 @@ import javax.persistence.NamedNativeQuery;
             		+ "from emp_employee as emp "
             		+ "join mas_employment on emp.employment_id = mas_employment.id "
             		+ "join mas_division on emp.division_id = mas_division.id "
-            		+ "join mas_technology on emp.technology_id = mas_technology.id", 
+            		+ "join mas_technology on emp.technology_id = mas_technology.id "
+            		+ "where emp.name_eng like :name", 
             resultClass = ReportEmployeeDto.class)
   })
 @Entity
