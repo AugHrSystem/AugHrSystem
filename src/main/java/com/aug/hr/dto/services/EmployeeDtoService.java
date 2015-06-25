@@ -13,8 +13,6 @@ import com.aug.hr.dao.EmployeeDao;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
-
-
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
 
@@ -43,11 +41,11 @@ public class EmployeeDtoService {
 		return employeeDao.reportLeave();
 	}
 	
-	
-	
-	
 	public Employee findOfficial(Integer id){
 		return employeeDao.findOfficial(id);
 	}
 	
+	public List<ReportEmployeeDto> findByName(Employee employee) {
+		return employeeDao.findByName(employee);
+	}
 }

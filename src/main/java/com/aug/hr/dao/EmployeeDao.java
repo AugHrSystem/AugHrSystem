@@ -41,5 +41,6 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public void deleteEmployeeByNameQuery(Employee employee);
 	public List<Employee> findAimRelateWithEmployee(Integer id);
 	public Employee findOfficial(Integer id);
+	public List<ReportEmployeeDto> findByName(Employee employee);
 	
 }

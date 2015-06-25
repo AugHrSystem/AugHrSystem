@@ -440,7 +440,8 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/employee/searchReportEmpName", method = {RequestMethod.POST})
     public ModelAndView searchEmployeeNameReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-		List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
+		//List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
+		List<ReportEmployeeDto> employeeList = employeeDtoService.findByName(employee);
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);

@@ -150,6 +150,7 @@ var dt;
 		
 		$('#dateFrom').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		$('#dateTo').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		$('#salary').mask("000,000,000",{reverse: true});
 		$('#tdResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,

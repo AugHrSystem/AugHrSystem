@@ -541,6 +541,17 @@ public Employee findOfficial(Integer id) {
 				List<ReportLeaveDto> leaves = query.list();	
 		return leaves;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ReportEmployeeDto> findByName(Employee employee) {
+		
+		Criteria c = getCurrentSession().createCriteria(ReportEmployeeDto.class);
+		if (!StringUtils.isNullOrEmpty(employee.getNameEng())) {
+			c.add(Restrictions.like("name", "%" + employee.getNameEng() + "%"));
+		}
+		return c.list();
+		
+	}
 
 	public void updateByNameQuery(AllEmployeeDto allEmployeeDto) {
 		// TODO Auto-generated method stub
