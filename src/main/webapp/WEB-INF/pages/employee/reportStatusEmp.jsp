@@ -79,8 +79,9 @@
 
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<button type="button" class="btn btn-default submit" value="search">Print</button>
-		<button type="button" class="btn btn-default print" value="print">Search</button>
+		<button type="button" class="btn btn-default" value="search" id="btn_search">Search</button>
+		<button type="button" class="btn btn-default" value="print" id="printreport">Print</button>
+		
 	</div>
 </f:form>
 
@@ -102,43 +103,52 @@ ${reportStatusEmployeeDto.employeeCode}
 
 <script type="text/javascript">
 $(document).ready(function () {
-	var dtReport;
-
 	
-	//Search By Position and Show function 
-	$('#btn_search').on('click', function(){
-		if(dtReport){
-			dtReport.ajax.reload();
-		}else{
-			dtReport = $('#reportTable').DataTable({
-				searching : false,
-				paging: false,
-				ajax : {
-					type:'POST',
-					url: '${pageContext.request.contextPath}/report/search',
-					data: function (d) {/* 
-						d.position = $('#inputPosition').val();
-						d.degree = $('#inputDegree').val();
-						d.major = $('#inputMajor').val();
-						d.schoolName = $('#inputSchoolName').val();
-						d.gpa = $('#inputGpa').val(); */
-					},
-				},
-			columns : [
-			           {"data": "code"},
-				       {"data": "applyDate"},
-				       {"data": "firstNameEN"},
-				       {"data": "positionName1"},
-				       {"data": "positionName2"},
-				       {"data": "positionName3"},
-				       {"data": "schoolName"},
-				       {"data": "degree"},
-				       {"data": "gpa"},
-				       ]
-			});
+	
+	
+	$('#tbResult').dataTable({ 
+		"bLengthChange": false,
+		"iDisplayLength": 10,
+		"pagingType": "simple_numbers",
+		"ordering": false,
+		"info": false
+	});
+	
+
+	dt = $('#tbResult').dataTable();	
+	 listAll();
+		 
+	
+	
+	function listAll(){
+
+		$.ajax({
+			url : "${pageContext.request.contextPath}/employee/searchEmpCode",
+			type : "POST",
+			success : function(data) {
+			dt.fnClearTable();
+			for (var i=0;i< data.length; i++) {
+				dt.fnAddData([data[i].employeeCode, 
+				              data[i].startWorkDate,		
+				              data[i].daywork, 
+				              data[i].dateOfBirth, 
+				              data[i].age, 
+				              data[i].nameThai, 
+				              data[i].nameEng, 
+				              data[i].statusemp, 
+				              data[i].startDate, 
+				              data[i].endDate, 
+				   			]);
+		
+				}
+			},
+			error : function(jqXHR,	textStatus,	error) {	
+						alert("error");
+				}
+			}); 
 		}
-		});
-	$('#btn_search').trigger("click");
+	
+	
 	
 	});
 	

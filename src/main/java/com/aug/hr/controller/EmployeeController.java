@@ -105,6 +105,7 @@ public class EmployeeController {
 	@Autowired private EmployeeCodeDtoService employeeCodeDtoService;
 	@Autowired private ReportService reportService;
 	@Autowired private EmployeeIdDtoService employeeIdService;
+
 	
 	
 	private static final Logger logger = Logger.getLogger(Employee.class);
@@ -510,15 +511,21 @@ public class EmployeeController {
 	
 
 
-	@RequestMapping(value = "/employee/listAllReportStatusEmp", method = RequestMethod.GET)
-	public @ResponseBody List<ReportStatusEmployeeDto> listAllReportStatusEmp(@RequestBody Employee reportStatusEmployeeDto) {
-		List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee();
-		
-		return employeeList;
-	}
+//	@RequestMapping(value = "/employee/listAllReportStatusEmp/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+//	
+//	public @ResponseBody List<ReportStatusEmployeeDto> listAllReportStatusEmp(ReportStatusEmployeeDto reportStatusEmployeeDto) {
+//		return(List<ReportStatusEmployeeDto>) reportStatusEmpService.findAll();
+//		
+//	    //public @ResponseBody List<ReportStatusEmployeeDto> listAllReportStatusEmp(@RequestBody Employee reportStatusEmployeeDto) {
+//	   //List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee();	
+//	  //return employeeList;
+//	
+//	}
 	
-	
-
+	@RequestMapping(value = "/employee/searchEmpCode", method = {RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody List<ReportStatusEmployeeDto> searchEmpCode(){
+		return employeeDtoService.reportStatusEmployee();
+    }
 	
 	
 	

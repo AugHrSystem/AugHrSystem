@@ -84,10 +84,10 @@ public class ReportStatusEmployeeDto {
 //		@Column(name = "daywork")
 		private Integer daywork;
 		
-		@Transient
-		private String searchreport;
-		@Transient
-		private String orderbyreport;
+//		@Transient
+//		private String searchreport;
+//		@Transient
+//		private String orderbyreport;
 		
 		public Integer getId() {
 			return id;
@@ -191,18 +191,18 @@ public class ReportStatusEmployeeDto {
 		public void setDaywork(Integer daywork) {
 			this.daywork = daywork;
 		}
-		public String getSearchreport() {
-			return searchreport;
-		}
-		public void setSearchreport(String searchreport) {
-			this.searchreport = searchreport;
-		}
-		public String getOrderbyreport() {
-			return orderbyreport;
-		}
-		public void setOrderbyreport(String orderbyreport) {
-			this.orderbyreport = orderbyreport;
-		}
+//		public String getSearchreport() {
+//			return searchreport;
+//		}
+//		public void setSearchreport(String searchreport) {
+//			this.searchreport = searchreport;
+//		}
+//		public String getOrderbyreport() {
+//			return orderbyreport;
+//		}
+//		public void setOrderbyreport(String orderbyreport) {
+//			this.orderbyreport = orderbyreport;
+//		}
 	
 		
 		
