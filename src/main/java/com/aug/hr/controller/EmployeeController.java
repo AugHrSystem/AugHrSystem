@@ -428,9 +428,9 @@ public class EmployeeController {
 		return "/employee/reportPopup";
 	}
 	
-	@RequestMapping(value = "/employee/modalReportEmpName", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee/ReportEmpName", method = {RequestMethod.GET, RequestMethod.POST})
 	public String modalReport(ModelMap map) {
-		return "/employee/reportModalEmpName";
+		return "/report/reportEmpName";
 	}
 	
 	@RequestMapping(value = "/employee/modalReportEmpCode", method = RequestMethod.GET)
@@ -438,10 +438,10 @@ public class EmployeeController {
 		return "/employee/reportModalEmpCode";
 	}
 	
-	@RequestMapping(value = "/employee/searchReportEmpName", method = {RequestMethod.POST})
+	@RequestMapping(value = "/employee/searchReportEmpName", method = {RequestMethod.POST,RequestMethod.GET})
     public ModelAndView searchEmployeeNameReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-		//List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
-		List<ReportEmployeeDto> employeeList = employeeDtoService.findByName(employee);
+		List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
+		//List<ReportEmployeeDto> employeeList = employeeDtoService.findByName(employee);
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
@@ -535,7 +535,11 @@ public class EmployeeController {
         return mv;
     }
 	
-	
+	@RequestMapping(value = "/report/searchName", method = {RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody List<ReportEmployeeDto> searchName(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale) {
+		List<ReportEmployeeDto> employeeList = employeeDtoService.reportEmployee();
+		return employeeList;
+	}
 	
 
 	

@@ -45,7 +45,7 @@
 	                <span class="dropdown-arrow"></span>
 		    		<ul class="dropdown-menu">
 		    			<li>
-		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportEmpName"><spring:message code="report.empName" /></a>
+		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="<%=request.getContextPath()%>/employee/ReportEmpName"><spring:message code="report.empName" /></a>
 		    			</li>
 		    			<li>
 		    				<a href="<%=request.getContextPath()%>/employee/reportEmpCode"><spring:message code="report.empCode" /></a>
@@ -73,8 +73,7 @@
 	</div>
 	</nav> 
 	
-	<!-- Modal -->
-	<div class="modal fade" id="reportModal" tabindex="-1">
+<!-- 	<div class="modal fade" id="reportModal" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content"></div>
 		</div>
@@ -86,4 +85,4 @@
 			  $(this).removeData('bs.modal');
 		});
 	});
-</script>
+</script> -->
