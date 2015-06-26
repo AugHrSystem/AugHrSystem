@@ -27,11 +27,11 @@ import org.springframework.util.StringUtils;
 import com.aug.hr.constants.Constants;
 
 
-
 public class DisplayImageServlet extends HttpServlet {
-	
-	protected static Logger logger = Logger.getLogger(DisplayImageServlet.class);
-	private static final long serialVersionUID = 8500706756578949263L;
+
+    protected static Logger logger = Logger.getLogger(DisplayImageServlet.class);
+    private static final long serialVersionUID = 8500706756578949263L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,22 +39,21 @@ public class DisplayImageServlet extends HttpServlet {
         super();
     }
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (!StringUtils.isEmpty(request.getParameter("namespace"))){
-			this.displayImage(request, response);
-		}
-		else this.previewImagePath(request, response);
-	}
-	
-	public void displayImage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		ResourceBundle resource = ResourceBundle.getBundle("ApplicationResources");
-		File imageFile = new File(resource.getString("picture.path")+request.getParameter("namespace")+"/"+request.getParameter("fileName"));
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (!StringUtils.isEmpty(request.getParameter("namespace"))) {
+            this.displayImage(request, response);
+        } else this.previewImagePath(request, response);
+    }
+
+    public void displayImage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ResourceBundle resource = ResourceBundle.getBundle("ApplicationResources");
+        File imageFile = new File(resource.getString("picture.path") + request.getParameter("namespace") + "/" + request.getParameter("fileName"));
         FileInputStream fin = new FileInputStream(imageFile);
         ServletOutputStream outStream = response.getOutputStream();
         response.setContentType("image/jpeg");
@@ -64,92 +63,92 @@ public class DisplayImageServlet extends HttpServlet {
             outStream.write(i);
         }
         fin.close();
-	}
-	
-	public void previewImagePath(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String name = null;
-		String size = null;
-		String path = null;		
-		String pathName = null;
-		InputStream is = null;
-		OutputStream sos = null;
-		BufferedImage bufferedImage = null;
-		BufferedInputStream bis = null;
-		ResourceBundle resource = null;
-		byte[] image = null;
-		byte[] tempbyte = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		int width = 1000;
-		int calcHeight = 0;
-		
-		try{
-			name = (String)request.getParameter("name");
-			size = (String)request.getParameter("size");
-			resource = ResourceBundle.getBundle("ApplicationResources");
-			path = changeFileSeparatorForOS(resource.getString("ApplicationAbsolutePath")+resource.getString("UserAttachments"));
-			pathName = path + name;
-					
-			logger.info(" ----------------- path -------------- :"+pathName);
-			if(name !=null && !"".equals(name)){
-				File imageFile = new File(pathName);
-				if(!imageFile.exists()){
-					pathName = path+Constants.DEFAULT_IMAGE_PRODUCT;
-					imageFile = new File(pathName);
-				}
-				
-				image = new byte[16];
-				sos = response.getOutputStream();
-				
-				if("mini".equals(size)){
-					 bufferedImage = ImageIO.read(imageFile); 
-		             calcHeight =(width * bufferedImage.getHeight() / bufferedImage.getWidth());  
-		             ImageIO.write(createResizedCopy(bufferedImage, width, calcHeight), "JPG", response.getOutputStream());  		
-				}else{				
-					is = new FileInputStream(imageFile);
-					bis = new BufferedInputStream(is);
-					int count = 0;
-					while((count = bis.read(image)) >= 0){
-						sos.write(image, 0, count);
-					}
-					is.close();
-					bis.close();
-				}
-			}
-	
-		}catch(NullPointerException ex){
-			sos.write(tempbyte);
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			if(sos != null){
-				sos.flush();
-				sos.close();
-			}
-			name = null;
-			size = null;
-			resource = null;
-			path = null;		
-			pathName = null;
-			is = null;
-			sos = null;
-			bufferedImage = null;
-			bis = null;
-			image = null;
-			tempbyte = null;
-		}
-	}
-	
-	BufferedImage createResizedCopy(Image originalImage, int scaledWidth, int scaledHeight) {  
-	     BufferedImage scaledBI = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);  
-	     Graphics2D g = scaledBI.createGraphics();  
-	     g.setComposite(AlphaComposite.Src);  
-	     g.drawImage(originalImage, 0, 0, scaledWidth, scaledHeight, null);  
-	     g.dispose();  
-	     return scaledBI;  
-	}  
-	 
-	private static String changeFileSeparatorForOS(final String pathname) {
-		return pathname.replaceAll("(/|\\|/|\\\\)", Matcher.quoteReplacement(File.separator));
-	}
+    }
+
+    public void previewImagePath(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = null;
+        String size = null;
+        String path = null;
+        String pathName = null;
+        InputStream is = null;
+        OutputStream sos = null;
+        BufferedImage bufferedImage = null;
+        BufferedInputStream bis = null;
+        ResourceBundle resource = null;
+        byte[] image = null;
+        byte[] tempByte = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int width = 1000;
+        int calcHeight = 0;
+
+        try {
+            name = (String) request.getParameter("name");
+            size = (String) request.getParameter("size");
+            resource = ResourceBundle.getBundle("ApplicationResources");
+            path = changeFileSeparatorForOS(resource.getString("ApplicationAbsolutePath") + resource.getString("UserAttachments"));
+            pathName = path + name;
+
+            logger.info(" ----------------- path -------------- :" + pathName);
+            if (name != null && !"".equals(name)) {
+                File imageFile = new File(pathName);
+                if (!imageFile.exists()) {
+                    pathName = path + Constants.DEFAULT_IMAGE_PRODUCT;
+                    imageFile = new File(pathName);
+                }
+
+                image = new byte[16];
+                sos = response.getOutputStream();
+
+                if ("mini".equals(size)) {
+                    bufferedImage = ImageIO.read(imageFile);
+                    calcHeight = (width * bufferedImage.getHeight() / bufferedImage.getWidth());
+                    ImageIO.write(createResizedCopy(bufferedImage, width, calcHeight), "JPG", response.getOutputStream());
+                } else {
+                    is = new FileInputStream(imageFile);
+                    bis = new BufferedInputStream(is);
+                    int count = 0;
+                    while ((count = bis.read(image)) >= 0) {
+                        sos.write(image, 0, count);
+                    }
+                    is.close();
+                    bis.close();
+                }
+            }
+
+        } catch (NullPointerException ex) {
+            sos.write(tempByte);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (sos != null) {
+                sos.flush();
+                sos.close();
+            }
+            name = null;
+            size = null;
+            resource = null;
+            path = null;
+            pathName = null;
+            is = null;
+            sos = null;
+            bufferedImage = null;
+            bis = null;
+            image = null;
+            tempByte = null;
+        }
+    }
+
+    BufferedImage createResizedCopy(Image originalImage, int scaledWidth, int scaledHeight) {
+        BufferedImage scaledBI = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = scaledBI.createGraphics();
+        g.setComposite(AlphaComposite.Src);
+        g.drawImage(originalImage, 0, 0, scaledWidth, scaledHeight, null);
+        g.dispose();
+        return scaledBI;
+    }
+
+    private static String changeFileSeparatorForOS(final String pathname) {
+        return pathname.replaceAll("(/|\\|/|\\\\)", Matcher.quoteReplacement(File.separator));
+    }
 
 }
 

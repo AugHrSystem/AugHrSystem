@@ -10,128 +10,131 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aug.hr.constants.Constants;
+
 @Service
 public class UploadService {
-	private static final Logger log = Logger.getLogger(UploadService.class);
-	@Value("#{appProps['picture.path']}")
-	private String picpath;
-	
-	public String uploadImage(String module,String filename, MultipartFile image) throws RuntimeException, IOException {
+    private static final Logger log = Logger.getLogger(UploadService.class);
+    @Value("#{appProps['picture.path']}")
+    private String picpath;
+
+    public String uploadImage(String module, String filename, MultipartFile image) throws RuntimeException, IOException {
         try {
-            File file = new File( picpath+module+"/"+ filename);
+            File file = new File(picpath + module + "/" + filename);
             FileUtils.writeByteArrayToFile(file, image.getBytes());
             log.info("Upload:  " + file.toString() + " complete.");
         } catch (IOException e) {
-        	e.printStackTrace();
+            e.printStackTrace();
             throw e;
         }
         return Constants.SUCCESS;
     }
-	
-	public String deleteImage(String module,String filename) throws RuntimeException, IOException {
+
+    public String deleteImage(String module, String filename) throws RuntimeException, IOException {
         System.out.println("Expenses Delete Image");
-		try {
-				String sDestPath = picpath+module+"/"+ filename; 
-				File fDelFile = new File( picpath+module+"/"+ filename);
-				System.out.println("Destination to Delete a image :"+sDestPath);
-				fDelFile.delete();
-				System.out.println("Image is Delete");
-			} catch (Exception e) {
+        try {
+            String sDestPath = picpath + module + "/" + filename;
+            File fDelFile = new File(picpath + module + "/" + filename);
+            System.out.println("Destination to Delete a image :" + sDestPath);
+            fDelFile.delete();
+            System.out.println("Image is Delete");
+        } catch (Exception e) {
 
-				e.printStackTrace();
-				return e.getMessage();
+            e.printStackTrace();
+            return e.getMessage();
 
-			}
+        }
         return Constants.SUCCESS;
     }
-	
-	public static String uploadFile(String sSourcePath, String sDestFileName, String sAppRootPath,String sFolderPath){
-		try {
-			String sDestPath = sAppRootPath + sFolderPath + sDestFileName; 
-			
-			File fSourceFile = new File(sSourcePath);
-			File fDestFile = new File(sDestPath);
-			log.info("Source :"+sSourcePath);
-			log.info("Destination :"+sDestPath);
-			FileUtils.copyFile(fSourceFile, fDestFile);
 
-			} catch (Exception e) {
+    public static String uploadFile(String sSourcePath, String sDestFileName, String sAppRootPath, String sFolderPath) {
+        try {
+            String sDestPath = sAppRootPath + sFolderPath + sDestFileName;
 
-				e.printStackTrace();
-				return e.getMessage();
+            File fSourceFile = new File(sSourcePath);
+            File fDestFile = new File(sDestPath);
+            log.info("Source :" + sSourcePath);
+            log.info("Destination :" + sDestPath);
+            FileUtils.copyFile(fSourceFile, fDestFile);
 
-			}
-			return Constants.SUCCESS;
-	}
-	
-	public static String uploadZipFile(String sSourcePath, String sAppRootPath, String sContextPath, String sFolderPath){
-		try {
-			String sDestPath = sAppRootPath + sContextPath + sFolderPath ; 
-			
-			File fSourceFile = new File(sSourcePath);
-			File fDestFile = new File(sDestPath);
-			log.info("Source :"+sSourcePath);
-			log.info("Destination :"+sDestPath);
-			FileUtils.copyFile(fSourceFile, fDestFile);
-			log.info("UPLOAD ZIP FILE SUC");
-			} catch (Exception e) {
+        } catch (Exception e) {
 
-				e.printStackTrace();
-				return e.getMessage();
+            e.printStackTrace();
+            return e.getMessage();
 
-			}
-			return Constants.SUCCESS;
-	}
-	public static String deleteFile(String sDestFileName, String sAppRootPath, String sContextPath, String sFolderPath){
-		System.out.println("Expenses Delete File");
-		try {
-				String sDestPath = sAppRootPath + sContextPath + sFolderPath + sDestFileName; 
-				File fDelFile = new File(sDestPath);
-				System.out.println("Destination to Delete a file :"+sDestPath);
-				fDelFile.delete();
-				System.out.println("File is Delete");
-			} catch (Exception e) {
+        }
+        return Constants.SUCCESS;
+    }
 
-				e.printStackTrace();
-				return e.getMessage();
+    public static String uploadZipFile(String sSourcePath, String sAppRootPath, String sContextPath, String sFolderPath) {
+        try {
+            String sDestPath = sAppRootPath + sContextPath + sFolderPath;
 
-			}
-			return Constants.SUCCESS;
-	}
-	public static String deleteFolderPath(String sAppRootPath, String sFolderPath){
-		System.out.println("Expenses Delete File");
-		try {
-				String sFolderFullPath = sAppRootPath +  sFolderPath; 
-				File fDelFile = new File(sFolderFullPath);
-				System.out.println("Destination to Delete a Folder :"+sFolderFullPath);
-				fDelFile.delete();
-				System.out.println("Folder is Delete");
-			} catch (Exception e) {
+            File fSourceFile = new File(sSourcePath);
+            File fDestFile = new File(sDestPath);
+            log.info("Source :" + sSourcePath);
+            log.info("Destination :" + sDestPath);
+            FileUtils.copyFile(fSourceFile, fDestFile);
+            log.info("UPLOAD ZIP FILE SUC");
+        } catch (Exception e) {
 
-				e.printStackTrace();
-				return e.getMessage();
+            e.printStackTrace();
+            return e.getMessage();
 
-			}
-			return Constants.SUCCESS;
-	}
-	
-	public static String copyFileForClientSubmission(String sDestFileName, String sAppRootPath, String sContextPath, String sCopiedPath, String sFolderPath){
-		try {
-			String sDestPath = sAppRootPath + sContextPath + sFolderPath + sDestFileName; 
-			String sCopyPath = sAppRootPath + sContextPath +sCopiedPath +sDestFileName;
-			File fSourceFile = new File(sCopyPath);
-			File fDestFile = new File(sDestPath);
-			System.out.println("Source (copy) :"+sCopyPath);
-			System.out.println("Destination :"+sDestPath);
-			FileUtils.copyFile(fSourceFile, fDestFile);
+        }
+        return Constants.SUCCESS;
+    }
 
-			} catch (Exception e) {
+    public static String deleteFile(String sDestFileName, String sAppRootPath, String sContextPath, String sFolderPath) {
+        System.out.println("Expenses Delete File");
+        try {
+            String sDestPath = sAppRootPath + sContextPath + sFolderPath + sDestFileName;
+            File fDelFile = new File(sDestPath);
+            System.out.println("Destination to Delete a file :" + sDestPath);
+            fDelFile.delete();
+            System.out.println("File is Delete");
+        } catch (Exception e) {
 
-				e.printStackTrace();
-				return e.getMessage();
+            e.printStackTrace();
+            return e.getMessage();
 
-			}
-			return Constants.SUCCESS;
-	}
+        }
+        return Constants.SUCCESS;
+    }
+
+    public static String deleteFolderPath(String sAppRootPath, String sFolderPath) {
+        System.out.println("Expenses Delete File");
+        try {
+            String sFolderFullPath = sAppRootPath + sFolderPath;
+            File fDelFile = new File(sFolderFullPath);
+            System.out.println("Destination to Delete a Folder :" + sFolderFullPath);
+            fDelFile.delete();
+            System.out.println("Folder is Delete");
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return e.getMessage();
+
+        }
+        return Constants.SUCCESS;
+    }
+
+    public static String copyFileForClientSubmission(String sDestFileName, String sAppRootPath, String sContextPath, String sCopiedPath, String sFolderPath) {
+        try {
+            String sDestPath = sAppRootPath + sContextPath + sFolderPath + sDestFileName;
+            String sCopyPath = sAppRootPath + sContextPath + sCopiedPath + sDestFileName;
+            File fSourceFile = new File(sCopyPath);
+            File fDestFile = new File(sDestPath);
+            System.out.println("Source (copy) :" + sCopyPath);
+            System.out.println("Destination :" + sDestPath);
+            FileUtils.copyFile(fSourceFile, fDestFile);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return e.getMessage();
+
+        }
+        return Constants.SUCCESS;
+    }
 }
 
