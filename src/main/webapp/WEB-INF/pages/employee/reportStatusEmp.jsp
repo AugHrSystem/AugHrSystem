@@ -12,7 +12,7 @@
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	Search BY EMPLOYEE NAME
+        	Search by employee name
         		${ searchfor }${ entity }
         	</div>
         	<div class="col-sm-6">
@@ -48,9 +48,13 @@
 						<tr>								
 							<th>Resource ID.</th>
 							<th>Date Start Work</th>
-							<th>Duration (work)</th>
+							<th>Duration (Y)</th>
+							<th>Duration (M)</th>
+							<th>Duration (D)</th>
 							<th>Birth Date</th>
-							<th>AGE</th>
+							<th>AGE (Y)</th>
+							<th>AGE (M)</th>
+							<th>AGE (D)</th>
 							<th>Resource Name(TH)</th>
 							<th>Resource Name(EN)</th>
 							<th>Status</th>
@@ -89,7 +93,6 @@ ${reportStatusEmployeeDto.employeeCode}
 
 
 
-<!--  ก๊อปมาวางใหม่ ยังไม่ได้แก้อะไรเลยนะอันเก่าลบไปแล้ว -->
 
 
 <script type="text/javascript">
@@ -109,9 +112,13 @@ ${reportStatusEmployeeDto.employeeCode}
 				for (var i=0;i< data.length; i++) {
 					dt.fnAddData([data[i].employeeCode,
 					              data[i].startWorkDate,		
+					              data[i].yearwork, 
+					              data[i].monthwork, 
 					              data[i].daywork, 
 					              data[i].dateOfBirth, 
-					              data[i].age, 
+					              data[i].year, 
+					              data[i].month, 
+					              data[i].day, 
 					              data[i].nameThai, 
 					              data[i].nameEng, 
 					              data[i].statusemp, 
