@@ -64,6 +64,7 @@ import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.EmployeeIdDto;
 import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.entity.dto.ReferenceDto;
+import com.aug.hr.entity.dto.ReportCriStatusEmpDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -509,19 +510,27 @@ public class EmployeeController {
     }
 	
 	
-	
+
 	//------------------------------listReportEmpstatus--------------------------
 	
-	@RequestMapping(value = "/employee/sear chEmpStatusforlist", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/employee/searchEmpStatusforlist", method = {RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody List<ReportStatusEmployeeDto> searchEmpStatusforlist(){
 		return employeeDtoService.reportStatusEmployee();
     }
 	
-	//------------------------------FindCriReportEmpstatus--------------------------
+	//------------------------------FindByNameEmpstatus EmpReport--------------------------
 	
+ 	@RequestMapping(value = "/employee/searchStatusEmployeeNameReport", method = {RequestMethod.POST})
+    public ModelAndView searchStatusEmployeeNameReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+
+		List<ReportCriStatusEmpDto> employeeList = employeeDtoService.findStatusByName(employee);
+		Map<String,Object> parameterMap = new HashMap<String,Object>();
+		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
+		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+		ModelAndView mv = reportService.getReport(employeeList, "reportStatusEmp", employee.getReportType(),parameterMap);
+        return mv;
 	
-	
-	
+ 	}
 	
 
 

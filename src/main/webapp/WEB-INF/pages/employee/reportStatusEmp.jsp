@@ -79,8 +79,8 @@
 
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<button type="button" class="btn btn-default" value="search" id="btn_search">Search</button>
-		<button type="button" class="btn btn-default submit" value="print">Print</button>
+		<button type="button" class="btn btn-default search" value="search" id="btn_search">Search</button>
+		<button type="button" class="btn btn-default submit" value="print" id="btn_print">Print</button>
 		
 		<%-- href="<%=request.getContextPath()%>/employee/searchReportEmpStatus" --%>
 	</div>
@@ -103,17 +103,21 @@ ${reportStatusEmployeeDto.employeeCode}
 
 
 <script type="text/javascript">
-$(document).ready(function () {
+	$(document).ready(function() {
+	  
+	 
+		 $('#btn_print').on('click', function(){
+		 		$("form[name='reportForm']").submit();
+		  		$.ajax({
+		 		url : "${pageContext.request.contextPath}/employee/searchReportEmpStatus",
+		 		type : "POST"
+		 		});
+		 	});
+		 	
 	
-	 $(".submit").click(function() {
-			 $("form[name='reportForm']").submit();
-			/* $('[name="reportForm"]').attr */
-				/* ('action',"${pageContext.request.contextPath}/employee/searchReportEmpStatus"); */
-			/* $('[name="reportForm"]').submit();  */
-	
-		});
-	
-	
+
+	 
+
 	$('#tbResult').dataTable({ 
 		"bLengthChange": false,
 		"iDisplayLength": 10,
@@ -160,6 +164,7 @@ $(document).ready(function () {
 	
 	
 	});
+	
 	
 </script>
 

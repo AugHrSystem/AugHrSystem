@@ -22,6 +22,7 @@ import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.EmployeeIdDto;
+import com.aug.hr.entity.dto.ReportCriStatusEmpDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -552,6 +553,20 @@ public Employee findOfficial(Integer id) {
 		return c.list();
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ReportCriStatusEmpDto> findStatusByName(Employee employee) {
+		
+		Criteria c = getCurrentSession().createCriteria(ReportEmployeeDto.class);
+		if (!StringUtils.isNullOrEmpty(employee.getNameEng())) {
+			c.add(Restrictions.like("name", "%" + employee.getNameEng() + "%"));
+		}
+		return c.list();
+		
+	}
+	
+	
+	
 
 	public void updateByNameQuery(AllEmployeeDto allEmployeeDto) {
 		// TODO Auto-generated method stub

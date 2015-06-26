@@ -14,6 +14,7 @@ import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.EmployeeIdDto;
+import com.aug.hr.entity.dto.ReportCriStatusEmpDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -41,5 +42,6 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public List<Employee> findAimRelateWithEmployee(Integer id);
 	public Employee findOfficial(Integer id);
 	public List<ReportEmployeeDto> findByName(Employee employee);
+	public List<ReportCriStatusEmpDto> findStatusByName(Employee employee);
 	
 }

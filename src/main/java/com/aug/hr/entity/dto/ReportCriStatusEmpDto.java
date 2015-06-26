@@ -1,7 +1,6 @@
 package com.aug.hr.entity.dto;
 
 
-
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,10 +13,9 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
-
 @NamedNativeQueries({
 		@NamedNativeQuery(
-				name = "reportStatusEmployee",
+				name = "ReportCriStatusEmpDto",
 				query = "Select emp.id, "
 						+"emp.EMPLOYEE_CODE as employeeCode, "
 						+"emp.NAME_THAI as nameThai, "
@@ -37,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 						+"DAY(curdate()) - DAY(START_WORK_DATE) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(START_WORK_DATE), '/', DAY(START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as daywork "
 						+"from EMP_EMPLOYEE as emp "
 						+"join EMP_SITE as site on site.employee_ID = emp.ID "
-						+"join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID",
-						
-					resultClass = ReportStatusEmployeeDto.class)
+						+"join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID "
+						+"where emp.name_eng like :name",						
+					resultClass = ReportCriStatusEmpDto.class)
 
 })
 @Entity
-public class ReportStatusEmployeeDto {
+public class ReportCriStatusEmpDto {
 	
 		@Id
 		@Column(name ="ID")
