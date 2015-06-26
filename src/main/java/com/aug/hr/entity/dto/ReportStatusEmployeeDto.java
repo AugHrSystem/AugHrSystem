@@ -37,7 +37,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 						+"DAY(curdate()) - DAY(START_WORK_DATE) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(START_WORK_DATE), '/', DAY(START_WORK_DATE)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as daywork "
 						+"from EMP_EMPLOYEE as emp "
 						+"join EMP_SITE as site on site.employee_ID = emp.ID "
-						+"join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID",
+						+"join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID "
+						+"where emp.name_eng like :name",
 						
 					resultClass = ReportStatusEmployeeDto.class)
 

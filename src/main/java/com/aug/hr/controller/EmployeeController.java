@@ -64,7 +64,6 @@ import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.EmployeeIdDto;
 import com.aug.hr.entity.dto.OfficialDto;
 import com.aug.hr.entity.dto.ReferenceDto;
-import com.aug.hr.entity.dto.ReportCriStatusEmpDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -482,15 +481,8 @@ public class EmployeeController {
 	
 	
 	
-	
-	
-	
-	
-//	//Report
-//		@RequestMapping(value = "/employee/reportPopup", method = { RequestMethod.GET})
-//		public String reportPopup(@ModelAttribute(value = "employee") ReportStatusEmployeeDto reportStatusEmployeeDto,Locale locale, ModelMap map) {
-//			return "/employee/reportPopup";
-//		}
+	//----------------------------------------EMP STATUS----------------------------------------------------------------
+
 	
 	@RequestMapping(value = "/employee/ReportStatusEmp", method =  RequestMethod.GET)
 	public String ReportStatusEmp(ModelMap map) {
@@ -498,43 +490,54 @@ public class EmployeeController {
 	}
 	
 	
-	@RequestMapping(value = "/employee/searchReportEmpStatus", method = {RequestMethod.POST})
-    public ModelAndView searchReportEmpStatus(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-		List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee();
-		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
-		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
-		ModelAndView mv = reportService.getReport(employeeList, "reportStatusEmp", employee.getReportType(),parameterMap);
-       System.out.println("AAA");
-		return mv;
-    }
-	
-	
-
-	//------------------------------listReportEmpstatus--------------------------
-	
-	@RequestMapping(value = "/employee/searchEmpStatusforlist", method = {RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody List<ReportStatusEmployeeDto> searchEmpStatusforlist(){
-		return employeeDtoService.reportStatusEmployee();
-    }
-	
-	//------------------------------FindByNameEmpstatus EmpReport--------------------------
-	
- 	@RequestMapping(value = "/employee/searchStatusEmployeeNameReport", method = {RequestMethod.POST})
-    public ModelAndView searchStatusEmployeeNameReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-
-		List<ReportCriStatusEmpDto> employeeList = employeeDtoService.findStatusByName(employee);
+	@RequestMapping(value = "/employee/searchEmpStatusReport", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView searchEmpStatusReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+		List<ReportStatusEmployeeDto> employeeList;
+		String searchText = employee.getNameEng();
+		if(searchText.equals("forEmptySearch")){
+			employeeList = employeeDtoService.reportStatusEmployee(searchText);
+    	}
+		else{
+			employeeList = employeeDtoService.reportStatusEmployee(searchText);
+		}
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
 		ModelAndView mv = reportService.getReport(employeeList, "reportStatusEmp", employee.getReportType(),parameterMap);
         return mv;
+        
+    }
+		
+
+//	@RequestMapping(value = "/employee/searchReportEmpStatusAll", method = {RequestMethod.POST})
+//    public ModelAndView searchReportEmpStatusAll(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+//		List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee(employee.getNameEng());
+//		Map<String,Object> parameterMap = new HashMap<String,Object>();
+//		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
+//		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+//		ModelAndView mv = reportService.getReport(employeeList, "employeeCodeReport", employee.getReportType(),parameterMap);
+//        return mv;
+//    }
+//	
 	
- 	}
+	@RequestMapping(value = "/employee/searchEmpStatusByName/{searchText}", method = {RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody List<ReportStatusEmployeeDto> searchNameStatusEmp(@PathVariable("searchText") String searchText, @ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale) {
+		List<ReportStatusEmployeeDto> employeeList;
+		if(searchText.equals("forEmptySearch")){
+			employeeList = employeeDtoService.reportStatusEmployee("");
+		}
+		else{
+			employeeList = employeeDtoService.reportStatusEmployee(searchText);
+		}
+		//System.out.print("============================================================== "+searchText);
+		return employeeList;
+	}
+//------------------------------------------------------------------------------------------------------------------------------------	
+	
+	
+	
 	
 
-
-	
 	
 	@RequestMapping(value = "/employee/modalReportLeave", method = RequestMethod.GET)
 	public String modalReportLeave(ModelMap map) {

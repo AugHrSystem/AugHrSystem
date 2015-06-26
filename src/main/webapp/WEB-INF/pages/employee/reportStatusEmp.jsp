@@ -7,26 +7,16 @@
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 	<h4 class="modal-title">Employee Status Report</h4>
 </div>
-<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpStatus" cssClass="form-horizontal">
+<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchEmpStatusReport" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	Search
+        	Search BY EMPLOYEE NAME
         		${ searchfor }${ entity }
         	</div>
         	<div class="col-sm-6">
-        		<f:input id="name" path="name" cssClass="form-control" placeholder="${ searchfor }${ entity }"/>
-        	</div>
-        </div>
-        <div class="form-group form-group-sm">
-        	<div class="col-sm-3">
-        	Order By
-        	</div>
-        	<div class="col-sm-6">
-        		<f:select id="sortingBy" path="sortingBy" cssClass="form-control">
-        			<f:option value="nameEng">Employee Name</f:option>
-        		</f:select>
+        		<f:input id="searchText" path="nameEng" cssClass="form-control" placeholder="${ searchfor }${ entity }"/>
         	</div>
         </div>
         
@@ -42,7 +32,7 @@
         
         
        <div>  
-        <f:form id ="listTable" method="post" commandName="employee" class="form-horizontal" action="employee">		
+        <f:form id ="tbResult" method="post" commandName="employee" class="form-horizontal" action="employee">		
 			<div class="row">
 				<!-- <h2 class="col-md-6">Report</h2>	 -->			
 				<br>
@@ -78,10 +68,10 @@
       </div>
 
 	<div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
 		<button type="button" class="btn btn-default search" value="search" id="btn_search">Search</button>
 		<button type="button" class="btn btn-default submit" value="print" id="btn_print">Print</button>
-		
+			
 		<%-- href="<%=request.getContextPath()%>/employee/searchReportEmpStatus" --%>
 	</div>
 </f:form>
@@ -105,6 +95,39 @@ ${reportStatusEmployeeDto.employeeCode}
 <script type="text/javascript">
 	$(document).ready(function() {
 	  
+		  
+		$('#btn_search').on('click', function(){
+			var searchText = $("#searchText").val();
+			if(searchText == ""){
+				searchText = "forEmptySearch";
+			}
+			$.ajax({
+				url : "${pageContext.request.contextPath}/employee/searchEmpStatusByName/"+searchText,
+				type : "POST",
+				success : function(data) {
+				dt.fnClearTable();
+				for (var i=0;i< data.length; i++) {
+					dt.fnAddData([data[i].employeeCode,
+					              data[i].startWorkDate,		
+					              data[i].daywork, 
+					              data[i].dateOfBirth, 
+					              data[i].age, 
+					              data[i].nameThai, 
+					              data[i].nameEng, 
+					              data[i].statusemp, 
+					              data[i].startDate, 
+					              data[i].endDate, 
+						]);
+			 
+					}
+				},
+				error : function(data,testStatus,jqXHR) {
+					$("#outputajax").text(testStatus);
+					}
+				});
+		});
+		
+		
 	 
 		 $('#btn_print').on('click', function(){
 		 		$("form[name='reportForm']").submit();
@@ -133,10 +156,10 @@ ${reportStatusEmployeeDto.employeeCode}
 	 
 
 
-	function listAll(){
+	/* function listAll(){
 
 		$.ajax({
-			url : "${pageContext.request.contextPath}/employee/searchEmpStatusforlist",
+			url : "${pageContext.request.contextPath}/employee/searchEmpStatusReport",
 			type : "POST",
 			success : function(data) {
 			dt.fnClearTable();
@@ -159,7 +182,7 @@ ${reportStatusEmployeeDto.employeeCode}
 						alert("error");
 				}
 			}); 
-		}
+		} */
 	
 	
 	

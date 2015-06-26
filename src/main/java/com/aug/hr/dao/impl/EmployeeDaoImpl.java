@@ -22,7 +22,6 @@ import com.aug.hr.entity.dto.AllEmployeeDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
 import com.aug.hr.entity.dto.EmployeeIdDto;
-import com.aug.hr.entity.dto.ReportCriStatusEmpDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -523,15 +522,16 @@ public Employee findOfficial(Integer id) {
 
 	@Override
 	public List<ReportEmployeeDto> reportEmployee(String nameEng) {
-		Query query = getCurrentSession().getNamedQuery("reportEmployee").setString("name","%"+ nameEng +"%");;
+		Query query = getCurrentSession().getNamedQuery("reportEmployee").setString("name","%"+ nameEng +"%");
 		List<ReportEmployeeDto> employees = query.list();	
 		return employees;
 	}
 
 	
 	@Override
-	public List<ReportStatusEmployeeDto> reportStatusEmployee() {
-		Query query = getCurrentSession().getNamedQuery("reportStatusEmployee");
+	public List<ReportStatusEmployeeDto> reportStatusEmployee(String nameEng) {
+		
+		Query query = getCurrentSession().getNamedQuery("reportStatusEmployee").setString("name","%"+ nameEng +"%");
 		List<ReportStatusEmployeeDto> employee = query.list();	
 		return employee;
 	}
@@ -554,8 +554,10 @@ public Employee findOfficial(Integer id) {
 		
 	}
 	
+
+	
 	@SuppressWarnings("unchecked")
-	public List<ReportCriStatusEmpDto> findStatusByName(Employee employee) {
+	public List<ReportStatusEmployeeDto> findByNameStatus(Employee employee) {
 		
 		Criteria c = getCurrentSession().createCriteria(ReportEmployeeDto.class);
 		if (!StringUtils.isNullOrEmpty(employee.getNameEng())) {
@@ -565,7 +567,7 @@ public Employee findOfficial(Integer id) {
 		
 	}
 	
-	
+
 	
 
 	public void updateByNameQuery(AllEmployeeDto allEmployeeDto) {
@@ -706,7 +708,8 @@ public Employee findOfficial(Integer id) {
 		c.add(Restrictions.eq("aimempid.id", id));
 		return c.list();
 	}
-	
+
+
 	
 
 }
