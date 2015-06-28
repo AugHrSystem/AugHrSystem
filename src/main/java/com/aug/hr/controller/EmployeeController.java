@@ -527,9 +527,9 @@ public class EmployeeController {
 		return "/report/reportEmpName";
 	}
 	
-	@RequestMapping(value = "/employee/reportEmpCode", method = RequestMethod.GET)
-	public String reportEmpCode(ModelMap map) {
-		return "/report/reportEmpCode";
+	@RequestMapping(value = "/employee/reportEmpCode", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modalReportEmpCode(ModelMap map) {
+		return "/employee/reportEmpCode";
 	}
 	
 	@RequestMapping(value = "/employee/searchReportEmpName", method = {RequestMethod.POST,RequestMethod.GET})
@@ -551,7 +551,7 @@ public class EmployeeController {
         return mv;
     }
 	
-	@RequestMapping(value = "/employee/searchReportEmpCode", method = {RequestMethod.POST})
+	@RequestMapping(value = "/employee/searchReportEmpCode", method = {RequestMethod.POST,RequestMethod.GET})
     public ModelAndView searchEmployeeCodeReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
 		List<ReportEmployeeDto> employeeList;
 		String searchText = employee.getEmployeeCode();
@@ -568,6 +568,17 @@ public class EmployeeController {
         return mv;
     }
 	
+	@RequestMapping(value = "/employee/searchNameCode/{searchText}", method = {RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody List<ReportEmployeeDto> searchNameCode(@PathVariable("searchText") String searchText, @ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale) {
+		List<ReportEmployeeDto> employeeList;
+		if(searchText.equals("forEmptySearch")){
+			employeeList = employeeDtoService.reportEmployee("");
+		}
+		else{
+			employeeList = employeeDtoService.reportEmployee(searchText);
+		}
+		return employeeList;
+	}
 	
 	@RequestMapping(value = "/employee/findRunningNo/{code}", method = RequestMethod.POST)
 	public @ResponseBody EmployeeCodeDto findRunningNo(@PathVariable("code") String code) {
