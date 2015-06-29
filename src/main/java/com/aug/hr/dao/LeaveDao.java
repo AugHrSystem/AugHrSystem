@@ -11,8 +11,10 @@ import java.util.List;
 
 
 
+
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.dto.LeaveDto;
+import com.aug.hr.entity.dto.ReportLeaveDto;
 
 
 
@@ -29,4 +31,6 @@ public interface LeaveDao extends GenericDao<Leave, Integer>{
 	public List<LeaveDto> searchLeave(Integer id);
 	
 	public List<Leave> findLeaveType(Integer idLeave,Integer idEmp);
+
+	/*public List<ReportLeaveDto> reportLeave(String nameEng);*/
 }

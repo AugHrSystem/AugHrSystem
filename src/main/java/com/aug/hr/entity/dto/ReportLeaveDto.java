@@ -36,7 +36,8 @@ import javax.persistence.NamedNativeQuery;
 								+ "join emp_official off on emp.`OFFICIAL_ID`=off.`ID` "
 								+ "join emp_leave as l "
 								+ "on emp.id = l.employee_id "
-								+ "group by emp.employee_code",                                                                                      	
+								+ "group by emp.employee_code "
+								+ "where emp.name_eng like :name",                                                                                      	
 
 					
            /* query = "select emp.id, "

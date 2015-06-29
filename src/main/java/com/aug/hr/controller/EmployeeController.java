@@ -47,6 +47,7 @@ import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeCodeDtoService;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeIdDtoService;
+import com.aug.hr.dto.services.LeaveDtoService;
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Education;
 import com.aug.hr.entity.Employee;
@@ -105,6 +106,7 @@ public class EmployeeController {
 	@Autowired private EmployeeCodeDtoService employeeCodeDtoService;
 	@Autowired private ReportService reportService;
 	@Autowired private EmployeeIdDtoService employeeIdService;
+	@Autowired private LeaveDtoService leaveDtoService;
 
 	
 	
@@ -539,19 +541,27 @@ public class EmployeeController {
 	
 
 	
-	@RequestMapping(value = "/employee/modalReportLeave", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee/modalReportLeave", method ={RequestMethod.GET, RequestMethod.POST})
 	public String modalReportLeave(ModelMap map) {
-		return "/employee/reportModalEmpLeave";
+		return "/employee/reportEmpLeave";
 	}
 	
 	
-	@RequestMapping(value = "/employee/searchReportEmpLeave", method = {RequestMethod.POST})
-    public ModelAndView searchLeaveReport(@ModelAttribute(value="leave")  Leave leave, ModelMap map ,HttpSession session,Locale locale){
-		List<ReportLeaveDto> leaveList = employeeDtoService.reportLeave();
+	@RequestMapping(value = "/employee/searchReportEmpLeave", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView searchLeaveReport(@ModelAttribute(value="leave")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+		//List<ReportLeaveDto> leaveList = employeeDtoService.reportLeave();
+		List<ReportLeaveDto> employeeList;
+		String searchText = employee.getNameEng();
+		if(searchText.equals("forEmptySearch")){
+			employeeList = employeeDtoService.reportLeave(searchText);
+    	}
+		else{
+			employeeList = employeeDtoService.reportLeave(searchText);
+		}
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
-		ModelAndView mv = reportService.getReport(leaveList, "leaveReport1", leave.getReportType(),parameterMap);
+		ModelAndView mv = reportService.getReport(employeeList, "reportEmpLeave", employee.getReportType(),parameterMap);
         return mv;
     }
 	

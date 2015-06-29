@@ -537,8 +537,8 @@ public Employee findOfficial(Integer id) {
 	}
 
 	@Override
-	public List<ReportLeaveDto> reportLeave() {
-		Query query = getCurrentSession().getNamedQuery("reportLeave");
+	public List<ReportLeaveDto> reportLeave(String nameEng) {
+		Query query = getCurrentSession().getNamedQuery("reportLeave").setString("name","%"+ nameEng +"%");
 				List<ReportLeaveDto> leaves = query.list();	
 		return leaves;
 	}
@@ -708,6 +708,7 @@ public Employee findOfficial(Integer id) {
 		c.add(Restrictions.eq("aimempid.id", id));
 		return c.list();
 	}
+
 
 
 	

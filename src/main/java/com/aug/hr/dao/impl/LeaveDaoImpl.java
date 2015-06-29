@@ -12,9 +12,11 @@ import org.hibernate.FetchMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+
 import com.aug.hr.dao.LeaveDao;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.dto.LeaveDto;
+import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.mysql.jdbc.StringUtils;
 
 
@@ -63,6 +65,13 @@ public class LeaveDaoImpl extends GenericDaoImpl<Leave, Integer> implements Leav
 		return c.list();
 		
 	}
+
+	/*@Override
+	public List<ReportLeaveDto> reportLeave(String nameEng) {
+		Query query = getCurrentSession().getNamedQuery("reportLeave").setString("name","%"+ nameEng +"%");
+		List<ReportLeaveDto> leaves = query.list();	
+return leaves;
+	}*/
 
 
 

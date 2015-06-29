@@ -37,8 +37,8 @@ public class EmployeeDtoService {
 	}
 	
 	
-	public List<ReportLeaveDto> reportLeave(){
-		return employeeDao.reportLeave();
+	public List<ReportLeaveDto> reportLeave(String nameEng){
+		return employeeDao.reportLeave(nameEng);
 	}
 	
 	public Employee findOfficial(Integer id){

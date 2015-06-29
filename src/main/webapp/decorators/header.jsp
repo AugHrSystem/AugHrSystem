@@ -60,7 +60,7 @@
 		    			</li>
 		    			
 		    			<li>
-		    				<a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="<%=request.getContextPath()%>/employee/modalReportLeave"><spring:message code="report.empLeave" /></a>
+		    				<a href="<%=request.getContextPath()%>/employee/modalReportLeave"><spring:message code="report.empLeave" /></a>
 		    			</li>
 		    			
 		    		</ul>
