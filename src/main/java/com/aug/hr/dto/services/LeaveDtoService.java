@@ -34,9 +34,9 @@ public class LeaveDtoService {
 
 
 
-	/*public List<ReportLeaveDto> reportLeave(String nameEng){
+	public List<ReportLeaveDto> reportLeave(String nameEng){
 		return leaveDao.reportLeave(nameEng);
 	}
-	*/
+	
 	
 }

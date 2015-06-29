@@ -2,7 +2,9 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <!-- jQuery -->
+
+
+<!-- jQuery -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 
 <!-- Bootstrap -->
@@ -36,10 +38,11 @@ background-repeat: no-repeat !important;
 background-attachment: fixed;
 } 
 </style>
- --%>
+<jsp:include page="../../../decorators/header.jsp"></jsp:include>
 <div class="modal-header">
 	<h4 class="modal-title">Employee Leave Report</h4>
 </div>
+
 <f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpLeave" cssClass="form-horizontal">
 
 	 <div class="modal-body">
@@ -104,9 +107,10 @@ background-attachment: fixed;
 		<button type="button" id ="btn_search" class="btn btn-default search" value="search">Search</button>
 	</div>
 </f:form>
-
+<jsp:include page="../../../decorators/footer.jsp"></jsp:include>
 
 <script type="text/javascript">
+
 $(document).ready(function () {
 	var dt=$("#tbResult").dataTable();
 
@@ -118,16 +122,16 @@ $(document).ready(function () {
 			searchText = "forEmptySearch";
 		}
 		$.ajax({
-			url : "${pageContext.request.contextPath}/employee/searchName/"+searchText,
+			url : "${pageContext.request.contextPath}/employee/searchNameLeave/"+searchText,
 			type : "POST",
 			success : function(data) {
 			dt.fnClearTable();
 			for (var i=0;i< data.length; i++) {
 				dt.fnAddData([data[i].employeeCode,
 				             // data[i].startWorkDate,
-				              data[i].nameThai,
-				              data[i].nameEng,
-				              data[i].dayAnnual,
+				              data[i].nameThai, 
+				              data[i].nameEng, 
+			                  data[i].dayAnnual,  
 				              data[i].daySick,
 				              data[i].dayPersonal,
 				              data[i].totalDayLeave

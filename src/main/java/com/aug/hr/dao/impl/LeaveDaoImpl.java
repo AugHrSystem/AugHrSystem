@@ -66,12 +66,12 @@ public class LeaveDaoImpl extends GenericDaoImpl<Leave, Integer> implements Leav
 		
 	}
 
-	/*@Override
+	@Override
 	public List<ReportLeaveDto> reportLeave(String nameEng) {
 		Query query = getCurrentSession().getNamedQuery("reportLeave").setString("name","%"+ nameEng +"%");
 		List<ReportLeaveDto> leaves = query.list();	
 return leaves;
-	}*/
+	}
 
 
 

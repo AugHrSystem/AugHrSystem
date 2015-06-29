@@ -555,20 +555,20 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employee/searchReportEmpLeave", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView searchLeaveReport(@ModelAttribute(value="leave")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
+    public ModelAndView searchLeaveReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
 		//List<ReportLeaveDto> leaveList = employeeDtoService.reportLeave();
 		List<ReportLeaveDto> employeeList;
 		String searchText = employee.getNameEng();
 		if(searchText.equals("forEmptySearch")){
-			employeeList = employeeDtoService.reportLeave(searchText);
+			employeeList = leaveDtoService.reportLeave(searchText);
     	}
 		else{
-			employeeList = employeeDtoService.reportLeave(searchText);
+			employeeList = leaveDtoService.reportLeave(searchText);
 		}
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
-		ModelAndView mv = reportService.getReport(employeeList, "reportEmpLeave", employee.getReportType(),parameterMap);
+		ModelAndView mv = reportService.getReport(employeeList, "leaveReport1", employee.getReportType(),parameterMap);
         return mv;
     }
 	
@@ -595,6 +595,22 @@ public class EmployeeController {
 			employeeList = employeeDtoService.reportEmployeeCode(searchText);
 		}
 		return employeeList;
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/employee/searchNameLeave/{searchText}", method = {RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody List<ReportLeaveDto> searchNameLeave(@PathVariable("searchText") String searchText, @ModelAttribute(value="leave")  Leave leave, ModelMap map ,HttpSession session,Locale locale) {
+		List<ReportLeaveDto> employeeLeaveList;
+		if(searchText.equals("forEmptySearch")){
+			employeeLeaveList = leaveDtoService.reportLeave("");
+		}
+		else{
+			employeeLeaveList = leaveDtoService.reportLeave(searchText);
+		}
+		//System.out.print("============================================================== "+searchText);
+		return employeeLeaveList;
 	}
 	
 	

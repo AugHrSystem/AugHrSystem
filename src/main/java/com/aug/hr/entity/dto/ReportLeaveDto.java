@@ -36,10 +36,13 @@ import javax.persistence.NamedNativeQuery;
 								+ "join emp_official off on emp.`OFFICIAL_ID`=off.`ID` "
 								+ "join emp_leave as l "
 								+ "on emp.id = l.employee_id "
-								+ "group by emp.employee_code "
-								+ "where emp.name_eng like :name",                                                                                      	
+								+ "where emp.name_eng like :name "
+								+ "group by emp.employee_code",
+								/*+ "group by emp.employee_code "
+								+ "where emp.name_eng like :name",   */                                                                                   	
 
-					
+								/*where emp.name_eng like '%t'
+								group by emp.employee_code*/
            /* query = "select emp.id, "
             		+ "emp.employee_code as employeeCode,"
             		+ "emp.dateofbirth as dateOfBirth,"
@@ -187,43 +190,14 @@ public class ReportLeaveDto {
 	public void setYearAge(Integer yearAge) {
 		this.yearAge = yearAge;
 	}
-	/*public Integer getDayAnnual() {
-		return dayAnnual;
-	}
-	public void setDayAnnual(Integer dayAnnual) {
-		this.dayAnnual = dayAnnual;
-	}
-	public Integer getDaySick() {
-		return daySick;
-	}
-	public void setDaySick(Integer daySick) {
-		this.daySick = daySick;
-	}
-	public Integer getDayPersonal() {
-		return dayPersonal;
-	}
-	public void setDayPersonal(Integer dayPersonal) {
-		this.dayPersonal = dayPersonal;
-	}
-	public Integer getTotalDayLeave() {
-		return totalDayLeave;
-	}
-	public void setTotalDayLeave(Integer totalDayLeave) {
-		this.totalDayLeave = totalDayLeave;
-	}*/
+	
 	public Date getStartWorkDate() {
 		return startWorkDate;
 	}
 	public void setStartWorkDate(Date startWorkDate) {
 		this.startWorkDate = startWorkDate;
 	}
-	/*public Integer getSumTime() {
-		return sumTime;
-	}
-	public void setSumTime(Integer sumTime) {
-		this.sumTime = sumTime;
-	}
-	*/
+	
 	public Float getDayAnnual() {
 		return dayAnnual;
 	}

@@ -32,5 +32,5 @@ public interface LeaveDao extends GenericDao<Leave, Integer>{
 	
 	public List<Leave> findLeaveType(Integer idLeave,Integer idEmp);
 
-	/*public List<ReportLeaveDto> reportLeave(String nameEng);*/
+	public List<ReportLeaveDto> reportLeave(String nameEng);
 }
