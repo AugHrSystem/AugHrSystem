@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 						+"site.PROJECTOWNER as projectOwner, "
 						+"site.STARTDATE as startDate, "
 						+"site.ENDDATE as endDate, "
+						+"staff.STAFFTYPENAME as statusStaff, "
 						+"YEAR(CURDATE()) - YEAR(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as year, "
 						+"MONTH(curdate()) - MONTH(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as month, "
 						+"DAY(curdate()) - DAY(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as day, "
@@ -38,7 +39,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 						+"from EMP_EMPLOYEE as emp "
 						+"join EMP_SITE as site on site.employee_ID = emp.ID "
 						+"join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID "
+						+"join MAS_STAFFTYPE as staff on staff.ID = emp.ID"
 						+"where emp.name_eng like :name",
+						
+				
+						
 						
 					resultClass = ReportStatusEmployeeDto.class)
 
@@ -82,6 +87,9 @@ public class ReportStatusEmployeeDto {
 		private Integer monthwork;
 //		@Column(name = "daywork")
 		private Integer daywork;
+//		@Column(name = "masstafftype")
+		private String statusStaff;
+		
 		
 //		@Transient
 //		private String searchreport;
@@ -190,6 +198,14 @@ public class ReportStatusEmployeeDto {
 		public void setDaywork(Integer daywork) {
 			this.daywork = daywork;
 		}
+		public String getStatusStaff() {
+			return statusStaff;
+		}
+		public void setStatusStaff(String statusStaff) {
+		this.statusStaff = statusStaff;
+		}
+		
+		
 //		public String getSearchreport() {
 //			return searchreport;
 //		}

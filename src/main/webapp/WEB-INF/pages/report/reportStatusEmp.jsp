@@ -5,14 +5,14 @@
 
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	<h4 class="modal-title">Employee Status Report</h4>
+	<h4 class="modal-title"><spring:message code="reportstatus.empName" /></h4>
 </div>
 <f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchEmpStatusReport" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	Search by employee name
+        	<spring:message code="reportstatus.searchEmpName" />
         		${ searchfor }${ entity }
         	</div>
         	<div class="col-sm-6">
@@ -22,7 +22,7 @@
         
          <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	Document Type
+        	<spring:message code="label.doctype" />
         	</div>
         	<div class="col-sm-6">
         		<label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>
@@ -46,20 +46,20 @@
 				<table id="tbResult" class="table" class="form-group">
 					<thead>	
 						<tr>								
-							<th>Resource ID.</th>
-							<th>Date Start Work</th>
-							<th>Duration (Y)</th>
-							<th>Duration (M)</th>
-							<th>Duration (D)</th>
-							<th>Birth Date</th>
-							<th>AGE (Y)</th>
-							<th>AGE (M)</th>
-							<th>AGE (D)</th>
-							<th>Resource Name(TH)</th>
-							<th>Resource Name(EN)</th>
-							<th>Status</th>
-							<th>StartDate</th>
-							<th>EndDate</th>
+							<th><spring:message code="reportstatus.resource" /></th>
+							<th><spring:message code="reportstatus.datestartwork" /></th>
+							<th><spring:message code="reportstatus.durationy" /></th>
+							<th><spring:message code="reportstatus.durationm" /></th>
+							<th><spring:message code="reportstatus.durationd" /></th>
+							<th><spring:message code="reportstatus.birthdate" /></th>
+							<th><spring:message code="reportstatus.agey" /></th>
+							<th><spring:message code="reportstatus.agem" /></th>
+							<th><spring:message code="reportstatus.aged" /></th>
+							<th><spring:message code="reportstatus.resourcenameth" /></th>
+							<th><spring:message code="reportstatus.resourcenameen" /></th>
+							<th><spring:message code="reportstatus.status" /></th>
+							<th><spring:message code="reportstatus.startdate" /></th>
+							<th><spring:message code="reportstatus.enddate" /></th>
 						</tr>
 					</thead>		
 				</table>
@@ -73,8 +73,8 @@
 
 	<div class="modal-footer">
 		<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-		<button type="button" class="btn btn-default search" value="search" id="btn_search">Search</button>
-		<button type="button" class="btn btn-default submit" value="print" id="btn_print">Print</button>
+		<button type="button" class="btn btn-default search" value="search" id="btn_search"><spring:message code="label.search" /></button>
+		<button type="button" class="btn btn-default submit" value="print" id="btn_print"><spring:message code="label.print" /></button>
 			
 		<%-- href="<%=request.getContextPath()%>/employee/searchReportEmpStatus" --%>
 	</div>

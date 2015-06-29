@@ -48,7 +48,7 @@ background-attachment: fixed;
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	Search by Employee Name
+        	<spring:message code="reportleave.searchEmpName" />
         		${ searchfor }${ entity }
         	</div>
         	<div class="col-sm-6">
@@ -58,7 +58,7 @@ background-attachment: fixed;
         
          <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	Document Type
+        	<spring:message code="label.doctype" />
         	</div>
         	<div class="col-sm-6">
         		<label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>
@@ -82,14 +82,15 @@ background-attachment: fixed;
 				<table id="tbResult" class="table" class="form-group">
 					<thead>	
 						<tr>								
-							<th>Resource ID.</th>
+											
+							<th><spring:message code="reportleave.resource" /></th>
 							<!-- <th>Date Start Work</th> -->
-							<th>Resource Name(TH)</th>
-							<th>Resource Name(EN)</th>
-							<th>Annual Leave</th>
-							<th>Sick Leave</th>
-							<th>Personal Leave</th>
-							<th>Total Leave</th>
+							<th><spring:message code="reportleave.resourcenameth" /></th>
+							<th><spring:message code="reportleave.resourcenameen" /></th>
+							<th><spring:message code="reportleave.annuallaeve" /></th>
+							<th><spring:message code="reportleave.sickleave" /></th>
+							<th><spring:message code="reportleave.personalleave" /></th>
+							<th><spring:message code="reportleave.totalleave" />l Leave</th>
 						</tr>
 					</thead>		
 				</table>
@@ -101,10 +102,10 @@ background-attachment: fixed;
       	
       </div>
 
-	<div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<button type="button" id="btn_print" class="btn btn-default submit" value="print">Print</button>
-		<button type="button" id ="btn_search" class="btn btn-default search" value="search">Search</button>
+	<div class="modal-footer">	
+		<button type="button" id ="btn_search" class="btn btn-default search" value="search"><spring:message code="label.search" /></button>
+		<button type="button" id="btn_print" class="btn btn-default submit" value="print"><spring:message code="label.print" /></button>
+		
 	</div>
 </f:form>
 <jsp:include page="../../../decorators/footer.jsp"></jsp:include>
