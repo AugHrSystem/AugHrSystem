@@ -4,18 +4,18 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="modal-header">
-	<h4 class="modal-title"><spring:message code="report.empName" /></h4>
+	<h4 class="modal-title"><spring:message code="report.empCode" /></h4>
 </div>
-<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpName" cssClass="form-horizontal">
+<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpCode" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
-        	<spring:message code="report.searchEmpName" />
+        	<spring:message code="report.searchEmpCode" />
         		${ searchfor }${ entity }
         	</div>
         	<div class="col-sm-6">
-        		<f:input id="searchText" path="nameEng" cssClass="form-control" placeholder="${ searchfor }${ entity }"/>
+        		<f:input id="searchText" path="employeeCode" cssClass="form-control" placeholder="${ searchfor }${ entity }"/>
         	</div>
         </div>
         
@@ -47,18 +47,9 @@
 						<tr>								
 							<th><spring:message code="report.resourceId" /></th>
 							<th><spring:message code="report.DateStartWork" /></th>
-							<th><spring:message code="report.durationYear" /></th>
-							<th><spring:message code="report.durationMonth" /></th>
-							<th><spring:message code="report.durationDay" /></th>
 							<th><spring:message code="employee.dateOfBirth" /></th>
-							<th><spring:message code="report.ageYear" /></th>
-							<th><spring:message code="report.ageMonth" /></th>
-							<th><spring:message code="report.ageDay" /></th>
 							<th><spring:message code="report.nameTh" /></th>
 							<th><spring:message code="report.nameEn" /></th>
-							<th><spring:message code="employee.nicknameEng" /></th>
-							<th><spring:message code="employee.telMobile" /></th>
-							<th><spring:message code="employee.email" /></th>
 							<th><spring:message code="report.type" /></th>
 							<th><spring:message code="report.position" /></th>
 							<th><spring:message code="report.skill" /></th>
@@ -98,17 +89,13 @@ $(document).ready(function () {
 			searchText = "forEmptySearch";
 		}
 		$.ajax({
-			url : "${pageContext.request.contextPath}/employee/searchName/"+searchText,
+			url : "${pageContext.request.contextPath}/employee/searchCode/"+searchText,
 			type : "POST",
 			success : function(data) {
 			dt.fnClearTable();
 			for (var i=0;i< data.length; i++) {
-				dt.fnAddData([data[i].employeeCode,data[i].startWorkDate,
-				              data[i].yearStart,data[i].monthStart,data[i].dayStart,
-				              data[i].dateOfBirth,
-				              data[i].year,data[i].month,data[i].day,
-				              data[i].nameThai,data[i].nameEng,data[i].nicknameEng,
-				              data[i].telMobile,data[i].email,
+				dt.fnAddData([data[i].employeeCode,data[i].startWorkDate,data[i].dateOfBirth,
+				              data[i].nameThai,data[i].nameEng,
 				              data[i].employmentName,data[i].divisionName,
 				              data[i].technologyName
 					]);

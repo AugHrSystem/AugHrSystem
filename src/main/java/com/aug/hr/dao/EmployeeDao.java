@@ -42,6 +42,7 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public Employee findOfficial(Integer id);
 	public List<ReportEmployeeDto> findByName(Employee employee);
 	public List<ReportStatusEmployeeDto> findByNameStatus(Employee employee);
+	public List<ReportEmployeeDto> reportEmployeeCode(String code);
 	
 	
 }

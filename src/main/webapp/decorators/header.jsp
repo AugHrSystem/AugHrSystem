@@ -45,7 +45,7 @@
 	                <span class="dropdown-arrow"></span>
 		    		<ul class="dropdown-menu">
 		    			<li>
-		    				<a href="<%=request.getContextPath()%>/employee/ReportEmpName"><spring:message code="report.empName" /></a>
+		    				<a href="<%=request.getContextPath()%>/employee/reportEmpName"><spring:message code="report.empName" /></a>
 		    			</li>
 		    			<li>
 		    				<a href="<%=request.getContextPath()%>/employee/reportEmpCode"><spring:message code="report.empCode" /></a>

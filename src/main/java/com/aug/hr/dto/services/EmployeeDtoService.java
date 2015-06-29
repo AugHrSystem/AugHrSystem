@@ -30,6 +30,10 @@ public class EmployeeDtoService {
 	public List<ReportEmployeeDto> reportEmployee(String nameEng){
 		return employeeDao.reportEmployee(nameEng);
 	}
+	
+	public List<ReportEmployeeDto> reportEmployeeCode(String code){
+		return employeeDao.reportEmployeeCode(code);
+	}
 
 	
 	public List<ReportStatusEmployeeDto> reportStatusEmployee(String nameEng){
