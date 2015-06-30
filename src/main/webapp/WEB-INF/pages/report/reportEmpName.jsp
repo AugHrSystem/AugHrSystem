@@ -6,7 +6,7 @@
 <div class="modal-header">
 	<h4 class="modal-title"><spring:message code="report.empName" /></h4>
 </div>
-<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpName" cssClass="form-horizontal">
+<f:form method="post" id="reportForm" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpName" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
@@ -23,9 +23,9 @@
         	<div class="col-sm-3">
         	<spring:message code="label.doctype" />
         	</div>
-        	<div class="col-sm-6">
-        		<label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>
-				<label class="radio-inline"><f:radiobutton path="reportType" value="xls"/>Xls</label>
+        	<div class="col-sm-6" id="reportType">
+        		<label class="radio-inline"><f:radiobutton path="reportType" value="pdf" name="reportType"/>Pdf</label>
+				<label class="radio-inline"><f:radiobutton path="reportType" value="xls" name="reportType"/>Xls</label>
         	</div>
         </div>
         
@@ -90,6 +90,23 @@ $(document).ready(function () {
 			"info": false
 	});
 	
+	$('#reportForm').bootstrapValidator({
+		message: 'This value is not valid',
+		 feedbackIcons: {
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	reportType: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '<spring:message code="report.validate.reportType" />'
+	                    }
+	        
+	                }
+	            }
+	        }
+		
+	});
 	
 	//Search By Position and Show function 
 	$('#btn_search').on('click', function(){
@@ -121,7 +138,11 @@ $(document).ready(function () {
 			});
 	});
 	$('#btn_print').on('click', function(){
-		$("form[name='reportForm']").submit();
+		$('#reportForm').bootstrapValidator();
+		$('#reportForm').data('bootstrapValidator').validate();
+		if($('#reportForm').data('bootstrapValidator').isValid()){
+			$("form[name='reportForm']").submit();
+		}
 /* 		var searchText = $("#searchText").val();
 		if(searchText == ""){
 			searchText = "forEmptySearch";
