@@ -40,7 +40,7 @@ background-attachment: fixed;
 </style>
 <jsp:include page="../../../decorators/header.jsp"></jsp:include>
 <div class="modal-header">
-	<h4 class="modal-title">Employee Leave Report</h4>
+	<h4 class="modal-title"><spring:message code="reportleave.empName" /></h4>
 </div>
 
 <f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpLeave" cssClass="form-horizontal">
@@ -90,7 +90,7 @@ background-attachment: fixed;
 							<th><spring:message code="reportleave.annuallaeve" /></th>
 							<th><spring:message code="reportleave.sickleave" /></th>
 							<th><spring:message code="reportleave.personalleave" /></th>
-							<th><spring:message code="reportleave.totalleave" />l Leave</th>
+							<th><spring:message code="reportleave.totalleave" /></th>
 						</tr>
 					</thead>		
 				</table>
@@ -136,6 +136,7 @@ $(document).ready(function () {
 				              data[i].daySick,
 				              data[i].dayPersonal,
 				              data[i].totalDayLeave
+				              
 					]);
 		 
 				}
