@@ -72,7 +72,6 @@
 
       	
       </div>
-
 	<div class="modal-footer">
 		<button type="button" id ="btn_search" class="btn btn-default search" value="search"><spring:message code="label.search" /></button>
 		<button type="button" id="btn_print" class="btn btn-default submit" value="print"><spring:message code="label.print" /></button>
@@ -137,11 +136,12 @@ $(document).ready(function () {
 				}
 			});
 	});
-	$('#btn_print').on('click', function(){
+	$('#btn_print').off("click").on('click', function(){
 		$('#reportForm').bootstrapValidator();
 		$('#reportForm').data('bootstrapValidator').validate();
 		if($('#reportForm').data('bootstrapValidator').isValid()){
-			$("form[name='reportForm']").submit();
+			//alert("print");
+			$("#reportForm").get(0).submit();
 		}
 /* 		var searchText = $("#searchText").val();
 		if(searchText == ""){
