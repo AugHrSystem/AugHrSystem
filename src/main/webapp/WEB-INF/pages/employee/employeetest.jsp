@@ -7,7 +7,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<script src="<c:url value="/resource/mask/jquery.maskedinput.js" />"></script>
+<script src="<c:url value="/resource/mask/js/jquery.maskedinput.js" />"></script>
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
@@ -174,7 +174,7 @@
  <!-------------------------------------------------- Start Address-------------------------------------------------->
  
 	       <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
-				<h2 style="border-bottom: 1px solid #8f8f8f;">Address
+				<h2 style="border-bottom: 1px solid #8f8f8f;"><spring:message code="label.address"></spring:message>
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 				</h2>
 	       </div>
@@ -265,7 +265,8 @@
 	         		
 							<div class="form-group">
 								<div class="col-md-6">
-									<label class="required"> <spring:message code="employee.emergencyContact"></spring:message> :</label> <input type="text" class="form-control"
+								
+								<label class="required"> <spring:message code="employee.emergencyContact"></spring:message> :</label> <input type="text" class="form-control"
 									id="emergencyContact" name="emergencyContact" placeholder="${please} ${enter} <spring:message code="employee.emergencyname"></spring:message>" value="${allEmployeeDto.emergencyContact}">
 								</div>
 								<div class="col-md-6">
@@ -631,20 +632,21 @@
 	         		
 							<div class="form-group">
 							
+							<div class="col-md-12">
 									<label> <spring:message code="employee.haveyoueverserved"></spring:message> :</label>
     								<div class="radio">
     								 <c:if test="${ empty allEmployeeDto.militaryServiceYes}">	
-     									  <label><input type="radio" id="militaryServiceYes" name="militaryServiceYes" value="Yes"><spring:message code="employee.yes"></spring:message></label>
+     									  <label><input type="radio" id="militaryServiceYes" name="militaryService" value="Yes"><spring:message code="employee.yes"></spring:message></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.militaryServiceYes}">	
     								  <c:if test="${allEmployeeDto.militaryServiceYes=='Yes'}">
-     									  <label><input type="radio" id="militaryServiceYes" name="militaryServiceYes" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
+     									  <label><input type="radio" id="militaryServiceYes" name="militaryService" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
     								   </c:if></c:if>
      								</div>
      								<div class="col-md-3">
     									 <label> <spring:message code="employee.fromYear"></spring:message> :</label>
 
-    									 <div class='input-group date' id='fromYear'>
+    									 <div class='input-group date' id='fromYear1'>
     									 <input type="text" class="form-control" id="fromYear" name="fromYear" placeholder="${please} ${enter} <spring:message code="employee.fromYear"></spring:message>"
     									  value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.fromYear}" />' />
     								     <span class="input-group-addon">
@@ -654,7 +656,7 @@
 									
     								<div class="col-md-3">
     									 <label> <spring:message code="employee.toYear"></spring:message> :</label>
-    									 <div class='input-group date' id='toYear'>
+    									 <div class='input-group date' id='toYear1'>
     									 <input type="text" class="form-control" id="toYear" name="toYear" placeholder="${please} ${enter} <spring:message code="employee.toYear"></spring:message>"
     									  value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.toYear}" />'  />
     									 <span class="input-group-addon">    									 
@@ -662,7 +664,6 @@
     									 </span>
 										</div>
 									</div>
-
 
 
 
@@ -676,14 +677,15 @@
     									 <input type="text" class="form-control" id="serviceNo" name="serviceNo" placeholder="${please} ${enter} <spring:message code="employee.serviceNo"></spring:message>" value="${allEmployeeDto.serviceNo}">
     							    </div>
 					
-	        
+	        </div>
+	        <div class="col-md-12">
     								<div class="radio">
     								 <c:if test="${ empty allEmployeeDto.militaryServiceNo}">	
-     									   <label><input type="radio" id="militaryServiceNo" name="militaryServiceNo" value="No" ><spring:message code="employee.no"></spring:message></label>
+     									   <label><input type="radio" id="militaryServiceNo" name="militaryService" value="No" ><spring:message code="employee.no"></spring:message></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.militaryServiceYes}">	
     								  <c:if test="${allEmployeeDto.militaryServiceYes=='No'}">
-     									    <label><input type="radio" id="militaryServiceNo" name="militaryServiceNo" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
+     									    <label><input type="radio" id="militaryServiceNo" name="militaryService" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
     								   </c:if></c:if>
      								</div>
      								<div class="col-md-6">
@@ -704,7 +706,7 @@
     									</div> --%>
 
     						</div>	
-					
+					</div>
 	        </div>
 	        
 	        
@@ -718,19 +720,19 @@
 								<div class="col-md-6">
 									<div class="radio">
 									<c:if test="${ empty allEmployeeDto.previousEmployerYes}">	
-     									 <label><input type="radio" id="previousEmployerYes" name="previousEmployerYes" value="Yes"><spring:message code="employee.yes"></spring:message></label>
+     									 <label><input type="radio" id="previousEmployerYes" name="previousEmployer" value="Yes"><spring:message code="employee.yes"></spring:message></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.previousEmployerYes}">	
-     									  <label><input type="radio" id="previousEmployerYes" name="previousEmployerYes" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>   									       									 
+     									  <label><input type="radio" id="previousEmployerYes" name="previousEmployer" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>   									       									 
     								   </c:if>
     								</div>
     								
     								<div class="radio">
     								  <c:if test="${ empty allEmployeeDto.previousEmployerNo}">	
-     									   <label><input type="radio" id="previousEmployerNo" name="previousEmployerNo" value="No"><spring:message code="employee.no"></spring:message></label>
+     									   <label><input type="radio" id="previousEmployerNo" name="previousEmployer" value="No"><spring:message code="employee.no"></spring:message></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.previousEmployerNo}">	
-     									     <label><input type="radio" id="previousEmployerNo" name="previousEmployerNo" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
+     									     <label><input type="radio" id="previousEmployerNo" name="previousEmployer" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
     								   </c:if>
      									
      									 <input type="text" class="form-control" id="previousEmpreasonsNo" name="previousEmpreasonsNo" placeholder="${please} ${enter} <spring:message code="employee.givethereason"></spring:message>" value="${allEmployeeDto.previousEmpreasonsNo}">
@@ -1174,14 +1176,14 @@ $('#validateAddress').bootstrapValidator({
   
 	  validators: {
           notEmpty: {
-              message: 'Zipcode is required and cannot be empty'
+              message: '<spring:message code="address.required.zipcode" />'
          	 },
          	digits: {
-              	message: 'Zipcode is required'
+              	message: '<spring:message code="address.required.zipcode.num" />'
               },
               regexp: {
                 regexp: /^\d{5}$/,
-                message: 'The TH zipcode must contain 5 digits'
+                message: '<spring:message code="address.required.zipcode.numno" />'
               }
               
 	  		}
@@ -1190,7 +1192,7 @@ $('#validateAddress').bootstrapValidator({
 		  
 		  validators: {
 	          notEmpty: {
-	              message: 'AddressType is required and cannot be empty'
+	              message: '<spring:message code="address.required.addressType" />'
 	         	 }
 		  		}
 		  },
@@ -1198,7 +1200,7 @@ $('#validateAddress').bootstrapValidator({
 			  
 			  validators: {
 		          notEmpty: {
-		              message: 'Address is required and cannot be empty'
+		              message: '<spring:message code="address.required.address" />'
 		         	 }
 			  		}
 			  },
@@ -1206,7 +1208,7 @@ $('#validateAddress').bootstrapValidator({
 				  
 				  validators: {
 			          notEmpty: {
-			              message: 'Address is required and cannot be empty'
+			              message: '<spring:message code="address.required.address" />'
 			         	 }
 				  		}
 				  },
@@ -1214,7 +1216,7 @@ $('#validateAddress').bootstrapValidator({
 					  
 					  validators: {
 				          notEmpty: {
-				              message: 'Province is required and cannot be empty'
+				              message: '<spring:message code="address.required.province" />'
 				         	 }
 					  		}
 					  },
@@ -1236,7 +1238,7 @@ $('#addForm').bootstrapValidator({
     	nameThai: {
              validators: {
                  notEmpty: {
-                     message: 'FirstName(Thai) is required and cannot be empty'
+                     message: '<spring:message code="employee.required.nameThai" />'
                  }
              }
          },
@@ -1244,7 +1246,7 @@ $('#addForm').bootstrapValidator({
          surnameThai: {
              validators: {
                  notEmpty: {
-                     message: 'Surname(Thai) is required and cannot be empty'
+                     message: '<spring:message code="employee.required.surnameThai" />'
                  }
              }
          },
@@ -1252,7 +1254,7 @@ $('#addForm').bootstrapValidator({
          nicknameThai: {
              validators: {
                  notEmpty: {
-                     message: 'Nickname(Thai) is required and cannot be empty'
+                     message: '<spring:message code="employee.required.nicknameThai" />'
                  }
              }
          },
@@ -1260,7 +1262,7 @@ $('#addForm').bootstrapValidator({
          nameEng: {
              validators: {
                  notEmpty: {
-                     message: 'FirstName(Eng) is required and cannot be empty'
+                     message: '<spring:message code="employee.required.nameEng" />'
                  }
              }
          },
@@ -1268,7 +1270,7 @@ $('#addForm').bootstrapValidator({
          surnameEng: {
              validators: {
                  notEmpty: {
-                     message: 'Surname(Eng) is required and cannot be empty'
+                     message: '<spring:message code="employee.required.surnameEng" />'
                  }
              }
          },
@@ -1276,7 +1278,7 @@ $('#addForm').bootstrapValidator({
          nicknameEng: {
              validators: {
                  notEmpty: {
-                     message: 'Nickname(Eng) is required and cannot be empty'
+                     message: '<spring:message code="employee.required.nicknameEng" />'
                  }
              }
          },
@@ -1284,10 +1286,10 @@ $('#addForm').bootstrapValidator({
          email: {
              validators: {
             	 notEmpty: {
-                     message: 'Email is required and cannot be empty'
+                     message: '<spring:message code="employee.required.email" />'
                  },
             	 emailAddress: {
-                     message: 'The value is not a valid email address'
+                     message: '<spring:message code="employee.required.emailsyntax" />'
                  },
              }
          },
@@ -1295,11 +1297,11 @@ $('#addForm').bootstrapValidator({
          telHome: {
              validators: {
                  notEmpty: {
-                     message: 'Tel. Home is required and cannot be empty'
+                     message: '<spring:message code="employee.required.telHome" />'
                  },
                   regexp: {
                       regexp: /^\d{2}-\d{3}-\d{4}$/,
-                      message: 'Tel. Home must format xx-xxx-xxxx'
+                      message: '<spring:message code="employee.required.telHomesyntax" />'
                     }
              }
          },
@@ -1307,11 +1309,11 @@ $('#addForm').bootstrapValidator({
          telMobile: {
              validators: {
                  notEmpty: {
-                     message: 'Tel. Mobile is required and cannot be empty'
+                     message: '<spring:message code="employee.required.telMobile" />'
                  },
                  regexp: {
                      regexp: /^\d{3}-\d{3}-\d{4}$/,
-                     message: 'Tel. Mobile must format xxx-xxx-xxxx'
+                     message: '<spring:message code="employee.required.telMobilesyntax" />'
                    }
              }
          },
@@ -1319,11 +1321,11 @@ $('#addForm').bootstrapValidator({
          telFax: {
              validators: {
                  notEmpty: {
-                     message: 'Fax is required and cannot be empty'
+                     message: '<spring:message code="employee.required.telFax" />'
                  },
                  regexp: {
                      regexp: /^\d{2}-\d{3}-\d{4}$/,
-                     message: 'Fax must format xx-xxx-xxxx'
+                     message: '<spring:message code="employee.required.telFaxsyntax" />'
                    }
              }
          },
@@ -1331,7 +1333,7 @@ $('#addForm').bootstrapValidator({
          congenitalDisease: {
              validators: {
                  notEmpty: {
-                     message: 'The CongenitalDisease is required and cannot be empty'
+                     message: '<spring:message code="employee.required.congen" />'
                  }
              }
          },
@@ -1339,7 +1341,7 @@ $('#addForm').bootstrapValidator({
          hospital: {
              validators: {
                  notEmpty: {
-                     message: 'The Hospital is required and cannot be empty'
+                     message: '<spring:message code="employee.required.hospital" />'
                  }
              }
          },
@@ -1347,7 +1349,7 @@ $('#addForm').bootstrapValidator({
          emergencyContact: {
              validators: {
                  notEmpty: {
-                     message: 'The Emergency Contact is required and cannot be empty'
+                     message: '<spring:message code="employee.required.emergencyContact" />'
                  }
              }
          },
@@ -1355,7 +1357,7 @@ $('#addForm').bootstrapValidator({
          relationshipWithEmergencyContact: {
              validators: {
                  notEmpty: {
-                     message: 'The Relationship With EmergencyContact is required and cannot be empty'
+                     message: '<spring:message code="employee.required.relation" />'
                  }
              }
          },
@@ -1363,7 +1365,7 @@ $('#addForm').bootstrapValidator({
          emergencyContactAddress: {
              validators: {
                  notEmpty: {
-                     message: 'The Emergency Contact Address is required and cannot be empty'
+                     message: '<spring:message code="employee.required.emergencyAddress" />'
                  }
              }
          },
@@ -1371,11 +1373,11 @@ $('#addForm').bootstrapValidator({
          emergencyContactPhoneNumber: {
              validators: {
                  notEmpty: {
-                     message: 'The Emergency Contact PhoneNumber is required and cannot be empty'
+                     message: '<spring:message code="employee.required.emergencyConPhoneNum" />'
                  },
                  regexp: {
                      regexp: /^\d{3}-\d{3}-\d{4}$/,
-                     message: 'Tel. Emergency must format xxx-xxx-xxxx'
+                     message: '<spring:message code="employee.required.emergencyFormatNum" />'
                    }
              }
          },
@@ -1383,7 +1385,7 @@ $('#addForm').bootstrapValidator({
          dateOfBirth: {
             validators: {
                 notEmpty: {
-                    message: 'The Date of Birth is required and cannot be empty'
+                    message: '<spring:message code="employee.required.dob" />'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1391,10 +1393,32 @@ $('#addForm').bootstrapValidator({
             }
         },
         
+         fromYear: {
+             validators: {
+                 notEmpty: {
+                     message: '<spring:message code="employee.required.fromYear" />'
+                 },
+                 date: {
+                     format: 'DD-MM-YYYY'
+                 }
+             }
+         },
+        
+         toYear: {
+             validators: {
+                 notEmpty: {
+                     message: '<spring:message code="employee.required.toYear" />'
+                 },
+                 date: {
+                     format: 'DD-MM-YYYY'
+                 }
+             }
+         },
+        
         placeOfBirth: {
             validators: {
                 notEmpty: {
-                    message: 'The Place of Birth is required and cannot be empty'
+                    message: '<spring:message code="employee.required.pob" />'
                 }
             }
         },
@@ -1402,20 +1426,20 @@ $('#addForm').bootstrapValidator({
         age: {
             validators: {
                 notEmpty: {
-                    message: 'Age is required and cannot be empty'
+                    message: '<spring:message code="employee.required.age" />'
                 },
                 digits: {
-                  	message: 'Age is required'
+                  	message: '<spring:message code="employee.required.agesyntax" />'
                   },
                 lessThan: {
                       value: 100,
                       inclusive: true,
-                      message: 'Age must to be less than 60'
+                      message: '<spring:message code="employee.required.ageless" />'
                   },
                  greaterThan: {
                       value: 10,
                       inclusive: false,
-                      message: 'Age must to be greater than or equals to 18'
+                      message: '<spring:message code="employee.required.agegreater" />'
                   }
             }
         },
@@ -1423,7 +1447,7 @@ $('#addForm').bootstrapValidator({
         religion: {
             validators: {
                 notEmpty: {
-                    message: 'Religion is required and cannot be empty'
+                    message: '<spring:message code="employee.required.religion" />'
                 }
             }
         },
@@ -1431,15 +1455,15 @@ $('#addForm').bootstrapValidator({
         idCard: {
             validators: {
                 notEmpty: {
-                    message: 'Id-Card is required and cannot be empty'
+                    message: '<spring:message code="employee.required.idCard" />'
                 },
                 digits: {
                   	min:0,
-                  	message: 'Id-Card is required'
+                  	message: '<spring:message code="employee.required.idCardnum" />'
                   },
                 regexp: {
                     regexp: /^\d{13}$/,
-                    message: 'Id-Card must contain 13 digits'
+                    message: '<spring:message code="employee.required.idCardsyntax" />'
                     }
             }
         },
@@ -1447,7 +1471,7 @@ $('#addForm').bootstrapValidator({
         issuedOffice: {
             validators: {
                 notEmpty: {
-                    message: 'The Issued Office is required and cannot be empty'
+                    message: '<spring:message code="employee.required.issuedOffice" />'
                 }
             }
         },
@@ -1455,7 +1479,7 @@ $('#addForm').bootstrapValidator({
         expiryDate: {
             validators: {
                 notEmpty: {
-                    message: 'The Expiry Date is required and cannot be empty'
+                    message: '<spring:message code="employee.required.expiryDate" />'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1466,11 +1490,11 @@ $('#addForm').bootstrapValidator({
         height: {
             validators: {
                 notEmpty: {
-                    message: 'Height is required and cannot be empty'
+                    message: '<spring:message code="employee.required.height" />'
                 },
                 digits: {
                   	min:0,
-                  	message: 'Height is required'
+                  	message: '<spring:message code="employee.required.heightnum" />'
                   },
             }
         },
@@ -1478,11 +1502,11 @@ $('#addForm').bootstrapValidator({
         weigth: {
             validators: {
                 notEmpty: {
-                    message: 'Weigth is required and cannot be empty'
+                    message: '<spring:message code="employee.required.weigth" />'
                 },
                 digits: {
                   	min:0,
-                  	message: 'Weigth is required'
+                  	message: '<spring:message code="employee.required.weigthnum" />'
                   },
             }
         },
@@ -1490,7 +1514,7 @@ $('#addForm').bootstrapValidator({
         sex: {
             validators: {
                 notEmpty: {
-                    message: 'Sex is required and cannot be empty'
+                    message: '<spring:message code="employee.required.sex" />'
                 }
             }
         },
@@ -1498,7 +1522,7 @@ $('#addForm').bootstrapValidator({
         maritalStatus: {
             validators: {
                 notEmpty: {
-                    message: 'The Marital Status is required and cannot be empty'
+                    message: '<spring:message code="employee.required.maritalStatus" />'
                 }
             }
         },
@@ -1506,11 +1530,11 @@ $('#addForm').bootstrapValidator({
         numberOfChildren: {
             validators: {
                 notEmpty: {
-                    message: 'The Number of Children is required and cannot be empty'
+                    message: '<spring:message code="employee.required.Children" />'
                 },
                 digits: {
                   	min:0,
-                  	message: 'The Number of Children is required'
+                  	message: '<spring:message code="employee.required.numberOfChildren" />'
                   },
             }
         },
@@ -1518,7 +1542,7 @@ $('#addForm').bootstrapValidator({
         spouseName: {
             validators: {
                 notEmpty: {
-                    message: 'Spouse Name is required and cannot be empty'
+                    message: '<spring:message code="employee.required.spouseName" />'
                 }
             }
         },
@@ -1526,11 +1550,11 @@ $('#addForm').bootstrapValidator({
         marriageCertificateNo: {
             validators: {
                 notEmpty: {
-                    message: 'Marriage Certificate No. is required and cannot be empty'
+                    message: '<spring:message code="employee.required.marcert" />'
                 },
                 digits: {
                   	min:0,
-                  	message: 'Marriage Certificate No. is required'
+                  	message: '<spring:message code="employee.required.marcertno" />'
                   },
             }
         },
@@ -1538,7 +1562,7 @@ $('#addForm').bootstrapValidator({
         issuedOffice2: {
             validators: {
                 notEmpty: {
-                    message: 'The Issued Office is required and cannot be empty'
+                    message: '<spring:message code="employee.required.issuedOffice" />'
                 }
             }
         },
@@ -1546,7 +1570,7 @@ $('#addForm').bootstrapValidator({
         address: {
             validators: {
                 notEmpty: {
-                    message: 'Address is required and cannot be empty'
+                    message: '<spring:message code="employee.required.address" />'
                 }
             }
         },
@@ -1554,7 +1578,7 @@ $('#addForm').bootstrapValidator({
         occupation: {
             validators: {
                 notEmpty: {
-                    message: 'Occupation is required and cannot be empty'
+                    message: '<spring:message code="employee.required.occupation" />'
                 }
             }
         },
@@ -1564,10 +1588,10 @@ $('#addForm').bootstrapValidator({
                 choice: {
                 	min:1,
                 	max:1,
-                    message: 'Please Choose one'
+                    message: '<spring:message code="employee.required.checkradio" />'
                 },
                 notEmpty: {
-                    message: 'Not empty'
+                    message: '<spring:message code="employee.required.radiomessage" />'
                 }
             }
         },
@@ -1575,14 +1599,62 @@ $('#addForm').bootstrapValidator({
         descriptionYes: {
             validators: {
                 notEmpty: {
-                    message: 'Not empty'
+                    message: '<spring:message code="employee.required.pleasewrite" />'
                 }
             }
         },
+        
+        branchOfService: {
+            validators: {
+                notEmpty: {
+                    message: '<spring:message code="employee.required.branchOfService" />'
+                }
+            }
+        },
+        
+        serviceNo: {
+            validators: {
+                notEmpty: {
+                    message: '<spring:message code="employee.required.serviceNo" />'
+                },
+                digits: {
+                  	min:0,
+                  	message: '<spring:message code="employee.required.serviceNum" />'
+                  },
+            }
+        },
+        
+        reasonsNo: {
+            validators: {
+                notEmpty: {
+                    message: '<spring:message code="employee.required.reasons" />'
+                }
+            }
+        },
+        
+        dateToBeDrafted: {
+            validators: {
+                notEmpty: {
+                    message: '<spring:message code="employee.required.datedrafted" />'
+                },
+                date: {
+                    format: 'DD-MM-YYYY'
+                }
+            }
+        },
+        
+        previousEmpreasonsNo: {
+            validators: {
+                notEmpty: {
+                    message: '<spring:message code="employee.required.givethereason" />'
+                }
+            }
+        },
+        
         officialDate: {
             validators: {
                 notEmpty: {
-                    message: 'Official Date is required and cannot be empty'
+                    message: '<spring:message code="official.required.officialDate" />'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1593,7 +1665,7 @@ $('#addForm').bootstrapValidator({
         startWorkDate: {
             validators: {
                 notEmpty: {
-                    message: 'Start Work Date is required and cannot be empty'
+                    message: '<spring:message code="official.required.startWorkDate" />'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1604,7 +1676,7 @@ $('#addForm').bootstrapValidator({
         endWorkDate: {
             validators: {
                 notEmpty: {
-                    message: 'End Work Date is required and cannot be empty'
+                    message: '<spring:message code="official.required.endWorkDate" />'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1615,7 +1687,7 @@ $('#addForm').bootstrapValidator({
         positionAppliedFor: {
             validators: {
                 notEmpty: {
-                    message: 'Position Applied for is required and cannot be empty'
+                    message: '<spring:message code="official.required.position" />'
                 }
             }
         },
@@ -1623,11 +1695,11 @@ $('#addForm').bootstrapValidator({
         salaryExpected: {
             validators: {
                 notEmpty: {
-                    message: 'Salary Expected is required and cannot be empty'
+                    message: '<spring:message code="official.required.salary" />'
                 },
                 digits: {
                   	min:0,
-                  	message: 'Salary Expected is required'
+                  	message: '<spring:message code="official.required.salarynum" />'
                   },
             }
         },
@@ -1635,7 +1707,7 @@ $('#addForm').bootstrapValidator({
         probationDate: {
             validators: {
                 notEmpty: {
-                    message: 'Probation Date is required and cannot be empty'
+                    message: '<spring:message code="employee.required.probationdate" />'
                 },
                 date: {
                     format: 'DD-MM-YYYY'
@@ -1643,19 +1715,26 @@ $('#addForm').bootstrapValidator({
             }
         },
         
-        
-        masCoreSkill: {
+        masEmployment: {
             validators: {
                 notEmpty: {
-                    message: 'Core Skill is required and cannot be empty'
+                    message: '<spring:message code="employee.required.employment" />'
                 }
             }
         },
         
-        masEmployment: {
+        masCoreSkill: {
             validators: {
                 notEmpty: {
-                    message: 'Employment is required and cannot be empty'
+                    message: '<spring:message code="employee.required.coreSkill" />'
+                }
+            }
+        },
+        
+        masLocation: {
+            validators: {
+                notEmpty: {
+                    message: '<spring:message code="employee.required.location" />'
                 }
             }
         },
@@ -1663,7 +1742,7 @@ $('#addForm').bootstrapValidator({
         masDivision: {
             validators: {
                 notEmpty: {
-                    message: 'Division is required and cannot be empty'
+                    message: '<spring:message code="employee.required.division" />'
                 }
             }
         },
@@ -1671,7 +1750,7 @@ $('#addForm').bootstrapValidator({
         masJoblevel: {
             validators: {
                 notEmpty: {
-                    message: 'Joblevel is required and cannot be empty'
+                    message: '<spring:message code="employee.required.joblevel" />'
                 }
             }
         },
@@ -1679,7 +1758,7 @@ $('#addForm').bootstrapValidator({
         technology: {
             validators: {
                 notEmpty: {
-                    message: 'Technology is required and cannot be empty'
+                    message: '<spring:message code="employee.required.technology" />'
                 }
             }
         },
@@ -1687,7 +1766,7 @@ $('#addForm').bootstrapValidator({
         masStaffType: {
             validators: {
                 notEmpty: {
-                    message: 'Staff Type is required and cannot be empty'
+                    message: '<spring:message code="employee.required.staffType" />'
                 }
             }
         }
@@ -1698,6 +1777,7 @@ $('#addForm').bootstrapValidator({
 		$("#telHome").mask("99-999-9999");
 		$("#telMobile").mask("999-999-9999");
 		$("#telFax").mask("99-999-9999");
+		$("#idCard").mask("9-9999-99999-99-9");
 		$("#emergencyContactPhoneNumber").mask("999-999-9999");
 		
 		
@@ -1778,6 +1858,30 @@ $('#dateOfBirth1')
         .validateField('dateOfBirth');
 });
 
+$('#fromYear1')
+.on('dp.change dp.show', function(e) {
+    // Validate the date when user change it
+    $('#addForm')
+        // Get the bootstrapValidator instance
+        .data('bootstrapValidator')
+        // Mark the field as not validated, so it'll be re-validated when the user change date
+        .updateStatus('fromYear', 'NOT_VALIDATED', null)
+        // Validate the field
+        .validateField('fromYear');
+});
+
+$('#toYear1')
+.on('dp.change dp.show', function(e) {
+    // Validate the date when user change it
+    $('#addForm')
+        // Get the bootstrapValidator instance
+        .data('bootstrapValidator')
+        // Mark the field as not validated, so it'll be re-validated when the user change date
+        .updateStatus('toYear', 'NOT_VALIDATED', null)
+        // Validate the field
+        .validateField('toYear');
+});
+
 		var date1 = $( "#dateOfBirth1" ).datetimepicker({
 			format : "DD-MM-YYYY",
 			viewMode : 'years'
@@ -1788,14 +1892,14 @@ $('#dateOfBirth1')
 //     		viewMode : 'years'
 		});
     	
-    	var date3 = $( "#fromYear" ).datetimepicker({
+    	var date3 = $( "#fromYear1" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		viewMode : 'years'
+    		//viewMode : 'years'
 		});
     	
-    	var date4 = $( "#toYear" ).datetimepicker({
+    	var date4 = $( "#toYear1" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		viewMode : 'years'
+//     		viewMode : 'years'
 		});
     	
     	var date5 = $( "#dateToBeDrafted1" ).datetimepicker({

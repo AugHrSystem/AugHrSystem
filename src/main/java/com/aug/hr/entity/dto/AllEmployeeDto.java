@@ -87,18 +87,22 @@ public class AllEmployeeDto {
 	private String militaryServiceYes;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fromYear;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)	
 	private Date toYear;
+	
 	private String branchOfService;
 	private String serviceNo;
 	private String militaryServiceNo;
 	private String reasonsNo;
 
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
 	
