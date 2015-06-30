@@ -31,7 +31,7 @@ public interface EmployeeDao extends GenericDao<Employee, Integer>{
 	public void saveByNameQuery(AllEmployeeDto allEmployeeDto);
 	public Employee searhEmpIdtoAddress();
 	public List<ReportEmployeeDto> reportEmployee(String nameEng);
-	public List<ReportStatusEmployeeDto> reportStatusEmployee(String nameEng);
+	public List<ReportStatusEmployeeDto> reportStatusEmployee(String statusStaff);
 	public EmployeeCodeDto serchRunningNo(String code);
 	public List<ReportLeaveDto> reportLeave(String nameEng);
 	public void updateByNameQuery(AllEmployeeDto allEmployeeDto);

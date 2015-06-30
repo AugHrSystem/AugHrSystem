@@ -24,12 +24,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 						+"emp.NAME_ENG as nameEng, "
 						+"emp.DATEOFBIRTH as dateOfBirth, "
 						+"emp.AGE as age, "
-						+"emp.STATUSEMP as statusemp, "
+						+"staff.STAFFTYPENAME as statusStaff, "
 						+"EMP_OFFICIAL.START_WORK_DATE as startWorkDate, "
 						+"site.PROJECTOWNER as projectOwner, "
 						+"site.STARTDATE as startDate, "
-						+"site.ENDDATE as endDate, "
-						+"staff.STAFFTYPENAME as statusStaff, "
+						+"site.ENDDATE as endDate, "			
 						+"YEAR(CURDATE()) - YEAR(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as year, "
 						+"MONTH(curdate()) - MONTH(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as month, "
 						+"DAY(curdate()) - DAY(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as day, "
@@ -39,12 +38,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 						+"from EMP_EMPLOYEE as emp "
 						+"join EMP_SITE as site on site.employee_ID = emp.ID "
 						+"join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID "
-						+"join MAS_STAFFTYPE as staff on staff.ID = emp.ID"
-						+"where emp.name_eng like :name",
-						
-				
-						
-						
+						+"join MAS_STAFFTYPE as staff on staff.ID = emp.ID " 
+						+"where staff.STAFFTYPENAME like :statusStaff",
+		
 					resultClass = ReportStatusEmployeeDto.class)
 
 })
@@ -65,8 +61,6 @@ public class ReportStatusEmployeeDto {
 		private Date dateOfBirth;		
 //		@Column(name = "age")
 		private Integer age;
-//		@Column(name = "statusemp")
-		private Integer statusemp;
 //		@Column(name="projectOwner")
 		private String projectOwner;	
 //		@Column(name="startWorkDate")
@@ -89,13 +83,6 @@ public class ReportStatusEmployeeDto {
 		private Integer daywork;
 //		@Column(name = "masstafftype")
 		private String statusStaff;
-		
-		
-//		@Transient
-//		private String searchreport;
-//		@Transient
-//		private String orderbyreport;
-		
 		public Integer getId() {
 			return id;
 		}
@@ -131,12 +118,6 @@ public class ReportStatusEmployeeDto {
 		}
 		public void setAge(Integer age) {
 			this.age = age;
-		}
-		public Integer getStatusemp() {
-			return statusemp;
-		}
-		public void setStatusemp(Integer statusemp) {
-			this.statusemp = statusemp;
 		}
 		public String getProjectOwner() {
 			return projectOwner;
@@ -202,23 +183,10 @@ public class ReportStatusEmployeeDto {
 			return statusStaff;
 		}
 		public void setStatusStaff(String statusStaff) {
-		this.statusStaff = statusStaff;
+			this.statusStaff = statusStaff;
 		}
 		
 		
-//		public String getSearchreport() {
-//			return searchreport;
-//		}
-//		public void setSearchreport(String searchreport) {
-//			this.searchreport = searchreport;
-//		}
-//		public String getOrderbyreport() {
-//			return orderbyreport;
-//		}
-//		public void setOrderbyreport(String orderbyreport) {
-//			this.orderbyreport = orderbyreport;
-//		}
-	
-		
+
 		
 }

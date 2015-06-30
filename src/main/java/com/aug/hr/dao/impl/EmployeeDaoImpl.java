@@ -536,9 +536,9 @@ public Employee findOfficial(Integer id) {
 
 	
 	@Override
-	public List<ReportStatusEmployeeDto> reportStatusEmployee(String nameEng) {
+	public List<ReportStatusEmployeeDto> reportStatusEmployee(String statusStaff) {
 		
-		Query query = getCurrentSession().getNamedQuery("reportStatusEmployee").setString("name","%"+ nameEng +"%");
+		Query query = getCurrentSession().getNamedQuery("reportStatusEmployee").setString("statusStaff","%"+ statusStaff +"%");
 		List<ReportStatusEmployeeDto> employee = query.list();	
 		return employee;
 	}

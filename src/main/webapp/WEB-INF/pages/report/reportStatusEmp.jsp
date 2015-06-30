@@ -57,7 +57,7 @@
 							<th><spring:message code="reportstatus.aged" /></th>
 							<th><spring:message code="reportstatus.resourcenameth" /></th>
 							<th><spring:message code="reportstatus.resourcenameen" /></th>
-							<th><spring:message code="reportstatus.status" /></th>
+							<th><spring:message code="reportstatus.statusstaff" /></th>
 							<th><spring:message code="reportstatus.startdate" /></th>
 							<th><spring:message code="reportstatus.enddate" /></th>
 						</tr>
@@ -105,7 +105,7 @@ ${reportStatusEmployeeDto.employeeCode}
 				searchText = "forEmptySearch";
 			}
 			$.ajax({
-				url : "${pageContext.request.contextPath}/employee/searchEmpStatusByName/"+searchText,
+				url : "${pageContext.request.contextPath}/employee/searchEmpStatusByStatus/"+searchText,
 				type : "POST",
 				success : function(data) {
 				dt.fnClearTable();
@@ -121,7 +121,7 @@ ${reportStatusEmployeeDto.employeeCode}
 					              data[i].day, 
 					              data[i].nameThai, 
 					              data[i].nameEng, 
-					              data[i].statusemp, 
+					              data[i].statusStaff, 
 					              data[i].startDate, 
 					              data[i].endDate, 
 						]);
@@ -139,7 +139,7 @@ ${reportStatusEmployeeDto.employeeCode}
 		 $('#btn_print').on('click', function(){
 		 		$("form[name='reportForm']").submit();
 		  		$.ajax({
-		 		url : "${pageContext.request.contextPath}/employee/searchReportEmpStatus",
+		 		url : "${pageContext.request.contextPath}/employee/searchEmpStatusReport",
 		 		type : "POST"
 		 		});
 		 	});
@@ -158,7 +158,7 @@ ${reportStatusEmployeeDto.employeeCode}
 	
 
 	dt = $('#tbResult').dataTable();	
-	 listAll();
+	// listAll();
 	 
 	 
 
@@ -178,7 +178,7 @@ ${reportStatusEmployeeDto.employeeCode}
 				              data[i].age, 
 				              data[i].nameThai, 
 				              data[i].nameEng, 
-				              data[i].statusemp, 
+				              data[i].statusStaff, 
 				              data[i].startDate, 
 				              data[i].endDate, 
 				   			]);

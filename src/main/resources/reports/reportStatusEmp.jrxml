@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportStatusEmp" language="groovy" pageWidth="1224" pageHeight="595" orientation="Landscape" columnWidth="1184" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d3c3217-4ead-4895-ba23-982db41308ff">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="311"/>
+	<property name="ireport.x" value="307"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select 		emp.ID as id, emp.EMPLOYEE_CODE as employeeCode,
@@ -11,8 +11,9 @@
             emp.AGE as age,
             emp.STATUSEMP as statusemp,
             EMP_OFFICIAL.START_WORK_DATE as startWorkDate,
-            site.PROJECTOWNER as projectOwner,
-			site.STARTDATE as startDate, site.ENDDATE as endDate,
+            site.PROJECTOWNER as projectOwner,site.STARTDATE as startDate, site.ENDDATE as endDate,
+	  staff.STAFFTYPENAME as statusStaff,
+
             YEAR(CURDATE()) - YEAR(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as year,
             MONTH(curdate()) - MONTH(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as month,
             DAY(curdate()) - DAY(dateOfBirth) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as day,
@@ -26,7 +27,8 @@
 
 from EMP_EMPLOYEE as emp
 join EMP_SITE as site on site.employee_ID = emp.ID
-join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID]]>
+join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID
+join MAS_STAFFTYPE as staff on staff.ID = emp.ID]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -53,6 +55,7 @@ join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID]]>
 	<field name="endDate" class="java.sql.Timestamp">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="statusStaff" class="java.lang.String"/>
 	<field name="year" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -276,13 +279,6 @@ join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID]]>
 				<textFieldExpression><![CDATA[$F{startWorkDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="913" y="6" width="36" height="20" uuid="24b98b31-071b-4c29-a6fb-5f33bcc4edfc"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{statusemp}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="230" y="7" width="30" height="20" uuid="062f5ca1-ae17-4d95-ba4d-925cc1143443"/>
 				<textElement>
 					<font size="12"/>
@@ -306,6 +302,10 @@ join EMP_OFFICIAL on emp.OFFICIAL_ID = EMP_OFFICIAL.ID]]>
 			<line>
 				<reportElement x="19" y="34" width="1111" height="1" forecolor="#CC0000" uuid="f23f4cea-2811-4857-9d32-88f4f8b2f50d"/>
 			</line>
+			<textField>
+				<reportElement x="905" y="6" width="43" height="20" uuid="56658884-ee23-4a3e-9cb7-6d64f4a01d99"/>
+				<textFieldExpression><![CDATA[$F{statusStaff}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
