@@ -12,6 +12,9 @@
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
+<!-- Validator -->
+<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
+<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
 
 
 <!-- jQuery dataTable -->
@@ -43,7 +46,8 @@ background-attachment: fixed;
 	<h4 class="modal-title"><spring:message code="reportleave.empName" /></h4>
 </div>
 
-<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpLeave" cssClass="form-horizontal">
+<%-- <f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpLeave" cssClass="form-horizontal"> --%>
+<f:form method="post" id="reportForm" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpLeave" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
@@ -60,9 +64,13 @@ background-attachment: fixed;
         	<div class="col-sm-3">
         	<spring:message code="label.doctype" />
         	</div>
-        	<div class="col-sm-6">
+        	<%-- <div class="col-sm-6" >
         		<label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>
 				<label class="radio-inline"><f:radiobutton path="reportType" value="xls"/>Xls</label>
+        	</div> --%>
+        	<div class="col-sm-6" id="reportType">
+        		<label class="radio-inline"><f:radiobutton path="reportType" value="pdf" name="reportType"/>Pdf</label>
+				<label class="radio-inline"><f:radiobutton path="reportType" value="xls" name="reportType"/>Xls</label>
         	</div>
         </div>
         
@@ -113,8 +121,31 @@ background-attachment: fixed;
 <script type="text/javascript">
 
 $(document).ready(function () {
-	var dt=$("#tbResult").dataTable();
+	var dt=$("#tbResult").dataTable({
+		"bLengthChange": false,
+		"iDisplayLength": 10,
+		"pagingType": "simple_numbers",
+		"ordering": false,
+		"info": false
+});
 
+	  $('#reportForm').bootstrapValidator({
+		message: 'This value is not valid',
+		 feedbackIcons: {
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	        	reportType: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '<spring:message code="report.validate.reportType" />'
+	                    }
+	        
+	                }
+	            }
+	        }
+		
+	}); 
 	
 	//Search By Position and Show function 
 	$('#btn_search').on('click', function(){
@@ -148,7 +179,11 @@ $(document).ready(function () {
 			});
 	});
 	$('#btn_print').on('click', function(){
-		$("form[name='reportForm']").submit();
+		$('#reportForm').bootstrapValidator();
+		$('#reportForm').data('bootstrapValidator').validate();
+		if($('#reportForm').data('bootstrapValidator').isValid()){
+			$("#reportForm").get(0).submit();
+		}
 /* 		var searchText = $("#searchText").val();
 		if(searchText == ""){
 			searchText = "forEmptySearch";
