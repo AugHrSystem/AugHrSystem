@@ -16,6 +16,7 @@
         	</div>
         	<div class="col-sm-6">
         		<f:input id="searchText" path="employeeCode" cssClass="form-control" placeholder="${ searchfor }${ entity }"/>
+        		
         	</div>
         </div>
         
