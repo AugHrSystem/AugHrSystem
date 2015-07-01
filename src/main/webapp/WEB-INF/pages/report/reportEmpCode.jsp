@@ -129,7 +129,7 @@ $(document).ready(function () {
 		$('#reportForm').bootstrapValidator();
 		$('#reportForm').data('bootstrapValidator').validate();
 		if($('#reportForm').data('bootstrapValidator').isValid()){
-			$("form[name='reportForm']").submit();
+			$("#reportForm").get(0).submit();
 		}
 /* 		var searchText = $("#searchText").val();
 		if(searchText == ""){
