@@ -296,8 +296,17 @@ var dt;
     					listAll();
     				},
     				error : function(data,testStatus,jqXHR) {
+    					$(function(){ new PNotify({
+    					    title: 'Error!',
+    					    type: 'error',
+    						animation: {
+    							effect_in: 'show',
+    							effect_out: 'slide'
+    						}
+    						});
+    					});
     					//$('#validate').bootstrapValidator('validate');
-    					alert("ERROR");
+//     					alert("ERROR");
     					/* $('#addModal').modal('toggle');
     					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
     					}
@@ -320,7 +329,16 @@ var dt;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
-						alert("ERROR");
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
+// 						alert("ERROR");
 						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
 						}
 					});
@@ -365,9 +383,18 @@ var dt;
 						listAll();
 					},
 					error : function(data,testStatus,jqXHR) {
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
     					//$('#validate').bootstrapValidator('validating');
     					//$('#validate').bootstrapValidator('revalidateField', '#status');
-    					alert("ERROR");
+//     					alert("ERROR");
     					/* $('#addModal').modal('toggle');
 						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
 						}
@@ -413,7 +440,16 @@ var dt;
 						},
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
-							alert("ERROR");
+							$(function(){ new PNotify({
+							    title: 'Error!',
+							    type: 'error',
+								animation: {
+									effect_in: 'show',
+									effect_out: 'slide'
+								}
+								});
+							});
+// 							alert("ERROR");
 							//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
 							}
 						});
@@ -443,6 +479,15 @@ var dt;
 						}
 					},
 					error : function(data,testStatus,jqXHR) {
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
 						$("#outputajax").text(testStatus);
 						}
 					}); 

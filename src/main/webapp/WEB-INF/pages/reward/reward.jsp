@@ -351,9 +351,27 @@
 												'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>' ]);
 
 								$('#addModal').modal('toggle');
+								$(function(){ new PNotify({
+									title: 'Success',
+									type: 'success',
+									animation: {
+										effect_in: 'show',
+										effect_out: 'slide'
+									}
+									});
+								});
 								listAll();
 							},
 							error : function() {	
+								$(function(){ new PNotify({
+								    title: 'Error!',
+								    type: 'error',
+									animation: {
+										effect_in: 'show',
+										effect_out: 'slide'
+									}
+									});
+								});
 								//	alert("error");
 							$('#addForm').bootstrapValidator('validate');
 							}
@@ -388,10 +406,28 @@
 										'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
 
 								$('#addModal').modal('toggle');
+										$(function(){ new PNotify({
+											title: 'Success',
+											type: 'success',
+											animation: {
+												effect_in: 'show',
+												effect_out: 'slide'
+											}
+											});
+										});
 								listAll();
 							},
 							error : function(jqXHR,	textStatus,	error) {	
-									alert("error");
+								$(function(){ new PNotify({
+								    title: 'Error!',
+								    type: 'error',
+									animation: {
+										effect_in: 'show',
+										effect_out: 'slide'
+									}
+									});
+								});
+// 									alert("error");
 							}
 						});
 
@@ -409,8 +445,17 @@
 						$("#year").val(data.year);
 						$("#reason").val(data.reason);
 					},
-					error : function(jqXHR,	textStatus,	error) {	
-							alert("error");
+					error : function(jqXHR,	textStatus,	error) {
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
+// 							alert("error");
 					}
 				});
 			}
@@ -427,9 +472,27 @@
 						dt.fnDeleteRow(tr);
 
 						$('#deleteModal').modal('toggle');
+						$(function(){ new PNotify({
+							title: 'Success',
+							type: 'success',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
 					},
 					error : function(jqXHR,	textStatus,	error) {	
-							alert("error");
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
+// 							alert("error");
 					}
 				});
 			}
@@ -453,7 +516,16 @@
 								}
 							},
 							error : function(jqXHR,	textStatus,	error) {	
-									alert("error");
+								$(function(){ new PNotify({
+								    title: 'Error!',
+								    type: 'error',
+									animation: {
+										effect_in: 'show',
+										effect_out: 'slide'
+									}
+									});
+								});
+// 									alert("error");
 							}
 						});
 			}

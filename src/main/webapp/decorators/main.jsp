@@ -46,13 +46,16 @@
 <script src="<c:url value="/resource/clockpicker/js/bootstrap-clockpicker.js" />"></script>
 <link href="<c:url value="/resource/clockpicker/css/bootstrap-clockpicker.css" />" rel="stylesheet" media="all">
 
-
 <!-- Browse-remove picture -->
 <script src="<c:url value="/resource/bootstrap/js/fileinput.min.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/fileinput.min.css" />" rel="stylesheet"	media="all">
 
 <!-- Mask Plugin -->
 <script src="<c:url value="/resource/mask/js/jquery.maskedinput.js" />"></script>
+
+<!-- PNotify -->
+<script src="<c:url value="/resource/pnotify/js/pnotify.custom.min.js" />"></script>
+<link href="<c:url value="/resource/pnotify/css/pnotify.custom.min.css" />" rel="stylesheet"	media="all">
 
 <style >
 

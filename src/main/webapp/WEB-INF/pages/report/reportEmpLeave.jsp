@@ -4,49 +4,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<%-- <!-- jQuery -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
-
-<!-- Bootstrap -->
-<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
-
-<!-- Validator -->
-<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
-
-
-<!-- jQuery dataTable -->
-<script src="<c:url value="/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/datatable/css/jquery.dataTables_themeroller.css" />" rel="stylesheet" media="all">
-
-<!-- dataTable Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>
-
-
-
-
-<style >
-
-
-body {
-background-image: url(${pageContext.request.contextPath}/resource/images/BG_W.jpg);
--moz-background-size: cover;
--webkit-background-size: cover;
-background-size: cover;
-background-position: top center !important;
-background-repeat: no-repeat !important;
-background-attachment: fixed;
-} 
-</style>
-<jsp:include page="../../../decorators/header.jsp"></jsp:include> --%>
 <div class="modal-header">
 	<h4 class="modal-title"><spring:message code="reportleave.empName" /></h4>
 </div>
 
-<%-- <f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpLeave" cssClass="form-horizontal"> --%>
 <f:form method="post" id="reportForm" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpLeave" cssClass="form-horizontal">
 
 	 <div class="modal-body">
@@ -116,7 +77,6 @@ background-attachment: fixed;
 		
 	</div>
 </f:form>
-<%-- <jsp:include page="../../../decorators/footer.jsp"></jsp:include> --%>
 
 <script type="text/javascript">
 

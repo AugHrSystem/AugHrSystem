@@ -10,14 +10,14 @@
     
 /* } */
 
-#myTabs .active a {
-    background-color: red;
-}
+/* #myTabs li.current { */
+/*     background-color: red; */
+/* } */
 </style>
 
 <div class="row">
 	<div class="span12">
-		<ul class="nav nav-tabs" id="myTabs">
+		<ul class="nav nav-pills" id="myTabs">
 
 			<c:if test="${ id == 0 || id == null}">
 
@@ -41,7 +41,7 @@
 			</c:if>
 			
 			<c:if test="${id > 0}">
-			<li><a class="active" href="${pageContext.request.contextPath}/employee/init/${id}" >Employee</a></li>
+			<li ><a href="${pageContext.request.contextPath}/employee/init/${id}"  >Employee</a></li>
 			<li><a href="${pageContext.request.contextPath}/family/${id}" ><spring:message code="family.name" /></a></li>
 			<li><a href="${pageContext.request.contextPath}/education/${id}" ><spring:message code="education.name" /></a></li>
 			<li><a href="${pageContext.request.contextPath}/experience/${id}" ><spring:message code="experience.name" /></a></li>
@@ -67,6 +67,32 @@
 
 <script type="text/javascript">
 
+$(document).ready(function() {
+//     $("#myTabs li a").click(function(event) {
+//         event.preventDefault();
+//         $(this).parent().addClass("current");
+//         $(this).parent().siblings().removeClass("current");
+// //         var tab = $(this).attr("href");
+// //         $(tab).fadeIn();
+//     });
+
+
+// 	$(function() {
+// 	    $('#myTabs').bind('click', function (e) {
+// 	        e.target(window.alert("hello"));
+// 	    });
+// 	});
+
+// 	 $("#myTabs a").click(function(){
+// 	        $(this).tab('show');
+// 	    });
+
+	$('#myTabs a').on('shown.bs.tab', function (e) {
+		  var target = $(e.target).attr("href") // activated tab
+		  alert(target);
+		});
+});
+
 // function myFunction(element) {
 // 	   //get all list items:
 // 	   var liArray = document.getElementById("myTabs").getElementsByTagName("li");
@@ -80,12 +106,12 @@
 	    
 // 	}
 
-$('#myTabs li').click(function (e) {
-  e.preventDefault();
-// e.target
-// e.relatedTarget
-  $(this).tab('show');
-})
+// $('#myTabs li').click(function (e) {
+//   e.preventDefault();
+// // e.target
+// // e.relatedTarget
+//   $(this).tab('show');
+// })
 
 // $(document).ready(function () {
 // //iterate through the links and verify against window.location.pathname

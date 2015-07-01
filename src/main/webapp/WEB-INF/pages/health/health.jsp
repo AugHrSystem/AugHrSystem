@@ -558,7 +558,16 @@ $(function(){
 	  	        	
 	  	        		  	        
 	  	     },  
-	  	      error : function(data,testStatus,jqXHR) {  	  	      
+	  	      error : function(data,testStatus,jqXHR) {  
+	  	    	$(function(){ new PNotify({
+	  	    	    title: 'Error!',
+	  	    	    type: 'error',
+	  	    		animation: {
+	  	    			effect_in: 'show',
+	  	    			effect_out: 'slide'
+	  	    		}
+	  	    		});
+	  	    	});
 	  	    	  $("#outputajax").text(testStatus); 
 	  	     }  
 	  	    }); 

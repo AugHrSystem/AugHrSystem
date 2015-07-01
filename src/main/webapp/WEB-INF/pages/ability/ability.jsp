@@ -383,11 +383,30 @@ $(document).ready(function(){
 			/* 	]); */
 				
 				$('#addModal').modal('toggle');
+				$(function(){ new PNotify({
+					title: 'Success',
+					type: 'success',
+					animation: {
+						effect_in: 'show',
+						effect_out: 'slide'
+					}
+					});
+				});
+
 				listAll();
 			},
 			error : function() {
 				//alert("ERROR");
-				$('#addForm').bootstrapValidator('validate');
+				$(function(){ new PNotify({
+				    title: 'Error!',
+				    type: 'error',
+					animation: {
+						effect_in: 'show',
+						effect_out: 'slide'
+					}
+					});
+				});
+// 				$('#addForm').bootstrapValidator('validate');
 			}
 		});
 	}
@@ -458,7 +477,16 @@ function getId(abilityid){
 			},
 			error : function(data, textStatus, jqXML) {
 				{
-					alert("error");
+// 					alert("error");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 				}
 				;
 			}
@@ -537,10 +565,29 @@ function updateAbility(button,abilityid) {
 			//alert(data.masspecialty.name);
 			
 			$('#addModal').modal('toggle');
+			$(function(){ new PNotify({
+				title: 'Success',
+				type: 'success',
+				animation: {
+					effect_in: 'show',
+					effect_out: 'slide'
+				}
+				});
+			});
 			listAll();
 		},
 		error : function() {
-			alert("ERROR");
+			$(function(){ new PNotify({
+			    title: 'Error!',
+			    type: 'error',
+				animation: {
+					effect_in: 'show',
+					effect_out: 'slide'
+				}
+				});
+			});
+// 			alert("ERROR");
+
 		}
 	});
 }
@@ -559,11 +606,28 @@ function deleteAbility(button,abilityid) {
 			dt.fnDeleteRow( tr ); */
 			
 			$('#deleteModal').modal('toggle');
-			
+			$(function(){ new PNotify({
+				title: 'Success',
+				type: 'success',
+				animation: {
+					effect_in: 'show',
+					effect_out: 'slide'
+				}
+				});
+			});
 			listAll();
 		},
 		error : function() {
-			alert("ERROR");
+			$(function(){ new PNotify({
+			    title: 'Error!',
+			    type: 'error',
+				animation: {
+					effect_in: 'show',
+					effect_out: 'slide'
+				}
+				});
+			});
+// 			alert("ERROR");
 		}
 	
 		});
@@ -589,7 +653,16 @@ function listAll(){
 				}
 			},
 			error : function() {
-				alert("ERROR");
+				$(function(){ new PNotify({
+				    title: 'Error!',
+				    type: 'error',
+					animation: {
+						effect_in: 'show',
+						effect_out: 'slide'
+					}
+					});
+				});
+// 				alert("ERROR");
 			}
 		}); 
 	}

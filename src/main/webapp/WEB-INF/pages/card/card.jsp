@@ -321,9 +321,27 @@
 					]);
 					
 					$('#addModal').modal('toggle');
+					$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 					listAll();
 				},
 				error : function() {	
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 					$('#addForm').bootstrapValidator('validate');
 				}
 			});
@@ -363,10 +381,28 @@
 					dt.fnUpdate(data.remark, tr, 4),
 				
 						$('#addModal').modal('toggle');
+					$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 						listAll();
 					},
 					error : function(jqXHR,	textStatus,	error) {	
-							alert("error");
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
+// 							alert("error");
 					}
 			});
 			
@@ -388,8 +424,17 @@
 					employeeId: data.employeeId;
 					
 					},
-				error : function(jqXHR,	textStatus,	error) {				
-						alert("error");
+				error : function(jqXHR,	textStatus,	error) {
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+// 						alert("error");
 									}
 							});
 						}	
@@ -405,10 +450,28 @@
 					/* var tr = button.closest("tr"); // หาเเถวจากปุ่ม											
 					dt.fnDeleteRow(tr); */					
 						$('#deleteModal').modal('toggle');
+					$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 						listAll();
 					},										
 				error : function(jqXHR,	textStatus,	error) {
-						alert("error ----");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+// 						alert("error ----");
 						}
 				});							
 		}
@@ -437,7 +500,16 @@
 						}
 					},
 					error : function(jqXHR,	textStatus,	error) {	
-							alert("error");
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
+// 							alert("error");
 						}
 					}); 
 			}

@@ -287,7 +287,6 @@
 						addHistory();
     				}
 				 }
-				
 			});
 			
 			$(this).find(".btnClose").off("click").on("click",function() {
@@ -310,6 +309,8 @@
 		
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 		
+		
+    
 		function clearModal(){
 			$("#position").val("");
 			$("#salary").val("");
@@ -364,11 +365,29 @@
 // 					]);
 					
 					$('#addModal').modal('toggle');
+					$(function(){ new PNotify({
+					    title: 'Success',
+					    type: 'success',
+					    animation: {
+					        effect_in: 'show',
+					        effect_out: 'slide'
+					    }
+						});
+			    	});
 					listAll();
 					
 				},
 				error : function() {
-					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+// 					alert("ERROR");
 // 					$('#addForm').bootstrapValidator('validate');
 				}
 			});
@@ -412,10 +431,29 @@
 // 					dt.fnUpdate(data.time, tr ,3); */
 					
 					$('#addModal').modal('toggle');
+					$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 					listAll();
 				},
 				error : function() {
-					alert("ERROR");
+// 					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+
 // 					$('#addForm').bootstrapValidator('validate');
 
 				}
@@ -444,7 +482,16 @@
 			
 				},
 				error : function() {
-					alert("ERROR");
+// 					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 				}
 			});
 		}
@@ -462,12 +509,30 @@
 					dt.fnDeleteRow(tr);
 					
 					$('#deleteModal').modal('toggle');
+					$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 					listAll();
 					
 				},
 				
 				error : function() {
-					alert("ERROR");
+// 					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 				}
 			});
 		}

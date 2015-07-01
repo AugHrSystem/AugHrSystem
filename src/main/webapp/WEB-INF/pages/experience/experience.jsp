@@ -316,6 +316,15 @@ var dt;
     				success : function(data) {
     					$('#validate').bootstrapValidator('resetForm', true);
     					$('#addModal').modal('toggle');
+    					$(function(){ new PNotify({
+    						title: 'Success',
+    						type: 'success',
+    						animation: {
+    							effect_in: 'show',
+    							effect_out: 'slide'
+    						}
+    						});
+    					});
     					//$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
     					/* dt.fnClearTable();
     					dt.fnAddData([
@@ -335,8 +344,17 @@ var dt;
     					listAll();
     				},
     				error : function(data,testStatus,jqXHR) {
+    					$(function(){ new PNotify({
+    					    title: 'Error!',
+    					    type: 'error',
+    						animation: {
+    							effect_in: 'show',
+    							effect_out: 'slide'
+    						}
+    						});
+    					});
     					//$('#validate').bootstrapValidator('validate');
-    					alert("ERROR");
+//     					alert("ERROR");
     					/* $('#addModal').modal('toggle');
     					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); */
     					}
@@ -365,7 +383,16 @@ var dt;
 					},
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
-						alert("ERROR");
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
+// 						alert("ERROR");
 						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 						}
 					});
@@ -400,6 +427,15 @@ var dt;
 						$('#validate').bootstrapValidator('resetForm', true);
 						//$('#validate').bootstrapValidator('validate');
 						$('#addModal').modal('toggle');
+						$(function(){ new PNotify({
+							title: 'Success',
+							type: 'success',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
 						//$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 						/* dt.fnClearTable();
 						dt.fnAddData([
@@ -418,8 +454,17 @@ var dt;
 						listAll();
 					},
 					error : function(data,testStatus,jqXHR) {
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
 						//$('#addModal').modal('toggle');
-						alert("ERROR");
+// 						alert("ERROR");
 						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 						}
 					});
@@ -457,6 +502,15 @@ var dt;
 						type : "POST",
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
+							$(function(){ new PNotify({
+								title: 'Success',
+								type: 'success',
+								animation: {
+									effect_in: 'show',
+									effect_out: 'slide'
+								}
+								});
+							});
 							//$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
 							/* var del = button.closet("tr");
 							dt.fnDeleteRow(del); */
@@ -464,7 +518,16 @@ var dt;
 						},
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
-							alert("ERROR");
+							$(function(){ new PNotify({
+							    title: 'Error!',
+							    type: 'error',
+								animation: {
+									effect_in: 'show',
+									effect_out: 'slide'
+								}
+								});
+							});
+// 							alert("ERROR");
 							//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 							}
 						});
@@ -498,6 +561,15 @@ var dt;
 						}
 					},
 					error : function(data,testStatus,jqXHR) {
+						$(function(){ new PNotify({
+						    title: 'Error!',
+						    type: 'error',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+							});
+						});
 						$("#outputajax").text(testStatus);
 						}
 					}); 

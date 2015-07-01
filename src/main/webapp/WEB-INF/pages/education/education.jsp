@@ -435,11 +435,29 @@
 // 					]);
 					
 					$('#addModal').modal('toggle');
+					$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 					listAll();
 					
 				},
 				error : function() {
-					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+// 					alert("ERROR");
 // 					$('#addForm').bootstrapValidator('validate');
 
 				}
@@ -486,10 +504,28 @@
 					dt.fnUpdate(data.graduatedDate, tr ,8); */
 					
 					$('#addModal').modal('toggle');
+					$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 					listAll();
 				},
 				error : function() {
-					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+// 					alert("ERROR");
 // 					$('#addForm').bootstrapValidator('validate');
 
 				}
@@ -516,7 +552,16 @@
 					
 				},
 				error : function() {
-					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+// 					alert("ERROR");
 				}
 			});
 		}
@@ -534,13 +579,31 @@
 					dt.fnDeleteRow(tr);
 					
 					$('#deleteModal').modal('toggle');
+					$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
 					
 					listAll();
 					
 				},
 				
 				error : function() {
-					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+// 					alert("ERROR");
 				}
 			});
 		}
@@ -570,7 +633,16 @@
 				}
 				},
 				error : function() {
-					alert("ERROR");
+					$(function(){ new PNotify({
+					    title: 'Error!',
+					    type: 'error',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+						});
+					});
+// 					alert("ERROR");
 				}
 			}); 
 		}
