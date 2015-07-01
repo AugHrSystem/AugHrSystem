@@ -538,7 +538,7 @@ public class EmployeeController {
 	
 
 	
-	@RequestMapping(value = "/employee/modalReportLeave", method ={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/employee/ReportLeave", method ={RequestMethod.GET, RequestMethod.POST})
 	public String modalReportLeave(ModelMap map) {
 		return "/report/reportEmpLeave";
 	}

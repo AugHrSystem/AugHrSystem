@@ -60,7 +60,7 @@
 		    			</li>
 		    			
 		    			<li>
-		    				<a href="<%=request.getContextPath()%>/employee/modalReportLeave"><spring:message code="report.empLeave" /></a>
+		    				<a href="<%=request.getContextPath()%>/employee/ReportLeave"><spring:message code="report.empLeave" /></a>
 		    			</li>
 		    			
 		    		</ul>

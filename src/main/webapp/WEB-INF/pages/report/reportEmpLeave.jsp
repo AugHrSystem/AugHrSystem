@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<!-- jQuery -->
+<%-- <!-- jQuery -->
 <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
 
 <!-- Bootstrap -->
@@ -41,7 +41,7 @@ background-repeat: no-repeat !important;
 background-attachment: fixed;
 } 
 </style>
-<jsp:include page="../../../decorators/header.jsp"></jsp:include>
+<jsp:include page="../../../decorators/header.jsp"></jsp:include> --%>
 <div class="modal-header">
 	<h4 class="modal-title"><spring:message code="reportleave.empName" /></h4>
 </div>
@@ -116,7 +116,7 @@ background-attachment: fixed;
 		
 	</div>
 </f:form>
-<jsp:include page="../../../decorators/footer.jsp"></jsp:include>
+<%-- <jsp:include page="../../../decorators/footer.jsp"></jsp:include> --%>
 
 <script type="text/javascript">
 
