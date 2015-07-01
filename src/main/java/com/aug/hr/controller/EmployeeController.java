@@ -1,14 +1,7 @@
 package com.aug.hr.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -17,23 +10,19 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.sf.jasperreports.engine.JRParameter;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-import org.hibernate.Hibernate;
 import org.hibernate.JDBCException;
-import org.joda.time.LocalDate;
-import org.joda.time.format.DateTimeFormat;
-import org.mockito.internal.stubbing.answers.ThrowsException;
-import org.springframework.aop.framework.adapter.ThrowsAdviceInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -45,19 +34,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aug.hr.dto.services.EmployeeDtoService;
-import com.aug.hr.entity.Ability;
 import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeCodeDtoService;
-import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeIdDtoService;
 import com.aug.hr.dto.services.LeaveDtoService;
 import com.aug.hr.entity.Address;
-import com.aug.hr.entity.Education;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.MasAddressType;
@@ -69,12 +54,8 @@ import com.aug.hr.entity.Reference;
 import com.aug.hr.entity.dto.AbilityDto;
 import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
-import com.aug.hr.entity.dto.EducationDto;
 import com.aug.hr.entity.dto.EmployeeCodeDto;
 import com.aug.hr.entity.dto.EmployeeDto;
-import com.aug.hr.entity.dto.EmployeeIdDto;
-import com.aug.hr.entity.dto.OfficialDto;
-import com.aug.hr.entity.dto.ReferenceDto;
 import com.aug.hr.entity.dto.ReportEmployeeDto;
 import com.aug.hr.entity.dto.ReportLeaveDto;
 import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
@@ -307,11 +288,18 @@ public class EmployeeController {
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
 	public String manageSubmit(@ModelAttribute AllEmployeeDto allEmployeeDto,
 			Model model,
-			final RedirectAttributes redirectAttributes) {
+			final RedirectAttributes redirectAttributes,
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception{
 	
 	   logger.info("infoooo: "+allEmployeeDto);		
-	   logger.info("infoooo: ================================================================>"+allEmployeeDto.getAimempid());	
+	   logger.info("infoooo: ================================================================>"+allEmployeeDto.getAimempid());
 	  
+	   
+	   //throw new Exception("Exception Error");
+	   
+	   //throw new CustomException("E999","err");
+	   
 	   Employee employee = new Employee();
 	   String   employeeCode = null;
 
@@ -469,13 +457,9 @@ public class EmployeeController {
 		
 		
 		
-		return "redirect:/listemployee";
+		 return "redirect:/listemployee";
+	     //return "/a";
 	}
-	
-	
-	
-	
-	
 	
 	
 	

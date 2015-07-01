@@ -21,6 +21,23 @@
 	</listener>
 
 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/pages/error/404.jsp</location>
+    </error-page>
+    
+    <error-page>
+		<exception-type>com.aug.exception.CustomException</exception-type>
+		<location>/WEB-INF/pages/error/custom_error.jsp</location>
+  	</error-page>
+ 
+ 	 <error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/pages/error/generic_error.jsp</location>
+ 	 </error-page>
+    
+
+
     <!--<filter>
         <filter-name>OpenEntityManagerInViewFilter</filter-name>
         <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>

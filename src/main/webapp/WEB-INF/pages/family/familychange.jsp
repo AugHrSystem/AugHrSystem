@@ -59,7 +59,7 @@
 		
 	
 		
-		$("#saveBtn").on("click",function(){
+		/* $("#saveBtn").on("click",function(){
 			
 			$('#formAdd').bootstrapValidator('resetForm', true);
 
@@ -131,7 +131,7 @@
 		 
     });
 			
-		 $('#mobile').mask("999-999-9999",{placeholder:"xxx-xxx-xxxx"});
+		 $('#mobile').mask("999-999-9999",{placeholder:"xxx-xxx-xxxx"}); */
 		 
 		 $('#tableResult').dataTable({ 
 				"bLengthChange": false,
@@ -233,11 +233,11 @@
 	    			}
 	    			else {	    				
 	    				
-	    				$('#formAdd').bootstrapValidator();
-	    				$('#formAdd').data('bootstrapValidator').validate();
-	    				if($('#formAdd').data('bootstrapValidator').isValid()){
+	    				//$('#formAdd').bootstrapValidator();
+	    				//$('#formAdd').data('bootstrapValidator').validate();
+	    				//if($('#formAdd').data('bootstrapValidator').isValid()){
 	    					addFamily();
-	    				}						
+	    				//}						
 	    			}
 	    		});
 	    	  
@@ -247,7 +247,7 @@
 	      
 	      $("#addModal").on("hide.bs.modal", function(event){
 	    	  
-	    	  $('#formAdd').bootstrapValidator('resetForm', true);
+	    	 // $('#formAdd').bootstrapValidator('resetForm', true);
 	    	  
 	      });
 	      
@@ -313,9 +313,20 @@
 		  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 			    		
 		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  
+		  	    statusCode: {
+		            404: function() {
+		                alert("Employee not found");
+		            },
+		            500: function() {
+		                alert("Failed to update Employee skills");
+		            }
+		        },
+		  	      error : function(data,testStatus,jqXHR,xhr,errorThrown,thrownError) {  
 		  	           
-		  	    	  
+			  	    	//alert(xhr.status);
+			  	        alert(xhr);
+			  	        //alert('Error: ' +xhr.description);  
+
 		  	    	   $('#addModal').modal('hide');
 		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 			  	       //$('#formAdd').bootstrapValidator('validate');

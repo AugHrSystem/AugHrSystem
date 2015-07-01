@@ -1,5 +1,8 @@
 package com.aug.hr.controller;
 
+import groovy.json.JsonException;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,6 +13,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -20,11 +25,13 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +39,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.aug.hr.dto.services.FamilyDtoService;
 import com.aug.hr.entity.Family;
@@ -46,6 +56,7 @@ import com.aug.hr.entity.validator.FamilyValidator;
 import com.aug.hr.services.FamilyService;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasRelationTypeService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 
 
@@ -122,20 +133,37 @@ public class FamilyController {
 	
 	
 	
-	
+	//@ExceptionHandler(Exception.class)
+    //@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR,reason = "Really really not found")
 	@RequestMapping(value = "/family/add", method =  RequestMethod.POST)
-	public @ResponseBody Family2Dto Add(Locale locale,
+	public @ResponseBody String Add(Locale locale,
 			    @RequestBody Family2Dto familyDto,
 				ModelMap model,
-				BindingResult result){
+				BindingResult result,
+				HttpServletRequest request,
+				HttpServletResponse response,
+				Exception ex, 
+				WebRequest webRequest) throws JSONException{
+		
+		
+		    /*response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	        response.getWriter().write("aa");
+	        response.flushBuffer();*/
+		
+		 	//response.setHeader("Content-Type", "application/json");
+		
+		  try{
+			  familyService.createFindMasRelationAndEmployee(familyDto);
+		  }catch(JsonException e){
+			  throw new JsonException("err");
+		  }
+		
+		  String msg = "fail";
 		
 	
-		familyService.createFindMasRelationAndEmployee(familyDto);
 		
-	
-		
-		//familyService.saveByNameQuery(familyDto);
-		return familyDto;
+			//familyService.saveByNameQuery(familyDto);
+		return msg;
 		
 	}
 	
@@ -460,4 +488,6 @@ public class FamilyController {
 		
 		}
 */
+	
+	
 }
