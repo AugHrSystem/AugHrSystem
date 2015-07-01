@@ -7,7 +7,7 @@
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 	<h4 class="modal-title"><spring:message code="reportstatus.empName" /></h4>
 </div>
-<f:form method="post" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchEmpStatusReport" cssClass="form-horizontal">
+<f:form method="post" id="reportForm" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchEmpStatusReport" cssClass="form-horizontal">
 
 	 <div class="modal-body">
         <div class="form-group form-group-sm">
@@ -24,7 +24,7 @@
         	<div class="col-sm-3">
         	<spring:message code="label.doctype" />
         	</div>
-        	<div class="col-sm-6">
+        	<div class="col-sm-6" id="reportType">
         		<label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>
 				<label class="radio-inline"><f:radiobutton path="reportType" value="xls"/>Xls</label>
         	</div>
@@ -32,7 +32,7 @@
         
         
        <div>  
-        <f:form id ="tbResult" method="post" commandName="employee" class="form-horizontal" action="employee">		
+         <f:form id ="listTable" method="post" commandName="employee" class="form-horizontal" action="employee">				
 			<div class="row">
 				<!-- <h2 class="col-md-6">Report</h2>	 -->			
 				<br>
@@ -90,14 +90,37 @@ ${reportStatusEmployeeDto.employeeCode}
 
 
 
-
-
-
-
-
 <script type="text/javascript">
 	$(document).ready(function() {
 	  
+		
+		var dt=$("#tbResult").dataTable({
+			"bLengthChange": false,
+			"iDisplayLength": 10,
+			"pagingType": "simple_numbers",
+			"ordering": false,
+			"info": false
+		});	
+		
+		
+		  $('#reportForm').bootstrapValidator({
+				message: 'This value is not valid',
+				 feedbackIcons: {
+			            validating: 'glyphicon glyphicon-refresh'
+			        },
+			        fields: {
+			        	reportType: {
+			                validators: {
+			                    notEmpty: {
+			                        message: '<spring:message code="reportstatus.validate.reportType" />'
+			                    }
+			        
+			                }
+			            }
+			        }
+				
+			}); 
+		
 		  
 		$('#btn_search').on('click', function(){
 			var searchText = $("#searchText").val();
@@ -137,62 +160,14 @@ ${reportStatusEmployeeDto.employeeCode}
 		
 	 
 		 $('#btn_print').on('click', function(){
-		 		$("form[name='reportForm']").submit();
-		  		$.ajax({
-		 		url : "${pageContext.request.contextPath}/employee/searchEmpStatusReport",
-		 		type : "POST"
-		 		});
+			 $('#reportForm').bootstrapValidator();
+				$('#reportForm').data('bootstrapValidator').validate();
+				if($('#reportForm').data('bootstrapValidator').isValid()){
+					$("#reportForm").get(0).submit();
+				}
 		 	});
 		 	
-	
 
-	 
-
-	$('#tbResult').dataTable({ 
-		"bLengthChange": false,
-		"iDisplayLength": 10,
-		"pagingType": "simple_numbers",
-		"ordering": false,
-		"info": false
-	});
-	
-
-	dt = $('#tbResult').dataTable();	
-	// listAll();
-	 
-	 
-
-
-	/* function listAll(){
-
-		$.ajax({
-			url : "${pageContext.request.contextPath}/employee/searchEmpStatusReport",
-			type : "POST",
-			success : function(data) {
-			dt.fnClearTable();
-			for (var i=0;i< data.length; i++) {
-				dt.fnAddData([data[i].employeeCode, 
-				              data[i].startWorkDate,		
-				              data[i].daywork, 
-				              data[i].dateOfBirth, 
-				              data[i].age, 
-				              data[i].nameThai, 
-				              data[i].nameEng, 
-				              data[i].statusStaff, 
-				              data[i].startDate, 
-				              data[i].endDate, 
-				   			]);
-		
-				}
-			},
-			error : function(jqXHR,	textStatus,	error) {	
-						alert("error");
-				}
-			}); 
-		} */
-	
-	
-	
 	});
 	
 	
@@ -201,4 +176,4 @@ ${reportStatusEmployeeDto.employeeCode}
 	 
 	 
 	 
-</script>
+
