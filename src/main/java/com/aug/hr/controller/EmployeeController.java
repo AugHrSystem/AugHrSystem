@@ -54,6 +54,7 @@ import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.Leave;
 import com.aug.hr.entity.MasAddressType;
 import com.aug.hr.entity.MasProvince;
+import com.aug.hr.entity.MasStaffType;
 import com.aug.hr.entity.Official;
 import com.aug.hr.entity.Reference;
 import com.aug.hr.entity.dto.AbilityDto;
@@ -502,10 +503,10 @@ public class EmployeeController {
 	@RequestMapping(value = "/employee/searchEmpStatusReport", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView searchEmpStatusReport(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
 		List<ReportStatusEmployeeDto> employeeList;
-		String searchText = employee.getNameEng();
+		String searchText = employee.getMasStaffType().getName();
 		if(searchText.equals("forEmptySearch")){
 			employeeList = employeeDtoService.reportStatusEmployee(searchText);
-    	}
+    	} 
 		else{
 			employeeList = employeeDtoService.reportStatusEmployee(searchText);
 		}
@@ -518,17 +519,6 @@ public class EmployeeController {
     }
 		
 
-//	@RequestMapping(value = "/employee/searchReportEmpStatusAll", method = {RequestMethod.POST})
-//    public ModelAndView searchReportEmpStatusAll(@ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale){
-//		List<ReportStatusEmployeeDto> employeeList = employeeDtoService.reportStatusEmployee(employee.getNameEng());
-//		Map<String,Object> parameterMap = new HashMap<String,Object>();
-//		ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
-//		parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
-//		ModelAndView mv = reportService.getReport(employeeList, "employeeCodeReport", employee.getReportType(),parameterMap);
-//        return mv;
-//    }
-//	
-	
 	@RequestMapping(value = "/employee/searchEmpStatusByStatus/{searchText}", method = {RequestMethod.GET,RequestMethod.POST})
 	public @ResponseBody List<ReportStatusEmployeeDto> searchNameStatusEmp(@PathVariable("searchText") String searchText, @ModelAttribute(value="employee")  Employee employee, ModelMap map ,HttpSession session,Locale locale) {
 		List<ReportStatusEmployeeDto> employeeList;
