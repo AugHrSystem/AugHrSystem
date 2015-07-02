@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employeeCodeReport" language="groovy" pageWidth="792" pageHeight="1008" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b5f6ae44-4baa-47f5-9759-e672f14fa46e">
-	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.zoom" value="1.207882500000001"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
@@ -22,13 +22,13 @@ join mas_technology on emp.technology_id = mas_technology.id;]]>
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="9f28ccdc-1a86-4e6f-b32d-1526afafe539" x="200" y="0" width="356" height="79"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="30" isBold="true"/>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="b0f972b6-ddda-40c0-a37b-fca44835322f" x="200" y="0" width="356" height="79" forecolor="#333333"/>
+				<textElement>
+					<font fontName="Angsana New" size="16" isBold="false" pdfEncoding="Cp1252"/>
 				</textElement>
-				<text><![CDATA[Employee Code Report]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$R{report.empCode}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -39,41 +39,55 @@ join mas_technology on emp.technology_id = mas_technology.id;]]>
 			<line>
 				<reportElement uuid="5d14dd15-37ab-4869-885b-6dfb276feb3b" x="0" y="26" width="752" height="1" forecolor="#666666"/>
 			</line>
-			<staticText>
-				<reportElement uuid="680555bf-7619-443d-b0c3-444380e02c2b" x="0" y="0" width="100" height="27"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Resource ID]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="4dac6b52-9930-4f16-97db-6c62cc7367b7" x="100" y="0" width="100" height="27"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Date Start Work]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="3492eae0-8f85-4b23-a9c0-a61037c77862" x="200" y="0" width="100" height="26"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Resource Name(TH)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="3d37f16a-0f32-495c-83d7-62ffb7550b72" x="300" y="0" width="100" height="26"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Resource Name(EN)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="19d24ddb-69eb-4b3f-9e21-94399b6aed40" x="400" y="0" width="111" height="26"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Type]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9a8346cd-0673-4bf6-8590-01f490bdae38" x="511" y="0" width="167" height="26"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Position]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="cc1f5358-90c5-499c-956e-43afd62f3c6b" x="678" y="0" width="74" height="26"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Skill]]></text>
-			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="6b01512c-ce9e-4831-b8e0-7e7348d9ae21" x="0" y="0" width="100" height="27" forecolor="#333333"/>
+				<textElement>
+					<font fontName="Angsana New" size="16" isBold="false" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{report.resourceId}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="a67b23d9-d246-49cc-bd75-6213f11f3813" x="100" y="0" width="100" height="26" forecolor="#333333"/>
+				<textElement>
+					<font fontName="Angsana New" size="16" isBold="false" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{report.DateStartWork}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="5a5e2772-06af-406a-8157-37306acde4ca" x="400" y="0" width="111" height="26" forecolor="#333333"/>
+				<textElement>
+					<font fontName="Angsana New" size="16" isBold="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{report.type}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="922f46ef-e3f1-4c31-acd2-e919143273ad" x="511" y="0" width="167" height="26" forecolor="#333333"/>
+				<textElement>
+					<font fontName="Angsana New" size="16" isBold="false" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{report.position}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="700a45e0-2fbf-4bce-891e-cb393653c338" x="678" y="0" width="74" height="26" forecolor="#333333"/>
+				<textElement>
+					<font fontName="Angsana New" size="16" isBold="false" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{report.skill}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="f52e589f-8197-453b-aaa9-571e01f72f70" x="200" y="0" width="100" height="26" forecolor="#333333"/>
+				<textElement>
+					<font fontName="Angsana New" size="16" isBold="false" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{report.nameTh}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="12634389-36b0-45cc-9f35-98ac836d0092" x="300" y="0" width="100" height="26" forecolor="#333333"/>
+				<textElement>
+					<font fontName="Angsana New" size="16" isBold="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{report.nameEn}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
