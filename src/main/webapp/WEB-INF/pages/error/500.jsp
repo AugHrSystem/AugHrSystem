@@ -36,6 +36,9 @@ h2{
 border: none; box-shadow: none; margin: 0; padding: 0;
 font-size: 2.0em; line-height: 2.0em;
 }
+p{
+border: none; box-shadow: none; margin: 0; padding: 0;
+}
 
 
 </style>
@@ -49,13 +52,13 @@ font-size: 2.0em; line-height: 2.0em;
                     Oops!
                 </h2>
                 <h1>
-                    404
+                    500
                 </h1>
                 <p>
-                    Sorry, an error has occured, Requested page not found!
-                </p> 
+                    Sorry, an error has occured, Internal server!
+                </p>
                 <p><a href="${pageContext.request.contextPath}"><span>Return to the Homepage</span></a></p>
-<%--                 <c:if test="${not empty exception.errCode}">
+                <%-- <c:if test="${not empty exception.errCode}">
                 	<h2>
                     	${exception.errCode}
                     </h2>
@@ -65,8 +68,7 @@ font-size: 2.0em; line-height: 2.0em;
 					<h4>
                    		${exception.errMsg}
                    	</h4>
-                </c:if> 
-                <p><a href="${pageContext.request.contextPath}"><span>Return to the Homepage</span></a></p> --%>
+                </c:if> --%>
                 </div>
             </div>
         </div>

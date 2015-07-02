@@ -43,19 +43,19 @@ public class ProbationController {
 
 	@Autowired private ProbationDtoService probationDtoService;
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView getPages() throws Exception {
-		throw new GenericException("404", "Sorry, an error has occured, Requested page not found!");
-	}
- 
-	@ExceptionHandler(GenericException.class)
-	public ModelAndView handleCustomException(GenericException ex) {
- 
-		ModelAndView model = new ModelAndView("error");
-		model.addObject("exception", ex);
-		return model;
- 
-	}
+//	@RequestMapping(method = RequestMethod.GET)
+//	public ModelAndView getPages() throws Exception {
+//		throw new GenericException("404", "Sorry, an error has occured, Requested page not found!");
+//	}
+// 
+//	@ExceptionHandler(GenericException.class)
+//	public ModelAndView handleCustomException(GenericException ex) {
+// 
+//		ModelAndView model = new ModelAndView("error");
+//		model.addObject("exception", ex);
+//		return model;
+// 
+//	}
 	
 	@RequestMapping(value = "/probation/{id}", method =  RequestMethod.GET)
     public String init(HttpSession session,Locale locale,ModelMap model, 
