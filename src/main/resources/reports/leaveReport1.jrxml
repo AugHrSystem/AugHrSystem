@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="leaveReport" language="groovy" pageWidth="2000" pageHeight="612" orientation="Landscape" columnWidth="1960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="896b97d3-bb7c-4822-aee2-a94621f66cf4">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="1089"/>
-	<property name="ireport.y" value="193"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="185"/>
 	<queryString>
 		<![CDATA[select emp.id, emp.employee_code as employeeCode,emp.dateofbirth as dateOfBirth,
 YEAR(CURDATE()) - YEAR(dateOfBirth) -IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(dateOfBirth), '/', DAY(dateOfBirth)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearAge ,
@@ -59,7 +59,7 @@ group by emp.employee_code]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="30" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Leave Report]]></text>
+				<text><![CDATA[$R{reportleave.empName}]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -68,20 +68,6 @@ group by emp.employee_code]]>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="5759aad5-b3de-475b-8f16-c412c99cdc25" x="0" y="0" width="114" height="61"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Resource ID]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="e3e88e47-34e2-479f-b7ab-f78b74b2771e" x="114" y="0" width="138" height="61"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Date Start Work]]></text>
-			</staticText>
 			<line>
 				<reportElement uuid="6516608a-9197-46b9-aa5a-217c2a52fbfe" x="0" y="60" width="1960" height="1" forecolor="#666666"/>
 			</line>
@@ -93,110 +79,124 @@ group by emp.employee_code]]>
 				<text><![CDATA[Duration (work)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="84365106-15c1-4c53-b181-3a7700b904d8" x="252" y="43" width="41" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Y]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="4e5d8148-28e4-410f-8141-01f5af27efe1" x="336" y="43" width="44" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[D]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="8af9671a-1f83-4592-ad4a-91af0c439d13" x="293" y="43" width="43" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[M]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="dde47177-7e8c-4eca-a7e4-f55173a58aea" x="380" y="0" width="167" height="61"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Birth Date]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="53902723-e2a9-43c2-86ff-a306b5bb151b" x="547" y="0" width="128" height="43"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Age]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="8078b220-e213-4cda-aa5d-eb9c7aa94338" x="547" y="43" width="41" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+			<textField>
+				<reportElement uuid="e2bc00fd-23c7-482d-91f9-67756e9223ff" x="0" y="0" width="114" height="61"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[Y]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="870c3865-d484-4069-b46f-a36404b81ef1" x="631" y="43" width="44" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{employee.code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7707c821-a3d8-4f3d-83fc-7cb90f491158" x="114" y="0" width="138" height="60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[D]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="dfb618e0-81ef-4e8c-be10-24bcc33f536a" x="588" y="43" width="43" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{official.startWorkDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a161b5a0-6bac-4e88-ab82-d196f6d849ef" x="252" y="43" width="41" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[M]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="3a4105a3-9bfb-420b-bed4-da248769d32c" x="675" y="0" width="167" height="61"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{report.durationYear}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="74cf2253-309a-48b1-9f97-9ca264ab69b9" x="293" y="43" width="43" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[Name (Thai)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="70941ad8-3114-41c5-952e-ffce967669a4" x="842" y="0" width="167" height="61"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{report.durationMonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="244e6f7d-a800-4cf9-9b2f-cdda8b19ee42" x="339" y="43" width="41" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[Name (Eng)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="22b1f039-6965-48a5-82c1-93c9699946a5" x="1009" y="0" width="204" height="43"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{report.durationDay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2d86cc2c-70fd-40ca-98ea-9dbdc3af54b4" x="380" y="0" width="167" height="60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[Leave2014 Usage Summary (Day)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="99d5287a-f351-40db-9844-f728356be82d" x="1009" y="43" width="70" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{reportstatus.birthdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0041f07a-ac78-4f46-93e5-677c4e050c4d" x="547" y="43" width="41" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[Annual]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="e64326c5-c1ca-459c-b284-bb0242364b80" x="1079" y="43" width="63" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{report.ageYear}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="13e46a50-c7c3-4ed1-bfff-a205fd4d6e14" x="590" y="44" width="41" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[Sick]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="0a19856c-5249-491d-9298-206223cf4dc6" x="1142" y="43" width="71" height="17"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{report.ageMonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ca03313c-a749-40b8-a7b6-2857e6c33cef" x="631" y="43" width="41" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[Personal]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="e274162b-41d6-4aba-ae13-70b315832259" x="1213" y="0" width="167" height="61"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="12" isBold="true"/>
+				<textFieldExpression><![CDATA[$R{report.ageDay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="694a8f0b-7cf5-435f-8d75-973a9ef486ea" x="675" y="1" width="167" height="60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
 				</textElement>
-				<text><![CDATA[Total]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$R{report.nameTh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="178574f4-79b5-4438-88c4-0c1213545f96" x="842" y="0" width="167" height="60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{report.nameEn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7f9e461c-b20d-458d-a984-462cda4a0cdc" x="1009" y="1" width="204" height="42"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{reportleave.use.sumday}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="17e4d254-4837-4aef-83ee-cedd0a86c2c1" x="1009" y="43" width="70" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{reportleave.annuallaeve}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c66370fc-2bf8-454b-b42f-e1e7a050245f" x="1079" y="43" width="63" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{reportleave.sickleave}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9070388-535d-4e67-94d7-a891abc9b040" x="1142" y="43" width="71" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{reportleave.personalleave}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ca29ae9-e1ce-42fc-9fbf-48a2ada77dd8" x="1213" y="0" width="167" height="60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{reportleave.totalleave}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

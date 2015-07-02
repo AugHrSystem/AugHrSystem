@@ -54,8 +54,8 @@
 											
 							<th><spring:message code="reportleave.resource" /></th>
 							<!-- <th>Date Start Work</th> -->
-							<th><spring:message code="reportleave.resourcenameth" /></th>
-							<th><spring:message code="reportleave.resourcenameen" /></th>
+							<th><spring:message code="report.nameTh" /></th>
+							<th><spring:message code="report.nameEn" /></th>
 							<th><spring:message code="reportleave.annuallaeve" /></th>
 							<th><spring:message code="reportleave.sickleave" /></th>
 							<th><spring:message code="reportleave.personalleave" /></th>
