@@ -64,17 +64,20 @@
         <property name="maxUploadSize" value="5000000" />   
 	</bean>
 	
-	<bean
+	<!-- <bean
 	  class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 	  <property name="exceptionMappings">
 		<props>
 			<prop key="com.aug.exception.CustomException">
 				error/generic_error
 			</prop>
+			<prop key="com.aug.exception.ExceptionCS">
+				error/404
+			</prop>
 			<prop key="java.lang.Exception">error/exception_error</prop>
 		</props>
 	  </property>
-	</bean>
+	</bean> -->
 
     <!--<bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>-->
 

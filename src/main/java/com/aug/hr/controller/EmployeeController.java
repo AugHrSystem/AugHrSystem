@@ -1,6 +1,7 @@
 package com.aug.hr.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -290,13 +291,13 @@ public class EmployeeController {
 			Model model,
 			final RedirectAttributes redirectAttributes,
 			HttpServletRequest request,
-			HttpServletResponse response) throws Exception{
+			HttpServletResponse response) throws SQLException{
 	
 	   logger.info("infoooo: "+allEmployeeDto);		
 	   logger.info("infoooo: ================================================================>"+allEmployeeDto.getAimempid());
 	  
 	   
-	   //throw new Exception("Exception Error");
+	   //throw new SQLException("Exception Error");
 	   
 	   //throw new CustomException("E999","err");
 	   

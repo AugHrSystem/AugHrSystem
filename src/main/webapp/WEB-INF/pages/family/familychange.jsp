@@ -322,19 +322,25 @@
 		  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 			    		
 		  	     },  
-		  	    statusCode: {
+		  	    /* statusCode: {
 		            404: function() {
 		                alert("Employee not found");
 		            },
 		            500: function() {
 		                alert("Failed to update Employee skills");
-		            }
-		        },
+		            } 
+		        },*/
 		  	      error : function(data,testStatus,jqXHR,xhr,errorThrown,thrownError) {  
 		  	           
 			  	    	//alert(xhr.status);
-			  	        alert(xhr);
-			  	        //alert('Error: ' +xhr.description);  
+			  	        //alert(xhr);
+			  	        //alert('Error: ' +xhr.description); 
+			  	       //var message = $.parseJSON(jqXHR.responseText);
+           			   //alert(textStatus+': '+message.ExceptionMessage);
+						
+           			    alert(jqXHR.responseText);
+
+			  	        alert(thrownError);
 
 		  	    	   $('#addModal').modal('hide');
 		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');

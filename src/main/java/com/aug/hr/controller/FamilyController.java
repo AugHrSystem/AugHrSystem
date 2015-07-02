@@ -3,6 +3,7 @@ package com.aug.hr.controller;
 import groovy.json.JsonException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +22,7 @@ import org.apache.log4j.Logger;
 import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
+import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
@@ -43,6 +45,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aug.exception.CustomExceptionMassageJson;
 import com.aug.hr.dto.services.FamilyDtoService;
 import com.aug.hr.entity.Family;
 import com.aug.hr.entity.Employee;
@@ -133,37 +136,44 @@ public class FamilyController {
 	
 	
 	
-	//@ExceptionHandler(Exception.class)
-    //@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR,reason = "Really really not found")
+	//@ExceptionHandler(CustomExceptionMassageJson.class)
+    //@ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "Really really not found")
 	@RequestMapping(value = "/family/add", method =  RequestMethod.POST)
-	public @ResponseBody String Add(Locale locale,
+	public @ResponseBody Family2Dto Add(Locale locale,
 			    @RequestBody Family2Dto familyDto,
 				ModelMap model,
 				BindingResult result,
 				HttpServletRequest request,
 				HttpServletResponse response,
 				Exception ex, 
-				WebRequest webRequest) throws JSONException{
+				WebRequest webRequest) throws SQLException{
+		
+		     //throw new SQLException("new error null"); 
+		
+		    /* response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+	         response.getWriter().write("aa");
+	         response.flushBuffer();*/
+		
+		 
+		   /*CustomExceptionMassageJson customMassage = new CustomExceptionMassageJson();
+			
+			  try{
+				  familyService.createFindMasRelationAndEmployee(familyDto);
+			  }catch(Exception e){
+				  throw new Exception("err");
+				  //customMassage.setStatus("fail");
+				  //customMassage.setErrMsg("error");
+				  
+			  }
+		
+			 //familyService.saveByNameQuery(familyDto);
+		
+	    	*/
 		
 		
-		    /*response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-	        response.getWriter().write("aa");
-	        response.flushBuffer();*/
+		familyService.createFindMasRelationAndEmployee(familyDto);
+		return familyDto;
 		
-		 	//response.setHeader("Content-Type", "application/json");
-		
-		  try{
-			  familyService.createFindMasRelationAndEmployee(familyDto);
-		  }catch(JsonException e){
-			  throw new JsonException("err");
-		  }
-		
-		  String msg = "fail";
-		
-	
-		
-			//familyService.saveByNameQuery(familyDto);
-		return msg;
 		
 	}
 	
