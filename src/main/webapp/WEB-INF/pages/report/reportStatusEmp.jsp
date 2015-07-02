@@ -74,7 +74,7 @@
 	<div class="modal-footer">
 		<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
 		<button type="button" class="btn btn-default search" value="search" id="btn_search"><spring:message code="label.search" /></button>
-		<button type="button" class="btn btn-default submit" value="print" id="btn_print"><spring:message code="label.print" /></button>
+		<button type="button"  class="btn btn-default submit" value="print" id="btn_print"  ><spring:message code="label.print" /></button>
 			
 		<%-- href="<%=request.getContextPath()%>/employee/searchReportEmpStatus" --%>
 	</div>
