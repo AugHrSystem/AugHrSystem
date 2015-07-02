@@ -27,9 +27,7 @@
 
     <mvc:default-servlet-handler />
     <mvc:resources mapping="/resources/**" location="/" />
-
     
-
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
             <list>
