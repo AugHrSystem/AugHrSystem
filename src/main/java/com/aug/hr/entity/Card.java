@@ -39,7 +39,7 @@ public class Card {
 	private Date startdate;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="DD-MM-YYYY")
-	@Column(name = "END_DATE"  ,nullable = false)
+	@Column(name = "END_DATE"  ,nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date enddate;
 	
@@ -47,8 +47,7 @@ public class Card {
 	@NotEmpty
 	private String status;
 	
-	@Column(name = "REMARK" ,nullable = false)
-	@NotEmpty
+	@Column(name = "REMARK")	
 	private String remark;
 
 	

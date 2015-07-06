@@ -159,7 +159,7 @@ ${reportStatusEmployeeDto.employeeCode}
 		
 		
 	 
-		 $('#btn_print').on('click', function(){
+		 $('#btn_print').off("click").on('click', function(){
 			 $('#reportForm').bootstrapValidator();
 				$('#reportForm').data('bootstrapValidator').validate();
 				if($('#reportForm').data('bootstrapValidator').isValid()){

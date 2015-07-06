@@ -90,6 +90,10 @@ join MAS_STAFFTYPE as staff on staff.ID = emp.ID]]>
 				<reportElement x="19" y="44" width="1111" height="3" uuid="f3297f67-3fdc-4f42-97d8-8e0ca1226a8a"/>
 			</line>
 			<textField>
+				<reportElement x="37" y="16" width="98" height="20" uuid="3078bfcc-dffe-485d-8791-6fb0210ca7f3"/>
+				<textFieldExpression><![CDATA[$R{reportstatus.resource}]]></textFieldExpression>
+			</textField>
+			<textField>
 				<reportElement x="135" y="16" width="90" height="20" uuid="29f6c38e-ba42-4d43-afd4-fa6c9b06d938"/>
 				<textFieldExpression><![CDATA[$R{reportstatus.datestartwork}]]></textFieldExpression>
 			</textField>
@@ -148,10 +152,6 @@ join MAS_STAFFTYPE as staff on staff.ID = emp.ID]]>
 			<textField>
 				<reportElement x="1065" y="16" width="43" height="20" uuid="ce879d11-f220-4d62-a1d3-c2ad85b1fcd0"/>
 				<textFieldExpression><![CDATA[$R{reportstatus.enddate}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="31" y="15" width="85" height="20" uuid="c550e109-bf4f-48df-acc1-4208300eb0df"/>
-				<textFieldExpression><![CDATA[$R{reportstatus.resource}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>

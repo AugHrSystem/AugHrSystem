@@ -76,12 +76,12 @@
 				    		    
 				    <div class="form-group "  align="left">
 							<label class="required" ><spring:message code="punish.description" var="description"/>${description} :</label>
-							<form:input path="description" type="text" class="form-control" id="description" placeholder="${enter}${description}"/>							
+							<form:input path="description" type="text" class="form-control" name="description"  id="description" placeholder="${enter}${description}"/>							
 				    </div>	
 				    	
 				     <div class="form-group "  align="left">
 							<label class="required" ><spring:message code="punish.penalty" var="penalty"/>${penalty} :</label>
-							<form:input path="penalty" type="text" class="form-control" id="penalty" placeholder="${enter}${penalty}"/>							
+							<form:input path="penalty" type="text" class="form-control" name="penalty" id="penalty" placeholder="${enter}${penalty}"/>							
 				    </div>	
 				    			
 				</div>
@@ -162,6 +162,14 @@
 	                    }
 	                }
 	            },
+	            
+	            penalty: {
+	                validators: {
+	                    notEmpty: {
+	                    	message: '<spring:message code="punish.required.penalty" />'
+	                    }
+	                }
+	            }
 	          
 	        }
 	    });
@@ -198,15 +206,23 @@
 			} 
 						
 			$(this).find(".btnSave").off("click").on("click",function() {
-				
-				 if(punishid != null){
+			if(punishid != null){
+				$('#addForm').bootstrapValidator();
+				$('#addForm').data('bootstrapValidator').validate();
+				if($('#addForm').data('bootstrapValidator').isValid()){
 					updatepunish(button, punishid);
-				}else{ 
+				}
+			}else{
+				$('#addForm').bootstrapValidator();
+				$('#addForm').data('bootstrapValidator').validate();
+				if($('#addForm').data('bootstrapValidator').isValid()){
 					addpunish();
-					
-				 } 
-				 
-		       });
+				}
+			 }
+		});
+			
+			
+			
 				 $(this).find(".btnClose").off("click").on("click",function() {
 						$('#addForm').bootstrapValidator('resetForm', true);
 			});

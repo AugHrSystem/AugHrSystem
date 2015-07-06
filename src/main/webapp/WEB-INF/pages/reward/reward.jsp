@@ -291,13 +291,22 @@
 				}
 
 				$(this).find(".btnSave").off("click").on("click", function() {
-
-					if (rewardid != null) {
-						updateReward(button, rewardid);
-					} else {
-						addReward();
-
-					}
+					if(rewardid != null){
+						$('#addForm').bootstrapValidator();
+	    				$('#addForm').data('bootstrapValidator').validate();
+	    				if($('#addForm').data('bootstrapValidator').isValid()){
+							updateReward(button, rewardid);
+	    				}
+					}else{
+						$('#addForm').bootstrapValidator();
+	    				$('#addForm').data('bootstrapValidator').validate();
+	    				if($('#addForm').data('bootstrapValidator').isValid()){
+							addReward();
+	    				}
+					 }
+				});
+				$(this).find(".btnClose").off("click").on("click",function() {
+					$('#addForm').bootstrapValidator('resetForm', true);
 				});
 			});
 			//		------------------------------------------------------------------------------------------------------------

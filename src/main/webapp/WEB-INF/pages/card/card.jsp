@@ -67,30 +67,30 @@
    							 <spring:message code="default.enter" var="enter"/>
    							 
 							<label class="required" ><spring:message code="card.cardno" var="cardno" />${cardno} :</label>
-							<form:input path="card_no" type="text" class="form-control" id="cardno" placeholder="${enter}${cardno}"/>							
+							<form:input path="card_no" type="text" class="form-control" name="cardno" id="cardno" placeholder="${enter}${cardno}"/>							
 				</div>			
       					
 																																		
 				    <div class="form-group "  align="left">
 							<label class="required"><spring:message code="card.startdate" var="startdate"/>${startdate} :</label>
 						<div class='input-group date' id='datetimepicker1'>
-	   						 <form:input path="startdate" type="text" class="form-control" id="startdate"  placeholder="${date}"/>
+	   						 <form:input path="startdate" type="text" class="form-control" name="startdate" id="startdate"  placeholder="${date}"/>
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
 					</div>
 				    		
 			
 				    <div class="form-group "  align="left">
-							<label class="required"><spring:message code="card.enddate" var="enddate"/>${enddate} :</label>
+							<spring:message code="card.enddate" var="enddate"/>${enddate} :
 						<div class='input-group date' id='datetimepicker2'>
-	   						 <form:input path="enddate" type="text" class="form-control" id="enddate" placeholder="${date}"/>
+	   						 <form:input path="enddate" type="text" class="form-control" name="enddate" id="enddate" placeholder="${date}"/>
 	  						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>	  	
 					  	</div>													
 					</div>    		
 				    		
 				    		<div class="form-group " align="left">
 									 <label class="required"><spring:message code="card.status" var="status"/>${status} :</label>
-									<form:select path="status" class="form-control" id="status">									
+									<form:select path="status" class="form-control" name="status" id="status">									
 										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>		
 										<option value=""><spring:message code="card.selectsite" var="selectsite"/>${selectsite}</option>				
 										<option value="Onsite">On site</option>
@@ -189,7 +189,15 @@
 	                    }
 	                }
 	            },
-	         
+	  
+	            status: {
+	                validators: {
+	                    notEmpty: {
+	                    	message: '<spring:message code="card.required.status" />'
+	                    }
+
+	                }
+	            },
 	           
 	        
 	        }
@@ -241,22 +249,29 @@
 						
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var cardid = button.data("id") //Extract info from data-* attribute
-						
-			 if(cardid != null){				 
-				 getcardById(cardid);
-			} 
-						
-			$(this).find(".btnSave").off("click").on("click",function() {
-				
-				 if(cardid != null){
-					updatecard(button, cardid);
-					console.log("updatecard");
-				}else{ 
-					addcard();
-					//console.log("addcard");
-				 } 
-				
+
+			clearModal();
+			
+			if (cardid != null) {
+				getcardById(cardid);
+			}
+			
+			$(this).find(".btnSave").off("click").on("click", function() {
+			 if(cardid != null){
+				    $('#addForm').bootstrapValidator();
+	    			$('#addForm').data('bootstrapValidator').validate();
+	    			if($('#addForm').data('bootstrapValidator').isValid()){
+	    				updatecard(button, cardid);
+				}
+			}else{ 
+				$('#addForm').bootstrapValidator();
+				$('#addForm').data('bootstrapValidator').validate();
+				if($('#addForm').data('bootstrapValidator').isValid()){
+					addcard();					
+				 	} 		
+			   }
 			});
+					
 			$(this).find(".btnClose").off("click").on("click",function() {
 				$('#addForm').bootstrapValidator('resetForm', true);
 			});
