@@ -70,7 +70,7 @@
       <div class="form-group col-md-6">
 	    <label class="required">${dateOfAdjustment } : </label>
 	    <div class='input-group date' id='datetimepicker1'>
-	    <form:input path="dateOfAdjustment" type="text" class="form-control" id="dateOfAdjustment" placeholder="${date }"/>
+	    <form:input path="dateOfAdjustment" type="text" class="form-control" name="dateOfAdjustment" id="dateOfAdjustment" placeholder="${date }"/>
 	  	<span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -80,22 +80,22 @@
 	    
 	  <div class="form-group col-md-6">
 	    <label class="required">${position } : </label>
-	    <form:input path="position" type="text" class="form-control" id="position" placeholder="${enter }${position }" />
+	    <form:input path="position" type="text" class="form-control" id="position" name="position" placeholder="${enter }${position }" />
 	  </div>
 	  
 	  <div class="form-group col-md-6">
 	    <label class="required">${ salary} : </label>
-	    <form:input path="salary" type="text" class="form-control" id="salary" placeholder="${enter }${salary }"/>
+	    <form:input path="salary" type="text" class="form-control" id="salary" name="salary" placeholder="${enter }${salary }"/>
 	  </div>
 	  
 	  <div class="form-group col-md-6">
 	    <label><spring:message code="history.oldSalary" var="oldSalary"/>${oldSalary } :</label>
-	    <form:input path="oldSalary" type="text" class="form-control" id="oldSalary" placeholder="${enter }${oldSalary }"/>
+	    <form:input path="oldSalary" type="text" class="form-control" id="oldSalary" name="oldSalary" placeholder="${enter }${oldSalary }"/>
 	  </div>
 	  
 	  <div class="form-group col-md-6">
 	    <label>${reasonOfAdjustment } :</label>
-	    <form:textarea path="reasonOfAdjustment" type="text" class="form-control" id="reasonOfAdjustment" placeholder="${enter }${reasonOfAdjustment }"/>
+	    <form:textarea path="reasonOfAdjustment" type="text" class="form-control" name="reasonOfAdjustment" id="reasonOfAdjustment" placeholder="${enter }${reasonOfAdjustment }"/>
 	  </div>
 	  
 	  <%-- <div class="form-group col-md-6">

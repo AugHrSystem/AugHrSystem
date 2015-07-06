@@ -69,7 +69,7 @@
         
 	  <div class="form-group">
 	    <label class="required"><spring:message code="certification.year"/> :</label>
-	    <form:select path="year" class="form-control" id="year">
+	    <form:select path="year" class="form-control" id="year" name="year">
 <%-- 										<form:option value="-1" label="---Select year---" /> --%>
 										<%-- <c:forEach var="obj" items="${ masdegreetypeList }"> --%>
 										<option value=""><spring:message code="certification.enter.year" /></option>						
@@ -200,17 +200,17 @@
 	  
 	  <div class="form-group">
 	    <label class="required"><spring:message code="certification.certification.name" var="name"/>${name} :</label>
-	    <form:input path="name" type="text" class="form-control" id="name" placeholder="${enter }${name}"/>
+	    <form:input path="name" type="text" class="form-control" id="name" name="name" placeholder="${enter }${name}"/>
 	  </div>
 	  
 	  <div class="form-group">
 	    <label class="required"><spring:message code="certification.certification.from" var="certificationFrom"/>${certificationFrom} :</label>
-	    <form:input path="certificationFrom" type="text" class="form-control" id="certificationFrom" placeholder="${enter }${certificationFrom }"/>
+	    <form:input path="certificationFrom" type="text" class="form-control" id="certificationFrom" name="certificationFrom" placeholder="${enter }${certificationFrom }"/>
 	  </div>
 	  
 	  <div class="form-group">
 	    <label class="required"><spring:message code="certification.description" var="description"/>${description} :</label>
-	    <form:textarea path="description" type="text" class="form-control" id="description" placeholder="${enter }${description}"/>
+	    <form:textarea path="description" type="text" class="form-control" id="description" name="description" placeholder="${enter }${description}"/>
 	  </div>
 	  
       </div>
