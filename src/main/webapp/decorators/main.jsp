@@ -71,6 +71,9 @@
  
 
 
+<!-- autonumeric Plugin -->
+<script src="<c:url value="/resource/autonumeric/js/autoNumeric.js" />"></script>
+
 <style >
 
 body {

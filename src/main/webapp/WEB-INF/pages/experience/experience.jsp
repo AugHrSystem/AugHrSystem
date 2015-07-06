@@ -66,7 +66,7 @@
        	<div class="form-group col-md-6">
     		<label class="required"><spring:message code="experience.dateFrom" var="dateFrom" /> ${dateFrom} : </label>
   			<div class="input-group date" id="dateTimeFrom">
-  				<f:input path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="${date}" />
+  				<f:input data-format="dd-mm-yyyy" path="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="${date}" />
   				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			</div>
 		</div>
@@ -150,7 +150,8 @@ var dt;
 		
 		$('#dateFrom').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		$('#dateTo').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
-		$('#salary').mask("000,000,000",{reverse: true});
+/*  		$('#salary').mask("#,###.00", {locale:"us"}); */
+ 		$('#salary').autoNumeric('init', {'dGroup': 3});
 		$('#tdResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,
@@ -205,10 +206,7 @@ var dt;
 		            	validators: {
 	                        notEmpty: {
 	                            message: '<spring:message code="experience.required.salary" />'
-	                        },
-	                        digits: {
-		                    	message: '<spring:message code="experience.required.salary.digits" />'
-		                    },
+	                        }
 	                    }
 		            },
 		            reason: {
@@ -245,18 +243,24 @@ var dt;
                 .validateField('dateTo');
         });
 		
-    	$( "#dateTimeFrom" ).datetimepicker({
+/*     	$( "#dateTimeFrom" ).datetimepicker({
 			// viewMode: 'days',
 			 format : 'DD-MM-YYYY',
 			 //defaultDate: 'moment',
 			 //minDate: moment(),
-		});
-    	$( "#dateTimeTo" ).datetimepicker({
-			 //viewMode: 'days',
-			 format : 'DD-MM-YYYY',
-			// defaultDate: 'moment',
-			 //minDate: moment(),
-		});
+		}); */
+		$("#dateTimeFrom").datetimepicker({
+		format : 'DD-MM-YYYY',
+		defaultDate: 'moment',
+/* 		onSelect: function(dateText, inst){
+			$("#dateTimeTo").datetimepicker('option', 'minDate', dateText);
+			}*/
+		}); 
+    	$("#dateTimeTo").datetimepicker({
+		format : 'DD-MM-YYYY',
+		minDate: moment()
+		}); 
+    	
     	dt=$("#tdResult").dataTable();
  		listAll();
 		
@@ -301,7 +305,7 @@ var dt;
     					 companyName: $("#cName").val(),
     					 businessType: $("#businessType").val(),
     					 position: $("#position").val(),
-    					 salary: $("#salary").val(),
+    					 salary: $("#salary").autoNumeric('get'),
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 responsibility: $("#responsibility").val(),
@@ -372,7 +376,8 @@ var dt;
 						$("#cName").val(data.companyName);
 						$("#businessType").val(data.businessType);
 						$("#position").val(data.position);
-						$("#salary").val(data.salary);
+/* 						$("#salary").val(data.salary); */
+						$('#salary').autoNumeric('set',data.salary);
 						$("#dateFrom").val(data.dateFrom);
 						$("#dateTo").val(data.dateTo);
 						$("#responsibility").val(data.responsibility);
@@ -412,7 +417,7 @@ var dt;
 						 companyName: $("#cName").val(),
     					 businessType: $("#businessType").val(),
     					 position: $("#position").val(),
-    					 salary: $("#salary").val(),
+    					 salary: $("#salary").autoNumeric('get'),
     					 dateFrom: $("#dateFrom").val(),
     					 dateTo: $("#dateTo").val(),
     					 responsibility: $("#responsibility").val(),
