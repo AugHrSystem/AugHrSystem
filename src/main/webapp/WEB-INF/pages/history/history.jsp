@@ -164,6 +164,11 @@
 		
 		$('#dateOfAdjustment').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		
+		$('#salary').mask('0,000,000.00', {reverse: true});
+// 		$('.money').mask('000.000.000.000.000,00', {reverse: true});
+		
+		$('#oldSalary').mask('0,000,000.00', {reverse: true});
+		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
 	        message: 'This value is not valid',
@@ -186,9 +191,6 @@
 	                    notEmpty: {
 	                        message: '<spring:message code="history.required.salary" />'
 	                    },
-	                    digits: {
-	                    	message: '<spring:message code="history.required.salary.num" />'
-	                    },
 	                }
 	            },
 // 	            oldSalary: {
@@ -210,7 +212,7 @@
 	                        format: 'DD-MM-YYYY'
 	                    }
 	                }
-	            },
+	            }
 // 	            reasonOfAdjustment: {
 // 	                validators: {
 // 	                    notEmpty: {
@@ -274,6 +276,7 @@
 			} 
 			
 			$(this).find(".btnSave").off("click").on("click",function() {
+				$("#salary").val($("#salary").val().replace(/[\(\)-]/g, ""));
 				if(historyid != null){
 					$('#addForm').bootstrapValidator();
     				$('#addForm').data('bootstrapValidator').validate();
@@ -284,6 +287,7 @@
 					$('#addForm').bootstrapValidator();
     				$('#addForm').data('bootstrapValidator').validate();
     				if($('#addForm').data('bootstrapValidator').isValid()){
+    					
 						addHistory();
     				}
 				 }
@@ -327,8 +331,8 @@
 				url : "${pageContext.request.contextPath}/history/add",
 				data : JSON.stringify({
 					position : $("#position").val(),
-					salary :$("#salary").val(),
-					oldSalary :$("#oldSalary").val(),
+					salary :$("#salary").val().replace(/[\(\)\,-]/g, ""),
+					oldSalary :$("#oldSalary").val().replace(/[\(\)\,-]/g, ""),
 					dateOfAdjustment :$("#dateOfAdjustment").val(),
 					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
 // 					adjustmentTime :$("#adjustmentTime").val(),
@@ -401,8 +405,8 @@
 				data : JSON.stringify({
 					id : historyid,
 					position : $("#position").val(),
-					salary :$("#salary").val(),
-					oldSalary :$("#oldSalary").val(),
+					salary :$("#salary").val().replace(/[\(\)\,-]/g, ""),
+					oldSalary :$("#oldSalary").val().replace(/[\(\)\,-]/g, ""),
 					dateOfAdjustment :$("#dateOfAdjustment").val(),
 					reasonOfAdjustment :$("#reasonOfAdjustment").val(),
 // 					adjustmentTime :$("#adjustmentTime").val(),

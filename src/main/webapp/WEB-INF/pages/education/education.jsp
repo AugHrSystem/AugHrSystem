@@ -191,7 +191,7 @@
 		
 		$('#startDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		$('#graduatedDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
-		$('#gpa').mask("9.99",{placeholder:"0.00"});
+// 		$('#gpa').mask("9.99");
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
@@ -250,6 +250,17 @@
 	                    }
 	                }
 	            },
+	            gpa: {
+	                validators: {
+	                	notEmpty: {
+	                        message: '<spring:message code="education.required.gpa" />'
+	                    },
+	                	 regexp: {
+	                         regexp: /^[0-4]\.\d\d$/,
+	                         message: '<spring:message code="education.required.gpa.digit" />'
+	                     }
+	                }
+	            }
 	            /* adjustmentTime: {
 	                validators: {
 	                    notEmpty: {

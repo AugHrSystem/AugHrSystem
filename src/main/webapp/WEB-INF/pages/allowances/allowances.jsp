@@ -170,6 +170,7 @@ function myFunction(value) {
 		
 		$("#addBtnAll").on("click",function(){clearModal();});
 		
+		$('#amount').mask('0,000,000.00', {reverse: true});
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
@@ -278,7 +279,7 @@ function myFunction(value) {
 				data : JSON.stringify({
 					masAllowancesId : $("#masallowances").val(), 
 					masallowances : $("#masallowances option:selected").text(),
-					amount :$("#amount").val(),
+					amount :$("#amount").val().replace(/[\(\)\,-]/g, ""),
 					employeeId: id
 				}),
 				type : "POST",
@@ -346,7 +347,7 @@ function myFunction(value) {
 					id : allowancesid,
 					masAllowancesId : $("#masallowances").val(), 
 					masallowances : $("#masallowances option:selected").text(),
-					amount :$("#amount").val(),
+					amount :$("#amount").val().replace(/[\(\)\,-]/g, ""),
 					employeeId : id
 					/* company :$("#company").val(),
 					salary :$("#salary").val(),

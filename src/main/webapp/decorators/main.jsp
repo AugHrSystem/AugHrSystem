@@ -52,6 +52,7 @@
 
 <!-- Mask Plugin -->
 <script src="<c:url value="/resource/mask/js/jquery.maskedinput.js" />"></script>
+<script src="<c:url value="/resource/mask/js/jquery.mask.js" />"></script>
 
 <!-- PNotify -->
 <script src="<c:url value="/resource/pnotify/js/pnotify.custom.min.js" />"></script>
