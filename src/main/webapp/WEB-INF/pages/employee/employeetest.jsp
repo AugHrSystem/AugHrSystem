@@ -34,13 +34,16 @@
 		
 		<div id="message"></div>
 		<div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
-				<h2 style="border-bottom: 1px solid #8f8f8f;">Information
+				<h2 style="border-bottom: 1px solid #8f8f8f;"><spring:message code="employee.information"></spring:message>
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 				</h2>
 		 </div>
 		 
 		 
 		 <div class="col-md-7">
+		 
+		 	<spring:message code="default.enter" var="enter"/>
+		 	<spring:message code="default.please" var="please"/>
 
 							<div class="form-group">
 									<!-- <label for="id"> ID :</label> -->
@@ -1032,7 +1035,7 @@
 			<div  align="center">
 				<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.cancel" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
-    			<button type="button" id="saveButton" class="btn btn-primary" name="saveButton"><spring:message code="label.saveAndCon" /></button>
+    			<button type="button" id="saveButton" class="btn btn-primary" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
     			
 	    	</div>
 </f:form>   
@@ -1147,7 +1150,7 @@ var getIndex = 0;
 
 	$(document).ready(function() {
 
-
+		
 //------------------------------------------------------ Validate --------------------------------------------------------------------------------------------
 
 $(".closeAddressButton").off("click").on("click",function() {
@@ -1161,16 +1164,19 @@ $("#validateAddress").validate({
 		address1: "required",
 		address2: "required",
 		province: "required",
-		zipcode: "required"
-		
+		zipcode: {
+			required: true,
+			 digits: true,
+			 rangelength : [5, 5]
+		}
 		
 	},
 	messages: {
-		addressType: "Please enter your firstname",
-		address1: "Please enter your lastname",
-		address2: "Please enter your firstname",
-		province: "Please enter your lastname",
-		zipcode: "Please enter your firstname"
+		addressType: "Please enter your addressType",
+		address1: "Please enter your address",
+		address2: "Please enter your address",
+		province: "Please enter your province",
+		zipcode: "Please enter your zipcode"
 		
 	}
 });		
@@ -1184,34 +1190,23 @@ $("#addForm").validate({
 		nameEng: "required",
 		surnameEng: "required",
 		nicknameEng: "required",
-		
-		email: "required",
-		telHome: "required",
-		telMobile: "required",
-		telFax: "required",
 		congenitalDisease: "required",
 		hospital: "required",
 		
 		emergencyContact: "required",
 		relationshipWithEmergencyContact: "required",
 		emergencyContactAddress: "required",
-		emergencyContactPhoneNumber: "required",
 		dateOfBirth: "required",
 		placeOfBirth: "required",
 		fromYear: "required",
 		toYear: "required",
 		
-		age: "required",
 		religion: "required",
-		idCard: "required",
 		issuedOffice: "required",
 		expiryDate: "required",
-		height: "required",
 		
-		weigth: "required",
 		sex: "required",
 		maritalStatus: "required",
-		numberOfChildren: "required",
 		spouseName: "required",
 		marriageCertificateNo: "required",
 		
@@ -1231,7 +1226,6 @@ $("#addForm").validate({
 		startWorkDate: "required",
 		endWorkDate: "required",
 		positionAppliedFor: "required",
-		salaryExpected: "required",
 		
 		probationDate: "required",
 		masEmployment: "required",
@@ -1241,11 +1235,80 @@ $("#addForm").validate({
 		
 		masJoblevel: "required",
 		technology: "required",
-		masStaffType: "required"
+		masStaffType: "required",
 		
 	
+		sex:{
+			required:true 
+		    },
 		
+		email: {
+			required: true,
+			email: true
+		}, 
+		
+	 	telHome: {
+			required: true,
+			 digits: true,
+			 minlength: 10,
+			 maxlength: 10
+		}, 
+		
+		telMobile: {
+			required: true,
+			 digits: true,
+			 minlength: 10,
+			 maxlength: 10
+		},
+		
+		telFax: {
+			required: true,
+			 digits: true,
+			 minlength: 10,
+			 maxlength: 10
+		},
+		
+		idCard: {
+			required: true,
+			 digits: true,
+			 minlength: 13,
+			 maxlength: 13
+		},
+		
+		age: {
+			required: true,
+			 digits: true
+		},
+		
+		height: {
+			required: true,
+			 digits: true
+		},
+		
+		weigth: {
+			required: true,
+			 digits: true
+		},
+		
+		emergencyContactPhoneNumber: {
+			required: true,
+			 digits: true,
+			 minlength: 10,
+			 maxlength: 10
+		},
+		
+		numberOfChildren: {
+			required: true,
+			 digits: true
+		},
+		
+		salaryExpected: {
+			required: true,
+			 digits: true
+		}
+	
 	},
+	
 	messages: {
 		nameThai: "Please enter your nameThai",
 		surnameThai: "Please enter your surnameThai",
@@ -1318,7 +1381,6 @@ $("#addForm").validate({
 });		
 		
 		
-
 		
 		
 		var date1 = $( "#dateOfBirth" ).datetimepicker({
@@ -1372,19 +1434,21 @@ $("#addForm").validate({
     				
     		
     		
-if($('.dataTables_empty').length >0){//ถ้าตารางว่าง
+			/* if($('.dataTables_empty').length >0){//ถ้าตารางว่าง check ค่าในตาราง address
 				
-		alert("dataTables  empty");//alertในกรณีที่ค่าในตารางว่าง
+					alert("dataTables  empty");//alertในกรณีที่ค่าในตารางว่าง
 				
-		if($('#addForm').valid()){//validate form ใหญ่ว่าถ้าตารางว่างให้ดัก ข้อมูลทั้งหมดว่ามีค่าหรือไม่ ถ้ามีค่า ให้ alert เเจ้งเตือนขึ้นเเล้วไปดูค่าในตาราง
+			if($('#addForm').valid()){//validate form ใหญ่ว่าถ้าตารางว่างให้ดัก ข้อมูลทั้งหมดว่ามีค่าหรือไม่ ถ้ามีค่า ให้ alert เเจ้งเตือนขึ้นเเล้วไปดูค่าในตาราง
     				
-		//document.getElementById("addForm").submit(); //java script
+					//document.getElementById("addForm").submit(); //java script
 				}
 		
-		else {alert("Data Empty");}//ถ้าไม่มีข้อมูลจะเข้า else alert เเจ้งเตือน
+			else {alert("Data Empty");}//ถ้าไม่มีข้อมูลจะเข้า else alert เเจ้งเตือน
 			}
-else{//ในกรณีที่ ค่าในตารางไม่ว่าง ก้ให้ไปเช็คค่าข้อมูล
-	if($('#addForm').valid()){//validate form ใหญ่ว่าถ้าตารางว่างให้ดัก ข้อมูลทั้งหมดว่ามีค่าหรือไม่ ถ้ามีค่า ให้ alert เเจ้งเตือนขึ้นเเล้วไปดูค่าในตาราง
+			
+		else{//ในกรณีที่ ค่าในตารางไม่ว่าง ก้ให้ไปเช็คค่าข้อมูล
+			
+			if($('#addForm').valid()){//validate form ใหญ่ว่าถ้าตารางว่างให้ดัก ข้อมูลทั้งหมดว่ามีค่าหรือไม่ ถ้ามีค่า ให้ alert เเจ้งเตือนขึ้นเเล้วไปดูค่าในตาราง
 		
 		//document.getElementById("addForm").submit(); //java script
 				
@@ -1392,15 +1456,15 @@ else{//ในกรณีที่ ค่าในตารางไม่ว่
 			$('#addForm').get(0).submit(); //jquery
 			
 			}
-		}
+		} */
     		
     		
     		
-    		/* alert("aaaa");
+    		 alert("aaaa");
 			
 			$('[name="employeeForm"]').attr('action',
 					"${pageContext.request.contextPath}/employee/submit");
-			$('[name="employeeForm"]').submit(); */
+			$('[name="employeeForm"]').submit(); 
 		});
     	
     	 dt=$("#tbResult").dataTable( 
@@ -1934,7 +1998,17 @@ else{//ในกรณีที่ ค่าในตารางไม่ว่
    	}		
    		
    		
-   		
+   /* 	function ValidatePhone() {// validate เบอร์โทรศัพท์ 10 หลัก
+	        var phoneRegExp = /^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/;
+	        var phoneVal = $("#telHome").val();
+	        var numbers = phoneVal.split("").length;
+	        if (10 <= numbers && numbers <= 20 && phoneRegExp.test(phoneVal)) {
+	            alert("success");
+	         alert(phoneVal);
+	      alert(numbers);
+	  
+	        }
+	        } */
    		
    	
    	
