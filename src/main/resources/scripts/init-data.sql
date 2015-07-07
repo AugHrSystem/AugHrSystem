@@ -285,7 +285,10 @@ INSERT INTO EMP_SITE(projectName,startDate,endDate,projectOwner,projectOwnerCont
 
 --EXPERIENCE
 INSERT INTO EMP_EXPERIENCE(COMPANY_NAME,DATE_FROM,DATE_TO,POSITION,SALARY,REASON_OF_REGISNATION,EMPLOYEE_ID)
-VALUES('Augmentis','2014-03-01','2014-07-01','Programmer',18000,'Boring',2);
+VALUES('Augmentis','2014-03-01','2014-07-01','Programmer',18000,'Boring',2),
+('Augmentis','2014-03-01','2014-07-01','Programmer',28000,'Boring',1),
+('Augmentis','2014-03-01','2014-07-01','Programmer',38000,'Boring',3),
+('Augmentis','2014-03-01','2014-07-01','Programmer',48000,'Boring',4);
 
 
 --REFERENCE

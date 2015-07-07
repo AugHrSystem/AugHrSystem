@@ -1,6 +1,7 @@
 package com.aug.hr.entity.dto;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ import javax.persistence.NamedNativeQuery;
             query = "Select emp.id, "
             		+ "emp.employee_code as employeeCode,"
             		+ "official.start_work_date as startWorkDate, "
+            		+"exp.salary as salary, "
             		+ "YEAR(CURDATE()) - YEAR(official.start_work_date) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(official.start_work_date), '/', DAY(official.start_work_date)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as yearStart, "
             		+ "MONTH(curdate()) - MONTH(official.start_work_date) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(official.start_work_date), '/', DAY(official.start_work_date)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as monthStart, "
             		+ "DAY(curdate()) - DAY(official.start_work_date) - IF(STR_TO_DATE(CONCAT(YEAR(CURDATE()), '/', MONTH(official.start_work_date), '/', DAY(official.start_work_date)) ,'%Y-%c-%e') > CURDATE(), 1, 0) as dayStart, "
@@ -33,6 +35,7 @@ import javax.persistence.NamedNativeQuery;
             		+ "join mas_employment on emp.employment_id = mas_employment.id "
             		+ "join mas_division on emp.division_id = mas_division.id "
             		+ "join mas_technology on emp.technology_id = mas_technology.id "
+            		+"join emp_experience as exp on exp.employee_id =emp.id "
             		+ "where emp.name_eng like :name", 
             resultClass = ReportEmployeeDto.class),
             @NamedNativeQuery(
@@ -103,6 +106,8 @@ public class ReportEmployeeDto {
 	private String divisionName;
 	@Column(name = "technologyName")
 	private String technologyName;
+	@Column(name = "SALARY")
+	private Integer salary;
 	public Integer getId() {
 		return id;
 	}
@@ -210,6 +215,12 @@ public class ReportEmployeeDto {
 	}
 	public void setDay(Integer day) {
 		this.day = day;
+	}
+	public Integer getSalary() {
+		return salary;
+	}
+	public void setSalary(Integer salary) {
+		this.salary = salary;
 	}
 	
 	
