@@ -89,6 +89,10 @@ $(document).ready(function () {
 			"info": false
 	});
 	
+	if($('.dataTables_empty').length > 0){
+		document.getElementById("btn_print").disabled = true;
+	}
+	
 	$('#reportForm').bootstrapValidator({
 		message: 'This value is not valid',
 		 feedbackIcons: {
@@ -130,6 +134,11 @@ $(document).ready(function () {
 					]);
 		 
 				}
+			
+			if($('.dataTables_empty').length == 0){
+				document.getElementById("btn_print").disabled = false;
+			}
+			
 			},
 			error : function(data,testStatus,jqXHR) {
 				$("#outputajax").text(testStatus);
