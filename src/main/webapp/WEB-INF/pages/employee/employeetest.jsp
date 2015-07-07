@@ -1237,11 +1237,6 @@ $("#addForm").validate({
 		technology: "required",
 		masStaffType: "required",
 		
-	
-		sex:{
-			required:true 
-		    },
-		
 		email: {
 			required: true,
 			email: true
@@ -1249,9 +1244,10 @@ $("#addForm").validate({
 		
 	 	telHome: {
 			required: true,
-			 digits: true,
-			 minlength: 10,
-			 maxlength: 10
+			  digits: true, 
+			  minlength: 10,
+			 maxlength: 10 
+			 
 		}, 
 		
 		telMobile: {
