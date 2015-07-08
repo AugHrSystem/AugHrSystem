@@ -39,6 +39,49 @@
 				</h2>
 		 </div>
 		 
+		   <!--   Upload image -->
+							<div class="col-md-5">
+								<div class="form-group">
+									<div class="col-md-12">
+
+
+																				
+										<div class="col-md-9">
+										<div class="row" align="center">
+										   <c:if test="${empty allEmployeeDto.image}">
+												<div  id="imagePreview" class="img-rounded img-responsive"
+													style="background-image:url('<c:url value="/resource/images/no_image.gif" />');">
+												</div>
+											</c:if>
+											
+											<c:if test="${not empty allEmployeeDto.image}">
+										   		 <div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div>
+										    </c:if>
+											</div>
+											<br>
+											<label> <spring:message code="employee.uploadFile"></spring:message> :</label> 
+										
+										
+												
+											<input type="file" id="uploadFile" name="fileupload" accept="image/*"
+												class="file" data-show-upload="false"
+												data-show-preview="false" data-initial-caption="${allEmployeeDto.image}"
+												data-overwrite-initial="false">  
+												
+												<input type="hidden" name="image"
+												class="form-control element-to-paste-filename"
+												value="${allEmployeeDto.image}" />
+
+											
+										</div>
+									 </div>
+
+
+   								       
+
+									</div>
+								</div>
+		 
 		 
 		 <div class="col-md-7">
 		 
@@ -108,63 +151,7 @@
 					
 	         </div>
 	         
-	       <!--   Upload image -->
-							<div class="col-md-5">
-								<div class="form-group">
-									<div class="col-md-12">
-
-
-										<div class="col-md-3"></div>
-										
-										<div class="col-md-9">
-										<div class="row" align="center">
-										   <c:if test="${empty allEmployeeDto.image}">
-												<div  id="imagePreview" class="img-rounded img-responsive"
-													style="background-image:url('<c:url value="/resource/images/no_image.gif" />');">
-												</div>
-											</c:if>
-											
-											<c:if test="${not empty allEmployeeDto.image}">
-										   		 <div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div>
-										    </c:if>
-											</div>
-											<br>
-											<label> <spring:message code="employee.uploadFile"></spring:message> :</label> 
-										
-										
-											<input type="file" id="uploadFile" name="fileupload" accept="image/*"
-												class="file" data-show-upload="false"
-												data-show-preview="false" data-initial-caption="${allEmployeeDto.image}"
-												data-overwrite-initial="false"> 
-												
-												<input type="hidden" name="image"
-												class="form-control element-to-paste-filename"
-												value="${allEmployeeDto.image}" />
-
-											
-										</div>
-									 </div>
-
-
-   								        <%--    <c:if test="${empty allEmployeeDto.image}">
-										    	<div id="imagePreview" class="img-rounded img-responsive"
-												style="background-image:url('<c:url value="/resources/images/no_image.gif" />');"></div>
-										    </c:if>
-										    
-										    
-										    
-										    <c:if test="${not empty allEmployeeDto.image}">
-											<!-- <div id="imagePreview" class="img-rounded img-responsive" background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div> -->
-										    <div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=EMPLOYEE&fileName=${allEmployeeDto.image}');"></div>
-										    </c:if> --%>
-										   
-
-										<!-- <div class="col-md-3"></div> -->
-
-									</div>
-								</div>
-
-						
+	     
 	         
 	         
  <!-------------------------------------------------- Start Address-------------------------------------------------->
@@ -503,15 +490,20 @@
 					
 	        </div>
 	       
-	       
-	           <div class="col-md-12">
-	         		
-							<div class="form-group">
+	       <div class="row">
+	       <div class="col-md-12">
+	       <label> <spring:message code="employee.howdoyouknowaugmentis"></spring:message> :</label>
+	       </div>
+	       </div>
+	           <div class="row">
+	           
+	         				<div class="form-group">
+							<div class="col-md-12">
 								<div class="col-md-3">
-									<label> <spring:message code="employee.howdoyouknowaugmentis"></spring:message> :</label>
+								
+	         		
+								
 									<div class="checkbox">
-									    
-									  
     								  <c:if test="${empty allEmployeeDto.knowAugNewspaper}">	
      									  <label><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper"><spring:message code="employee.newspaper"></spring:message></label>   										 
      									  <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${please} ${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
@@ -523,8 +515,10 @@
     								  	   <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${please} ${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
     								  		
     								  </c:if>
-    								 
+    								 </div>
+								 </div>
 									  
+									 <div class="col-md-3">
 									  
 									  <c:if test="${empty allEmployeeDto.descriptionMagazine}">	
      									 <label><input type="checkbox" id="Magazine" name="knowAugMagazine" value="Magazine"><spring:message code="employee.magazine"></spring:message></label>
@@ -537,8 +531,9 @@
     								  	   <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${please} ${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
       									 
     								  </c:if>
-
-									  
+									</div>
+										
+										<div class="col-md-3">
 									 <c:if test="${empty allEmployeeDto.knowAugWebsite}">	
      									 <label><input type="checkbox" id="Website" name="knowAugWebsite" value="Website"><spring:message code="employee.website"></spring:message></label>
       									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="${please} ${enter} <spring:message code="employee.website"></spring:message>" value="${allEmployeeDto.descriptionWebsite}">
@@ -551,7 +546,9 @@
       									
     								  </c:if>
 									
+									 	 </div>
 									  
+									  <div class="col-md-3">
 									  <c:if test="${empty allEmployeeDto.knowAugFriend}">	
      									 <label><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend"><spring:message code="employee.friend"></spring:message></label>
       									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="${please} ${enter} <spring:message code="employee.friend"></spring:message>" value="${allEmployeeDto.descriptionFriend}">
@@ -564,7 +561,12 @@
       									
     								  </c:if>
 									    
+									  </div>
 									    
+							 </div>
+									    
+									 <div class="col-md-12">
+									     <div class="col-md-12">
 									  <c:if test="${empty allEmployeeDto.knowAugOther}">	
 									    <label><input type="checkbox" id="Other" name="knowAugOther" value="Other"><spring:message code="employee.other"></spring:message></label>
       									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${please} ${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
@@ -574,24 +576,34 @@
 									    <label><input type="checkbox" id="Other" name="knowAugOther" value="Other" checked="checked"><spring:message code="employee.other"></spring:message></label>
       									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${please} ${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
     								  </c:if>
-									    			 
-      									 
-      							    </div>
-								</div>
-    						</div>	
-					
+									    </div>		 
+      								</div>
+      								
+      								
+						</div>
+    									
+			
 	        </div>
 	        
+	        <div class="row">
+	       <div class="col-md-12">
+	        <label> <spring:message code="employee.doyouknow"></spring:message> :</label>
+	       </div>
+	       </div>
 	        
-	         <div class="col-md-12">
-	         		
-							<div class="form-group">
-								<div class="col-md-6">
-									<label> <spring:message code="employee.doyouknow"></spring:message> :</label>
+	        <div class="row">
+	    
+						<div class="form-group">
+							<div class="col-md-12">
+								<div class="col-md-1">
+									
 									<div class="radio">
 									<c:if test="${ empty allEmployeeDto.knowEmployedYes}">	
      									  <label><input type="radio" id="Yes" name="knowEmployed[]" value="Yes"><spring:message code="employee.yes"></spring:message></label>
     								</c:if>
+    								</div>
+    								</div>
+    								<div class="col-md-11">
     								<c:if test="${not empty allEmployeeDto.knowEmployedYes}">	
 	    								<c:if test="${allEmployeeDto.knowEmployedYes=='Yes'}">	
 	     									  <label><input type="radio" id="Yes" name="knowEmployed[]" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
@@ -599,10 +611,12 @@
     								</c:if>
      									 <input type="text" class="form-control" id="descriptionYes" name="descriptionYes" placeholder="${please} ${enter} <spring:message code="employee.pleasewrite"></spring:message>" value="${allEmployeeDto.descriptionYes}">
     								</div>
+    								</div>
     								
     								
-    								
-    								
+    						<div class="col-md-12">
+									     <div class="col-md-12">
+									     
     								<div class="radio">
     								  <c:if test="${ empty allEmployeeDto.knowEmployerNo}">	
      									 <label><input type="radio" id="No" name="knowEmployed[]" value="No"><spring:message code="employee.no"></spring:message></label>
@@ -614,10 +628,15 @@
     								   </c:if>
     								  </c:if>
     								</div>
-								</div>
-    						</div>	
-					
-	        </div>
+									     </div>
+									     </div>
+							
+						</div>
+				</div>
+	        
+	        
+	        
+	  
 	        
 	        <div class="col-md-12">
 	         		
@@ -709,7 +728,7 @@
     						</div>	
 					
 	        </div>
-	        
+	       
 	        
 	         <div class="col-md-12">
 	         		
