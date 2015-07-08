@@ -46,9 +46,11 @@
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_HR')">
 	<div align="right">
 	<f:form action="${pageContext.request.contextPath}/employee" method="POST" role="form">
+		<div class="form-group">
 		<button type="submit" class="btn btn-primary btn-md">
  	 	<spring:message code="label.add" />
 		</button>
+		</div>
 	</f:form>
 	</div> 
 	</sec:authorize>
