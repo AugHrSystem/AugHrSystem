@@ -575,7 +575,7 @@
 
 
 
- <table id="tableResult"> 
+ <table id="tableResult" class="dataTable stripe"> 
 	    <thead>
             <tr> 
                 <th><spring:message code="site.startDate" var="startDate"/>${startDate }</th>

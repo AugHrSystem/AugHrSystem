@@ -186,7 +186,7 @@
         </div>
         </div>
         <div id="outputAddress">
-	       <table id="tbResult" class ="table">
+	       <table id="tbResult" class ="dataTable stripe">
 						<thead>
 							<tr>
 							    <th>Id</th>

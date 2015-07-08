@@ -32,7 +32,7 @@
 					</div>
 			</div>	
 				<div>
-					<table id="tbResult" class="table" class="form-group">
+					<table id="tbResult" class="table" class="dataTable stripe">
 							<thead>
 								<tr>
 									<th><spring:message code="reward.reward.name" /></th>

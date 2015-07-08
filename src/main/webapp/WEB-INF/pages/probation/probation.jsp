@@ -35,7 +35,7 @@
 				<br>
 			</div>
 		</div>
-		<div id="outputajax" class="form-group">		
+		<div id="outputajax" class="dataTable stripe">		
 		<table id="tdResult">
 			<thead>
 				<tr>

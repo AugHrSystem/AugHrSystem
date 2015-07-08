@@ -31,7 +31,7 @@
 					</div>
 			</div>	
 				<div>
-				<table id="tbResult" class="table">
+				<table id="tbResult" class="dataTable stripe">
 					<thead>					
 						<tr>								
 							<th><spring:message code="punish.dateform" /></th>

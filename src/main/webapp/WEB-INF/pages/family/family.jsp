@@ -542,7 +542,7 @@
 </div>
 
 
- <table id="tableResult" class="table table-striped table-bordered">
+ <table id="tableResult" class="dataTable stripe">
 	    <thead>
             <tr> 
                 

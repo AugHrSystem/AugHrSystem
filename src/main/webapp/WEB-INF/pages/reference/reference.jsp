@@ -13,6 +13,7 @@
   margin-bottom: 0px;
   content:"*";
   color:red;
+    
 }
 </style>
 
@@ -30,7 +31,7 @@
 			</div>
 		</div>	
 		<div>
-				<table id="tbResult" class="table" class="form-group">
+				<table id="tbResult" class="dataTable stripe" class="form-group">
 					<thead>	
 						<tr>								
 							<th><spring:message code="reference.fullname" /></th>
@@ -123,6 +124,7 @@
 			"pagingType": "simple_numbers",
 			"ordering": false,
 			"info": false
+			
 		});
 		
 		

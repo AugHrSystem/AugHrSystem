@@ -27,7 +27,7 @@
 
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
-		<table id="tdResult">
+		<table id="tdResult" class="dataTable stripe">
 			<thead>
 				<tr>
 					<th><spring:message code="label.id" /></th>
