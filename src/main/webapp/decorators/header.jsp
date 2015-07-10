@@ -279,6 +279,10 @@ table.dataTable.no-footer {
     background-color: #ff9900;
 }
 
+.dl-horizontal dt {
+    white-space: normal;
+}
+
 </style>
 
 <nav class="navbar navbar-defaults navbar-fixed-top" id="top-bar" role="navigation">

@@ -7,7 +7,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
+<link href="<c:url value="/css/header.css" />" rel="stylesheet" type="text/css">
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
 
@@ -950,14 +950,14 @@
 
 			</div>
 			</div>
-			
+			</div>
 			<div class="row">
 			<div class="col-md-12">	
 			<div class="form-group">
 				<div class="col-md-6">
 									<label> <spring:message code="official.positionAppliedFor"></spring:message> :</label> 
 									<input type="text" class="form-control" id="positionAppliedFor" name="positionAppliedFor" placeholder="${please} ${enter} <spring:message code="official.position"></spring:message>" value="${allEmployeeDto.positionAppliedFor}">
-								</div>
+				</div>
 								
 
 				<div class="col-md-6">
@@ -967,13 +967,13 @@
 				<%-- <div class="col-md-6">
 									<label> Salary Expected :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="Enter Salary" value="${allEmployeeDto.salaryExpected}">
  				--%>
-								</div>				
+				</div>				
 							
-							</div>
+			</div>
 	   
-	    </div>
-	    </div>
-	    </div>
+	    	</div>
+	    	</div>
+	   
 	     
 	     
 <!--------------------------------------------------  Official link to table--------------------------------- --> 	    
