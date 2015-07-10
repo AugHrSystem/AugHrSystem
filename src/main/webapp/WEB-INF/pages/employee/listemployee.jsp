@@ -35,8 +35,7 @@
 
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
-		<table id="tdResult" class="dataTable stripe">
-
+		<table id="tdResult" class="dataTable stripe table-bordered">
 			<thead>
 				<tr>
 					<th><spring:message code="label.id" /></th>
@@ -87,7 +86,14 @@
 var dt;
 var empId;
 	$(document).ready(function() {
-    	dt=$("#tdResult").dataTable();
+		
+		dt=$("#tdResult").dataTable({ 
+			"ordering": false,
+// 			"dom": '<"toolbar">frtip'
+		});
+  	
+// 		 $("div.toolbaCr").html('<b>Custom tool bar! Text/images etc.</b>');
+		 
     	var button = $(event.relatedTarget);
 		empId = button.data("empid"); 
  		listAll();

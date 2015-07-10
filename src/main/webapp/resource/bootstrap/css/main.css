@@ -27,25 +27,6 @@
     display: inline-block;
 }
 
-body {
-	background-image: url(${pageContext.request.contextPath}/resource/images/BG_W.jpg);
-	-moz-background-size: cover;
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: top center !important;
-	background-repeat: no-repeat !important;
-	background-attachment: fixed;
-} 
-
-#imagePreview2 {
-    width: 150px;
-    height: 150px;
-    background-position: center;
-    background-size: cover;
-    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
-    display: inline-block;
-}
-
 .legend2 { font-size: 16px;}
 
 .img-flag{
@@ -106,4 +87,69 @@ table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
 
 table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
   background-color: #e7e7e7;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+  padding: 8px 10px;
+  font-size: 18px;
+  color: #414141;
+}
+
+table.dataTable thead th, table.dataTable tfoot th {
+  font-weight: bold;
+  background-color: #ababab;
+  font-size: 16px;
+  color : #ffffff;
+}
+
+div#tdResult_length {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #292929;
+}
+
+div#tdResult_filter {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #292929;
+}
+
+div#tdResult_info {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #292929;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  z-index: 2;
+  color: #ffffff;
+  cursor: default;
+  background-color: #ababab;
+  border-color: #ababab;
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: #ebebeb;
+  font-size: 14px;
+  color: #747474;
+}
+
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #ebebeb;
+  font-size: 14px;
+  color: #747474;
 }

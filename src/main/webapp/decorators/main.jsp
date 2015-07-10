@@ -62,12 +62,13 @@
 <script src="<c:url value="/resource/pnotify/js/pnotify.custom.min.js" />"></script>
 <link href="<c:url value="/resource/pnotify/css/pnotify.custom.min.css" />" rel="stylesheet"	media="all">
 
-<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
-
+<!-- Sweet-alert -->
 <script src="<c:url value="/resources/resource/sweetalert/js/sweet-alert.js" />"></script>
 <link href="<c:url value="/resources/resource/sweetalert/css/sweet-alert.css" />" rel="stylesheet" media="all">
 
- 
+<!-- Main -->
+<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
+
  
 
 
@@ -77,16 +78,18 @@
 <style >
 
 body {
-background-image: url(${pageContext.request.contextPath}/resource/images/BG_W.jpg);
--moz-background-size: cover;
--webkit-background-size: cover;
-background-size: cover;
-background-position: top center !important;
-background-repeat: no-repeat !important;
-background-attachment: fixed;
-padding-top: 95px;
+	background-image: url(${pageContext.request.contextPath}/resource/images/BG_W.jpg);
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: top center !important;
+	background-repeat: no-repeat !important;
+	background-attachment: fixed;
+	padding-top: 95px;
 } 
+
 </style>
+
 <script type="text/javascript">
 
 
@@ -138,6 +141,7 @@ $.ajaxSetup({
 
 
 </script>
+
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
