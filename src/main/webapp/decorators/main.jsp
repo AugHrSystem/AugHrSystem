@@ -84,10 +84,9 @@ background-size: cover;
 background-position: top center !important;
 background-repeat: no-repeat !important;
 background-attachment: fixed;
+padding-top: 95px;
 } 
 </style>
-
-
 <script type="text/javascript">
 
 
@@ -139,8 +138,6 @@ $.ajaxSetup({
 
 
 </script>
-
-
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>

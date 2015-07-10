@@ -8,15 +8,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link href="<c:url value="/css/header.css" />" rel="stylesheet" type="text/css">
+<style>
+.form{
+	font-family: Dosis-Regular;
+	font-size:18px;
+	border: 0px solid #eee;
+	background-color:#eee;
+	padding: 5px;
+	
+}
+</style>
+<div class="form">
 <f:form method="post" commandName="listemployee"  role="form">
 		<!-- <ol class="breadcrumb">
 			<li role="presentation" class="active"><a href="#">Home</a></li>
  			<li role="presentation"><a href="employee.jsp" data-toggle="modal">Add Employee</a></li>
 		</ol> -->
-				
-
-		<h2><spring:message code="employee.name" /></h2>
 		<br/>
 		
 		<c:if test="${ not empty msgerror }">
@@ -28,6 +36,7 @@
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult" class="dataTable stripe">
+
 			<thead>
 				<tr>
 					<th><spring:message code="label.id" /></th>
@@ -41,7 +50,8 @@
 			<tbody></tbody>
 		</table>
 		</div>
-</f:form>			
+</f:form>
+</div>		
 	<!-- Button trigger modal -->
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_HR')">
 	<div align="right">

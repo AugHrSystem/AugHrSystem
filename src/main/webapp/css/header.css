@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Dosis-Bold';
+    src: url('../resource/fonts/Dosis-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Dosis-Regular';
+    src: url('../resource/fonts/Dosis-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Dosis-SemiBold';
+    src: url('../resource/fonts/Dosis-SemiBold.ttf') format('truetype');
+}
