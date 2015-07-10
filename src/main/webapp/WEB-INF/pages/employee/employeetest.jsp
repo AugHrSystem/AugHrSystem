@@ -728,43 +728,73 @@
     						</div>	
 					
 	        </div>
-	       
-	        
-	         <div class="col-md-12">
-	         		
-							<div class="form-group">
-							<br></br>
-							<div class="col-md-12">
-							<label> <spring:message code="employee.mayinquiry"></spring:message> :</label>
-							</div>	
-								<div class="col-md-6">
-									<div class="radio">
-									<c:if test="${ empty allEmployeeDto.previousEmployerYes}">	
-     									 <label><input type="radio" id="previousEmployerYes" name="previousEmployer" value="Yes"><spring:message code="employee.yes"></spring:message></label>
-    								  </c:if>
-    								  <c:if test="${not empty allEmployeeDto.previousEmployerYes}">	
-     									  <label><input type="radio" id="previousEmployerYes" name="previousEmployer" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>   									       									 
-    								   </c:if>
-    								</div>
-    								
-    								<div class="radio">
-    								  <c:if test="${ empty allEmployeeDto.previousEmployerNo}">	
-     									   <label><input type="radio" id="previousEmployerNo" name="previousEmployer" value="No"><spring:message code="employee.no"></spring:message></label>
-    								  </c:if>
-    								  <c:if test="${not empty allEmployeeDto.previousEmployerNo}">	
-     									     <label><input type="radio" id="previousEmployerNo" name="previousEmployer" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
-    								   </c:if>
-     									
-     									 <input type="text" class="form-control" id="previousEmpreasonsNo" name="previousEmpreasonsNo" placeholder="${please} ${enter} <spring:message code="employee.givethereason"></spring:message>" value="${allEmployeeDto.previousEmpreasonsNo}">
-    									
-    								</div>
-								</div>
-    						</div>	
-					
-	        </div>
 
-	  		         
-	 <!---------------------------------------------------------- Start Official--------------------------------------------->   
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<label> <spring:message code="employee.mayinquiry"></spring:message>
+				:
+			</label>
+		</div>
+	</div>
+
+
+	<div class="row">
+
+		<div class="form-group">
+
+			<div class="col-md-12">
+				<%-- <label> <spring:message code="employee.mayinquiry"></spring:message> :</label>
+							</div>	 --%>
+				<div class="col-md-12">
+					<div class="radio">
+						<c:if test="${ empty allEmployeeDto.previousEmployerYes}">
+							<label><input type="radio" id="previousEmployerYes"
+								name="previousEmployer" value="Yes"> <spring:message
+									code="employee.yes"></spring:message></label>
+						</c:if>
+						<c:if test="${not empty allEmployeeDto.previousEmployerYes}">
+							<label><input type="radio" id="previousEmployerYes"
+								name="previousEmployer" value="Yes" checked="checked"> <spring:message
+									code="employee.yes"></spring:message></label>
+						</c:if>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-12">
+				<div class="col-md-1">
+					<div class="radio">
+						<c:if test="${ empty allEmployeeDto.previousEmployerNo}">
+							<label><input type="radio" id="previousEmployerNo"
+								name="previousEmployer" value="No"> <spring:message
+									code="employee.no"></spring:message></label>
+						</c:if>
+					</div>
+				</div>
+				<div class="col-md-11">
+					<c:if test="${not empty allEmployeeDto.previousEmployerNo}">
+						<label><input type="radio" id="previousEmployerNo"
+							name="previousEmployer" value="No" checked="checked"> <spring:message
+								code="employee.no"></spring:message></label>
+					</c:if>
+
+					<input type="text" class="form-control" id="previousEmpreasonsNo"
+						name="previousEmpreasonsNo"
+						placeholder="${please} ${enter} <spring:message code="employee.givethereason"></spring:message>"
+						value="${allEmployeeDto.previousEmpreasonsNo}">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!---------------------------------------------------------- Start Official--------------------------------------------->   
 	      
 	    <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
 			<h2 style="border-bottom: 1px solid #8f8f8f;"><spring:message code="official.name"></spring:message>
