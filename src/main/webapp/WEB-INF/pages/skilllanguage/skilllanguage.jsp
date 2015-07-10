@@ -10,27 +10,6 @@
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
 
-<!-- jquery-->
-<%-- <script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.2.js" />"></script> 
-<script src="<c:url value="/resources/resource/bootstrap/js/jquery.validate.js" />"></script>
-<script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script> --%>
-
-<!-- validate -->
-<%-- <link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>--%>
-
-<!-- bootstrap version 3.3.4-->
-<%-- <link href="<c:url value="/resources/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/resource/bootstrap/js/bootstrap.js" />"></script> --%>
-
-
-<!-- datatable version 1.10.6 -->
-<%-- <script src="<c:url value="/resources/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/resource/bootstrap/js/dataTables.bootstrap.js" />"></script>--%>
-
 
 <style type="text/css">
 
@@ -142,7 +121,8 @@
 		  	    		}
 		  	    		});
 		  	    	});
-		  	    	  $("#outputajax").text(testStatus); 
+		  	    	  //$("#outputajax").text(testStatus);
+		  	    	  myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
 		  	     }  
 		  	    }); 
 		  	   
@@ -319,9 +299,11 @@
 			  	      error : function(data,testStatus,jqXHR) {  
 			  	           
 			  	    	  
-			  	    	   $('#addModal').modal('hide');			  	 
-			  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); 
+			  	    	   //$('#addModal').modal('hide');			  	 
+			  	    	   //$("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); 
 			  	    	   //$('#formAddUpdate').bootstrapValidator('validate');
+			  	    	   
+			  	    	   myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
 			  	     }  
 			  	    });   	
 		   }
@@ -431,8 +413,8 @@
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  	
 		  	    	  
-		  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	
+		  	    	//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	    	myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
 		  	      }  
 		  	    }); 
 		  	   
@@ -550,8 +532,9 @@
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  	
 		  	    	  
-		  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	    	//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
 		  	    	//$('#formAddUpdate').bootstrapValidator('validate');
+		  	    	myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
 	
 		  	      }  
 		  	    }); 
@@ -604,13 +587,25 @@
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  	
 		  	    	  
-		  	    	$('#deleteModal').modal('hide');
-		  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	
+		  	    	//$('#deleteModal').modal('hide');
+		  	    	//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
+		  	    	myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
 		  	      }  
 		  	    }); 
 		  	   
 		    }
+		   
+		   
+		   
+		   var myRedirect = function(redirectUrl,err,testStatus) {
+	        	var form = $('<form id="form" action="' + redirectUrl + '" method="post">' +
+	        	'<input type="hidden" name="error" value="'+err+'" />' +
+	        	'<input type="hidden" name="msgThrowable" value="'+testStatus+'" />' +
+	        	'</form>');
+	        	$('body').append(form);
+	        	$('#form').submit();
+	        };
+	      
 		   
 		   
 		   
@@ -705,10 +700,11 @@
             <f:form id="formAddUpdate" name="skillLanguageForm" method="post" commandName="skillLanguage" class="form-horizontal" role="form">	      	 
 	      
 	
-		    <div class="form-group form-group-sm">
-		   
-		           
-		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="masSkillLanguage" >
+		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	           
+		      <div class="row">  
+		      
+		        <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label required" for="masSkillLanguage" >
 			            <spring:message code="skilllanguage.name.lang" />
 :
 			    </label>	 		
@@ -730,48 +726,56 @@
    						<f:option value="-1" label="${skill }"/>
  					    <f:options items="${masSkillLanguageList}" itemValue="id" itemLabel="skillLanguageName"/>
  					    </f:select>
- 					    
-						
-								
+							
 			     </div>	
+			 </div>
 		   
 		   </div>
 		   
-		   
-		   
-		<div class="form-group form-group-sm">
-			    
-			     
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			          ${Speaking}:
-			     </label>	 		
 
+		   <spring:message code="skilllanguage.Excellent" var="Excellent"/>
+		   <spring:message code="skilllanguage.Good" var="Good"/>
+		   <spring:message code="skilllanguage.Fair" var="Fair"/>
+		   
+		   
+		   
+		   
+		   
+		<div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			  
+			  <div class="row">  
+		     		 <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label required" >
+				          ${Speaking}:
+				     </label>	 		
+			  
+	 
+				    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	 
 
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				       <label class="radio-inline" for=abilitySpeaking > 
-		 			     	<f:radiobutton id="excSpeaking" name="speaking" path="abilitySpeaking" value="Excellent"/>
-		 			  		${Excellent}
-		 			   </label>
-		 			 <label class="radio-inline" for="abilitySpeaking"> 
-		 			     <f:radiobutton id="goodSpeaking" name="speaking" path="abilitySpeaking" value="Good"/>
-				     		${Good}
-				     </label> 
-				     <label class="radio-inline" for="abilitySpeaking"> 
-		 			     <f:radiobutton id="fairSpeaking" name="speaking" path="abilitySpeaking" value="Fair" checked="true"/>
-				    		${Fair}
-				     </label> 	
-				     			     		 
-				  </div> 
-		           
-		   </div>
+							     <label class="radio-inline" for=abilitySpeaking > 
+					 			     	<f:radiobutton id="excSpeaking" name="speaking" path="abilitySpeaking" value="Excellent"/>
+					 			  		${Excellent}
+					 			 </label>
+					 			 <label class="radio-inline" for="abilitySpeaking"> 
+					 			     <f:radiobutton id="goodSpeaking" name="speaking" path="abilitySpeaking" value="Good"/>
+							     		${Good}
+							     </label> 
+							     <label class="radio-inline" for="abilitySpeaking"> 
+					 			     <f:radiobutton id="fairSpeaking" name="speaking" path="abilitySpeaking" value="Fair" checked="true"/>
+							    		${Fair}
+							     </label> 	
+						   	     		 
+					 </div> 
+	 		 </div>
+         
+		 </div>
 		   
 		   
 		   
 		   
-		   <div class="form-group form-group-sm">
+		   <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			    
-			     
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >			        
+			   <div class="row">  
+			     <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label required" >			        
 			          ${Writing}:
 			     </label>	 		
 
@@ -791,15 +795,15 @@
 				     </label> 	
 				     			     		 
 				  </div> 
-		           
+		      </div>
 		   </div>
 		   
 		   
 		   
-		     <div class="form-group form-group-sm">
+		     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			    
-			     
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
+			  <div class="row">
+			     <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label required" >
 			           ${Reading}:
 			     </label>	 		
 
@@ -819,39 +823,43 @@
 				     </label> 	
 				     			     		 
 				  </div> 
+			  </div>
 		           
 		   </div>
 		   
 		   
 		   
-		    <div class="form-group form-group-sm">
+		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			    
+			     <div class="row">
 			     
-			     <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" >
-			          ${Understanding}:
-			     </label>	 		
-
-
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				       <label class="radio-inline" for="abilityUnderstanding" > 
-		 			     	<f:radiobutton id="excUnderstanding" name="understanding" path="abilityUnderstanding" value="Excellent"/>
-		 			  		${Excellent}
-		 			   </label>
-		 			 <label class="radio-inline" for="abilityUnderstanding"> 
-		 			     <f:radiobutton id="goodUnderstanding" name="understanding" path="abilityUnderstanding" value="Good"/>
-				     		${Good}
-				     </label> 
-				     <label class="radio-inline" for="abilityUnderstanding"> 
-		 			     <f:radiobutton id="fairUnderstanding" name="understanding" path="abilityUnderstanding" value="Fair"  checked="true"/>
-				    		${Fair}
-				     </label> 	
-				     			     		 
-				  </div> 
+				     <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label required" >
+				          ${Understanding}:
+				     </label>	 		
+	
+	
+				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+					       <label class="radio-inline" for="abilityUnderstanding" > 
+			 			     	<f:radiobutton id="excUnderstanding" name="understanding" path="abilityUnderstanding" value="Excellent"/>
+			 			  		${Excellent}
+			 			   </label>
+			 			 <label class="radio-inline" for="abilityUnderstanding"> 
+			 			     <f:radiobutton id="goodUnderstanding" name="understanding" path="abilityUnderstanding" value="Good"/>
+					     		${Good}
+					     </label> 
+					     <label class="radio-inline" for="abilityUnderstanding"> 
+			 			     <f:radiobutton id="fairUnderstanding" name="understanding" path="abilityUnderstanding" value="Fair"  checked="true"/>
+					    		${Fair}
+					     </label> 	
+					     			     		 
+					  </div> 
+				  
+				  </div>
 		           
 		   </div>
 		  
 		  
-		      <div class="form-group" align="center">
+		      <div align="center">
 		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
 		     	<button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
 		      </div>

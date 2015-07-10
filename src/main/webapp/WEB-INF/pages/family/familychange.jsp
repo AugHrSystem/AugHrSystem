@@ -9,34 +9,8 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
-<%-- 
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<!-- jquery-->
-<script src="<c:url value="/resources/resource/bootstrap/js/jquery-1.11.2.js" />"></script> 
-<script src="<c:url value="/resources/resource/bootstrap/js/jquery.validate.js" />"></script>
-<script src="<c:url value="/resources/resource/bootstrap/js/additional-methods.js" />"></script>
-
-<!-- validate -->
-<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
-
-<!-- bootstrap version 3.3.4-->
-<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/resource/bootstrap/js/bootstrap.js" />"></script>
-
-
-<!-- datatable version 1.10.6 -->
-<script src="<c:url value="/resources/resource/datatable/js/jquery.dataTables.js" />"></script>
-<link href="<c:url value="/resources/resource/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resources/resource/datatable/css/jquery.dataTables.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resources/resource/bootstrap/js/dataTables.bootstrap.js" />"></script> --%>
-
-
+ 
  
 <style type="text/css">
 
@@ -59,15 +33,19 @@
 		
 	
 		
-		/* $("#saveBtn").on("click",function(){
+		$("#saveBtn").on("click",function(){
 			
 			$('#formAdd').bootstrapValidator('resetForm', true);
 
 		});
 		
 		
+		 $('#mobile').mask("999-999-9999",{placeholder:"xxx-xxx-xxxx"});
+
+		
+		
 		 
-		 $("#formAdd").bootstrapValidator({
+		    $("#formAdd").bootstrapValidator({
 			   
 			   message: 'This value is not valid',
 		        //container: 'tooltip',
@@ -129,9 +107,8 @@
 		            },
 		        }
 		 
-    });
+    }); 
 			
-		 $('#mobile').mask("999-999-9999",{placeholder:"xxx-xxx-xxxx"}); */
 		 
 		 $('#tableResult').dataTable({ 
 				"bLengthChange": false,
@@ -142,6 +119,7 @@
 			});
 
 	      dt = $('#tableResult').dataTable();  	
+	
 	      
 	      doFindData();
 	      
@@ -201,6 +179,8 @@
 		  	        		  	        
 		  	     },  
 		  	      error : function(data,testStatus,jqXHR) {  	
+		  	    
+		  	    	  
 		  	    	$(function(){ new PNotify({
 		  	    	    title: 'Error!',
 		  	    	    type: 'error',
@@ -210,7 +190,7 @@
 		  	    		}
 		  	    		});
 		  	    	});
-		  	    	  $("#outputajax").text(testStatus); 
+
 		  	     }  
 		  	    }); 
 		  	   
@@ -233,20 +213,20 @@
 	    		{
 	    			if(idUpdate != null){
 	    				
-	    				$('#formAdd').bootstrapValidator();
-	    				$('#formAdd').data('bootstrapValidator').validate();
-	    				if($('#formAdd').data('bootstrapValidator').isValid()){
-	    				 doEditDataPost(idUpdate);
+	    				  $('#formAdd').bootstrapValidator();
+	    				  $('#formAdd').data('bootstrapValidator').validate();
+	    				  if($('#formAdd').data('bootstrapValidator').isValid()){
+	    				 	doEditDataPost(idUpdate);
 	    				}
 	  		  	        
 	    			}
 	    			else {	    				
 	    				
-	    				//$('#formAdd').bootstrapValidator();
-	    				//$('#formAdd').data('bootstrapValidator').validate();
-	    				//if($('#formAdd').data('bootstrapValidator').isValid()){
+	    				$('#formAdd').bootstrapValidator();
+	    				$('#formAdd').data('bootstrapValidator').validate();
+	    				if($('#formAdd').data('bootstrapValidator').isValid()){
 	    					addFamily();
-	    				//}						
+	    				}						
 	    			}
 	    		});
 	    	  
@@ -256,7 +236,7 @@
 	      
 	      $("#addModal").on("hide.bs.modal", function(event){
 	    	  
-	    	 // $('#formAdd').bootstrapValidator('resetForm', true);
+	    	   $('#formAdd').bootstrapValidator('resetForm', true);
 	    	  
 	      });
 	      
@@ -321,32 +301,7 @@
 		  	    	    doFindData();
 		  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 			    		
-		  	     },  
-		  	    /* statusCode: {
-		            404: function() {
-		                alert("Employee not found");
-		            },
-		            500: function() {
-		                alert("Failed to update Employee skills");
-		            } 
-		        },*/
-		  	      error : function(data,testStatus,jqXHR,xhr,errorThrown,thrownError) {  
-		  	           
-			  	    	//alert(xhr.status);
-			  	        //alert(xhr);
-			  	        //alert('Error: ' +xhr.description); 
-			  	       //var message = $.parseJSON(jqXHR.responseText);
-           			   //alert(textStatus+': '+message.ExceptionMessage);
-						
-           			    alert(jqXHR.responseText);
-
-			  	        alert(thrownError);
-
-		  	    	   $('#addModal').modal('hide');
-		  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-			  	       //$('#formAdd').bootstrapValidator('validate');
-		  	    	  
-		  	     }  
+		  	     }
 		  	    }); 
 		  	    
 		  	   
@@ -354,6 +309,7 @@
 	      
 	      
 	      
+	   
 	      
 	      
 	      
@@ -402,12 +358,7 @@
 		  	    	$('#masRelation').val(data.masRelationTypeId);
 
 		  	    	 
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  
-		  	    	  
-		  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	    	  
-		  	      }  
+		  	     }
 		  	    }); 
    	    	  }
 	
@@ -459,13 +410,7 @@
 		  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 		  	       	     doFindData();		  			 
 		  	        
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  
-				  
-		  	      //$('#formAdd').bootstrapValidator('validate');
-		  	      $('#myModalUpdate').modal('hide');	   
-		  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');  
-		  	     }  
+		  	     }
 		  	    }); 	  	    
 		    }
 	      
@@ -510,11 +455,7 @@
 		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
 	  	       	    doFindData();		  	      
 		  	    	 
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  	  	      
-					 $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-
-		  	     }  
+		  	     }
 		  	    }); 
 		  	   
 		    }
@@ -555,6 +496,8 @@
 	
 </script>
 
+
+<div id="aa">
 <div class="row">
 	<div class="col-md-6">
 		<h2><spring:message code="family.name" /></h2>
@@ -596,7 +539,7 @@
 	   </tbody>
    </table>
 </div>   
-
+</div>
  
 
    
@@ -621,26 +564,40 @@
 		   
 	
 		   
-	     <div class="form-group form-group-sm">
+	     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-6 col-xs-12">
 			    
 			<div class="row">
 			        
-			      <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3 control-label required" >
+			      <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label required" >
 			           <spring:message code="label.firstname" />: 
 			      </label>	 		
 			     
 				     
-			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">		  
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		  
 			     		<f:input  id="firstName" name="firstName" path="firstName" cssClass="form-control required" placeholder="First Name" />   		
 			     </div>
 		  
 		  
-		  	     <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" >
+		  	   
+		  	</div>
+		   
+		   </div>
+	     
+	     
+	     
+	     
+	     
+	      <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			    
+			<div class="row">
+			 
+		  
+		  	     <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label required" >
 			     		 <spring:message code="label.lastname" />:
 			     </label>	 		
 			    
 			     
-			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">
 			     		<f:input id="lastName" path="lastName" cssClass="form-control required" placeholder="Last Name" />		     		
 			     </div>
 		  
@@ -650,11 +607,10 @@
 	     
 	     
 	     
-	     
-	     <div class="form-group form-group-sm">
+	     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			    
 			<div class="row">
-			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" >
+			     <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label required" >
 			     	  <spring:message code="family.gender" />:
 			     </label>	 		
 
@@ -674,27 +630,36 @@
 		   
 		   
 		   
-		    <div class="form-group form-group-sm">
+		   
+		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			    
 			<div class="row">
 			        
-			      <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="age" >
+			      <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label required" for="age" >
 			       	 <spring:message code="family.age" />:
 			     </label>	 		
 			    
 			     
-			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">		    
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		    
 						<f:input  type="number" id="age" name="age" path="age" cssClass="form-control required" placeholder="Age" />		
 			     </div>		   
-		  
+
+		  	</div>
+		   
+		   </div>
 		   
 		   
-			    <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="mobile" >
+		   
+		   <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			    
+			<div class="row">
+			 
+			    <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label required" for="mobile" >
 			    	 <spring:message code="label.mobile" />:
 			    </label>	 		
 
 			    
-			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">		     		
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 			     		<f:input  type="tel" id="mobile" name="mobile" path="mobile" cssClass="form-control required" placeholder="Mobile" />
 			     </div>		   
 		  
@@ -705,10 +670,10 @@
 		   
 		   
 		   
-		   <div class="form-group">
+		   <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 		      <div class="row">        
-			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="address" >
+			     <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label required" for="address" >
 			           <spring:message code="label.address" />:
 			     </label>	 		
 			    
@@ -726,27 +691,37 @@
 		   
 		   
 		   
-		   <div class="form-group form-group-sm">
+		   <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 		     <div class="row">
-			     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="occupation">
+			     <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label" for="occupation">
 			           <spring:message code="family.occupation" />:
 			     </label>	 		
 			    
 			     
-			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 			     		<f:input id="occupation" name="occupation" path="occupation" cssClass="form-control" placeholder="Occupation" />	     		
 			     		
 			     </div>		   
 		   
-		 
-		         
-			     <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label" for="position">
+			 </div>  
+		   
+		   </div>
+		   
+		   
+		   
+		   
+		   
+		   <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		   
+		     <div class="row">
+	         
+			     <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label" for="position">
 			     		<spring:message code="family.position" />:
 			     </label>	 		
 			    
 			     
-			     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
+			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 			     		<f:input id="position" name="position" path="position" cssClass="form-control" placeholder="Positon" />	     		
 			     	
 			     </div>		 
@@ -754,15 +729,21 @@
 		   
 		   </div>
 		   
+		   
+		   
+		   
+		   
+		   
+		   
 		   <spring:message code="family.enter.Relation" var="Relation"/>
 		   
 		   
 		   
-		    <div class="form-group form-group-sm">
+		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 		           
 		      <div class="row">
-		        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="masRelation" >
+		        <label class="col-lg-3 col-md-3 col-sm-4 col-xs-4 control-label required" for="masRelation" >
 		        	   <spring:message code="family.relation" />:
 			          
 			    </label>	 		

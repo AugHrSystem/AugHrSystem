@@ -1,38 +1,31 @@
 package com.aug.hr.controller;
 
-import groovy.json.JsonException;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javassist.tools.web.BadHttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
+import javax.validation.ConstraintViolationException;
 
+import org.apache.http.HttpException;
 import org.apache.log4j.Logger;
-import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
-import org.apache.sling.commons.json.JSONObject;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,25 +33,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.aug.exception.CustomExceptionMassageJson;
+import com.aug.exception.CustomException;
 import com.aug.hr.dto.services.FamilyDtoService;
 import com.aug.hr.entity.Family;
-import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasRelationType;
 import com.aug.hr.entity.dto.FamilyDto;
 import com.aug.hr.entity.dto.Family2Dto;
-import com.aug.hr.entity.dto.SkillLanguageDto;
 import com.aug.hr.entity.editor.FamilyEditor;
-import com.aug.hr.entity.form.FamilyForm;
-import com.aug.hr.entity.validator.FamilyValidator;
+//import com.aug.hr.entity.validator.FamilyValidator;
 import com.aug.hr.services.FamilyService;
 import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.MasRelationTypeService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 
 
 
@@ -72,8 +60,8 @@ public class FamilyController {
 	private FamilyService familyService;
 	@Autowired
 	private FamilyEditor familyEditor;
-	@Autowired
-	private FamilyValidator familyValidator;
+	//@Autowired
+	//private FamilyValidator familyValidator;
 	@Autowired
 	private FamilyDto familyDto;
 	@Autowired
@@ -82,6 +70,7 @@ public class FamilyController {
 	private MasRelationTypeService masRelationService;
 	@Autowired
 	private FamilyDtoService familyDtoServiceTest;
+	
 	
 	
 	@InitBinder
@@ -100,16 +89,12 @@ public class FamilyController {
 			@ModelAttribute(value = "family") Family family,
 			ModelMap model, 
 			@PathVariable("id") Integer id, 
-			@ModelAttribute Family2Dto family2Dto){
+			@ModelAttribute Family2Dto family2Dto)   throws SQLException,Exception,BadHttpRequest,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
 		//init page for display page 
 		
 		logger.info("Welcome to employee family(list) locale: " + locale);
-		//List<Family> familyList = familyService.findFamilyByEmployeeId(1);
 		List<MasRelationType> masRelationTypeList = masRelationService.findAll();
-		//Hibernate.initialize(familyList);
-		//System.out.println(familyList);
-		//model.addAttribute("familyList", familyList);
 		model.addAttribute("family", family);
 		model.addAttribute("masRelationTypeList", masRelationTypeList);
 		
@@ -125,7 +110,7 @@ public class FamilyController {
 	public @ResponseBody List<Family2Dto> findEmpFamily(Locale locale,
 		    //@ModelAttribute(value = "family") Family family,
 			ModelMap model,
-			@PathVariable("id") Integer id){
+			@PathVariable("id") Integer id) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 			
 		List<Family2Dto> familyDtoTest = familyDtoServiceTest.listFamily(new Integer(id));
 		return familyDtoTest;
@@ -135,8 +120,7 @@ public class FamilyController {
 	
 	
 	
-	//@ExceptionHandler(CustomExceptionMassageJson.class)
-    //@ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "Really really not found")
+
 	@RequestMapping(value = "/family/add", method =  RequestMethod.POST)
 	public @ResponseBody Family2Dto Add(Locale locale,
 			    @RequestBody Family2Dto familyDto,
@@ -145,33 +129,49 @@ public class FamilyController {
 				HttpServletRequest request,
 				HttpServletResponse response,
 				Exception ex, 
-				WebRequest webRequest) throws SQLException{
+				WebRequest webRequest) throws SQLException,Exception,BadHttpRequest,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException,CustomException{
 		
-		     //throw new SQLException("new error null"); 
-		
-		    /* response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-	         response.getWriter().write("aa");
-	         response.flushBuffer();*/
-		
-		 
-		   /*CustomExceptionMassageJson customMassage = new CustomExceptionMassageJson();
-			
-			  try{
-				  familyService.createFindMasRelationAndEmployee(familyDto);
-			  }catch(Exception e){
-				  throw new Exception("err");
-				  //customMassage.setStatus("fail");
-				  //customMassage.setErrMsg("error");
-				  
-			  }
-		
-			 //familyService.saveByNameQuery(familyDto);
-		
-	    	*/
-		
-		
-		familyService.createFindMasRelationAndEmployee(familyDto);
-		return familyDto;
+		      
+		        //familyService.saveByNameQuery(familyDto);
+		        
+				int numberOfChar = 0;
+		       
+			        
+	            if(familyDto.getFirstName().isEmpty()||familyDto.getLastName().isEmpty()||familyDto.getGender().isEmpty()||
+	            		familyDto.getAge()==null||familyDto.getMobile().isEmpty()||familyDto.getAddress().isEmpty()||
+	            		familyDto.getMasRelationTypeId()==null){
+	            	
+	            	throw new CustomException("Business Error", "It have some or Any field is required!");
+	            	
+	            }else{
+	            	
+	            
+	            	if(familyDto.getMobile().length()!=10){
+	    
+	            			throw new CustomException("Business Error", "length of mobile is not equal 10!");
+
+	            	}else if(familyDto.getMobile().length()==10){
+	            		
+	            		for (int i = 0; i < familyDto.getMobile().length(); i++) {
+		            		   if (Character.isLetter(familyDto.getMobile().charAt(i))) {
+		            			   System.out.println();
+		            			   numberOfChar=numberOfChar+1;
+		            		   }
+		            		   
+		            	   }
+		            		
+
+	            		if(numberOfChar!=0){
+	            			
+	            			throw new CustomException("Business Error", "mobile must be contain digit!");	            			
+	            		}else{
+	    	            	familyService.createFindMasRelationAndEmployee(familyDto);	
+	            		}
+	            	}
+	            	
+	            }
+	            
+		        return familyDto;
 		
 		
 	}
@@ -181,11 +181,9 @@ public class FamilyController {
 	@RequestMapping(value = "/family/initedit", method = RequestMethod.POST)
 	public @ResponseBody Family2Dto initEdit(Locale locale,
 							@RequestBody Family2Dto family,
-							ModelMap modal) throws JSONException{
+							ModelMap modal) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
 	    logger.info("init edit");
-	
-        
 		return familyService.findForInitEdit(family);
 		
 	}
@@ -197,13 +195,52 @@ public class FamilyController {
 	
 	@RequestMapping(value = "/family/edit", method = RequestMethod.POST)
 	public @ResponseBody Family2Dto Edit(Locale locale,
-							@RequestBody Family2Dto familyDtoTest,
-							ModelMap modal) throws JSONException{
+							@RequestBody Family2Dto familyDto,
+							ModelMap modal) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException,CustomException{
 		
 	    logger.info("edit");
 
-	    familyService.updateFindMasRelationAndEmployee(familyDtoTest);
-	    return familyDtoTest;
+	    
+	    int numberOfChar = 0;
+	       
+        
+        if(familyDto.getFirstName().isEmpty()||familyDto.getLastName().isEmpty()||familyDto.getGender().isEmpty()||
+        		familyDto.getAge()==null||familyDto.getMobile().isEmpty()||familyDto.getAddress().isEmpty()||
+        		familyDto.getMasRelationTypeId()==null){
+        	
+        	throw new CustomException("Business Error", "It have some or Any field is required!");
+        	
+        }else{
+        	
+        
+        	if(familyDto.getMobile().length()!=10){
+
+        			throw new CustomException("Business Error", "length of mobile is not equal 10!");
+
+        	}else if(familyDto.getMobile().length()==10){
+        		
+        		for (int i = 0; i < familyDto.getMobile().length(); i++) {
+            		   if (Character.isLetter(familyDto.getMobile().charAt(i))) {
+            			   System.out.println();
+            			   numberOfChar=numberOfChar+1;
+            		   }
+            		   
+            	   }
+            		
+
+        		if(numberOfChar!=0){
+        			
+        			throw new CustomException("Business Error", "mobile must be contain digit");	            			
+        		}else{
+        			
+        		    familyService.updateFindMasRelationAndEmployee(familyDto);
+	
+        		}
+        	}
+        	
+        }
+
+        return familyDto;
 	}
 	
 	
@@ -213,11 +250,9 @@ public class FamilyController {
 	@RequestMapping(value = "/family/delete", method = RequestMethod.POST)
 	public @ResponseBody Family2Dto Delete(Locale locale,
 							@RequestBody Family2Dto familyDtoTest,
-							ModelMap modal) throws JSONException{
+							ModelMap modal) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
-	    logger.info("delete");
-	
-	 
+	    logger.info("delete");	 
 	    familyService.deleteByNameQuery(familyDtoTest);
 		return familyDtoTest;		
 	}

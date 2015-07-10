@@ -13,6 +13,7 @@ import java.util.List;
 import org.hibernate.JDBCException;
 import org.springframework.dao.DataIntegrityViolationException;
 
+import com.aug.exception.CustomException;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.dto.AllEmployeeDto;
 
@@ -30,7 +31,7 @@ public interface EmployeeService {
 	public Employee searhEmpIdtoAddress();
 	public void saveEmpAndWithRelateTable(AllEmployeeDto allEmployeeDto);
 	public AllEmployeeDto findEmployeeByEmployeeIdWithSetToDto(Integer id); 
-	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto,String employeeCode) throws JDBCException;
+	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto,String employeeCode) throws JDBCException,CustomException;
 	public Employee updateEmployeeAndReturnId(AllEmployeeDto allEmployeeDto,String employeeCode) throws DataIntegrityViolationException;
 	public void deleteEmployeeByHibernate(Employee employee);
 	public Employee findAndinitializeOfficial(Integer id);

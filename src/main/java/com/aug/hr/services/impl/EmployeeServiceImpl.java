@@ -33,8 +33,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.exception.CustomException;
 import com.aug.hr.dao.EmployeeDao;
-
 import com.aug.hr.entity.Address;
 import com.aug.hr.entity.Employee;
 import com.aug.hr.entity.MasAddressType;
@@ -465,11 +465,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	@Transactional
-	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto,String employeeCode) throws JDBCException{
+	public Employee createEmployeeAndReturnId(AllEmployeeDto allEmployeeDto,String employeeCode) throws JDBCException,CustomException{
 		
 		
 		//List<AllEmployeeDto> allEDtos = new ArrayList<AllEmployeeDto>();
-		
 		
 		//Save Official 
 		Official official = new Official();
@@ -623,11 +622,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 			
 			employeeDao.create(employee);
 		
+			
 		}catch(JDBCException jdbce){
 			
 			
 			System.out.println("state: "+jdbce.getSQLState());
-			if(jdbce.getSQLState().equals("23000")){
+			if(jdbce.getSQLState().equals("23000")&& jdbce.getErrorCode()==1062){
 				
 				
 				System.out.println("SQLState: "+jdbce.getSQLState());

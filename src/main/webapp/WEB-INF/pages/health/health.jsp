@@ -14,7 +14,7 @@ var dt;
 
 $(function(){
 	
-	$('#congenitalDisease_no').change(function() {
+	    $('#congenitalDisease_no').change(function() {
 		//alert("no");
 			
 		$("#congenitalDiseaseExplain").prop('readonly',true);
@@ -136,7 +136,7 @@ $(function(){
 			
 		   $("#intoleranceExplain").prop('readonly','readonly');
 			
-	   } 
+	   }  
 	 
 	 
 	   $('#tableResult').dataTable({ 
@@ -152,12 +152,6 @@ $(function(){
 	doFindData(); 
 	
 	
-	
-	
-	 
-	 
-	 
-   
 	
 	
 	 $("#addModal").on("show.bs.modal", function(event){
@@ -278,12 +272,7 @@ $(function(){
 	  	    	    doFindData();
 	  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 		    		
-	  	     },  
-	  	      error : function(data,testStatus,jqXHR) {  
-	  	           
-	  	    	   $('#addModal').modal('hide');
-	  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	  	     }  
+	  	     }
 	  	    }); 
 	  	    
 		 
@@ -365,11 +354,7 @@ $(function(){
 					
 	  	    	
 	  	    	
-	  	     },  
-	  	      error : function(data,testStatus,jqXHR) {  
-	  	    	  
-	  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	  	     }  
+	  	     }
 	  	    }); 
 	  	   
 		 
@@ -468,12 +453,7 @@ $(function(){
 	  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 	  	       	     doFindData();		  			 
 	  	        
-	  	     },  
-	  	      error : function(data,testStatus,jqXHR) {  
-
-	  	      $('#myModalUpdate').modal('hide');	   
-	  	      $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	  	     }  
+	  	     }
 	  	    }); 	  	    
 		 
 	 }
@@ -506,15 +486,29 @@ $(function(){
 	  	    	
 	  	        for(var i=0;i<data.length;i++){
 	  	        	
-	  	        	
-	  	        	if(data[i].congenitalDiseaseExplain!=null&&data[i].congenitalDiseaseExplain!==""){
+	  	       
+	  	        	if(data[i].congenitalDiseaseExplain=="{null}"){
+
+	  	        		congenitalDiseaseExplain = "";
 	  	        		
+	  	        	}if(data[i].congenitalDiseaseExplain2=="{null}"){
+	  	        		//alert('aaa');
+	  	        		congenitalDiseaseExplain = "";
+	  	        	}if(data[i].congenitalDiseaseExplain3!="{null}"){
+	  	        		
+	  	        		congenitalDiseaseExplain = "";
+	  	        	}
+	  	        	
+	  	        	
+	  	        	
+	  	        	if(data[i].congenitalDiseaseExplain!="{null}"){
+
 	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain;
 	  	        		
-	  	        	}if(data[i].congenitalDiseaseExplain2!=null&&data[i].congenitalDiseaseExplain2!==""){
+	  	        	}if(data[i].congenitalDiseaseExplain2!="{null}"){
 	  	        		//alert('aaa');
 	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain+', '+data[i].congenitalDiseaseExplain2;
-	  	        	}if(data[i].congenitalDiseaseExplain3!=null&&data[i].congenitalDiseaseExplain3!==""){
+	  	        	}if(data[i].congenitalDiseaseExplain3!="{null}"){
 	  	        		
 	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain+', '+data[i].congenitalDiseaseExplain2+',  '+data[i].congenitalDiseaseExplain3;
 	  	        	}
@@ -522,17 +516,60 @@ $(function(){
 	  	        	
 	  	        	
 	  	        	
+	  	        	if(data[i].geneticDiseaseExplain=="{null}"){
 
-	  	        	if(data[i].geneticDiseaseExplain!=null&&data[i].geneticDiseaseExplain!==""){
+	  	        		geneticDiseaseExplain = "";
+	  	        		
+	  	        	}if(data[i].geneticDiseaseExplain2=="{null}"){
+	  	        		
+	  	        		geneticDiseaseExplain = "";
+	  	        		
+	  	        	}if(data[i].geneticDiseaseExplain3!="{null}"){
+	  	        		
+	  	        		geneticDiseaseExplain = "";
+	  	        	}
+	  	        	
+	  	        	
+
+	  	        	if(data[i].geneticDiseaseExplain!="{null}"){
 	  	        		
 	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain;
 	  	        		
-	  	        	}if(data[i].geneticDiseaseExplain2!=null&&data[i].geneticDiseaseExplain2!==""){
+	  	        	}if(data[i].geneticDiseaseExplain2!="{null}"){
 	  	        		//alert('aaa');
 	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain+', '+data[i].geneticDiseaseExplain2;
-	  	        	}if(data[i].geneticDiseaseExplain3!=null&&data[i].geneticDiseaseExplain3!==""){
+	  	        	}if(data[i].geneticDiseaseExplain3!="{null}"){
 	  	        		
 	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain+', '+data[i].geneticDiseaseExplain2+',  '+data[i].geneticDiseaseExplain3;
+	  	        	}
+	  	            
+	  	        	
+	  	        	
+	  	        	
+	  	        	
+					if(data[i].takeMedicineExplain=="{null}"){
+	  	        		
+						takeMedicineExplain = "";
+	  	        		
+	  	        	}
+					
+					if(data[i].takeMedicineExplain!="{null}"){
+	  	        		//alert('aaa');
+	  	        		takeMedicineExplain = data[i].takeMedicineExplain;
+	  	        	}
+					
+
+					
+					
+					if(data[i].intoleranceExplain=="{null}"){
+	  	        		
+						intoleranceExplain = "";
+	  	        		
+	  	        	}
+					
+					if(data[i].intoleranceExplain!="{null}"){
+	  	        		//alert('aaa');
+	  	        		intoleranceExplain = data[i].intoleranceExplain;
 	  	        	}
 	  	            
 	  	            
@@ -544,9 +581,9 @@ $(function(){
 				  			           data[i].geneticDisease,
 				  			           geneticDiseaseExplain,
 				  			           data[i].takeMedicine,
-				  			           data[i].takeMedicineExplain,
+				  			           takeMedicineExplain,
 				  			           data[i].intolerance,
-				  			           data[i].intoleranceExplain,
+				  			           intoleranceExplain,
 				  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
 				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>'
 				    					
@@ -568,7 +605,7 @@ $(function(){
 	  	    		}
 	  	    		});
 	  	    	});
-	  	    	  $("#outputajax").text(testStatus); 
+	  	    	  //$("#outputajax").text(testStatus); 
 	  	     }  
 	  	    }); 
 	  	   
@@ -603,12 +640,7 @@ $(function(){
 				  		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
 				  	  	       	    doFindData();		  	      
 				  		  	    	 
-				  		  	     },  
-				  		  	     error : function(data,testStatus,jqXHR) {  	  	      
-				  		  	    	
-				  					  $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-				
-				  		  	     }  
+				  		  	     }
 			  		  	    }); 
 			 
 			    });
@@ -701,10 +733,10 @@ $(function(){
             <f:form id="formAddUpdate" name="healthForm" method="post" commandName="health" class="form-horizontal" role="form">	      	 
 	  
 	  
-		    <div class="form-group form-group-sm">
+		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 		           
-		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="congenitalDisease" >
+		        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease" >
 			            <spring:message code="health.question.congenitalDisease" />?
 			    </label>	 		
 			    
@@ -729,30 +761,32 @@ $(function(){
 		   
 		   
 		   
-		   <div class="form-group form-group-sm">
+		   <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 			     <div class="row">
 			           
-			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease" >
+			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease" >
 				            <spring:message code="health.congenitalDiseaseExplain1" var="congenitalDiseaseExplain1"/>${congenitalDiseaseExplain1 }:
 				    </label>	 		
 
      
-				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
+				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				        	<f:input  id="congenitalDiseaseExplain" path="congenitalDiseaseExplain" cssClass="form-control required" placeholder="${congenitalDiseaseExplain1 }" />					     								
 				     </div>	
-				  
 			     
-			    
-			         <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="congenitalDisease2" >
+			     </div>
+		   </div>
+			     
+			 
+		   <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			      <div class="row">
+			         <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease2" >
 			           		<spring:message code="health.congenitalDiseaseExplain2" var="congenitalDiseaseExplain2"/>${congenitalDiseaseExplain2 }: 
 			   		 </label>	 		
 		     
-				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
+				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				        	<f:input  id="congenitalDiseaseExplain2" path="congenitalDiseaseExplain2" cssClass="form-control required" placeholder="${congenitalDiseaseExplain2 }" />					     								
-				     </div>	
-			 	 
-			 	 
+				     </div>			 	 
 			 	 </div>
 		   
 		   </div>
@@ -760,11 +794,11 @@ $(function(){
 		   
 		   
 		   
-		      <div class="form-group form-group-sm">
+		      <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 			     <div class="row">
 		   
-			         <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease3" >
+			         <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease3" >
 			           		<spring:message code="health.congenitalDiseaseExplain3" var="congenitalDiseaseExplain3"/>${congenitalDiseaseExplain3 }: 
 			   		 </label>	 		
 		     
@@ -781,10 +815,10 @@ $(function(){
 		   
 		   
 		   
-		     <div class="form-group form-group-sm">
+		     <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 		           
-		        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="geneticDisease" >
+		        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
 			           <spring:message code="health.question.GeneticDisease" />?
 			    </label>	 		
 			    
@@ -811,25 +845,37 @@ $(function(){
 		   
 		   
 		   
-		   <div class="form-group form-group-sm">
+		   <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 			     <div class="row">
 			           
-			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="geneticDisease" >
+			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
 				           <spring:message code="health.geneticDiseaseExplain1" var="geneticDiseaseExplain1"/>${geneticDiseaseExplain1 }: 
 				    </label>	 		
 
      
-				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
+				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				        	<f:input  id="geneticDiseaseExplain" path="geneticDiseaseExplain" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" />					     								
 				     </div>	
 				 
+		        
+			 	 </div>
+		   
+		   </div>
+		   
+		   
+		   
+		    <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		   
+			     <div class="row">
+			           
+			     
 		           
-			         <label class="col-lg-2 col-md-2 col-sm-3 col-xs-3 control-label required" for="congenitalDisease2" >
+			         <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease2" >
 			           		<spring:message code="health.geneticDiseaseExplain2" var="geneticDiseaseExplain2"/>${geneticDiseaseExplain2 }: 
 			   		 </label>	 		
 		     
-				     <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-6">	
+				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				        	<f:input  id="geneticDiseaseExplain2" path="geneticDiseaseExplain2" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" />					     								
 				     </div>			 	 			 
 			         
@@ -839,12 +885,11 @@ $(function(){
 		   
 		   
 		   
-		   
-		    <div class="form-group form-group-sm">
+		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 			     <div class="row">
 		   
-				    <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="congenitalDisease3" >
+				    <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease3" >
 					    <spring:message code="health.geneticDiseaseExplain3" var="geneticDiseaseExplain3"/>${geneticDiseaseExplain3 }: 
 				    </label>	 		
 		     
@@ -858,11 +903,11 @@ $(function(){
 		   
 		   
 		   
-		    <div class="form-group form-group-sm">
+		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 		     
 		           
-			        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="geneticDisease" >
+			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
 				          <spring:message code="health.question.TakeMedicine" />?			          
 				    </label>	 		
 				    
@@ -886,9 +931,9 @@ $(function(){
 			  
 			  
 			    
-			     <div class="form-group form-group-sm">
+			     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			           
-			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="takeMedicineExplain" >
+			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="takeMedicineExplain" >
 				           <spring:message code="health.takeMedicineExplain1" var="takeMedicineExplain1"/>${takeMedicineExplain1 }: 
 				    </label>	 		
 
@@ -905,11 +950,11 @@ $(function(){
 			    
 			    
 			    
-			     <div class="form-group form-group-sm">
+			     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 		     
 		           
-			        <label class="col-lg-4 col-md-4 col-sm-3 col-xs-3 control-label required" for="intolerance" >
+			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="intolerance" >
 				          <spring:message code="health.question.Intolerance" />?
 				    </label>	 		
 				    
@@ -933,9 +978,9 @@ $(function(){
 			  
 			  
 			    
-			     <div class="form-group form-group-sm">
+			     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			           
-			        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label required" for="intoleranceExplain" >
+			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="intoleranceExplain" >
 				          <spring:message code="health.intoleranceExplain" var="intoleranceExplain"/>${intoleranceExplain }: 
 				    </label>	 		
 
@@ -949,7 +994,7 @@ $(function(){
 
 		
 		  
-		      <div class="modal-footer">
+		      <div align="center">
 		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
 		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
 		      </div>

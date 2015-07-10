@@ -1,7 +1,10 @@
 package com.aug.hr.services.impl;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.List;
+
+import javax.validation.ConstraintViolationException;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,14 +105,21 @@ public class FamilyServiceImpl implements FamilyService{
 	}
 
 	@Override
-	public void createFindMasRelationAndEmployee(Family2Dto familyDto) {
+	public void createFindMasRelationAndEmployee(Family2Dto familyDto) throws SQLException,ConstraintViolationException,NullPointerException{
 		// TODO Auto-generated method stub
 
 		Family family = new Family();
 
 		MasRelationType masRelationType = new MasRelationType();
-		masRelationType = masRelationService.find(familyDto.getMasRelationTypeId());
-		family.setMasRelation(masRelationType);		
+		
+		if(familyDto.getMasRelationTypeId()==null){
+			
+			throw new NullPointerException();
+			
+		}else if(familyDto.getMasRelationTypeId()!=null){
+			masRelationType = masRelationService.find(familyDto.getMasRelationTypeId());
+			family.setMasRelation(masRelationType);		
+		}
 		
 		family.setAuditFlag("C");
 		family.setCreatedBy(0);
@@ -129,8 +139,9 @@ public class FamilyServiceImpl implements FamilyService{
 		family.setMobile(familyDto.getMobile());
 		family.setPosition(familyDto.getPosition());
 		family.setGender(familyDto.getGender());
-		empFamilyDao.create(family);
 		
+	    empFamilyDao.create(family);
+	    
 	}
 
 	@Override

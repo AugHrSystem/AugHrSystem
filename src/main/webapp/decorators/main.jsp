@@ -64,6 +64,80 @@
 
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
+<script src="<c:url value="/resources/resource/sweetalert/js/sweet-alert.js" />"></script>
+<link href="<c:url value="/resources/resource/sweetalert/css/sweet-alert.css" />" rel="stylesheet" media="all">
+
+ 
+ 
+
+
+<style >
+
+body {
+background-image: url(${pageContext.request.contextPath}/resource/images/BG_W.jpg);
+-moz-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
+background-position: top center !important;
+background-repeat: no-repeat !important;
+background-attachment: fixed;
+} 
+</style>
+
+
+<script type="text/javascript">
+
+
+$.ajaxSetup({
+	
+	 error : function(XMLHttpRequest,e,testStatus,jqXHR,xhr,errorThrown,thrownError) {  
+          
+
+   	   if(XMLHttpRequest.responseText.indexOf("Error:")== 1){
+   		   
+   		 var errormsg = JSON.parse(XMLHttpRequest.responseText.split('Error:'));
+   		 var msg= ' ';
+   		 
+   		 for(var i=1;i<errormsg.length;i++){
+   			 
+   			 msg =msg+errormsg[i];
+   		 }
+   		 
+   		 
+   		 $('*').modal('hide');
+
+   		 
+   	    swal({
+   	    	title: "Error",		  	    	    	
+   	    	text: msg
+   	    	});
+   	  
+   	    
+   	   }else {
+     		
+   		  alert(testStatus);
+	          myRedirect('${pageContext.request.contextPath}/httperror',testStatus);
+   	   
+   	   }
+
+    }    
+});
+
+
+
+
+	var myRedirect = function(redirectUrl,err,testStatus) {
+	  	var form = $('<form id="form" action="' + redirectUrl + '" method="post">' +
+	  	'<input type="hidden" name="error" value="'+err+'" />' +
+	  	'</form>');
+	  	$('body').append(form);
+	  	$('#form').submit();
+	  };
+
+
+</script>
+
+
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -72,5 +146,6 @@
 	<%-- 	</decorator:body> --%>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
+		
 </body>
 </html>

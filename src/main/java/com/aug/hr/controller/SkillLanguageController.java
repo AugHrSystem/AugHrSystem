@@ -1,17 +1,24 @@
 package com.aug.hr.controller;
 
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Locale;
 
+import javassist.tools.web.BadHttpRequest;
+
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
+import org.apache.http.HttpException;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -63,7 +70,7 @@ public class SkillLanguageController {
 			@ModelAttribute(value = "skillLanguage") SkillLanguage skillLanguage,
 			ModelMap model, 
 			@PathVariable("id") Integer id, 
-			@ModelAttribute SkillLanguageDto skillLanguageDto){
+			@ModelAttribute SkillLanguageDto skillLanguageDto) throws SQLException,Exception,BadHttpRequest,IOException,HttpMediaTypeNotSupportedException,HttpException{
 		
 		
 		logger.info("Welcome to skill language locale: " + locale);
@@ -90,7 +97,7 @@ public class SkillLanguageController {
 	public @ResponseBody List<SkillLanguageDto> findSkillLanguage(Locale locale,
 		   //@ModelAttribute(value = "family") Family family,
 			@PathVariable("id") Integer id,
-			ModelMap model){
+			ModelMap model)  throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
 		
 		List<SkillLanguageDto> skillLanguageList = skillLanguageDtoService.listSkillLanguage(new Integer(id));
@@ -106,7 +113,7 @@ public class SkillLanguageController {
 	@RequestMapping(value = "/skilllanguage/add", method =  {RequestMethod.POST})
 	public @ResponseBody SkillLanguageDto addData(Locale locale,
 				@Valid @ModelAttribute SkillLanguageDto skillLanguageInfo,
-				ModelMap model){
+				ModelMap model)  throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
 	    SkillLanguageDto skillLanguage = new SkillLanguageDto();
 	    skillLanguage = skillLanguageInfo;
@@ -122,7 +129,7 @@ public class SkillLanguageController {
 	@RequestMapping(value = "/skilllanguage/initedit", method =  {RequestMethod.POST})
 	public @ResponseBody SkillLanguageDto initEdit(Locale locale,
 				@ModelAttribute SkillLanguageDto skillLanguageInfo,
-				ModelMap model){
+				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
     
 	SkillLanguageDto skillLanguage = new SkillLanguageDto();
@@ -137,7 +144,7 @@ public class SkillLanguageController {
 	@RequestMapping(value = "/skilllanguage/edit", method = RequestMethod.POST)
 	public @ResponseBody SkillLanguageDto edit(Locale locale,
 				@ModelAttribute SkillLanguageDto skillLanguage,
-				ModelMap model){
+				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 	logger.info("info of skill language: "+skillLanguage.toString());
 	skillLanguageService.updateSetSkillLanguage(skillLanguage);
 	return skillLanguage;
@@ -148,7 +155,7 @@ public class SkillLanguageController {
 	@RequestMapping(value = "/skilllanguage/delete", method = RequestMethod.POST)
 	public @ResponseBody SkillLanguageDto delete(Locale locale,
 				@ModelAttribute SkillLanguageDto skillLanguage,
-				ModelMap model){
+				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 	logger.info("info of skill language: "+skillLanguage.toString());
 	SkillLanguage skillLanguageDelete = skillLanguageService.find(skillLanguage.getId());
 	logger.info("info of skill language: "+skillLanguageDelete.getId().toString());

@@ -7,18 +7,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
-<!-- Bootstrap -->
-<%-- <script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
-
-
-<link href="<c:url value="/resource/bootstrapvalidator/dist/css/bootstrapValidator.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
-
-
-
-<link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
-<link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script> --%>
 
 <style>
 .required:after {
@@ -48,7 +36,7 @@
 		
 		
 		 
-		 $("#formAddUpdate").bootstrapValidator({
+		  $("#formAddUpdate").bootstrapValidator({
 			   
 			   message: 'This value is not valid',
 		        //container: 'tooltip',
@@ -103,7 +91,7 @@
 		           
 		        }
 		 
-    });
+    }); 
 	
 			
 			$('#tableResult').dataTable({ 
@@ -143,20 +131,19 @@
 	
 	  $('#startDate').datetimepicker({
 			 
- //						 viewMode: 'days',
+ 						 //viewMode: 'days',
 						 format : 'DD-MM-YYYY',
    				 	     defaultDate: 'moment',
- //			 			 minDate: 'moment',
-//						 showClear: true,
-// 						 showClose:true,
-			
+		 				 //minDate: 'moment',
+						 //showClear: true,
+ 						 //showClose:true,		
 						
 		});
 	  
 	  
 	  
 	  $('#startDate').data("DateTimePicker").date(moment());
-	  $("input[name='startDate']").val($('#startDate').data("DateTimePicker").date().format('DD-MM-YYYY'));
+	  $("input[name='startDate']").val($('#startDate').data("DateTimePicker").date().format('DD-MM-YYYY')); 
 	  
 	  
 	  
@@ -168,12 +155,12 @@
 		
 		
 		$('#endDate').datetimepicker({			 
-// 			 viewMode: 'days',
+ 			 //viewMode: 'days',
 			 format : 'DD-MM-YYYY',	 
 			 defaultDate: defaultDate,
  			 minDate: 'moment',
 			 //ShowClear: true,
-// 			 showClose:true					 
+ 			 //showClose:true					 
 		
 		});
 		
@@ -198,7 +185,6 @@
  			
     			var tempdate = new Date(e.date);
     			tempdate.setDate(tempdate.getDate()+1);
-				//alert('temp: '+tempdate);
                 $('#endDate').data("DateTimePicker").minDate(tempdate);
             
             
@@ -266,10 +252,14 @@
 	  	    		}
 	  	    		});
 	  	    	});
-	  	    	  $("#outputajax").text(testStatus); 
+	  	    	  
 	  	     }  
+	  	     
+	  	     
+	  	     
 	  	    }); 
 	  	   
+
 	    }
  		
  		
@@ -319,9 +309,9 @@
 			   $("input[name='endDate']").val('');
 			   
 			  	   
-			   //alert(moment().format("DD-MM-YYYY"));
-			   
+
 			   /*for set date*/
+	
 			   //$('#startDate').data("DateTimePicker").minDate(moment());
 			   $('#startDate').data("DateTimePicker").date(moment());
 			   $("input[name='startDate']").val($('#startDate').data("DateTimePicker").date().format('DD-MM-YYYY'));
@@ -336,9 +326,9 @@
            	   
            	   $('#endDate').data("DateTimePicker").minDate(d);
            	   $('#endDate').data("DateTimePicker").date(d);
-           	   $("input[name='endDate']").val($('#endDate').data("DateTimePicker").date().format('DD-MM-YYYY'));
+           	   $("input[name='endDate']").val($('#endDate').data("DateTimePicker").date().format('DD-MM-YYYY')); 
 
-			   		  
+			    	  
 	    });
  		 
  		 
@@ -371,13 +361,7 @@
 	  	    	    doFindData();
 	  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 		    		
-	  	     },  
-	  	      error : function(data,testStatus,jqXHR) {  
-	  	           
-	  	    	   $('#addModal').modal('hide');
-	  	    	   $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	  	    	   //$('#formAddUpdate').bootstrapValidator('validate');
-	  	     }  
+	  	     }
 	  	    }); 
 	  	    
 	  	   
@@ -417,17 +401,9 @@
 	  	    	date.setDate($('#startDate').data("DateTimePicker").date());
 	  	    	date.setDate(date.getDate()+1);
 	  	    	$('#endDate').data("DateTimePicker").minDate(data.startDate+1);
-	            $('#endDate').data("DateTimePicker").date(data.endDate);
-	  	    	
-	  	    	
-	  	    
-	  	    	 
-	  	    	
-	  	     },  
-	  	      error : function(data,testStatus,jqXHR) {  
-	  	    	  
-	  	    	$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	  	     }  
+	            $('#endDate').data("DateTimePicker").date(data.endDate); 
+	   	    	
+	  	     }
 	  	    }); 
 	  	   
 	    }
@@ -468,13 +444,7 @@
 		  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
 		  	       	     doFindData();		  			 
 		  	        
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  
-
-		  	        $('#myModalUpdate').modal('hide');	   
-		  	        $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	        //$('#formAddUpdate').bootstrapValidator('validate');
-		  	     }  
+		  	     }
 		  	    }); 	  	    
 		    }
  		 
@@ -503,12 +473,7 @@
 	  		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
 	  	  	       	    doFindData();		  	      
 	  		  	    	 
-	  		  	     },  
-	  		  	      error : function(data,testStatus,jqXHR) {  	  	      
-	  		  	    	
-	  					  $("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-	
-	  		  	     }  
+	  		  	     }
 	  		  	    }); 
 	  		  	   
      			
@@ -522,6 +487,8 @@
  		 
  		 
  		 
+	     
+	     
  		 function getUrlParameter(sParam)
 			{
 				//alert("url "+document.referrer);

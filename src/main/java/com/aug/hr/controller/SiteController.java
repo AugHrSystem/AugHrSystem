@@ -1,12 +1,20 @@
 package com.aug.hr.controller;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Locale;
 
+import javassist.tools.web.BadHttpRequest;
+
+import javax.validation.ConstraintViolationException;
+
+import org.apache.http.HttpException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.exception.CustomException;
 import com.aug.hr.dto.services.SiteDtoService;
 import com.aug.hr.entity.Site;
 import com.aug.hr.entity.SkillLanguage;
@@ -40,7 +49,7 @@ public class SiteController {
 			@ModelAttribute(value = "site") Site site,
 			ModelMap model, 
 			@PathVariable("id") Integer id, 
-			@ModelAttribute SiteDto siteDto){
+			@ModelAttribute SiteDto siteDto) throws SQLException,Exception,BadHttpRequest,IOException,HttpMediaTypeNotSupportedException,HttpException{
 		
 		siteDto.setEmployeeId(id);
 		model.addAttribute("id", siteDto.getEmployeeId());
@@ -51,7 +60,7 @@ public class SiteController {
 	@RequestMapping(value = "/site/list/{id}", method = RequestMethod.POST)
 	public @ResponseBody List<SiteDto> findData(Locale locale,
 			@PathVariable("id") Integer id,
-			ModelMap model){
+			ModelMap model)  throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
 		    List<SiteDto> siteDto =  siteDtoService.listByNameNativeQuery(id);		    
 		    return siteDto;
@@ -62,9 +71,29 @@ public class SiteController {
 	@RequestMapping(value = "/site/add", method = RequestMethod.POST)
 	public @ResponseBody SiteDto add(Locale locale,
 				@RequestBody SiteDto siteDto,
-				ModelMap model){
+				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException,CustomException{
 		
-		    siteService.createSetDtoToEnity(siteDto);
+			if(siteDto.getProjectName().isEmpty()||siteDto.getProjectOwner().isEmpty()||siteDto.getProjectOwnerContact().isEmpty()||
+					siteDto.getStartDate()==null||siteDto.getEndDate()==null){
+				throw new CustomException("Bussiness Error", "It have some or Any field is required!");
+			}else{
+				
+				if(siteDto.getStartDate().compareTo(siteDto.getEndDate())>0){
+					
+					throw new CustomException("Bussiness Error", "Start Date is more than End Date!");
+					
+				}else if(siteDto.getStartDate().compareTo(siteDto.getEndDate())==0){
+					
+					throw new CustomException("Bussiness Error", "Start Date is equal End Date!");
+
+					
+				}else if(siteDto.getStartDate().compareTo(siteDto.getEndDate())<0){
+					siteService.createSetDtoToEnity(siteDto);
+				}
+				
+			}
+			
+		    
 			return siteDto;
 		   
 	}
@@ -73,7 +102,7 @@ public class SiteController {
 	@RequestMapping(value = "/site/initedit", method = RequestMethod.POST)
 	public @ResponseBody SiteDto initEdit(Locale locale,
 				@RequestBody SiteDto siteDto,
-				ModelMap model){
+				ModelMap model)  throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
 		SiteDto  siteDtoReturnToPage =  siteService.findByIdReturnToDto(siteDto.getId());
 		return siteDtoReturnToPage;
@@ -84,9 +113,30 @@ public class SiteController {
 	@RequestMapping(value = "/site/edit", method = RequestMethod.POST)
 	public @ResponseBody SiteDto edit(Locale locale,
 				@RequestBody SiteDto siteDto,
-				ModelMap model){
+				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException,CustomException{
 		
-		siteService.updateSetDtoToEntity(siteDto);
+		
+		if(siteDto.getProjectName().isEmpty()||siteDto.getProjectOwner().isEmpty()||siteDto.getProjectOwnerContact().isEmpty()||
+				siteDto.getStartDate()==null||siteDto.getEndDate()==null){
+			throw new CustomException("Bussiness Error", "It have some or Any field is required!");
+		}else{
+			
+			if(siteDto.getStartDate().compareTo(siteDto.getEndDate())>0){
+				
+				throw new CustomException("Bussiness Error", "Start Date is more than End Date!");
+				
+			}else if(siteDto.getStartDate().compareTo(siteDto.getEndDate())==0){
+				
+				throw new CustomException("Bussiness Error", "Start Date is equal End Date!");
+
+				
+			}else if(siteDto.getStartDate().compareTo(siteDto.getEndDate())<0){
+				siteService.updateSetDtoToEntity(siteDto);
+
+			}
+			
+		}
+		
 		return siteDto;
 		   
 	}
@@ -96,7 +146,7 @@ public class SiteController {
 	@RequestMapping(value = "/site/delete", method = RequestMethod.POST)
 	public @ResponseBody SiteDto delete(Locale locale,
 				@RequestBody SiteDto siteDto,
-				ModelMap model){
+				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
 		
 		Site site = siteService.find(siteDto.getId());
 		siteService.delete(site);

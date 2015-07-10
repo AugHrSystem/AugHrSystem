@@ -10,14 +10,18 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javassist.tools.web.BadHttpRequest;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.ConstraintViolationException;
 
 import net.sf.jasperreports.engine.JRParameter;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpException;
 import org.apache.log4j.Logger;
 import org.hibernate.JDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +42,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.aug.exception.CustomException;
 import com.aug.hr.dto.services.EmployeeDtoService;
 import com.aug.hr.dto.services.AimEmployeeDtoService;
 import com.aug.hr.dto.services.EmployeeCodeDtoService;
@@ -291,14 +296,16 @@ public class EmployeeController {
 			Model model,
 			final RedirectAttributes redirectAttributes,
 			HttpServletRequest request,
-			HttpServletResponse response) throws SQLException{
+			HttpServletResponse response) throws IOException,Exception,BadHttpRequest,SQLException,ConstraintViolationException{
 	
 	   logger.info("infoooo: "+allEmployeeDto);		
 	   logger.info("infoooo: ================================================================>"+allEmployeeDto.getAimempid());
 	  
 	   
-	   //throw new SQLException("Exception Error");
 	   
+	   //throw new HttpException("error");
+	   
+    
 	   //throw new CustomException("E999","err");
 	   
 	   Employee employee = new Employee();
@@ -308,9 +315,8 @@ public class EmployeeController {
 	   
 	   System.out.println("locations: "+ allEmployeeDto.getMasLocation());
 	   //System.out.println("locations: "+ masLocationService.findByLocationCode(allEmployeeDto.getMasLocation()));
-	   
-	     
-
+	  
+		  
 	    if(allEmployeeDto.getId()==null){	
 		  
 	    logger.info("create employee");
@@ -350,18 +356,18 @@ public class EmployeeController {
 						if(result.length==2){
 						
 							logger.info("length: "+result.length);
-							
-							allEmployeeDto.setImage(allEmployeeDto.getEmployeeCode()+"."+result[1]);
-							uploadService.uploadImage("EMPLOYEE",allEmployeeDto.getEmployeeCode()+"."+result[1], allEmployeeDto.getFileupload());
-							
+
+						
 							
 							try{
 								employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
+								allEmployeeDto.setImage(employeeCode+"."+result[1]);
 								employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
 							}catch(JDBCException jdbce){
 								
 								try{
 									employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
+									allEmployeeDto.setImage(employeeCode+"."+result[1]);
 									employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
 								}catch(JDBCException je){
 									
@@ -375,6 +381,12 @@ public class EmployeeController {
 
 							}
 							
+							if(employee.getId()!=null){
+								
+							
+									uploadService.uploadImage("EMPLOYEE",employeeCode+"."+result[1], allEmployeeDto.getFileupload());
+							
+							}
 
 						}if(result.length==0){
 							
@@ -406,13 +418,19 @@ public class EmployeeController {
 						
 				 }
 				
-			} catch (RuntimeException | IOException e) {
-				return "redirect:/employee";
-				//e.printStackTrace();
+			} catch (IOException e) {
+				//redirectAttributes.addFlashAttribute("msgerror", "upload file error, please try again");
+				//return "redirect:/employee";
+				
+				throw new IOException();
+				
+				
 		}catch (Exception e) {
-			return "redirect:/employee";
-			//e.printStackTrace();
+			//return "redirect:/employee";
+			throw new Exception();
 		}
+		
+		
 		
 	  }else if(allEmployeeDto.getId()>0){
 		  
@@ -459,14 +477,13 @@ public class EmployeeController {
 		
 		
 		 return "redirect:/listemployee";
-	     //return "/a";
 	}
 	
 	
 	
 	
 	@RequestMapping(value = "/employee/deleteemp/{id}", method = RequestMethod.POST )
-	public String deleteEmployeeAndRelateTable(@PathVariable("id") Integer id) {
+	public String deleteEmployeeAndRelateTable(@PathVariable("id") Integer id) throws Exception {
 		
 		
 		Employee employee = new Employee();
@@ -495,13 +512,10 @@ public class EmployeeController {
 		if(employee.getImage()!=null){
 			   try {
 					uploadService .deleteImage("EMPLOYEE", employee.getImage());
-				} catch (RuntimeException e1) {
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+					throw new Exception();
+				} 
 		   }
 		
 		employeeService.deleteEmployeeByHibernate(employee);
