@@ -99,3 +99,11 @@ body {
   font-size : 16px;
   color : #ffffff;
 }
+
+table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
+  background-color: #d6d6d6;
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+  background-color: #e7e7e7;
+}

@@ -19,7 +19,6 @@
 <!-- Bootstrap -->
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet">
-<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
 <!-- Validator -->
@@ -63,6 +62,7 @@
 <script src="<c:url value="/resource/pnotify/js/pnotify.custom.min.js" />"></script>
 <link href="<c:url value="/resource/pnotify/css/pnotify.custom.min.css" />" rel="stylesheet"	media="all">
 
+<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 </head>
 <body>
