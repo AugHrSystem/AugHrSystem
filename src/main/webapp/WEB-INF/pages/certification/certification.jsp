@@ -21,14 +21,14 @@
 <form:form id ="listForm" method="post" commandName="certification">
 
 <div class="row">
-<div class="col-md-6">
+<%-- <div class="col-md-6">
 <h2><spring:message code="certification.name"/></h2> 
-</div>
+</div> --%>
 <br>
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<div class="col-md-6">
+<div class="col-md-12">
 <button type="button" id="addBtnCer" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord"/></button> 
 </div>
 </div>
@@ -37,6 +37,7 @@
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="dataTable stripe table-bordered">
+<caption title="">Certification</caption>
 	<thead>
 		<tr>
 			<th><spring:message code="certification.year" /></th>

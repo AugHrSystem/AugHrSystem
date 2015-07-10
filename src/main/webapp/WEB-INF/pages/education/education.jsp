@@ -14,13 +14,13 @@
 <form:form id ="listForm" method="post" commandName="education" action="education">
 
 <div class="row">
-<div class="col-md-6">
+<%-- <div class="col-md-6">
 <h2><spring:message code="education.name" /></h2>
-</div>
+</div> --%>
 <!-- Button trigger modal -->
 <br>
 <div class="form-group" align="right">
-<div class="col-md-6">
+<div class="col-md-12">
 <button type="button" id="addBtnEdu" class="btn btn-warning active btnAdds " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 </div>
 </div>
@@ -29,6 +29,7 @@
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="dataTable stripe table-bordered">
+<caption title="">Education</caption>
 	<thead>
 		<tr>
 			<th><spring:message code="education.start.date" /></th>

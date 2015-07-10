@@ -20,16 +20,14 @@
 <form:form id ="listForm" method="post" commandName="leave">
 
 
+		<div class="row">
 
-
-		<div class="row-md-12">
-
-				<div class="col-md-6">
+				<%-- <div class="col-md-6">
 					<h2><spring:message code="leave.name" /> </h2> 
 
-				</div>
+				</div> --%>
 
-				<div class="col-md-6">
+				<div class="col-md-12">
 
 					<br>
 					<!-- Button trigger modal -->
@@ -43,13 +41,10 @@
 			</div>
 
 
-
-
-
-
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="dataTable stripe  table-bordered">
+ <caption title="">Leave</caption>
 	<thead>
 		<tr>
 			<!-- <th>Start_Date</th> -->

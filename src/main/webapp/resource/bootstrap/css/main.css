@@ -29,6 +29,7 @@
 
 .legend2 { font-size: 16px;}
 
+
 .img-flag{
 	max-height: 20px;
 }
@@ -72,6 +73,7 @@
   border-color: #ff9900;
   font-size : 16px;
   color : #ffffff;
+  font-family: Dosis-Regular;
 }
 
 .btn-danger:active, .btn-danger.active {
@@ -79,6 +81,7 @@
   border-color: #ff0000;
   font-size : 16px;
   color : #ffffff;
+  font-family: Dosis-Regular;
 }
 
 table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
@@ -93,6 +96,7 @@ table.dataTable tbody th, table.dataTable tbody td {
   padding: 8px 10px;
   font-size: 18px;
   color: #414141;
+  font-family: Dosis-Regular;
 }
 
 table.dataTable thead th, table.dataTable tfoot th {
@@ -100,6 +104,7 @@ table.dataTable thead th, table.dataTable tfoot th {
   background-color: #ababab;
   font-size: 16px;
   color : #ffffff;
+  font-family: Dosis-Regular;
 }
 
 div#tdResult_length {
@@ -109,6 +114,7 @@ div#tdResult_length {
   font-weight: bold;
   font-size: 20px;
   color: #292929;
+  font-family: Dosis-Regular;
 }
 
 div#tdResult_filter {
@@ -118,6 +124,7 @@ div#tdResult_filter {
   font-weight: bold;
   font-size: 20px;
   color: #292929;
+  font-family: Dosis-Regular;
 }
 
 div#tdResult_info {
@@ -127,6 +134,7 @@ div#tdResult_info {
   font-weight: bold;
   font-size: 20px;
   color: #292929;
+  font-family: Dosis-Regular;
 }
 
 div#tbResult_filter {
@@ -136,6 +144,7 @@ div#tbResult_filter {
   font-weight: bold;
   font-size: 20px;
   color: #292929;
+  font-family: Dosis-Regular;
 }
 
 div#tbResult_info {
@@ -145,6 +154,7 @@ div#tbResult_info {
   font-weight: bold;
   font-size: 20px;
   color: #292929;
+  font-family: Dosis-Regular;
 }
 
 div#tableResult_filter {
@@ -154,6 +164,7 @@ div#tableResult_filter {
   font-weight: bold;
   font-size: 20px;
   color: #292929;
+  font-family: Dosis-Regular;
 }
 
 div#tableResult_info {
@@ -163,6 +174,7 @@ div#tableResult_info {
   font-weight: bold;
   font-size: 20px;
   color: #292929;
+  font-family: Dosis-Regular;
 }
 
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
@@ -180,6 +192,7 @@ div#tableResult_info {
   background-color: #ebebeb;
   font-size: 14px;
   color: #747474;
+  font-family: Dosis-Regular;
 }
 
 .pagination > li:last-child > a, .pagination > li:last-child > span {
@@ -188,6 +201,7 @@ div#tableResult_info {
   background-color: #ebebeb;
   font-size: 14px;
   color: #747474;
+  font-family: Dosis-Regular;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -227,4 +241,5 @@ caption {
   color: #ffffff;
   font-size: 18px;
   background-color: #ffcc00;
+  font-family: Dosis-Regular;
 }

@@ -20,9 +20,9 @@
 <input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="reference" class="form-horizontal" action="reference">		
 		<div class="row">
-				<h2 class="col-md-6"><spring:message code="reference.name" /></h2>				
+				<%-- <h2 class="col-md-6"><spring:message code="reference.name" /></h2>	 --%>			
 				<br>
-				<div class="col-md-6" align="right">		
+				<div class="col-md-12" align="right">		
 				<button type="button" class="btn btn-warning active btnAdd" data-toggle="modal" data-target="#addModal">
 					<spring:message code="label.newRecord" />
 				</button> 
@@ -32,6 +32,7 @@
 		</div>	
 		<div>
 				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
+				<caption title="">Reference</caption>
 					<thead>	
 						<tr>								
 							<th><spring:message code="reference.fullname" /></th>

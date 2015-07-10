@@ -49,6 +49,7 @@
 			</div>	
 		<div>
 				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
+				<caption title="">ReportEmployeeLeave</caption>
 					<thead>	
 						<tr>								
 											

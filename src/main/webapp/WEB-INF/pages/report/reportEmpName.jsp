@@ -43,6 +43,7 @@
 			</div>	
 		<div>
 				<table id="tdResult" class="dataTable stripe table-bordered" class="form-group">
+				<caption title="">ReportEmployeeName</caption>
 					<thead>	
 						<tr>								
 							<th><spring:message code="report.resourceId" /></th>

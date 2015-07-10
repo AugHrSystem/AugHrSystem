@@ -164,6 +164,7 @@
 	       
         <div id="outputAddress">
 	       <table id="tbResult" class ="dataTable stripe table-bordered">
+	       <caption title="">Address</caption>
 						<thead>
 							<tr>
 							    <th><spring:message code="label.id"></spring:message></th>

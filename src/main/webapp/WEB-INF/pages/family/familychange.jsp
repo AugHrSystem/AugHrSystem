@@ -500,7 +500,7 @@
 <div id="aa">
 <div class="row">
 	<div class="col-md-6">
-		<h2><spring:message code="family.name" /></h2>
+		<%-- <h2><spring:message code="family.name" /></h2> --%>
 	</div>
 
     <div class="col-md-6">
@@ -522,6 +522,7 @@
 
 <div class="form-group">
  <table id="tableResult" class="dataTable stripe table-bordered">
+ <caption title="">Family</caption>
 	    <thead>
             <tr> 
                 <th><spring:message code="label.fullname" /></th>

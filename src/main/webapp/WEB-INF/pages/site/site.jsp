@@ -523,7 +523,7 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<h2><spring:message code="site.name" /></h2>
+		<%-- <h2><spring:message code="site.name" /></h2> --%>
 	</div>
 
     <div class="col-md-6">
@@ -543,6 +543,7 @@
 
 
  <table id="tableResult" class="dataTable stripe table-bordered"> 
+ <caption title="">Client Site</caption>
 	    <thead>
             <tr> 
                 <th><spring:message code="site.startDate" var="startDate"/>${startDate }</th>

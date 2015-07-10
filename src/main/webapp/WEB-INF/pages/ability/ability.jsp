@@ -16,7 +16,7 @@
 			<div class="row-md-12">
 
 				<div class="col-md-6">
-					<h2><spring:message code="ability.name" /></h2>
+					<%-- <h2><spring:message code="ability.name" /></h2> --%>
 
 				</div>
 

@@ -18,19 +18,21 @@
 
 <input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="card">	
-				<div class="row">
-			<h2 class="col-md-6"><spring:message code="card.name" /></h2>
+			<div class="row">
+				 
 			<br>
-					<div class="col-md-6" align="right">
+					<div class="form-group" align="right">
+					<div class="col-md-12">
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal">
-					<spring:message code="label.newRecord" />
+						<spring:message code="label.newRecord" />
 					</button> 
-					<br>
-					<br>
+					
 					</div>
-			</div>	
-				<div>
+					</div>
+			</div>		
+			
+				<div class="form-group">
 				<table id="tbResult" class="dataTable stripe table-bordered">
 				<caption title="">Card</caption>
 					<thead>					

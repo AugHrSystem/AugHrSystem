@@ -19,14 +19,14 @@
 <form:form id ="listForm" method="post" commandName="allowances">
 
 <div class="row">
-<div class="col-md-6">
+<%-- <div class="col-md-6">
 <h2><spring:message code="allowances.name" /></h2> 
-</div>
+</div> --%>
 <br>
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<div class="col-md-6">
+<div class="col-md-12">
 <button type="button" id="addBtnAll" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 </div>
 </div>

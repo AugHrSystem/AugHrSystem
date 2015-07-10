@@ -44,6 +44,7 @@
 			</div>	
 		<div>
 				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
+				<caption title="">ReportStatusEmployee</caption>
 					<thead>	
 						<tr>								
 							<th><spring:message code="reportstatus.resource" /></th>

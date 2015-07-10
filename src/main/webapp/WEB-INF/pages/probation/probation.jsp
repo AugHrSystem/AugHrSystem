@@ -22,7 +22,7 @@
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
 		<div class="row-md-12">
 			<h2 class="col-md-6">
-				<spring:message code="probation.name" />
+				<%-- <spring:message code="probation.name" /> --%>
 			</h2>	
 			<br>
 			<div class="col-md-6">
@@ -37,6 +37,7 @@
 		</div>
 		<div id="outputajax" >		
 		<table id="tdResult" class="dataTable stripe table-bordered">
+		 <caption title="">Probation</caption>
 			<thead>
 				<tr>
 					<th><spring:message code="probation.dateFrom" /></th>

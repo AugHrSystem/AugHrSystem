@@ -9,7 +9,8 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/css/header.css" />" rel="stylesheet" type="text/css">
-<style>
+
+<!-- <style>
 .form{
 	font-family: Dosis-Regular;
 	font-size:18px;
@@ -18,7 +19,8 @@
 	padding: 5px;
 	
 }
-</style>
+</style> -->
+
 <div class="form">
 <f:form method="post" commandName="listemployee"  role="form">
 		<!-- <ol class="breadcrumb">
@@ -36,6 +38,7 @@
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult" class="dataTable stripe table-bordered">
+		<caption title="">Employee</caption>
 			<thead>
 				<tr>
 					<th><spring:message code="label.id" /></th>

@@ -18,21 +18,24 @@
 <input id="empId" type="hidden" value="${id}">
 
 <f:form method="post" commandName="experience" class="form-horizontal" role="form">	
-		<div class="row-md-12">	
-			<h2 class="col-md-6"><spring:message code="experience.name" /></h2>
-			<br>
-			<div class="col-md-6">
-			<!-- Button trigger modal -->
-				<div class="form-group" align="right">
-					<button id="clearModal" type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal">
- 	 					<spring:message code="label.newRecord" />
-					</button>
-				</div>
-				<br>
-				</div>	
+				
+		<div class="row">
+		<%-- <div class="col-md-6">
+		<h2><spring:message code="experience.name" /></h2>
+		</div> --%>
+		<!-- Button trigger modal -->
+		<br>
+			<div class="form-group" align="right">
+			<div class="col-md-12">
+				<button type="button" id="addBtnEdu" class="btn btn-warning active btnAdds " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 			</div>
+			</div>
+		</div>				
+						
+		
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult" class="dataTable stripe table-bordered">
+		<caption title="">Experience</caption>
 			<thead>
 				<tr>
 					<th><spring:message code="experience.dateFrom" /></th>

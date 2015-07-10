@@ -681,10 +681,10 @@ $(function(){
 
 <div class="row">
 	<div class="col-md-6">
-		<h2><spring:message code="health.name" /></h2>
+		<%-- <h2><spring:message code="health.name" /></h2> --%>
 	</div>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
        <div class="form-group" align="right">
         <br/>
     		<button type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
@@ -699,6 +699,7 @@ $(function(){
 </div>
 
  <table id="tableResult" class="dataTable stripe table-bordered">
+ <caption title="">Health</caption>
 	    <thead>
             <tr> 
                 <th><spring:message code="health.congenitalDisease" /></th>
