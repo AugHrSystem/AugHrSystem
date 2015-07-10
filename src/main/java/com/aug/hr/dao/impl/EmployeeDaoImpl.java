@@ -139,7 +139,7 @@ public Employee findOfficial(Integer id) {
 		query.setInteger("AGE", allEmployeeDto.getAge());
 		query.setString("RELIGION", allEmployeeDto.getReligion());
 		
-		query.setLong("ID_CARD", allEmployeeDto.getIdCard());
+		query.setString("ID_CARD", allEmployeeDto.getIdCard());
 		query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 		query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 		
@@ -232,7 +232,7 @@ public Employee findOfficial(Integer id) {
 			query.setInteger("AGE", allEmployeeDto.getAge());
 			query.setString("RELIGION", allEmployeeDto.getReligion());
 			
-			query.setLong("ID_CARD", allEmployeeDto.getIdCard());
+			query.setString("ID_CARD", allEmployeeDto.getIdCard());
 			query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 			query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 			
@@ -332,7 +332,7 @@ public Employee findOfficial(Integer id) {
 				query.setInteger("AGE", allEmployeeDto.getAge());
 				query.setString("RELIGION", allEmployeeDto.getReligion());
 				
-				query.setLong("ID_CARD", allEmployeeDto.getIdCard());
+				query.setString("ID_CARD", allEmployeeDto.getIdCard());
 				query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 				query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 				
@@ -428,7 +428,7 @@ public Employee findOfficial(Integer id) {
 				query.setInteger("AGE", allEmployeeDto.getAge());
 				query.setString("RELIGION", allEmployeeDto.getReligion());
 				
-				query.setLong("ID_CARD", allEmployeeDto.getIdCard());
+				query.setString("ID_CARD", allEmployeeDto.getIdCard());
 				query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 				query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 				
@@ -609,7 +609,7 @@ public Employee findOfficial(Integer id) {
 		query.setInteger("AGE", allEmployeeDto.getAge());
 		query.setString("RELIGION", allEmployeeDto.getReligion());
 		
-		query.setLong("ID_CARD", allEmployeeDto.getIdCard());
+		query.setString("ID_CARD", allEmployeeDto.getIdCard());
 		query.setString("ISSUED_OFFICE", allEmployeeDto.getIssuedOffice());
 		query.setDate("EXPIRY_DATE", allEmployeeDto.getExpiryDate());
 		

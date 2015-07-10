@@ -61,7 +61,7 @@ public class OfficialDaoTest {
 		offi.setStartWorkDate(cal.getTime());
 		offi.setEndWorkDate(cal.getTime());
 		offi.setPositionAppliedFor("Developer");
-		offi.setSalaryExpected(20000.00);
+		offi.setSalaryExpected("2000000");
 		offi.setProbationDate(cal.getTime());
 		//offi.setEmployeeId(1);
 		
@@ -81,7 +81,7 @@ public class OfficialDaoTest {
 		allEmp.setStartWorkDate(Calendar.getInstance().getTime());
 		allEmp.setEndWorkDate(Calendar.getInstance().getTime());
 		allEmp.setPositionAppliedFor("testtt");
-		allEmp.setSalaryExpected(1240D);
+		allEmp.setSalaryExpected("1240");
 		allEmp.setProbationDate(Calendar.getInstance().getTime());
 		OfficialDto officialDto = new OfficialDto();
 		//Date dateOffi = new Date("12/05/2015");
@@ -109,7 +109,7 @@ public class OfficialDaoTest {
 		allEmp.setTelMobile("02");
 		allEmp.setTelFax("11");
 		allEmp.setAge(21);
-		allEmp.setIdCard(111L);
+		allEmp.setIdCard("111");
 		allEmp.setHeight(21);
 		allEmp.setWeigth(119);
 		allEmp.setMasLocation("1");

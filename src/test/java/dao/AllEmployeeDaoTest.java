@@ -47,7 +47,7 @@ public class AllEmployeeDaoTest {
 		allemp.setTelMobile("02");
 		allemp.setTelFax("11");
 		allemp.setAge(21);
-		allemp.setIdCard(111L);
+		allemp.setIdCard("111");
 		allemp.setHeight(21);
 		allemp.setWeigth(119);
 		allemp.setMasDivision(new Integer(2));

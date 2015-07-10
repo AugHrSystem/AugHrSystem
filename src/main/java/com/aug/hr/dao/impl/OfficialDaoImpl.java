@@ -56,7 +56,7 @@ public class OfficialDaoImpl extends GenericDaoImpl<Official, Integer> implement
 		query.setDate("START_WORK_DATE", officialDto.getStartWorkDate());
 		query.setDate("END_WORK_DATE", officialDto.getEndWorkDate());
 		query.setString("POSITION_APPLIED_FOR", officialDto.getPositionAppliedFor());
-		query.setDouble("SALARY_EXPECTED", officialDto.getSalaryExpected());
+		query.setString("SALARY_EXPECTED", officialDto.getSalaryExpected());
 		query.setDate("PROBATION_DATE", officialDto.getProbationDate());
 		//query.setInteger("EMPLOYEE_ID", officialDto.getEmployeeId());
 		
@@ -94,7 +94,7 @@ public class OfficialDaoImpl extends GenericDaoImpl<Official, Integer> implement
 		query.setDate("START_WORK_DATE", officialDto.getStartWorkDate());
 		query.setDate("END_WORK_DATE", officialDto.getEndWorkDate());
 		query.setString("POSITION_APPLIED_FOR", officialDto.getPositionAppliedFor());
-		query.setDouble("SALARY_EXPECTED", officialDto.getSalaryExpected());
+		query.setString("SALARY_EXPECTED", officialDto.getSalaryExpected());
 		query.setDate("PROBATION_DATE", officialDto.getProbationDate());
 		query.setInteger("updatedBy", officialDto.getEmployeeId());
 		query.setInteger("ID", officialDto.getId());

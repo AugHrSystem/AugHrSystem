@@ -36,7 +36,7 @@ public class OfficialUpdateAndRelateTableTest {
 		officialDto.setStartWorkDate(Calendar.getInstance().getTime());
 		officialDto.setEndWorkDate(Calendar.getInstance().getTime());
 		officialDto.setPositionAppliedFor("Senior");
-		officialDto.setSalaryExpected(500000.00);
+		officialDto.setSalaryExpected("50000000");
 		officialDto.setProbationDate(Calendar.getInstance().getTime());
 		officialDto.setEmployeeId(2);
 		officialDao.updateOfficialByNameQuery(officialDto);

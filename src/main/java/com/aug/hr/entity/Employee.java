@@ -835,7 +835,7 @@ public class Employee extends BaseEntity{
 	private String religion;
 	
 	@Column(name = "ID_CARD",nullable = false)
-	private Long idCard;
+	private String idCard;
 	
 	@Column(name = "ISSUED_OFFICE",nullable = true)
 	private String issuedOffice;
@@ -1347,13 +1347,13 @@ public class Employee extends BaseEntity{
 	}
 
 
-	public Long getIdCard() {
+	public String getIdCard() {
 		return idCard;
 
 	}
 
 
-	public void setIdCard(Long idCard) {
+	public void setIdCard(String idCard) {
 		this.idCard = idCard;
 	}
 

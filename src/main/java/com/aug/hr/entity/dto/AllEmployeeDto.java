@@ -54,7 +54,7 @@ public class AllEmployeeDto {
 	private String placeOfBirth;
 	private Integer age;
 	private String religion;
-	private Long idCard;
+	private String idCard;
 	private String issuedOffice;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
@@ -151,7 +151,7 @@ public class AllEmployeeDto {
 	
 	private String positionAppliedFor;
 	
-	private Double salaryExpected;
+	private String salaryExpected;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -428,12 +428,12 @@ public class AllEmployeeDto {
 	}
 
 
-	public Long getIdCard() {
+	public String getIdCard() {
 		return idCard;
 	}
 
 
-	public void setIdCard(Long idCard) {
+	public void setIdCard(String idCard) {
 		this.idCard = idCard;
 	}
 
@@ -916,12 +916,12 @@ public class AllEmployeeDto {
 	
 
 
-	public Double getSalaryExpected() {
+	public String getSalaryExpected() {
 		return salaryExpected;
 	}
 
 
-	public void setSalaryExpected(Double salaryExpected) {
+	public void setSalaryExpected(String salaryExpected) {
 		this.salaryExpected = salaryExpected;
 	}
 

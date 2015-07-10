@@ -162,12 +162,6 @@
 				</h2>
 	       </div>
 	       
-	    <div class="col-md-12">
-	    <div class="form-group" align="right">
-	      <button id="addaddress" type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-          <spring:message code="label.newRecord"></spring:message></button>	
-        </div>
-        </div>
         <div id="outputAddress">
 	       <table id="tbResult" class ="dataTable stripe">
 						<thead>
@@ -196,6 +190,14 @@
 					
 	     </div>
 	     
+	     <br>
+	     <div class="col-md-12">
+	    <div class="form-group" align="right">
+	      <button id="addaddress" type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+          <spring:message code="label.newRecord"></spring:message></button>	
+        </div>
+        </div>
+	     
  <!----------------------------------------- Start General------------------------------------------------------>
 	     
 	     <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
@@ -205,6 +207,7 @@
 	       </div>
 	     
 	     
+	     <div class="row">
 	      <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -227,7 +230,9 @@
 							</div>
 					
 	        </div>
+	        </div>
 	        
+	        <div class="row">
 	        <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -242,7 +247,9 @@
 							</div>
 					
 	        </div>
+	        </div>
 	        
+	        <div class="row">
 	         <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -258,8 +265,9 @@
 							</div>
 					
 	        </div>
+	        </div>
 	        
-	        
+	        <div class="row">
 	         <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -274,8 +282,10 @@
 							</div>
 					
 	        </div>
+	        </div>
 	       
 	       
+	       <div class="row">
 	       <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -327,8 +337,9 @@
 							</div>
 					
 	        </div>
+	        </div>
 	        
-	        
+	        <div class="row">
 	         <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -353,11 +364,83 @@
 							</div>
 					
 	        </div>
+	        </div>
 	        
-	        
+	        <div class="row">
 	         <div class="col-md-12">
-	         		
+	 <!------------------------------------------------------------------ form ของ sex ------------------------------------------------------------->
 							<div class="form-group">
+							
+							<div class="col-md-3">
+									<label> <spring:message code="employee.sex"></spring:message> :</label>
+									<div class="radio">
+									 <c:if test="${empty allEmployeeDto.sex}">									
+									  		 <label><input type="radio" name="sex" id="Male" value="Male"><spring:message code="employee.male"></spring:message></label>
+									  		 <label><input type="radio" name="sex" id="Female" value="Female"><spring:message code="employee.female"></spring:message></label>
+									  </c:if>
+									  
+									  
+									  <c:if test="${not empty allEmployeeDto.sex}">
+
+										 <c:if test="${allEmployeeDto.sex =='Male'}">
+										        <label><input type="radio" name="sex" id="Male" value="Male" checked="checked"><spring:message code="employee.male"></spring:message></label>
+										        <label><input type="radio" name="sex" id="Female" value="Female"><spring:message code="employee.female"></spring:message></label>
+										  </c:if>
+										    
+										   <c:if test="${allEmployeeDto.sex =='Female'}">
+										       <label><input type="radio" name="sex" id="Male" value="Male"><spring:message code="employee.male"></spring:message></label>
+										       <label><input type="radio" name="sex" id="Female" value="Female" checked="checked"><spring:message code="employee.female"></spring:message></label>						  
+										   </c:if>
+									  </c:if>
+									 
+    								</div>
+								</div>
+								
+	<!----------------------------------------------------------------------------------------- form ของ marital staus  ------------------------------------------------------------------->				
+								
+								<div class="col-md-3">
+									<label> <spring:message code="employee.maritalStatus"></spring:message> :</label>
+									<div class="radio">
+									  <c:if test="${empty allEmployeeDto.maritalStatus}">	
+     									 <label><input type="radio" name="maritalStatus" id="Single" value="Single"><spring:message code="employee.single"></spring:message></label> 
+      									 <label><input type="radio" name="maritalStatus" id="Married" value="Married"><spring:message code="employee.married"></spring:message></label>
+      									 <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce"><spring:message code="employee.divorce"></spring:message></label>
+    								  </c:if>
+    								  <c:if test="${not empty allEmployeeDto.maritalStatus}">
+    								        
+    								        <c:choose>
+										    <c:when test="${allEmployeeDto.maritalStatus =='Single'}">
+										       <label><input type="radio" name="maritalStatus" id="Single" value="Single" checked="checked"><spring:message code="employee.single"></spring:message></label> 
+      									 	   <label><input type="radio" name="maritalStatus" id="Married" value="Married"><spring:message code="employee.married"></spring:message></label>
+      									       <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce"><spring:message code="employee.divorce"></spring:message></label>
+										    </c:when>
+										    
+										     <c:when test="${allEmployeeDto.maritalStatus =='Married'}">
+										       <label><input type="radio" name="maritalStatus" id="Single" value="Single"><spring:message code="employee.single"></spring:message></label> 
+      									 	   <label><input type="radio" name="maritalStatus" id="Married" value="Married" checked="checked"><spring:message code="employee.married"></spring:message></label>
+      									       <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce"><spring:message code="employee.divorce"></spring:message></label>
+										    </c:when>
+										    
+										    <c:when test="${allEmployeeDto.maritalStatus =='Divorce'}">
+										       <label><input type="radio" name="maritalStatus" id="Single" value="Single"><spring:message code="employee.single"></spring:message></label> 
+      									 	   <label><input type="radio" name="maritalStatus" id="Married" value="Married" checked="checked"><spring:message code="employee.married"></spring:message></label>
+      									       <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce"><spring:message code="employee.divorce"></spring:message></label>
+										    </c:when>
+										    
+										    <c:otherwise>
+										       <label><input type="radio" name="maritalStatus" id="Single" value="Single"><spring:message code="employee.single"></spring:message></label> 
+      									 	   <label><input type="radio" name="maritalStatus" id="Married" value="Married"><spring:message code="employee.married"></spring:message></label>
+      									       <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce"><spring:message code="employee.divorce"></spring:message></label>
+										    </c:otherwise>
+										   </c:choose>
+    								  
+    								  </c:if>
+    								  
+    								</div>
+								</div>
+    						
+								
+							
 								<div class="col-md-3">
 									<label> <spring:message code="employee.height"></spring:message> :</label> <input type="text" class="form-control"
 									id="height" name="height" placeholder="${please} ${enter} <spring:message code="employee.height"></spring:message>" value="${allEmployeeDto.height}">
@@ -369,9 +452,10 @@
 							</div>
 					
 	        </div>
+	        </div>
 	        
 	        
-	         <div class="col-md-12">
+	        <%--  <div class="col-md-12">
 	         		
 							<div class="form-group">
 								<div class="col-md-3">
@@ -400,10 +484,10 @@
 								</div>
     						</div>	
 					
-	        </div>
+	        </div> --%>
 	        
 	        
-	         <div class="col-md-12">
+	        <%--  <div class="col-md-12">
 	         		
 							<div class="form-group">
 								<div class="col-md-3">
@@ -448,9 +532,9 @@
 								</div>
     						</div>	
 					
-	        </div>
+	        </div> --%>
 	        
-	        
+	        <div class="row">
 	           <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -473,21 +557,23 @@
 							</div>
 					
 	        </div>
+	        </div>
 	       
-	       
+	       <div class="row">
 	        <div class="col-md-12">
 	         		
 							<div class="form-group">
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<label> <spring:message code="employee.address"></spring:message> :</label> <input type="text" class="form-control"
 									id="address" name="address" placeholder="${please} ${enter} <spring:message code="employee.address"></spring:message>" value="${allEmployeeDto.address}">
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<label> <spring:message code="employee.occupation"></spring:message> :</label> <input type="text" class="form-control"
 									id="occupation" name="occupation" placeholder="${please} ${enter} <spring:message code="employee.occupation"></spring:message>" value="${allEmployeeDto.occupation}">
 								</div>
 							</div>
 					
+	        </div>
 	        </div>
 	       
 	       <div class="row">
@@ -644,6 +730,7 @@
 							</div>
 			</div>
 	        
+	        <div class="row">
 	        <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -693,8 +780,9 @@
     						</div>	
 					
 	        </div>
+	        </div>
 	        
-	        
+	        <div class="row">
 	         <div class="col-md-12">
 	         		
 							<div class="form-group">
@@ -728,6 +816,42 @@
     						</div>	
 					
 	        </div>
+	        </div>
+	        
+	        
+	         <div class="col-md-12">
+	         		
+							<div class="form-group">
+							<br></br>
+							<div class="col-md-12">
+							<label> <spring:message code="employee.mayinquiry"></spring:message> :</label>
+							</div>	
+								<div class="col-md-6">
+									<div class="radio">
+									<c:if test="${ empty allEmployeeDto.previousEmployerYes}">	
+     									 <label><input type="radio" id="previousEmployerYes" name="previousEmployer" value="Yes"><spring:message code="employee.yes"></spring:message></label>
+    								  </c:if>
+    								  <c:if test="${not empty allEmployeeDto.previousEmployerYes}">	
+     									  <label><input type="radio" id="previousEmployerYes" name="previousEmployer" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>   									       									 
+    								   </c:if>
+    								</div>
+    								
+    								<div class="radio">
+    								  <c:if test="${ empty allEmployeeDto.previousEmployerNo}">	
+     									   <label><input type="radio" id="previousEmployerNo" name="previousEmployer" value="No"><spring:message code="employee.no"></spring:message></label>
+    								  </c:if>
+    								  <c:if test="${not empty allEmployeeDto.previousEmployerNo}">	
+     									     <label><input type="radio" id="previousEmployerNo" name="previousEmployer" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>     									       									 
+    								   </c:if>
+     									
+     									 <input type="text" class="form-control" id="previousEmpreasonsNo" name="previousEmpreasonsNo" placeholder="${please} ${enter} <spring:message code="employee.givethereason"></spring:message>" value="${allEmployeeDto.previousEmpreasonsNo}">
+    									
+    								</div>
+								</div>
+    						</div>	
+					
+	        </div>
+>>>>>>> change row employee version 3
 
 
 
@@ -802,6 +926,7 @@
 			</h2>
 	   </div>
 	    
+	    <div class="row">
 	    <div class="col-md-12">
 	    <div class="form-group">
 							<div class="col-md-4">
@@ -811,7 +936,7 @@
 									
 								</div>
 								
-			 			<div class="col-md-4">
+			 			<%-- <div class="col-md-4">
 									<label> <spring:message code="official.officialDate"></spring:message> :</label> 
 
 									<div class='input-group date' id='officialDate'>
@@ -819,7 +944,7 @@
 									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.officialDate}"/>' />
 								    <span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
-									</span></div></div>
+									</span></div></div> --%>
 
 									<%-- <input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="Enter Date" value="${allEmployeeDto.officialDate}">
 							  	    </div> --%>
@@ -827,16 +952,16 @@
 			</div>
 			</div>
 			
-			
+			<div class="row">
 			<div class="col-md-12">	
 			<div class="form-group">
-				<div class="col-md-4">
+				<div class="col-md-6">
 									<label> <spring:message code="official.positionAppliedFor"></spring:message> :</label> 
 									<input type="text" class="form-control" id="positionAppliedFor" name="positionAppliedFor" placeholder="${please} ${enter} <spring:message code="official.position"></spring:message>" value="${allEmployeeDto.positionAppliedFor}">
 								</div>
 								
 
-				<div class="col-md-4">
+				<div class="col-md-6">
 				<label> <spring:message code="official.salaryExpected"></spring:message> :</label> <input type="text" class="form-control" id="salaryExpected" name="salaryExpected" placeholder="${please} ${enter} <spring:message code="official.salary"></spring:message>" value="${allEmployeeDto.salaryExpected}">
 				
 			
@@ -847,6 +972,8 @@
 							
 							</div>
 	   
+	    </div>
+	    </div>
 	    </div>
 	     
 	     
@@ -867,11 +994,12 @@
 			
 	    </div> --%>
 	    
+	    <div class="row">
 	      <div class="col-md-12">
 	         
 				<div class="form-group">
 
-						<div class="col-md-4">
+						<div class="col-md-6">
     						<label> <spring:message code="official.startWorkDate"></spring:message> :</label> 
     						<div class='input-group date' id='startWorkDate'><input type="text" class="form-control"
 							id="startWorkDate" name="startWorkDate" placeholder="${enter} <spring:message code="official.startWorkDate"></spring:message>" 
@@ -881,7 +1009,7 @@
 							</span></div></div>
 						
 						
-						<div class="col-md-4">
+						<div class="col-md-6">
     						<label> <spring:message code="official.endWorkDate"></spring:message> :</label>
     						<div class='input-group date' id='endWorkDate'>
     						<input type="text" class="form-control"
@@ -911,10 +1039,13 @@
 			
 	    </div>
 	    </div>
+	    </div>
+	    
+	    <div class="row">
 	     <div class="col-md-12">
 	       
 				<div class="form-group">
-					 <div class="col-md-4">
+					 <div class="col-md-6">
     					<label><spring:message code="employee.masEmployment"></spring:message> :</label>
     					
     						<f:select  id="masEmployment" path="masEmployment"  class="form-control">
@@ -926,7 +1057,7 @@
 							</f:select>
 						</div> 
 						
-						<div class="col-md-4">
+						<div class="col-md-6">
     						<label><spring:message code="employee.masDivision"></spring:message> :</label>
     						
     						<f:select  id="masDivision" path="masDivision"  class="form-control">
@@ -943,14 +1074,16 @@
   				</div>
 			
 	    </div>
+	    </div>
 	    
+	    <div class="row">
 	     <div class="col-md-12">
 	         
 				<div class="form-group">
 						
 						
 						
-						<div class="col-md-4">
+						<div class="col-md-6">
     						<label><spring:message code="employee.masStaffType"></spring:message> :</label>
     						
     						<f:select  id="masStaffType" path="masStaffType"  class="form-control">
@@ -963,7 +1096,7 @@
     						
   				</div>
   				
-  				<div class="col-md-4">
+  				<div class="col-md-6">
     						<label><spring:message code="employee.masJoblevel"></spring:message> :</label>
     						
     						<f:select  id="masJoblevel" path="masJoblevel"  class="form-control" >
@@ -978,13 +1111,15 @@
 			
 	    </div>
 	    </div>
+	    </div>
 	    
+	    <div class="row">
 	    <div class="col-md-12">
 	         
 				<div class="form-group">
 						
 						
-						<div class="col-md-4">
+						<div class="col-md-6">
     						<label><spring:message code="employee.masCoreSkill"></spring:message> :</label>
     						
     						 <f:select  id="masCoreSkill" path="masCoreSkill"  class="form-control">
@@ -998,7 +1133,7 @@
     						
 						</div>
 						
-						<div class="col-md-4">
+						<div class="col-md-6">
     						<label><spring:message code="employee.technology"></spring:message> :</label>
     						
     						<f:select  id="technology" path="technology"  class="form-control">
@@ -1014,13 +1149,14 @@
   				</div>
 			
 	    </div>
+	    </div>
 	    
-	    
+	    <div class="row">
 	      <div class="col-md-12">
 	         
 				<div class="form-group">
 				
-				<div class="col-md-3">
+				<div class="col-md-6">
 				<label> <spring:message code="label.aim"></spring:message> :</label>
 								<div class="checkbox">
      								
@@ -1033,31 +1169,9 @@
 								
 								</div>
 			</div>
-
-  				</div>
 			
-	    </div>
-	    
-	    <div class="col-md-12">
-	    <div class="form-group">
-	    <div class="col-md-4">
-    				
-    			<%-- <label>AIM : ${aimList.size()}</label> --%>
-
-
-				<%-- <div class="form-group">					
-    			<label>AIM :${aimList.size()}</label> --%>
-						<label><spring:message code="label.aim"></spring:message> : </label>
-    				  <f:select  path="aimempid"  class="form-control">
-    						 
-    						 <f:option  value=""><spring:message code="employee.enter.aim"></spring:message></f:option>
-  							 <f:options items="${ aimList }"  itemValue="id" itemLabel="name_eng" />
-    						  
-								
-							</f:select>  
-    				</div>
-    				
-    		<div class="col-md-4">
+			
+			<div class="col-md-6">
 						
 
 						<label> <spring:message code="employee.probationdate"></spring:message> :</label> 
@@ -1077,12 +1191,52 @@
 					</span>
 				</div>
 				</div>
+
+  				</div>
+			
+	    </div>
+	    </div>
+	    
+	    <div class="row">
+	    <div class="col-md-12">
+	    <div class="form-group">
+	    <div class="col-md-6">
+    				
+    			<%-- <label>AIM : ${aimList.size()}</label> --%>
+
+
+				<%-- <div class="form-group">					
+    			<label>AIM :${aimList.size()}</label> --%>
+						<label><spring:message code="label.aim"></spring:message> : </label>
+    				  <f:select  path="aimempid"  class="form-control">
+    						 
+    						 <f:option  value=""><spring:message code="employee.enter.aim"></spring:message></f:option>
+  							 <f:options items="${ aimList }"  itemValue="id" itemLabel="name_eng" />
+    						  
+								
+							</f:select>  
+    				</div>
+    				
+    				
+    			<div class="col-md-6">
+									<label> <spring:message code="official.registerDate"></spring:message> :</label> 
+
+									<div class='input-group date' id='officialDate'>
+									<input type="text" class="form-control" id="officialDate" name="officialDate" placeholder="${enter} <spring:message code="official.registerDate"></spring:message>" 
+									value='<fmt:formatDate pattern="dd-MM-yyyy" value="${allEmployeeDto.officialDate}"/>' />
+								    <span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+									</span></div></div>	
+    				
+    				
+    				
+	    </div>
 	    </div>
 	    </div>
 	    
 	
-			<div  align="center">
-				<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.cancel" /></button>
+			<div  align="right">
+				<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px;"><spring:message code="label.cancel" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
     			<button type="button" id="saveButton" class="btn btn-primary" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
     			
@@ -1200,6 +1354,14 @@ var getIndex = 0;
 	$(document).ready(function() {
 
 		
+		$("#telHome").mask("99-999-9999");
+		$("#telMobile").mask("999-999-9999");
+		$("#telFax").mask("99-999-9999");
+		$("#idCard").mask("9-9999-99999-99-9");
+		$("#emergencyContactPhoneNumber").mask("999-999-9999"); 
+		
+		$('#salaryExpected').mask('0,000,000.00', {reverse: true});
+		
 //------------------------------------------------------ Validate --------------------------------------------------------------------------------------------
 
 $(".closeAddressButton").off("click").on("click",function() {
@@ -1292,32 +1454,32 @@ $("#addForm").validate({
 		}, 
 		
 	 	telHome: {
-			required: true,
-			  digits: true, 
+			required: true
+			  /* digits: true, 
 			  minlength: 10,
-			 maxlength: 10 
+			 maxlength: 10  */
 			 
 		}, 
 		
 		telMobile: {
-			required: true,
-			 digits: true,
+			required: true
+			 /* digits: true,
 			 minlength: 10,
-			 maxlength: 10
+			 maxlength: 10 */
 		},
 		
 		telFax: {
-			required: true,
-			 digits: true,
+			required: true
+			 /* digits: true,
 			 minlength: 10,
-			 maxlength: 10
+			 maxlength: 10 */
 		},
 		
 		idCard: {
-			required: true,
-			 digits: true,
+			required: true
+			 /* digits: true,
 			 minlength: 13,
-			 maxlength: 13
+			 maxlength: 13 */
 		},
 		
 		age: {
@@ -1336,10 +1498,10 @@ $("#addForm").validate({
 		},
 		
 		emergencyContactPhoneNumber: {
-			required: true,
-			 digits: true,
+			required: true
+			 /* digits: true,
 			 minlength: 10,
-			 maxlength: 10
+			 maxlength: 10 */
 		},
 		
 		numberOfChildren: {
@@ -1348,8 +1510,8 @@ $("#addForm").validate({
 		},
 		
 		salaryExpected: {
-			required: true,
-			 digits: true
+			required: true
+			 /* digits: true */
 		}
 	
 	},

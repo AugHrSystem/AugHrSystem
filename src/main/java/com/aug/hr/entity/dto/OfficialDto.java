@@ -45,7 +45,7 @@ public class OfficialDto {
 		private String positionAppliedFor;
 		
 	//@Column(name = "SALARY_EXPECTED", nullable = true)
-		private Double salaryExpected;
+		private String salaryExpected;
 		
 		@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
 		@Temporal(TemporalType.TIMESTAMP)
@@ -93,11 +93,11 @@ public class OfficialDto {
 			this.positionAppliedFor = positionAppliedFor;
 		}
 
-		public Double getSalaryExpected() {
+		public String getSalaryExpected() {
 			return salaryExpected;
 		}
 
-		public void setSalaryExpected(Double salaryExpected) {
+		public void setSalaryExpected(String salaryExpected) {
 			this.salaryExpected = salaryExpected;
 		}
 
