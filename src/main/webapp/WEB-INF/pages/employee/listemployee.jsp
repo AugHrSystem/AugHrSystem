@@ -47,7 +47,7 @@
 	<div align="right">
 	<f:form action="${pageContext.request.contextPath}/employee" method="POST" role="form">
 		<div class="form-group">
-		<button type="submit" class="btn btn-primary btn-md">
+		<button type="submit" class="btn btn-warning active btn-md">
  	 	<spring:message code="label.add" />
 		</button>
 		</div>
@@ -94,7 +94,7 @@ var empId;
     				for (var i=0;i< data.length; i++) {
     					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameEng, 
     					              data[i].surnameEng,
-    						 '<button type="button" class="btn btn-info btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')"><spring:message code="label.edit" /></button>'+
+    						 '<button type="button" class="btn btn-warning btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')"><spring:message code="label.edit" /></button>'+
     						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
     			 
     					}

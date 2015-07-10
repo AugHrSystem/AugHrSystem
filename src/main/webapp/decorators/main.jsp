@@ -63,26 +63,6 @@
 <script src="<c:url value="/resource/pnotify/js/pnotify.custom.min.js" />"></script>
 <link href="<c:url value="/resource/pnotify/css/pnotify.custom.min.css" />" rel="stylesheet"	media="all">
 
-<style >
-
-#imagePreview {
-    width: 150px;
-    height: 150px;
-    background-position: center;
-    background-size: cover;
-    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
-    display: inline-block;
-}
-body {
-background-image: url(${pageContext.request.contextPath}/resource/images/BG_W.jpg);
--moz-background-size: cover;
--webkit-background-size: cover;
-background-size: cover;
-background-position: top center !important;
-background-repeat: no-repeat !important;
-background-attachment: fixed;
-} 
-</style>
 
 </head>
 <body>

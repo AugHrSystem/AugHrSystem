@@ -193,7 +193,7 @@
 	     <br>
 	     <div class="col-md-12">
 	    <div class="form-group" align="right">
-	      <button id="addaddress" type="button"class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+	      <button id="addaddress" type="button"class="btn btn-warning active btn-sm" data-toggle="modal" data-target="#myModal">
           <spring:message code="label.newRecord"></spring:message></button>	
         </div>
         </div>
@@ -1955,7 +1955,7 @@ $("#addForm").validate({
 					              zipcode,
 					              getIndex,
 					              
-					              '<button id="edit" type="button" class="btn btn-info btn-sm active"  data-target="#addModal" data-toggle="modal">Edit</button>'+
+					              '<button id="edit" type="button" class="btn btn-warning btn-sm active"  data-target="#addModal" data-toggle="modal">Edit</button>'+
 				    			  '<button id="delete" type="button" class="btn btn-danger btn-sm active" data-target="#deleteModal" data-toggle="modal">Delete</button>',
 				    			 
 				    			  status
@@ -2244,7 +2244,7 @@ $("#addForm").validate({
 					              data[i].masprovinceName, 					              
 					              data[i].zipcode,
 					              getIndex,
-						'<button id="edit" type="button" class="btn btn-info btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
+						'<button id="edit" type="button" class="btn btn-warning btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
 						'<button id="delete" type="button" class="btn btn-danger btn-sm active" data-addId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>',
 						 "unmodified",
 						]);

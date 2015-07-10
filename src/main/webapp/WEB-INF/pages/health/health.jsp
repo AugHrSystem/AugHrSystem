@@ -655,7 +655,7 @@ $(function(){
     <div class="col-md-6">
        <div class="form-group" align="right">
         <br/>
-    		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
+    		<button type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
       	<br/>
       </div>	
 	</div>

@@ -6,14 +6,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<style>
-.required:after {
-  margin-bottom: 0px;
-  content:"*";
-  color:red;
-}
-</style>
-
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
@@ -33,7 +25,7 @@
 					<br>
 					<!-- Button trigger modal -->
 					<div class="form-group" align="right">
-						<button type="button" id="addBtnAbi" class="btn btn-info"
+						<button type="button" id="addBtnAbi" class="btn btn-warning active"
 							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
 					</div>
 

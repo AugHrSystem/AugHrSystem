@@ -563,7 +563,7 @@
     <div class="col-md-6">
     	<br/>
     	<div class="form-group" align="right">
-			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
+			<button type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
 		</div>
 	</div>
 

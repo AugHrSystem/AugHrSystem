@@ -24,7 +24,7 @@
 			<div class="col-md-6">
 			<!-- Button trigger modal -->
 				<div class="form-group" align="right">
-					<button id="clearModal" type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">
+					<button id="clearModal" type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal">
  	 					<spring:message code="label.newRecord" />
 					</button>
 				</div>

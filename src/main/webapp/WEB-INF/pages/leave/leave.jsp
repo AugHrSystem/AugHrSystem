@@ -34,7 +34,7 @@
 					<br>
 					<!-- Button trigger modal -->
 					<div class="form-group" align="right">
-						<button type="button" id="addBtnLe" class="btn btn-info btn-md"
+						<button type="button" id="addBtnLe" class="btn btn-warning active btn-md"
 							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
 					</div>
 

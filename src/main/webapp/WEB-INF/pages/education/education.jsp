@@ -8,13 +8,6 @@
 
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
-<style>
-.required:after {
-  margin-bottom: 0px;
-  content:"*";
-  color:red;
-}
-</style>
 
 <input id="empId" type="hidden" value="${id}">
 
@@ -28,7 +21,7 @@
 <br>
 <div class="form-group" align="right">
 <div class="col-md-6">
-<button type="button" id="addBtnEdu" class="btn btn-info btnAdds" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
+<button type="button" id="addBtnEdu" class="btn btn-warning active btnAdds " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 </div>
 </div>
 </div>

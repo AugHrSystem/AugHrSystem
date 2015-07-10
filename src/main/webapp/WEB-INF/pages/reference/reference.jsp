@@ -23,7 +23,7 @@
 				<h2 class="col-md-6"><spring:message code="reference.name" /></h2>				
 				<br>
 				<div class="col-md-6" align="right">		
-				<button type="button" class="btn btn-info btnAdd" data-toggle="modal" data-target="#addModal">
+				<button type="button" class="btn btn-warning active btnAdd" data-toggle="modal" data-target="#addModal">
 					<spring:message code="label.newRecord" />
 				</button> 
 				<br>
