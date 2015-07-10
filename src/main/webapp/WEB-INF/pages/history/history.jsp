@@ -19,14 +19,14 @@
 <form:form id ="listForm" method="post" commandName="history">
 
 <div class="row">
-<div class="col-md-6">
-<h2><spring:message code="history.name" /></h2> 
-</div>
-<br>
+<!-- <div class="col-md-6"> -->
+<%-- <h2><spring:message code="history.name" /></h2>  --%>
+<!-- </div> -->
+<!-- <br> -->
 
 <!-- Button trigger modal -->
 <div class="form-group" align="right">
-<div class="col-md-6">
+<div class="col-md-12">
 <button type="button" id="addBtnHis" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 </div>
 </div>
@@ -34,7 +34,8 @@
 
 <!-- Table -->
 <div class="form-group">
-<table id="tbResult" class="dataTable stripe">
+<table id="tbResult" class="dataTable stripe table-bordered">
+<caption title="">History</caption>
 	<thead>
 		<tr>
 			<th><spring:message code="history.dateOfAdjustment" var="dateOfAdjustment"/>${dateOfAdjustment }</th>

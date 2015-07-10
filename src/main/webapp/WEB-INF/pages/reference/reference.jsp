@@ -31,7 +31,7 @@
 			</div>
 		</div>	
 		<div>
-				<table id="tbResult" class="dataTable stripe" class="form-group">
+				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
 					<thead>	
 						<tr>								
 							<th><spring:message code="reference.fullname" /></th>

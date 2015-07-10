@@ -43,7 +43,7 @@
 			</div>
 			</div>	
 		<div>
-				<table id="tbResult" class="table" class="form-group">
+				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
 					<thead>	
 						<tr>								
 							<th><spring:message code="reportstatus.resource" /></th>

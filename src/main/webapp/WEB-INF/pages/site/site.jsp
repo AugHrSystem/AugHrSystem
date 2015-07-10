@@ -542,7 +542,7 @@
 
 
 
- <table id="tableResult" class="dataTable stripe"> 
+ <table id="tableResult" class="dataTable stripe table-bordered"> 
 	    <thead>
             <tr> 
                 <th><spring:message code="site.startDate" var="startDate"/>${startDate }</th>

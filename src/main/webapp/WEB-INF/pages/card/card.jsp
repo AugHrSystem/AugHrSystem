@@ -31,7 +31,8 @@
 					</div>
 			</div>	
 				<div>
-				<table id="tbResult" class="dataTable stripe">
+				<table id="tbResult" class="dataTable stripe table-bordered">
+				<caption title="">Card</caption>
 					<thead>					
 						<tr>								
 							<th><spring:message code="card.cardno" /></th>

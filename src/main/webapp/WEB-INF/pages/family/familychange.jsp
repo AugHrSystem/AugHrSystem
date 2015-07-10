@@ -521,7 +521,7 @@
 
 
 <div class="form-group">
- <table id="tableResult">
+ <table id="tableResult" class="dataTable stripe table-bordered">
 	    <thead>
             <tr> 
                 <th><spring:message code="label.fullname" /></th>

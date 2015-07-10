@@ -32,7 +32,7 @@
 					</div>
 			</div>	
 				<div>
-					<table id="tbResult" class="table" class="dataTable stripe">
+					<table id="tbResult"  class="dataTable stripe table-bordered">
 							<thead>
 								<tr>
 									<th><spring:message code="reward.reward.name" /></th>

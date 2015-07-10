@@ -659,7 +659,7 @@
 	<div id="outputajax" class="form-group"></div>
 </div>		
 
- <table id="tableResult" class="dataTable stripe">
+ <table id="tableResult" class="dataTable stripe table-bordered">
 	    <thead>
             <tr> 
                 <th><spring:message code="skilllanguage.name" var="Language"/>

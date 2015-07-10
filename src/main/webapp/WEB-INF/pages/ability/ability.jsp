@@ -36,7 +36,8 @@
 
 			<!-- Table -->
 <div class="form-group">
-<table id="tbResult" class="dataTable stripe">
+<table id="tbResult" class="dataTable stripe table-bordered">
+<caption title="">Ability</caption>
 	<thead>
 		<tr>
 			<!-- <th>#</th> -->

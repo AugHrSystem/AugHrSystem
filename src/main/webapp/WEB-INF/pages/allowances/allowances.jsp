@@ -34,7 +34,8 @@
 
 <!-- Table -->
 <div class="form-group">
-<table id="tbResult" class="dataTable stripe">
+<table id="tbResult" class="dataTable stripe table-bordered">
+<caption title="">Alowances</caption>
 	<thead>
 		<tr>
 			<th><spring:message code="allowances.masallowances" /></th>

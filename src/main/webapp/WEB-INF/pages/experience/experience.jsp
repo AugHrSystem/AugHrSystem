@@ -32,7 +32,7 @@
 				</div>	
 			</div>
 		<div id="outputajax" class="form-group">		
-		<table id="tdResult" class="dataTable stripe">
+		<table id="tdResult" class="dataTable stripe table-bordered">
 			<thead>
 				<tr>
 					<th><spring:message code="experience.dateFrom" /></th>

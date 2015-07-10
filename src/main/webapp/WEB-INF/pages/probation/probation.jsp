@@ -35,8 +35,8 @@
 				<br>
 			</div>
 		</div>
-		<div id="outputajax" class="dataTable stripe">		
-		<table id="tdResult">
+		<div id="outputajax" >		
+		<table id="tdResult" class="dataTable stripe table-bordered">
 			<thead>
 				<tr>
 					<th><spring:message code="probation.dateFrom" /></th>

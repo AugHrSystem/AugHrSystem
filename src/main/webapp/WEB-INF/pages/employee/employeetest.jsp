@@ -163,7 +163,7 @@
 	       </div>
 	       
         <div id="outputAddress">
-	       <table id="tbResult" class ="dataTable stripe">
+	       <table id="tbResult" class ="dataTable stripe table-bordered">
 						<thead>
 							<tr>
 							    <th><spring:message code="label.id"></spring:message></th>
@@ -1237,7 +1237,7 @@
 			<div  align="right">
 				<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px;"><spring:message code="label.cancel" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
-    			<button type="button" id="saveButton" class="btn btn-primary" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
+    			<button type="button" id="saveButton" class="btn btn-warning active" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
     			
 	    	</div>
 </f:form>   
