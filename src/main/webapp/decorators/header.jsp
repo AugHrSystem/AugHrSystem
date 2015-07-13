@@ -315,8 +315,14 @@ table.dataTable.no-footer {
                     	</div>
                 	</div>
                 <div class="form-group navbar navbar-defaults">
-				<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=th"><img src="<c:url value="/resource/images/flag_thailand.png" />"> </a>
+                <c:if test="${ pageContext.response.locale.language eq 'th' }">
+				<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=th"><img style="background-color:#fff;" src="<c:url value="/resource/images/flag_thailand.png" />"> </a>
 				<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=en"><img src="<c:url value="/resource/images/flag_usa.png" />"> </a>
+                </c:if>
+                <c:if test="${ pageContext.response.locale.language eq 'en' }">
+				<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=th"><img src="<c:url value="/resource/images/flag_thailand.png" />"> </a>
+				<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=en"><img style="background-color:#fff;" src="<c:url value="/resource/images/flag_usa.png" />"> </a>
+                </c:if>
                 <a class="navbar-link-report" href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="label.report" var="report" /><b class="caret">${report}  <span class="glyphicon glyphicon-triangle-bottom"></span></b></a>
 	        	
 		    		<ul class="dropdown-menu">
