@@ -474,7 +474,7 @@ var dt;
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].dateFrom,data[i].dateTo,
 						              data[i].status,data[i].reason,
-							 '<button type="button" class="btn btn-warning btn-sm active" data-proId="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+							 '<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active" data-proId="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
 							'<button type="button" class="btn btn-danger btn-sm active" data-proId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 				 
 						}

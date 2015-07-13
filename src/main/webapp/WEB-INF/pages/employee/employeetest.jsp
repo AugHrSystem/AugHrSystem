@@ -156,15 +156,12 @@
 	         
  <!-------------------------------------------------- Start Address-------------------------------------------------->
  
-	       <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
-				<h2><spring:message code="label.address"></spring:message>
-					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
-				</h2>
-	       </div>
+	      
 	       
+	   
         <div id="outputAddress">
 	       <table id="tbResult" class ="dataTable stripe table-bordered">
-	       <caption title="">Address</caption>
+	       <caption title=""><spring:message code="label.address"></spring:message></caption>
 						<thead>
 							<tr>
 							    <th><spring:message code="label.id"></spring:message></th>
@@ -1892,8 +1889,8 @@ $("#addForm").validate({
 					              zipcode,
 					              getIndex,
 					              
-					              '<button id="edit" type="button" class="btn btn-warning btn-sm active"  data-target="#addModal" data-toggle="modal">Edit</button>'+
-				    			  '<button id="delete" type="button" class="btn btn-danger btn-sm active" data-target="#deleteModal" data-toggle="modal">Delete</button>',
+					              '<button id="edit" type="button" class="btn btn-warning btn-sm active"  data-target="#addModal" style="margin-right :15px;" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+				    			  '<button id="delete" type="button" class="btn btn-danger btn-sm active" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>',
 				    			 
 				    			  status
 				    				

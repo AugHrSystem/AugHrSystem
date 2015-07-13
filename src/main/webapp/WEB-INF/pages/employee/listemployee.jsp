@@ -113,7 +113,7 @@ var empId;
     				for (var i=0;i< data.length; i++) {
     					dt.fnAddData([data[i].id,data[i].employeeCode,data[i].nameEng, 
     					              data[i].surnameEng,
-    						 '<button type="button" class="btn btn-warning btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')"><spring:message code="label.edit" /></button>'+
+    						 '<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active " data-empId="' + data[i].id + '" onclick="initEditEmployee('+data[i].id+')" ><spring:message code="label.edit" /></button>'+
     						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
     			 
     					}

@@ -245,8 +245,8 @@
 								/* data.occupation, */
 								
 	
-						'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+						'<button type="button" style="margin-right :15px;" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > <spring:message code="label.edit" /></button>',
+						'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> <spring:message code="label.delete" /></button>'
 					]);
 					
 					$('#addModal').modal('toggle');
@@ -305,8 +305,8 @@
 					/* dt.fnUpdate(data.address, tr, 1), */
 					dt.fnUpdate(data.tel, tr, 1),
 					/* dt.fnUpdate(data.occupation, tr, 3), */
-					'<button class="btn btn-warning btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> Edit</button>',
-					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i> Delete</button>'
+					'<button class="btn btn-warning btn-small" style="margin-right :15px;" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'"><i class="icon-white icon-pencil"></i> <spring:message code="label.edit" /></button>',
+					'<button class="btn btn-danger btn-small" type="button" data-toggle="modal" data-target="#addModal" data-id="'+ data.id +'" ><i class="icon-white icon-trash"></i><spring:message code="label.delete" /> </button>'
 							
 						$('#addModal').modal('toggle');
 					$(function(){ new PNotify({
@@ -415,8 +415,8 @@
 					for (var i=0;i< data.length; i++) {
 						dt.fnAddData([data[i].name, 
 						              data[i].tel,							
-						    '<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>']);
+						    '<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 				
 						}
 					},

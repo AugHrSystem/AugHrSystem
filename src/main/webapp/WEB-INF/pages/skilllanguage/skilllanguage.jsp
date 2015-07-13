@@ -104,7 +104,7 @@
 					  			           data[i].abilityWriting,
 					  			           data[i].abilityReading,
 					  			           data[i].abilityUnderstanding,
-					  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id+ '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+					  			          '<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id+ '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
 					    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id+ '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>'
 					    					
 					  			           ]); 			  		

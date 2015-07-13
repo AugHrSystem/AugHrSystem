@@ -357,8 +357,8 @@
 												data.typereward,
 												data.year,
 												data.reason,
-												'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-												'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>' ]);
+												'<button type="button" style="margin-right :15px;" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > <spring:message code="label.edit" /></button>',
+												'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> <spring:message code="label.delete" /></button>' ]);
 
 								$('#addModal').modal('toggle');
 								$(function(){ new PNotify({
@@ -412,8 +412,8 @@
 										dt.fnUpdate(data.name, tr, 0),
 										dt.fnUpdate(data.year, tr, 1),
 										dt.fnUpdate(data.reason, tr, 2),
-										'<button type="button" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > Edit</button>',
-										'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> Delete</button>'
+										'<button type="button"  style="margin-right :15px;" style="margin-right :15px;" class="btn btn-warning" data-id="'+data.id+'" data-toggle="modal" data-target="#addModal" > <spring:message code="label.edit" /></button>',
+										'<button type="button" class="btn btn-danger" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal"> <spring:message code="label.delete" /></button>'
 
 								$('#addModal').modal('toggle');
 										$(function(){ new PNotify({
@@ -521,8 +521,8 @@
 									dt.fnAddData([data[i].typereward,
 												  data[i].year,
 												  data[i].reason,
-													'<button type="button" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-													'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>' ]);
+													'<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+													'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>' ]);
 								}
 							},
 							error : function(jqXHR,	textStatus,	error) {	
