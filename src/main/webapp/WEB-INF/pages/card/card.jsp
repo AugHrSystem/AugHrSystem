@@ -18,19 +18,19 @@
 
 <input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="card">	
-			<div class="row">
+<!-- 			<div class="row"> -->
 				 
 			<br>
-					<div class="form-group" align="right">
-					<div class="col-md-12">
+<!-- 					<div class="form-group" align="right"> -->
+<!-- 					<div class="col-md-12"> -->
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal">
-						<spring:message code="label.newRecord" />
-					</button> 
+<!-- 					<button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"> -->
+<%-- 						<spring:message code="label.newRecord" /> --%>
+<!-- 					</button>  -->
 					
-					</div>
-					</div>
-			</div>		
+<!-- 					</div> -->
+<!-- 					</div> -->
+<!-- 			</div>		 -->
 			
 				<div class="form-group">
 				<table id="tbResult" class="dataTable stripe table-bordered">
@@ -157,12 +157,13 @@
 			"iDisplayLength": 10,
 			"pagingType": "simple_numbers",
 			"ordering": false,
-			"info": false
+			"info": false,
+			"dom": '<"toolbar">frtip'
 		});
 		
 	
 		
-		
+		$("div.toolbar").html('<b><button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',

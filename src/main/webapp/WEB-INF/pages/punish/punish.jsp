@@ -18,18 +18,18 @@
 
 <input id="empId" type="hidden" value="${id}">
 		<form:form id ="listForm" method="post" commandName="punish">	
-			<div class="row">
+<!-- 			<div class="row"> -->
 			<%-- <h2 class="col-md-6"><spring:message code="punish.name" /></h2> --%>
 			<br>
-					<div class="col-md-12" align="right">
+<!-- 					<div class="col-md-12" align="right"> -->
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal">
-					<spring:message code="label.newRecord" />
-					</button> 
-					<br>
-					<br>
-					</div>
-			</div>	
+<!-- 					<button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"> -->
+<%-- 					<spring:message code="label.newRecord" /> --%>
+<!-- 					</button>  -->
+<!-- 					<br> -->
+<!-- 					<br> -->
+<!-- 					</div> -->
+<!-- 			</div>	 -->
 				<div>
 				<table id="tbResult" class="dataTable stripe table-bordered">
 				<caption title=""><spring:message code="punish.name" /></caption>
@@ -129,9 +129,11 @@
 			"iDisplayLength": 10,
 			"pagingType": "simple_numbers",
 			"ordering": false,
-			"info": false
+			"info": false,
+			"dom": '<"toolbar">frtip'
 		});
 		
+		$("div.toolbar").html('<b><button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		$("#addBtn").on("click",function(){clearModal();});
 		
 			

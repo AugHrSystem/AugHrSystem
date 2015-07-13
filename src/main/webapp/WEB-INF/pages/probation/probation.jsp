@@ -20,21 +20,21 @@
 
 <input id="empId" type="hidden" value="${id}">
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
-		<div class="row-md-12">
-			<h2 class="col-md-6">
+<!-- 		<div class="row-md-12"> -->
+<!-- 			<h2 class="col-md-6"> -->
 				<%-- <spring:message code="probation.name" /> --%>
-			</h2>	
+<!-- 			</h2>	 -->
 			<br>
-			<div class="col-md-6">
+<!-- 			<div class="col-md-6"> -->
 				<!-- Button trigger modal -->
-				<div class="form-group" align="right">
-					<button id="clearModal"type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal">
- 	 					<spring:message code="label.newRecord" />
-					</button>
-				</div>
-				<br>
-			</div>
-		</div>
+<!-- 				<div class="form-group" align="right"> -->
+<!-- 					<button id="clearModal"type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"> -->
+<%--  	 					<spring:message code="label.newRecord" /> --%>
+<!-- 					</button> -->
+<!-- 				</div> -->
+<!-- 				<br> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 		<div id="outputajax" >		
 		<table id="tdResult" class="dataTable stripe table-bordered">
 		 <caption title=""><spring:message code="probation.name" /></caption>
@@ -140,8 +140,11 @@ var dt;
 			"iDisplayLength": 10,
 			"pagingType": "simple_numbers",
 			"ordering": false,
-			"info": false
+			"info": false,
+			"dom": '<"toolbar">frtip'
 		});
+		
+		$("div.toolbar").html('<b><button id="clearModal"type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		var proId; 
 		$('#validate')
         .bootstrapValidator({

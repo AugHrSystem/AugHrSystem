@@ -274,7 +274,6 @@ caption {
 
 }
 
-
 .dropdown-link-menu b{
  width:75px;
 height:25px;
@@ -286,4 +285,8 @@ font-family: Dosis-Regular;
 font-size:16px;
 color:#000000;
 background-color: #ebebeb;
+}
+
+.toolbar {
+    float: left;
 }

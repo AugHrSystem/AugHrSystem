@@ -18,19 +18,19 @@
 
 <form:form id ="listForm" method="post" commandName="history">
 
-<div class="row">
+<!-- <div class="row"> -->
 <!-- <div class="col-md-6"> -->
 <%-- <h2><spring:message code="history.name" /></h2>  --%>
 <!-- </div> -->
-<!-- <br> -->
+<br>
 
 <!-- Button trigger modal -->
-<div class="form-group" align="left">
-<div class="col-md-12">
-<button type="button" id="addBtnHis" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
-</div>
-</div>
-</div>
+<!-- <div class="form-group" align="left"> -->
+<!-- <div class="col-md-12"> -->
+<%-- <button type="button" id="addBtnHis" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  --%>
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
 
 <!-- Table -->
 <div class="form-group">
@@ -266,8 +266,11 @@
 			"iDisplayLength": 10,
 			"pagingType": "simple_numbers",
 			"ordering": false,
-			"info": false
+			"info": false,
+			"dom": '<"toolbar">frtip'
 		});
+		
+		$("div.toolbar").html('<b><button type="button" id="addBtnHis" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		
 		dt = $('#tbResult').dataTable();
 		listAll();

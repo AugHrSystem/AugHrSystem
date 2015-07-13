@@ -13,25 +13,25 @@
 
 <form:form id ="listForm" method="post" commandName="ability">
 
-			<div class="row-md-12">
+<!-- 			<div class="row-md-12"> -->
 
-				<div class="col-md-6">
+<!-- 				<div class="col-md-6"> -->
 					<%-- <h2><spring:message code="ability.name" /></h2> --%>
 
-				</div>
+<!-- 				</div> -->
 
-				<div class="col-md-6">
+<!-- 				<div class="col-md-6"> -->
 
 					<br>
-					<!-- Button trigger modal -->
-					<div class="form-group" align="right">
-						<button type="button" id="addBtnAbi" class="btn btn-warning active"
-							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
-					</div>
+<!-- 					Button trigger modal -->
+<!-- 					<div class="form-group" align="right"> -->
+<!-- 						<button type="button" id="addBtnAbi" class="btn btn-warning active" -->
+<%-- 							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> --%>
+<!-- 					</div> -->
 
 
-				</div>
-			</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
 
 
 			<!-- Table -->
@@ -182,9 +182,11 @@ $(document).ready(function(){
 		"iDisplayLength": 10,
 		"pagingType": "simple_numbers",
 		"ordering": false,
-		"info": false
+		"info": false,
+		"dom": '<"toolbar">frtip'
 	});
 	
+	$("div.toolbar").html('<b><button type="button" id="addBtnAbi" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 	/* $("#addBtnAbi").on("click",function(){clearModal();});
 	 */
 

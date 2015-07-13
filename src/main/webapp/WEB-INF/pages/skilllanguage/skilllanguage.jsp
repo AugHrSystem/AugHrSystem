@@ -73,10 +73,11 @@
 				"iDisplayLength": 10,
 				"pagingType": "simple_numbers",
 				"ordering": false,
-				"info": false
+				"info": false,
+				"dom": '<"toolbar">frtip'
 			});
 			
-	
+		 $("div.toolbar").html('<b><button type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		 dt=$('#tableResult').dataTable();
 		 doFindData();
 		 
@@ -638,20 +639,20 @@
 
 
 
-<div class="row">
-	<div class="col-md-6">
+<!-- <div class="row"> -->
+<!-- 	<div class="col-md-6"> -->
 		 <%-- <h2><spring:message code="skilllanguage.name" /> </h2> --%>
-	</div>
+<!-- 	</div> -->
 
-    <div class="col-md-12">
-    	<br/>
-    	<div class="form-group" align="right">
-					<button type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" />
-</button>
-		</div>
-		<br/>
-	</div>
-</div>		
+<!--     <div class="col-md-12"> -->
+<!--     	<br/> -->
+<!--     	<div class="form-group" align="right"> -->
+<%-- 					<button type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /> --%>
+<!-- </button> -->
+<!-- 		</div> -->
+<!-- 		<br/> -->
+<!-- 	</div> -->
+<!-- </div>		 -->
 
 <div class="row">
 	<div id="message"></div>

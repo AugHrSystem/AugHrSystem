@@ -20,25 +20,25 @@
 <form:form id ="listForm" method="post" commandName="leave">
 
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 
 				<%-- <div class="col-md-6">
 					<h2><spring:message code="leave.name" /> </h2> 
 
 				</div> --%>
 
-				<div class="col-md-12">
+<!-- 				<div class="col-md-12"> -->
 
 					<br>
 					<!-- Button trigger modal -->
-					<div class="form-group" align="right">
-						<button type="button" id="addBtnLe" class="btn btn-warning active btn-md"
-							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>
-					</div>
+<!-- 					<div class="form-group" align="right"> -->
+<!-- 						<button type="button" id="addBtnLe" class="btn btn-warning active btn-md" -->
+<%-- 							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> --%>
+<!-- 					</div> -->
 
 
-				</div>
-			</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
 
 
 <!-- Table -->
@@ -275,9 +275,10 @@ $(document).ready(function() {
 		"iDisplayLength": 10,
 		"pagingType": "simple_numbers",
 		"ordering": false,
-		"info": false
+		"info": false,
+		"dom": '<"toolbar">frtip'
 	});
-	
+	$("div.toolbar").html('<b><button type="button" id="addBtnLe" class="btn btn-warning active btn-md"data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button></b>');
 	
 	$("#addBtnLe").on("click", function(){
 		

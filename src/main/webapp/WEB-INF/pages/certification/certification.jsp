@@ -20,19 +20,19 @@
 
 <form:form id ="listForm" method="post" commandName="certification">
 
-<div class="row">
+<!-- <div class="row"> -->
 <%-- <div class="col-md-6">
 <h2><spring:message code="certification.name"/></h2> 
 </div> --%>
 <br>
 
 <!-- Button trigger modal -->
-<div class="form-group" align="right">
-<div class="col-md-12">
-<button type="button" id="addBtnCer" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord"/></button> 
-</div>
-</div>
-</div>
+<!-- <div class="form-group" align="right"> -->
+<!-- <div class="col-md-12"> -->
+<%-- <button type="button" id="addBtnCer" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord"/></button>  --%>
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
 
 <!-- Table -->
 <div class="form-group">
@@ -337,9 +337,11 @@
 			"iDisplayLength": 10,
 			"pagingType": "simple_numbers",
 			"ordering": false,
-			"info": false
+			"info": false,
+			"dom": '<"toolbar">frtip'
 		});
 		
+		$("div.toolbar").html('<b><button type="button" id="addBtnCer" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord"/></button>  </b>');
 		dt = $('#tbResult').dataTable();
 		listAll();
 		
