@@ -32,7 +32,7 @@
 <!-- 		</div>	 -->
 		<div>
 				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
-				<caption title=""><spring:message code="reference.name" /></caption>
+				<caption title="">Reference</caption>
 					<thead>	
 						<tr>								
 							<th><spring:message code="reference.fullname" /></th>
@@ -188,11 +188,19 @@
 			$(this).find(".btnSave").off("click").on("click",function() {
 				
 				 if(referenceid != null){
-					updateReference(button, referenceid);
+					    $('#addForm').bootstrapValidator();
+		    			$('#addForm').data('bootstrapValidator').validate();
+		    			if($('#addForm').data('bootstrapValidator').isValid()){
+		    				updateReference(button, referenceid);
+					}
 				}else{ 
-					addReference();					
-				 	} 			
-			});
+					$('#addForm').bootstrapValidator();
+					$('#addForm').data('bootstrapValidator').validate();
+					if($('#addForm').data('bootstrapValidator').isValid()){
+						addReference();					
+					 	} 		
+				   }
+				});
 			$(this).find(".btnClose").off("click").on("click",function() {
 				$('#addForm').bootstrapValidator('resetForm', true);
 			});
