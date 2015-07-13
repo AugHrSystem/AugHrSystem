@@ -175,7 +175,7 @@ margin-right:7px;
 width:75px;
 height:25px;
 margin-top:5px;
-padding-left:5px;
+padding-left:3px;
 margin-left:5px;
 border:1px solid white; 
 font-family: Dosis-Regular;
@@ -194,6 +194,11 @@ color:#fff;
         color: #292929;
         
 }
+
+/* .navbar-header img {
+    background-color: #707070;
+    box-shadow: 0px 2px 10px #1A1A1A;
+} */
 
 .container{
 margin-left:40px;
@@ -289,11 +294,11 @@ table.dataTable.no-footer {
         <div class="container">
             <div class="navbar-header">
 
-                <img style="width:145px; height:75px;" src="<c:url value="/resource/images/Logo_Augmentis.png" />"/>
+                <img style="width:145px; height:75px; background-color: #707070; box-shadow: 0px 2px 10px #1A1A1A;" src="<c:url value="/resource/images/Logo_Augmentis.png" />"/>
 
             </div>
         
-            <div class="navbar-collapse collapse" id="navbar" aria-expanded="false" style="height: 1px;">
+            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                 <div class="navbar-nav pull-left">
                     <ul class="nav navbar-nav">
                     	<li>
@@ -307,7 +312,7 @@ table.dataTable.no-footer {
                 <div class="row-md-12">
                     	<div id="bgLogout">
                         <span>
-                        	<a id="linkLogout" class="navbar-link" href="<%=request.getContextPath()%>/logout" style="color:#636666;"><spring:message code="label.logout" /> | username</a>
+                        	<a id="linkLogout" class="navbar-link" href="<%=request.getContextPath()%>/logout" style="color:#636666;"><spring:message code="label.logout" /> | ${username} </a>
                        	</span>
                    		</div>
                     	<div id="profileUser" hidden="hidden">
@@ -323,7 +328,7 @@ table.dataTable.no-footer {
 				<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=th"><img src="<c:url value="/resource/images/flag_thailand.png" />"> </a>
 				<a class="navbar-link" href="<%=request.getRequestURL()%>?locale=en"><img style="background-color:#fff;" src="<c:url value="/resource/images/flag_usa.png" />"> </a>
                 </c:if>
-                <a class="navbar-link-report" href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="label.report" var="report" /><b class="caret">${report}  <span class="glyphicon glyphicon-triangle-bottom"></span></b></a>
+                <a class="navbar-link-report" href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="label.report" var="report" /><b class="caret">${report}  <span style= "padding-left:5px;font-size:10px;"class="glyphicon glyphicon-triangle-bottom"></span></b></a>
 	        	
 		    		<ul class="dropdown-menu">
 		    			<li>
