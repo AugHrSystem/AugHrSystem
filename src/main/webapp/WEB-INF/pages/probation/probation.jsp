@@ -37,7 +37,7 @@
 		</div>
 		<div id="outputajax" >		
 		<table id="tdResult" class="dataTable stripe table-bordered">
-		 <caption title="">Probation</caption>
+		 <caption title=""><spring:message code="probation.name" /></caption>
 			<thead>
 				<tr>
 					<th><spring:message code="probation.dateFrom" /></th>

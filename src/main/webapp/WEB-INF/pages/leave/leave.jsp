@@ -44,7 +44,7 @@
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="dataTable stripe  table-bordered">
- <caption title="">Leave</caption>
+ <caption title=""><spring:message code="leave.name" /></caption>
 	<thead>
 		<tr>
 			<!-- <th>Start_Date</th> -->

@@ -32,7 +32,7 @@
 		</div>	
 		<div>
 				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
-				<caption title="">Reference</caption>
+				<caption title=""><spring:message code="reference.name" /></caption>
 					<thead>	
 						<tr>								
 							<th><spring:message code="reference.fullname" /></th>

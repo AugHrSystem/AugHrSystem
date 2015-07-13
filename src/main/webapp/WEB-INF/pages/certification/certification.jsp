@@ -37,7 +37,7 @@
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="dataTable stripe table-bordered">
-<caption title="">Certification</caption>
+<caption title=""><spring:message code="certification.name"/></caption>
 	<thead>
 		<tr>
 			<th><spring:message code="certification.year" /></th>

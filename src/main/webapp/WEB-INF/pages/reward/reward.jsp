@@ -33,7 +33,7 @@
 			</div>	
 				<div>
 					<table id="tbResult"  class="dataTable stripe table-bordered">
-					<caption title="">Reward</caption>
+					<caption title=""><spring:message code="reward.name" /></caption>
 							<thead>
 								<tr>
 									<th><spring:message code="reward.reward.name" /></th>

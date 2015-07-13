@@ -32,7 +32,7 @@
 			</div>	
 				<div>
 				<table id="tbResult" class="dataTable stripe table-bordered">
-				<caption title="">Punish</caption>
+				<caption title=""><spring:message code="punish.name" /></caption>
 					<thead>					
 						<tr>								
 							<th><spring:message code="punish.dateform" /></th>

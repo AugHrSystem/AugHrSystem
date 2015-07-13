@@ -35,7 +35,7 @@
 		
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult" class="dataTable stripe table-bordered">
-		<caption title="">Experience</caption>
+		<caption title=""><spring:message code="experience.name" /></caption>
 			<thead>
 				<tr>
 					<th><spring:message code="experience.dateFrom" /></th>

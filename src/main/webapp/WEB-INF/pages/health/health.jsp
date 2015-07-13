@@ -699,7 +699,7 @@ $(function(){
 </div>
 
  <table id="tableResult" class="dataTable stripe table-bordered">
- <caption title="">Health</caption>
+ <caption title=""><spring:message code="health.name" /></caption>
 	    <thead>
             <tr> 
                 <th><spring:message code="health.congenitalDisease" /></th>

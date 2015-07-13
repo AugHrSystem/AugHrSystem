@@ -34,7 +34,7 @@
 			
 				<div class="form-group">
 				<table id="tbResult" class="dataTable stripe table-bordered">
-				<caption title="">Card</caption>
+				<caption title=""><spring:message code="card.name" /></caption>
 					<thead>					
 						<tr>								
 							<th><spring:message code="card.cardno" /></th>

@@ -659,7 +659,7 @@
 </div>		
 
  <table id="tableResult" class="dataTable stripe table-bordered">
- <caption title="">Language</caption>
+ <caption title=""><spring:message code="skilllanguage.name" /></caption>
 	    <thead>
             <tr> 
                 <th><spring:message code="skilllanguage.name" var="Language"/>

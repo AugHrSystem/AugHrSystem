@@ -29,7 +29,7 @@
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="dataTable stripe table-bordered">
-<caption title="">Education</caption>
+<caption title=""><spring:message code="education.name" /></caption>
 	<thead>
 		<tr>
 			<th><spring:message code="education.start.date" /></th>

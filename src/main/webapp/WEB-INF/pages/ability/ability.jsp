@@ -1,4 +1,4 @@
-]<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!-- Spring -->	
@@ -37,7 +37,7 @@
 			<!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="dataTable stripe table-bordered">
-<caption title="">Ability</caption>
+<caption title=""><spring:message code="ability.name" /></caption>
 	<thead>
 		<tr>
 			<!-- <th>#</th> -->

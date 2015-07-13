@@ -543,7 +543,7 @@
 
 
  <table id="tableResult" class="dataTable stripe table-bordered"> 
- <caption title="">Client Site</caption>
+ <caption title=""><spring:message code="site.name" /></caption>
 	    <thead>
             <tr> 
                 <th><spring:message code="site.startDate" var="startDate"/>${startDate }</th>

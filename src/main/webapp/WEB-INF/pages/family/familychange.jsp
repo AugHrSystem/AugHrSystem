@@ -170,8 +170,8 @@
 					  			           data[i].occupation,
 					  			           data[i].mobile,
 					  			           data[i].masRelationTypeName,
-					  			          '<button type="button" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
-					    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
+					  			          '<button type="button"  style="margin-right :15px;" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
+					    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>'
 					    					
 					  			           ]);
 			  		
@@ -522,7 +522,7 @@
 
 <div class="form-group">
  <table id="tableResult" class="dataTable stripe table-bordered">
- <caption title="">Family</caption>
+ <caption title=""><spring:message code="family.name" /></caption>
 	    <thead>
             <tr> 
                 <th><spring:message code="label.fullname" /></th>

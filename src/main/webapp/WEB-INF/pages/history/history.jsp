@@ -35,7 +35,7 @@
 <!-- Table -->
 <div class="form-group">
 <table id="tbResult" class="dataTable stripe table-bordered">
-<caption title="">History</caption>
+<caption title=""><spring:message code="history.name" /></caption>
 	<thead>
 		<tr>
 			<th><spring:message code="history.dateOfAdjustment" var="dateOfAdjustment"/>${dateOfAdjustment }</th>
