@@ -11,8 +11,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.aug.hr.entity.Login;
+import com.aug.hr.entity.Probation;
 import com.aug.hr.services.LoginService;
 
 @Controller
@@ -33,7 +37,9 @@ public class LoginController {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	//	session.setAttribute("userLogin", user);
 		session.setAttribute("userLogin", loginService.findByUserName(user.getUsername()));
-		System.out.println(user.toString());
+		model.addAttribute("username", user.getUsername());
+		System.out.println(">>>>>>>>>>>>>>>>>>"+user.toString());
+		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>"+user.getUsername());
 		return "/employee/listemployee";
 	
 	}
@@ -49,5 +55,5 @@ public class LoginController {
     	session.invalidate();
         return "redirect:/login";
     }
-	
+
 }

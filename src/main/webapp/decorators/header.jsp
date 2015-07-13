@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"  %>
 
@@ -171,6 +171,12 @@ margin-right:7px;
         
 }
 
+.navbar-link > img:active{
+       	background-color: #fff;
+        color: #292929;
+        
+}
+
 .navbar-link-report b{
 width:75px;
 height:25px;
@@ -288,6 +294,10 @@ table.dataTable.no-footer {
     white-space: normal;
 }
 
+.active{
+       	background-color: #fff;
+}
+
 </style>
 
 <nav class="navbar navbar-defaults navbar-fixed-top" id="top-bar" role="navigation">
@@ -307,17 +317,20 @@ table.dataTable.no-footer {
                     </ul>
                     
                 </div>
-	
+
                <div class=" navbar-nav pull-right">
                 <div class="row-md-12">
+                
                     	<div id="bgLogout">
                         <span>
-                        	<a id="linkLogout" class="navbar-link" href="<%=request.getContextPath()%>/logout" style="color:#636666;"><spring:message code="label.logout" /> | ${username} </a>
+                        	<a id="linkLogout" class="navbar-link" href="<%=request.getContextPath()%>/logout" style="color:#636666;"><spring:message code="label.logout" /> | ${username}</a>
                        	</span>
                    		</div>
+                   		
                     	<div id="profileUser" hidden="hidden">
                         	<ul class="nav navbar-nav" id="profile"></ul>
                     	</div>
+                    	
                 	</div>
                 <div class="form-group navbar navbar-defaults">
                 <c:if test="${ pageContext.response.locale.language eq 'th' }">
@@ -352,5 +365,39 @@ table.dataTable.no-footer {
             </div>
 
         </div>
+    
+  <%--       <f:form method="post" commandName="locale" role="form">
+        <f:input type="hidden" id="locale" path="locale" />
+        </f:form> --%>
 </nav>
+
+<script type="text/javascript">
+/* $(document).ready(function() {
+ 	    var sPageURL = window.location.href;
+	    var sURLVariables = sPageURL.split('?');	    
+	    var sParameterName = sURLVariables[1].split('=');
+	    if (sParameterName[1] == 'th') 
+	        {
+	    	$("#flag-tha").css('background-color', '#fff');
+	    	$("#flag-usa").css('background-color', '#707070');
+	        	
+	        } 	
+ 	$("#flag-tha").click(function() {  
+		$("#flag-tha").css('background-color', '#fff');
+		$("#flag-usa").css('background-color', '#707070');
+	}); 
+	
+	 var locale = "${locale}"; 
+ 	var locale = ${pageContext.request.locale.language};
+	alert(locale);
+	if(locale =='th'){
+		$("#flag-tha").css('background-color', '#fff');
+    	$("#flag-usa").css('background-color', '#707070');
+	}
+	if  (locale == 'en' || locale==''){
+    	$("#flag-tha").css('background-color', '#707070');
+	} 
+
+}); */
+</script>
 
