@@ -931,7 +931,6 @@
 	      <div class="col-md-12">
 	         
 				<div class="form-group">
-
 						<div class="col-md-6">
     						<label style="margin-right: 25px;"> <spring:message code="official.startWorkDate"></spring:message> :</label> 
     						<div class='input-group date' id='startWorkDate'><input type="text" class="form-control"
@@ -969,8 +968,7 @@
 
 
   				</div>
-			
-	    </div>
+			</div>
 	    </div>
 	    </div>
 	    
@@ -1388,9 +1386,9 @@ $("#addForm").validate({
 		
 	 	telHome: {
 			required: true
-			  /* digits: true, 
-			  minlength: 10,
-			 maxlength: 10  */
+			/*  digits: true, 
+			 minlength: 9,
+			 maxlength: 9  */ 
 			 
 		}, 
 		
