@@ -22,7 +22,7 @@
 <!-- <div class="col-md-6"> -->
 <%-- <h2><spring:message code="history.name" /></h2>  --%>
 <!-- </div> -->
-<br>
+<!-- <br> -->
 
 <!-- Button trigger modal -->
 <!-- <div class="form-group" align="left"> -->
