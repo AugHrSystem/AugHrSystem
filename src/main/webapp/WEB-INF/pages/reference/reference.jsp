@@ -157,6 +157,10 @@
 	                validators: {
 	                    notEmpty: {
 	                    	message: '<spring:message code="reference.required.telephone" />'
+	                    },
+	                    stringLength: {	                    	
+	                    	min: 12,
+	                    	max: 12,
 	                    }
 	            	
 	                }

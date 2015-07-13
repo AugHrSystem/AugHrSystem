@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.exception.CustomException;
 import com.aug.hr.dto.services.ReferenceDtoService;
 import com.aug.hr.entity.Reference;
 import com.aug.hr.entity.dto.EmployeeDto;
@@ -64,9 +65,15 @@ public class ReferenceController {
 	
 	
 	@RequestMapping(value = "/reference/add", method = RequestMethod.POST)
-	public @ResponseBody ReferenceDto addReference(@RequestBody ReferenceDto referenceDto) {
+	public @ResponseBody ReferenceDto addReference(@RequestBody ReferenceDto referenceDto) throws CustomException{
 		Reference reference = new Reference();
 		referenceService.create(reference.fromReferenceDto(reference, referenceDto));
+		
+		if(referenceDto.getTel().length()!=12){
+		    
+			throw new CustomException("Business Error", "length of mobile is not equal 10!");
+			
+		}
 		return referenceDto;
 	}
 	
