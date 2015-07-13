@@ -243,3 +243,24 @@ caption {
   background-color: #ffcc00;
   font-family: Dosis-Regular;
 }
+
+#div-information h2{
+	height: 30px;
+	color:#ffffff;
+	 background-color: #ffcc00;
+
+}
+
+.btn-file{
+  background-image: linear-gradient(to bottom, #ff9900 0%, #ff9900 114%);
+  border-color:#ff9900;
+}
+.btn-primary{
+	background-color: #ff9900;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #ff9900;
+  background-position: 0 -15px;
+
+}

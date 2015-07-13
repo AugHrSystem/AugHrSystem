@@ -34,7 +34,7 @@
 		
 		<div id="message"></div>
 		<div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
-				<h2 style="border-bottom: 1px solid #8f8f8f;"><spring:message code="employee.information"></spring:message>
+				<h2><spring:message code="employee.information"></spring:message>
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 				</h2>
 		 </div>
@@ -157,7 +157,7 @@
  <!-------------------------------------------------- Start Address-------------------------------------------------->
  
 	       <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
-				<h2 style="border-bottom: 1px solid #8f8f8f;"><spring:message code="label.address"></spring:message>
+				<h2><spring:message code="label.address"></spring:message>
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 				</h2>
 	       </div>
@@ -202,7 +202,7 @@
  <!----------------------------------------- Start General------------------------------------------------------>
 	     
 	     <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
-				<h2 style="border-bottom: 1px solid #8f8f8f;"><spring:message code="employee.general"></spring:message>
+				<h2><spring:message code="employee.general"></spring:message>
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 				</h2>
 	       </div>
@@ -921,7 +921,7 @@
 	<!---------------------------------------------------------- Start Official--------------------------------------------->   
 	      
 	    <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
-			<h2 style="border-bottom: 1px solid #8f8f8f;"><spring:message code="official.name"></spring:message>
+			<h2><spring:message code="official.name"></spring:message>
 					<i style="position: absolute; right: 20px; cursor:pointer;" id = "icon1" class="fa fa-chevron-up"></i>
 			</h2>
 	   </div>
