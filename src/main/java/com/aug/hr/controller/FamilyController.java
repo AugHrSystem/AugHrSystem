@@ -146,11 +146,13 @@ public class FamilyController {
 	            }else{
 	            	
 	            
-	            	if(familyDto.getMobile().length()!=10){
+	            	if(familyDto.getMobile().length()!=12){
 	    
 	            			throw new CustomException("Business Error", "length of mobile is not equal 10!");
-
-	            	}else if(familyDto.getMobile().length()==10){
+	            	
+	            	
+	            	}
+	            	/*else if(familyDto.getMobile().length()==12){
 	            		
 	            		for (int i = 0; i < familyDto.getMobile().length(); i++) {
 		            		   if (Character.isLetter(familyDto.getMobile().charAt(i))) {
@@ -161,15 +163,15 @@ public class FamilyController {
 		            	   }
 		            		
 
-	            		if(numberOfChar!=0){
+	            		if(numberOfChar!=2){
 	            			
 	            			throw new CustomException("Business Error", "mobile must be contain digit!");	            			
-	            		}else{
+	            		}*/else{
 	    	            	familyService.createFindMasRelationAndEmployee(familyDto);	
 	            		}
 	            	}
 	            	
-	            }
+	           // }
 	            
 		        return familyDto;
 		

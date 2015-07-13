@@ -144,7 +144,7 @@ public class Family extends BaseEntity implements Serializable {
 	
 	
 	
-	@Column(name="TEL",length=10)
+	@Column(name="TEL",length=12)
 	@NotNull
 	@NotEmpty
 	public String getMobile() {

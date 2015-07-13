@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
 
 import javax.annotation.Resource;
@@ -134,7 +135,7 @@ public class EmployeeController {
 	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
 						  HttpSession session,
 						  Locale locale,
-						  ModelMap model){
+						  ModelMap model) {
 						  //@PathVariable Integer id){
 	
 		//model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
@@ -151,13 +152,18 @@ public class EmployeeController {
 		model.addAttribute("staffTypeList",masStaffTypeService.findAll());
 		model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
 		
+		
+		
 		//allEmployeeDto.setId(id);
 		//model.addAttribute("id",allEmployeeDto.getId());
 		//model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
 
 
 //		 return "/employee/employee";
-		return "/employee/employeetest";
+		 return "/employee/employeetest";
+		
+		
+		//return "/aa";
 	}
 	
 

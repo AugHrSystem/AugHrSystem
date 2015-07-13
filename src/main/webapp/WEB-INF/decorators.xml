@@ -6,7 +6,7 @@
         <pattern>/*login*</pattern>
         <pattern>/*logout*</pattern>
         <pattern>/*accessdenied*</pattern>
-        <pattern>/error/400.jsp</pattern>
+        <!-- <pattern>/error/400.jsp</pattern>
         <pattern>/error/403.jsp</pattern>
         <pattern>/error/404.jsp</pattern>
         <pattern>/error/415.jsp</pattern>       
@@ -15,7 +15,7 @@
         <pattern>/error/exception_error.jsp</pattern> 
         <pattern>/error/generic_error.jsp</pattern>    
         <pattern>/*httperror*</pattern>  
-        <pattern>/*employee/submit*</pattern>  
+        <pattern>/*employee/submit*</pattern>  --> 
         <pattern>/*modal*</pattern>
         <pattern>/*Popup*</pattern>
         <pattern>/*view*</pattern>
