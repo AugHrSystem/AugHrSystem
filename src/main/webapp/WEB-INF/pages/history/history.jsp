@@ -25,7 +25,7 @@
 <!-- <br> -->
 
 <!-- Button trigger modal -->
-<div class="form-group" align="right">
+<div class="form-group" align="left">
 <div class="col-md-12">
 <button type="button" id="addBtnHis" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> 
 </div>
@@ -184,7 +184,11 @@
 	                validators: {
 	                    notEmpty: {
 	                        message: '<spring:message code="history.required.position" />'
-	                    }
+	                    },
+				        regexp: {
+			                regexp: /^[a-z\s]+$/i,
+			                message: '<spring:message code="history.required.position" />'
+			            }
 	                }
 	            },
 	            salary: {
@@ -192,6 +196,10 @@
 	                    notEmpty: {
 	                        message: '<spring:message code="history.required.salary" />'
 	                    },
+	                    regexp: {
+			                regexp: /^[0-9,.\s]+$/i,
+			                message: '<spring:message code="history.required.salary" />'
+			            }
 	                }
 	            },
 // 	            oldSalary: {

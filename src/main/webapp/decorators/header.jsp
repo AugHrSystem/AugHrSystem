@@ -41,11 +41,11 @@
                     font-family: Dosis-Regular;
                 }
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+/* input, */
+/* select, */
+/* textarea { */
+/*     max-width: 280px; */
+/* } */
 
 /* Tab Setting */
 .tab-content {

@@ -185,7 +185,11 @@
 		
 		$('#startDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		$('#graduatedDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
-// 		$('#gpa').mask("9.99");
+		$('#gpa').mask("9.99");
+		
+		if($('#gpa')> 4.00){
+			alert("no");
+		}
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
@@ -220,21 +224,33 @@
 	                validators: {
 	                    notEmpty: {
 	                        message: '<spring:message code="education.required.university" />'
-	                    }
+	                    },
+	                    regexp: {
+			                regexp: /^[a-z\s]+$/i,
+			                message: '<spring:message code="education.required.university" />'
+			            }
 	                }
 	            },
 	            faculty: {
 	                validators: {
 	                    notEmpty: {
 	                        message: '<spring:message code="education.required.faculty" />'
-	                    }
+	                    },
+	                    regexp: {
+			                regexp: /^[a-z\s]+$/i,
+			                message: '<spring:message code="education.required.faculty" />'
+			            }
 	                }
 	            },
 	            major: {
 	                validators: {
 	                    notEmpty: {
 	                        message: '<spring:message code="education.required.major" />'
-	                    }
+	                    },
+	                    regexp: {
+			                regexp: /^[a-z\s]+$/i,
+			                message: '<spring:message code="education.required.major" />'
+			            }
 	                }
 	            },
 	            masdegreetype: {
@@ -250,7 +266,7 @@
 	                        message: '<spring:message code="education.required.gpa" />'
 	                    },
 	                	 regexp: {
-	                         regexp: /^[0-4]\.\d\d$/,
+	                         regexp: /^[0-3]\.\d|4\.0+$/i,
 	                         message: '<spring:message code="education.required.gpa.digit" />'
 	                     }
 	                }
