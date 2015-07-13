@@ -323,7 +323,7 @@ table.dataTable.no-footer {
                 
                     	<div id="bgLogout">
                         <span>
-                        	<a id="linkLogout" class="navbar-link" href="<%=request.getContextPath()%>/logout" style="color:#636666;"><spring:message code="label.logout" /> | ${username}</a>
+                        	<a id="linkLogout" class="navbar-link" href="<%=request.getContextPath()%>/logout" style="color:#636666;"><spring:message code="label.logout" /> | ${userLogin.username}</a>
                        	</span>
                    		</div>
                    		

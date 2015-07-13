@@ -37,8 +37,8 @@ public class LoginController {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	//	session.setAttribute("userLogin", user);
 		session.setAttribute("userLogin", loginService.findByUserName(user.getUsername()));
-		model.addAttribute("username", user.getUsername());
-		System.out.println(">>>>>>>>>>>>>>>>>>"+user.toString());
+		//model.addAttribute("username", user.getUsername());
+		//System.out.println(">>>>>>>>>>>>>>>>>>"+user.toString());
 		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>"+user.getUsername());
 		return "/employee/listemployee";
 	
