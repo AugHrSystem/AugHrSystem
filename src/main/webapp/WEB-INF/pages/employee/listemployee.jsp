@@ -38,7 +38,7 @@
 		<div id="message"></div>
 		<div id="outputajax" class="form-group">		
 		<table id="tdResult" class="dataTable stripe table-bordered">
-		<caption title="">Employee</caption>
+		<caption title=""><spring:message code="employee.name" /></caption>
 			<thead>
 				<tr>
 					<th><spring:message code="label.id" /></th>

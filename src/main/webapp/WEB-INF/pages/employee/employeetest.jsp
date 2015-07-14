@@ -1168,8 +1168,8 @@
 	    </div>
 	    </div>
 	    
-	<div class="form-group">
-			<div  align="right">
+	<div class="form-group row">
+			<div class="col-md-12" align="right">
 				<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px;"><spring:message code="label.cancel" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
     			<button type="button" id="saveButton" class="btn btn-warning" name="saveButton" ><spring:message code="label.saveAndCon" /></button>

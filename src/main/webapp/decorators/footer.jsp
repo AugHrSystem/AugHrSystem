@@ -1,14 +1,12 @@
   <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   
    <footer class="footer">
-        <div class="container">
             <div id="footer-menu">
                 <div id="copy-right" class="pull-right">
                     <span class="spe-character">©</span> 2011-2015 Augmentis (Thailand) Limited. All rights reserved.
                 </div>
 
             </div>
-        </div>
     </footer>
 
     <style>

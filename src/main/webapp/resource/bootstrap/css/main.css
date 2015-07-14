@@ -254,17 +254,19 @@ caption {
   font-size: 18px;
   background-color: #ffcc00;
   font-family: Dosis-Regular;
+  font-weight: bold;
 }
 
 #div-information h2{
 	height: 30px;
 	color:#ffffff;
-	 background-color: #ffcc00;
- font-size: 18px;
- padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 10px;
-    font-family: Dosis-Regular;
+	background-color: #ffcc00;
+	font-size: 18px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 10px;
+	font-family: Dosis-Regular;
+	font-weight: bold;
 }
 
 .btn-file{
@@ -324,3 +326,35 @@ caption {
 	background-image: linear-gradient(to bottom, #ff9900 0%, #ff9900 100%);
 }
 
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size : 16px;
+  color : #292929;
+  font-family: Dosis-Regular;
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+  font-family: Dosis-Regular;
+}
+
+.form-control {
+	font-family: Dosis-Regular;
+}
+
+.modal-body {
+	font-family: Dosis-Regular;
+}
+
+.btn-default, .btn-default:hover, .btn-default:focus {
+	font-family: Dosis-Regular;
+}
