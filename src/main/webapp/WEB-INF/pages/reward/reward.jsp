@@ -260,7 +260,7 @@
 					"dom": '<"toolbar">frtip'
 				});
 				
-				$("div.toolbar").html('<b><button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
+				$("div.toolbar").html('<b><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
 				
 			$("#addBtn").on("click",function(){clearModal();});
 				

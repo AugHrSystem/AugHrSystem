@@ -101,7 +101,7 @@
 	   		<input type="text" class="form-control" id="reason" placeholder="${enter}${reason}"/>
 	  	</div>
       </div>
-      <div class="form-group" align="center">
+      <div class="modal-footer">
         <button type="button" class="btn btn-default closeButton" data-dismiss="modal"><spring:message code="label.close" /></button>
         <button type="button" class="btn btn-info saveButton"><spring:message code="label.save" /></button>
       </div>
@@ -144,7 +144,7 @@ var dt;
 			"dom": '<"toolbar">frtip'
 		});
 		
-		$("div.toolbar").html('<b><button id="clearModal"type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
+		$("div.toolbar").html('<b><button id="clearModal"type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		var proId; 
 		$('#validate')
         .bootstrapValidator({

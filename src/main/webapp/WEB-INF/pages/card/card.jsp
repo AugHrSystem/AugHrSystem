@@ -111,7 +111,7 @@
 				    
 				  </div>		
 				  		
-					<div class="form-group" align="center">
+					<div class="modal-footer">
 					<button type="button" class="btn btn-default btnClose" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-info btnSave">Save</button>
 					</div>	
@@ -174,7 +174,7 @@
 		
 	
 		
-		$("div.toolbar").html('<b><button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
+		$("div.toolbar").html('<b><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',

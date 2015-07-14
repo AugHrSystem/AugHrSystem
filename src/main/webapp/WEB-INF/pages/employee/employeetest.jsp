@@ -191,7 +191,7 @@
 	     <br>
 	     <div class="col-md-12">
 	    <div class="form-group" align="right">
-	      <button id="addaddress" type="button"class="btn btn-warning active btn-sm" data-toggle="modal" data-target="#myModal">
+	      <button id="addaddress" type="button"class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">
           <spring:message code="label.newRecord"></spring:message></button>	
         </div>
         </div>
@@ -1169,7 +1169,7 @@
 			<div  align="right">
 				<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px;"><spring:message code="label.cancel" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
-    			<button type="button" id="saveButton" class="btn btn-warning active" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
+    			<button type="button" id="saveButton" class="btn btn-warning" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
     			
 	    	</div>
 	    	</div>
@@ -1240,14 +1240,15 @@
 						
 						</div>
 						
-						<div class="form-group" align="center">
+						
+						
+					 </form> 
+					</div>
+					<div class="modal-footer">
 							<button type="button" class="btn btn-default closeAddressButton" 
 								data-dismiss="modal"><spring:message code="label.close"></spring:message></button>
 							<button type="button" id= "saveAddressButton" name="saveAddressButton" class="btn btn-primary saveAddressButton"><spring:message code="label.saveAndCon"></spring:message></button>
 						</div>
-						
-					 </form> 
-					</div>
 				</div>
 	    	</div>
 	</div>    

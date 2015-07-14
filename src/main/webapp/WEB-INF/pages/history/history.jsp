@@ -59,7 +59,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
         <h4 class="modal-title" id="myModalLabel"><spring:message code="history.name" /></h4>
       </div>
       
@@ -107,9 +107,9 @@
 
       </div>
       
-      <div class="form-group" align="center">
-        <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
-      	<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default  btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+      	<button type="button" class="btn btn-info active btnSave"><spring:message code="label.save" /></button>
       </div>
       
     </div>
@@ -138,7 +138,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger btnYes"><spring:message code="default.yes" /></button>
-						<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
+						<button type="button" class="btn btn-info active" data-dismiss="modal"><spring:message code="default.no" /></button>
 					</div>
 				</div>
 			</div>
@@ -270,7 +270,7 @@
 			"dom": '<"toolbar">frtip'
 		});
 		
-		$("div.toolbar").html('<b><button type="button" id="addBtnHis" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
+		$("div.toolbar").html('<b><button type="button" id="addBtnHis" class="btn btn-warning" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		
 		dt = $('#tbResult').dataTable();
 		listAll();

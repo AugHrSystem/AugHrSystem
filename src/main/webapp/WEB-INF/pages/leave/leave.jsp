@@ -228,7 +228,7 @@
   	</div>
         
 		</div>
-      <div class="form-group" align="center">
+      <div class="modal-footer">
         <button type="button" class="btn btn-default btnClose " data-dismiss="modal"><spring:message code="label.close" /></button>
         <button id="saveButton" type="button" class="btn btn-info saveButton"><spring:message code="label.save" /></button>
       </div>
@@ -278,7 +278,7 @@ $(document).ready(function() {
 		"info": false,
 		"dom": '<"toolbar">frtip'
 	});
-	$("div.toolbar").html('<b><button type="button" id="addBtnLe" class="btn btn-warning active btn-md"data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button></b>');
+	$("div.toolbar").html('<b><button type="button" id="addBtnLe" class="btn btn-warning btn-md"data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button></b>');
 	
 	$("#addBtnLe").on("click", function(){
 		

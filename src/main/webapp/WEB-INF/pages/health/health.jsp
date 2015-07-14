@@ -147,7 +147,7 @@ $(function(){
 			"info": false,
 			"dom": '<"toolbar">frtip'
 		});
-	   $("div.toolbar").html('<b><button type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
+	   $("div.toolbar").html('<b><button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 	dt = $('#tableResult').dataTable();
 	 
 	 

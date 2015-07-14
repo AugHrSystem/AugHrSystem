@@ -294,9 +294,9 @@ table.dataTable.no-footer {
     white-space: normal;
 }
 
-.active{
-       	background-color: #fff;
-}
+/* .active{ */
+/*        	background-color: #fff; */
+/* } */
 
 </style>
 

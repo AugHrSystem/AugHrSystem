@@ -135,7 +135,7 @@
 	  
       </div>
       
-      <div class="form-group" align="center">
+      <div class="modal-footer">
         <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
       	<button type="button" class="btn btn-info btnSave"><spring:message code="label.save" /></button>
       </div>
@@ -341,7 +341,7 @@
 			"dom": '<"toolbar">frtip'
 		});
 		
-		$("div.toolbar").html('<b><button type="button" id="addBtnEdu" class="btn btn-warning active btnAdds " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
+		$("div.toolbar").html('<b><button type="button" id="addBtnEdu" class="btn btn-warning btnAdds " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
 		dt = $('#tbResult').dataTable();
 		
 		listAll();

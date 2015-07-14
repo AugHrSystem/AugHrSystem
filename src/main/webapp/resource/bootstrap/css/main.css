@@ -3,13 +3,13 @@
       height: 100%;
       margin: 0 0 1px;
       padding: 0;
-    }
+}
     
 .error {
-			color: #ff0000;
-			padding-left: 5px;
-			font-family: Dosis-Regular;
-		}
+	color: #ff0000;
+	padding-left: 5px;
+	font-family: Dosis-Regular;
+}
 		 
 .errorblock {
 	color: #000;
@@ -73,20 +73,31 @@
   color:red;
 }  
 
-.btn-warning:active, .btn-warning.active {
+.btn-warning, .btn-warning:active, .btn-warning.active, .btn-warning:hover, .btn-warning:focus {
   background-color: #ff9900;
   border-color: #ff9900;
   font-size : 16px;
   color : #ffffff;
   font-family: Dosis-Regular;
+  background-image: linear-gradient(to bottom, #ff9900 -0%, #ff9900 100%);
 }
 
-.btn-danger:active, .btn-danger.active {
+.btn-info, .btn-info:active, .btn-info.active, .btn-info:hover, .btn-info:focus {
+  background-color: #ff9900;
+  border-color: #ff9900;
+  font-size : 16px;
+  color : #ffffff;
+  font-family: Dosis-Regular;
+  background-image: linear-gradient(to bottom, #ff9900 -0%, #ff9900 100%);
+}
+
+.btn-danger, .btn-danger.active, .btn-danger.active, .btn-danger:hover, .btn-danger:focus {
   background-color: #ff0000;
   border-color: #ff0000;
   font-size : 16px;
   color : #ffffff;
   font-family: Dosis-Regular;
+  background-image: linear-gradient(to bottom, #ff0000 -0%, #ff0000 100%);
 }
 
 table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
@@ -223,7 +234,7 @@ div#tableResult_info {
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-	color: white !important;
+	color: #ababab !important;
   border: 1px solid#ababab;
   background-color:#ababab;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ababab), color-stop(100%, #111111));
@@ -298,5 +309,18 @@ caption {
   background-color: #ff9900;
   font-family: Dosis-Regular;
   color: #ffffff;
+}
+
+.btn-info:active, .btn-info.active {
+  background-color: #ff9900;
+  border-color: #ff9900;
+  font-size : 16px;
+  color : #ffffff;
+  font-family: Dosis-Regular;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+	background-color: #ff9900;
+	background-image: linear-gradient(to bottom, #ff9900 0%, #ff9900 100%);
 }
 

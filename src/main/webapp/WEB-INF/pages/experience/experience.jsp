@@ -120,7 +120,7 @@
   		</div>
         
       </div>
-      <div class="form-group" align="center">
+      <div class="modal-footer">
         <button type="button" class="btn btn-default closeButton" data-dismiss="modal"><spring:message code="label.close" /></button>
         <button type="button" class="btn btn-info saveButton"><spring:message code="label.save" /></button>
       </div>
@@ -163,7 +163,7 @@ var dt;
 			"info": false,
 			"dom": '<"toolbar">frtip'
 		});
-		$("div.toolbar").html('<b><button type="button" id="addBtnEdu" class="btn btn-warning active btnAdds " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
+		$("div.toolbar").html('<b><button type="button" id="addBtnEdu" class="btn btn-warning btnAdds " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
 		var expId; 
 		$('#validate').bootstrapValidator({
 			message: 'This value is not valid',
