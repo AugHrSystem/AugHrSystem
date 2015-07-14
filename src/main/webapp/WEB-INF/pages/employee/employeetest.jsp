@@ -50,7 +50,7 @@
 										<div class="row" align="center">
 										   <c:if test="${empty allEmployeeDto.image}">
 												<div  id="imagePreview" class="img-rounded img-responsive"
-													style="background-image:url('<c:url value="/resource/images/photo_1.jpg" />');">
+													style="background-image:url('<c:url value="/resource/images/photo_2.jpg" />');">
 												</div>
 											</c:if>
 											
@@ -1165,12 +1165,13 @@
 	    </div>
 	    </div>
 	    
-	
+	<div class="form-group">
 			<div  align="right">
 				<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px;"><spring:message code="label.cancel" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
     			<button type="button" id="saveButton" class="btn btn-warning active" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
     			
+	    	</div>
 	    	</div>
 </f:form>   
     
@@ -1314,11 +1315,11 @@ $("#validateAddress").validate({
 		
 	},
 	messages: {
-		addressType: "Please enter your addressType",
-		address1: "Please enter your address",
-		address2: "Please enter your address",
-		province: "Please enter your province",
-		zipcode: "Please enter your zipcode"
+		addressType: "<spring:message code="address.required.addressType" />",
+		address1: "<spring:message code="address.required.address" />",
+		address2: "<spring:message code="address.required.address" />",
+		province: "<spring:message code="address.required.province" />",
+		zipcode: "<spring:message code="address.required.zipcode" />"
 		
 	}
 });		
@@ -1385,7 +1386,8 @@ $("#addForm").validate({
 		}, 
 		
 	 	telHome: {
-			required: true
+			required: true,
+			rangelength : [11, 11]
 			/*  digits: true, 
 			 minlength: 9,
 			 maxlength: 9  */ 
@@ -1393,21 +1395,24 @@ $("#addForm").validate({
 		}, 
 		
 		telMobile: {
-			required: true
+			required: true,
+			rangelength : [12, 12]
 			 /* digits: true,
 			 minlength: 10,
 			 maxlength: 10 */
 		},
 		
 		telFax: {
-			required: true
+			required: true,
+			rangelength : [11, 11]
 			 /* digits: true,
 			 minlength: 10,
 			 maxlength: 10 */
 		},
 		
 		idCard: {
-			required: true
+			required: true,
+			rangelength : [17, 17]
 			 /* digits: true,
 			 minlength: 13,
 			 maxlength: 13 */
@@ -1429,7 +1434,8 @@ $("#addForm").validate({
 		},
 		
 		emergencyContactPhoneNumber: {
-			required: true
+			required: true,
+			rangelength : [12, 12]
 			 /* digits: true,
 			 minlength: 10,
 			 maxlength: 10 */
@@ -1448,70 +1454,69 @@ $("#addForm").validate({
 	},
 	
 	messages: {
-		nameThai: "Please enter your nameThai",
-		surnameThai: "Please enter your surnameThai",
-		nicknameThai: "Please enter your nicknameThai",
-		nameEng: "Please enter your nameEng",
-		surnameEng: "Please enter your surnameEng",
-		nicknameEng: "Please enter your nicknameEng",
+		nameThai: "<spring:message code="employee.required.nameThai" />",
+		surnameThai: "<spring:message code="employee.required.surnameThai" />",
+		nicknameThai: "<spring:message code="employee.required.nicknameThai" />",
+		nameEng: "<spring:message code="employee.required.nameEng" />",
+		surnameEng: "<spring:message code="employee.required.surnameEng" />",
+		nicknameEng: "<spring:message code="employee.required.nicknameEng" />",
 		
-		email: "Please enter your email",
-		telHome: "Please enter your telHome",
-		telMobile: "Please enter your telMobile",
-		telFax: "Please enter your telFax",
-		congenitalDisease: "Please enter your congenitalDisease",
-		hospital: "Please enter your hospital",
+		email: "<spring:message code="employee.required.email" />",
+		telHome: "<spring:message code="employee.required.telHome" />",
+		telMobile: "<spring:message code="employee.required.telMobile" />",
+		telFax: "<spring:message code="employee.required.telFax" />",
+		congenitalDisease: "<spring:message code="employee.required.congen" />",
+		hospital: "<spring:message code="employee.required.hospital" />",
 		
-		emergencyContact: "Please enter your emergencyContact",
-		relationshipWithEmergencyContact: "Please enter your relationshipWithEmergencyContact",
-		emergencyContactAddress: "Please enter your emergencyContactAddress",
-		emergencyContactPhoneNumber: "Please enter your emergencyContactPhoneNumber",
-		dateOfBirth: "Please enter your dateOfBirth",
-		fromYear: "Please enter your fromYear",
+		emergencyContact: "<spring:message code="employee.required.emergencyContact" />",
+		relationshipWithEmergencyContact: "<spring:message code="employee.required.relation" />",
+		emergencyContactAddress: "<spring:message code="employee.required.emergencyAddress" />",
+		emergencyContactPhoneNumber: "<spring:message code="employee.required.emergencyConPhoneNum" />",
+		dateOfBirth: "<spring:message code="employee.required.dob" />",
+		fromYear: "<spring:message code="employee.required.fromYear" />",
 		
-		toYear: "Please enter your toYear",
-		placeOfBirth: "Please enter your placeOfBirth",
-		age: "Please enter your age",
-		religion: "Please enter your religion",
-		idCard: "Please enter your idCard",
-		issuedOffice: "Please enter your issuedOffice",
+		toYear: "<spring:message code="employee.required.toYear" />",
+		placeOfBirth: "<spring:message code="employee.required.pob" />",
+		age: "<spring:message code="employee.required.age" />",
+		religion: "<spring:message code="employee.required.religion" />",
+		idCard: "<spring:message code="employee.required.idCard" />",
+		issuedOffice: "<spring:message code="employee.required.issuedOffice" />",
 		
-		expiryDate: "Please enter your expiryDate",
-		height: "Please enter your height",
-		weigth: "Please enter your weigth",
-		sex: "Please enter your sex",
-		maritalStatus: "Please enter your maritalStatus",
-		numberOfChildren: "Please enter your numberOfChildren",
+		expiryDate: "<spring:message code="employee.required.expiryDate" />",
+		height: "<spring:message code="employee.required.height" />",
+		weigth: "<spring:message code="employee.required.weigth" />",
+		sex: "<spring:message code="employee.required.sex" />",
+		maritalStatus: "<spring:message code="employee.required.maritalStatus" />",
+		numberOfChildren: "<spring:message code="employee.required.Children" />",
 		
-		spouseName: "Please enter your spouseName",
-		marriageCertificateNo: "Please enter your marriageCertificateNo",
-		issuedOffice2: "Please enter your issuedOffice2",
-		address: "Please enter your address",
-		occupation: "Please enter your occupation",
-		militaryServiceYes: "Please enter your militaryServiceYes",
+		spouseName: "<spring:message code="employee.required.spouseName" />",
+		marriageCertificateNo: "<spring:message code="employee.required.marcert" />",
+		issuedOffice2: "<spring:message code="employee.required.issuedOffice" />",
+		address: "<spring:message code="employee.required.address" />",
+		occupation: "<spring:message code="employee.required.occupation" />",
+		militaryServiceYes: "<spring:message code="employee.required.militaryServiceYes" />",
 		
+		descriptionYes: "<spring:message code="employee.required.pleasewrite" />",
+		branchOfService: "<spring:message code="employee.required.branchOfService" />",
+		serviceNo: "<spring:message code="employee.required.serviceNo" />",
+		reasonsNo: "<spring:message code="employee.required.reasons" />",
+		dateToBeDrafted: "<spring:message code="employee.required.datedrafted" />",
+		previousEmpreasonsNo: "<spring:message code="employee.required.givethereason" />",
 		
-		descriptionYes: "Please enter your descriptionYes",
-		branchOfService: "Please enter your branchOfService",
-		serviceNo: "Please enter your serviceNo",
-		reasonsNo: "Please enter your reasonsNo",
-		dateToBeDrafted: "Please enter your dateToBeDrafted",
-		previousEmpreasonsNo: "Please enter your previousEmpreasonsNo",
+		officialDate: "<spring:message code="official.required.officialDate" />",
+		startWorkDate: "<spring:message code="official.required.startWorkDate" />",
+		endWorkDate: "<spring:message code="official.required.endWorkDate" />",
+		positionAppliedFor: "<spring:message code="official.required.position" />",
+		salaryExpected: "<spring:message code="official.required.salary" />",
+		probationDate: "<spring:message code="employee.required.probationdate" />",
 		
-		officialDate: "Please enter your officialDate",
-		startWorkDate: "Please enter your startWorkDate",
-		endWorkDate: "Please enter your endWorkDate",
-		positionAppliedFor: "Please enter your positionAppliedFor",
-		salaryExpected: "Please enter your salaryExpected",
-		probationDate: "Please enter your probationDate",
-		
-		masEmployment: "Please enter your masEmployment",
-		masCoreSkill: "Please enter your masCoreSkill",
-		masLocation: "Please enter your masLocation",
-		masDivision: "Please enter your masDivision",
-		masJoblevel: "Please enter your masJoblevel",
-		technology: "Please enter your technology",
-		masStaffType: "Please enter your masStaffType"
+		masEmployment: "<spring:message code="employee.required.employment" />",
+		masCoreSkill: "<spring:message code="employee.required.coreSkill" />",
+		masLocation: "<spring:message code="employee.required.location" />",
+		masDivision: "<spring:message code="employee.required.division" />",
+		masJoblevel: "<spring:message code="employee.required.joblevel" />",
+		technology: "<spring:message code="employee.required.technology" />",
+		masStaffType: "<spring:message code="employee.required.staffType" />"
 		
 		
 		
