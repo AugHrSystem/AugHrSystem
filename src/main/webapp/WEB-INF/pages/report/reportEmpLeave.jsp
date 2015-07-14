@@ -4,13 +4,18 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<div class="modal-header">
-	<h4 class="modal-title"><spring:message code="reportleave.empName" /></h4>
-</div>
+<!-- <div class="modal-header"> -->
+<%-- 	<h4 class="modal-title"><spring:message code="reportleave.empName" /></h4> --%>
+<!-- </div> -->
 
 <f:form method="post" id="reportForm" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpLeave" cssClass="form-horizontal">
 
 	 <div class="modal-body">
+	 <div class="form-group form-group-sm">
+		 	<div class="col-sm-3">
+		 	<h4 class="modal-title"><spring:message code="reportleave.empName" /></h4>
+		 	</div>
+		 </div>
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
         	<spring:message code="reportleave.searchEmpName" />
@@ -49,7 +54,7 @@
 			</div>	
 		<div>
 				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
-				<caption title="">ReportEmployeeLeave</caption>
+				<caption title=""><spring:message code="reportleave.empName" /></caption>
 					<thead>	
 						<tr>								
 											

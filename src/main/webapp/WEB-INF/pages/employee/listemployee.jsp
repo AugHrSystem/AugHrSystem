@@ -59,7 +59,7 @@
 	<div align="right">
 	<f:form action="${pageContext.request.contextPath}/employee" method="POST" role="form">
 		<div class="form-group">
-		<button type="submit" class="btn btn-warning active btn-md">
+		<button type="submit" class="btn btn-warning btn-md">
  	 	<spring:message code="label.add" />
 		</button>
 		</div>

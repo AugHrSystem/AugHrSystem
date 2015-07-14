@@ -3,12 +3,14 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="modal-header">
-	<h4 class="modal-title"><spring:message code="report.empCode" /></h4>
-</div>
 <f:form method="post" id="reportForm" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpCode" cssClass="form-horizontal">
 
 	 <div class="modal-body">
+		 <div class="form-group form-group-sm">
+		 	<div class="col-sm-3">
+		 	<h4 class="modal-title"><spring:message code="report.empCode" /></h4>
+		 	</div>
+		 </div>
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
         	<spring:message code="report.searchEmpCode" />
@@ -44,7 +46,7 @@
 			</div>	
 		<div>
 				<table id="tdResult" class="dataTable stripe table-bordered" class="form-group">
-				<caption title="">ReportEmployeeCode</caption>
+				<caption title=""><spring:message code="report.empCode" /></caption>
 					<thead>	
 						<tr>								
 							<th><spring:message code="report.resourceId" /></th>

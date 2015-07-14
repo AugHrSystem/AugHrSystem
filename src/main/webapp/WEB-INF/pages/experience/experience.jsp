@@ -17,7 +17,7 @@
 </style>
 <input id="empId" type="hidden" value="${id}">
 
-<f:form method="post" commandName="experience" class="form-horizontal" role="form">	
+<f:form method="post" commandName="experience"  role="form">	
 				
 <!-- 		<div class="row"> -->
 		<%-- <div class="col-md-6">

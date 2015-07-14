@@ -3,13 +3,18 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	<h4 class="modal-title"><spring:message code="reportstatus.empName" /></h4>
-</div>
+<!-- <div class="modal-header"> -->
+<!-- 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
+<%-- 	<h4 class="modal-title"><spring:message code="reportstatus.empName" /></h4> --%>
+<!-- </div> -->
 <f:form method="post" id="reportForm" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchEmpStatusReport" cssClass="form-horizontal">
 
 	 <div class="modal-body">
+	 <div class="form-group form-group-sm">
+		 	<div class="col-sm-3">
+		 	<h4 class="modal-title"><spring:message code="reportstatus.empName" /></h4>
+		 	</div>
+		 </div>
         <div class="form-group form-group-sm">
         	<div class="col-sm-3">
         	<spring:message code="reportstatus.searchEmpName" />
@@ -44,7 +49,7 @@
 			</div>	
 		<div>
 				<table id="tbResult" class="dataTable stripe table-bordered" class="form-group">
-				<caption title="">ReportStatusEmployee</caption>
+				<caption title=""><spring:message code="reportstatus.empName" /></caption>
 					<thead>	
 						<tr>								
 							<th><spring:message code="reportstatus.resource" /></th>
@@ -100,7 +105,8 @@ ${reportStatusEmployeeDto.employeeCode}
 			"iDisplayLength": 10,
 			"pagingType": "simple_numbers",
 			"ordering": false,
-			"info": false
+			"info": false,
+			 "scrollX": true
 		});	
 		
 		
