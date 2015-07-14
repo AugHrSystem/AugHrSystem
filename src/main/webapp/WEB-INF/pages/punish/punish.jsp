@@ -98,24 +98,35 @@
 	</form:form>
 	  
 <!------------------------------------------Button  modal 2----------------------------------------------------->
-	<form:form id="deleteForm" commandName="punish" method="post">		
-		
-		<div class="modal fade" id="deleteModal" tabindex ="-1" role ="dialog" aria-labelledby ="myModalLabel" aria-hidden ="true">
-			<div class="modal-dialog modal-md">
+	
+ <form:form id="deleteForm" commandName="punish" method="post">
+
+		<!-- Modal -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-body">
-
-						<label ><spring:message code="default.delete.confirm" /></label>
-
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel"><spring:message code="punish.name" /></h4>
 					</div>
-						<div class="modal-footer">
-						<button type="button" class="btn btn-danger DeleteButton"><spring:message code="default.yes" /></button>
-						  <button type="button" class="btn btn-info" data-dismiss ="modal"><spring:message code="default.no" /></button>
-					   </div>
+					<div class="modal-body">
+						<h4><spring:message code="default.delete.confirm" /></h4>
+						<form:hidden path="id"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger btnYes"><spring:message code="default.yes" /></button>
+						<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
+					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
-	</form:form>
+
+</form:form>
+ 
 		   
 <script type="text/javascript">
 
