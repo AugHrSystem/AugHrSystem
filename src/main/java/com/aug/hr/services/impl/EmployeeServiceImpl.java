@@ -278,9 +278,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         allEmployeeDto.setDescriptionFriend(employee.getDescriptionFriend());
         allEmployeeDto.setKnowAugOther(employee.getKnowAugOther());
         allEmployeeDto.setDescriptionOther(employee.getDescriptionOther());
-        allEmployeeDto.setKnowEmployedYes(employee.getKnowEmployedYes());
+        allEmployeeDto.setKnowEmployed(employee.getKnowEmployed());
         allEmployeeDto.setDescriptionYes(employee.getDescriptionYes());
-        allEmployeeDto.setKnowEmployerNo(employee.getKnowEmployerNo());
+        /*allEmployeeDto.setKnowEmployerNo(employee.getKnowEmployerNo());*/
         allEmployeeDto.setMilitaryServiceYes(employee.getMilitaryServiceYes());
         allEmployeeDto.setFromYear(employee.getFromYear());
         allEmployeeDto.setToYear(employee.getToYear());
@@ -428,7 +428,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		allEmpDto.setDescriptionFriend(employee.getDescriptionFriend());
 		allEmpDto.setKnowAugOther(employee.getKnowAugOther());
 		allEmpDto.setDescriptionOther(employee.getDescriptionOther());
-		allEmpDto.setKnowEmployedYes(employee.getKnowEmployedYes());
+		allEmpDto.setKnowEmployed(employee.getKnowEmployed());
 		
 		allEmpDto.setMilitaryServiceYes(employee.getMilitaryServiceYes());
 		allEmpDto.setFromYear(employee.getFromYear());
@@ -533,9 +533,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setDescriptionFriend(allEmployeeDto.getKnowAugFriend());
 		employee.setKnowAugOther(allEmployeeDto.getKnowAugOther()); 
 		employee.setDescriptionOther(allEmployeeDto.getDescriptionOther()); 
-		employee.setKnowEmployedYes(allEmployeeDto.getKnowEmployedYes());
+		employee.setKnowEmployed(allEmployeeDto.getKnowEmployed());
 		employee.setDescriptionYes(allEmployeeDto.getDescriptionYes());
-		employee.setKnowEmployerNo(allEmployeeDto.getKnowEmployerNo());
+		/*employee.setKnowEmployerNo(allEmployeeDto.getKnowEmployerNo());*/
 		employee.setMilitaryServiceYes(allEmployeeDto.getMilitaryServiceYes());
 		employee.setFromYear(allEmployeeDto.getFromYear());
 		employee.setToYear(allEmployeeDto.getToYear());
@@ -777,9 +777,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setDescriptionFriend(allEmployeeDto.getKnowAugFriend());
 		employee.setKnowAugOther(allEmployeeDto.getKnowAugOther()); 
 		employee.setDescriptionOther(allEmployeeDto.getDescriptionOther()); 
-		employee.setKnowEmployedYes(allEmployeeDto.getKnowEmployedYes());
+		employee.setKnowEmployed(allEmployeeDto.getKnowEmployed());
 		employee.setDescriptionYes(allEmployeeDto.getDescriptionYes());
-		employee.setKnowEmployerNo(allEmployeeDto.getKnowEmployerNo());
+		/*employee.setKnowEmployerNo(allEmployeeDto.getKnowEmployerNo());*/
 		employee.setMilitaryServiceYes(allEmployeeDto.getMilitaryServiceYes());
 		employee.setFromYear(allEmployeeDto.getFromYear());
 		employee.setToYear(allEmployeeDto.getToYear());

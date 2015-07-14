@@ -682,15 +682,15 @@
 								<div class="col-md-1">
 									
 									<div class="radio">
-									<c:if test="${ empty allEmployeeDto.knowEmployedYes}">	
-     									  <label style="margin-right: 25px;"><input type="radio" id="Yes" name="knowEmployed[]" value="Yes"><spring:message code="employee.yes"></spring:message></label>
+									<c:if test="${ empty allEmployeeDto.knowEmployed}">	
+     									  <label style="margin-right: 25px;"><input type="radio" id="Yes" name="knowEmployed" value="Yes"><spring:message code="employee.yes"></spring:message></label>
     								</c:if>
     								</div>
     								</div>
     								<div class="col-md-11">
-    								<c:if test="${not empty allEmployeeDto.knowEmployedYes}">	
-	    								<c:if test="${allEmployeeDto.knowEmployedYes=='Yes'}">	
-	     									  <label style="margin-right: 25px;"><input type="radio" id="Yes" name="knowEmployed[]" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
+    								<c:if test="${not empty allEmployeeDto.knowEmployed}">	
+	    								<c:if test="${allEmployeeDto.knowEmployed=='Yes'}">	
+	     									  <label style="margin-right: 25px;"><input type="radio" id="Yes" name="knowEmployed" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
 	    								</c:if>
     								</c:if>
      									 <input type="text" class="form-control" style="margin-right: 25px;" id="descriptionYes" name="descriptionYes" placeholder="${please} ${enter} <spring:message code="employee.pleasewrite"></spring:message>" value="${allEmployeeDto.descriptionYes}">
@@ -702,13 +702,13 @@
 									     <div class="col-md-12">
 									     
     								<div class="radio">
-    								  <c:if test="${ empty allEmployeeDto.knowEmployerNo}">	
-     									 <label><input type="radio" id="No" name="knowEmployed[]" style="margin-right: 25px;" value="No"><spring:message code="employee.no"></spring:message></label>
+    								  <c:if test="${ empty allEmployeeDto.knowEmployed}">	
+     									 <label><input type="radio" id="No" name="knowEmployed" style="margin-right: 25px;" value="No"><spring:message code="employee.no"></spring:message></label>
     								  </c:if>
     								  
-    								  <c:if test="${not empty allEmployeeDto.knowEmployedYes}">	  								  
-    								 	<c:if test="${allEmployeeDto.knowEmployedYes=='No'}">	
-     									    <label><input type="radio" id="No" name="knowEmployed[]" style="margin-right: 25px;" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>
+    								  <c:if test="${not empty allEmployeeDto.knowEmployed}">	  								  
+    								 	<c:if test="${allEmployeeDto.knowEmployed=='No'}">	
+     									    <label><input type="radio" id="No" name="knowEmployed" style="margin-right: 25px;" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>
     								   </c:if>
     								  </c:if>
     								</div>
@@ -1424,7 +1424,8 @@ $("#addForm").validate({
 		
 		age: {
 			required: true,
-			 digits: true
+			 digits: true,
+			 minlength: 2
 		},
 		
 		height: {
@@ -1527,6 +1528,15 @@ $("#addForm").validate({
 	}
 });		
 		
+$("#descriptionYes").hide();//descriptionYes ชื่อกล่อง
+$("input:radio[name=knowEmployed]").change(function(){//name= ชื่อ group radio
+
+	if(this.value == 'Yes' && this.checked){
+	 $("#descriptionYes").show();
+	}else{
+	$("#descriptionYes").hide();
+}
+});
 		
 		
 		

@@ -169,10 +169,10 @@ public Employee findOfficial(Integer id) {
 		
 		query.setString("KNOW_AUG_OTHER", allEmployeeDto.getKnowAugOther());
 		query.setString("DESCRIPTION_OTHER", allEmployeeDto.getDescriptionOther());
-		query.setString("KNOW_EMPLOYED_YES", allEmployeeDto.getKnowEmployedYes());
+		query.setString("KNOW_EMPLOYED", allEmployeeDto.getKnowEmployed());
 		
 		query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
-		query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());
+		/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
 		query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
 		
 		query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
@@ -262,10 +262,10 @@ public Employee findOfficial(Integer id) {
 			
 			query.setString("KNOW_AUG_OTHER", allEmployeeDto.getKnowAugOther());
 			query.setString("DESCRIPTION_OTHER", allEmployeeDto.getDescriptionOther());
-			query.setString("KNOW_EMPLOYED_YES", allEmployeeDto.getKnowEmployedYes());
+			query.setString("KNOW_EMPLOYED", allEmployeeDto.getKnowEmployed());
 			
 			query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
-			query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());
+			/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
 			query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
 			
 			query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
@@ -362,10 +362,10 @@ public Employee findOfficial(Integer id) {
 				
 				query.setString("KNOW_AUG_OTHER", allEmployeeDto.getKnowAugOther());
 				query.setString("DESCRIPTION_OTHER", allEmployeeDto.getDescriptionOther());
-				query.setString("KNOW_EMPLOYED_YES", allEmployeeDto.getKnowEmployedYes());
+				query.setString("KNOW_EMPLOYED", allEmployeeDto.getKnowEmployed());
 				
 				query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
-				query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());
+				/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
 				query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
 				
 				query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
@@ -458,10 +458,10 @@ public Employee findOfficial(Integer id) {
 				
 				query.setString("KNOW_AUG_OTHER", allEmployeeDto.getKnowAugOther());
 				query.setString("DESCRIPTION_OTHER", allEmployeeDto.getDescriptionOther());
-				query.setString("KNOW_EMPLOYED_YES", allEmployeeDto.getKnowEmployedYes());
+				query.setString("KNOW_EMPLOYED", allEmployeeDto.getKnowEmployed());
 				
 				query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
-				query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());
+				/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
 				query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
 				
 				query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
@@ -639,10 +639,10 @@ public Employee findOfficial(Integer id) {
 		
 		query.setString("KNOW_AUG_OTHER", allEmployeeDto.getKnowAugOther());
 		query.setString("DESCRIPTION_OTHER", allEmployeeDto.getDescriptionOther());
-		query.setString("KNOW_EMPLOYED_YES", allEmployeeDto.getKnowEmployedYes());
+		query.setString("KNOW_EMPLOYED", allEmployeeDto.getKnowEmployed());
 		
 		query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
-		query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());
+		/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
 		query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
 		
 		query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());

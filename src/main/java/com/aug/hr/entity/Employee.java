@@ -85,9 +85,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ "DESCRIPTION_FRIEND,"
             		+ "KNOW_AUG_OTHER,"
             		+ "DESCRIPTION_OTHER,"
-            		+ "KNOW_EMPLOYED_YES,"
+            		+ "KNOW_EMPLOYED,"
             		+ "DESCRIPTION_YES,"
-            		+ "KNOW_EMPLOYER_NO,"
             		+ "MILITARY_SERVICE_YES,"
             		+ "FROM_YEAR,"
 					+ "TO_YEAR,"
@@ -160,9 +159,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ ":DESCRIPTION_FRIEND,"
             		+ ":KNOW_AUG_OTHER,"
             		+ ":DESCRIPTION_OTHER,"
-            		+ ":KNOW_EMPLOYED_YES,"
+            		+ ":KNOW_EMPLOYED,"
             		+ ":DESCRIPTION_YES,"
-            		+ ":KNOW_EMPLOYER_NO,"
             		+ ":MILITARY_SERVICE_YES,"
             		+ ":FROM_YEAR,"
             		+ ":TO_YEAR,"
@@ -239,9 +237,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            		+ "DESCRIPTION_FRIEND,"
             	            		+ "KNOW_AUG_OTHER,"
             	            		+ "DESCRIPTION_OTHER,"
-            	            		+ "KNOW_EMPLOYED_YES,"
+            	            		+ "KNOW_EMPLOYED,"
             	            		+ "DESCRIPTION_YES,"
-            	            		+ "KNOW_EMPLOYER_NO,"
             	            		+ "MILITARY_SERVICE_YES,"
             	            		+ "FROM_YEAR,"
             						+ "TO_YEAR,"
@@ -314,9 +311,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            		+ ":DESCRIPTION_FRIEND,"
             	            		+ ":KNOW_AUG_OTHER,"
             	            		+ ":DESCRIPTION_OTHER,"
-            	            		+ ":KNOW_EMPLOYED_YES,"
+            	            		+ ":KNOW_EMPLOYED,"
             	            		+ ":DESCRIPTION_YES,"
-            	            		+ ":KNOW_EMPLOYER_NO,"
             	            		+ ":MILITARY_SERVICE_YES,"
             	            		+ ":FROM_YEAR,"
             	            		+ ":TO_YEAR,"
@@ -394,9 +390,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            		+ "DESCRIPTION_FRIEND,"
             	            	            		+ "KNOW_AUG_OTHER,"
             	            	            		+ "DESCRIPTION_OTHER,"
-            	            	            		+ "KNOW_EMPLOYED_YES,"
+            	            	            		+ "KNOW_EMPLOYED,"
             	            	            		+ "DESCRIPTION_YES,"
-            	            	            		+ "KNOW_EMPLOYER_NO,"
             	            	            		+ "MILITARY_SERVICE_YES,"
             	            	            		+ "FROM_YEAR,"
             	            						+ "TO_YEAR,"
@@ -469,9 +464,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            		+ ":DESCRIPTION_FRIEND,"
             	            	            		+ ":KNOW_AUG_OTHER,"
             	            	            		+ ":DESCRIPTION_OTHER,"
-            	            	            		+ ":KNOW_EMPLOYED_YES,"
+            	            	            		+ ":KNOW_EMPLOYED,"
             	            	            		+ ":DESCRIPTION_YES,"
-            	            	            		+ ":KNOW_EMPLOYER_NO,"
             	            	            		+ ":MILITARY_SERVICE_YES,"
             	            	            		+ ":FROM_YEAR,"
             	            	            		+ ":TO_YEAR,"
@@ -549,9 +543,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            	            		+ "DESCRIPTION_FRIEND,"
             	            	            	            		+ "KNOW_AUG_OTHER,"
             	            	            	            		+ "DESCRIPTION_OTHER,"
-            	            	            	            		+ "KNOW_EMPLOYED_YES,"
+            	            	            	            		+ "KNOW_EMPLOYED,"
             	            	            	            		+ "DESCRIPTION_YES,"
-            	            	            	            		+ "KNOW_EMPLOYER_NO,"
             	            	            	            		+ "MILITARY_SERVICE_YES,"
             	            	            	            		+ "FROM_YEAR,"
             	            	            						+ "TO_YEAR,"
@@ -624,9 +617,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            	            		+ ":DESCRIPTION_FRIEND,"
             	            	            	            		+ ":KNOW_AUG_OTHER,"
             	            	            	            		+ ":DESCRIPTION_OTHER,"
-            	            	            	            		+ ":KNOW_EMPLOYED_YES,"
+            	            	            	            		+ ":KNOW_EMPLOYED,"
             	            	            	            		+ ":DESCRIPTION_YES,"
-            	            	            	            		+ ":KNOW_EMPLOYER_NO,"
             	            	            	            		+ ":MILITARY_SERVICE_YES,"
             	            	            	            		+ ":FROM_YEAR,"
             	            	            	            		+ ":TO_YEAR,"
@@ -712,9 +704,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
                     		+ "DESCRIPTION_FRIEND =:DESCRIPTION_FRIEND,"
                     		+ "KNOW_AUG_OTHER =:KNOW_AUG_OTHER,"
                     		+ "DESCRIPTION_OTHER =:DESCRIPTION_OTHER,"
-                    		+ "KNOW_EMPLOYED_YES =:KNOW_EMPLOYED_YES,"
+                    		+ "KNOW_EMPLOYED =:KNOW_EMPLOYED,"
                     		+ "DESCRIPTION_YES =:DESCRIPTION_YES,"
-                    		+ "KNOW_EMPLOYER_NO =:KNOW_EMPLOYER_NO,"
                     		+ "MILITARY_SERVICE_YES =:MILITARY_SERVICE_YES,"
                     		+ "FROM_YEAR =:FROM_YEAR,"
                     		+ "TO_YEAR =:TO_YEAR,"
@@ -906,14 +897,14 @@ public class Employee extends BaseEntity{
 	@Column(name = "DESCRIPTION_OTHER",nullable = true)
 	private String descriptionOther;
 	
-	@Column(name = "KNOW_EMPLOYED_YES",nullable = true)
-	private String knowEmployedYes;
+	@Column(name = "KNOW_EMPLOYED",nullable = true)
+	private String knowEmployed;
 	
 	@Column(name = "DESCRIPTION_YES",nullable = true)
 	private String descriptionYes;
 	
-	@Column(name = "KNOW_EMPLOYER_NO",nullable = true)
-	private String knowEmployerNo;
+	/*@Column(name = "KNOW_EMPLOYER_NO",nullable = true)
+	private String knowEmployerNo;*/
 	
 	@Column(name = "MILITARY_SERVICE_YES",nullable = true)
 	private String militaryServiceYes;
@@ -1578,13 +1569,13 @@ public class Employee extends BaseEntity{
 	}
 
 
-	public String getKnowEmployedYes() {
-		return knowEmployedYes;
+	public String getKnowEmployed() {
+		return knowEmployed;
 	}
 
 
-	public void setKnowEmployedYes(String knowEmployedYes) {
-		this.knowEmployedYes = knowEmployedYes;
+	public void setKnowEmployed(String knowEmployed) {
+		this.knowEmployed = knowEmployed;
 	}
 
 
@@ -1598,14 +1589,14 @@ public class Employee extends BaseEntity{
 	}
 
 
-	public String getKnowEmployerNo() {
+	/*public String getKnowEmployerNo() {
 		return knowEmployerNo;
 	}
 
 
 	public void setKnowEmployerNo(String knowEmployerNo) {
 		this.knowEmployerNo = knowEmployerNo;
-	}
+	}*/
 
 
 	public String getMilitaryServiceYes() {

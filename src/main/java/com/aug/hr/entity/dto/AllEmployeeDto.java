@@ -81,7 +81,7 @@ public class AllEmployeeDto {
 	private String descriptionFriend;
 	private String knowAugOther;
 	private String descriptionOther;	
-	private String knowEmployedYes;
+	private String knowEmployed;
 	private String descriptionYes;
 	private String knowEmployerNo;
 	private String militaryServiceYes;
@@ -658,13 +658,13 @@ public class AllEmployeeDto {
 	}
 
 
-	public String getKnowEmployedYes() {
-		return knowEmployedYes;
+	public String getKnowEmployed() {
+		return knowEmployed;
 	}
 
 
-	public void setKnowEmployedYes(String knowEmployedYes) {
-		this.knowEmployedYes = knowEmployedYes;
+	public void setKnowEmployed(String knowEmployedYes) {
+		this.knowEmployed = knowEmployedYes;
 	}
 
 
