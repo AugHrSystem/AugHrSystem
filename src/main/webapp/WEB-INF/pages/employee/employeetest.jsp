@@ -368,13 +368,15 @@
 	         <div class="col-md-12">
 	 <!------------------------------------------------------------------ form ของ sex ------------------------------------------------------------->
 							<div class="form-group">
-							
+						
+						
 							<div class="col-md-3">
 									<label style="margin-right: 25px;"> <spring:message code="employee.sex"></spring:message> :</label>
 									<div class="radio">
 									 <c:if test="${empty allEmployeeDto.sex}">									
 									  		 <label><input type="radio" name="sex" id="Male" value="Male"><spring:message code="employee.male"></spring:message></label>
 									  		 <label><input type="radio" name="sex" id="Female" value="Female"><spring:message code="employee.female"></spring:message></label>
+									 		<label for="sex" class="error">Please select your gender</label>
 									  </c:if>
 									  
 									  
@@ -403,6 +405,7 @@
      									 <label><input type="radio" name="maritalStatus" id="Single" value="Single"><spring:message code="employee.single"></spring:message></label> 
       									 <label><input type="radio" name="maritalStatus" id="Married" value="Married"><spring:message code="employee.married"></spring:message></label>
       									 <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce"><spring:message code="employee.divorce"></spring:message></label>
+    								  		<label for="maritalStatus" class="error">Please select your maritalStatus</label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.maritalStatus}">
     								        
@@ -1349,8 +1352,8 @@ $("#addForm").validate({
 		issuedOffice: "required",
 		expiryDate: "required",
 		
-		sex: "required",
-		maritalStatus: "required",
+		sex:{ required:true},
+		maritalStatus:{ required:true},
 		spouseName: "required",
 		marriageCertificateNo: "required",
 		
