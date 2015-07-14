@@ -294,10 +294,6 @@ table.dataTable.no-footer {
     white-space: normal;
 }
 
-/* .active{ */
-/*        	background-color: #fff; */
-/* } */
-
 </style>
 
 <nav class="navbar navbar-defaults navbar-fixed-top" id="top-bar" role="navigation">
