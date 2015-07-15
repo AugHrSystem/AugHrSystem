@@ -6,6 +6,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
+
 <jsp:include page="../employeeMenu.jsp"></jsp:include>
 
 <style>
@@ -163,7 +164,7 @@ var dt;
 			"info": false,
 			"dom": '<"toolbar">frtip'
 		});
-		$("div.toolbar").html('<b><button type="button" id="addBtnEdu" class="btn btn-warning btnAdds " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
+		$("div.toolbar").html('<b><button id="clearModal" type="button" class="btn btn-warning btn-md " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
 		var expId; 
 		$('#validate').bootstrapValidator({
 			message: 'This value is not valid',
@@ -224,7 +225,26 @@ var dt;
 		        }
 		});
 		
-		$('#dateTimeFrom')
+		
+		
+		$("#dateTimeFrom").datetimepicker({
+			format : 'DD-MM-YYYY',
+			defaultDate: 'moment', 
+/* 		onSelect: function(dateText, inst){
+			$("#dateTimeTo").datetimepicker('option', 'minDate', dateText);
+			}*/
+		}); 
+		
+ 		var defaultDate = new Date();
+		defaultDate.setDate(defaultDate.getDate());
+		
+    	$("#dateTimeTo").datetimepicker({
+			format : 'DD-MM-YYYY',
+			defaultDate: defaultDate,
+			//minDate: 'moment',
+		}); 
+    	
+    	$('#dateTimeFrom')
         .on('dp.change dp.show', function(e) {
             // Validate the date when user change it
             $('#validate')
@@ -234,6 +254,10 @@ var dt;
                 .updateStatus('dateFrom', 'NOT_VALIDATED', null)
                 // Validate the field
                 .validateField('dateFrom');
+            
+            var tempdate = new Date(e.date);
+			tempdate.setDate(tempdate.getDate());
+            $('#dateTimeTo').data("DateTimePicker").minDate(tempdate);
         });
 		
 		$('#dateTimeTo')
@@ -247,32 +271,20 @@ var dt;
                 // Validate the field
                 .validateField('dateTo');
         });
-		
-/*     	$( "#dateTimeFrom" ).datetimepicker({
-			// viewMode: 'days',
-			 format : 'DD-MM-YYYY',
-			 //defaultDate: 'moment',
-			 //minDate: moment(),
-		}); */
-		$("#dateTimeFrom").datetimepicker({
-		format : 'DD-MM-YYYY',
-		defaultDate: 'moment',
-/* 		onSelect: function(dateText, inst){
-			$("#dateTimeTo").datetimepicker('option', 'minDate', dateText);
-			}*/
-		}); 
-    	$("#dateTimeTo").datetimepicker({
-		format : 'DD-MM-YYYY',
-		minDate: moment()
-		}); 
     	
     	dt=$("#tdResult").dataTable();
  		listAll();
+	
 		
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		expId = button.data("expid"); 
     		//alert("Check"+expId);
+ 		    var d = new Date($('#dateTimeFrom').data("DateTimePicker").date());
+			d.setDate(d.getDate()+1);
+    		$('#dateTimeTo').data("DateTimePicker").minDate(d);
+    		$('#dateTimeTo').data("DateTimePicker").date(d);
+    		
     		if(expId != null){
 				initEditExperience(expId);
 			}
@@ -283,11 +295,12 @@ var dt;
     				$('#validate').bootstrapValidator();
     				$('#validate').data('bootstrapValidator').validate();
     				if($('#validate').data('bootstrapValidator').isValid()){
+    					
     					editExperience();
     				}
     			}
     			else {
-    				$('#validate').bootstrapValidator();
+ 		        	$('#validate').bootstrapValidator();
     				$('#validate').data('bootstrapValidator').validate();
     				if($('#validate').data('bootstrapValidator').isValid()){
     					addExperience();
@@ -481,8 +494,9 @@ var dt;
 			}
 			
     		$("#clearModal").off().on("click", function(){
-    			$("#cName").val("");
+    			
 				$("#businessType").val("");
+				$("#cName").val("");
 				$("#position").val("");
 				$("#salary").val("");
 				$("#dateFrom").val("");

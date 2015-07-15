@@ -144,7 +144,7 @@ var dt;
 			"dom": '<"toolbar">frtip'
 		});
 		
-		$("div.toolbar").html('<b><button id="clearModal"type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
+		$("div.toolbar").html('<b><button id="clearModal" type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 		var proId; 
 		$('#validate')
         .bootstrapValidator({
@@ -186,6 +186,22 @@ var dt;
 		        }
 		});
 		
+    	$( "#dateTimeFrom" ).datetimepicker({
+			 //viewMode: 'days',
+			 format : 'DD-MM-YYYY',
+			 defaultDate: 'moment',
+			 //minDate: moment(),
+		});
+    	
+ 		var defaultDate = new Date();
+		defaultDate.setDate(defaultDate.getDate());
+    	$( "#dateTimeTo" ).datetimepicker({
+			 //viewMode: 'days',
+			 format : 'DD-MM-YYYY',
+			 defaultDate: defaultDate,
+			 //minDate: moment(),
+		});
+    	
 		$('#dateTimeFrom')
         .on('dp.change dp.show', function(e) {
             // Validate the date when user change it
@@ -196,6 +212,10 @@ var dt;
                 .updateStatus('dateFrom', 'NOT_VALIDATED', null)
                 // Validate the field
                 .validateField('dateFrom');
+            
+            var tempdate = new Date(e.date);
+			tempdate.setDate(tempdate.getDate());
+            $('#dateTimeTo').data("DateTimePicker").minDate(tempdate);
         });
 		
 		$('#dateTimeTo')
@@ -209,18 +229,6 @@ var dt;
                 // Validate the field
                 .validateField('dateTo');
         });
-    	$( "#dateTimeFrom" ).datetimepicker({
-			 //viewMode: 'days',
-			 format : 'DD-MM-YYYY',
-			 //defaultDate: 'moment',
-			 //minDate: moment(),
-		});
-    	$( "#dateTimeTo" ).datetimepicker({
-			 //viewMode: 'days',
-			 format : 'DD-MM-YYYY',
-			 //defaultDate: 'moment',
-			 //minDate: moment(),
-		});
     	dt=$("#tdResult").dataTable();
  	
  		listAll();
@@ -228,6 +236,10 @@ var dt;
      	$("#addModal").on("show.bs.modal", function(event){
     		var button = $(event.relatedTarget);
     		proId = button.data("proid");
+    		var d = new Date($('#dateTimeFrom').data("DateTimePicker").date());
+ 			d.setDate(d.getDate()+1);
+     		$('#dateTimeTo').data("DateTimePicker").minDate(d);
+     		$('#dateTimeTo').data("DateTimePicker").date(d);
     		if(proId != null){
 				initEditProbation(proId);
 			}
@@ -281,6 +293,15 @@ var dt;
     				success : function(data) {
     					$('#validate').bootstrapValidator('resetForm', true);
     					$('#addModal').modal('toggle');
+    					$(function(){ new PNotify({
+    						title: 'Success',
+    						type: 'success',
+    						animation: {
+    							effect_in: 'show',
+    							effect_out: 'slide'
+    						}
+    						});
+    					});
     					//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();
     					/* dt.fnClearTable();
     					dt.fnAddData([
@@ -366,9 +387,18 @@ var dt;
 					datatype: "json",
 					contentType: "application/json",
 					success : function(data) {
-						$('#validate').bootstrapValidator('revalidateField', '#status');
+						//$('#validate').bootstrapValidator('revalidateField', '#status');
 						$('#validate').bootstrapValidator('resetForm', true);
 						$('#addModal').modal('toggle');
+						$(function(){ new PNotify({
+    						title: 'Success',
+    						type: 'success',
+    						animation: {
+    							effect_in: 'show',
+    							effect_out: 'slide'
+    						}
+    						});
+						});
 						//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').slideDown('fast').delay(5000).fadeOut().delay(4000);
 						/* dt.fnClearTable();
 						dt.fnAddData([
@@ -437,6 +467,15 @@ var dt;
 						type : "POST",
 						success : function(data) {
 							$('#deleteModal').modal('toggle');
+							$(function(){ new PNotify({
+								title: 'Success',
+								type: 'success',
+								animation: {
+									effect_in: 'show',
+									effect_out: 'slide'
+								}
+								});
+							});
 							//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();		
 							/* var del = button.closet("tr");
 							dt.fnDeleteRow(del); */
