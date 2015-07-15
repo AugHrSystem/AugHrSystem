@@ -87,12 +87,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ "DESCRIPTION_OTHER,"
             		+ "KNOW_EMPLOYED,"
             		+ "DESCRIPTION_YES,"
-            		+ "MILITARY_SERVICE_YES,"
+            		+ "MILITARY_SERVICE,"
             		+ "FROM_YEAR,"
 					+ "TO_YEAR,"
             		+ "BRANCH_OF_SERVICE,"
             		+ "SERVICE_NO,"
-            		+ "MILITARY_SERVICE_NO,"
             		+ "REASONS_NO,"
             		+ "DATE_TO_BE_DRAFTED,"
             		+ "PREVIOUS_EMPLOYER_YES,"
@@ -161,12 +160,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ ":DESCRIPTION_OTHER,"
             		+ ":KNOW_EMPLOYED,"
             		+ ":DESCRIPTION_YES,"
-            		+ ":MILITARY_SERVICE_YES,"
+            		+ ":MILITARY_SERVICE,"
             		+ ":FROM_YEAR,"
             		+ ":TO_YEAR,"
             		+ ":BRANCH_OF_SERVICE,"
             		+ ":SERVICE_NO,"
-            		+ ":MILITARY_SERVICE_NO,"
             		+ ":REASONS_NO,"
             		+ ":DATE_TO_BE_DRAFTED,"
             		+ ":PREVIOUS_EMPLOYER_YES,"
@@ -239,12 +237,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            		+ "DESCRIPTION_OTHER,"
             	            		+ "KNOW_EMPLOYED,"
             	            		+ "DESCRIPTION_YES,"
-            	            		+ "MILITARY_SERVICE_YES,"
+            	            		+ "MILITARY_SERVICE,"
             	            		+ "FROM_YEAR,"
             						+ "TO_YEAR,"
             	            		+ "BRANCH_OF_SERVICE,"
             	            		+ "SERVICE_NO,"
-            	            		+ "MILITARY_SERVICE_NO,"
             	            		+ "REASONS_NO,"
             	            		+ "DATE_TO_BE_DRAFTED,"
             	            		+ "PREVIOUS_EMPLOYER_YES,"
@@ -313,12 +310,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            		+ ":DESCRIPTION_OTHER,"
             	            		+ ":KNOW_EMPLOYED,"
             	            		+ ":DESCRIPTION_YES,"
-            	            		+ ":MILITARY_SERVICE_YES,"
+            	            		+ ":MILITARY_SERVICE,"
             	            		+ ":FROM_YEAR,"
             	            		+ ":TO_YEAR,"
             	            		+ ":BRANCH_OF_SERVICE,"
             	            		+ ":SERVICE_NO,"
-            	            		+ ":MILITARY_SERVICE_NO,"
             	            		+ ":REASONS_NO,"
             	            		+ ":DATE_TO_BE_DRAFTED,"
             	            		+ ":PREVIOUS_EMPLOYER_YES,"
@@ -392,12 +388,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            		+ "DESCRIPTION_OTHER,"
             	            	            		+ "KNOW_EMPLOYED,"
             	            	            		+ "DESCRIPTION_YES,"
-            	            	            		+ "MILITARY_SERVICE_YES,"
+            	            	            		+ "MILITARY_SERVICE,"
             	            	            		+ "FROM_YEAR,"
             	            						+ "TO_YEAR,"
             	            	            		+ "BRANCH_OF_SERVICE,"
             	            	            		+ "SERVICE_NO,"
-            	            	            		+ "MILITARY_SERVICE_NO,"
             	            	            		+ "REASONS_NO,"
             	            	            		+ "DATE_TO_BE_DRAFTED,"
             	            	            		+ "PREVIOUS_EMPLOYER_YES,"
@@ -466,12 +461,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            		+ ":DESCRIPTION_OTHER,"
             	            	            		+ ":KNOW_EMPLOYED,"
             	            	            		+ ":DESCRIPTION_YES,"
-            	            	            		+ ":MILITARY_SERVICE_YES,"
+            	            	            		+ ":MILITARY_SERVICE,"
             	            	            		+ ":FROM_YEAR,"
             	            	            		+ ":TO_YEAR,"
             	            	            		+ ":BRANCH_OF_SERVICE,"
             	            	            		+ ":SERVICE_NO,"
-            	            	            		+ ":MILITARY_SERVICE_NO,"
             	            	            		+ ":REASONS_NO,"
             	            	            		+ ":DATE_TO_BE_DRAFTED,"
             	            	            		+ ":PREVIOUS_EMPLOYER_YES,"
@@ -545,12 +539,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            	            		+ "DESCRIPTION_OTHER,"
             	            	            	            		+ "KNOW_EMPLOYED,"
             	            	            	            		+ "DESCRIPTION_YES,"
-            	            	            	            		+ "MILITARY_SERVICE_YES,"
+            	            	            	            		+ "MILITARY_SERVICE,"
             	            	            	            		+ "FROM_YEAR,"
             	            	            						+ "TO_YEAR,"
             	            	            	            		+ "BRANCH_OF_SERVICE,"
             	            	            	            		+ "SERVICE_NO,"
-            	            	            	            		+ "MILITARY_SERVICE_NO,"
             	            	            	            		+ "REASONS_NO,"
             	            	            	            		+ "DATE_TO_BE_DRAFTED,"
             	            	            	            		+ "PREVIOUS_EMPLOYER_YES,"
@@ -619,12 +612,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            	            		+ ":DESCRIPTION_OTHER,"
             	            	            	            		+ ":KNOW_EMPLOYED,"
             	            	            	            		+ ":DESCRIPTION_YES,"
-            	            	            	            		+ ":MILITARY_SERVICE_YES,"
+            	            	            	            		+ ":MILITARY_SERVICE,"
             	            	            	            		+ ":FROM_YEAR,"
             	            	            	            		+ ":TO_YEAR,"
             	            	            	            		+ ":BRANCH_OF_SERVICE,"
             	            	            	            		+ ":SERVICE_NO,"
-            	            	            	            		+ ":MILITARY_SERVICE_NO,"
             	            	            	            		+ ":REASONS_NO,"
             	            	            	            		+ ":DATE_TO_BE_DRAFTED,"
             	            	            	            		+ ":PREVIOUS_EMPLOYER_YES,"
@@ -706,12 +698,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
                     		+ "DESCRIPTION_OTHER =:DESCRIPTION_OTHER,"
                     		+ "KNOW_EMPLOYED =:KNOW_EMPLOYED,"
                     		+ "DESCRIPTION_YES =:DESCRIPTION_YES,"
-                    		+ "MILITARY_SERVICE_YES =:MILITARY_SERVICE_YES,"
+                    		+ "MILITARY_SERVICE =:MILITARY_SERVICE,"
                     		+ "FROM_YEAR =:FROM_YEAR,"
                     		+ "TO_YEAR =:TO_YEAR,"
                     		+ "BRANCH_OF_SERVICE =:BRANCH_OF_SERVICE, "
                     		+ "SERVICE_NO =:SERVICE_NO,"
-                    		+ "MILITARY_SERVICE_NO =:MILITARY_SERVICE_NO,"
                     		+ "REASONS_NO =:REASONS_NO,"
                     		+ "DATE_TO_BE_DRAFTED =:DATE_TO_BE_DRAFTED,"
                     		+ "PREVIOUS_EMPLOYER_YES =:PREVIOUS_EMPLOYER_YES,"
@@ -906,8 +897,8 @@ public class Employee extends BaseEntity{
 	/*@Column(name = "KNOW_EMPLOYER_NO",nullable = true)
 	private String knowEmployerNo;*/
 	
-	@Column(name = "MILITARY_SERVICE_YES",nullable = true)
-	private String militaryServiceYes;
+	@Column(name = "MILITARY_SERVICE",nullable = true)
+	private String militaryService;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -927,8 +918,8 @@ public class Employee extends BaseEntity{
 	@Column(name = "SERVICE_NO",nullable = true)
 	private String serviceNo;
 	
-	@Column(name = "MILITARY_SERVICE_NO",nullable = true)
-	private String militaryServiceNo;
+	/*@Column(name = "MILITARY_SERVICE_NO",nullable = true)
+	private String militaryServiceNo;*/
 	
 	@Column(name = "REASONS_NO",nullable = true)
 	private String reasonsNo;
@@ -1599,13 +1590,13 @@ public class Employee extends BaseEntity{
 	}*/
 
 
-	public String getMilitaryServiceYes() {
-		return militaryServiceYes;
+	public String getMilitaryService() {
+		return militaryService;
 	}
 
 
-	public void setMilitaryServiceYes(String militaryServiceYes) {
-		this.militaryServiceYes = militaryServiceYes;
+	public void setMilitaryService(String militaryServiceYes) {
+		this.militaryService = militaryServiceYes;
 	}
 
 
@@ -1639,14 +1630,14 @@ public class Employee extends BaseEntity{
 	}
 
 
-	public String getMilitaryServiceNo() {
+	/*public String getMilitaryServiceNo() {
 		return militaryServiceNo;
 	}
 
 
 	public void setMilitaryServiceNo(String militaryServiceNo) {
 		this.militaryServiceNo = militaryServiceNo;
-	}
+	}*/
 
 
 	public String getReasonsNo() {

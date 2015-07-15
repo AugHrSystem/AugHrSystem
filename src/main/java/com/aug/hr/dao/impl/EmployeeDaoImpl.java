@@ -173,14 +173,13 @@ public Employee findOfficial(Integer id) {
 		
 		query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
 		/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
-		query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
+		query.setString("MILITARY_SERVICE", allEmployeeDto.getMilitaryService());
 		
 		query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
 		query.setDate("TO_YEAR", allEmployeeDto.getToYear());
 		query.setString("BRANCH_OF_SERVICE", allEmployeeDto.getBranchOfService());
 		
 		query.setString("SERVICE_NO", allEmployeeDto.getServiceNo());
-		query.setString("MILITARY_SERVICE_NO", allEmployeeDto.getMilitaryServiceNo());
 		query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 		
 		query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
@@ -266,14 +265,14 @@ public Employee findOfficial(Integer id) {
 			
 			query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
 			/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
-			query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
+			query.setString("MILITARY_SERVICE", allEmployeeDto.getMilitaryService());
 			
 			query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
 			query.setDate("TO_YEAR", allEmployeeDto.getToYear());
 			query.setString("BRANCH_OF_SERVICE", allEmployeeDto.getBranchOfService());
 			
 			query.setString("SERVICE_NO", allEmployeeDto.getServiceNo());
-			query.setString("MILITARY_SERVICE_NO", allEmployeeDto.getMilitaryServiceNo());
+			/*query.setString("MILITARY_SERVICE_NO", allEmployeeDto.getMilitaryServiceNo());*/
 			query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 			
 			query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
@@ -366,14 +365,13 @@ public Employee findOfficial(Integer id) {
 				
 				query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
 				/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
-				query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
+				query.setString("MILITARY_SERVICE", allEmployeeDto.getMilitaryService());
 				
 				query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
 				query.setDate("TO_YEAR", allEmployeeDto.getToYear());
 				query.setString("BRANCH_OF_SERVICE", allEmployeeDto.getBranchOfService());
 				
 				query.setString("SERVICE_NO", allEmployeeDto.getServiceNo());
-				query.setString("MILITARY_SERVICE_NO", allEmployeeDto.getMilitaryServiceNo());
 				query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 				
 				query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
@@ -462,14 +460,13 @@ public Employee findOfficial(Integer id) {
 				
 				query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
 				/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
-				query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
+				query.setString("MILITARY_SERVICE", allEmployeeDto.getMilitaryService());
 				
 				query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
 				query.setDate("TO_YEAR", allEmployeeDto.getToYear());
 				query.setString("BRANCH_OF_SERVICE", allEmployeeDto.getBranchOfService());
 				
 				query.setString("SERVICE_NO", allEmployeeDto.getServiceNo());
-				query.setString("MILITARY_SERVICE_NO", allEmployeeDto.getMilitaryServiceNo());
 				query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 				
 				query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
@@ -643,14 +640,13 @@ public Employee findOfficial(Integer id) {
 		
 		query.setString("DESCRIPTION_YES", allEmployeeDto.getDescriptionYes());
 		/*query.setString("KNOW_EMPLOYER_NO", allEmployeeDto.getKnowEmployerNo());*/
-		query.setString("MILITARY_SERVICE_YES", allEmployeeDto.getMilitaryServiceYes());
+		query.setString("MILITARY_SERVICE", allEmployeeDto.getMilitaryService());
 		
 		query.setDate("FROM_YEAR", allEmployeeDto.getFromYear());
 		query.setDate("TO_YEAR", allEmployeeDto.getToYear());
 		query.setString("BRANCH_OF_SERVICE", allEmployeeDto.getBranchOfService());
 		
 		query.setString("SERVICE_NO", allEmployeeDto.getServiceNo());
-		query.setString("MILITARY_SERVICE_NO", allEmployeeDto.getMilitaryServiceNo());
 		query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 		
 		query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());

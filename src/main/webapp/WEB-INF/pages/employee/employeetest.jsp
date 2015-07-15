@@ -675,49 +675,37 @@
 	       </div>
 	       </div>
 	        
+	        
 	        <div class="row">
 	    
 						<div class="form-group">
 							<div class="col-md-12">
 								<div class="col-md-1">
-									
-									<div class="radio">
-									<c:if test="${ empty allEmployeeDto.knowEmployed}">	
-     									  <label style="margin-right: 25px;"><input type="radio" id="Yes" name="knowEmployed" value="Yes"><spring:message code="employee.yes"></spring:message></label>
-    								</c:if>
+    									
+	     									  <label style="margin-right: 25px;">
+	     									  <f:radiobutton id="Yes" path="knowEmployed"  value="Yes"/><spring:message code="employee.yes"></spring:message>
+	     									  </label>
+	     									  </div>
+	     									  
+	     									  <div class="col-md-11">
+	     									  <f:input  class="form-control" id="descriptionYes" path="descriptionYes" value="${allEmployeeDto.descriptionYes}" placeholder="${please} ${enter}"/>
+	     									  
+	     									  </div>
+	     									  </div>
+	     									  
+	     					<div class="col-md-12">
+								<div class="col-md-12">
+	     									  <label style="margin-right: 25px;">
+	     									  <f:radiobutton id="No" path="knowEmployed"  value="No" /><spring:message code="employee.no"></spring:message>
+	     									  </label>
+    										  
+											  <input id="knowEmployed" type="hidden" value="${allEmployeeDto.knowEmployed}"/>
     								</div>
     								</div>
-    								<div class="col-md-11">
-    								<c:if test="${not empty allEmployeeDto.knowEmployed}">	
-	    								<c:if test="${allEmployeeDto.knowEmployed=='Yes'}">	
-	     									  <label style="margin-right: 25px;"><input type="radio" id="Yes" name="knowEmployed" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
-	    								</c:if>
-    								</c:if>
-     									 <input type="text" class="form-control" style="margin-right: 25px;" id="descriptionYes" name="descriptionYes" placeholder="${please} ${enter} <spring:message code="employee.pleasewrite"></spring:message>" value="${allEmployeeDto.descriptionYes}">
-    								</div>
-    								</div>
-    								
-    								
-    						<div class="col-md-12">
-									     <div class="col-md-12">
-									     
-    								<div class="radio">
-    								  <c:if test="${ empty allEmployeeDto.knowEmployed}">	
-     									 <label><input type="radio" id="No" name="knowEmployed" style="margin-right: 25px;" value="No"><spring:message code="employee.no"></spring:message></label>
-    								  </c:if>
-    								  
-    								  <c:if test="${not empty allEmployeeDto.knowEmployed}">	  								  
-    								 	<c:if test="${allEmployeeDto.knowEmployed=='No'}">	
-     									    <label><input type="radio" id="No" name="knowEmployed" style="margin-right: 25px;" value="No" checked="checked"><spring:message code="employee.no"></spring:message></label>
-    								   </c:if>
-    								  </c:if>
-    								</div>
-									     </div>
-									     </div>
-							
-						</div>
-				</div>
-	        
+    				
+				
+			</div>
+	      </div>  
 	        
 	        
 	  
@@ -735,10 +723,10 @@
 								<div class="col-md-12">
 									<label style="margin-right: 25px;"> <spring:message code="employee.haveyoueverserved"></spring:message> :</label>
     								<div class="radio">
-    								 <c:if test="${ empty allEmployeeDto.militaryServiceYes}">	
+    								 <c:if test="${ empty allEmployeeDto.militaryService}">	
      									  <label><input type="radio" id="militaryServiceYes" name="militaryService" value="Yes"><spring:message code="employee.yes"></spring:message></label>
     								  </c:if>
-    								  <c:if test="${not empty allEmployeeDto.militaryServiceYes}">	
+    								  <c:if test="${not empty allEmployeeDto.militaryService}">	
      									  <label><input type="radio" id="militaryServiceYes" name="militaryService" value="Yes" checked="checked"><spring:message code="employee.yes"></spring:message></label>
     								   </c:if>
      								</div>
@@ -786,10 +774,10 @@
 							<div class="form-group">
 							<div class="col-md-12">
     								<div class="radio">
-    								 <c:if test="${ empty allEmployeeDto.militaryServiceNo}">	
+    								 <c:if test="${ empty allEmployeeDto.militaryService}">	
      									   <label style="margin-right: 25px;"><input type="radio" id="militaryServiceNo" name="militaryService" value="No"><spring:message code="employee.no"></spring:message></label>
     								  </c:if>
-    								  <c:if test="${not empty allEmployeeDto.militaryServiceNo}">	
+    								  <c:if test="${not empty allEmployeeDto.militaryService}">	
      									    <label style="margin-right: 25px;"><input type="radio" id="militaryServiceNo" name="militaryService" value="No"><spring:message code="employee.no"></spring:message></label>     									       									 
     								   </c:if>
      								</div>
@@ -1537,6 +1525,54 @@ $("input:radio[name=knowEmployed]").change(function(){//name= ชื่อ group
 	$("#descriptionYes").hide();
 }
 });
+
+
+if($('#knowEmployed').val()=="Yes"){
+	$("#descriptionYes").show();
+	
+}else if($('#knowEmployed').val()=="No"){
+	$("#descriptionYes").hide();
+	
+}
+
+
+
+$("#fromYear").hide();//descriptionYes ชื่อกล่อง
+$("#toYear").hide();
+$("#branchOfService").hide();
+$("#serviceNo").hide();
+$("input:radio[name=militaryService]").change(function(){//name= ชื่อ group radio
+
+	if(this.value == 'Yes' && this.checked){
+	 $("#fromYear").show();
+	 $("#toYear").show();
+	 $("#branchOfService").show();
+	 $("#serviceNo").show();
+	 
+	}else{
+		 $("#fromYear").hide();
+		 $("#toYear").hide();
+		 $("#branchOfService").hide();
+		 $("#serviceNo").hide();
+}
+});
+
+
+$("#reasonsNo").hide();//descriptionYes ชื่อกล่อง
+$("#dateToBeDrafted").hide();
+$("input:radio[name=militaryService]").change(function(){//name= ชื่อ group radio
+
+if(this.value == 'No' && this.checked){
+	 $("#reasonsNo").show();
+	 $("#dateToBeDrafted").show();
+	 
+	}else{
+		$("#reasonsNo").hide();
+		 $("#dateToBeDrafted").hide();
+}
+});
+
+
 		
 		
 		
@@ -2195,7 +2231,7 @@ $("input:radio[name=knowEmployed]").change(function(){//name= ชื่อ group
 					              data[i].masprovinceName, 					              
 					              data[i].zipcode,
 					              getIndex,
-						'<button id="edit" type="button" class="btn btn-warning btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" data-toggle="modal">Edit</button>'+
+						'<button id="edit" type="button" class="btn btn-warning btn-sm active" data-addId="' + data[i].id + '" data-target="#addModal" style="margin-right :15px; data-toggle="modal">Edit</button>'+
 						'<button id="delete" type="button" class="btn btn-danger btn-sm active" data-addId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>',
 						 "unmodified",
 						]);

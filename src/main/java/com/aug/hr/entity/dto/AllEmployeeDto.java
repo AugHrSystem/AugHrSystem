@@ -84,7 +84,7 @@ public class AllEmployeeDto {
 	private String knowEmployed;
 	private String descriptionYes;
 	private String knowEmployerNo;
-	private String militaryServiceYes;
+	private String militaryService;
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -98,7 +98,6 @@ public class AllEmployeeDto {
 	
 	private String branchOfService;
 	private String serviceNo;
-	private String militaryServiceNo;
 	private String reasonsNo;
 
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
@@ -688,13 +687,13 @@ public class AllEmployeeDto {
 	}
 
 
-	public String getMilitaryServiceYes() {
-		return militaryServiceYes;
+	public String getMilitaryService() {
+		return militaryService;
 	}
 
 
-	public void setMilitaryServiceYes(String militaryServiceYes) {
-		this.militaryServiceYes = militaryServiceYes;
+	public void setMilitaryService(String militaryServiceYes) {
+		this.militaryService = militaryServiceYes;
 	}
 
 
@@ -738,14 +737,14 @@ public class AllEmployeeDto {
 	}
 
 
-	public String getMilitaryServiceNo() {
+	/*public String getMilitaryServiceNo() {
 		return militaryServiceNo;
 	}
 
 
 	public void setMilitaryServiceNo(String militaryServiceNo) {
 		this.militaryServiceNo = militaryServiceNo;
-	}
+	}*/
 
 
 	public String getReasonsNo() {
