@@ -94,8 +94,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ "SERVICE_NO,"
             		+ "REASONS_NO,"
             		+ "DATE_TO_BE_DRAFTED,"
-            		+ "PREVIOUS_EMPLOYER_YES,"
-            		+ "PREVIOUS_EMPLOYER_NO,"
+            		+ "PREVIOUS_EMPLOYER,"
             		+ "PREVIOUSEMP_REASONS_NO,"
             		+ "IMAGE,"
             		+ "ISMANAGER,"
@@ -167,8 +166,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             		+ ":SERVICE_NO,"
             		+ ":REASONS_NO,"
             		+ ":DATE_TO_BE_DRAFTED,"
-            		+ ":PREVIOUS_EMPLOYER_YES,"
-            		+ ":PREVIOUS_EMPLOYER_NO,"
+            		+ ":PREVIOUS_EMPLOYER,"
             		+ ":PREVIOUSEMP_REASONS_NO,"
             		+ ":IMAGE,"
             		+ ":ISMANAGER,"
@@ -244,8 +242,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            		+ "SERVICE_NO,"
             	            		+ "REASONS_NO,"
             	            		+ "DATE_TO_BE_DRAFTED,"
-            	            		+ "PREVIOUS_EMPLOYER_YES,"
-            	            		+ "PREVIOUS_EMPLOYER_NO,"
+            	            		+ "PREVIOUS_EMPLOYER,"
             	            		+ "PREVIOUSEMP_REASONS_NO,"
             	            		+ "IMAGE,"
             	            		+ "ISMANAGER,"
@@ -317,8 +314,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            		+ ":SERVICE_NO,"
             	            		+ ":REASONS_NO,"
             	            		+ ":DATE_TO_BE_DRAFTED,"
-            	            		+ ":PREVIOUS_EMPLOYER_YES,"
-            	            		+ ":PREVIOUS_EMPLOYER_NO,"
+            	            		+ ":PREVIOUS_EMPLOYER,"
             	            		+ ":PREVIOUSEMP_REASONS_NO,"
             	            		+ ":IMAGE,"
             	            		+ ":ISMANAGER,"
@@ -395,8 +391,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            		+ "SERVICE_NO,"
             	            	            		+ "REASONS_NO,"
             	            	            		+ "DATE_TO_BE_DRAFTED,"
-            	            	            		+ "PREVIOUS_EMPLOYER_YES,"
-            	            	            		+ "PREVIOUS_EMPLOYER_NO,"
+            	            	            		+ "PREVIOUS_EMPLOYER,"
             	            	            		+ "PREVIOUSEMP_REASONS_NO,"
             	            	            		+ "IMAGE,"
             	            	            		//+ "ISMANAGER,"
@@ -468,8 +463,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            		+ ":SERVICE_NO,"
             	            	            		+ ":REASONS_NO,"
             	            	            		+ ":DATE_TO_BE_DRAFTED,"
-            	            	            		+ ":PREVIOUS_EMPLOYER_YES,"
-            	            	            		+ ":PREVIOUS_EMPLOYER_NO,"
+            	            	            		+ ":PREVIOUS_EMPLOYER,"
             	            	            		+ ":PREVIOUSEMP_REASONS_NO,"
             	            	            		+ ":IMAGE,"
             	            	            		//+ ":ISMANAGER,"
@@ -546,8 +540,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            	            		+ "SERVICE_NO,"
             	            	            	            		+ "REASONS_NO,"
             	            	            	            		+ "DATE_TO_BE_DRAFTED,"
-            	            	            	            		+ "PREVIOUS_EMPLOYER_YES,"
-            	            	            	            		+ "PREVIOUS_EMPLOYER_NO,"
+            	            	            	            		+ "PREVIOUS_EMPLOYER,"
             	            	            	            		+ "PREVIOUSEMP_REASONS_NO,"
             	            	            	            		+ "IMAGE,"
             	            	            	            		//+ "ISMANAGER,"
@@ -619,8 +612,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
             	            	            	            		+ ":SERVICE_NO,"
             	            	            	            		+ ":REASONS_NO,"
             	            	            	            		+ ":DATE_TO_BE_DRAFTED,"
-            	            	            	            		+ ":PREVIOUS_EMPLOYER_YES,"
-            	            	            	            		+ ":PREVIOUS_EMPLOYER_NO,"
+            	            	            	            		+ ":PREVIOUS_EMPLOYER,"
             	            	            	            		+ ":PREVIOUSEMP_REASONS_NO,"
             	            	            	            		+ ":IMAGE,"
             	            	            	            		//+ ":ISMANAGER,"
@@ -705,8 +697,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
                     		+ "SERVICE_NO =:SERVICE_NO,"
                     		+ "REASONS_NO =:REASONS_NO,"
                     		+ "DATE_TO_BE_DRAFTED =:DATE_TO_BE_DRAFTED,"
-                    		+ "PREVIOUS_EMPLOYER_YES =:PREVIOUS_EMPLOYER_YES,"
-                    		+ "PREVIOUS_EMPLOYER_NO =:PREVIOUS_EMPLOYER_NO,"
+                    		+ "PREVIOUS_EMPLOYER =:PREVIOUS_EMPLOYER,"
                     		+ "PREVIOUSEMP_REASONS_NO =:PREVIOUSEMP_REASONS_NO,"
                     		+ "IMAGE =:IMAGE,"
                     		+ "ISMANAGER =:ISMANAGER,"
@@ -930,11 +921,9 @@ public class Employee extends BaseEntity{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateToBeDrafted;
 	
-	@Column(name = "PREVIOUS_EMPLOYER_YES",nullable = true)
-	private String previousEmployerYes;
+	@Column(name = "PREVIOUS_EMPLOYER",nullable = true)
+	private String previousEmployer;
 	
-	@Column(name = "PREVIOUS_EMPLOYER_NO",nullable = true)
-	private String previousEmployerNo;
 	
 	@Column(name = "PREVIOUSEMP_REASONS_NO",nullable = true)
 	private String previousEmpreasonsNo;
@@ -1660,23 +1649,13 @@ public class Employee extends BaseEntity{
 	}
 
 
-	public String getPreviousEmployerYes() {
-		return previousEmployerYes;
+	public String getPreviousEmployer() {
+		return previousEmployer;
 	}
 
 
-	public void setPreviousEmployerYes(String previousEmployerYes) {
-		this.previousEmployerYes = previousEmployerYes;
-	}
-
-
-	public String getPreviousEmployerNo() {
-		return previousEmployerNo;
-	}
-
-
-	public void setPreviousEmployerNo(String previousEmployerNo) {
-		this.previousEmployerNo = previousEmployerNo;
+	public void setPreviousEmployer(String previousEmployerYes) {
+		this.previousEmployer = previousEmployerYes;
 	}
 
 

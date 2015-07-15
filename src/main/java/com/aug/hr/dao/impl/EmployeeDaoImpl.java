@@ -183,9 +183,7 @@ public Employee findOfficial(Integer id) {
 		query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 		
 		query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
-		query.setString("PREVIOUS_EMPLOYER_YES", allEmployeeDto.getPreviousEmployerYes());
-		query.setString("PREVIOUS_EMPLOYER_NO", allEmployeeDto.getPreviousEmployerNo());
-		
+		query.setString("PREVIOUS_EMPLOYER", allEmployeeDto.getPreviousEmployer());
 		query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 		query.setString("IMAGE", allEmployeeDto.getImage());
 		query.setString("STATUSEMP", allEmployeeDto.getStatusemp());
@@ -276,9 +274,7 @@ public Employee findOfficial(Integer id) {
 			query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 			
 			query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
-			query.setString("PREVIOUS_EMPLOYER_YES", allEmployeeDto.getPreviousEmployerYes());
-			query.setString("PREVIOUS_EMPLOYER_NO", allEmployeeDto.getPreviousEmployerNo());
-			
+			query.setString("PREVIOUS_EMPLOYER", allEmployeeDto.getPreviousEmployer());
 			query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 			query.setString("IMAGE", allEmployeeDto.getImage());
 			query.setString("STATUSEMP", allEmployeeDto.getStatusemp());
@@ -375,9 +371,7 @@ public Employee findOfficial(Integer id) {
 				query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 				
 				query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
-				query.setString("PREVIOUS_EMPLOYER_YES", allEmployeeDto.getPreviousEmployerYes());
-				query.setString("PREVIOUS_EMPLOYER_NO", allEmployeeDto.getPreviousEmployerNo());
-				
+				query.setString("PREVIOUS_EMPLOYER", allEmployeeDto.getPreviousEmployer());
 				query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 				query.setString("IMAGE", allEmployeeDto.getImage());
 				query.setString("STATUSEMP", allEmployeeDto.getStatusemp());
@@ -470,9 +464,7 @@ public Employee findOfficial(Integer id) {
 				query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 				
 				query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
-				query.setString("PREVIOUS_EMPLOYER_YES", allEmployeeDto.getPreviousEmployerYes());
-				query.setString("PREVIOUS_EMPLOYER_NO", allEmployeeDto.getPreviousEmployerNo());
-				
+				query.setString("PREVIOUS_EMPLOYER", allEmployeeDto.getPreviousEmployer());
 				query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 				query.setString("IMAGE", allEmployeeDto.getImage());
 				query.setString("STATUSEMP", allEmployeeDto.getStatusemp());
@@ -650,9 +642,7 @@ public Employee findOfficial(Integer id) {
 		query.setString("REASONS_NO", allEmployeeDto.getReasonsNo());
 		
 		query.setDate("DATE_TO_BE_DRAFTED", allEmployeeDto.getDateToBeDrafted());
-		query.setString("PREVIOUS_EMPLOYER_YES", allEmployeeDto.getPreviousEmployerYes());
-		query.setString("PREVIOUS_EMPLOYER_NO", allEmployeeDto.getPreviousEmployerNo());
-		
+		query.setString("PREVIOUS_EMPLOYER", allEmployeeDto.getPreviousEmployer());
 		query.setString("PREVIOUSEMP_REASONS_NO", allEmployeeDto.getPreviousEmpreasonsNo());
 		query.setString("IMAGE", allEmployeeDto.getImage());
 		query.setString("STATUSEMP", allEmployeeDto.getStatusemp());

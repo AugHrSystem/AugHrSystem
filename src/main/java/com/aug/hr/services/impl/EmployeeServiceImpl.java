@@ -288,8 +288,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         allEmployeeDto.setServiceNo(employee.getServiceNo());
         allEmployeeDto.setReasonsNo(employee.getReasonsNo());
         allEmployeeDto.setDateToBeDrafted(employee.getDateToBeDrafted());
-        allEmployeeDto.setPreviousEmployerYes(employee.getPreviousEmployerYes());
-        allEmployeeDto.setPreviousEmployerNo(employee.getPreviousEmployerNo());
+        allEmployeeDto.setPreviousEmployer(employee.getPreviousEmployer());
         allEmployeeDto.setPreviousEmpreasonsNo(employee.getPreviousEmpreasonsNo());
         allEmployeeDto.setImage(employee.getImage());
         
@@ -437,8 +436,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		allEmpDto.setReasonsNo(employee.getReasonsNo());
 		
 		allEmpDto.setDateToBeDrafted(employee.getDateToBeDrafted());
-		allEmpDto.setPreviousEmployerYes(employee.getPreviousEmployerYes());
-		allEmpDto.setPreviousEmployerNo(employee.getPreviousEmployerNo());
+		allEmpDto.setPreviousEmployer(employee.getPreviousEmployer());
 		allEmpDto.setPreviousEmpreasonsNo(employee.getPreviousEmpreasonsNo());
 		allEmpDto.setImage(employee.getImage());
 		allEmpDto.setStatusemp(employee.getStatusemp());
@@ -540,8 +538,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setBranchOfService(allEmployeeDto.getBranchOfService());
 		employee.setReasonsNo(allEmployeeDto.getReasonsNo());
 		employee.setDateToBeDrafted(allEmployeeDto.getDateToBeDrafted()); 
-		employee.setPreviousEmployerYes(allEmployeeDto.getPreviousEmployerYes());
-		employee.setPreviousEmployerNo(allEmployeeDto.getPreviousEmployerNo());
+		employee.setPreviousEmployer(allEmployeeDto.getPreviousEmployer());
 		employee.setPreviousEmpreasonsNo(allEmployeeDto.getPreviousEmpreasonsNo());			
 		employee.setServiceNo(allEmployeeDto.getServiceNo());		
 		
@@ -783,8 +780,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setBranchOfService(allEmployeeDto.getBranchOfService());
 		employee.setReasonsNo(allEmployeeDto.getReasonsNo());
 		employee.setDateToBeDrafted(allEmployeeDto.getDateToBeDrafted()); 
-		employee.setPreviousEmployerYes(allEmployeeDto.getPreviousEmployerYes());
-		employee.setPreviousEmployerNo(allEmployeeDto.getPreviousEmployerNo());
+		employee.setPreviousEmployer(allEmployeeDto.getPreviousEmployer());
 		employee.setPreviousEmpreasonsNo(allEmployeeDto.getPreviousEmpreasonsNo());			
 		employee.setServiceNo(allEmployeeDto.getServiceNo());		
 		

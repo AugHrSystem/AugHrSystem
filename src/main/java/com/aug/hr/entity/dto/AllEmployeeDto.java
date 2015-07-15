@@ -106,8 +106,7 @@ public class AllEmployeeDto {
 	private Date dateToBeDrafted;
 	
 
-	private String previousEmployerYes;
-	private String previousEmployerNo;
+	private String previousEmployer;
 	private String previousEmpreasonsNo;
 	private String image;	
 	private String statusemp;
@@ -767,23 +766,13 @@ public class AllEmployeeDto {
 	}
 
 
-	public String getPreviousEmployerYes() {
-		return previousEmployerYes;
+	public String getPreviousEmployer() {
+		return previousEmployer;
 	}
 
 
-	public void setPreviousEmployerYes(String previousEmployerYes) {
-		this.previousEmployerYes = previousEmployerYes;
-	}
-
-
-	public String getPreviousEmployerNo() {
-		return previousEmployerNo;
-	}
-
-
-	public void setPreviousEmployerNo(String previousEmployerNo) {
-		this.previousEmployerNo = previousEmployerNo;
+	public void setPreviousEmployer(String previousEmployerYes) {
+		this.previousEmployer = previousEmployerYes;
 	}
 
 
