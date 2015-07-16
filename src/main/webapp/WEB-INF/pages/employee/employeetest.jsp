@@ -615,7 +615,7 @@
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.descriptionMagazine}">	
-     									   <label style="margin-right: 25px;"><input type="checkbox" id="" name="knowAugNewspaper" value="Magazine" checked="checked"><spring:message code="employee.magazine"></spring:message></label>
+     									   <label style="margin-right: 25px;"><input type="checkbox" id="" name="knowAugMagazine" value="Magazine" checked="checked"><spring:message code="employee.magazine"></spring:message></label>
     								  	   <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${please} ${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
       									 
     								  </c:if>
@@ -1492,7 +1492,63 @@ $("#addForm").validate({
 		
 	}
 });		
+	
+
+/* -------------------------------------------- Validate CheckBox ----------------------------------------------------------- */	
+$("#descriptionNewspaper").hide();//descriptionYes ชื่อกล่อง
+$("input:checkbox[name=knowAugNewspaper]").change(function(){//name= ชื่อ group checkbox
+
+	if(this.value == 'Newspaper' && this.checked){
+	 $("#descriptionNewspaper").show();
+	}else{
+	$("#descriptionNewspaper").hide();
+}
+});
+
+$("#descriptionMagazine").hide();//descriptionYes ชื่อกล่อง
+$("input:checkbox[name=knowAugMagazine]").change(function(){//name= ชื่อ group checkbox
+
+	if(this.value == 'Magazine' && this.checked){
+	 $("#descriptionMagazine").show();
+	}else{
+	$("#descriptionMagazine").hide();
+}
+});
+
+$("#descriptionWebsite").hide();//descriptionYes ชื่อกล่อง
+$("input:checkbox[name=knowAugWebsite]").change(function(){//name= ชื่อ group checkbox
+
+	if(this.value == 'Website' && this.checked){
+	 $("#descriptionWebsite").show();
+	}else{
+	$("#descriptionWebsite").hide();
+}
+});
+
+$("#descriptionFriend").hide();//descriptionYes ชื่อกล่อง
+$("input:checkbox[name=knowAugFriend]").change(function(){//name= ชื่อ group checkbox
+
+	if(this.value == 'Friend' && this.checked){
+	 $("#descriptionFriend").show();
+	}else{
+	$("#descriptionFriend").hide();
+}
+});
+
+
+$("#descriptionOther").hide();//descriptionYes ชื่อกล่อง
+$("input:checkbox[name=knowAugOther]").change(function(){//name= ชื่อ group checkbox
+
+	if(this.value == 'Other' && this.checked){
+	 $("#descriptionOther").show();
+	}else{
+	$("#descriptionOther").hide();
+}
+});
+
+
 		
+/* -------------------------------------------- Validate radio Yes/No ----------------------------------------------------------- */		
 $("#descriptionYes").hide();//descriptionYes ชื่อกล่อง
 $("input:radio[name=knowEmployed]").change(function(){//name= ชื่อ group radio
 
