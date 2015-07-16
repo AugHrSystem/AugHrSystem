@@ -20,25 +20,7 @@
 <form:form id ="listForm" method="post" commandName="leave">
 
 
-<!-- 		<div class="row"> -->
 
-				<%-- <div class="col-md-6">
-					<h2><spring:message code="leave.name" /> </h2> 
-
-				</div> --%>
-
-<!-- 				<div class="col-md-12"> -->
-
-					<br>
-					<!-- Button trigger modal -->
-<!-- 					<div class="form-group" align="right"> -->
-<!-- 						<button type="button" id="addBtnLe" class="btn btn-warning active btn-md" -->
-<%-- 							data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> --%>
-<!-- 					</div> -->
-
-
-<!-- 				</div> -->
-<!-- 			</div> -->
 
 
 <!-- Table -->
@@ -81,35 +63,7 @@
    	<spring:message code="default.date" var="date"/>
 
 
-<%-- <div class="form-group col-md-6">
-	 <!-- <div class="form-group">  -->
-	    <label>Start Date:</label>
-	    <div class='input-group date' id='dateFrom1'>
-	    <form:input path="startDate" type="text" class="form-control" id="startDate" placeholder="DD-MM-YYYY"/>
-	    <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-	    </div>
-	    <!-- </div> -->
-	    </div>
-	    
-	    
-	    <div class="form-group col-md-6">
-	    <!-- <div class="form-group"> -->
-			<label>Start Time :</label>
 
-			<!-- <div class="input-group clockpicker"> -->
-			<div class='input-group date' id='TimeFrom1'>
-
-				<form:input path="startTime" type="text" class="form-control" id="startTime"
-					placeholder="Enter startTime" /> <span
-					class="input-group-addon"> <span
-					class="glyphicon glyphicon-calendar"></span>
-				</span>
-			</div>
-		<!-- </div> -->
-	    </div> --%>
-	    
 	    
 	    
 	    
@@ -129,34 +83,6 @@
                 
              
 
-<%-- <div  class="form-group col-md-6">
- <!-- <div class="form-group"> -->
-	    <label>End Date :</label>
-	    <div class='input-group date' id='dateTo1'>
-	    <form:input path="endDate" class="form-control" id="endDate" placeholder="DD-MM-YYYY"/>
-	    <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-        </div>
-	  <!-- </div> -->
-</div> --%>
-
-
-
-<%-- <div class=" form-group col-md-6">
-<!-- <div class="form-group"> -->
-			<label>End Time:</label>
-
-			<!-- <div class="input-group clockpicker1"> -->
-			<div class='input-group date' id='TimeTo1'>
-				<form:input path="endTime" class="form-control" id="endTime"
-					placeholder="Enter endTime" /> <span
-					class="input-group-addon"> <span
-					class="glyphicon glyphicon-calendar"></span>
-				</span>
-			</div>
-		<!-- </div> -->
-</div> --%>
 
 
 
@@ -175,18 +101,7 @@
                 
                 
                 
-                 <%--  <div class='col-sm-6'>
-            <div class="form-group">
-            <label>Start End-Time:</label>
-                <div class='input-group date' id="endTime1">
-				    <form:input id="endTime" name="endTime" path="endTime" cssClass="form-control"/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-                </div>
-                </div> --%>
-
+               
 	<spring:message code="leave.enter.masleavetype" var="masleavetype"/>
 	<spring:message code="leave.enter.aim" var="aim"/>
 	<spring:message code="default.enter" var="enter"/>
@@ -278,8 +193,9 @@ $(document).ready(function() {
 		"info": false,
 		"dom": '<"toolbar">frtip'
 	});
-	$("div.toolbar").html('<b><button type="button" id="addBtnLe" class="btn btn-warning btn-md"data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button></b>');
-	
+	/* $("div.toolbar").html('<b><button type="button" id="addBtnLe" class="btn btn-warning btn-md"data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button></b>');
+	 */
+	 $("div.toolbar").html('<b><button id="clearModal" type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
 	$("#addBtnLe").on("click", function(){
 		
 		clearModal();
@@ -321,26 +237,7 @@ $(document).ready(function() {
                 }
             },
              
-           /*  startDate: {
-                validators: {
-                    notEmpty: {
-                        message: 'The Start Date is required and cannot be empty'
-                    },
-                    date: {
-                        format: 'DD-MM-YYYY'
-                    }
-                }
-            },
-            endDate: {
-                validators: {
-                    notEmpty: {
-                        message: 'The End Date is required and cannot be empty'
-                    },
-                    date: {
-                        format: 'DD-MM-YYYY'
-                    }
-                }
-            },  */
+           
             startTime: {
                 validators: {
                     notEmpty: {
@@ -387,6 +284,12 @@ $(document).ready(function() {
             .updateStatus('startTime', 'NOT_VALIDATED', null)
             // Validate the field
             .validateField('startTime');
+        
+        
+        var tempdate = new Date(e.date);
+		tempdate.setDate(tempdate.getDate());
+       $('#endTime1').data("DateTimePicker").minDate(tempdate);
+        
     });
 	
 	$('#endTime1')
@@ -399,6 +302,8 @@ $(document).ready(function() {
             .updateStatus('endTime', 'NOT_VALIDATED', null)
             // Validate the field
             .validateField('endTime');
+        
+        
     });
 	
      $('#startTime1').datetimepicker({
@@ -406,77 +311,26 @@ $(document).ready(function() {
     	// viewMode: 'days',
 		 format : 'DD-MM-YYYY HH:mm',
 // 		 minDate: 'moment'
-		 //defaultDate: 'moment'
+		 defaultDate: 'moment'
     }); 
 
-
+     var defaultDate = new Date();
+		defaultDate.setDate(defaultDate.getDate());
+		
 	
 	
 	$( '#endTime1').datetimepicker({
 		//viewMode: 'days',
 		format : 'DD-MM-YYYY HH:mm',
 // 		minDate: 'moment'
+		//defaultDate: defaultDate,
 	}); 
 	 
 	
 	
-	/*  $( "#dateTo1" ).datetimepicker({
-		format : 'DD-MM-YYYY',
-	}); 
 	
-	
-	 
-	 
-	 $( "#timeFrom1" ).datetimepicker({
-			format : 'HH:mm',
-		}); 
-	 
-	 
-
-	 $( "#timeTo1" ).datetimepicker({
-		format : 'HH:mm',
-	}); 
-	
-	
-	 
-	 
-	 $( "#dateFrom1" ).datetimepicker({
-			format : 'DD-MM-YYYY',
-		});
-		 */
-	 
-//	$('.clockpicker').clockpicker();
-
-  
-          /* $('#datetimepicker2').datetimepicker({
-                    	 viewMode: 'days',
-            			 format : 'DD-MM-YYYY',
-            			 defaultDate: 'moment'
-                }); */
- 
-	
-/* 	  $('.clockpicker').clockpicker({
 		
-		placement: 'bottom', // clock popover placement
-		align: 'left',       // popover arrow align
-		donetext: 'Done',     // done button text
-		autoclose: true,    // auto close when minute is selected
-		vibrate: true,        // vibrate the device when dragging clock hand
-		
-	 });
-	
-	
-	 $('.clockpicker1').clockpicker({
-			placement: 'bottom', // clock popover placement
-			align: 'left',       // popover arrow align
-			donetext: 'Done',     // done button text
-			autoclose: true,    // auto close when minute is selected
-			vibrate: true        // vibrate the device when dragging clock hand
-					
-	 }); 
-		 */
-		
-	
+	/* 
 	 $("#dateFrom").on("dp.change", function (e) {
 		  			
 					$('#addForm')
@@ -486,7 +340,7 @@ $(document).ready(function() {
 		            .updateStatus('dateFrom', 'NOT_VALIDATED', null)
 		             // Validate the field
 		            .validateField('dateFrom');
-	 });
+	 }); */
 	
 	
 	dt=$("#tbResult").dataTable();
@@ -500,6 +354,15 @@ $(document).ready(function() {
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var leaveid = button.data("id") //Extract info from data-* attribute
 			 
+			
+			var d = new Date($('#startTime1').data("DateTimePicker").date());
+			d.setDate(d.getDate()+1);
+    		//$('#endTime1').data("DateTimePicker").minDate(d);
+    		//$('#endTime1').data("DateTimePicker").date(d);
+			
+    		/* startTime1
+    		endTime1 */
+    		
 			if(leaveid != null){
 				getId(leaveid);
 			}  
