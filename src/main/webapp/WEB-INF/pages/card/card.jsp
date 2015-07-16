@@ -161,8 +161,7 @@
 		$('#enddate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		
 		$("#addBtn").on("click",function(){clearModal();});
-		
-		
+			
 		$('#tbResult').dataTable({ 
 			"bLengthChange": false,
 			"iDisplayLength": 10,
@@ -172,9 +171,8 @@
 			"dom": '<"toolbar">frtip'
 		});
 		
-	
-		
-		$("div.toolbar").html('<b><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
+		$("div.toolbar").html('<b><button id="clearModal" type="button" class="btn btn-warning btn-md " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button></b>');
+		var cardid;
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
@@ -245,18 +243,58 @@
 		$('#datetimepicker1').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
-// 			 minDate: 'moment'
+ 			 defaultDate: 'moment',
 			 
 		 });
+		
+		var defaultDate = new Date();
+		defaultDate.setDate(defaultDate.getDate());
 		
 		$('#datetimepicker2').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
-// 			 minDate: 'moment'
+ 			defaultDate: defaultDate,
 			 
 		 });
 		
-	
+		
+		
+		$('#datetimepicker1')
+
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#addForm')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('startdate', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('startdate');
+          
+
+            var tempdate = new Date(e.date);
+			tempdate.setDate(tempdate.getDate());
+            $('#datetimepicker2').data("DateTimePicker").minDate(tempdate);
+
+        });
+
+
+		$('#datetimepicker2')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#addForm')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('enddate', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('enddate');
+
+        });
+
+
+
+		
 		dt = $('#tbResult').dataTable();	
 		 listAll();
 		 
@@ -265,6 +303,11 @@
 			var button = $(event.relatedTarget) //Button that triggered the model เพื่อดูว่า evet ของ ปุ่มไหน
 			var cardid = button.data("id") //Extract info from data-* attribute
 
+			 var d = new Date($('#datetimepicker1').data("DateTimePicker").date());
+			d.setDate(d.getDate()+1);
+    		$('#datetimepicker2').data("DateTimePicker").minDate(d);
+    		$('#datetimepicker2').data("DateTimePicker").date(d);
+			
 			clearModal();
 			
 			if (cardid != null) {
