@@ -130,13 +130,15 @@ public class EmployeeController {
 	
 	
 
-	@RequestMapping(value="/employee",method={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value="/employee",method={RequestMethod.GET})
 	//@Transactional
 	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
 						  HttpSession session,
 						  Locale locale,
-						  ModelMap model) {
-						  //@PathVariable Integer id){
+						  ModelMap model
+						  //@RequestBody String aa,
+						  //@PathVariable("id") Integer id
+						  ) {
 	
 		//model.addAttribute("masspecialtyList",masSpecialtyService.findAll());
 		//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
@@ -159,11 +161,11 @@ public class EmployeeController {
 		//model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
 
 
-//		 return "/employee/employee";
+		//return "/employee/employee";
 		 return "/employee/employeetest";
 		
 		
-		//return "/aa";
+		 //return "/aa";
 	}
 	
 
