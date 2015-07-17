@@ -679,20 +679,17 @@ $(document).ready(function() {
 			}
 		
 		
-		 function clearModal(){
-				
-				$("#masleavetype").val(""),
-				//$("#startDate").val(""),
-				//$("#endDate").val(""),
-				$("#startTime").val(""),
-				$("#endTime").val(""),
-				$("#reason").val(""),
-				$("#aim").val("");
-				
-				
-				
-				;
-			}
+		
+	$("#clearModal").off().on("click", function(){
+    			
+		$("#masleavetype").val(""),
+		$("#startTime").val(""),
+		$("#endTime").val(""),
+		$("#reason").val(""),
+		$("#aim").val("");
+	});
+		 
+		 
 		
 		 function getUrlParameter(sParam)
 		 {
