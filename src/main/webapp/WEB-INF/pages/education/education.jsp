@@ -187,10 +187,6 @@
 		$('#graduatedDate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		$('#gpa').mask("9.99");
 		
-		if($('#gpa')> 4.00){
-			alert("no");
-		}
-		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
 	        message: 'This value is not valid',
@@ -284,29 +280,7 @@
 	        }
 	    });
 		
-		$('#datetimepickerStart')
-        .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#addForm')
-                // Get the bootstrapValidator instance
-                .data('bootstrapValidator')
-                // Mark the field as not validated, so it'll be re-validated when the user change date
-                .updateStatus('startDate', 'NOT_VALIDATED', null)
-                // Validate the field
-                .validateField('startDate');
-        });
 		
-		$('#datetimepickerGrad')
-        .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#addForm')
-                // Get the bootstrapValidator instance
-                .data('bootstrapValidator')
-                // Mark the field as not validated, so it'll be re-validated when the user change date
-                .updateStatus('graduatedDate', 'NOT_VALIDATED', null)
-                // Validate the field
-                .validateField('graduatedDate');
-        });
 // 		$('#startDate')
 //         .on('dp.change dp.show', function(e) {
 //             // Validate the date when user change it
@@ -322,15 +296,49 @@
 			 
 			 format : 'DD-MM-YYYY',
 // 			 minDate: 'moment'
+			 defaultDate: 'moment',
 			 
 		 });
+		
+		var defaultDate = new Date();
+		defaultDate.setDate(defaultDate.getDate());
 		
 		$('#datetimepickerGrad').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
 // 			 minDate: 'moment'
+			 defaultDate: defaultDate
 			 
 		 });
+		
+		$('#datetimepickerStart')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#addForm')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('startDate', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('startDate');
+            
+            var tempdate = new Date(e.date);
+			tempdate.setDate(tempdate.getDate());
+            $('#datetimepickerGrad').data("DateTimePicker").minDate(tempdate);
+
+        });
+		
+		$('#datetimepickerGrad')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#addForm')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('graduatedDate', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('graduatedDate');
+        });
 		
 		$('#tbResult').dataTable({ 
 			"bLengthChange": false,
