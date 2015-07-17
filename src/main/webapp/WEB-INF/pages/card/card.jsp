@@ -25,7 +25,7 @@
 <!-- 					<div class="col-md-12"> -->
 					<!-- Button trigger modal -->
 <!-- 					<button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#addModal"> -->
-<%-- 						<spring:message code="label.newRecord" /> --%>
+<%-- 						<spring:message code=ss"label.newRecord" /> --%>
 <!-- 					</button>  -->
 					
 <!-- 					</div> -->
@@ -159,6 +159,8 @@
 		
 		
 		
+		
+		
 		$("#addBtn").on("click",function(){clearModal();});
 			
 		$('#tbResult').dataTable({ 
@@ -245,7 +247,7 @@
 		$('#datetimepicker2').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
-			 //defaultDate: defaultDate,
+			 defaultDate: defaultDate,
 			 
 		 });
 		
@@ -269,13 +271,13 @@
 
             var tempdate = new Date(e.date);
 			tempdate.setDate(tempdate.getDate());
-            //$('#datetimepicker2').data("DateTimePicker").minDate(tempdate);
+            $('#datetimepicker2').data("DateTimePicker").minDate(tempdate);
 
         });
 
 
 		$('#datetimepicker2')
-        .on('dp.change dp.show', function(e) {
+   /*      .on('dp.show', function(e) {
             // Validate the date when user change it
             $('#addForm')
                 // Get the bootstrapValidator instance
@@ -286,7 +288,7 @@
                 .validateField('enddate');
 
         });
-
+ */
 		
 		
 	
@@ -307,7 +309,7 @@
     //		$('#datetimepicker2').data("DateTimePicker").minDate(d);
     //		$('#datetimepicker2').data("DateTimePicker").date(d);
 			
-	//		clearModal();
+			clearModal();
 			
 			if (cardid != null) {
 				getcardById(cardid);
@@ -344,7 +346,7 @@
 	 			var cardid = button.data("id"); //กดไอดีฝังในปุ่ม 
 				
 		
-	 			$(this).find('.DeleteButton').off('click').on("click", function() {
+	 			$(this).find('.btnYes').off('click').on("click", function() {
 								
 	 					deleteById(button ,cardid);
 	 

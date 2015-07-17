@@ -252,7 +252,7 @@
 	 			var punishid = button.data("id"); //กดไอดีฝังในปุ่ม 
 				
 		
-	 			$(this).find('.DeleteButton').off('click').on("click", function() {
+	 			$(this).find('.btnYes').off('click').on("click", function() {
 								
 	 					deleteById(button ,punishid);
 	 

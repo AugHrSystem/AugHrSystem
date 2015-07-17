@@ -332,7 +332,7 @@
 						var button = $(event.relatedTarget); // select การกระทำของปุ่ม
 						var rewardid = button.data("id"); //กดไอดีฝังในปุ่ม 
 
-						$(this).find('.DeleteButton').off('click').on("click",
+						$(this).find('.btnYes').off('click').on("click",
 								function() {
 
 									deleteById(button, rewardid);
