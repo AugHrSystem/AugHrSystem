@@ -157,8 +157,7 @@
 	var dt;
 	$(document).ready(function() {
 		
-		$('#startdate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
-		$('#enddate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		
 		
 		$("#addBtn").on("click",function(){clearModal();});
 			
@@ -171,8 +170,22 @@
 			"dom": '<"toolbar">frtip'
 		});
 		
-		$("div.toolbar").html('<b><button id="clearModal" type="button" class="btn btn-warning btn-md " data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button></b>');
-		var cardid;
+		 
+	    $("div.toolbar").html('<b><button id="clearModal" type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
+		$("#addBtn").on("click", function(){
+			
+			clearModal();
+		
+	 }); 
+		
+		$("#Button").on("click",function(){
+				
+				/* $('#addForm').bootstrapValidator(); */
+				$('#addForm').data('bootstrapValidator').resetForm();
+			});
+		
+		
+		
 		
 		$('#addForm').bootstrapValidator({
 //	        live: 'disabled',
@@ -216,51 +229,33 @@
 	        }
 	    });
 		
-		$('#datetimepicker1')
-        .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#addForm')
-                // Get the bootstrapValidator instance
-                .data('bootstrapValidator')
-                // Mark the field as not validated, so it'll be re-validated when the user change date
-                .updateStatus('startdate', 'NOT_VALIDATED', null)
-                // Validate the field
-                .validateField('startdate');
-        });
 		
-		$('#datetimepicker2')
-        .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#addForm')
-                // Get the bootstrapValidator instance
-                .data('bootstrapValidator')
-                // Mark the field as not validated, so it'll be re-validated when the user change date
-                .updateStatus('enddate', 'NOT_VALIDATED', null)
-                // Validate the field
-                .validateField('enddate');
-        });
 		
 		$('#datetimepicker1').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
- 			 defaultDate: 'moment',
+			 defaultDate: 'moment',
 			 
 		 });
 		
 		var defaultDate = new Date();
 		defaultDate.setDate(defaultDate.getDate());
 		
+		
 		$('#datetimepicker2').datetimepicker({
 			 
 			 format : 'DD-MM-YYYY',
- 			defaultDate: defaultDate,
+			 //defaultDate: defaultDate,
 			 
 		 });
 		
 		
 		
+		
+		//$('#startdate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		//$('#enddate').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
+		
 		$('#datetimepicker1')
-
         .on('dp.change dp.show', function(e) {
             // Validate the date when user change it
             $('#addForm')
@@ -274,7 +269,7 @@
 
             var tempdate = new Date(e.date);
 			tempdate.setDate(tempdate.getDate());
-            $('#datetimepicker2').data("DateTimePicker").minDate(tempdate);
+            //$('#datetimepicker2').data("DateTimePicker").minDate(tempdate);
 
         });
 
@@ -292,11 +287,15 @@
 
         });
 
-
-
 		
+		
+	
+		
+
+
 		dt = $('#tbResult').dataTable();	
 		 listAll();
+		 
 		 
 		$("#addModal").on("show.bs.modal",function(event) {
 						
@@ -305,10 +304,10 @@
 
 			 var d = new Date($('#datetimepicker1').data("DateTimePicker").date());
 			d.setDate(d.getDate()+1);
-    		$('#datetimepicker2').data("DateTimePicker").minDate(d);
-    		$('#datetimepicker2').data("DateTimePicker").date(d);
+    //		$('#datetimepicker2').data("DateTimePicker").minDate(d);
+    //		$('#datetimepicker2').data("DateTimePicker").date(d);
 			
-			clearModal();
+	//		clearModal();
 			
 			if (cardid != null) {
 				getcardById(cardid);
