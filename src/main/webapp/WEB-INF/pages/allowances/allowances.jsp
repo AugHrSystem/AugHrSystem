@@ -57,7 +57,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span id="closeX" aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><spring:message code="allowances.name" /> </h4>
       </div>
       
@@ -134,7 +134,7 @@ function myFunction(value) {
 		success : function(data) {
 				//alert(JSON.stringify(data));
 			//alert("ok");
-			$("#amount").val(data.amount_allowances);
+			$("#amount").val(accounting.formatNumber(data.amount_allowances));
 			
 			/* employee: {id: data.position } */
 			/* $("#company").val(data.company),
@@ -170,6 +170,18 @@ function myFunction(value) {
 	$(document).ready(function(){
 		
 		$("#addBtnAll").on("click",function(){clearModal();});
+		
+// 		$("#addModal").on("click",function(){
+			
+// 			clearModal();
+			
+// 		});
+		
+		$("#closeX").on("click",function(){
+			
+			clearModal();
+			
+		});
 		
 		$('#amount').mask('0,000,000.00', {reverse: true});
 		
@@ -506,7 +518,7 @@ function myFunction(value) {
 				for (var i=0;i< data.length; i++) {
 					dt.fnAddData([
 					              data[i].masallowances,
-					              data[i].amount,
+					              accounting.formatNumber(data[i].amount),
 						 '<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 			 

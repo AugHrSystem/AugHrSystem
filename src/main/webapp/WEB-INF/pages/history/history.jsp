@@ -59,7 +59,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span id="closeX" aria-hidden="true">x</span></button>
         <h4 class="modal-title" id="myModalLabel"><spring:message code="history.name" /></h4>
       </div>
       
@@ -163,11 +163,24 @@
 			
 		});
 		
+// 		$("#addModal").on("click",function(){
+			
+// 			clearModal();
+			
+// 		});
+		
+		$("#closeX").on("click",function(){
+			
+			clearModal();
+			
+		});
+		
 		$('#dateOfAdjustment').mask("99-99-9999",{placeholder:"DD-MM-YYYY"});
 		
 		$('#salary').mask('0,000,000.00', {reverse: true});
 // 		$('.money').mask('000.000.000.000.000,00', {reverse: true});
-		
+// 		$('#salary').autoNumeric('init', {'dGroup': 3});
+// 		$('#oldSalary').autoNumeric('init', {'dGroup': 3});
 		$('#oldSalary').mask('0,000,000.00', {reverse: true});
 		
 		$('#addForm').bootstrapValidator({
@@ -485,8 +498,10 @@
 	 				//alert(JSON.stringify(data));
 					//alert("ok");
 					$("#position").val(data.position);
-					$("#salary").val(data.salary);
-					$("#oldSalary").val(data.oldSalary);
+					$("#salary").val(accounting.formatNumber(data.salary));
+					$("#oldSalary").val(accounting.formatNumber(data.oldSalary));
+// 					$("#salary").autoNumeric('set',data.salary);
+// 					$("#oldSalary").autoNumeric('set',data.oldSalary);
 					$("#dateOfAdjustment").val(data.dateOfAdjustment);
 					$("#reasonOfAdjustment").val(data.reasonOfAdjustment);
 // 					$("#adjustmentTime").val(data.adjustmentTime);
@@ -588,7 +603,7 @@
 					dt.fnAddData([
 								  data[i].dateOfAdjustment,
 					              data[i].position,
-					              data[i].salary,
+					              accounting.formatNumber(data[i].salary),
 					              data[i].reasonOfAdjustment,
 						 '<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);

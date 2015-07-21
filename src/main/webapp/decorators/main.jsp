@@ -66,14 +66,14 @@
 <script src="<c:url value="/resources/resource/sweetalert/js/sweet-alert.js" />"></script>
 <link href="<c:url value="/resources/resource/sweetalert/css/sweet-alert.css" />" rel="stylesheet" media="all">
 
+<!-- Autonumeric Plugin -->
+<script src="<c:url value="/resource/autonumeric/js/autoNumeric.js" />"></script>
+
+<!-- Accounting Plugin -->
+<script src="<c:url value="/resource/accounting/accounting.js" />"></script>
+
 <!-- Main -->
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
-
- 
-
-
-<!-- autonumeric Plugin -->
-<script src="<c:url value="/resource/autonumeric/js/autoNumeric.js" />"></script>
 
 <style >
 
