@@ -511,7 +511,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setIssuedOffice2(allEmployeeDto.getIssuedOffice2()); 
 		employee.setExpiryDate(allEmployeeDto.getExpiryDate());
 		employee.setHeight(allEmployeeDto.getHeight());
-		employee.setWeigth(allEmployeeDto.getHeight());
+		employee.setWeigth(allEmployeeDto.getWeigth());
 		employee.setSex(allEmployeeDto.getSex());
 		employee.setMaritalStatus(allEmployeeDto.getMaritalStatus());
 		employee.setNumberOfChildren(allEmployeeDto.getNumberOfChildren()); 
@@ -753,7 +753,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setIssuedOffice2(allEmployeeDto.getIssuedOffice2()); 
 		employee.setExpiryDate(allEmployeeDto.getExpiryDate());
 		employee.setHeight(allEmployeeDto.getHeight());
-		employee.setWeigth(allEmployeeDto.getHeight());
+		employee.setWeigth(allEmployeeDto.getWeigth());
 		employee.setSex(allEmployeeDto.getSex());
 		employee.setMaritalStatus(allEmployeeDto.getMaritalStatus());
 		employee.setNumberOfChildren(allEmployeeDto.getNumberOfChildren()); 
