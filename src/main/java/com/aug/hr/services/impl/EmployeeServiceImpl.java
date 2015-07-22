@@ -249,7 +249,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         allEmployeeDto.setHospital(employee.getHospital());
         allEmployeeDto.setEmergencyContact(employee.getEmergencyContact());
         allEmployeeDto.setRelationshipWithEmergencyContact(employee.getRelationshipWithEmergencyContact());
-        allEmployeeDto.setEmergencyContactAddress(allEmployeeDto.getEmergencyContactAddress());
+        allEmployeeDto.setEmergencyContactAddress(employee.getEmergencyContactAddress());
         allEmployeeDto.setEmergencyContactPhoneNumber(employee.getEmergencyContactPhoneNumber());
         allEmployeeDto.setDateOfBirth(employee.getDateOfBirth());
         allEmployeeDto.setPlaceOfBirth(employee.getPlaceOfBirth());
@@ -599,7 +599,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setImage(allEmployeeDto.getImage()); 
 		employee.setIsManager(allEmployeeDto.getIsManager());
 		
-		if(allEmployeeDto.getId()!=null){
+		if(allEmployeeDto.getAimempid()!=null){
 			Employee aim = employeeDao.find(allEmployeeDto.getAimempid());
 			if(aim.getId()!=null){
 				employee.setAimempid(aim);

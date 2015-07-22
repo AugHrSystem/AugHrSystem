@@ -273,7 +273,6 @@
 	        
 	        <div class="row">
 	         <div class="col-md-12">
-	         		
 							<div class="form-group">
 								<div class="col-md-6">
 									<label style="margin-right: 25px;"> <spring:message code="employee.emergencyContactAddress"></spring:message> :</label> <input type="text" class="form-control"
@@ -314,7 +313,7 @@
 								
 								<div class="col-md-3">
 									<label style="margin-right: 25px;"> <spring:message code="employee.placeOfBirth"></spring:message> :</label> <input type="text" class="form-control"
-									id="placeOfBirth" name="placeOfBirth" placeholder="${please} ${enter} <spring:message code="employee.pob"></spring:message>">
+									id="placeOfBirth" name="placeOfBirth" placeholder="${please} ${enter} <spring:message code="employee.pob"></spring:message>" value="${allEmployeeDto.placeOfBirth}">
 								</div>
 								
 								
