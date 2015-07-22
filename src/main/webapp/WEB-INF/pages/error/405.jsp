@@ -14,8 +14,8 @@
 	</div>
 	
 	<div class="col-lg-6 col-md-6">
-	          <h1>Error!</h1>	    
-			  <p>Sorry, an error has occured, Unsupported Media Type.</p>
+	          <h1>Error! 405</h1>	    
+			  <p>Sorry, an error has occured, Method Not Allowed.</p>
 			  
 			  <p>Return to the homepage.</p>
 			  <div class="gotohome">
@@ -29,5 +29,3 @@
   </div>
 	
   </div> 
-
-

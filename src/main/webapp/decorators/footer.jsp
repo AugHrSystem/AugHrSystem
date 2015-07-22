@@ -3,12 +3,13 @@
   <link href="<c:url value="/resources/css/footer.css" />" rel="stylesheet" media="all">
   
 
-<footer class="footer"> 
-  <div class="container">
-      <p class="text-muted">
-      	<span class="spe-character" style="margin-right: 1px;">©</span> 2011-2015 Augmentis (Thailand) Limited. All rights reserved.
-      </p>
-   </div>
-</footer>
+  
+  <footer class='footer'>
+	<div class="container">
+		<div class="text-muted">
+			<span class="spe-character">©</span> 2011-2015 Augmentis (Thailand)
+			Limited. All rights reserved.
+		</div>
+	</div>
+	</footer>
 
-<

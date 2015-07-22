@@ -62,7 +62,7 @@
         <property name="maxUploadSize" value="5000000" />    <!-- 5000000 -->
 	</bean>
 	
-	 <bean
+	<bean
 	  class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 	  <property name="exceptionMappings">
 		<props>
@@ -72,15 +72,43 @@
 			</prop>
 			<prop key="com.aug.exception.CustomException">
 				error/generic_error
-			</prop>			
+			</prop>
 			<prop key="java.io.IOException">error/exception_error</prop>
 			<prop key="java.sql.SQLException">error/500</prop>
+		    <prop key="org.springframework.beans.ConversionNotSupportedException">error/500</prop>
+			<prop key="javax.validation.ConstraintViolationException">error/500</prop>
+			<prop key="org.springframework.http.converter.HttpMessageNotWritableException">error/500</prop>
+			<prop key="org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException">error/404</prop>
+			<prop key="org.springframework.web.HttpRequestMethodNotSupportedException">error/405</prop>
+			<prop key="javassist.tools.web.BadHttpRequest">error/400</prop>
+			<prop key="org.springframework.web.bind.MissingServletRequestParameterException">error/400</prop>
+			<prop key="org.springframework.web.bind.ServletRequestBindingException">error/400</prop>
+			<prop key="org.springframework.beans.TypeMismatchException">error/400</prop>			
+			<prop key="org.springframework.http.converter.HttpMessageNotReadableException">error/400</prop>
+			<prop key="org.springframework.web.bind.MethodArgumentNotValidException">error/400</prop>		
+			<prop key="org.springframework.web.multipart.support.MissingServletRequestPartException">error/400</prop>
+			<prop key="org.springframework.web.HttpMediaTypeNotSupportedException">error/415</prop>		
 			<prop key="java.lang.Exception">error/exception_error</prop>
+			<prop key="java.net.ConnectException">error/exception_error</prop>		
 			
-			<!-- <prop key="java.lang.Throwable">error/httperror.jsp</prop> -->
 		</props>
 	  </property>
 	</bean> 
+	
+	<!-- <bean id="RestOperations" class="org.springframework.web.client.RestTemplate">
+    <constructor-arg>
+        <bean class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+            <property name="readTimeout" value="0" />
+            <property name="connectTimeout" value="0" />
+        </bean>
+    </constructor-arg>
+  </bean> -->
+  
+  <!--<bean
+        class="org.springframework.ws.transport.http.HttpComponentsMessageSender">
+             <property name="connectionTimeout" value="10" />
+      		 <property name="readTimeout" value="0" />
+    </bean> -->
 
     <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
 

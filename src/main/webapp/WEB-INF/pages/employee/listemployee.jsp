@@ -20,7 +20,7 @@
 	
 }
 </style> -->
-
+<div id="contentemp">
 <div class="form">
 <f:form method="post" commandName="listemployee"  role="form">
 		<!-- <ol class="breadcrumb">
@@ -54,9 +54,10 @@
 		</div>
 </f:form>
 </div>		
+</div>
 	<!-- Button trigger modal -->
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_HR')">
-	<div align="right">
+	<div id="groupbtn" align="right">
 	<f:form action="${pageContext.request.contextPath}/employee" method="POST" role="form">
 		<div class="form-group">
 		<button type="submit" class="btn btn-warning btn-md">
@@ -90,6 +91,51 @@ var dt;
 var empId;
 	$(document).ready(function() {
 		
+		$.ajaxSetup({
+		    timeout: 3000,
+		    error : function(XMLHttpRequest,e,testStatus,jqXHR,xhr,errorThrown,thrownError) {  
+		          
+		    	  if(testStatus==="timeout") {
+		    		  swal({
+				   	    	title: "Time Out", 		  	    	    	
+				   	    	text: "Connection Time Out..."
+				   	    	});
+				   	  
+		          } 
+		    	
+
+		   	   if(XMLHttpRequest.responseText.indexOf("Error:")== 1){
+		   		   
+		   		 var errormsg = JSON.parse(XMLHttpRequest.responseText.split('Error:'));
+		   		 var msg= ' ';
+		   		 
+		   		 for(var i=1;i<errormsg.length;i++){
+		   			 
+		   			 msg =msg+errormsg[i];
+		   		 }
+		   		 
+		   		 
+		   		 $('*').modal('hide');
+
+		   		 
+		   	    swal({
+		   	    	title: "Error",		  	    	    	
+		   	    	text: msg
+		   	    	});
+		   	  
+		   	    
+		   	   }else {
+		     		
+		   		  alert(testStatus);
+			          myRedirect('${pageContext.request.contextPath}/httperror',testStatus);
+		   	   
+		   	   }
+
+		    }    
+		});
+
+
+		
 		dt=$("#tdResult").dataTable({ 
 			"ordering": false,
 // 			"dom": '<"toolbar">frtip'
@@ -117,10 +163,10 @@ var empId;
     						'<button type="button" class="btn btn-danger btn-sm active" data-empId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
     			 
     					}
-    				},
+    				}/* ,
     				error : function(data,testStatus,jqXHR) {
     					$("#outputajax").text(testStatus);
-    					}
+    					} */
     				}); 
     		}
 	
@@ -145,11 +191,11 @@ var empId;
 							$('#deleteModal').modal('toggle');
 							$("#message").html('<div class="alert alert-success" role="alert">Success</div>');		
 							listAll();
-						},
+						}/* ,
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
 							$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-							}
+							} */
 						});
 					}
     		   	
@@ -186,6 +232,5 @@ var empId;
 	}
 
   
-  </script>
-
+ </script>
 

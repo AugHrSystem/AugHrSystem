@@ -89,7 +89,7 @@ public class FamilyController {
 			@ModelAttribute(value = "family") Family family,
 			ModelMap model, 
 			@PathVariable("id") Integer id, 
-			@ModelAttribute Family2Dto family2Dto)   throws SQLException,Exception,BadHttpRequest,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+			@ModelAttribute Family2Dto family2Dto){
 		
 		//init page for display page 
 		
@@ -110,7 +110,7 @@ public class FamilyController {
 	public @ResponseBody List<Family2Dto> findEmpFamily(Locale locale,
 		    //@ModelAttribute(value = "family") Family family,
 			ModelMap model,
-			@PathVariable("id") Integer id) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+			@PathVariable("id") Integer id) {
 			
 		List<Family2Dto> familyDtoTest = familyDtoServiceTest.listFamily(new Integer(id));
 		return familyDtoTest;
@@ -123,55 +123,39 @@ public class FamilyController {
 
 	@RequestMapping(value = "/family/add", method =  RequestMethod.POST)
 	public @ResponseBody Family2Dto Add(Locale locale,
-			    @RequestBody Family2Dto familyDto,
-				ModelMap model,
-				BindingResult result,
-				HttpServletRequest request,
-				HttpServletResponse response,
-				Exception ex, 
-				WebRequest webRequest) throws SQLException,Exception,BadHttpRequest,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException,CustomException{
-		
-		      
-		        //familyService.saveByNameQuery(familyDto);
+			    @RequestBody Family2Dto familyDto) throws CustomException{
+
+				//familyService.saveByNameQuery(familyDto);
+		        logger.info("create");
 		        
-				int numberOfChar = 0;
-		       
-			        
+			       
+		        
 	            if(familyDto.getFirstName().isEmpty()||familyDto.getLastName().isEmpty()||familyDto.getGender().isEmpty()||
 	            		familyDto.getAge()==null||familyDto.getMobile().isEmpty()||familyDto.getAddress().isEmpty()||
 	            		familyDto.getMasRelationTypeId()==null){
 	            	
-	            	throw new CustomException("Business Error", "It have some or Any field is required!");
+	            		throw new CustomException("Business Error", "It have some or Any field is required!");
 	            	
 	            }else{
 	            	
 	            
 	            	if(familyDto.getMobile().length()!=12){
 	    
-	            			throw new CustomException("Business Error", "length of mobile is not equal 10!");
+	            		throw new CustomException("Business Error", "length of mobile is not equal 12!");
 	            	
 	            	
-	            	}
-	            	/*else if(familyDto.getMobile().length()==12){
+	            	}else if(familyDto.getMobile().length()==12){
 	            		
-	            		for (int i = 0; i < familyDto.getMobile().length(); i++) {
-		            		   if (Character.isLetter(familyDto.getMobile().charAt(i))) {
-		            			   System.out.println();
-		            			   numberOfChar=numberOfChar+1;
-		            		   }
-		            		   
-		            	   }
-		            		
-
-	            		if(numberOfChar!=2){
-	            			
-	            			throw new CustomException("Business Error", "mobile must be contain digit!");	            			
-	            		}*/else{
+	            		if(familyDto.getMobile().matches("^[0-9]{3}-[0-9]{3}-[0-9]{4}")){
 	    	            	familyService.createFindMasRelationAndEmployee(familyDto);	
+	            		}else{
+	            			throw new CustomException("Business Error", "format of mobile is incorrect!");
 	            		}
+
+	            		
 	            	}
+	            }
 	            	
-	           // }
 	            
 		        return familyDto;
 		
@@ -183,7 +167,7 @@ public class FamilyController {
 	@RequestMapping(value = "/family/initedit", method = RequestMethod.POST)
 	public @ResponseBody Family2Dto initEdit(Locale locale,
 							@RequestBody Family2Dto family,
-							ModelMap modal) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+							ModelMap modal){
 		
 	    logger.info("init edit");
 		return familyService.findForInitEdit(family);
@@ -198,51 +182,37 @@ public class FamilyController {
 	@RequestMapping(value = "/family/edit", method = RequestMethod.POST)
 	public @ResponseBody Family2Dto Edit(Locale locale,
 							@RequestBody Family2Dto familyDto,
-							ModelMap modal) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException,CustomException{
+							ModelMap modal) {
 		
 	    logger.info("edit");
-
 	    
-	    int numberOfChar = 0;
-	       
-        
-        if(familyDto.getFirstName().isEmpty()||familyDto.getLastName().isEmpty()||familyDto.getGender().isEmpty()||
+	    if(familyDto.getFirstName().isEmpty()||familyDto.getLastName().isEmpty()||familyDto.getGender().isEmpty()||
         		familyDto.getAge()==null||familyDto.getMobile().isEmpty()||familyDto.getAddress().isEmpty()||
         		familyDto.getMasRelationTypeId()==null){
         	
-        	throw new CustomException("Business Error", "It have some or Any field is required!");
+        		throw new CustomException("Business Error", "It have some or Any field is required!");
         	
         }else{
         	
         
-        	if(familyDto.getMobile().length()!=10){
+        	if(familyDto.getMobile().length()!=12){
 
-        			throw new CustomException("Business Error", "length of mobile is not equal 10!");
-
-        	}else if(familyDto.getMobile().length()==10){
-        		
-        		for (int i = 0; i < familyDto.getMobile().length(); i++) {
-            		   if (Character.isLetter(familyDto.getMobile().charAt(i))) {
-            			   System.out.println();
-            			   numberOfChar=numberOfChar+1;
-            		   }
-            		   
-            	   }
-            		
-
-        		if(numberOfChar!=0){
-        			
-        			throw new CustomException("Business Error", "mobile must be contain digit");	            			
-        		}else{
-        			
-        		    familyService.updateFindMasRelationAndEmployee(familyDto);
-	
-        		}
-        	}
+        		throw new CustomException("Business Error", "length of mobile is not equal 12!");
         	
-        }
+        	
+        	}else if(familyDto.getMobile().length()==12){
+        		
+        		if(familyDto.getMobile().matches("^[0-9]{3}-[0-9]{3}-[0-9]{4}")){
+        	        familyService.updateFindMasRelationAndEmployee(familyDto);	
+        		}else{
+        			throw new CustomException("Business Error", "format of mobile is incorrect!");
+        		}
 
-        return familyDto;
+        		
+        	}
+        }
+        	
+	    return familyDto;
 	}
 	
 	
@@ -252,7 +222,7 @@ public class FamilyController {
 	@RequestMapping(value = "/family/delete", method = RequestMethod.POST)
 	public @ResponseBody Family2Dto Delete(Locale locale,
 							@RequestBody Family2Dto familyDtoTest,
-							ModelMap modal) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+							ModelMap modal){
 		
 	    logger.info("delete");	 
 	    familyService.deleteByNameQuery(familyDtoTest);

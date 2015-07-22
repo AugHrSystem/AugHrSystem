@@ -349,6 +349,40 @@ p{
 	color: white;
 }
 
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+
 </style>
 
 </head>
@@ -428,7 +462,7 @@ p{
 
 
 <br/>
-
+<div class="container">
   <div class="row-fluid"  style=" margin-top: 150px;margin-bottom: 150px;">	 <!-- style=" margin-top: 100px;margin-bottom: 100px;" -->
 	
    <div class="row" style=" margin-right:10px;">
@@ -456,15 +490,18 @@ p{
   </div>
 	
   </div> 
+</div>
+
+	<footer class='footer'>
+	<div class="container">
+		<div class="text-muted">
+			<span class="spe-character">©</span> 2011-2015 Augmentis (Thailand)
+			Limited. All rights reserved.
+		</div>
+	</div>
+	</footer>
 
 
-<nav  class="navbar navbar-default navbar-fixed-bottom">
- <div class="footercontain">
-  <div class="navbar-nav pull-right ">
-      <span class="spe-character">©</span> 2011-2015 Augmentis (Thailand) Limited. All rights reserved.
-  </div>    
- </div>
-</nav>
 </body>
 </html>
 

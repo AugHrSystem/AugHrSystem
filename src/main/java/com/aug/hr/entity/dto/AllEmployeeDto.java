@@ -84,7 +84,13 @@ public class AllEmployeeDto {
 	private String knowEmployed;
 	private String descriptionYes;
 	private String knowEmployerNo;
+<<<<<<< HEAD
 	private String militaryService;
+=======
+	private String militaryServiceYes;
+	private String knowEmployed;
+
+>>>>>>> change design exception and time out
 	
 	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -964,6 +970,14 @@ public class AllEmployeeDto {
 
 	public void setProbationDate(Date probationDate) {
 		this.probationDate = probationDate;
+	}
+
+	public String getKnowEmployed() {
+		return knowEmployed;
+	}
+
+	public void setKnowEmployed(String knowEmployed) {
+		this.knowEmployed = knowEmployed;
 	}
 	
 	

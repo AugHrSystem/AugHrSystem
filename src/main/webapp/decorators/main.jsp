@@ -66,8 +66,19 @@
 <script src="<c:url value="/resources/resource/sweetalert/js/sweet-alert.js" />"></script>
 <link href="<c:url value="/resources/resource/sweetalert/css/sweet-alert.css" />" rel="stylesheet" media="all">
 
+<<<<<<< HEAD
 <!-- Autonumeric Plugin -->
 <script src="<c:url value="/resource/autonumeric/js/autoNumeric.js" />"></script>
+=======
+
+<!-- Main -->
+<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
+
+<!-- footer -->
+<link href="<c:url value="/resources/css/footer.css" />" rel="stylesheet" media="all">
+
+ 
+>>>>>>> change design exception and time out
 
 <!-- Accounting Plugin -->
 <script src="<c:url value="/resource/accounting/accounting.js" />"></script>
@@ -85,7 +96,8 @@ body {
 	background-position: top center !important;
 	background-repeat: no-repeat !important;
 	background-attachment: fixed;
-	padding-top: 95px;
+    padding-top: 70px;  
+
 } 
 
 </style>
@@ -94,9 +106,17 @@ body {
 
 
 $.ajaxSetup({
-	
-	 error : function(XMLHttpRequest,e,testStatus,jqXHR,xhr,errorThrown,thrownError) {  
+    timeout: 3000,
+    error : function(XMLHttpRequest,e,testStatus,jqXHR,xhr,errorThrown,thrownError) {  
           
+    	  if(testStatus==="timeout") {
+    		  swal({
+		   	    	title: "Time Out", 		  	    	    	
+		   	    	text: "Connection Time Out..."
+		   	  });
+    	   	  
+          }
+    	
 
    	   if(XMLHttpRequest.responseText.indexOf("Error:")== 1){
    		   
@@ -139,17 +159,17 @@ $.ajaxSetup({
 	  	$('#form').submit();
 	  };
 
-
 </script>
 
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<div class="container">
+	<div class="container"> 
 		<decorator:body/>
 	<%-- 	</decorator:body> --%>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
-		
+	
 </body>
+		
 </html>

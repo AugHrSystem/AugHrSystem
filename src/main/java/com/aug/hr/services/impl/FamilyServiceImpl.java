@@ -105,18 +105,14 @@ public class FamilyServiceImpl implements FamilyService{
 	}
 
 	@Override
-	public void createFindMasRelationAndEmployee(Family2Dto familyDto) throws SQLException,ConstraintViolationException,NullPointerException{
+	public void createFindMasRelationAndEmployee(Family2Dto familyDto){
 		// TODO Auto-generated method stub
 
 		Family family = new Family();
 
 		MasRelationType masRelationType = new MasRelationType();
 		
-		if(familyDto.getMasRelationTypeId()==null){
-			
-			throw new NullPointerException();
-			
-		}else if(familyDto.getMasRelationTypeId()!=null){
+		if(familyDto.getMasRelationTypeId()!=null){
 			masRelationType = masRelationService.find(familyDto.getMasRelationTypeId());
 			family.setMasRelation(masRelationType);		
 		}

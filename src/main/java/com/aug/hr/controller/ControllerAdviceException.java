@@ -2,24 +2,30 @@ package com.aug.hr.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
-import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
 
 import org.apache.http.HttpException;
+import org.springframework.beans.ConversionNotSupportedException;
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.HttpMediaTypeException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import com.aug.exception.CustomException;
 
@@ -37,7 +43,7 @@ public class ControllerAdviceException {
 			//500
 			@ExceptionHandler(ConstraintViolationException.class)
 			@ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
-		    public ModelAndView handleSQLException500 (ConstraintViolationException exception) throws Exception{
+		    public ModelAndView handleSQLException500 (ConstraintViolationException exception){
 				  System.out.println("exception: SQL");
 				  ModelAndView andView = new ModelAndView();
 				  andView.setViewName("/error/500");
@@ -48,7 +54,29 @@ public class ControllerAdviceException {
 			//500
 			@ExceptionHandler(SQLException.class)
 			@ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
-		    public ModelAndView handleSQLException500 (SQLException exception) throws Exception{
+		    public ModelAndView handleSQLException500 (SQLException exception){
+				  System.out.println("exception: SQL");
+				  ModelAndView andView = new ModelAndView();
+				  andView.setViewName("/error/500");
+				  return andView;
+			}
+			
+			
+			//500
+			@ExceptionHandler(ConversionNotSupportedException.class)
+			@ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
+		    public ModelAndView handleSQLException500 (ConversionNotSupportedException exception){
+				  System.out.println("exception: SQL");
+				  ModelAndView andView = new ModelAndView();
+				  andView.setViewName("/error/500");
+				  return andView;
+			}
+			
+			
+			//500
+			@ExceptionHandler(HttpMessageNotWritableException.class)
+			@ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
+		    public ModelAndView handleSQLException500 (HttpMessageNotWritableException exception){
 				  System.out.println("exception: SQL");
 				  ModelAndView andView = new ModelAndView();
 				  andView.setViewName("/error/500");
@@ -58,9 +86,9 @@ public class ControllerAdviceException {
 	
 			
 			//404
-			@ExceptionHandler(NotFoundException.class)
+			@ExceptionHandler(NoSuchRequestHandlingMethodException.class)
 			@ResponseStatus(value=HttpStatus.NOT_FOUND)
-		    public ModelAndView handleNullPointerException (NotFoundException exception){
+		    public ModelAndView handleNullPointerException (NoSuchRequestHandlingMethodException exception){
 				  System.out.println("exception: Not found");
 				  System.out.println("msg: "+exception.getMessage());
 				  ModelAndView andView = new ModelAndView();				  
@@ -70,6 +98,17 @@ public class ControllerAdviceException {
 				   return andView;
 				
 	
+			}
+			
+			
+			//405
+			@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+			@ResponseStatus(value=HttpStatus.METHOD_NOT_ALLOWED)
+		    public ModelAndView handleSQLException500 (HttpRequestMethodNotSupportedException exception){
+				  System.out.println("METHOD_NOT_ALLOWED");
+				  ModelAndView andView = new ModelAndView();
+				  andView.setViewName("/error/405");
+				  return andView;
 			}
 			
 			
@@ -83,12 +122,94 @@ public class ControllerAdviceException {
 				  ModelAndView andView = new ModelAndView();				  
 				  //andView.addObject("exceptionMsg",exception.getMessage());
 				
-				   andView.setViewName("/error/500");
+				   andView.setViewName("/error/400");
 				   return andView;
 				
 	
 			}
 			
+			//400
+			@ExceptionHandler(MissingServletRequestParameterException.class)
+			@ResponseStatus(value=HttpStatus.BAD_REQUEST)
+		    public ModelAndView handleMissingServletRequestParameterException (MissingServletRequestParameterException exception){
+				  System.out.println("exception: Bad Request");
+				  System.out.println("msg: "+exception.getMessage());
+				  ModelAndView andView = new ModelAndView();				  
+				  //andView.addObject("exceptionMsg",exception.getMessage());
+				
+				   andView.setViewName("/error/400");
+				   return andView;
+				
+	
+			}
+			
+			
+			//400
+			@ExceptionHandler(ServletRequestBindingException.class)
+			@ResponseStatus(value=HttpStatus.BAD_REQUEST)
+		    public ModelAndView handleBadRequestException (ServletRequestBindingException exception){
+				  System.out.println("exception: Bad Request");
+				  System.out.println("msg: "+exception.getMessage());
+				  ModelAndView andView = new ModelAndView();				  
+				  //andView.addObject("exceptionMsg",exception.getMessage());
+				
+				   andView.setViewName("/error/400");
+				   return andView;
+			}
+			
+			
+			//400
+			@ExceptionHandler(TypeMismatchException.class)
+			@ResponseStatus(value=HttpStatus.BAD_REQUEST)
+		    public ModelAndView handleBadRequestException (TypeMismatchException exception){
+				  System.out.println("exception: Bad Request");
+				  System.out.println("msg: "+exception.getMessage());
+				  ModelAndView andView = new ModelAndView();				  
+				  //andView.addObject("exceptionMsg",exception.getMessage());
+				
+				   andView.setViewName("/error/400");
+				   return andView;
+			}
+			
+			
+			//400
+			@ExceptionHandler(HttpMessageNotReadableException.class)
+			@ResponseStatus(value=HttpStatus.BAD_REQUEST)
+		    public ModelAndView handleBadRequestException (HttpMessageNotReadableException exception){
+				  System.out.println("exception: Bad Request");
+				  System.out.println("msg: "+exception.getMessage());
+				  ModelAndView andView = new ModelAndView();				  
+				  //andView.addObject("exceptionMsg",exception.getMessage());
+				
+				   andView.setViewName("/error/400");
+				   return andView;
+			}
+			
+			//400
+			@ExceptionHandler(MethodArgumentNotValidException.class)
+			@ResponseStatus(value=HttpStatus.BAD_REQUEST)
+		    public ModelAndView handleBadRequestException (MethodArgumentNotValidException exception){
+				  System.out.println("exception: Bad Request");
+				  System.out.println("msg: "+exception.getMessage());
+				  ModelAndView andView = new ModelAndView();				  
+				  //andView.addObject("exceptionMsg",exception.getMessage());
+				
+				   andView.setViewName("/error/400");
+				   return andView;
+			}
+			
+			//400
+			@ExceptionHandler(MissingServletRequestPartException.class)
+			@ResponseStatus(value=HttpStatus.BAD_REQUEST)
+		    public ModelAndView handleBadRequestException (MissingServletRequestPartException exception){
+				  System.out.println("exception: Bad Request");
+				  System.out.println("msg: "+exception.getMessage());
+				  ModelAndView andView = new ModelAndView();				  
+				  //andView.addObject("exceptionMsg",exception.getMessage());
+				
+				   andView.setViewName("/error/400");
+				   return andView;
+			}
 			
 			
 			//415
@@ -163,7 +284,5 @@ public class ControllerAdviceException {
 				  return msg;		
 	
 			}
-						
-			
 }
-
+					

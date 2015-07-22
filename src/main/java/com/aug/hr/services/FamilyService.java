@@ -28,7 +28,7 @@ public interface FamilyService {
     public void saveByNameQuery(Family2Dto family);
     public void updateByNameQuery(Family2Dto family);
     public void deleteByNameQuery(Family2Dto family);
-    public void createFindMasRelationAndEmployee(Family2Dto familyDto) throws SQLException,ConstraintViolationException,NullPointerException;
+    public void createFindMasRelationAndEmployee(Family2Dto familyDto);
     public Family2Dto findForInitEdit(Family2Dto family);
     public void updateFindMasRelationAndEmployee(Family2Dto familyDto);
 
