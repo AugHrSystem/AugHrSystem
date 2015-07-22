@@ -305,7 +305,7 @@
 			var cardid = button.data("id") //Extract info from data-* attribute
 
 			 var d = new Date($('#datetimepicker1').data("DateTimePicker").date());
-			d.setDate(d.getDate()+1);
+				 d.setDate(d.getDate()+1);
     //		$('#datetimepicker2').data("DateTimePicker").minDate(d);
     //		$('#datetimepicker2').data("DateTimePicker").date(d);
 			
