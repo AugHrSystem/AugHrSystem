@@ -14,7 +14,7 @@
 	</div>
 	
 	<div class="col-lg-6 col-md-6">
-	          <h1>Error!</h1>	    
+	          <h1>Error! 415</h1>	    
 			  <p>Sorry, an error has occured, Unsupported Media Type.</p>
 			  
 			  <p>Return to the homepage.</p>

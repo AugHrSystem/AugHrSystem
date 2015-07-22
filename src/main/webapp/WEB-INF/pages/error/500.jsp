@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="<c:url value="/resources/css/error.css" />" rel="stylesheet" media="all">
+<link href="<c:url value="/resources/css/header.css" />" rel="stylesheet" media="all">
+
 
   
   <div class="row-fluid"  style=" margin-top: 5%;margin-bottom:5%;>	 <!-- style=" margin-top: 100px;margin-bottom: 100px;" -->
