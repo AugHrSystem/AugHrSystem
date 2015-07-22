@@ -304,7 +304,7 @@ public class EmployeeController {
 			Model model,
 			final RedirectAttributes redirectAttributes,
 			HttpServletRequest request,
-			HttpServletResponse response) throws IOException,Exception,BadHttpRequest,SQLException,ConstraintViolationException{
+			HttpServletResponse response) throws IOException,Exception{
 	
 	   logger.info("infoooo: "+allEmployeeDto);		
 	   logger.info("infoooo: ================================================================>"+allEmployeeDto.getAimempid());
