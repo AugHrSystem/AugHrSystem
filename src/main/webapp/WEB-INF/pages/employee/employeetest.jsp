@@ -1134,22 +1134,16 @@
 	    </div>
 	    </div>
 	    
-<<<<<<< HEAD
+
 	<div class="form-group row">
-=======
-	<div id="groupbtn" class="form-group row">
->>>>>>> change design exception and time out
 			<div class="col-md-12" align="right">
 				<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px;"><spring:message code="label.cancel" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
     			<button type="button" id="saveButton" class="btn btn-warning" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
     			
 	    	</div>
-<<<<<<< HEAD
-	    	</div>
-=======
 	</div>
->>>>>>> change design exception and time out
+
 </f:form>   
 
 <!----------------------------------------------------------- Modal Address --------------------------------------------------->
@@ -1557,10 +1551,9 @@ $("input:checkbox[name=knowAugOther]").change(function(){//name= ชื่อ gr
 
 
 		
-<<<<<<< HEAD
+
 /* -------------------------------------------- Validate radio Yes/No ----------------------------------------------------------- */		
-=======
->>>>>>> change design exception and time out
+
 $("#descriptionYes").hide();//descriptionYes ชื่อกล่อง
 $("input:radio[name=knowEmployed]").change(function(){//name= ชื่อ group radio
 

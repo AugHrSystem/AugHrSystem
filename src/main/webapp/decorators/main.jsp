@@ -66,10 +66,10 @@
 <script src="<c:url value="/resources/resource/sweetalert/js/sweet-alert.js" />"></script>
 <link href="<c:url value="/resources/resource/sweetalert/css/sweet-alert.css" />" rel="stylesheet" media="all">
 
-<<<<<<< HEAD
+
 <!-- Autonumeric Plugin -->
 <script src="<c:url value="/resource/autonumeric/js/autoNumeric.js" />"></script>
-=======
+
 
 <!-- Main -->
 <link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
@@ -77,8 +77,6 @@
 <!-- footer -->
 <link href="<c:url value="/resources/css/footer.css" />" rel="stylesheet" media="all">
 
- 
->>>>>>> change design exception and time out
 
 <!-- Accounting Plugin -->
 <script src="<c:url value="/resource/accounting/accounting.js" />"></script>

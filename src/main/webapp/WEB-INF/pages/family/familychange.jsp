@@ -770,11 +770,10 @@
 	
 		  
 		      <div class="form-group" align="center">
-		       <div class="row">
-		       <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">		
+		       		
 		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
 		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
-		      </div>		     		     
+		 		     		     
 		      </div>
 		      
 		      
