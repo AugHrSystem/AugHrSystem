@@ -156,17 +156,17 @@ $(function(){
 	   }  	 
 	 
 	
-	  alert($('#idHealth').val());
+	  //alert($('#idHealth').val());
 	  var idHealth2;
 	  
 	  if($('#idHealth').val()===''||$('#idHealth').val()===''){
-		  alert('null');
+		  //alert('null');
 		  $('#deleteBtn').hide();	     
 	  }
 	  
 	  
 	  if($('#idHealth').val()!=null&&$('#idHealth').val()!==''){
-		  alert('aaa');
+		  //alert('aaa');
 		  $('#saveBtn').text("<spring:message code="label.update" />");
 		
 	  }
@@ -591,7 +591,7 @@ $(function(){
 		 			
 					
  					var idDelete = $('#idHealth').val();
- 					alert('iddel: '+idDelete)
+ 					//alert('iddel: '+idDelete)
 		 			$(this).find("#delete").off("click").on("click", function(){
 		 			
 		 			
@@ -1048,7 +1048,7 @@ $(function(){
 		  
 		      <div  align="center" style="margin-bottom: 5%;">
 		       <div id="btn">
-		        <button  id="renew" type="button" class="btn btn-info btn-md" ><spring:message code="label.renew" /></button>
+		        <button  id="renew" type="button" class="btn btn-default btn-md" ><spring:message code="label.renew" /></button>
 		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-info btn-md"  data-toggle="modal" data-target="#createModal"><spring:message code="label.save" /></button>
 		        <button id="deleteBtn" name="deleteBtn" type="button" class="btn btn-danger active btn-md" data-toggle="modal" data-target="#deleteModal"><spring:message code="label.delete" /></button>
 		      </div>

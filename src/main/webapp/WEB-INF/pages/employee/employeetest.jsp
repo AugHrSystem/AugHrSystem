@@ -1736,7 +1736,7 @@ if($('#previousEmployer').val()=="No"){
     		
     		
     		
-    		 alert("aaaa");
+    		 //alert("aaaa");
 			
 			$('[name="employeeForm"]').attr('action',
 					"${pageContext.request.contextPath}/employee/submit");
@@ -1860,9 +1860,9 @@ if($('#previousEmployer').val()=="No"){
 			    	  
 			    
 			           $("#masLocation").change(function() {
-			    	   alert('bb');
+			    	   //alert('bb');
 			    	   var code = $("#masLocation").val();
-			    	   alert(code);
+			    	   //alert(code);
 			    	   $('#employeeCodeForShow').val(''); 
 			  	       $('#employeeCode').val(''); 
 
@@ -2247,7 +2247,7 @@ if($('#previousEmployer').val()=="No"){
     	  
     	  $('#yesButton').off("click").on("click",function(){ 
     		  
-    		  alert(dataDelete[8]);
+    		  //alert(dataDelete[8]);
 	    	  dt.fnUpdate('delete', row, 10);
 	    	  $("#datastatus"+dataDelete[8]).attr('name', "addressList["+dataDelete[8]+"].status");
 			  $("#datastatus"+dataDelete [8]).val('delete');
@@ -2375,13 +2375,11 @@ if($('#previousEmployer').val()=="No"){
 // 						alert(getIndex);
 			
 				  }
-				},
-				
-				
+				} /*,
 				error : function(data,testStatus,jqXHR) {
 					alert('err');
 					$("#outputajax").text(testStatus);
-					}
+					} */
 				}); 
 		}
 	
