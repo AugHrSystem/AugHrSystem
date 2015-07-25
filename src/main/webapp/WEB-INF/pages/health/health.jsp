@@ -19,7 +19,10 @@ $(function(){
 			
 		$("#congenitalDiseaseExplain").prop('readonly',true);
 		$('#congenitalDiseaseExplain2').prop('readonly',true);
-		$('#congenitalDiseaseExplain3').prop('readonly',true);
+		$('#congenitalDiseaseExplain3').prop('readonly',true); 		
+		$('#congenitalDiseaseExplain').val('');
+	    $('#congenitalDiseaseExplain2').val('');
+		$('#congenitalDiseaseExplain3').val('');
 			
 	});
 	
@@ -41,7 +44,15 @@ $(function(){
 			
 		    $("#congenitalDiseaseExplain").prop('readonly','readonly');
 			$('#congenitalDiseaseExplain2').prop('readonly','readonly');
-			$('#congenitalDiseaseExplain3').prop('readonly','readonly');
+			$('#congenitalDiseaseExplain3').prop('readonly','readonly');				  		  	    		
+			$('#congenitalDiseaseExplain').val('');
+		    $('#congenitalDiseaseExplain2').val('');
+			$('#congenitalDiseaseExplain3').val('');
+			
+		 	
+			
+			
+		    
 			
 	   } 
 	 
@@ -53,7 +64,10 @@ $(function(){
 			$("#geneticDiseaseExplain").prop('readonly','readonly');
 			$('#geneticDiseaseExplain2').prop('readonly','readonly');
 			$('#geneticDiseaseExplain3').prop('readonly','readonly');
-				
+			$('#geneticDiseaseExplain').val('');
+			$('#geneticDiseaseExplain2').val('');
+			$('#geneticDiseaseExplain3').val('');		
+	
 	 });
 		
 	 
@@ -76,7 +90,9 @@ $(function(){
 			$("#geneticDiseaseExplain").prop('readonly','readonly');
 			$('#geneticDiseaseExplain2').prop('readonly','readonly');
 			$('#geneticDiseaseExplain3').prop('readonly','readonly');
-			
+			$('#geneticDiseaseExplain').val('');
+			$('#geneticDiseaseExplain2').val('');
+			$('#geneticDiseaseExplain3').val('');
 		} 
 	   
 	   
@@ -87,7 +103,8 @@ $(function(){
 			//alert("no");
 			
 			$("#takeMedicineExplain").prop('readonly','readonly');
-				
+		    $('#takeMedicineExplain').val('');
+					
 	   });
 		
 	 
@@ -106,7 +123,7 @@ $(function(){
 	   if($('#takeMedicine_no').prop('checked')==true){
 			
 		   $("#takeMedicineExplain").prop('readonly','readonly');
-			
+		   $('#takeMedicineExplain').val('');			
 		} 
 	 
 
@@ -116,7 +133,7 @@ $(function(){
 			//alert("no");
 			
 			$("#intoleranceExplain").prop('readonly','readonly');
-				
+			$('#intoleranceExplain').val('');
 	   });
 		
 	 
@@ -135,60 +152,157 @@ $(function(){
 	   if($('#intolerance_no').prop('checked')==true){
 			
 		   $("#intoleranceExplain").prop('readonly','readonly');
-			
-	   }  
-	 
-	 
-	   $('#tableResult').dataTable({ 
-			"bLengthChange": false,
-			"iDisplayLength": 10,
-			"pagingType": "simple_numbers",
-			"ordering": false,
-			"info": false,
-			"dom": '<"toolbar">frtip'
-		});
-	   $("div.toolbar").html('<b><button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> </b>');
-	dt = $('#tableResult').dataTable();
-	 
-	 
-	doFindData(); 
-	
-	
-	
-	
-	 $("#addModal").on("show.bs.modal", function(event){
-			 
-			 
-    	    var button = $(event.relatedTarget);
-    		var idUpdate = button.data("idupdate"); 
-    		if(idUpdate != null){
-    		
-    			doInitEdit(idUpdate);
-    			
-			}
-     		
-    		$(this).find("#saveBtn").off("click").on("click", function()
-    		{
-    			if(idUpdate != null){
-    				 doEdit(idUpdate);
-    			}
-    			else {
-    				 addHealth();
-    			}
-    		});
-    	  
-      });
+		   $('#intoleranceExplain').val('');
+	   }  	 
 	 
 	
-	 $('#addModal').on("hidden.bs.modal",function(event){
-		   
-		   $('#formAddUpdate')[0].reset();
+	  alert($('#idHealth').val());
+	  var idHealth2;
 	  
-	  });
-	   
+	  if($('#idHealth').val()===''||$('#idHealth').val()===''){
+		  alert('null');
+		  $('#deleteBtn').hide();	     
+	  }
+	  
+	  
+	  if($('#idHealth').val()!=null&&$('#idHealth').val()!==''){
+		  alert('aaa');
+		  $('#saveBtn').text("<spring:message code="label.update" />");
+		
+	  }
+	  
+	  
+	  $(this).find("#saveBtn").off("click").on("click", function(){
+		  
+	      $("#createModal").on("show.bs.modal", function(event){
+	    	  
+	      $(this).find("#create").off("click").on("click", function(){
+		
+ 	      $("#createModal").modal('hide');
 
+		  
+		  if($('#idHealth').val()==null||$('#idHealth').val()===''){
+			  addHealth(function(d) {
+		          //processing the data
+		          console.log(d);
+		          idHealth2 = d;
+		          if(idHealth2!=null&&idHealth2!==''){
+			    	  doInitEdit(idHealth2);
+			    	  $('#saveBtn').text("<spring:message code="label.update" />");
+			    	  $('#deleteBtn').show();
+			      }
+		      });
+			
+			
+		  }else if($('#idHealth').val()!=null&&$('#idHealth').val()!==''){
+			  $('#saveBtn').text("<spring:message code="label.update" />");
+	    	  $('#deleteBtn').show();
+			  doEdit($('#idHealth').val());			  
+		  }
+	    });
+	  });
+  }); 
+	   
+	  
+	  
+	  $( "#renew" ).on( "click", function() {
+		  if($('#idHealth').val()===''||$('#idHealth').val()===''){
+		 	  clear();
+		  }
+		  if($('#idHealth').val()!=null&&$('#idHealth').val()!==''){
+			  doFindData();
+		  }
+	  });
+	  
+	  
+	  
+	  function doFindData() {  
+	   	   
+ 	     var id = $("#empId").val();
+	  	     $.ajax({  
+	  	      type : "POST",   
+	  	      url : "<%=request.getContextPath()%>/health/list/"+id,   
+	  	      dataType : 'json', 
+	  	      contentType :"application/json; charset=utf-8",
+	  	     
+	  	      success : function(data) {  	  	    	
+	  	    
+	  	        clear();
+	  	        for(var i=0;i<data.length;i++){
+	  	        	
+
+					if(data[i].congenitalDisease == "Yes"){
+			  			
+			  			$('#congenitalDisease_yes').prop('checked', 'checked');
+			  			
+			  		}else if(data[i].abilitySpeaking == "No"){
+			  			
+			  			$('#congenitalDisease_no').prop('checked','checked');
+			  			
+			  		}
+					
+					
+
+					
+					if(data[i].geneticDisease=="Yes"){
+						
+						$('#geneticDisease_yes').prop('checked', 'checked');
+			  			
+			  		}else if(data[i].abilitySpeaking == "No"){
+			  			
+			  			$('#geneticDisease_no').prop('checked','checked');
+			  			
+			  		}
+					
+					
+					
+					if(data[i].takeMedicine=="Yes"){
+						
+						$('#takeMedicine_yes').prop('checked', 'checked');
+			  			
+			  		}else if(data[i].abilitySpeaking == "No"){
+			  			
+			  			$('#takeMedicine_no').prop('checked','checked');
+			  			
+			  		}
+			  		
+					
+					
+					if(data[i].intolerance=="Yes"){
+						
+						$('#intolerance_yes').prop('checked', 'checked');
+			  			
+			  		}else if(data[i].abilitySpeaking == "No"){
+			  			
+			  			$('#intolerance_no').prop('checked','checked');
+			  			
+			  		}
+	    		
+					
+					$('#congenitalDiseaseExplain').val(data[i].congenitalDiseaseExplain);
+					$('#congenitalDiseaseExplain2').val(data[i].congenitalDiseaseExplain2);
+					$('#congenitalDiseaseExplain3').val(data[i].congenitalDiseaseExplain3);
+					$('#geneticDiseaseExplain').val(data[i].geneticDiseaseExplain);
+					$('#geneticDiseaseExplain2').val(data[i].geneticDiseaseExplain2);
+					$('#geneticDiseaseExplain3').val(data[i].geneticDiseaseExplain3);
+					$('#takeMedicineExplain').val(data[i].takeMedicineExplain);
+					$('#intoleranceExplain').val(data[i].intoleranceExplain);
+					
+	  	 
+
+		  	     }
+	  	        		  	        
+	  	     }
+	  	  }); 
+	  	   
+	    }
+	  
+	  
+	  
+	  
+	  
 	 
-	 function addHealth(){
+	 function addHealth(callback){
 		 
 // 		    var id = getUrlParameter('Id');
 		    var id = $("#empId").val();
@@ -197,7 +311,7 @@ $(function(){
 		    var geneticDisease;
 		    var takeMedicine;
 		    var intolerance;
-		    
+		    var idHealth;
 		    
 		    if($('#congenitalDisease_no').is(':checked')){
 			
@@ -268,16 +382,25 @@ $(function(){
 	  	    		),  
 	  	      contentType :"application/json; charset=utf-8",
 	  	     
-	  	      success : function(data) {  
-	  	    	 
-	  	    	    $('#addModal').modal('hide');
-	  	    	    doFindData();
-	  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-		    		
+	  	      success : function(data) { 
+	  	    	  
+	  	    	   /* $("#createModal").modal('hide'); */
+	  	    	   $('#idHealth').val(data.id);			  	    	   
+	  	    	   idHealth = data.id;
+	  	    	   callback(idHealth);
+	  	    	   $(function(){ new PNotify({
+						 title: 'Success',
+						 type: 'success',
+						 animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+				  	});
+  	       		   });
 	  	     }
 	  	    }); 
-	  	    
-		 
+	  	 
+	  	return idHealth;
 	 }
 	
 	
@@ -286,6 +409,7 @@ $(function(){
 	 
 	
 	 function doInitEdit(idUpdate){
+		 
 		 
 		 $.ajax({  
 	  	      type : "POST",   
@@ -354,7 +478,7 @@ $(function(){
 					$('#takeMedicineExplain').val(data.takeMedicineExplain);
 					$('#intoleranceExplain').val(data.intoleranceExplain);
 					
-	  	    	
+	  	 
 	  	    	
 	  	     }
 	  	    }); 
@@ -431,11 +555,10 @@ $(function(){
 			    			"congenitalDiseaseExplain" : $('#congenitalDiseaseExplain').val(),
 		  	    			"congenitalDiseaseExplain2": $('#congenitalDiseaseExplain2').val(),
 		  	    			"congenitalDiseaseExplain3":$('#congenitalDiseaseExplain3').val(),
-		  	    			"projectOwnerContact":$('#projectOwnerContact').val(),
 		  	    			"geneticDisease":geneticDisease,
 		  	    			"geneticDiseaseExplain":$('#geneticDiseaseExplain').val(),
 		  	    			"geneticDiseaseExplain2":$('#geneticDiseaseExplain2').val(),
-		  	    			"geneticDiseaseExplain3":$('#geneticDiseaseExplain2').val(),
+		  	    			"geneticDiseaseExplain3":$('#geneticDiseaseExplain3').val(),
 		  	    			"takeMedicine":takeMedicine,
 		  	    			"takeMedicineExplain":$('#takeMedicineExplain').val(),
 		  	    			"intolerance":intolerance,
@@ -446,185 +569,29 @@ $(function(){
 	  	     
 	  	      success : function(data) {  
 	  	    	
-	  	    	 
-	  	    	  
-	  	    	  //alert(JSON.stringify(data));
-	  	    	 
-	  	    	
-	  	       		 $('#addModal').modal('hide');	  
-	  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-	  	       	     doFindData();		  			 
+	  	    	/* $("#createModal").modal('hide'); */
+	  	    	doInitEdit($('#idHealth').val());
+	  	    	$(function(){ new PNotify({
+					 title: 'Success',
+					 type: 'success',
+					 animation: {
+						effect_in: 'show',
+						effect_out: 'slide'
+					}
+				  });
+ 	       		});
 	  	        
 	  	     }
 	  	    }); 	  	    
 		 
 	 }
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	
-	function doFindData() {  
-	   	  
-// 		  var id = getUrlParameter('Id');
-		  var congenitalDiseaseExplain;
-		  var geneticDiseaseExplain;
-		  var id = $("#empId").val();
-   	     
-	  	     $.ajax({  
-	  	      type : "POST",   
-	  	      url : "<%=request.getContextPath()%>/health/list/"+id,   
-	  	      dataType : 'json', 
-	  	      contentType :"application/json; charset=utf-8",
-	  	     
-	  	      success : function(data) {  
-	    		
-	  	    
-	  	        dt.fnClearTable();
-	  	    	
-	  	        for(var i=0;i<data.length;i++){
-	  	        	
-	  	       
-	  	        	if(data[i].congenitalDiseaseExplain=="{null}"){
-
-	  	        		congenitalDiseaseExplain = "";
-	  	        		
-	  	        	}if(data[i].congenitalDiseaseExplain2=="{null}"){
-	  	        		//alert('aaa');
-	  	        		congenitalDiseaseExplain = "";
-	  	        	}if(data[i].congenitalDiseaseExplain3!="{null}"){
-	  	        		
-	  	        		congenitalDiseaseExplain = "";
-	  	        	}
-	  	        	
-	  	        	
-	  	        	
-	  	        	if(data[i].congenitalDiseaseExplain!="{null}"){
-
-	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain;
-	  	        		
-	  	        	}if(data[i].congenitalDiseaseExplain2!="{null}"){
-	  	        		//alert('aaa');
-	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain+', '+data[i].congenitalDiseaseExplain2;
-	  	        	}if(data[i].congenitalDiseaseExplain3!="{null}"){
-	  	        		
-	  	        		congenitalDiseaseExplain = data[i].congenitalDiseaseExplain+', '+data[i].congenitalDiseaseExplain2+',  '+data[i].congenitalDiseaseExplain3;
-	  	        	}
-	  	        	
-	  	        	
-	  	        	
-	  	        	
-	  	        	if(data[i].geneticDiseaseExplain=="{null}"){
-
-	  	        		geneticDiseaseExplain = "";
-	  	        		
-	  	        	}if(data[i].geneticDiseaseExplain2=="{null}"){
-	  	        		
-	  	        		geneticDiseaseExplain = "";
-	  	        		
-	  	        	}if(data[i].geneticDiseaseExplain3!="{null}"){
-	  	        		
-	  	        		geneticDiseaseExplain = "";
-	  	        	}
-	  	        	
-	  	        	
-
-	  	        	if(data[i].geneticDiseaseExplain!="{null}"){
-	  	        		
-	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain;
-	  	        		
-	  	        	}if(data[i].geneticDiseaseExplain2!="{null}"){
-	  	        		//alert('aaa');
-	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain+', '+data[i].geneticDiseaseExplain2;
-	  	        	}if(data[i].geneticDiseaseExplain3!="{null}"){
-	  	        		
-	  	        		geneticDiseaseExplain = data[i].geneticDiseaseExplain+', '+data[i].geneticDiseaseExplain2+',  '+data[i].geneticDiseaseExplain3;
-	  	        	}
-	  	            
-	  	        	
-	  	        	
-	  	        	
-	  	        	
-					if(data[i].takeMedicineExplain=="{null}"){
-	  	        		
-						takeMedicineExplain = "";
-	  	        		
-	  	        	}
-					
-					if(data[i].takeMedicineExplain!="{null}"){
-	  	        		//alert('aaa');
-	  	        		takeMedicineExplain = data[i].takeMedicineExplain;
-	  	        	}
-					
-
-					
-					
-					if(data[i].intoleranceExplain=="{null}"){
-	  	        		
-						intoleranceExplain = "";
-	  	        		
-	  	        	}
-					
-					if(data[i].intoleranceExplain!="{null}"){
-	  	        		//alert('aaa');
-	  	        		intoleranceExplain = data[i].intoleranceExplain;
-	  	        	}
-	  	            
-	  	            
-	  	            
-	  	         
-	  	        	   dt.fnAddData([ 
-				  			           data[i].congenitalDisease,
-				  			           congenitalDiseaseExplain,
-				  			           data[i].geneticDisease,
-				  			           geneticDiseaseExplain,
-				  			           data[i].takeMedicine,
-				  			           takeMedicineExplain,
-				  			           data[i].intolerance,
-				  			           intoleranceExplain,
-				  			          '<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active" data-idupdate="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit" /></button>'+
-				    				  '<button type="button" class="btn btn-danger btn-sm active" data-iddelete="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>'
-				    					
-				  			           ]);
-	  	        	   
-	  	        	 
-		  		
-		  	    	 }
-	  	        	
-	  	        		  	        
-	  	     },  
-	  	      error : function(data,testStatus,jqXHR) {  
-	  	    	$(function(){ new PNotify({
-	  	    	    title: 'Error!',
-	  	    	    type: 'error',
-	  	    		animation: {
-	  	    			effect_in: 'show',
-	  	    			effect_out: 'slide'
-	  	    		}
-	  	    		});
-	  	    	});
-	  	    	  //$("#outputajax").text(testStatus); 
-	  	     }  
-	  	    }); 
-	  	   
-	    }
-	
-	
-	
-	
-	
-	
 	
 	$("#deleteModal").on("show.bs.modal", function(event){
-		 
-			var button = $(event.relatedTarget);
- 			var idDelete = button.data("iddelete"); 
-				
-	 		
+		 			
+					
+ 					var idDelete = $('#idHealth').val();
+ 					alert('iddel: '+idDelete)
 		 			$(this).find("#delete").off("click").on("click", function(){
 		 			
 		 			
@@ -637,10 +604,22 @@ $(function(){
 			  		  	     
 				  		  	      success : function(data) {  
 				  		    		
-				  		  	    	
-				  		  	    	$('#deleteModal').modal('hide');
-				  		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
-				  	  	       	    doFindData();		  	      
+				  		  	    	 if(data=='successs'){
+				  		  	    		 $("#deleteModal").modal('hide');
+				  		  	    		 $('#deleteBtn').hide();
+				  				    	 $('#saveBtn').text("<spring:message code="label.save" />");
+				  				    	 clear();
+					  	    		     $("#idHealth").val('');
+					  	    		  	 $(function(){ new PNotify({
+											 title: 'Success',
+											 type: 'success',
+											 animation: {
+												effect_in: 'show',
+												effect_out: 'slide'
+											}
+										  });
+						  	       		 });
+				  		  	    	 }	  	      
 				  		  	    	 
 				  		  	     }
 			  		  	    }); 
@@ -651,130 +630,116 @@ $(function(){
 	
 	
 	
-	
-
-	 function getUrlParameter(sParam)
-		{
-			//alert("url "+document.referrer);
-		    var sPageURL = document.referrer;
-		    var sURLVariables = sPageURL.split('?');
-		    //alert("spilt "+sURLVariables);
-
-		   	
-		    
-		    var sParameterName = sURLVariables[1].split('=');
-		    //alert("Param "+parseInt(sParameterName[1]));
-		    if (sParameterName[0] == sParam) 
-		        {
-		        	//alert("Param "+sParameterName[0]);
-		        	return sParameterName[1];
-		        	
-		        }
-		        //alert("Param2 "+parseInt(sParameterName[1]));
-		    
-		}
-		 
-	  
+	function clear(){
+			 $('#congenitalDisease_no').prop('checked', 'checked');
+	   		 $('#geneticDisease_no').prop('checked', 'checked');				  		  	    		
+	   		 $('#takeMedicine_no').prop('checked', 'checked');
+	   	     $('#intolerance_no').prop('checked', 'checked');				  		  	    		
+			 $('#congenitalDiseaseExplain').val('');
+		     $('#congenitalDiseaseExplain2').val('');
+			 $('#congenitalDiseaseExplain3').val('');			
+		 	 $('#geneticDiseaseExplain').val('');
+			 $('#geneticDiseaseExplain2').val('');
+			 $('#geneticDiseaseExplain3').val('');		
+		     $('#takeMedicineExplain').val('');
+		     $('#intoleranceExplain').val('');
+	}
 			
 	
 });
 </script>
 
 
-<!-- <div class="row"> -->
-<!-- 	<div class="col-md-6"> -->
-<%-- 		<%-- <h2><spring:message code="health.name" /></h2> --%> 
-<!-- 	</div> -->
-
-<!--     <div class="col-md-12"> -->
-<!--        <div class="form-group" align="right"> -->
-<!--         <br/> -->
-<%--     		<button type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button> --%>
-<!--       	<br/> -->
-<!--       </div>	 -->
-<!-- 	</div> -->
-<!-- </div> -->
-
 <div class="row">
-	<div id="message"></div>
-	<div id="outputajax" class="form-group"></div>
+	<!-- <div id="message"></div>
+	<div id="outputajax" class="form-group"></div> -->
 </div>
 
- <table id="tableResult" class="dataTable stripe table-bordered">
- <caption title=""><spring:message code="health.name" /></caption>
-	    <thead>
-            <tr> 
-                <th><spring:message code="health.congenitalDisease" /></th>
-                <th><spring:message code="health.congenitaldiseaseSpecified" /></th>
-                <th><spring:message code="health.GeneticDisease" /></th>
-                <th><spring:message code="health.GeneticDiseaseSpecified" /></th> 
-                <th><spring:message code="health.TakeMedicine" /></th>
-                <th><spring:message code="health.TakeMedicineSpecified" /></th>
-                <th><spring:message code="health.Intolerance" /></th>
-                <th><spring:message code="health.IntoleranceSpecified" /></th>
-                <th><spring:message code="label.action" /></th>
-<!--                 <th></th> -->
-            </tr>
-        </thead>
-</table>
+
+<input id="empId" type="hidden" value="${id}"/>
+<input  id="idHealth" name="ididHealth" type="hidden" value='${healthDto.id}'/>
 
 
+		<div id="div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
+				<h2><spring:message code="label.health" />
+					<i style="position: absolute; right: 20px; cursor:pointer;" id="icon1" class="fa fa-chevron-up"></i>
+				</h2>
+	    </div>
+	
 
+	<div class="container">     
+	
 
-<!-- Modal Add and Update data-->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><spring:message code="health.name" /></h4>
-      </div>
-      <div class="modal-body">
-          
-             
-          
-            <f:form id="formAddUpdate" name="healthForm" method="post" commandName="health" class="form-horizontal" role="form">	      	 
+          <f:form id="formAddUpdate" name="healthForm" method="post" commandName="healthDto" class="form-horizontal" role="form">	      	 
 	  
 	  
 		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		   
-		           
-		        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease" >
+		   	
+		     <div class="row">       
+		        <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="congenitalDisease" >
 			            <spring:message code="health.question.congenitalDisease" />?
 			    </label>	 		
 			    
 			     
-			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-			     
-			        <label class="radio-inline" for=congenitalDisease > 
-		 			     	<f:radiobutton id="congenitalDisease_no" name="congenitalDisease" path="congenitalDisease" value="No" checked="true"/>
-		 			  		<spring:message code="default.no" />
-		 			 </label>
-		 			 <label class="radio-inline" for="congenitalDisease"> 
-		 			     <f:radiobutton id="congenitalDisease_yes" name="congenitalDisease" path="congenitalDisease" value="Yes"/>
-				     		<spring:message code="default.yes" />
-				     </label> 	     		
-				     								
-			     </div>	
-		   
+			     <div class="form-group col col-lg-6 col-md-6 col-sm-3 col-xs-3">
+				       <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+				       
+				         <c:if test="${empty healthDto.congenitalDisease}">
+					        <label class="radio-inline" for=congenitalDisease> 
+				 			     	<f:radiobutton id="congenitalDisease_no" name="congenitalDisease" path="congenitalDisease" value="No" checked="true"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 		
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="congenitalDisease_yes" name="congenitalDisease" path="congenitalDisease" value="Yes"/>
+						     	 <spring:message code="default.yes" />
+						     </label> 	     		
+						 </c:if>
+						 
+						 <c:if test="${healthDto.congenitalDisease eq 'No'}">
+					        <label class="radio-inline" for=congenitalDisease> 
+				 			     	<f:radiobutton id="congenitalDisease_no" name="congenitalDisease" path="congenitalDisease" value="No" checked="true"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 		
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="congenitalDisease_yes" name="congenitalDisease" path="congenitalDisease" value="Yes"/>
+						     	 <spring:message code="default.yes" />
+						     </label> 	     		
+						 </c:if>
+						 
+						 <c:if test="${healthDto.congenitalDisease eq 'Yes'}">
+					        <label class="radio-inline" for=congenitalDisease> 
+				 			     	<f:radiobutton id="congenitalDisease_no" name="congenitalDisease" path="congenitalDisease" value="No"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 		
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="congenitalDisease_yes" name="congenitalDisease" path="congenitalDisease" value="Yes" checked="true"/>
+						     	 <spring:message code="default.yes" />
+						     </label> 	     		
+						</c:if>
+				
+					 
+				  </div>   
+		    </div>
 		   </div>
+		  </div> 
 		   
 		   
 		   
 		   
-		   
-		   <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		   <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 			     <div class="row">
 			           
-			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease" >
+			        <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="congenitalDisease" >
 				            <spring:message code="health.congenitalDiseaseExplain1" var="congenitalDiseaseExplain1"/>${congenitalDiseaseExplain1 }:
 				    </label>	 		
 
      
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="congenitalDiseaseExplain" path="congenitalDiseaseExplain" cssClass="form-control required" placeholder="${congenitalDiseaseExplain1 }" />					     								
+				        	<f:input  id="congenitalDiseaseExplain" path="congenitalDiseaseExplain" cssClass="form-control required" placeholder="${congenitalDiseaseExplain1 }" value="${healthDto.congenitalDiseaseExplain}"/>					     								
 				     </div>	
 			     
 			     </div>
@@ -783,12 +748,12 @@ $(function(){
 			 
 		   <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			      <div class="row">
-			         <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease2" >
+			         <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="congenitalDisease2" >
 			           		<spring:message code="health.congenitalDiseaseExplain2" var="congenitalDiseaseExplain2"/>${congenitalDiseaseExplain2 }: 
 			   		 </label>	 		
 		     
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="congenitalDiseaseExplain2" path="congenitalDiseaseExplain2" cssClass="form-control required" placeholder="${congenitalDiseaseExplain2 }" />					     								
+				        	<f:input  id="congenitalDiseaseExplain2" path="congenitalDiseaseExplain2" cssClass="form-control required" placeholder="${congenitalDiseaseExplain2 }" value="${healthDto.congenitalDiseaseExplain2}"/>					     								
 				     </div>			 	 
 			 	 </div>
 		   
@@ -801,12 +766,12 @@ $(function(){
 		   
 			     <div class="row">
 		   
-			         <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease3" >
+			         <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="congenitalDisease3" >
 			           		<spring:message code="health.congenitalDiseaseExplain3" var="congenitalDiseaseExplain3"/>${congenitalDiseaseExplain3 }: 
 			   		 </label>	 		
 		     
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="congenitalDiseaseExplain3" path="congenitalDiseaseExplain3" cssClass="form-control required" placeholder="${congenitalDiseaseExplain3 }" />					     								
+				        	<f:input  id="congenitalDiseaseExplain3" path="congenitalDiseaseExplain3" cssClass="form-control required" placeholder="${congenitalDiseaseExplain3 }" value="${healthDto.congenitalDiseaseExplain3}"/>					     								
 				     </div>	
 				 </div>
 			</div>
@@ -818,28 +783,55 @@ $(function(){
 		   
 		   
 		   
-		     <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
+		      <div class="row">
 		           
-		        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
+		        <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
 			           <spring:message code="health.question.GeneticDisease" />?
 			    </label>	 		
 			    
 			     
 			     
-			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-			     
+			   <div class="form-group col col-lg-6 col-md-6 col-sm-3 col-xs-3">
+				  <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		
+				  
+			       <c:if test="${empty healthDto.geneticDisease}">
 			        <label class="radio-inline" for=geneticDisease > 
 		 			     	<f:radiobutton id="geneticDisease_no" name="geneticDisease" path="geneticDisease" value="No" checked="true"/>
 		 			  		<spring:message code="default.no" />
 		 			 </label>
-		 			 <label class="radio-inline" for="congenitalDisease"> 
+		 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
 		 			     <f:radiobutton id="geneticDisease_yes" name="geneticDisease" path="geneticDisease" value="Yes"/>
 				     		<spring:message code="default.yes" />
 				     </label> 	     		
-				     								
+				   </c:if>  	
+				   
+				    <c:if test="${healthDto.geneticDisease eq 'No'}">
+			        <label class="radio-inline" for=geneticDisease > 
+		 			     	<f:radiobutton id="geneticDisease_no" name="geneticDisease" path="geneticDisease" value="No" checked="true"/>
+		 			  		<spring:message code="default.no" />
+		 			 </label>
+		 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+		 			     <f:radiobutton id="geneticDisease_yes" name="geneticDisease" path="geneticDisease" value="Yes"/>
+				     		<spring:message code="default.yes" />
+				     </label> 	     		
+				   </c:if>  	
+				   
+				   <c:if test="${healthDto.geneticDisease eq 'Yes'}">
+			        <label class="radio-inline" for=geneticDisease > 
+		 			     	<f:radiobutton id="geneticDisease_no" name="geneticDisease" path="geneticDisease" value="No"/>
+		 			  		<spring:message code="default.no" />
+		 			 </label>
+		 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+		 			     <f:radiobutton id="geneticDisease_yes" name="geneticDisease" path="geneticDisease" value="Yes" checked="true"/>
+				     		<spring:message code="default.yes" />
+				     </label> 	     		
+				   </c:if>  	
+				   							
 			     </div>	
-		   
+			   </div>
+		    </div>
 		   </div>
 		   
 		   
@@ -848,17 +840,17 @@ $(function(){
 		   
 		   
 		   
-		   <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		   <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 			     <div class="row">
 			           
-			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
+			        <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
 				           <spring:message code="health.geneticDiseaseExplain1" var="geneticDiseaseExplain1"/>${geneticDiseaseExplain1 }: 
 				    </label>	 		
 
      
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="geneticDiseaseExplain" path="geneticDiseaseExplain" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" />					     								
+				        	<f:input  id="geneticDiseaseExplain" path="geneticDiseaseExplain" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" value="${healthDto.geneticDiseaseExplain}"/>					     								
 				     </div>	
 				 
 		        
@@ -868,18 +860,18 @@ $(function(){
 		   
 		   
 		   
-		    <div class="form-group form-group-sm  col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
 			     <div class="row">
 			           
 			     
 		           
-			         <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease2" >
+			         <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="congenitalDisease2" >
 			           		<spring:message code="health.geneticDiseaseExplain2" var="geneticDiseaseExplain2"/>${geneticDiseaseExplain2 }: 
 			   		 </label>	 		
 		     
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="geneticDiseaseExplain2" path="geneticDiseaseExplain2" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" />					     								
+				        	<f:input  id="geneticDiseaseExplain2" path="geneticDiseaseExplain2" cssClass="form-control required" placeholder="${geneticDiseaseExplain1}"  value="${healthDto.geneticDiseaseExplain2}"/>					     								
 				     </div>			 	 			 
 			         
 			 	 </div>
@@ -892,12 +884,12 @@ $(function(){
 		   
 			     <div class="row">
 		   
-				    <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="congenitalDisease3" >
+				    <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="congenitalDisease3" >
 					    <spring:message code="health.geneticDiseaseExplain3" var="geneticDiseaseExplain3"/>${geneticDiseaseExplain3 }: 
 				    </label>	 		
 		     
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="geneticDiseaseExplain3" path="geneticDiseaseExplain3" cssClass="form-control required" placeholder="${geneticDiseaseExplain1 }" />					     								
+				        	<f:input  id="geneticDiseaseExplain3" path="geneticDiseaseExplain3" cssClass="form-control required" placeholder="${geneticDiseaseExplain1}"  value="${healthDto.geneticDiseaseExplain3}"/>					     								
 		 			</div>	
 		 		</div>
 		 	</div>
@@ -908,26 +900,54 @@ $(function(){
 		   
 		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
-		     
+		       <div class="row">
 		           
-			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
+			        <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="geneticDisease" >
 				          <spring:message code="health.question.TakeMedicine" />?			          
 				    </label>	 		
 				    
 				     
 				     
-				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				     
-				        <label class="radio-inline" for=takeMedicine > 
-			 			     	<f:radiobutton id="takeMedicine_no" name="takeMedicine" path="takeMedicine" value="No" checked="true"/>
-			 			  		<spring:message code="default.no" />
-			 			 </label>
-			 			 <label class="radio-inline" for="congenitalDisease"> 
-			 			     <f:radiobutton id="takeMedicine_yes" name="takeMedicine" path="takeMedicine" value="Yes"/>
-					     		<spring:message code="default.yes" />
-					     </label> 	     							     								
+				      <div class="form-group from-group-sm  col col-lg-6 col-md-6 col-sm-3 col-xs-3">
+						 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+						 
+					   <c:if test="${empty healthDto.takeMedicine}">						     
+					        <label class="radio-inline" for=takeMedicine > 
+				 			     	<f:radiobutton id="takeMedicine_no" name="takeMedicine" path="takeMedicine" value="No" checked="true"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="takeMedicine_yes" name="takeMedicine" path="takeMedicine" value="Yes"/>
+						     		<spring:message code="default.yes" />
+						     </label> 	     							     												    
+				       </c:if>
+				       
+				       <c:if test="${healthDto.takeMedicine eq 'No'}">						     
+					        <label class="radio-inline" for=takeMedicine > 
+				 			     	<f:radiobutton id="takeMedicine_no" name="takeMedicine" path="takeMedicine" value="No" checked="true"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="takeMedicine_yes" name="takeMedicine" path="takeMedicine" value="Yes"/>
+						     		<spring:message code="default.yes" />
+						     </label> 	     							     												    
+				       </c:if>
+				       
+				        <c:if test="${healthDto.takeMedicine eq 'Yes'}">						     
+					        <label class="radio-inline" for=takeMedicine > 
+				 			     	<f:radiobutton id="takeMedicine_no" name="takeMedicine" path="takeMedicine" value="No"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="takeMedicine_yes" name="takeMedicine" path="takeMedicine" value="Yes"  checked="true"/>
+						     		<spring:message code="default.yes" />
+						     </label> 	     							     												    
+				       </c:if>
+				    
+				    
 				     </div>	
-				     
+				   </div>
+				 </div>
 			    </div>
 			    
 			    
@@ -935,15 +955,16 @@ $(function(){
 			  
 			    
 			     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			           
-			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="takeMedicineExplain" >
-				           <spring:message code="health.takeMedicineExplain1" var="takeMedicineExplain1"/>${takeMedicineExplain1 }: 
-				    </label>	 		
-
-     
-				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="takeMedicineExplain" path="takeMedicineExplain" cssClass="form-control required" placeholder="${takeMedicineExplain1 }" />					     								
-				     </div>	
+			         <div class="row">
+				        <label class="col-lg-6 col-md64 col-sm-6 col-xs-6 control-label required" for="takeMedicineExplain" >
+					           <spring:message code="health.takeMedicineExplain1" var="takeMedicineExplain1"/>${takeMedicineExplain1 }: 
+					    </label>	 		
+	
+	     
+					     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+					        	<f:input  id="takeMedicineExplain" path="takeMedicineExplain" cssClass="form-control required" placeholder="${takeMedicineExplain1}"  value="${healthDto.takeMedicineExplain}" />					     								
+					     </div>	
+					  </div>
 				
 			    </div>
 			    
@@ -955,26 +976,53 @@ $(function(){
 			    
 			     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		   
-		     
+		     	  <div class="row">
 		           
-			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="intolerance" >
+			        <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="intolerance" >
 				          <spring:message code="health.question.Intolerance" />?
 				    </label>	 		
 				    
 				     
 				     
-				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
+				     <div class="form-group col col-lg-6 col-md-6 col-sm-3 col-xs-3">
+				       <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
 				     
-				        <label class="radio-inline" for=intolerance > 
-			 			     	<f:radiobutton id="intolerance_no" name="intolerance" path="intolerance" value="No" checked="true"/>
-			 			  		<spring:message code="default.no" />
-			 			 </label>
-			 			 <label class="radio-inline" for="congenitalDisease"> 
-			 			     <f:radiobutton id="intolerance_yes" name="intolerance" path="intolerance" value="Yes"/>
-					     		<spring:message code="default.yes" />
-					     </label> 	     							     								
+	                   <c:if test="${empty healthDto.takeMedicine}">				     
+					        <label class="radio-inline" for=intolerance > 
+				 			     	<f:radiobutton id="intolerance_no" name="intolerance" path="intolerance" value="No" checked="true"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="intolerance_yes" name="intolerance" path="intolerance" value="Yes"/>
+						     	 <spring:message code="default.yes" />
+						     </label> 	
+					    </c:if> 
+					    
+					    <c:if test="${healthDto.takeMedicine eq 'No'}">				     
+					        <label class="radio-inline" for=intolerance > 
+				 			     	<f:radiobutton id="intolerance_no" name="intolerance" path="intolerance" value="No" checked="true"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="intolerance_yes" name="intolerance" path="intolerance" value="Yes"/>
+						     	 <spring:message code="default.yes" />
+						     </label> 	
+					    </c:if> 
+					    
+					    <c:if test="${healthDto.takeMedicine eq 'Yes'}">				     
+					        <label class="radio-inline" for=intolerance > 
+				 			     	<f:radiobutton id="intolerance_no" name="intolerance" path="intolerance" value="No"/>
+				 			  		<spring:message code="default.no" />
+				 			 </label>
+				 			 <label class="radio-inline" for="congenitalDisease" style="margin-left: 1px;"> 
+				 			     <f:radiobutton id="intolerance_yes" name="intolerance" path="intolerance" value="Yes" checked="true"/>
+						     	 <spring:message code="default.yes" />
+						     </label> 	
+					    </c:if> 
+					          							     								
 				     </div>	
-				     
+				    </div>
+				   </div> 
 			    </div>
 			    
 			    
@@ -982,33 +1030,53 @@ $(function(){
 			  
 			    
 			     <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			      <div class="row">
 			           
-			        <label class="col-lg-4 col-md-4 col-sm-6 col-xs-6 control-label required" for="intoleranceExplain" >
+			        <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-label required" for="intoleranceExplain" >
 				          <spring:message code="health.intoleranceExplain" var="intoleranceExplain"/>${intoleranceExplain }: 
 				    </label>	 		
 
      
 				     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">	
-				        	<f:input  id="intoleranceExplain" path="intoleranceExplain" cssClass="form-control required" placeholder="${intoleranceExplain }" />					     								
+				        	<f:input  id="intoleranceExplain" path="intoleranceExplain" cssClass="form-control required" placeholder="${intoleranceExplain}"  value="${healthDto.intoleranceExplain}"/>					     								
 				     </div>	
-				
+				  </div>
 			    </div>
 	
 
 		
 		  
-		      <div align="center">
-		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
-		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
+		      <div  align="center" style="margin-bottom: 5%;">
+		       <div id="btn">
+		        <button  id="renew" type="button" class="btn btn-info btn-md" ><spring:message code="label.renew" /></button>
+		        <button id="saveBtn" name="saveBtn" type="button" class="btn btn-info btn-md"  data-toggle="modal" data-target="#createModal"><spring:message code="label.save" /></button>
+		        <button id="deleteBtn" name="deleteBtn" type="button" class="btn btn-danger active btn-md" data-toggle="modal" data-target="#deleteModal"><spring:message code="label.delete" /></button>
+		      </div>
 		      </div>
  
       </f:form>
-	  
-	    </div>
-	  </div>
-	</div>   
- </div>
+</div>
  
+
+
+
+<!-- Modal Create and Update -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="createModalLabel"><spring:message code="health.name" /></h4>
+      </div>
+      <div class="modal-body">
+      	<spring:message code="default.create.confirm" />
+      </div>
+      <div class="modal-footer">
+		<button id="create" type="button" class="btn btn-info yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-danger" data-dismiss="modal"><spring:message code="default.no" /></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Modal Delete -->
@@ -1022,8 +1090,8 @@ $(function(){
       	<spring:message code="default.delete.confirm" />
       </div>
       <div class="modal-footer">
-		<button id="delete" type="button" class="btn btn-danger yesButton" ><spring:message code="default.yes" /></button>
-      	<button type="button" class="btn btn-info" data-dismiss="modal"><spring:message code="default.no" /></button>
+		<button id="delete" type="button" class=" btn btn-info yesButton" ><spring:message code="default.yes" /></button>
+      	<button type="button" class="btn btn-danger" data-dismiss="modal"><spring:message code="default.no" /></button>
       </div>
     </div>
   </div>

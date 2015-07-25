@@ -13,8 +13,8 @@ public interface HealthService {
 	public void delete(Health health);
 	public Health find(Integer Id);
 	public List<Health> findAll();
-	public void createSetDtoToEnity(HealthDto healthDto);
+	public Health createSetDtoToEnity(HealthDto healthDto);
 	public HealthDto findByIdReturnToDto(Integer id);
 	public void updateSetDtoToEntity(HealthDto healthDto);
-	
+	public HealthDto findByEmployeeId(Integer id);
 }

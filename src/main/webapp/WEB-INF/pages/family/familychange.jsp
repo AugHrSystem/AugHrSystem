@@ -77,7 +77,12 @@
 		                    },
 		                    digits: {
 		                    	message: '<spring:message code="family.required.age.num" />'
-		                    },
+		                    },		      
+		                    regexp: {
+				                regexp: /^[1-9]/,
+				                message: '<spring:message code="family.required.age.notzero" />'
+				            },
+
 		                }
 		            },
 		            mobile: {
@@ -85,6 +90,10 @@
 		                    notEmpty: {
 		                        message: '<spring:message code="family.required.mobile" />'
 		                    },
+		                    regexp: {
+				                regexp: /^[0-9]{3}-[0-9]{3}-[0-9]{4}/,
+				                message: '<spring:message code="family.required.mobile.format" />'
+				            },
 		                  
 		                }
 		            },
@@ -179,22 +188,8 @@
 			  		
 			  	    	 }
 		  	        		  	        
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  	
-		  	    
-		  	    	  
-		  	    	$(function(){ new PNotify({
-		  	    	    title: 'Error!',
-		  	    	    type: 'error',
-		  	    		animation: {
-		  	    			effect_in: 'show',
-		  	    			effect_out: 'slide'
-		  	    		}
-		  	    		});
-		  	    	});
-
-		  	     }  
-		  	    }); 
+		  	     }
+		  	  }); 
 		  	   
 		    }
 		      
@@ -301,8 +296,17 @@
 		  	    	 
 		  	    	    $('#addModal').modal('hide');
 		  	    	    doFindData();
-		  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-			    		
+		  	    	    
+		  	    	  $(function(){ new PNotify({
+							title: 'Success',
+							type: 'success',
+							animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+					});
+		  	       });
+		  	    	  
 		  	     }
 		  	    }); 
 		  	    
@@ -409,11 +413,20 @@
 		  	      success : function(data) {  
 		  	    	
 		  	       		 $('#addModal').modal('hide');	  
-		  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-		  	       	     doFindData();		  			 
+		  	       	     doFindData();
+		  	       	     
+		  	       		 $(function(){ new PNotify({
+						 title: 'Success',
+						 type: 'success',
+						 animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+					  });
+	  	       		});
 		  	        
 		  	     }
-		  	    }); 	  	    
+		  	   }); 	  	    
 		    }
 	      
 	      
@@ -454,9 +467,17 @@
 		    		
 		  	    	
 		  	    	$('#deleteModal').modal('hide');
-		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
-	  	       	    doFindData();		  	      
-		  	    	 
+	  	       	    doFindData();
+	  	       		$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+					});
+		  	       });
+				  	    	 
 		  	     }
 		  	    }); 
 		  	   

@@ -104,8 +104,8 @@
 			});
 			
 			$("div.toolbar").html('<b><button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal"><spring:message code="label.newRecord" /></button>  </b>');
-		dt = $('#tableResult').dataTable();  
 		
+		dt = $('#tableResult').dataTable();  	
 		doFindData();
 		
 		/* var defaultDate = new Date();
@@ -244,23 +244,8 @@
 		  		
 		  	    	 }
 	  	        		  	        
-	  	     },  
-	  	      error : function(data,testStatus,jqXHR) {  
-	  	    	$(function(){ new PNotify({
-	  	    	    title: 'Error!',
-	  	    	    type: 'error',
-	  	    		animation: {
-	  	    			effect_in: 'show',
-	  	    			effect_out: 'slide'
-	  	    		}
-	  	    		});
-	  	    	});
-	  	    	  
-	  	     }  
-	  	     
-	  	     
-	  	     
-	  	    }); 
+	  	     }
+	  	   }); 
 	  	   
 
 	    }
@@ -360,9 +345,17 @@
 	  	     
 	  	      success : function(data) {  
 	  	    	 
-	  	    	    $('#addModal').modal('hide');
-	  	    	    doFindData();
-	  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+	  	    	     $('#addModal').modal('hide');
+	  	    	     doFindData();
+	  	    	 	 $(function(){ new PNotify({
+						 title: 'Success',
+						 type: 'success',
+						 animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+					  });
+	  	       		});
 		    		
 	  	     }
 	  	    }); 
@@ -444,8 +437,16 @@
 		  	    	 
 		  	    	
 		  	       		 $('#addModal').modal('hide');	  
-		  	         	 $("#message").html('<div class="alert alert-success" role="alert">Success</div>');
-		  	       	     doFindData();		  			 
+		  	       	     doFindData();
+			  	         $(function(){ new PNotify({
+							 title: 'Success',
+							 type: 'success',
+							 animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+						  });
+		  	       		});
 		  	        
 		  	     }
 		  	    }); 	  	    
@@ -473,9 +474,17 @@
 	  		    		
 	  		  	    	
 	  		  	    	$('#deleteModal').modal('hide');
-	  		  	    	$("#message").html('<div class="alert alert-success" role="alert">Success</div>');	
-	  	  	       	    doFindData();		  	      
-	  		  	    	 
+	  	  	       	    doFindData();
+		  	  	       	$(function(){ new PNotify({
+							 title: 'Success',
+							 type: 'success',
+							 animation: {
+								effect_in: 'show',
+								effect_out: 'slide'
+							}
+						  });
+		  	       		});
+		  		  	    	 
 	  		  	     }
 	  		  	    }); 
 	  		  	   

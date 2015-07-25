@@ -14,9 +14,17 @@ import org.hibernate.annotations.NamedNativeQuery;
             name = "listHealth",
               query = "select health.ID,health.CONGENITAL_DISEASE,health.CONGENITAL_DISEASE_SPECIFIED1,health.CONGENITAL_DISEASE_SPECIFIED2,health.CONGENITAL_DISEASE_SPECIFIED3,"
               		+ "health.GENETIC_DISEASE,health.GENETIC_DISEASE_SPECIFIED1,health.GENETIC_DISEASE_SPECIFIED2,health.GENETIC_DISEASE_SPECIFIED3,"
-              		+ "health.TAKE_MEDICINE,health.TAKE_MEDICINE_EXPLAIN,health.INTOLERANCE,health.INTOLERANCE_EXPLAIN,health.EMPLOYEE_ID,emp.EMPLOYEE_CODE "
-              		//+ "CONCAT(health.CONGENITAL_DISEASE_EXPLAIN1,CONCAT(',',health.CONGENITAL_DISEASE_EXPLAIN2),CONCAT(',',health.CONGENITAL_DISEASE_EXPLAIN3)) as CONGENITAL_DISEASE_ALLEXPLAIN,"
-              		//+ "CONCAT(health.GENETIC_DISEASE_EXPLAIN1,CONCAT(',',health.GENETIC_DISEASE_EXPLAIN2),CONCAT(',',health.GENETIC_DISEASE_EXPLAIN3)) as GENETIC_DISEASE_ALLEXPLAIN "
+              		+ "health.TAKE_MEDICINE,health.TAKE_MEDICINE_EXPLAIN,health.INTOLERANCE,health.INTOLERANCE_EXPLAIN,health.EMPLOYEE_ID,emp.EMPLOYEE_CODE,"
+              		+ "( CASE "
+              		+ "WHEN CONGENITAL_DISEASE_SPECIFIED1!=''&&CONGENITAL_DISEASE_SPECIFIED2=''&&CONGENITAL_DISEASE_SPECIFIED3='' THEN CONGENITAL_DISEASE_SPECIFIED1 "
+              		+ "WHEN CONGENITAL_DISEASE_SPECIFIED1!=''&&CONGENITAL_DISEASE_SPECIFIED2!=''&&CONGENITAL_DISEASE_SPECIFIED3=''  THEN CONCAT(CONGENITAL_DISEASE_SPECIFIED1,', ',CONGENITAL_DISEASE_SPECIFIED2) "
+              		+ "WHEN CONGENITAL_DISEASE_SPECIFIED1!=''&&CONGENITAL_DISEASE_SPECIFIED2!=''&&CONGENITAL_DISEASE_SPECIFIED3!=''  THEN CONCAT(CONGENITAL_DISEASE_SPECIFIED1,', ',CONGENITAL_DISEASE_SPECIFIED2,', ',CONGENITAL_DISEASE_SPECIFIED3) "
+              		+ "WHEN CONGENITAL_DISEASE_SPECIFIED1=''&&CONGENITAL_DISEASE_SPECIFIED2!=''&&CONGENITAL_DISEASE_SPECIFIED3=''  THEN CONGENITAL_DISEASE_SPECIFIED2 "
+              		+ "WHEN CONGENITAL_DISEASE_SPECIFIED1=''&&CONGENITAL_DISEASE_SPECIFIED2!=''&&CONGENITAL_DISEASE_SPECIFIED3!=''  THEN CONCAT(CONGENITAL_DISEASE_SPECIFIED2,', ',CONGENITAL_DISEASE_SPECIFIED3) "
+              		+ "WHEN CONGENITAL_DISEASE_SPECIFIED1!=''&&CONGENITAL_DISEASE_SPECIFIED2=''&&CONGENITAL_DISEASE_SPECIFIED3!=''  THEN CONCAT(CONGENITAL_DISEASE_SPECIFIED1,', ',CONGENITAL_DISEASE_SPECIFIED3) "
+              		+ "WHEN CONGENITAL_DISEASE_SPECIFIED1=''&&CONGENITAL_DISEASE_SPECIFIED2=''&&CONGENITAL_DISEASE_SPECIFIED3!=''  THEN CONGENITAL_DISEASE_SPECIFIED3 "
+              		+ "ELSE '' "
+              		+ "END ) AS CONGENITAL_DISEASE_SPECIFIED "
               		+ "from  EMP_HEALTH  health join EMP_EMPLOYEE emp on health.EMPLOYEE_ID=emp.ID "
               		+ "where health.EMPLOYEE_ID=:empId",
             resultClass = HealthDto.class)
@@ -43,6 +51,7 @@ public class HealthDto {
 	private String intoleranceExplain;
 	private Integer employeeId;
 	private String employeeCode;
+	private String congenitalDiseaseSpecified;
 	
 	@Id
 	@Column(name="ID")
@@ -204,75 +213,19 @@ public class HealthDto {
 	public void setEmployeeCode(String employeeCode) {
 		this.employeeCode = employeeCode;
 	}
+
 	
 	
-
-	/*
-	@Column(name="CONGENITAL_DISEASE_ALLEXPLAIN")
-	public String getCongenitalDiseaseAllExplain() {
-		return congenitalDiseaseAllExplain;
+	@Column(name="CONGENITAL_DISEASE_SPECIFIED")
+	public String getCongenitalDiseaseSpecified() {
+		return congenitalDiseaseSpecified;
 	}
 
 
-	public void setCongenitalDiseaseAllExplain(String congenitalDiseaseAllExplain) {
-		this.congenitalDiseaseAllExplain = congenitalDiseaseAllExplain;
+	public void setCongenitalDiseaseSpecified(String congenitalDiseaseSpecified) {
+		this.congenitalDiseaseSpecified = congenitalDiseaseSpecified;
 	}
-
-
-	@Column(name="GENETIC_DISEASE_ALLEXPLAIN")
-	public String getGeneticDiseaseAllExplain() {
-		return geneticDiseaseAllExplain;
-	}
-
-
-	public void setGeneticDiseaseAllExplain(String geneticDiseaseAllExplain) {
-		this.geneticDiseaseAllExplain = geneticDiseaseAllExplain;
-	}
-   */
 	
-
-	/*@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("HealthDto [id=");
-		builder.append(id);
-		builder.append(", congenitalDisease=");
-		builder.append(congenitalDisease);
-		builder.append(", congenitalDiseaseExplain=");
-		builder.append(congenitalDiseaseExplain);
-		builder.append(", congenitalDiseaseExplain2=");
-		builder.append(congenitalDiseaseExplain2);
-		builder.append(", congenitalDiseaseExplain3=");
-		builder.append(congenitalDiseaseExplain3);
-		builder.append(", congenitalDiseaseAllExplain=");
-		builder.append(congenitalDiseaseAllExplain);
-		builder.append(", geneticDisease=");
-		builder.append(geneticDisease);
-		builder.append(", geneticDiseaseExplain=");
-		builder.append(geneticDiseaseExplain);
-		builder.append(", geneticDiseaseExplain2=");
-		builder.append(geneticDiseaseExplain2);
-		builder.append(", geneticDiseaseExplain3=");
-		builder.append(geneticDiseaseExplain3);
-		builder.append(", geneticDiseaseAllExplain=");
-		builder.append(geneticDiseaseAllExplain);
-		builder.append(", takeMedicine=");
-		builder.append(takeMedicine);
-		builder.append(", takeMedicineExplain=");
-		builder.append(takeMedicineExplain);
-		builder.append(", intolerance=");
-		builder.append(intolerance);
-		builder.append(", intoleranceExplain=");
-		builder.append(intoleranceExplain);
-		builder.append(", employeeId=");
-		builder.append(employeeId);
-		builder.append(", employeeCode=");
-		builder.append(employeeCode);
-		builder.append("]");
-		return builder.toString();
-	}
-
-	*/
 	
 	
 

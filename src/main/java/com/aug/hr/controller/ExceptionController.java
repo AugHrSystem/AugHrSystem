@@ -24,9 +24,13 @@ public class ExceptionController {
 			  andView.setViewName("/error/400");
 			  return andView;				
 			}else if(exceptionDto.getError().equals("Unsupported Media Type")){
-				  andView.setViewName("/error/415");
-				  return andView;				
+			  andView.setViewName("/error/415");
+			  return andView;				
+			}else if(exceptionDto.getError().equals("Method Not Allowed")){	
+			  andView.setViewName("/error/405");
+			  return andView;			
 			}
+			
 			andView.setViewName("/error/exception_error");
 			return andView;
 		  }

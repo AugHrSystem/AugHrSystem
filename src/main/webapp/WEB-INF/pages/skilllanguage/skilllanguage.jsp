@@ -111,20 +111,7 @@
 					  			           ]); 			  		
 			  	    	 }
 		  	        		  	        
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  	
-		  	    	$(function(){ new PNotify({
-		  	    	    title: 'Error!',
-		  	    	    type: 'error',
-		  	    		animation: {
-		  	    			effect_in: 'show',
-		  	    			effect_out: 'slide'
-		  	    		}
-		  	    		});
-		  	    	});
-		  	    	  //$("#outputajax").text(testStatus);
-		  	    	  myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
-		  	     }  
+		  	     }
 		  	    }); 
 		  	   
 		    }
@@ -282,7 +269,7 @@
 			  	    //var language =  "masSkillLanguage.id="+masSkillLanguageId+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing;
 			  	     
 // 			  	    var id = getUrlParameter('Id');	
-			  	  var id = $("#empId").val();
+			  	    var id = $("#empId").val();
 			  	    var language =  "masSkillLanguageId="+masSkillLanguageId+"&masSkillLanguageName="+masSkillLanguageName+"&abilitySpeaking="+speaking+"&abilityReading="+reading+"&abilityUnderstanding="+understanding+"&abilityWriting="+writing+"&employeeId="+id;
 			 
 	                
@@ -294,18 +281,17 @@
 			  	    	 
 			  	    	    $('#addModal').modal('hide');
 			  	    	    doFindData();
-			  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');
+				  	    	$(function(){ new PNotify({
+								title: 'Success',
+								type: 'success',
+								animation: {
+									effect_in: 'show',
+									effect_out: 'slide'
+								}
+							});
+				  	       });
 				    		
-			  	     },  
-			  	      error : function(data,testStatus,jqXHR) {  
-			  	           
-			  	    	  
-			  	    	   //$('#addModal').modal('hide');			  	 
-			  	    	   //$("#message").html('<div class="alert alert-danger" role="alert">Error</div>'); 
-			  	    	   //$('#formAddUpdate').bootstrapValidator('validate');
-			  	    	   
-			  	    	   myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
-			  	     }  
+			  	     }
 			  	    });   	
 		   }
 		   
@@ -411,12 +397,7 @@
 		  	    	
 					
 		  	    	 
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  	
-		  	    	  
-		  	    	//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	    	myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
-		  	      }  
+		  	     } 
 		  	    }); 
 		  	   
 		    }
@@ -528,17 +509,18 @@
 		    		
 		  	    	$('#addModal').modal('hide');
 	  	    	    doFindData();
-	  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');				
-		  	    	 
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  	
-		  	    	  
-		  	    	//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	    	//$('#formAddUpdate').bootstrapValidator('validate');
-		  	    	myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
-	
-		  	      }  
-		  	    }); 
+	  	    	    $(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+					});
+		  	       });
+		    				  	    	 
+		  	     }	  	   
+		  	   }); 
 		  	   
 		    }
 		   
@@ -583,30 +565,21 @@
 		    		
 		  	    	$('#deleteModal').modal('hide');
 	  	    	    doFindData();
-	  	    		$("#message").html('<div class="alert alert-success" role="alert">Success</div>');				
-		  	    	 
-		  	     },  
-		  	      error : function(data,testStatus,jqXHR) {  	
-		  	    	  
-		  	    	//$('#deleteModal').modal('hide');
-		  	    	//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>');
-		  	    	myRedirect('${pageContext.request.contextPath}/httperror',jqXHR,testStatus);
-		  	      }  
+	  	    	  	$(function(){ new PNotify({
+						title: 'Success',
+						type: 'success',
+						animation: {
+							effect_in: 'show',
+							effect_out: 'slide'
+						}
+					});
+		  	       });
+		    				  	    	 
+		  	     } 
 		  	    }); 
 		  	   
 		    }
-		   
-		   
-		   
-		   var myRedirect = function(redirectUrl,err,testStatus) {
-	        	var form = $('<form id="form" action="' + redirectUrl + '" method="post">' +
-	        	'<input type="hidden" name="error" value="'+err+'" />' +
-	        	'<input type="hidden" name="msgThrowable" value="'+testStatus+'" />' +
-	        	'</form>');
-	        	$('body').append(form);
-	        	$('#form').submit();
-	        };
-	      
+		   	   
 		   
 		   
 		   

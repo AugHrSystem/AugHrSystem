@@ -28,31 +28,20 @@ public class HealthServiceImpl implements HealthService{
 	@Override
 	public void create(Health health) {
 		// TODO Auto-generated method stub
-		try{
-			healthDao.create(health);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		healthDao.create(health);
+		
 	}
 
 	@Override
 	public void update(Health health) {
 		// TODO Auto-generated method stub
-		try{
-			healthDao.update(health);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		healthDao.update(health);
 	}
 
 	@Override
 	public void delete(Health health) {
 		// TODO Auto-generated method stub
-		try{
-			healthDao.delete(health);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		healthDao.delete(health);		
 	}
 
 	@Override
@@ -69,7 +58,7 @@ public class HealthServiceImpl implements HealthService{
 	}
 
 	@Override
-	public void createSetDtoToEnity(HealthDto healthDto) {
+	public Health createSetDtoToEnity(HealthDto healthDto) {
 		// TODO Auto-generated method stub
 		
 		
@@ -83,93 +72,22 @@ public class HealthServiceImpl implements HealthService{
 		health.setCreatedTimeStamp(Calendar.getInstance().getTime());
 		health.setEmployee(employee);
 		health.setCongenitalDisease(healthDto.getCongenitalDisease());
-		
-		String str="{null}";
-		
-		if(healthDto.getCongenitalDiseaseExplain().isEmpty()){
-			health.setCongenitalDiseaseExplain(str);
-		}else{
-			health.setCongenitalDiseaseExplain(healthDto.getCongenitalDiseaseExplain());
-		}
-		
-		if(healthDto.getCongenitalDiseaseExplain2().isEmpty()){
-			health.setCongenitalDiseaseExplain2(str);
-		}else{
-			health.setCongenitalDiseaseExplain2(healthDto.getCongenitalDiseaseExplain2());
-
-		}
-		
-		if(healthDto.getCongenitalDiseaseExplain3().isEmpty()){
-			health.setCongenitalDiseaseExplain3(str);
-		}else{
-			health.setCongenitalDiseaseExplain3(healthDto.getCongenitalDiseaseExplain3());
-
-		}
-		
-		
-		/*health.setCongenitalDiseaseExplain(healthDto.getCongenitalDiseaseExplain());
+		health.setCongenitalDiseaseExplain(healthDto.getCongenitalDiseaseExplain());
 		health.setCongenitalDiseaseExplain2(healthDto.getCongenitalDiseaseExplain2());
-		health.setCongenitalDiseaseExplain3(healthDto.getCongenitalDiseaseExplain3());*/
-		
-		
-		health.setGeneticDisease(healthDto.getGeneticDisease());
-		
-		
-
-		
-		if(healthDto.getGeneticDiseaseExplain().isEmpty()){
-			health.setGeneticDiseaseExplain(str);
-		}else{
-			health.setGeneticDiseaseExplain(healthDto.getGeneticDiseaseExplain());
-
-		}
-		
-		if(healthDto.getGeneticDiseaseExplain2().isEmpty()){
-			health.setGeneticDiseaseExplain2(str);
-
-		}else{
-			health.setGeneticDiseaseExplain2(healthDto.getGeneticDiseaseExplain2());
-
-		}
-		
-		if(healthDto.getGeneticDiseaseExplain3().isEmpty()){
-			health.setGeneticDiseaseExplain3(str);
-
-		}else{
-			health.setGeneticDiseaseExplain3(healthDto.getGeneticDiseaseExplain3());
-
-		}
-		
-		/*health.setGeneticDiseaseExplain(healthDto.getGeneticDiseaseExplain());
+		health.setCongenitalDiseaseExplain3(healthDto.getCongenitalDiseaseExplain3());
+		health.setGeneticDisease(healthDto.getGeneticDisease());	
+		health.setGeneticDiseaseExplain(healthDto.getGeneticDiseaseExplain());
 		health.setGeneticDiseaseExplain2(healthDto.getGeneticDiseaseExplain2());
-		health.setGeneticDiseaseExplain3(healthDto.getGeneticDiseaseExplain3());*/
-		
+		health.setGeneticDiseaseExplain3(healthDto.getGeneticDiseaseExplain3());		
 		health.setTakeMedicine(healthDto.getTakeMedicine());
-		
-		if(healthDto.getTakeMedicineExplain().isEmpty()){
-			health.setTakeMedicineExplain(str);
-		}else{
-			healthDto.setTakeMedicineExplain(health.getTakeMedicineExplain());
-		}
-		
-		//health.setTakeMedicineExplain(healthDto.getTakeMedicineExplain());
-		
-		
+		health.setTakeMedicineExplain(healthDto.getTakeMedicineExplain());
 		health.setIntolerance(healthDto.getIntolerance());
-		
-		
-		if(healthDto.getIntoleranceExplain().isEmpty()){
-			health.setIntoleranceExplain(str);
-		}else{
-			healthDto.setIntoleranceExplain(healthDto.getIntoleranceExplain());
-
-		}
-		
-		//health.setIntoleranceExplain(healthDto.getIntoleranceExplain());
+		health.setIntoleranceExplain(healthDto.getIntoleranceExplain());
 
 		
 		healthDao.create(health);
 		
+		return health;
 		
 	}
 
@@ -179,66 +97,22 @@ public class HealthServiceImpl implements HealthService{
 		
 		Health health = new Health();
 		health = healthDao.find(id);
+		System.out.println("id: "+id);
+		System.out.println("id2: "+health.getId());
 		HealthDto healthDto = new HealthDto();
 		healthDto.setId(health.getId());
 		healthDto.setCongenitalDisease(health.getCongenitalDisease());
-		
-		if(health.getCongenitalDiseaseExplain().equals("{null}")){
-			healthDto.setCongenitalDiseaseExplain("");
-		}else{
-			healthDto.setCongenitalDiseaseExplain(health.getCongenitalDiseaseExplain());
-		}
-		
-		if(health.getCongenitalDiseaseExplain2().equals("{null}")){
-			healthDto.setCongenitalDiseaseExplain2("");
-		}else{
+		healthDto.setCongenitalDiseaseExplain(health.getCongenitalDiseaseExplain());
 		healthDto.setCongenitalDiseaseExplain2(health.getCongenitalDiseaseExplain2());
-		}
-		
-		if(health.getCongenitalDiseaseExplain3().equals("{null}")){
-			healthDto.setCongenitalDiseaseExplain3("");
-		}else{
-			healthDto.setCongenitalDiseaseExplain3(health.getCongenitalDiseaseExplain3());
-		}
-		
+		healthDto.setCongenitalDiseaseExplain3(health.getCongenitalDiseaseExplain3());
 		healthDto.setGeneticDisease(health.getGeneticDisease());
-		
-		if(health.getGeneticDiseaseExplain().equals("{null}")){
-			healthDto.setGeneticDiseaseExplain("");
-		}else{
-			healthDto.setGeneticDiseaseExplain(health.getGeneticDiseaseExplain());
-		}
-		
-		
-		if(health.getGeneticDiseaseExplain2().equals("{null}")){
-			healthDto.setGeneticDiseaseExplain2("");
-		}else{
-			healthDto.setGeneticDiseaseExplain2(health.getGeneticDiseaseExplain2());
-		}	
-		
-		if(health.getGeneticDiseaseExplain3().equals("{null}")){
-			healthDto.setGeneticDiseaseExplain3("");
-		}else{
-			healthDto.setGeneticDiseaseExplain3(health.getGeneticDiseaseExplain3());
-		}	
-		
-		
+		healthDto.setGeneticDiseaseExplain(health.getGeneticDiseaseExplain());
+		healthDto.setGeneticDiseaseExplain2(health.getGeneticDiseaseExplain2());
+		healthDto.setGeneticDiseaseExplain3(health.getGeneticDiseaseExplain3());
 		healthDto.setTakeMedicine(health.getTakeMedicine());
-		
-		if(health.getTakeMedicineExplain().equals("{null}")){
-			healthDto.setTakeMedicineExplain("");
-		}else{
-			healthDto.setTakeMedicineExplain(health.getTakeMedicineExplain());
-
-		}
+		healthDto.setTakeMedicineExplain(health.getTakeMedicineExplain());
 		healthDto.setIntolerance(health.getIntolerance());		
-		
-		if(health.getIntoleranceExplain().equals("{null}")){
-			
-		}else{
-			healthDto.setIntoleranceExplain(health.getIntoleranceExplain());
-		}
-		
+		healthDto.setIntoleranceExplain(health.getIntoleranceExplain());
 		healthDto.setEmployeeId(health.getEmployee().getId());
 		healthDto.setEmployeeCode(health.getEmployee().getEmployeeCode());
 		
@@ -249,14 +123,13 @@ public class HealthServiceImpl implements HealthService{
 	public void updateSetDtoToEntity(HealthDto healthDto) {
 		// TODO Auto-generated method stub
 		
-		try{
 			Health health = new Health();
 			health = healthDao.find(healthDto.getId());
 			health.setAuditFlag("U");
 			health.setUpdatedBy(healthDto.getEmployeeId());
 			health.setUpdatedTimeStamp(Calendar.getInstance().getTime());
 			health.setCongenitalDisease(healthDto.getCongenitalDisease());
-			/*health.setCongenitalDiseaseExplain(healthDto.getCongenitalDiseaseExplain());
+			health.setCongenitalDiseaseExplain(healthDto.getCongenitalDiseaseExplain());
 			health.setCongenitalDiseaseExplain2(healthDto.getCongenitalDiseaseExplain2());
 			health.setCongenitalDiseaseExplain3(healthDto.getCongenitalDiseaseExplain3());
 			health.setGeneticDisease(healthDto.getGeneticDisease());
@@ -266,90 +139,37 @@ public class HealthServiceImpl implements HealthService{
 			health.setTakeMedicine(healthDto.getTakeMedicine());
 			health.setTakeMedicineExplain(healthDto.getTakeMedicineExplain());
 			health.setIntolerance(healthDto.getIntolerance());
-			health.setIntoleranceExplain(healthDto.getIntoleranceExplain());*/
-			
-			
-			
-			String str="{null}";
-			
-			if(healthDto.getCongenitalDiseaseExplain().isEmpty()){
-				health.setCongenitalDiseaseExplain(str);
-			}else{
-				health.setCongenitalDiseaseExplain(healthDto.getCongenitalDiseaseExplain());
-			}
-			
-			if(healthDto.getCongenitalDiseaseExplain2().isEmpty()){
-				health.setCongenitalDiseaseExplain2(str);
-			}else{
-				health.setCongenitalDiseaseExplain2(healthDto.getCongenitalDiseaseExplain2());
-
-			}
-			
-			if(healthDto.getCongenitalDiseaseExplain3().isEmpty()){
-				health.setCongenitalDiseaseExplain3(str);
-			}else{
-				health.setCongenitalDiseaseExplain3(healthDto.getCongenitalDiseaseExplain3());
-
-			}
-			
-		
-			
-			health.setGeneticDisease(healthDto.getGeneticDisease());
-			
-			
-
-			
-			if(healthDto.getGeneticDiseaseExplain().isEmpty()){
-				health.setGeneticDiseaseExplain(str);
-			}else{
-				health.setGeneticDiseaseExplain(healthDto.getGeneticDiseaseExplain());
-
-			}
-			
-			if(healthDto.getGeneticDiseaseExplain2().isEmpty()){
-				health.setGeneticDiseaseExplain2(str);
-
-			}else{
-				health.setGeneticDiseaseExplain2(healthDto.getGeneticDiseaseExplain2());
-
-			}
-			
-			if(healthDto.getGeneticDiseaseExplain3().isEmpty()){
-				health.setGeneticDiseaseExplain3(str);
-
-			}else{
-				health.setGeneticDiseaseExplain3(healthDto.getGeneticDiseaseExplain3());
-
-			}
-			
-		
-			health.setTakeMedicine(healthDto.getTakeMedicine());
-			
-			if(healthDto.getTakeMedicineExplain().isEmpty()){
-				health.setTakeMedicineExplain(str);
-			}else{
-				healthDto.setTakeMedicineExplain(health.getTakeMedicineExplain());
-			}
-			
-			
-			
-			health.setIntolerance(healthDto.getIntolerance());
-			
-			
-			if(healthDto.getIntoleranceExplain().isEmpty()){
-				health.setIntoleranceExplain(str);
-			}else{
-				healthDto.setIntoleranceExplain(healthDto.getIntoleranceExplain());
-
-			}
-			
+			health.setIntoleranceExplain(healthDto.getIntoleranceExplain());
 			
 			healthDao.update(health);
 			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
 		
+	}
+
+	@Override
+	public HealthDto findByEmployeeId(Integer id) {
+		// TODO Auto-generated method stub
+		Health health = new Health();
+		health = healthDao.findByEmployeeId(id);
+		HealthDto healthDto = new HealthDto();
+		if(health!=null){
+			healthDto.setId(health.getId());		
+			healthDto.setCongenitalDisease(health.getCongenitalDisease());
+			healthDto.setCongenitalDiseaseExplain(health.getCongenitalDiseaseExplain());
+			healthDto.setCongenitalDiseaseExplain2(health.getCongenitalDiseaseExplain2());
+			healthDto.setCongenitalDiseaseExplain3(health.getCongenitalDiseaseExplain3());
+			healthDto.setGeneticDisease(health.getGeneticDisease());
+			healthDto.setGeneticDiseaseExplain(health.getGeneticDiseaseExplain());
+			healthDto.setGeneticDiseaseExplain2(health.getGeneticDiseaseExplain2());
+			healthDto.setGeneticDiseaseExplain3(health.getGeneticDiseaseExplain3());
+			healthDto.setTakeMedicine(health.getTakeMedicine());
+			healthDto.setTakeMedicineExplain(health.getTakeMedicineExplain());
+			healthDto.setIntolerance(health.getIntolerance());		
+			healthDto.setIntoleranceExplain(health.getIntoleranceExplain());
+			healthDto.setEmployeeId(health.getEmployee().getId());
+			healthDto.setEmployeeCode(health.getEmployee().getEmployeeCode());
+		}
+		return healthDto;
 	}
 
 }

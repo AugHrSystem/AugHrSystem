@@ -135,6 +135,15 @@ var empId;
 		});
 
 
+		var myRedirect = function(redirectUrl,err,testStatus) {
+		  	var form = $('<form id="form" action="' + redirectUrl + '" method="post">' +
+		  	'<input type="hidden" name="error" value="'+err+'" />' +
+		  	'</form>');
+		  	$('body').append(form);
+		  	$('#form').submit();
+		};
+
+		
 		
 		dt=$("#tdResult").dataTable({ 
 			"ordering": false,

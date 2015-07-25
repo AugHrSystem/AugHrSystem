@@ -112,8 +112,7 @@ $.ajaxSetup({
 		   	    	title: "Time Out", 		  	    	    	
 		   	    	text: "Connection Time Out..."
 		   	  });
-    	   	  
-          }
+    	  }
     	
 
    	   if(XMLHttpRequest.responseText.indexOf("Error:")== 1){
