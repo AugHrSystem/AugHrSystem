@@ -665,7 +665,7 @@
 								 <div class="col-md-12">
 								   <div class="col-md-12">
 									  <c:if test="${empty allEmployeeDto.knowAugOther}">	
-									    <label style="padding:5px;"><input type="checkbox" id="Other" name="knowAugOther" value="Other"><spring:message code="employee.other"></spring:message></label>
+									    <label><input type="checkbox" id="Other" name="knowAugOther" value="Other"><spring:message code="employee.other"></spring:message></label>
     								  </c:if>
 									    
 									  <c:if test="${not empty allEmployeeDto.knowAugOther}">	
