@@ -526,7 +526,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setKnowAugWebsite(allEmployeeDto.getKnowAugWebsite());
 		employee.setDescriptionWebsite(allEmployeeDto.getDescriptionWebsite());
 		employee.setKnowAugFriend(allEmployeeDto.getKnowAugFriend()); 
-		employee.setDescriptionFriend(allEmployeeDto.getKnowAugFriend());
+		employee.setDescriptionFriend(allEmployeeDto.getDescriptionFriend());
 		employee.setKnowAugOther(allEmployeeDto.getKnowAugOther()); 
 		employee.setDescriptionOther(allEmployeeDto.getDescriptionOther()); 
 		employee.setKnowEmployed(allEmployeeDto.getKnowEmployed());
@@ -768,7 +768,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setKnowAugWebsite(allEmployeeDto.getKnowAugWebsite());
 		employee.setDescriptionWebsite(allEmployeeDto.getDescriptionWebsite());
 		employee.setKnowAugFriend(allEmployeeDto.getKnowAugFriend()); 
-		employee.setDescriptionFriend(allEmployeeDto.getKnowAugFriend());
+		employee.setDescriptionFriend(allEmployeeDto.getDescriptionFriend());
 		employee.setKnowAugOther(allEmployeeDto.getKnowAugOther()); 
 		employee.setDescriptionOther(allEmployeeDto.getDescriptionOther()); 
 		employee.setKnowEmployed(allEmployeeDto.getKnowEmployed());

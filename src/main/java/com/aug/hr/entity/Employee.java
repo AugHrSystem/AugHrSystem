@@ -32,6 +32,7 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -931,7 +932,8 @@ public class Employee extends BaseEntity{
 	@Column(name = "IMAGE",nullable = true)
 	private String image;
 	
-	@Column(name = "STATUSEMP",nullable = true)
+	@Column(name = "STATUSEMP",nullable = false)
+	@NotEmpty
 	private String statusemp;
 		
 	@Column(name = "ISMANAGER",nullable = true)

@@ -92,7 +92,21 @@
 		 	<spring:message code="employee.givethereason" var="reason"/>
 		 	<spring:message code="employee.pleasestatethereasons" var="pleasereason"/>
 		 	<spring:message code="employee.datedrafted" var="datedrafted"/>
+		 	<spring:message code="employee.selectempstatus" var="empstatuslabel"/>
 		 	
+		 	             <div class="form-group">
+									<div class="col-md-6">
+								   
+								    <label class="required"> <spring:message code="employee.status" ></spring:message> :</label> 
+									
+									<f:select multiple="single" path="statusemp" class="form-control">
+		 							  <f:option value="" label="${empstatuslabel}"/>
+		 							  <f:option value="Employee" label="Employee" />	
+		 							  <f:option value="Resignation" label="Resignation" />		  							  	  
+									</f:select>
+								 </div>
+							 	             
+		 	             </div>
 
 							<div class="form-group">
 									<!-- <label for="id"> ID :</label> -->
@@ -162,9 +176,14 @@
 	         
  <!-------------------------------------------------- Start Address-------------------------------------------------->
  
-	      
-	       
-	   
+	    <div class="col-md-12">
+	    <div class="form-group" align="right">
+	      <button id="addaddress" type="button"class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">
+          <spring:message code="label.newRecord"></spring:message></button>	
+        </div>
+        </div>
+	     
+	    
         <div id="outputAddress">
 	       <table id="tbResult" class ="dataTable stripe table-bordered">
 	       <caption title=""><spring:message code="label.address"></spring:message></caption>
@@ -194,14 +213,8 @@
 					
 	     </div>
 	     
-	     <br>
-	     <div class="col-md-12">
-	    <div class="form-group" align="right">
-	      <button id="addaddress" type="button"class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">
-          <spring:message code="label.newRecord"></spring:message></button>	
-        </div>
-        </div>
-	     
+	   
+	
  <!----------------------------------------- Start General------------------------------------------------------>
 	     
 	     <div id = "div-information" class="col-md-12" style="padding: 15px 0px 15px 0px;">
@@ -593,80 +606,76 @@
 							<div class="col-md-12">
 								<div class="col-md-3">
 								
-   								  <c:if test="${empty allEmployeeDto.knowAugNewspaper}">	
-     									  <label style="margin-right: 25px;"><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper"><spring:message code="employee.newspaper"></spring:message></label>   										 
-     									  <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${please} ${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
-     									
+   								     <c:if test="${empty allEmployeeDto.knowAugNewspaper}">	
+     									  <label style="margin-right: 25px;"><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper"><spring:message code="employee.newspaper"></spring:message></label>   										      									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugNewspaper}">	
-     									   <label style="margin-right: 25px;"><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper" checked="checked"><spring:message code="employee.newspaper"></spring:message></label>
-    								  	   <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${please} ${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
-    								  		
+     									   <label style="margin-right: 25px;"><input type="checkbox" id="Newspaper" name="knowAugNewspaper" value="Newspaper" checked="checked"><spring:message code="employee.newspaper"></spring:message></label>    								  		
     								  </c:if>
+    								  
+    								  <input type="text" class="form-control" id="descriptionNewspaper" name="descriptionNewspaper" placeholder="${please} ${enter} <spring:message code="employee.newspaper"></spring:message>" value="${allEmployeeDto.descriptionNewspaper}">
+    								  
 								 </div>
 									  
 									 <div class="col-md-3">
 									  
-									  <c:if test="${empty allEmployeeDto.descriptionMagazine}">	
-     									 <label style="margin-right: 25px;"><input type="checkbox" id="Magazine" name="knowAugMagazine" value="Magazine"><spring:message code="employee.magazine"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${please} ${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
-      									 
+									  <c:if test="${empty allEmployeeDto.knowAugMagazine}">	
+     									 <label style="margin-right: 25px;"><input type="checkbox" id="Magazine" name="knowAugMagazine" value="Magazine"><spring:message code="employee.magazine"></spring:message></label>      									 
     								  </c:if>
     								 
-									  <c:if test="${not empty allEmployeeDto.descriptionMagazine}">	
-     									   <label style="margin-right: 25px;"><input type="checkbox" id="" name="knowAugMagazine" value="Magazine" checked="checked"><spring:message code="employee.magazine"></spring:message></label>
-    								  	   <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${please} ${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
-      									 
+									  <c:if test="${not empty allEmployeeDto.knowAugMagazine}">	
+     									   <label style="margin-right: 25px;"><input type="checkbox" id="Magazine" name="knowAugMagazine" value="Magazine" checked="checked"><spring:message code="employee.magazine"></spring:message></label>
     								  </c:if>
+    								  
+    								  <input type="text" class="form-control" id="descriptionMagazine" name="descriptionMagazine" placeholder="${please} ${enter} <spring:message code="employee.magazine"></spring:message>" value="${allEmployeeDto.descriptionMagazine}">
+    								  
 									</div>
 										
-										<div class="col-md-3">
+								    <div class="col-md-3">
 									 <c:if test="${empty allEmployeeDto.knowAugWebsite}">	
      									 <label style="margin-right: 25px;"><input type="checkbox" id="Website" name="knowAugWebsite" value="Website"><spring:message code="employee.website"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="${please} ${enter} <spring:message code="employee.website"></spring:message>" value="${allEmployeeDto.descriptionWebsite}">
       									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugWebsite}">	
-     									 <label style="margin-right: 25px;"><input type="checkbox" id="Website" name="knowAugWebsite" value="Website" checked="checked"><spring:message code="employee.website"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="${please} ${enter} <spring:message code="employee.website"></spring:message>" value="${allEmployeeDto.descriptionWebsite}">
-      									
+     									 <label style="margin-right: 25px;"><input type="checkbox" id="Website" name="knowAugWebsite" value="Website" checked="checked"><spring:message code="employee.website"></spring:message></label>      									
     								  </c:if>
-									
-									 	 </div>
+    								  
+    								  <input type="text" class="form-control" id="descriptionWebsite" name="descriptionWebsite" placeholder="${please} ${enter} <spring:message code="employee.website"></spring:message>" value="${allEmployeeDto.descriptionWebsite}">
+    								 </div>
 									  
 									  <div class="col-md-3">
 									  <c:if test="${empty allEmployeeDto.knowAugFriend}">	
-     									 <label style="margin-right: 25px;"><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend"><spring:message code="employee.friend"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="${please} ${enter} <spring:message code="employee.friend"></spring:message>" value="${allEmployeeDto.descriptionFriend}">
-      									
+     									 <label style="margin-right: 25px;"><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend"><spring:message code="employee.friend"></spring:message></label>      									
     								  </c:if>
     								 
 									  <c:if test="${not empty allEmployeeDto.knowAugFriend}">	
-     									 <label style="margin-right: 25px; padding:10px;"><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend" checked="checked"><spring:message code="employee.friend"></spring:message></label>
-      									 <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="${please} ${enter} <spring:message code="employee.friend"></spring:message>" value="${allEmployeeDto.descriptionFriend}">
-      									
+     									 <label style="margin-right: 25px;"><input type="checkbox" id="Friend" name="knowAugFriend" value="Friend" checked="checked"><spring:message code="employee.friend"></spring:message></label>
     								  </c:if>
+    								  
+    								  <input type="text" class="form-control" id="descriptionFriend" name="descriptionFriend" placeholder="${please} ${enter} <spring:message code="employee.friend"></spring:message>" value="${allEmployeeDto.descriptionFriend}">
+    								  
 									    
 									  </div>
 									    
 							 </div>
 									
 									    
-									 <div class="col-md-12">
-									     <div class="col-md-12">
+								 <div class="col-md-12">
+								   <div class="col-md-12">
 									  <c:if test="${empty allEmployeeDto.knowAugOther}">	
 									    <label style="padding:5px;"><input type="checkbox" id="Other" name="knowAugOther" value="Other"><spring:message code="employee.other"></spring:message></label>
-      									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${please} ${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
     								  </c:if>
 									    
 									  <c:if test="${not empty allEmployeeDto.knowAugOther}">	
 									    <label><input type="checkbox" id="Other" name="knowAugOther" value="Other" checked="checked"><spring:message code="employee.other"></spring:message></label>
-      									<input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${please} ${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
     								  </c:if>
-									    </div>		 
-      								</div>
+    								  
+    								  <input type="text" class="form-control" id="descriptionOther" name="descriptionOther" placeholder="${please} ${enter} <spring:message code="employee.other"></spring:message>" value="${allEmployeeDto.descriptionOther}">
+    								  
+								    </div>		 
+      							  </div>
       								
       								
 						</div>
@@ -752,7 +761,6 @@
     									 </span>
 										</div>
 									</div>
-
 
 
     								<div class="col-md-3">
@@ -910,7 +918,7 @@
 						
 						
 						<div class="col-md-6">
-    						<label style="margin-right: 25px;"> <spring:message code="official.endWorkDate"></spring:message> :</label>
+    						<label id="endDate" style="margin-right: 25px;"> <spring:message code="official.endWorkDate"></spring:message> :</label>
     						<div class='input-group date' id='endWorkDate'>
     						<input type="text" class="form-control"
 							id="endWorkDate" name="endWorkDate" placeholder="${please} ${enter} <spring:message code="official.endWorkDate"></spring:message>" 
@@ -1338,7 +1346,7 @@ $("#addForm").validate({
 		
 		officialDate: "required",
 		startWorkDate: "required",
-		endWorkDate: "required",
+		/* endWorkDate: "required", */
 		positionAppliedFor: "required",
 		
 		probationDate: "required",
@@ -1421,7 +1429,8 @@ $("#addForm").validate({
 		salaryExpected: {
 			required: true
 			 /* digits: true */
-		}
+		},
+		statusemp: "required"
 	
 	},
 	
@@ -1477,7 +1486,7 @@ $("#addForm").validate({
 		
 		officialDate: "<spring:message code="official.required.officialDate" />",
 		startWorkDate: "<spring:message code="official.required.startWorkDate" />",
-		endWorkDate: "<spring:message code="official.required.endWorkDate" />",
+		/* endWorkDate: "<spring:message code="official.required.endWorkDate" />", */
 		positionAppliedFor: "<spring:message code="official.required.position" />",
 		salaryExpected: "<spring:message code="official.required.salary" />",
 		probationDate: "<spring:message code="employee.required.probationdate" />",
@@ -1488,7 +1497,8 @@ $("#addForm").validate({
 		masDivision: "<spring:message code="employee.required.division" />",
 		masJoblevel: "<spring:message code="employee.required.joblevel" />",
 		technology: "<spring:message code="employee.required.technology" />",
-		masStaffType: "<spring:message code="employee.required.staffType" />"
+		masStaffType: "<spring:message code="employee.required.staffType" />",
+		statusemp:"<spring:message code="employee.required.statusemp" />"
 		
 		
 		
@@ -1506,6 +1516,7 @@ $("input:checkbox[name=knowAugNewspaper]").change(function(){//name= ชื่�
 	$("#descriptionNewspaper").hide();
 }
 });
+
 
 $("#descriptionMagazine").hide();//descriptionYes ชื่อกล่อง
 $("input:checkbox[name=knowAugMagazine]").change(function(){//name= ชื่อ group checkbox
@@ -1548,9 +1559,26 @@ $("input:checkbox[name=knowAugOther]").change(function(){//name= ชื่อ gr
 }
 });
 
+if($('#Newspaper').prop( "checked" )){
+	 $("#descriptionNewspaper").show();
+}
 
-		
+if($('#Magazine').prop( "checked" )){
+	 $("#descriptionMagazine").show();
+}
 
+if($('#Website').prop( "checked" )){
+	 $("#descriptionWebsite").show();
+}
+
+if($('#Friend').prop( "checked" )){
+	 $("#descriptionFriend").show();
+}
+
+
+if($('#Other').prop( "checked" )){
+	$("#descriptionOther").show();
+}
 /* -------------------------------------------- Validate radio Yes/No ----------------------------------------------------------- */		
 
 $("#descriptionYes").hide();//descriptionYes ชื่อกล่อง
@@ -1666,78 +1694,104 @@ if($('#previousEmployer').val()=="No"){
 		
     	var date2 = $( "#expiryDate" ).datetimepicker({
     		format : "DD-MM-YYYY",
-//     		viewMode : 'years'
 		});
     	
     	var date3 = $( "#fromYear" ).datetimepicker({
     		format : "DD-MM-YYYY",
-    		//viewMode : 'years'
 		});
     	
     	var date4 = $( "#toYear" ).datetimepicker({
     		format : "DD-MM-YYYY",
-//     		viewMode : 'years'
 		});
     	
     	var date5 = $( "#dateToBeDrafted" ).datetimepicker({
     		format : "DD-MM-YYYY",
-//     		viewMode : 'years'
 		});
     	
     	var date6 = $( "#officialDate" ).datetimepicker({
     		format : "DD-MM-YYYY",
-//     		viewMode : 'years'
 		});
+    
     	
     	var date6 = $( "#startWorkDate" ).datetimepicker({
-    		format : "DD-MM-YYYY",
-//     		viewMode : 'years'
+    		format : "DD-MM-YYYY"
 		});
+    	
+    
     	
     	var date6 = $( "#endWorkDate" ).datetimepicker({
     		format : "DD-MM-YYYY",
-//     		viewMode : 'years'
 		});
+    	
+ 	
     	
     	var date6 = $( "#probationDate" ).datetimepicker({
     		format : "DD-MM-YYYY",
-//     		viewMode : 'years'
 		});
     	
+    
+    	
+     if($('#id').val()==null||$('#id').val()===''){
+    	 
+    	 $('#endWorkDate').data("DateTimePicker").disable();
+    	 
+     }
+    	
+     if($('#id').val()!=null&&$('#id').val()!==''){
+     	 
+    	  var defaultDate2 = new Date($('#startWorkDate').data("DateTimePicker").date());
+		  defaultDate2.setDate(defaultDate2.getDate()+1);
+		  $('#endWorkDate').data("DateTimePicker").minDate(defaultDate2);
+    	 
+    	
+    	 $("#startWorkDate").on("dp.change", function (d) {
+  				 
+    		      var defaultDate = new Date($('#startWorkDate').data("DateTimePicker").date());
+				  defaultDate.setDate(defaultDate.getDate()+1);
+				  $('#endWorkDate').data("DateTimePicker").minDate(defaultDate);
+				  /* $('#endWorkDate').data("DateTimePicker").date(defaultDate); */
+    	
+         }); 
+    		
+     }	
+     
+     
+     $('#toYear').data("DateTimePicker").disable();
+     
+    if($("input[name='fromYear']").val()==null||$("input[name='fromYear']").val()===''){
+    	
+    	
+        $("#fromYear").on("dp.change", function (d) {
+   			 
+      	  $('#toYear').data("DateTimePicker").enable();    	
+   	      var defaultDate4 = new Date($('#fromYear').data("DateTimePicker").date());
+   		  defaultDate4.setDate(defaultDate4.getDate()+1);
+   		  $('#toYear').data("DateTimePicker").minDate(defaultDate4);
+   		  /* $('#endWorkDate').data("DateTimePicker").date(defaultDate); */
 	
+   		}); 
+    	
+    } else if($("input[name='fromYear']").val()!=null&&$("input[name='fromYear']").val()!==''){
+    	
+    	  $('#toYear').data("DateTimePicker").enable();    	
+    	  var defaultDate3 = new Date($('#fromYear').data("DateTimePicker").date());
+		  defaultDate3.setDate(defaultDate3.getDate()+1);
+		  $('#toYear').data("DateTimePicker").minDate(defaultDate3);
+    	
+         $("#fromYear").on("dp.change", function (d) {
+    			 
+    	      var defaultDate4 = new Date($('#fromYear').data("DateTimePicker").date());
+    		  defaultDate4.setDate(defaultDate4.getDate()+1);
+    		  $('#toYear').data("DateTimePicker").minDate(defaultDate4);
+    		  /* $('#endWorkDate').data("DateTimePicker").date(defaultDate); */
+
+    	}); 
+    }
+		
+     
 		
     	$('[name="saveButton"]').click(function() {
-    				
-    		
-    		
-			/* if($('.dataTables_empty').length >0){//ถ้าตารางว่าง check ค่าในตาราง address
-				
-					alert("dataTables  empty");//alertในกรณีที่ค่าในตารางว่าง
-				
-			if($('#addForm').valid()){//validate form ใหญ่ว่าถ้าตารางว่างให้ดัก ข้อมูลทั้งหมดว่ามีค่าหรือไม่ ถ้ามีค่า ให้ alert เเจ้งเตือนขึ้นเเล้วไปดูค่าในตาราง
-    				
-					//document.getElementById("addForm").submit(); //java script
-				}
-		
-			else {alert("Data Empty");}//ถ้าไม่มีข้อมูลจะเข้า else alert เเจ้งเตือน
-			}
-			
-		else{//ในกรณีที่ ค่าในตารางไม่ว่าง ก้ให้ไปเช็คค่าข้อมูล
-			
-			if($('#addForm').valid()){//validate form ใหญ่ว่าถ้าตารางว่างให้ดัก ข้อมูลทั้งหมดว่ามีค่าหรือไม่ ถ้ามีค่า ให้ alert เเจ้งเตือนขึ้นเเล้วไปดูค่าในตาราง
-		
-		//document.getElementById("addForm").submit(); //java script
-				
-			$('#addForm').prop('action', "${pageContext.request.contextPath}/employee/submit");
-			$('#addForm').get(0).submit(); //jquery
-			
-			}
-		} */
-    		
-    		
-    		
-    		 //alert("aaaa");
-			
+    							
 			$('[name="employeeForm"]').attr('action',
 					"${pageContext.request.contextPath}/employee/submit");
 			$('[name="employeeForm"]').submit(); 
@@ -1788,12 +1842,6 @@ if($('#previousEmployer').val()=="No"){
     			} ); 
     	 
           	 
-    	
- 		//listAll();
-		//$('input[type=file]').change(function(e){
-		//$('.element-to-paste-filename').attr('value',e.target.files[0].name);
-		//});
-
 			    	
 		
 /* 	 	$("#nameThai").val('bbb');
@@ -1865,54 +1913,6 @@ if($('#previousEmployer').val()=="No"){
 			    	   //alert(code);
 			    	   $('#employeeCodeForShow').val(''); 
 			  	       $('#employeeCode').val(''); 
-
-			    	   
-			    	   
-			    	
-			    	 <%--  $.ajax({  
-				  	      type : "POST",   
-				  	      url : "<%=request.getContextPath()%>/employee/findRunningNo/"+code,   
-				  	      //data:  JSON.stringify(id),
-				  	      dataType : 'json', 
-				  	      contentType :"application/json; charset=utf-8",
-				  	     
-				  	      success : function(data) {  
-				    		
-				  	        $('#employeeCodeDto').val(data.rungingNumber);
-				  	    	
-					    	  
-					    	  var empCode = parseInt($('#employeeCodeDto').val())+1;
-					    	
-					    		  
-					    		  if($('#employeeCodeDto').val()==null&&$('#employeeCodeDto').val()===" "){
-					    		  
-					    		  	$('#employeeCode').val(code+'10'+'001');
-					    		  	$('#employeeCodefalse').val(code+'10'+'001');
-					    		  
-					    		  }else if(empCode.toString().length==1){
-					    			  $('#employeeCode').val(code+'10'+'00' +empCode.toString());
-					    			  $('#employeeCodefalse').val(code+'10'+'00' +empCode.toString());
-					    			  
-					    		  }else if(empCode.toString().length==2){
-					    			 
-					    			  $('#employeeCode').val(code+'10'+'0'+empCode.toString());
-					    			  $('#employeeCodefalse').val(code+'10'+'0'+empCode.toString());
-					    			  
-					    		  }else if(empCode.toString().length==3){
-					    			  $('#employeeCode').val(code+'10'+empCode.toString());
-					    			  $('#employeeCodefalse').val(code+'10'+empCode.toString());
-					    			  
-					    		  }
-					    		  
-					  	    	 
-				  	     },  
-				  	      error : function(e) {  	
-				  	    	  
-				  	    	  alert(e);
-				  	    	
-				  	     }  
-				  	    }); --%>
-			    	  
 
 			    }); 
 			       
@@ -2273,20 +2273,6 @@ if($('#previousEmployer').val()=="No"){
    		
    	}		
    		
-   		
-   /* 	function ValidatePhone() {// validate เบอร์โทรศัพท์ 10 หลัก
-	        var phoneRegExp = /^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/;
-	        var phoneVal = $("#telHome").val();
-	        var numbers = phoneVal.split("").length;
-	        if (10 <= numbers && numbers <= 20 && phoneRegExp.test(phoneVal)) {
-	            alert("success");
-	         alert(phoneVal);
-	      alert(numbers);
-	  
-	        }
-	        } */
-   		
-   	
    	
    		function listAddress(id){
    			
