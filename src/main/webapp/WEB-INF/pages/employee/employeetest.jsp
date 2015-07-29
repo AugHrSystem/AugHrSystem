@@ -1144,7 +1144,7 @@
 
 	<div class="form-group row">
 			<div class="col-md-12" align="right">
-				<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 15px;"><spring:message code="label.cancel" /></button>
+				<button type="button" class="btn btn-default renew" data-dismiss="modal" style="margin-right: 15px;"><spring:message code="label.renew" /></button>
     			<!-- <button type="button" class="btn btn-primary saveButton">Save</button> -->
     			<button type="button" id="saveButton" class="btn btn-warning" name="saveButton" ><spring:message code="label.saveAndCon" /></button>
     			
@@ -2369,7 +2369,17 @@ if($('#previousEmployer').val()=="No"){
 				}); 
 		}
 	
-   	
+ 
+   		
+   		
+ $('.renew').click(function() {
+	 if( $('#id').val()==null||$('#id').val()===''){
+		 window.location = "${pageContext.request.contextPath}/employee";
+	 }else if($('#id').val()!=null||$('#id').val()!==''){
+		 window.location = "${pageContext.request.contextPath}/employee/init/"+$('#id').val();
+	 }
+ });
+  
 	
   
   </script>
