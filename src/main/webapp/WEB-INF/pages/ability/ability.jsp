@@ -389,7 +389,7 @@ $(document).ready(function(){
 				});
 
 				listAll();
-			},
+			}/* ,
 			error : function() {
 				//alert("ERROR");
 				$(function(){ new PNotify({
@@ -402,7 +402,7 @@ $(document).ready(function(){
 					});
 				});
 // 				$('#addForm').bootstrapValidator('validate');
-			}
+			} */
 		});
 	}
 	
@@ -469,7 +469,7 @@ function getId(abilityid){
 				
 				
 				
-			},
+			}/* ,
 			error : function(data, textStatus, jqXML) {
 				{
 // 					alert("error");
@@ -484,7 +484,7 @@ function getId(abilityid){
 					});
 				}
 				;
-			}
+			} */
 		});
 	}
 	
@@ -570,7 +570,7 @@ function updateAbility(button,abilityid) {
 				});
 			});
 			listAll();
-		},
+		}/* ,
 		error : function() {
 			$(function(){ new PNotify({
 			    title: 'Error!',
@@ -583,7 +583,7 @@ function updateAbility(button,abilityid) {
 			});
 // 			alert("ERROR");
 
-		}
+		} */
 	});
 }
 	
@@ -611,7 +611,7 @@ function deleteAbility(button,abilityid) {
 				});
 			});
 			listAll();
-		},
+		}/* ,
 		error : function() {
 			$(function(){ new PNotify({
 			    title: 'Error!',
@@ -623,7 +623,7 @@ function deleteAbility(button,abilityid) {
 				});
 			});
 // 			alert("ERROR");
-		}
+		} */
 	
 		});
 }
@@ -646,7 +646,7 @@ function listAll(){
 		 
 		 
 				}
-			},
+			}/* ,
 			error : function() {
 				$(function(){ new PNotify({
 				    title: 'Error!',
@@ -658,7 +658,7 @@ function listAll(){
 					});
 				});
 // 				alert("ERROR");
-			}
+			} */
 		}); 
 	}
 	

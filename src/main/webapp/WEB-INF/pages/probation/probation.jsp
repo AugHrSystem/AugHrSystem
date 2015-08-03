@@ -319,7 +319,7 @@ var dt;
     					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
     					]); */
     					listAll();
-    				},
+    				}/* ,
     				error : function(data,testStatus,jqXHR) {
     					$(function(){ new PNotify({
     					    title: 'Error!',
@@ -331,10 +331,10 @@ var dt;
     						});
     					});
     					//$('#validate').bootstrapValidator('validate');
-//     					alert("ERROR");
-    					/* $('#addModal').modal('toggle');
-    					$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
-    					}
+                        //alert("ERROR");
+    				    //$('#addModal').modal('toggle');
+    					//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); 
+    					} */
     				});
     		}
     		
@@ -351,7 +351,7 @@ var dt;
 							$("#status").val(data.status);
 							$("#reason").val(data.reason);
 							employeeId: data.employeeId; 
-					},
+					}/* ,
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
 						$(function(){ new PNotify({
@@ -363,9 +363,9 @@ var dt;
 							}
 							});
 						});
-// 						alert("ERROR");
+						//alert("ERROR");
 						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
-						}
+						} */
 					});
 			}
     		
@@ -415,7 +415,7 @@ var dt;
 	    					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
 						]); */
 						listAll();
-					},
+					}/* ,
 					error : function(data,testStatus,jqXHR) {
 						$(function(){ new PNotify({
 						    title: 'Error!',
@@ -428,10 +428,10 @@ var dt;
 						});
     					//$('#validate').bootstrapValidator('validating');
     					//$('#validate').bootstrapValidator('revalidateField', '#status');
-//     					alert("ERROR");
-    					/* $('#addModal').modal('toggle');
-						$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); */
-						}
+						//alert("ERROR");
+    					//$('#addModal').modal('toggle');
+						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
+						} */
 					});
 			}
     		
@@ -480,7 +480,7 @@ var dt;
 							/* var del = button.closet("tr");
 							dt.fnDeleteRow(del); */
 							listAll();
-						},
+						}/* ,
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
 							$(function(){ new PNotify({
@@ -492,9 +492,9 @@ var dt;
 								}
 								});
 							});
-// 							alert("ERROR");
+							//alert("ERROR");
 							//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
-							}
+							} */
 						});
 				}
     		   		
@@ -520,7 +520,7 @@ var dt;
 							'<button type="button" class="btn btn-danger btn-sm active" data-proId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 				 
 						}
-					},
+					}/* ,
 					error : function(data,testStatus,jqXHR) {
 						$(function(){ new PNotify({
 						    title: 'Error!',
@@ -532,7 +532,7 @@ var dt;
 							});
 						});
 						$("#outputajax").text(testStatus);
-						}
+						} */
 					}); 
 				 
 			}

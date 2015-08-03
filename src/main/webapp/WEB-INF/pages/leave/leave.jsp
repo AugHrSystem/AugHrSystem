@@ -369,11 +369,19 @@ $(document).ready(function() {
 			
 			$(this).find(".saveButton").off("click").on("click",function() {
 				 if(leaveid != null){
-					/*  alert("be up"); */
+				   $('#addForm').bootstrapValidator();
+	    		   $('#addForm').data('bootstrapValidator').validate();
+	    		   if($('#addForm').data('bootstrapValidator').isValid()){
 					updateLeave(button,leaveid);
+	    		   }
 					
 				}else{ 
-					addLeave();
+				   
+					$('#addForm').bootstrapValidator();
+		    		$('#addForm').data('bootstrapValidator').validate();
+		    		if($('#addForm').data('bootstrapValidator').isValid()){
+						addLeave();
+		    		}
 					
 				  } 
 				
@@ -464,7 +472,7 @@ $(document).ready(function() {
 						});
 					});
 					listAll();
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -477,7 +485,7 @@ $(document).ready(function() {
 					});
 // 					alert("ERROR");
 					$('#addForm').bootstrapValidator('validate');
-				}
+				} */
 			});
 		}
 		
@@ -502,7 +510,7 @@ $(document).ready(function() {
 					$("#aim").val(data.aim);
 					
 					employeeId: data.employeeId;
-				},
+				}/* ,
 				error : function(data, textStatus, jqXML) {
 					{
 						$(function(){ new PNotify({
@@ -517,7 +525,7 @@ $(document).ready(function() {
 // 						alert("error");
 					}
 					;
-				}
+				} */
 			});
 		}
 		
@@ -574,7 +582,7 @@ $(document).ready(function() {
 							});
 						});
 						listAll();
-					},
+					}/* ,
 					error : function() {
 						$(function(){ new PNotify({
 						    title: 'Error!',
@@ -586,7 +594,7 @@ $(document).ready(function() {
 							});
 						});
 // 						alert("ERROR");
-					}
+					} */
 				});
 			}
 		
@@ -616,7 +624,7 @@ $(document).ready(function() {
 					});
 					
 					listAll();
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -629,7 +637,7 @@ $(document).ready(function() {
 					});
 
 // 					alert("ERROR");
-				}
+				} */
 			
 				});
 		}
@@ -662,7 +670,7 @@ $(document).ready(function() {
 							 '<button type="button" style="margin-right :15px;" class="btn btn-warning btn-sm active" data-id="' + data[i].id + '" data-target="#addModal" data-toggle="modal"><spring:message code="label.edit"/></button>'+
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 				 	}
-					},
+					}/* ,
 					error : function() { 
 						$(function(){ new PNotify({
 						    title: 'Error!',
@@ -674,7 +682,7 @@ $(document).ready(function() {
 							});
 						});
 // 						alert("ERROR");
-					}
+					} */
 				}); 
 			}
 		

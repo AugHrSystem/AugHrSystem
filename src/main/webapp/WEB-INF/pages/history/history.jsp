@@ -405,7 +405,7 @@
 			    	});
 					listAll();
 					
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -418,7 +418,7 @@
 					});
 // 					alert("ERROR");
 // 					$('#addForm').bootstrapValidator('validate');
-				}
+				} */
 			});
 		}
 		
@@ -470,7 +470,7 @@
 						});
 					});
 					listAll();
-				},
+				}/* ,
 				error : function() {
 // 					alert("ERROR");
 					$(function(){ new PNotify({
@@ -485,7 +485,7 @@
 
 // 					$('#addForm').bootstrapValidator('validate');
 
-				}
+				} */
 			});
 		}
 		
@@ -511,7 +511,7 @@
 					$("#salary").val(data.salary),
 					$("#time").val(data.time); */
 			
-				},
+				}/* ,
 				error : function() {
 // 					alert("ERROR");
 					$(function(){ new PNotify({
@@ -523,7 +523,7 @@
 						}
 						});
 					});
-				}
+				} */
 			});
 		}
 		
@@ -551,7 +551,7 @@
 					});
 					listAll();
 					
-				},
+				}/* ,
 				
 				error : function() {
 // 					alert("ERROR");
@@ -564,7 +564,7 @@
 						}
 						});
 					});
-				}
+				} */
 			});
 		}
 		
@@ -609,10 +609,10 @@
 						'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 			 
 					}
-				},
+				}/* ,
 				error : function() {
 					alert("ERROR");
-				}
+				} */
 			}); 
 		}
 		

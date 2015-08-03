@@ -488,7 +488,7 @@
 					});
 					listAll();
 					
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -502,7 +502,7 @@
 // 					alert("ERROR");
 // 					$('#addForm').bootstrapValidator('validate');
 
-				}
+				} */
 			});
 		}
 		
@@ -556,7 +556,7 @@
 						});
 					});
 					listAll();
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -570,7 +570,7 @@
 // 					alert("ERROR");
 // 					$('#addForm').bootstrapValidator('validate');
 
-				}
+				} */
 			});
 		}
 		
@@ -592,7 +592,7 @@
 					$("#startDate").val(data.startDate);
 					$("#graduatedDate").val(data.graduatedDate);
 					
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -604,7 +604,7 @@
 						});
 					});
 // 					alert("ERROR");
-				}
+				} */
 			});
 		}
 		
@@ -633,7 +633,7 @@
 					
 					listAll();
 					
-				},
+				}/* ,
 				
 				error : function() {
 					$(function(){ new PNotify({
@@ -646,7 +646,7 @@
 						});
 					});
 // 					alert("ERROR");
-				}
+				} */
 			});
 		}
 		
@@ -673,7 +673,7 @@
 			 
 			 
 				}
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -685,7 +685,7 @@
 						});
 					});
 // 					alert("ERROR");
-				}
+				} */
 			}); 
 		}
 		

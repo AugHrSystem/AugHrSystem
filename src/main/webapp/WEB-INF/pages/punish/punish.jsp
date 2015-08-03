@@ -307,7 +307,7 @@
 						});
 					});
 					listAll();
-				},
+				}/* ,
 				error : function() {	
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -321,7 +321,7 @@
 					//	alert("error");
 					
 					$('#addForm').bootstrapValidator('validate');
-				}
+				}*/
 			});
 		}
 		
@@ -364,7 +364,7 @@
 						});
 					});
 						listAll();
-					},
+					}/* ,
 					error : function(jqXHR,	textStatus,	error) {
 						$(function(){ new PNotify({
 						    title: 'Error!',
@@ -375,8 +375,8 @@
 							}
 							});
 						});
-// 							alert("error");
-					}
+						//alert("error");
+					} */
 			});
 			
 		}
@@ -394,7 +394,7 @@
 					$("#penalty").val(data.penalty);
 					employeeId: data.employeeId;
 					
-					},
+					}/* ,
 				error : function(jqXHR,	textStatus,	error) {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -405,8 +405,8 @@
 						}
 						});
 					});
-// 						alert("error");
-									}
+					//alert("error");
+									} */
 							});
 						}	
 		
@@ -431,7 +431,7 @@
 						});
 					});
 						listAll();
-					},										
+					}/* ,										
 				error : function(jqXHR,	textStatus,	error) {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -442,8 +442,8 @@
 						}
 						});
 					});
-// 						alert("error ----");
-						}
+						//alert("error ----");
+						} */
 				});							
 		}
 		
@@ -467,7 +467,7 @@
 							'<button type="button" class="btn btn-danger btn-sm active" data-id="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 				
 						}
-					},
+					}/* ,
 					error : function(jqXHR,	textStatus,	error) {	
 						$(function(){ new PNotify({
 						    title: 'Error!',
@@ -478,8 +478,8 @@
 							}
 							});
 						});
-// 							alert("error");
-						}
+						//alert("error");
+						} */
 					}); 
 			}
 			

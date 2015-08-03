@@ -141,7 +141,7 @@ function myFunction(value) {
 			$("#salary").val(data.salary),
 			$("#time").val(data.time); */
 	
-		},
+		}/* ,
 		error : function() {
 			$(function(){ new PNotify({
 			    title: 'Error!',
@@ -153,7 +153,7 @@ function myFunction(value) {
 				});
 			});
 // 			alert("ERROR");
-		}
+		} */
 	});
 	
 //		if (value == 1){
@@ -337,7 +337,7 @@ function myFunction(value) {
 					});
 					listAll();
 					
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -349,7 +349,7 @@ function myFunction(value) {
 						});
 					});
 // 					alert("ERROR");
-				}
+				} */
 			});
 		}
 		
@@ -395,7 +395,7 @@ function myFunction(value) {
 						});
 					});
 					listAll();
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -407,7 +407,7 @@ function myFunction(value) {
 						});
 					});
 // 					alert("ERROR");
-				}
+				} */
 			});
 		}
 		
@@ -427,7 +427,7 @@ function myFunction(value) {
 					$("#salary").val(data.salary),
 					$("#time").val(data.time); */
 			
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -439,7 +439,7 @@ function myFunction(value) {
 						});
 					});
 // 					alert("ERROR");
-				}
+				} */
 			});
 		}
 		
@@ -467,7 +467,7 @@ function myFunction(value) {
 					});
 					listAll();
 					
-				},
+				}/* ,
 				
 				error : function() {
 					$(function(){ new PNotify({
@@ -480,7 +480,7 @@ function myFunction(value) {
 						});
 					});
 // 					alert("ERROR");
-				}
+				} */
 			});
 		}
 		
@@ -526,7 +526,7 @@ function myFunction(value) {
 			 
 					             
 					}
-				},
+				}/* ,
 				error : function() {
 					$(function(){ new PNotify({
 					    title: 'Error!',
@@ -538,7 +538,7 @@ function myFunction(value) {
 						});
 					});
 // 					alert("ERROR");
-				}
+				} */
 			}); 
 		}
 		
