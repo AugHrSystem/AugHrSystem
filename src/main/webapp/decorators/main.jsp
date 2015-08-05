@@ -26,8 +26,9 @@
 <script src="<c:url value="/resource/bootstrapvalidator/dist/js/bootstrapValidator.js" />"></script>
 
 <!-- JQuery Validator -->
-<script src="<c:url value="/resource/jqueryvalidate/jquery.js" />"></script>
-<script src="<c:url value="/resource/jqueryvalidate/jquery.validate.min.js" />"></script>
+<%-- <script src="<c:url value="/resource/jqueryvalidate/jquery.js" />"></script>--%>
+<script src="<c:url value="/resource/jqueryvalidate/jquery.validate.min.js" />"></script> 
+<%-- <script src="<c:url value="/resource/bootstrap/js/jquery.validate.js" />"></script> --%>
 
 <!-- Date Time Picker -->
 <script src="<c:url value="/resource/moment/js/moment.js" />"></script>
@@ -160,10 +161,10 @@ $.ajaxSetup({
 
 </head>
 <body>
+	<jsp:include page="valiable.jsp"></jsp:include>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="container"> 
 		<decorator:body/>
-	<%-- 	</decorator:body> --%>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 	
