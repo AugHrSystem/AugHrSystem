@@ -10,5 +10,5 @@ public interface SkillLanguageDao extends GenericDao<SkillLanguage,Integer>{
 	public List<SkillLanguage> findAllByEmployee(Integer IdEmployee);
 	public List<SkillLanguageDto> listSkillLanguageByEmployee(Integer id);
 	public SkillLanguage findIdJoinEmployee(Integer id); 
-
+    public SkillLanguage findJoinMasSkillLanguage(Integer id);
 }

@@ -16,7 +16,7 @@ public interface SkillLanguageService {
 	public List<SkillLanguage> findAllByEmployee(Integer IdEmployee);	
 	public void saveByFindEmployee(Integer employeeId,SkillLanguageDto skillLanguage);
 	public SkillLanguageDto findSkillLanguageById(Integer id);
-	
+    public SkillLanguage findJoinMasSkillLanguage(Integer id);
 	public void updateSetSkillLanguage(SkillLanguageDto skillLanguage);
 	
 }

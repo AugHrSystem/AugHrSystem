@@ -142,5 +142,12 @@ public class SkillLanguageServiceImpl implements SkillLanguageService{
 		skillLanguageDao.update(skillLanguageUpdate);
 	}
 
+	@Override
+    public SkillLanguage findJoinMasSkillLanguage(Integer id) {
+		// TODO Auto-generated method stub		
+		return skillLanguageDao.findJoinMasSkillLanguage(id);
+	}
+ 
+
 	
 }

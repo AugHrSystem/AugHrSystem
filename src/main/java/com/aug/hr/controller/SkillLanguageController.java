@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import javassist.tools.web.BadHttpRequest;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
@@ -23,6 +24,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -70,7 +72,7 @@ public class SkillLanguageController {
 			@ModelAttribute(value = "skillLanguage") SkillLanguage skillLanguage,
 			ModelMap model, 
 			@PathVariable("id") Integer id, 
-			@ModelAttribute SkillLanguageDto skillLanguageDto) throws SQLException,Exception,BadHttpRequest,IOException,HttpMediaTypeNotSupportedException,HttpException{
+			@ModelAttribute SkillLanguageDto skillLanguageDto) {
 		
 		
 		logger.info("Welcome to skill language locale: " + locale);
@@ -97,7 +99,7 @@ public class SkillLanguageController {
 	public @ResponseBody List<SkillLanguageDto> findSkillLanguage(Locale locale,
 		   //@ModelAttribute(value = "family") Family family,
 			@PathVariable("id") Integer id,
-			ModelMap model)  throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+			ModelMap model)  {
 		
 		
 		List<SkillLanguageDto> skillLanguageList = skillLanguageDtoService.listSkillLanguage(new Integer(id));
@@ -113,7 +115,7 @@ public class SkillLanguageController {
 	@RequestMapping(value = "/skilllanguage/add", method =  {RequestMethod.POST})
 	public @ResponseBody SkillLanguageDto addData(Locale locale,
 				@Valid @ModelAttribute SkillLanguageDto skillLanguageInfo,
-				ModelMap model)  throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+				ModelMap model)  {
 		
 	    SkillLanguageDto skillLanguage = new SkillLanguageDto();
 	    skillLanguage = skillLanguageInfo;
@@ -129,7 +131,7 @@ public class SkillLanguageController {
 	@RequestMapping(value = "/skilllanguage/initedit", method =  {RequestMethod.POST})
 	public @ResponseBody SkillLanguageDto initEdit(Locale locale,
 				@ModelAttribute SkillLanguageDto skillLanguageInfo,
-				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+				ModelMap model) {
 		
     
 	SkillLanguageDto skillLanguage = new SkillLanguageDto();
@@ -144,7 +146,7 @@ public class SkillLanguageController {
 	@RequestMapping(value = "/skilllanguage/edit", method = RequestMethod.POST)
 	public @ResponseBody SkillLanguageDto edit(Locale locale,
 				@ModelAttribute SkillLanguageDto skillLanguage,
-				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+				ModelMap model) {
 	logger.info("info of skill language: "+skillLanguage.toString());
 	skillLanguageService.updateSetSkillLanguage(skillLanguage);
 	return skillLanguage;
@@ -155,7 +157,7 @@ public class SkillLanguageController {
 	@RequestMapping(value = "/skilllanguage/delete", method = RequestMethod.POST)
 	public @ResponseBody SkillLanguageDto delete(Locale locale,
 				@ModelAttribute SkillLanguageDto skillLanguage,
-				ModelMap model) throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+				ModelMap model) {
 	logger.info("info of skill language: "+skillLanguage.toString());
 	SkillLanguage skillLanguageDelete = skillLanguageService.find(skillLanguage.getId());
 	logger.info("info of skill language: "+skillLanguageDelete.getId().toString());
@@ -164,6 +166,25 @@ public class SkillLanguageController {
 	}
 	
 	
+	
+	@RequestMapping(value = "/skilllanguage/validate", method = RequestMethod.POST)
+	public @ResponseBody String validateMasSkillLanguage(Locale locale,
+				@ModelAttribute SkillLanguageDto skillLanguage,
+				ModelMap model,
+				HttpServletResponse response) {
+	logger.info("validate mas skill language");
+	SkillLanguage skillLanguageValidate = skillLanguageService.findJoinMasSkillLanguage(skillLanguage.getMasSkillLanguageId());
+	String msg = null;
+	System.out.println("mas skill lang: "+skillLanguageValidate.getMasSkillLanguage());
+	if(skillLanguageValidate.getMasSkillLanguage()==null){		
+		msg = "success";
+	}else if(skillLanguageValidate.getMasSkillLanguage()!=null){
+		msg = "Can't create with same skill language";
+        response.setStatus( HttpServletResponse.SC_BAD_REQUEST  );
+	}
+	
+	return msg;
+	}
 	
 
 }

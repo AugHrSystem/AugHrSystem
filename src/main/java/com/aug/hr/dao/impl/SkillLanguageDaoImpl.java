@@ -57,4 +57,17 @@ public class SkillLanguageDaoImpl extends GenericDaoImpl<SkillLanguage,Integer> 
 		return skillLanguage;
 	}
 
+	@Override
+	public SkillLanguage findJoinMasSkillLanguage(Integer id) {
+		// TODO Auto-generated method stub
+		Criteria c = getCurrentSession().createCriteria(SkillLanguage.class,"skillLanguage");
+		c.setFetchMode("employee",FetchMode.JOIN);
+		c.createAlias("employee", "employee");
+		c.setFetchMode("masSkillLanguage",FetchMode.JOIN);	
+		c.createAlias("masSkillLanguage", "masSkillLanguage");
+		c.add(Restrictions.eq("skillLanguage.masSkillLanguage.id", id));
+		SkillLanguage skillLanguage = (SkillLanguage) c.uniqueResult();
+		return skillLanguage;
+	}
+
 }
