@@ -28,4 +28,11 @@
 	var $requiredMasSkillLanguage = '<spring:message code="skilllanguage.required.masSkillLanguage" />';
 	var $requiredLanguage = '<spring:message code="skilllanguage.required.Language" />';
 	
+	/* site-message validate */
+	var $requiredProjectname = '<spring:message code="site.required.projectname" />';
+	var $requiredProjectOwner = '<spring:message code="site.required.projectOwner" />';
+	var $requiredProjectOwnerContact = '<spring:message code="site.required.projectOwnerContact" />';
+	var $requiredStartDate = '<spring:message code="site.required.startDate" />';
+	var $requiredEndDate = '<spring:message code="site.required.endDate" />';
+
 </script>

@@ -45,14 +45,15 @@ public class SiteController {
 	
 	
 	@RequestMapping(value = "/site/{id}", method = RequestMethod.GET)
-	public String initSkillLanguage(Locale locale,
+	public String initSite(Locale locale,
 			@ModelAttribute(value = "site") Site site,
 			ModelMap model, 
 			@PathVariable("id") Integer id, 
-			@ModelAttribute SiteDto siteDto) throws SQLException,Exception,BadHttpRequest,IOException,HttpMediaTypeNotSupportedException,HttpException{
+			@ModelAttribute SiteDto siteDto) {
 		
 		siteDto.setEmployeeId(id);
-		model.addAttribute("id", siteDto.getEmployeeId());
+		model.addAttribute("id", id);
+		model.addAttribute("site", site);
 		return "/site/site";
 	}
 
@@ -60,7 +61,7 @@ public class SiteController {
 	@RequestMapping(value = "/site/list/{id}", method = RequestMethod.POST)
 	public @ResponseBody List<SiteDto> findData(Locale locale,
 			@PathVariable("id") Integer id,
-			ModelMap model)  throws SQLException,Exception,BadHttpRequest,IOException,ConstraintViolationException,HttpMediaTypeNotSupportedException,HttpException{
+			ModelMap model)  {
 		
 		    List<SiteDto> siteDto =  siteDtoService.listByNameNativeQuery(id);		    
 		    return siteDto;
