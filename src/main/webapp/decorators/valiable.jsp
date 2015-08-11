@@ -10,6 +10,8 @@
 	var $getContextPath = "${pageContext.request.contextPath}";
 	var $msgNewRecord = '<spring:message code="label.newRecord" />';
 	var $msgEdit = '<spring:message code="label.edit" />';
+	var $msgUpdate = '<spring:message code="label.update" />';
+	var $msgSave = '<spring:message code="label.save" />';
 	var $msgDelete = '<spring:message code="label.delete" />';
 	
 	
