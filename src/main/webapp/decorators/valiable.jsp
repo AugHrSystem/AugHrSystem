@@ -26,6 +26,7 @@
 	var $requiredAddress    = '<spring:message code="family.required.address" />';
 	var $requiredMasRelation 	= '<spring:message code="family.required.masRelation" />';
 	
+
 	/* language-massage validate */
 	var $requiredMasSkillLanguage = '<spring:message code="skilllanguage.required.masSkillLanguage" />';
 	var $requiredLanguage = '<spring:message code="skilllanguage.required.Language" />';
@@ -36,5 +37,17 @@
 	var $requiredProjectOwnerContact = '<spring:message code="site.required.projectOwnerContact" />';
 	var $requiredStartDate = '<spring:message code="site.required.startDate" />';
 	var $requiredEndDate = '<spring:message code="site.required.endDate" />';
+
+
+	
+	/* reference-massage validate*/
+	var $validatenamereference = '<spring:message code="reference.required.fullname" />';
+	var $validatetelreference = '<spring:message code="reference.required.telephone" />'
+	
+	
+	
+	/* reward-massage validate*/
+	var $validatenamereward = '<spring:message code="reward.required.name" />';
+	var $validateyearreward =  '<spring:message code="reward.required.year" />';
 
 </script>
