@@ -48,6 +48,7 @@
 	var $validateyearreward =  '<spring:message code="reward.required.year" />';
 	
 	
+
 	/* punish-message validate*/
 	var $validatepunish = '<spring:message code="punish.required.date" />';
 	var $validatedescriptionpunish =  '<spring:message code="punish.required.description" />';
@@ -86,6 +87,17 @@
 	
 	/* reportEmpCode-message validate */
 	var $requiredreportType = '<spring:message code="report.validate.reportType" />';
+
+	
+	/* ability-message validate*/
+	var $validateabilitymasspecialty='<spring:message code="ability.required.masspecialty" />';
+	
+	/* leave-message validate*/
+	var $validateNameMasleavetype='<spring:message code="leave.required.masleavetype" />';
+	var $validateReason='<spring:message code="leave.required.reason" />';
+	var $validateStartdate='<spring:message code="leave.required.start.date.time" />';
+	var $validateEndtdate='<spring:message code="leave.required.end.date.time" />';
+	var $validateAim='<spring:message code="leave.required.aim" />';
 
 	
 </script>
