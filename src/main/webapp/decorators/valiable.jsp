@@ -46,8 +46,7 @@
 	/* reward-message validate*/
 	var $validatenamereward = '<spring:message code="reward.required.name" />';
 	var $validateyearreward =  '<spring:message code="reward.required.year" />';
-	
-	
+		
 
 	/* punish-message validate*/
 	var $validatepunish = '<spring:message code="punish.required.date" />';
@@ -60,7 +59,6 @@
 	var $validatedestartdatecard =  '<spring:message code="card.required.startdate" />';
 	var $validatestatuscard =  '<spring:message code="card.required.status" />';
 
-	
 	/* education-message validate */
 	var $requiredstartdate = '<spring:message code="education.required.start.date" />';
 	var $requiredfinishdate = '<spring:message code="education.required.finish.date" />';
@@ -99,5 +97,21 @@
 	var $validateEndtdate='<spring:message code="leave.required.end.date.time" />';
 	var $validateAim='<spring:message code="leave.required.aim" />';
 
+
+	/* experience-message validate*/
+	var $validateExpDateFrom = '<spring:message code="experience.required.dateFrom" />';
+	var $validateExpDateTo =  '<spring:message code="experience.required.dateTo" />';
+	var $validateExpCompanyName =  '<spring:message code="experience.required.companyName" />';
+	var $validateExpPosition =  '<spring:message code="experience.required.position" />';
+	var $validateExpSalary=  '<spring:message code="experience.required.salary" />';
+	var $validateExpSalaryDigits =  '<spring:message code="experience.required.salary.digits" />';
+	var $validateExpReason =  '<spring:message code="experience.required.reason" />';
+	
+	
+	/* probation-message validate*/
+	var $validateProDateFrom = '<spring:message code="probation.required.dateFrom" />';
+	var $validateProDateTo = '<spring:message code="probation.required.dateTo" />';
+	var $validateProStatus = '<spring:message code="probation.required.status" />';
+	
 	
 </script>

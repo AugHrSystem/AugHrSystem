@@ -26,7 +26,7 @@ var dt;
 		        	dateFrom: {
 		                validators: {
 		                    notEmpty: {
-		                        message: '<spring:message code="probation.required.dateFrom" />'
+		                        message: $validateProDateFrom
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -37,7 +37,7 @@ var dt;
 		            dateTo: {
 		                validators: {
 		                    notEmpty: {
-		                        message: '<spring:message code="probation.required.dateTo" />'
+		                        message:  $validateProDateTo
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -47,7 +47,7 @@ var dt;
 		            status: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: '<spring:message code="probation.required.status" />'
+	                            message: $validateProStatus
 	                        }
 	                    }
 		            }

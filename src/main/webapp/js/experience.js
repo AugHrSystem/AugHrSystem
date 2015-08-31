@@ -26,7 +26,7 @@ var dt;
 		        	dateFrom: {
 		                validators: {
 		                    notEmpty: {
-		                        message: '<spring:message code="experience.required.dateFrom" />'
+		                        message: $validateExpDateFrom
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -36,7 +36,7 @@ var dt;
 		            dateTo: {
 		                validators: {
 		                    notEmpty: {
-		                        message: '<spring:message code="experience.required.dateTo" />'
+		                        message: $validateExpDateTo
 		                    }, 
 		                    date: {
 		                        format: 'DD-MM-YYYY'
@@ -46,28 +46,28 @@ var dt;
 		            cName: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: '<spring:message code="experience.required.companyName" />'
+	                            message: $validateExpCompanyName
 	                        }
 	                    }
 		            },
 		            position: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: '<spring:message code="experience.required.position" />'
+	                            message: $validateExpPosition
 	                        }
 	                    }
 		            },
 		            salary: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: '<spring:message code="experience.required.salary" />'
+	                            message: $validateExpSalary
 	                        }
 	                    }
 		            },
 		            reason: {
 		            	validators: {
 	                        notEmpty: {
-	                            message: '<spring:message code="experience.required.reason" />'
+	                            message: $validateExpReason
 	                        }
 	                    }
 		            }
