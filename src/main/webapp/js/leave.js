@@ -47,7 +47,7 @@ $(document).ready(function() {
 	        	masleavetype: {
 	                validators: {
 	                    notEmpty: {
-	                        message: $validatenamemasleavetype
+	                        message: $validateNameMasleavetype
 	                    }
 	                }
 	            },
@@ -55,7 +55,7 @@ $(document).ready(function() {
             reason: {
                 validators: {
                     notEmpty: {
-                        message: $validatereason
+                        message: $validateReason
                     }
                 }
             },
@@ -71,7 +71,7 @@ $(document).ready(function() {
             endTime: {
                 validators: {
                     notEmpty: {
-                        message:  $validateEndtdate
+                        message:  $validateEnddate
                     }
                 }
             },

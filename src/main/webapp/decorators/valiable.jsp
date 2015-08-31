@@ -94,7 +94,7 @@
 	var $validateNameMasleavetype='<spring:message code="leave.required.masleavetype" />';
 	var $validateReason='<spring:message code="leave.required.reason" />';
 	var $validateStartdate='<spring:message code="leave.required.start.date.time" />';
-	var $validateEndtdate='<spring:message code="leave.required.end.date.time" />';
+	var $validateEnddate='<spring:message code="leave.required.end.date.time" />';
 	var $validateAim='<spring:message code="leave.required.aim" />';
 
 
