@@ -38,8 +38,6 @@
 	var $requiredStartDate = '<spring:message code="site.required.startDate" />';
 	var $requiredEndDate = '<spring:message code="site.required.endDate" />';
 
-
-	
 	/* reference-message validate*/
 	var $validatenamereference = '<spring:message code="reference.required.fullname" />';
 	var $validatetelreference = '<spring:message code="reference.required.telephone" />'
@@ -60,6 +58,34 @@
 	var $validatecardno = '<spring:message code="card.required.cardno" />';
 	var $validatedestartdatecard =  '<spring:message code="card.required.startdate" />';
 	var $validatestatuscard =  '<spring:message code="card.required.status" />';
+
+	
+	/* education-message validate */
+	var $requiredstartdate = '<spring:message code="education.required.start.date" />';
+	var $requiredfinishdate = '<spring:message code="education.required.finish.date" />';
+	var $requireduniversity = '<spring:message code="education.required.university" />';
+	var $requiredfaculty = '<spring:message code="education.required.faculty" />';
+	var $requiredmajor = '<spring:message code="education.required.major" />';
+	var $requireddeegreetype = '<spring:message code="education.required.deegreetype" />';
+	var $requiredgpa = '<spring:message code="education.required.gpa" />';
+	var $requiredgpadigit = '<spring:message code="education.required.gpa.digit" />';
+	
+	/* allowances-message validate */
+	var $requiredmasallowances = '<spring:message code="allowances.required.masallowances" />';
+	
+	/* certification-message validate */
+	var $requiredyear = '<spring:message code="certification.required.year" />';
+	var $requiredcertificationname = '<spring:message code="certification.required.certification.name" />';
+	var $requiredcertificationfrom = '<spring:message code="certification.required.certification.from" />';
+	var $requireddescription = '<spring:message code="certification.required.description" />';
+	
+	/* history-message validate */
+	var $requiredposition = '<spring:message code="history.required.position" />';
+	var $requiredsalary = '<spring:message code="history.required.salary" />';
+	var $requireddateOfAdjustment = '<spring:message code="history.required.dateOfAdjustment" />';
+	
+	/* reportEmpCode-message validate */
+	var $requiredreportType = '<spring:message code="report.validate.reportType" />';
 
 	
 </script>

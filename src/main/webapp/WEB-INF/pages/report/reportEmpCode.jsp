@@ -3,6 +3,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script src="<c:url value="/resources/js/reportEmpCode.js" />"></script>
+
 <f:form method="post" id="reportForm" name="reportForm" target="_blank" commandName="employee" action="${pageContext.request.contextPath}/employee/searchReportEmpCode" cssClass="form-horizontal">
 
 	 <div class="modal-body">
@@ -73,95 +75,3 @@
 		<button type="button" id="btn_print" class="btn btn-default submit" value="print"><spring:message code="label.print" /></button>
 	</div>
 </f:form>
-
-
-<script type="text/javascript">
-$(document).ready(function () {
-	var dt=$("#tdResult").dataTable({
-			"bLengthChange": false,
-			"iDisplayLength": 10,
-			"pagingType": "simple_numbers",
-			"ordering": false,
-			"info": false
-	});
-	
-	
-	if($('.dataTables_empty').length > 0){
-		document.getElementById("btn_print").disabled = true;
-	}
-	
-	$('#reportForm').bootstrapValidator({
-		message: 'This value is not valid',
-		 feedbackIcons: {
-	            validating: 'glyphicon glyphicon-refresh'
-	        },
-	        fields: {
-	        	reportType: {
-	                validators: {
-	                    notEmpty: {
-	                        message: '<spring:message code="report.validate.reportType" />'
-	                    }
-	        
-	                }
-	            }
-	        }
-		
-	});
-	
-	//Search By Position and Show function 
-	$('#btn_search').on('click', function(){
-		var searchText = $("#searchText").val();
-		if(searchText == ""){
-			searchText = "forEmptySearch";
-		}
-		$.ajax({
-			url : "${pageContext.request.contextPath}/employee/searchCode/"+searchText,
-			type : "POST",
-			success : function(data) {
-			dt.fnClearTable();
-			for (var i=0;i< data.length; i++) {
-				dt.fnAddData([data[i].employeeCode,data[i].startWorkDate,data[i].dateOfBirth,
-				              data[i].nameThai,data[i].nameEng,
-				              data[i].employmentName,data[i].divisionName,
-				              data[i].technologyName
-					]);
-		 
-				}
-			
-			if($('.dataTables_empty').length == 0){
-				document.getElementById("btn_print").disabled = false;
-			}
-			},
-			error : function(data,testStatus,jqXHR) {
-				$("#outputajax").text(testStatus);
-				}
-			});
-	});
-	
-	
-	
-	$('#btn_print').on('click', function(){
-		$('#reportForm').bootstrapValidator();
-		$('#reportForm').data('bootstrapValidator').validate();
-		if($('#reportForm').data('bootstrapValidator').isValid()){
-			$("#reportForm").get(0).submit();
-		}
-/* 		var searchText = $("#searchText").val();
-		if(searchText == ""){
-			searchText = "forEmptySearch";
-		}
-  		$.ajax({
-		url : "${pageContext.request.contextPath}/employee/searchReportEmpName/"+searchText,
-		type : "POST",
-		success : function(data) {
-			
-		},
-		error : function(data,testStatus,jqXHR) {
-			$("#outputajax").text(testStatus);
-			}
-		}); */
-	}); 
-	
-});
-	
-</script>
