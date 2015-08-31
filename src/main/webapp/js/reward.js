@@ -13,7 +13,9 @@
 				
 				$("div.toolbar").html('<b><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addModal">'+$msgNewRecord+'</button>  </b>');
 				
-			$("#addBtn").on("click",function(){clearModal();});
+				$("#addBtn").on("click",function(){
+					clearModal();
+				});
 				
 			
 			$('#addForm').bootstrapValidator({

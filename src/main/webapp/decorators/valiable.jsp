@@ -40,14 +40,26 @@
 
 
 	
-	/* reference-massage validate*/
+	/* reference-message validate*/
 	var $validatenamereference = '<spring:message code="reference.required.fullname" />';
 	var $validatetelreference = '<spring:message code="reference.required.telephone" />'
 	
-	
-	
-	/* reward-massage validate*/
+		
+	/* reward-message validate*/
 	var $validatenamereward = '<spring:message code="reward.required.name" />';
 	var $validateyearreward =  '<spring:message code="reward.required.year" />';
+	
+	
+	/* punish-message validate*/
+	var $validatepunish = '<spring:message code="punish.required.date" />';
+	var $validatedescriptionpunish =  '<spring:message code="punish.required.description" />';
+	var $validatepenaltypunish =  '<spring:message code="punish.required.penalty" />';
+	
+	
+	/* card-message validate*/
+	var $validatecardno = '<spring:message code="card.required.cardno" />';
+	var $validatedestartdatecard =  '<spring:message code="card.required.startdate" />';
+	var $validatestatuscard =  '<spring:message code="card.required.status" />';
 
+	
 </script>
