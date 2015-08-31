@@ -9,36 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap -->
-<script src="<c:url value="/resource/bootstrap/js/jquery-1.11.2.js" />"></script>
+<script src="<c:url value="/resource/jqueryvalidate/jquery.validate.min.js" />"></script>
 <link href="<c:url value="/resource/bootstrap/css/bootstrap.css" />" rel="stylesheet" media="all">
 <link href="<c:url value="/resource/bootstrap/css/bootstrap-theme.css" />" rel="stylesheet" media="all">
 <script src="<c:url value="/resource/bootstrap/js/bootstrap.js" />"></script>
 
-<style type="text/css">
-body {
-background-image: url(${pageContext.request.contextPath}/resource/images/BG_Login.jpg);
+<!-- login css -->
+<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet" media="all">
 
--moz-background-size: cover;
--webkit-background-size: cover;
-background-size: cover;
-background-position: top center !important;
-background-repeat: no-repeat !important;
-background-attachment: fixed;
-}
-.container{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.login{
-background-color:white;
-border-radius: 15px 15px 15px 15px;
--moz-border-radius: 15px 15px 15px 15px;
--webkit-border-radius: 15px 15px 15px 15px;
-border: 0px solid #635f63;
-}
-</style>
 <title><spring:message code="default.login.btn" var="login"/>${login}</title>
 </head>
 <body>
@@ -47,7 +25,7 @@ border: 0px solid #635f63;
 		<div class="col col-lg-4 col-md-5 col-sm-6 col-xs-12 col-lg-offset-4 col-sm-offset-3 login">
 		<spring:message code="default.enter" var="enter" />
 		<div class="headLogo" >
-			<span><img style="width: 200px; text-align: left;" src="<c:url value="resource/images/augmentis-logo.png" />" /></span>
+			<span><img src="<c:url value="resource/images/augmentis-logo.png" />" /></span>
 		</div>	
 			<div class="form-group">
 			      <label for="user"><spring:message code="default.login.user" var="username" /> ${username} : </label>

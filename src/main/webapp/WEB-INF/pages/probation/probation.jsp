@@ -20,21 +20,6 @@
 
 <input id="empId" type="hidden" value="${id}">
 <f:form method="post" commandName="probation" class="form-horizontal" role="form">
-<!-- 		<div class="row-md-12"> -->
-<!-- 			<h2 class="col-md-6"> -->
-				<%-- <spring:message code="probation.name" /> --%>
-<!-- 			</h2>	 -->
-			<br>
-<!-- 			<div class="col-md-6"> -->
-				<!-- Button trigger modal -->
-<!-- 				<div class="form-group" align="right"> -->
-<!-- 					<button id="clearModal"type="button" class="btn btn-warning active btn-md" data-toggle="modal" data-target="#addModal"> -->
-<%--  	 					<spring:message code="label.newRecord" /> --%>
-<!-- 					</button> -->
-<!-- 				</div> -->
-<!-- 				<br> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
 		<div id="outputajax" >		
 		<table id="tdResult" class="dataTable stripe table-bordered">
 		 <caption title=""><spring:message code="probation.name" /></caption>
@@ -45,7 +30,6 @@
 					<th><spring:message code="probation.status" /></th>
 					<th><spring:message code="probation.reason" /></th>
 					<th><spring:message code="label.action" /></th>
-					<!-- <th></th> -->
 				</tr>
 			</thead>
 			<tbody></tbody>
@@ -302,24 +286,8 @@ var dt;
     						}
     						});
     					});
-    					//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();
-    					/* dt.fnClearTable();
-    					dt.fnAddData([
-    					    data.id,
-    						data.companyName,
-    						data.business,
-    						data.position,
-    						data.dateFrom,
-    						data.dateTo,
-    						data.address,
-    						data.description,
-    						data.superVisor,
-    						//data.employee.id,
-    					'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-    					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-    					]); */
     					listAll();
-    				}/* ,
+    				} ,
     				error : function(data,testStatus,jqXHR) {
     					$(function(){ new PNotify({
     					    title: 'Error!',
@@ -330,28 +298,22 @@ var dt;
     						}
     						});
     					});
-    					//$('#validate').bootstrapValidator('validate');
-                        //alert("ERROR");
-    				    //$('#addModal').modal('toggle');
-    					//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut(); 
-    					} */
+    					}
     				});
     		}
     		
     		function initEditProbation(proId) {
-				//alert(proId+" Init edit");
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/initEdit/"+proId,
 					type : "POST",
 					success : function(data) {
-							//$('#validate').bootstrapValidator('revalidateField', '#status');
 							id:proId;
 							$("#dateFrom").val(data.dateFrom);
 							$("#dateTo").val(data.dateTo);
 							$("#status").val(data.status);
 							$("#reason").val(data.reason);
 							employeeId: data.employeeId; 
-					}/* ,
+					} ,
 					error : function(data,testStatus,jqXHR) {
 						$('#addModal').modal('toggle');
 						$(function(){ new PNotify({
@@ -363,15 +325,13 @@ var dt;
 							}
 							});
 						});
-						//alert("ERROR");
-						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
-						} */
+
+						}
+
 					});
 			}
     		
     		function editProbation() {
-    			//alert(proId+" edit");
-//     			var id = getUrlParameter('Id');
     			var id = $("#empId").val();
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/edit",
@@ -387,7 +347,6 @@ var dt;
 					datatype: "json",
 					contentType: "application/json",
 					success : function(data) {
-						//$('#validate').bootstrapValidator('revalidateField', '#status');
 						$('#validate').bootstrapValidator('resetForm', true);
 						$('#addModal').modal('toggle');
 						$(function(){ new PNotify({
@@ -399,23 +358,9 @@ var dt;
     						}
     						});
 						});
-						//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').slideDown('fast').delay(5000).fadeOut().delay(4000);
-						/* dt.fnClearTable();
-						dt.fnAddData([
-						    data.id,
-							data.companyName,
-							data.business,
-							data.position,
-							data.dateFrom,
-							data.dateTo,
-							data.description,
-							data.superVisor,
-							data.address,
-							'<button type="button" class="btn btn-info btn-sm active" data-expId="' + data.id + '" data-target="#addModal" data-toggle="modal">Edit</button>',
-	    					'<button type="button" class="btn btn-danger btn-sm active" data-expId="' + data.id + '" data-target="#deleteModal" data-toggle="modal">Delete</button>'
-						]); */
+						
 						listAll();
-					}/* ,
+					} ,
 					error : function(data,testStatus,jqXHR) {
 						$(function(){ new PNotify({
 						    title: 'Error!',
@@ -426,42 +371,28 @@ var dt;
 							}
 							});
 						});
-    					//$('#validate').bootstrapValidator('validating');
-    					//$('#validate').bootstrapValidator('revalidateField', '#status');
-						//alert("ERROR");
-    					//$('#addModal').modal('toggle');
-						//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
-						} */
+						}
 					});
 			}
     		
     		$("#clearModal").off().on("click", function(){
-    			//console.log("test");
 				$("#dateFrom").val("");
 				$("#dateTo").val("");
 				$("#status").val(""); 
 				$("#reason").val("");
 			});
-    		/* function setModal(data){
-				$("#dataFrom").val(data.dateFrom);
-				$("#dateTo").val(data.dateTo);
-				$("#status option:selected").val(data.status);
-			} */
 			
 			});
 			
 			$("#deleteModal").on("show.bs.modal", function(event){
 				var button = $(event.relatedTarget);
 				var proId = button.data("proid");
-				//alert("delete "+proId);
 				$(this).find(".yesButton").off("click").on("click", function()
 						{
 							deleteProbation(button,proId);
-							//alert("go fn");
 						});
 				
 				function deleteProbation(button,proId){
-					//alert("in fn");
 					$.ajax({
 						url : "${pageContext.request.contextPath}/probation/delete/"+proId,
 						type : "POST",
@@ -476,11 +407,8 @@ var dt;
 								}
 								});
 							});
-							//$("#message").html('<div class="alert alert-success" role="alert">Success</div>').delay(200).fadeIn().delay(4000).fadeOut();		
-							/* var del = button.closet("tr");
-							dt.fnDeleteRow(del); */
 							listAll();
-						}/* ,
+						} ,
 						error : function(data,testStatus,jqXHR) {
 							$('#deleteModal').modal('toggle');
 							$(function(){ new PNotify({
@@ -492,9 +420,8 @@ var dt;
 								}
 								});
 							});
-							//alert("ERROR");
-							//$("#message").html('<div class="alert alert-danger" role="alert">Error</div>').delay(200).fadeIn().delay(4000).fadeOut();
-							} */
+							
+							} 
 						});
 				}
     		   		
@@ -502,11 +429,7 @@ var dt;
 			
 			function listAll(){
 				
-				//alert("list experience");
-// 				var id = getUrlParameter('Id');
 				var id = $("#empId").val();
-				//var id = 2;
-				//alert("id >>>>"+id);
 				$.ajax({
 					url : "${pageContext.request.contextPath}/probation/listAll/"+id,
 					/* data: "id="+getUrlParameter('Id'), */
@@ -520,7 +443,7 @@ var dt;
 							'<button type="button" class="btn btn-danger btn-sm active" data-proId="' + data[i].id + '" data-target="#deleteModal" data-toggle="modal"><spring:message code="label.delete" /></button>']);
 				 
 						}
-					}/* ,
+					} ,
 					error : function(data,testStatus,jqXHR) {
 						$(function(){ new PNotify({
 						    title: 'Error!',
@@ -532,29 +455,24 @@ var dt;
 							});
 						});
 						$("#outputajax").text(testStatus);
-						} */
+						}
 					}); 
 				 
 			}
 			
 			function getUrlParameter(sParam)
 			{
-				//alert("url "+document.referrer);
 			    var sPageURL = document.referrer;
 			    var sURLVariables = sPageURL.split('?');
-			    //alert("spilt "+sURLVariables);
 
 			   	
 			    
 			    var sParameterName = sURLVariables[1].split('=');
-			    //alert("Param "+parseInt(sParameterName[1]));
 			    if (sParameterName[0] == sParam) 
 			        {
-			        	//alert("Param "+sParameterName[0]);
 			        	return sParameterName[1];
 			        	
 			        }
-			        //alert("Param2 "+parseInt(sParameterName[1]));
 			    
 			} 
     	

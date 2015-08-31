@@ -82,8 +82,6 @@
 <!-- Accounting Plugin -->
 <script src="<c:url value="/resource/accounting/accounting.js" />"></script>
 
-<!-- Main -->
-<link href="<c:url value="/resource/bootstrap/css/main.css" />" rel="stylesheet" media="all">
 
 <style >
 

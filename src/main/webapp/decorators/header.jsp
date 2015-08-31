@@ -5,9 +5,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"  %>
 
-<link href="<c:url value="/css/header.css" />" rel="stylesheet" type="text/css">
+<link href="<c:url value="/resources/css/header.css" />" rel="stylesheet" type="text/css">
 
- <style>
+  <style>
                 #Logout {
                     position: absolute;
                     right: 2%;
@@ -40,48 +40,7 @@
                     text-decoration: none;
                     font-family: Dosis-Regular;
                 }
-/* Set width on the form input elements since they're 100% wide by default */
-/* input, */
-/* select, */
-/* textarea { */
-/*     max-width: 280px; */
-/* } */
 
-/* Tab Setting */
-.tab-content {
-    background-color: #eeeeee;
-    border: 5px solid #eeeeee;
-    border-radius: 3px;
-}
-
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: #fa9900;
-    cursor: pointer;
-    background-color: #eeeeee;
-    border: 1px solid #dddddd;
-    border-bottom-color: transparent;
-    border-top: 3px solid #fa9900;
-    border-radius: 3px;
-}
-
-.nav-tabs > li > a {
-    color: #414141;
-    cursor: pointer;
-    background-color: #eeeeee;
-    border: 1px solid #dddddd;
-    border-top: 3px solid #414141;
-    border-radius: 3px;
-}
-
-    .nav-tabs > li > a:hover {
-        color: #b1b1b1;
-        cursor: pointer;
-        background-color: #eeeeee;
-        border: 1px solid #dddddd;
-        border-top: 3px solid #b1b1b1;
-        border-radius: 3px;
-
-    }
 #top-bar {
     height: 65px;
     background-color: #707070;

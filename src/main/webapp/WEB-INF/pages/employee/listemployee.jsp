@@ -8,9 +8,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="<c:url value="/css/header.css" />" rel="stylesheet" type="text/css">
-
-<!-- <style>
+<link href="<c:url value="css/header.css" />" rel="stylesheet" type="text/css">
+<style>
 .form{
 	font-family: Dosis-Regular;
 	font-size:18px;
@@ -19,7 +18,7 @@
 	padding: 5px;
 	
 }
-</style> -->
+</style>
 <div id="contentemp">
 <div class="form">
 <f:form method="post" commandName="listemployee"  role="form">
