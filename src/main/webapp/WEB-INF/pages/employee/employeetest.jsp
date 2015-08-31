@@ -1273,6 +1273,25 @@ var getIndex = 0;
 		
 		$('#salaryExpected').mask('0,000,000.00', {reverse: true});
 		
+		
+		/* $("#startWorkDate").datepicker({
+	        minDate: 0,
+	        maxDate: "+60D",
+	        numberOfMonths: 2,
+	        onSelect: function(selected) {
+	          $("#txtToDate").datepicker("option","minDate", selected)
+	        }
+	    });
+		
+		$("#endWorkDate").datepicker({ 
+	        minDate: 0,
+	        maxDate:"+60D",
+	        numberOfMonths: 2,
+	        onSelect: function(selected) {
+	           $("#txtFromDate").datepicker("option","maxDate", selected)
+	        }
+	    });  */
+		
 //------------------------------------------------------ Validate --------------------------------------------------------------------------------------------
 
 $(".closeAddressButton").off("click").on("click",function() {
