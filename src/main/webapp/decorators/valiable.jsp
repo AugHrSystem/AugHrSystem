@@ -46,7 +46,7 @@
 	/* reward-message validate*/
 	var $validatenamereward = '<spring:message code="reward.required.name" />';
 	var $validateyearreward =  '<spring:message code="reward.required.year" />';
-		
+	
 
 	/* punish-message validate*/
 	var $validatepunish = '<spring:message code="punish.required.date" />';
@@ -96,6 +96,84 @@
 	var $validateStartdate='<spring:message code="leave.required.start.date.time" />';
 	var $validateEnddate='<spring:message code="leave.required.end.date.time" />';
 	var $validateAim='<spring:message code="leave.required.aim" />';
+	
+	
+	/* employee.address-message validate*/
+	
+	var $validateaddressType = '<spring:message code="address.required.addressType" />';
+	var $validateaddress1 = '<spring:message code="address.required.address" />';
+	var $validateaddress2 = '<spring:message code="address.required.address" />';
+	var $validateprovince = '<spring:message code="address.required.province" />';
+	var $validatezipcode = '<spring:message code="address.required.zipcode" />';
+	
+	
+	/* employee-message validate*/
+	
+	var $validatenameThai = '<spring:message code="employee.required.nameThai" />';
+	var $validatesurnameThai = '<spring:message code="employee.required.surnameThai" />';
+	var $validatenicknameThai = '<spring:message code="employee.required.nicknameThai" />';
+	var $validatenameEng = '<spring:message code="employee.required.nameEng" />';
+	var $validatesurnameEng = '<spring:message code="employee.required.surnameEng" />';
+	var $validatenicknameEng = '<spring:message code="employee.required.nicknameEng" />';
+	
+	var $validateemail = '<spring:message code="employee.required.email" />';
+	var $validatetelHome = '<spring:message code="employee.required.telHome" />';
+	var $validatetelMobile = '<spring:message code="employee.required.telMobile" />';
+	var $validatetelFax = '<spring:message code="employee.required.telFax" />';
+	var $validatecongenitalDisease = '<spring:message code="employee.required.congen" />';
+	var $validatehospital = '<spring:message code="employee.required.hospital" />';
+	
+	var $validateemergencyContact = '<spring:message code="employee.required.emergencyContact" />';
+	var $validaterelationshipWithEmergencyContact = '<spring:message code="employee.required.relation" />';
+	var $validateemergencyContactAddress = '<spring:message code="employee.required.emergencyAddress" />';
+	var $validateemergencyContactPhoneNumber = '<spring:message code="employee.required.emergencyConPhoneNum" />';
+	var $validatedateOfBirth = '<spring:message code="employee.required.dob" />';
+	var $validatefromYear = '<spring:message code="employee.required.fromYear" />';
+	
+	var $validatetoYear = '<spring:message code="employee.required.toYear" />';
+	var $validateplaceOfBirth = '<spring:message code="employee.required.pob" />';
+	var $validateage = '<spring:message code="employee.required.age" />';
+	var $validatereligion = '<spring:message code="employee.required.religion" />';
+	var $validateidCard = '<spring:message code="employee.required.idCard" />';
+	var $validateissuedOffice = '<spring:message code="employee.required.issuedOffice" />';
+	
+	var $validateexpiryDate = '<spring:message code="employee.required.expiryDate" />';
+	var $validateheight = '<spring:message code="employee.required.height" />';
+	var $validateweigth = '<spring:message code="employee.required.weigth" />';
+	var $validatesex = '<spring:message code="employee.required.sex" />';
+	var $validatemaritalStatus = '<spring:message code="employee.required.maritalStatus" />';
+	var $validatenumberOfChildren = '<spring:message code="employee.required.Children" />';
+	
+	var $validatespouseName = '<spring:message code="employee.required.spouseName" />';
+	var $validatemarriageCertificateNo = '<spring:message code="employee.required.marcert" />';
+	var $validateissuedOffice2 = '<spring:message code="employee.required.issuedOffice" />';
+	var $validateaddress = '<spring:message code="employee.required.address" />';
+	var $validateoccupation = '<spring:message code="employee.required.occupation" />';
+	var $validatemilitaryServiceYes = '<spring:message code="employee.required.militaryServiceYes" />';
+	
+	var $validatedescriptionYes = '<spring:message code="employee.required.pleasewrite" />';
+	var $validatebranchOfService = '<spring:message code="employee.required.branchOfService" />';
+	var $validateserviceNo = '<spring:message code="employee.required.serviceNo" />';
+	var $validatereasonsNo = '<spring:message code="employee.required.reasons" />';
+	var $validatedateToBeDrafted = '<spring:message code="employee.required.datedrafted" />';
+	var $validatepreviousEmpreasonsNo = '<spring:message code="employee.required.givethereason" />';
+	
+	var $validateofficialDate = '<spring:message code="official.required.officialDate" />';
+	var $validatestartWorkDate = '<spring:message code="official.required.startWorkDate" />';
+	var $validateendWorkDate = '<spring:message code="official.required.endWorkDate" />';
+	var $validatepositionAppliedFor = '<spring:message code="official.required.position" />';
+	var $validatesalaryExpected = '<spring:message code="official.required.salary" />';
+	var $validateprobationDate = '<spring:message code="employee.required.probationdate" />';
+	
+	var $validatemasEmployment = '<spring:message code="employee.required.employment" />';
+	var $validatemasCoreSkill = '<spring:message code="employee.required.coreSkill" />';
+	var $validatemasLocation = '<spring:message code="employee.required.location" />';
+	var $validatemasDivision = '<spring:message code="employee.required.division" />';
+	var $validatemasJoblevel = '<spring:message code="employee.required.joblevel" />';
+	var $validatetechnology = '<spring:message code="employee.required.technology" />';
+	var $validatemasStaffType = '<spring:message code="employee.required.staffType" />';
+	var $validatestatusemp = '<spring:message code="employee.required.statusemp" />';
+	
 
 
 	/* experience-message validate*/
