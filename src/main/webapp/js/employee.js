@@ -1028,7 +1028,6 @@ if($('#previousEmployer').val()=="No"){
 			   	
 			   	if($('#id').val()!=null||$('#id').val()!==""){
 			   		
-			   		
 			   	    listAddress($('#id').val());
 			   		
 			   	}		
@@ -1036,7 +1035,7 @@ if($('#previousEmployer').val()=="No"){
 			   	
 			   		function listAddress(id){
 			   			
-//			    			alert('list address: '+id);
+			    			//alert('list address: '+id);
 							var status = 'unmodified';
 			   			
 			   			$.ajax({

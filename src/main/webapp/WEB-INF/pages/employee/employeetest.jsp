@@ -111,7 +111,7 @@
 
 							<div class="form-group">
 									<!-- <label for="id"> ID :</label> -->
-									<%--  <input id="id" name="id" type="text" class="form-control" placeholder="Enter ID" value="${id}"> --%>
+									<input id="id" name="id" type="hidden" class="form-control" placeholder="Enter ID" value="${id}"> 
 								
 								<div class="col-md-6">
 		    					<label><spring:message code="employee.location"></spring:message> :</label>
