@@ -62,7 +62,37 @@
           
             <f:form id="formAddUpdate" name="skillLanguageForm" method="post" commandName="skillLanguage" class="form-horizontal" role="form">	      	 
 	      
-	
+	      <div >
+	      
+	       
+	      <spring:message code="skilllanguage.name.lang" />
+	      </div>
+	      
+
+
+					<div class='col-sm-6'>
+						<div class="form-group">
+							<select id="masSkillLanguage" class="form-control">
+								<option value=""><spring:message
+										code="skilllanguage.enter.skill" /></option>
+								<option value="Thai">Thai</option>
+								<option value="English">English</option>
+								<option value="Other">Other</option>
+
+							</select>
+						</div>
+					</div>
+
+
+
+					<div class='col-sm-6'>
+						<div class="form-group">
+							<input id="LangName" type="text" class="form-control" />
+
+						</div>
+					</div>
+
+					<%-- 
 		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	           
 		      <div class="row">  
@@ -71,18 +101,39 @@
 			            <spring:message code="skilllanguage.name.lang" />
 :
 			    </label>	 
-			    	
-			    
+			    	  <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			     <select id="masSkillLanguage" class="form-control" >
+			     						<option value=""><spring:message code="skilllanguage.enter.skill" /></option>						
+										<option value="Thai">Thai</option>
+										<option value="English">English</option>
+										<option value="Other">Other</option>
+										
+										
+									
+	  
 			     
+			     </select>
+			     </div>
+			   
+			 <div class="row"> 
+			 <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label required" for="masSkillLanguage" >
+			            <spring:message code="skilllanguage.name.lang" />
+:
+			    </label>
+			  <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			 <input id="LangName"  type="text" class="form-control"/>
+			 </div>
+			 </div>
+			   
 			     
 			     <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">		     		
 
-			     		<%-- <f:select id="masSkillLanguage"  path="masSkillLanguage" cssClass="form-control" >
+			     		<f:select id="masSkillLanguage"  path="masSkillLanguage" cssClass="form-control" >
 						  <option  value="-1" label="please select data"/>								
 							<c:forEach var="obj" items="${ masSkillLanguageList }">									
 									<option value="${obj.id}" >${obj.skillLanguageName}</option> 									
 							</c:forEach>
-						</f:select> --%> 
+						</f:select> 
 						
 						<spring:message code="skilllanguage.enter.skill" var="skill"/>
 						
@@ -101,6 +152,7 @@
 			 </div>
 		   
 		   </div>
+		    --%>
 		   
 
 		   <spring:message code="skilllanguage.Excellent" var="Excellent"/>

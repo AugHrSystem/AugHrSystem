@@ -32,7 +32,7 @@ var dt;
 		        },
 		        fields: {
 		        
-		        	masSkillLanguage: {
+		        	/*masSkillLanguage: {
 		                validators: {
 		                    notEmpty: {
 		                        message: $requiredMasSkillLanguage
@@ -43,7 +43,7 @@ var dt;
 		                    }
 		
 		                }
-		            },
+		            },*/
 		        }
 		 
     });
@@ -154,7 +154,7 @@ var dt;
 			   $('#fairWriting').prop('checked','checked');
 			   $('#fairReading').prop('checked','checked');
 			   $('#fairUnderstanding').prop('checked','checked');
-			   $('#masSkillLanguage').val(-1);
+			   $('#masSkillLanguage').val("");
 		 
 		   }
 		   
@@ -191,13 +191,21 @@ var dt;
 	   
 		   
 		   
+		  
 		   
 		   
 		   
+		   		
 		   
 		   
-		   
-		   
+		   $("#masSkillLanguage").on('change', function(){
+			  var dataLan = $("#masSkillLanguage option:selected").text(); 
+			  if(dataLan!="Other"){
+			   $("#LangName").val(dataLan);
+			  }
+	  			//alert( this.value );
+	  			
+	  		});	
 		   
 		   function addSkilllanguage(){
 			   		
@@ -207,6 +215,7 @@ var dt;
 			  		var reading;
 			  		var understanding;
 			  		var masSkillLanguageName= $("#masSkillLanguage option:selected").text();
+			  		
 			  		
 			  		
 			  		if($('#excSpeaking:checked').val()!=null){
