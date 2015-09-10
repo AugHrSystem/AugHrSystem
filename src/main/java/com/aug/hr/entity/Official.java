@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 
-@NamedNativeQueries({
+/*@NamedNativeQueries({
 	@NamedNativeQuery(
             name = "insertOfficial",
             query = "insert into EMP_OFFICIAL("
@@ -78,6 +78,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
                       query = "delete from EMP_OFFICIAL where ID=:id", 
                       resultClass = Official.class),    
   })
+*/
 
 @Entity
 @Table(name = "EMP_OFFICIAL",uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})

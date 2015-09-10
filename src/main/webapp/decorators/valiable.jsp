@@ -101,8 +101,10 @@
 	/* employee.address-message validate*/
 	
 	var $validateaddressType = '<spring:message code="address.required.addressType" />';
-	var $validateaddress1 = '<spring:message code="address.required.address" />';
-	var $validateaddress2 = '<spring:message code="address.required.address" />';
+	var $validatehouseNo = '<spring:message code="address.required.houseNo" />';
+	var $validateroad = '<spring:message code="address.required.road" />';
+	var $validatedistrict = '<spring:message code="address.required.district" />';
+	var $validatesubDistrict = '<spring:message code="address.required.subDistrict" />';
 	var $validateprovince = '<spring:message code="address.required.province" />';
 	var $validatezipcode = '<spring:message code="address.required.zipcode" />';
 	

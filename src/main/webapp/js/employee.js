@@ -45,9 +45,10 @@ $(".closeAddressButton").off("click").on("click",function() {
 $("#validateAddress").validate({
 	rules: {
 		addressType: "required",
-		address1: "required",
-		address2: "required",
-		province: "required",
+		houseNo: "required",
+		road: "required",
+		district: "required",
+		subDistrict: "required",
 		zipcode: {
 			required: true,
 			 digits: true,
@@ -57,8 +58,10 @@ $("#validateAddress").validate({
 	},
 	messages: {
 		addressType: $validateaddressType,
-		address1: $validateaddress1,
-		address2: $validateaddress2,
+		houseNo: $validatehouseNo,
+		road: $validateroad,
+		district: $validatedistrict,
+		subDistrict: $validatesubDistrict,
 		province: $validateprovince,
 		zipcode: $validatezipcode
 		
@@ -580,25 +583,23 @@ if($('#previousEmployer').val()=="No"){
     	    	                     "visible": false
     	    	                 },
     	    	                 
-    	    	                  {
-    	    	                     "targets": [ 5 ],
-    	    	                     "visible": false
-    	    	                 }, 
-    	    	                 
     	    	                 {
     	    	                     "targets": [ 7 ],
     	    	                     "visible": false
-    	    	                 },
+    	    	                 }, 
     	    	                 
-    	    	                 {
-    	    	                     "targets": [ 8 ],
-    	    	                     "visible": false
-    	    	                 },
-    	    	                 
-    	    	                 {
+    	    	                  {
     	    	                     "targets": [ 10 ],
     	    	                     "visible": false
-    	    	                 }     	    	                 
+    	    	                 }, 
+    	    	                 
+    	    	                 
+    	    	                 {
+    	    	                     "targets": [ 12 ],
+    	    	                     "visible": false
+    	    	                 }
+    	    	                 
+    	    	                     	    	                 
     	    	           ]  
     			
     			} ); 
@@ -748,8 +749,10 @@ if($('#previousEmployer').val()=="No"){
 			  		function clearDataModal(){
 			  			
 			  			$('#addressType').val('');
-			  			$('#address1').val('');
-			  			$('#address2').val('');
+			  			$('#houseNo').val('');
+			  			$('#road').val('');
+			  			$('#district').val('');
+			  			$('#subDistrict').val('');
 			  			$("#province").val('');
 			  			$('#zipcode').val('');
 			  			
@@ -764,8 +767,10 @@ if($('#previousEmployer').val()=="No"){
 			 				 var addressId = $("#addressType").val();
 							 var addressType = $("#addressType option:selected").text();
 							 
-							 var address1 = $("#address1").val();
-							 var address2 = $("#address2").val();
+							 var houseNo = $("#houseNo").val();
+							 var road = $("#road").val();
+							 var district = $("#district").val();
+							 var subDistrict = $("#subDistrict").val();
 							 
 							 var provinceId = $("#province").val();
 							 var province = $("#province option:selected").text();
@@ -778,8 +783,10 @@ if($('#previousEmployer').val()=="No"){
 							  dt.fnAddData([  id, 
 							                  addressId,
 							                  addressType,
-								              address1,
-								              address2,
+							                  houseNo,
+							                  road,
+							                  district,
+							                  subDistrict,
 								              provinceId,
 								              province,
 								              zipcode,
@@ -810,16 +817,30 @@ if($('#previousEmployer').val()=="No"){
 							  
 							  $('<input>').attr({
 								    type: 'hidden',
-								    id: 'dataaddress1'+getIndex,
-								    name: 'addressList['+getIndex+'].address1',
-								    value: address1
+								    id: 'houseNo'+getIndex,
+								    name: 'addressList['+getIndex+'].houseNo',
+								    value: houseNo
 								}).appendTo('form');
 							  
 							  $('<input>').attr({
 								    type: 'hidden',
-								    id: 'dataaddress2'+getIndex,
-								    name: 'addressList['+getIndex+'].address2',
-								    value: address2
+								    id: 'road'+getIndex,
+								    name: 'addressList['+getIndex+'].road',
+								    value: road
+								}).appendTo('form');
+							  
+							  $('<input>').attr({
+								    type: 'hidden',
+								    id: 'district'+getIndex,
+								    name: 'addressList['+getIndex+'].district',
+								    value: district
+								}).appendTo('form');
+							  
+							  $('<input>').attr({
+								    type: 'hidden',
+								    id: 'subDistrict'+getIndex,
+								    name: 'addressList['+getIndex+'].subDistrict',
+								    value: subDistrict
 								}).appendTo('form');
 							  
 							  $('<input>').attr({
@@ -877,10 +898,12 @@ if($('#previousEmployer').val()=="No"){
 			   		$('#myModal').modal('show');
 			   		
 			   		$("#addressType").val(dataUpdate[1]);
-			   		$("#address1").val(dataUpdate[3]);
-			   		$("#address2").val(dataUpdate[4]);
-			   		$("#province").val(dataUpdate[5]);
-			   		$("#zipcode").val(dataUpdate[7]);
+			   		$("#houseNo").val(dataUpdate[3]);
+			   		$("#road").val(dataUpdate[4]);
+			   		$("#district").val(dataUpdate[5]);
+			   		$("#subDistrict").val(dataUpdate[6]);
+			   		$("#province").val(dataUpdate[7]);
+			   		$("#zipcode").val(dataUpdate[9]);
 			   		
 			   		
 			   		$('#saveAddressButton').off("click").on("click",function(){
@@ -894,8 +917,10 @@ if($('#previousEmployer').val()=="No"){
 			   		var addressId = $("#addressType").val();
 					var addressType = $("#addressType option:selected").text();
 					
-			   		var address1 = $("#address1").val();
-			   		var address2 = $("#address2").val();
+			   		var houseNo = $("#houseNo").val();
+			   		var road = $("#road").val();
+			   		var district = $("#district").val();
+			   		var subDistrict = $("#subDistrict").val();
 			   		
 			   	    var provinceId = $("#province").val();
 				    var province = $("#province option:selected").text();
@@ -908,34 +933,42 @@ if($('#previousEmployer').val()=="No"){
 			   			
 			   			dt.fnUpdate(addressId, rowUpdate, 1);
 			   			dt.fnUpdate(addressType, rowUpdate, 2);
-					    dt.fnUpdate(address1, rowUpdate, 3);
-					    dt.fnUpdate(address2, rowUpdate, 4);
-					    dt.fnUpdate(provinceId, rowUpdate, 5);
-					    dt.fnUpdate(province, rowUpdate, 6);
-					    dt.fnUpdate(zipcode, rowUpdate, 7);
-					    dt.fnUpdate('edit', rowUpdate, 10);
+					    dt.fnUpdate(houseNo, rowUpdate, 3);
+					    dt.fnUpdate(road, rowUpdate, 4);
+					    dt.fnUpdate(district, rowUpdate, 5);
+					    dt.fnUpdate(subDistrict, rowUpdate, 6);
+					    dt.fnUpdate(provinceId, rowUpdate, 7);
+					    dt.fnUpdate(province, rowUpdate, 8);
+					    dt.fnUpdate(zipcode, rowUpdate, 9);
+					    dt.fnUpdate('edit', rowUpdate, 12);
 					    
-					    $("#dataaddressid"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].id");
-					    $("#dataaddressid"+dataUpdate[8]).val(id);
+					    $("#dataaddressid"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].id");
+					    $("#dataaddressid"+dataUpdate[10]).val(id);
 					    
-					    $("#dataaddresstype"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].addressTypeId");
-					    $("#dataaddresstype"+dataUpdate[8]).val(addressId);
+					    $("#dataaddresstype"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].addressTypeId");
+					    $("#dataaddresstype"+dataUpdate[10]).val(addressId);
 					    
-					    $("#dataaddress1"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].address1");
-					    $("#dataaddress1"+dataUpdate[8]).val(address1);
+					    $("#datahouseNo"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].houseNo");
+					    $("#datahouseNo"+dataUpdate[10]).val(houseNo);
 					    
-					    $("#dataaddress2"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].address2");
-					    $("#dataaddress2"+dataUpdate[8]).val(address2);
+					    $("#dataroad"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].road");
+					    $("#dataroad"+dataUpdate[10]).val(road);
 					    
-					    $("#dataprovinceid"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].masprovinceId");
-					    $("#dataprovinceid"+dataUpdate[8]).val(provinceId);
+					    $("#datadistrict"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].district");
+					    $("#datadistrict"+dataUpdate[10]).val(district);
+					    
+					    $("#datasubDistrict"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].subDistrict");
+					    $("#datasubDistrict"+dataUpdate[10]).val(subDistrict);
+					    
+					    $("#dataprovinceid"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].masprovinceId");
+					    $("#dataprovinceid"+dataUpdate[10]).val(provinceId);
 					    
 					
-					    $("#datazipcode"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].zipcode");
-					    $("#datazipcode"+dataUpdate[8]).val(zipcode);
+					    $("#datazipcode"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].zipcode");
+					    $("#datazipcode"+dataUpdate[10]).val(zipcode);
 					    
-					    $("#datastatus"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].status");
-					    $("#datastatus"+dataUpdate[8]).val('edit');
+					    $("#datastatus"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].status");
+					    $("#datastatus"+dataUpdate[10]).val('edit');
 					    
 					    
 					    
@@ -943,30 +976,38 @@ if($('#previousEmployer').val()=="No"){
 			   		 
 			   		dt.fnUpdate(addressId, rowUpdate, 1);
 				    dt.fnUpdate(addressType, rowUpdate, 2);
-				    dt.fnUpdate(address1, rowUpdate, 3);
-				    dt.fnUpdate(address2, rowUpdate, 4);
-				    dt.fnUpdate(provinceId, rowUpdate, 5);
-				    dt.fnUpdate(province, rowUpdate, 6);
-				    dt.fnUpdate(zipcode, rowUpdate, 7);
+				    dt.fnUpdate(houseNo, rowUpdate, 3);
+				    dt.fnUpdate(road, rowUpdate, 4);
+				    dt.fnUpdate(district, rowUpdate, 5);
+				    dt.fnUpdate(subDistrict, rowUpdate, 6);
+				    dt.fnUpdate(provinceId, rowUpdate, 7);
+				    dt.fnUpdate(province, rowUpdate, 8);
+				    dt.fnUpdate(zipcode, rowUpdate, 9);
 				    
-				    $("#dataaddressid"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].id");
-				    $("#dataaddressid"+dataUpdate[8]).val(id);
+				    $("#dataaddressid"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].id");
+				    $("#dataaddressid"+dataUpdate[10]).val(id);
 				    
-				    $("#dataaddresstype"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].addressTypeId");
-				    $("#dataaddresstype"+dataUpdate[8]).val(addressId);
+				    $("#dataaddresstype"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].addressTypeId");
+				    $("#dataaddresstype"+dataUpdate[10]).val(addressId);
 				    
-				    $("#dataaddress1"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].address1");
-				    $("#dataaddress1"+dataUpdate[8]).val(address1);
+				    $("#datahouseNo"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].houseNo");
+				    $("#datahouseNo"+dataUpdate[10]).val(houseNo);
 				    
-				    $("#dataaddress2"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].address2");
-				    $("#dataaddress2"+dataUpdate[8]).val(address2);
+				    $("#dataroad"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].road");
+				    $("#dataroad"+dataUpdate[10]).val(road);
 				    
-				    $("#dataprovinceid"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].masprovinceId");
-				    $("#dataprovinceid"+dataUpdate[8]).val(provinceId);
+				    $("#datadistrict"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].district");
+				    $("#datadistrict"+dataUpdate[10]).val(district);
+				    
+				    $("#datasubDistrict"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].subDistrict");
+				    $("#datasubDistrict"+dataUpdate[10]).val(subDistrict);
+				    
+				    $("#dataprovinceid"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].masprovinceId");
+				    $("#dataprovinceid"+dataUpdate[10]).val(provinceId);
 				    
 				
-				    $("#datazipcode"+dataUpdate[8]).attr('name', "addressList["+dataUpdate[8]+"].zipcode");
-				    $("#datazipcode"+dataUpdate[8]).val(zipcode);
+				    $("#datazipcode"+dataUpdate[10]).attr('name', "addressList["+dataUpdate[8]+"].zipcode");
+				    $("#datazipcode"+dataUpdate[10]).val(zipcode);
 
 			   		
 			   	 }
@@ -992,8 +1033,10 @@ if($('#previousEmployer').val()=="No"){
 					
 					  $( '#dataaddressid'+dataDelete[0] ).remove();
 					  $( '#dataaddresstype'+dataDelete[0] ).remove();
-					  $( '#dataaddress1'+dataDelete[0] ).remove();
-					  $( '#dataaddress2'+dataDelete[0] ).remove();
+					  $( '#datahouseNo'+dataDelete[0] ).remove();
+					  $( '#dataroad'+dataDelete[0] ).remove();
+					  $( '#datadistrict'+dataDelete[0] ).remove();
+					  $( '#datasubDistrict1'+dataDelete[0] ).remove();
 					  $( '#dataprovinceid'+dataDelete[0] ).remove();
 					  $( '#datazipcode'+dataDelete[0] ).remove();
 					  $( '#datastatus'+dataDelete[0] ).remove();
@@ -1008,9 +1051,9 @@ if($('#previousEmployer').val()=="No"){
 			    	  $('#yesButton').off("click").on("click",function(){ 
 			    		  
 			    		  //alert(dataDelete[8]);
-				    	  dt.fnUpdate('delete', row, 10);
-				    	  $("#datastatus"+dataDelete[8]).attr('name', "addressList["+dataDelete[8]+"].status");
-						  $("#datastatus"+dataDelete [8]).val('delete');
+				    	  dt.fnUpdate('delete', row, 12);
+				    	  $("#datastatus"+dataDelete[10]).attr('name', "addressList["+dataDelete[10]+"].status");
+						  $("#datastatus"+dataDelete [10]).val('delete');
 						  dt.fnDeleteRow(row);
 						  $('#deleteModal').modal('toggle');
 
@@ -1053,8 +1096,10 @@ if($('#previousEmployer').val()=="No"){
 									          data[i].id,
 								              data[i].addressTypeId,
 								              data[i].masaddresstypeName,
-								              data[i].address1,
-								              data[i].address2, 
+								              data[i].houseNo,
+								              data[i].road,
+								              data[i].district,
+								              data[i].subDistrict,
 								              data[i].masprovinceId, 
 								              data[i].masprovinceName, 					              
 								              data[i].zipcode,
@@ -1082,16 +1127,30 @@ if($('#previousEmployer').val()=="No"){
 									  
 									  $('<input>').attr({
 										    type: 'hidden',
-										    id: 'dataaddress1'+getIndex,
-										    name: 'addressList['+getIndex+'].address1',
-										    value: data[i].address1
+										    id: 'datahouseNo'+getIndex,
+										    name: 'addressList['+getIndex+'].houseNo',
+										    value: data[i].houseNo
 										}).appendTo('form');
 									  
 									  $('<input>').attr({
 										    type: 'hidden',
-										    id: 'dataaddress2'+getIndex,
-										    name: 'addressList['+getIndex+'].address2',
-										    value: data[i].address2
+										    id: 'dataroad'+getIndex,
+										    name: 'addressList['+getIndex+'].road',
+										    value: data[i].road
+										}).appendTo('form');
+									  
+									  $('<input>').attr({
+										    type: 'hidden',
+										    id: 'datadistrict'+getIndex,
+										    name: 'addressList['+getIndex+'].district',
+										    value: data[i].district
+										}).appendTo('form');
+									  
+									  $('<input>').attr({
+										    type: 'hidden',
+										    id: 'datasubDistrict'+getIndex,
+										    name: 'addressList['+getIndex+'].subDistrict',
+										    value: data[i].subDistrict
 										}).appendTo('form');
 									  
 									  $('<input>').attr({

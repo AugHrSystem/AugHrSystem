@@ -193,8 +193,10 @@
 							    <th><spring:message code="label.id"></spring:message></th>
 							    <th><spring:message code="address.idtype"></spring:message></th>
 								<th><spring:message code="address.type"></spring:message></th> 
-								<th><spring:message code="address.address1"></spring:message></th>
-								<th><spring:message code="address.address2"></spring:message></th>
+								<th><spring:message code="address.houseNo"></spring:message></th>
+								<th><spring:message code="address.road"></spring:message></th>
+								<th><spring:message code="address.district"></spring:message></th>
+								<th><spring:message code="address.subDistrict"></spring:message></th>
 								<th><spring:message code="address.idprovince"></spring:message></th>
 								<th><spring:message code="address.province"></spring:message></th> 
 								<th><spring:message code="address.zipcode"></spring:message></th>
@@ -395,7 +397,7 @@
 									 <c:if test="${empty allEmployeeDto.sex}">									
 									  		 <label><input type="radio" name="sex" id="Male" value="Male"><spring:message code="employee.male"></spring:message></label>
 									  		 <label><input type="radio" name="sex" id="Female" value="Female"><spring:message code="employee.female"></spring:message></label>
-									 		<label for="sex" class="error">Please select your gender</label>
+									 		<label for="sex" class="error"><spring:message code="employee.required.sex"></spring:message></label>
 									  </c:if>
 									  
 									  
@@ -424,7 +426,7 @@
      									 <label><input type="radio" name="maritalStatus" id="Single" value="Single"><spring:message code="employee.single"></spring:message></label> 
       									 <label><input type="radio" name="maritalStatus" id="Married" value="Married"><spring:message code="employee.married"></spring:message></label>
       									 <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce"><spring:message code="employee.divorce"></spring:message></label>
-    								  		<label for="maritalStatus" class="error">Please select your maritalStatus</label>
+    								  		<label for="maritalStatus" class="error"><spring:message code="employee.required.maritalStatus"></spring:message></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.maritalStatus}">
     								        
@@ -792,7 +794,7 @@
      				
      				<div class="col-md-12">
      								<div class="col-md-6">
-    									 <label> Please state the reasons :</label>
+    									 <label> <spring:message code="employee.pleasestatethereasons"></spring:message> :</label>
     									 <f:input  class="form-control" id="reasonsNo" path="reasonsNo" value="${allEmployeeDto.reasonsNo}" placeholder="${please} ${enter} ${pleasereason}" /> 
     								</div>
     								<div class="col-md-3">
@@ -1185,14 +1187,24 @@
 							
 
 							<div class="form-group">
-								<label><spring:message code="address.address1"></spring:message>:</label>
-								<textarea class="form-control" rows="1" id="address1" name="address1" placeholder="${please} ${enter} <spring:message code="address.address1"></spring:message>"></textarea>
+								<label><spring:message code="address.houseNo"></spring:message>:</label>
+								<textarea class="form-control" rows="1" id="houseNo" name="houseNo" placeholder="${please} ${enter} <spring:message code="address.houseNo"></spring:message>"></textarea>
 							</div>
 
 
 							<div class="form-group">
-								<label><spring:message code="address.address2"></spring:message>:</label>
-								<textarea class="form-control" rows="1" id="address2" name="address2" placeholder="${please} ${enter} <spring:message code="address.address2"></spring:message>"></textarea>
+								<label><spring:message code="address.road"></spring:message>:</label>
+								<textarea class="form-control" rows="1" id="road" name="road" placeholder="${please} ${enter} <spring:message code="address.road"></spring:message>"></textarea>
+							</div>
+							
+							<div class="form-group">
+								<label><spring:message code="address.district"></spring:message>:</label>
+								<textarea class="form-control" rows="1" id="district" name="district" placeholder="${please} ${enter} <spring:message code="address.district"></spring:message>"></textarea>
+							</div>
+							
+							<div class="form-group">
+								<label><spring:message code="address.subDistrict"></spring:message>:</label>
+								<textarea class="form-control" rows="1" id="subDistrict" name="subDistrict" placeholder="${please} ${enter} <spring:message code="address.subDistrict"></spring:message>"></textarea>
 							</div>
 
 
