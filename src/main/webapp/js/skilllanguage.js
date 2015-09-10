@@ -200,8 +200,11 @@ var dt;
 		   
 		   $("#masSkillLanguage").on('change', function(){
 			  var dataLan = $("#masSkillLanguage option:selected").text(); 
-			  if(dataLan!="Other"){
-			   $("#LangName").val(dataLan);
+			  if(dataLan=="Other"){
+				  $("#LangName").val("");
+			  }else{
+				  
+				  $("#LangName").val(dataLan);
 			  }
 	  			//alert( this.value );
 	  			

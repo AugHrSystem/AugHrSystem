@@ -49,6 +49,8 @@
 
 
 <!-- Modal Add and Update data-->
+<f:form id="formAddUpdate" name="skillLanguageForm" method="post" commandName="skillLanguage" class="form-horizontal" role="form">	      	 
+	      
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -56,25 +58,21 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">${Language}</h4>
       </div>
-      <div class="modal-body">
-          
-             
-          
-            <f:form id="formAddUpdate" name="skillLanguageForm" method="post" commandName="skillLanguage" class="form-horizontal" role="form">	      	 
-	      
-	      <div >
-	      
-	       
-	      <spring:message code="skilllanguage.name.lang" />
-	      </div>
-	      
+      <div class="modal-body row">
 
 
+
+
+					<div class='col-sm-12' align="left">
+						<label class="required"><spring:message
+								code="skilllanguage.name.lang" var="namelang" />${namelang } :</label>
+					</div>
+
+					<div class='col-sm-12'>
 					<div class='col-sm-6'>
 						<div class="form-group">
 							<select id="masSkillLanguage" class="form-control">
-								<option value=""><spring:message
-										code="skilllanguage.enter.skill" /></option>
+								<option value=""><spring:message code="skilllanguage.enter.skill" /></option>
 								<option value="Thai">Thai</option>
 								<option value="English">English</option>
 								<option value="Other">Other</option>
@@ -91,6 +89,8 @@
 
 						</div>
 					</div>
+					
+	</div>
 
 					<%-- 
 		    <div class="form-group form-group-sm col col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -281,18 +281,22 @@
 		   </div>
 		  
 		  
-		      <div align="center">
-		        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.close" /></button>
-		     	<button id="saveBtn" name="saveBtn" type="button" class="btn btn-primary"><spring:message code="label.save" /></button>
-		      </div>
+		   
  
-      </f:form>
+    
 	  
 	    </div>
+	    
+	     <div class="modal-footer">
+		        <button type="button" class="btn btn-default btnClose" data-dismiss="modal"><spring:message code="label.close" /></button>
+		     	<button id="saveBtn" name="saveBtn" type="button" class="btn btn-info saveButton"><spring:message code="label.save" /></button>
+		      </div>
+	    
+	    
 	  </div>
 	</div>   
  </div>
- 
+  </f:form> 
 
 
 <!-- Modal Delete -->
