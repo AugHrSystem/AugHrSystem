@@ -1,4 +1,5 @@
 .DS_Store
+**/**create-schema.sql
 *.class
 *.classpath
 *.settings
