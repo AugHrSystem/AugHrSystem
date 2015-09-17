@@ -21,15 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.aug.hr.dto.services.RewardDtoService;
-import com.aug.hr.entity.Address;
-import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.Reward;
-import com.aug.hr.entity.dto.RewardDto;
+import com.aug.hrdb.entities.Address;
+import com.aug.hrdb.entities.Employee;
+import com.aug.hrdb.entities.Reward;
+import com.aug.hrdb.dto.RewardDto;
 import com.aug.hr.entity.editor.RewardEditor;
-import com.aug.hr.services.EmployeeService;
-import com.aug.hr.services.RewardService;
+import com.aug.hrdb.services.EmployeeService;
+import com.aug.hrdb.services.RewardService;
+import com.aug.hrdb.services.RewardDtoService;
 
 
 @Controller
