@@ -7,7 +7,7 @@ import com.aug.hr.entity.SkillLanguage;
 import com.aug.hr.services.SkillLanguageService;
 
 @Component
-public class SkillLanguageEditor extends PropertyEditorSupport{
+public class LanguageEditor extends PropertyEditorSupport{
 	
 	@Autowired
 	private SkillLanguageService skillLanguageSkillService;

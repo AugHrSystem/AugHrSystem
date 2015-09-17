@@ -8,8 +8,10 @@ package com.aug.hr.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.aug.hr.entity.MasSpecialty;
-import com.aug.hr.services.MasSpecialtyService;
+import com.aug.hrdb.entities.MasSpecialty;
+import com.aug.hrdb.services.MasSpecialtyService;
+
+
 
 public class MasSpecialtyController {
 	

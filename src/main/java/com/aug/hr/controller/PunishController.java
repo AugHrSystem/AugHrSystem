@@ -7,7 +7,6 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -19,14 +18,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.services.PunishDtoService;
-import com.aug.hr.entity.Punish;
-import com.aug.hr.entity.dto.PunsihDto;
-import com.aug.hr.entity.editor.PunishEditor;
-import com.aug.hr.services.PunishService;
+import com.aug.hrdb.dto.PunsihDto;
+import com.aug.hrdb.entities.Punish;
+import com.aug.hrdb.services.PunishDtoService;
+import com.aug.hrdb.services.PunishService;
+
+
 
 
 @Controller

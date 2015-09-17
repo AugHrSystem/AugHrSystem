@@ -11,13 +11,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.aug.hr.entity.Login;
-import com.aug.hr.entity.Probation;
-import com.aug.hr.services.LoginService;
+import com.aug.hrdb.services.LoginService;
+
+
+
 
 @Controller
 public class LoginController {

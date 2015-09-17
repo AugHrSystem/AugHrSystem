@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,7 +15,6 @@ import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,13 +22,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.aug.hr.dto.services.ProbationDtoService;
-import com.aug.hr.entity.Probation;
-import com.aug.hr.entity.dto.ProbationDto;
-import com.aug.hr.exception.GenericException;
-import com.aug.hr.services.ProbationService;
+import com.aug.hrdb.dto.ProbationDto;
+import com.aug.hrdb.entities.Probation;
+import com.aug.hrdb.services.ProbationDtoService;
+import com.aug.hrdb.services.ProbationService;
+
 
 @Controller
 @ExposesResourceFor(Probation.class)
