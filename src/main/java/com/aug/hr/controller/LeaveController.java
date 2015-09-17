@@ -30,14 +30,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.services.AimEmployeeDtoService;
-import com.aug.hr.dto.services.EmployeeDtoService;
-import com.aug.hr.dto.services.LeaveDtoService;
-import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.Leave;
-import com.aug.hr.entity.dto.LeaveDto;
-import com.aug.hr.services.LeaveService;
-import com.aug.hr.services.MasLeaveTypeService;
+import com.aug.hrdb.dto.LeaveDto;
+import com.aug.hrdb.entities.Employee;
+import com.aug.hrdb.entities.Leave;
+import com.aug.hrdb.services.AimEmployeeDtoService;
+import com.aug.hrdb.services.EmployeeDtoService;
+import com.aug.hrdb.services.LeaveDtoService;
+import com.aug.hrdb.services.LeaveService;
+import com.aug.hrdb.services.MasLeaveTypeService;
+
+
 
 @Controller
 public class LeaveController {

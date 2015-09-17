@@ -25,10 +25,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.services.HistoryDtoService;
-import com.aug.hr.entity.History;
-import com.aug.hr.entity.dto.HistoryDto;
-import com.aug.hr.services.HistoryService;
+import com.aug.hrdb.dto.HistoryDto;
+import com.aug.hrdb.entities.History;
+import com.aug.hrdb.services.HistoryDtoService;
+import com.aug.hrdb.services.HistoryService;
+
+
 
 @Controller
 public class HistoryController {
