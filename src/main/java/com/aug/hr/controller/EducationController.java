@@ -24,11 +24,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.services.EducationDtoService;
-import com.aug.hr.entity.Education;
-import com.aug.hr.entity.dto.EducationDto;
-import com.aug.hr.services.EducationService;
-import com.aug.hr.services.MasDegreetypeService;
+import com.aug.hrdb.services.EducationDtoService;
+import com.aug.hrdb.dto.EducationDto;
+import com.aug.hrdb.entities.Applicant;
+import com.aug.hrdb.entities.Education;
+import com.aug.hrdb.services.EducationService;
+import com.aug.hrdb.services.MasDegreetypeService;
 
 @Controller
 public class EducationController {
@@ -57,8 +58,8 @@ public class EducationController {
 		model.addAttribute("masdegreetypeList",
 				masDegreetypeService.findAll());
 		
-		educationDto.setEmployeeId(id);
-		model.addAttribute("id", educationDto.getEmployeeId());
+		educationDto.setApplicant(id);
+		model.addAttribute("id", educationDto.getApplicant());
 		return "/education/education";
 	}
 	

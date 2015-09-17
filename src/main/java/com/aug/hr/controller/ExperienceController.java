@@ -25,10 +25,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.services.ExperienceDtoService;
-import com.aug.hr.entity.Experience;
-import com.aug.hr.entity.dto.ExperienceDto;
-import com.aug.hr.services.ExperienceService;
+
+
+
+import com.aug.hrdb.services.ExperienceDtoService;
+import com.aug.hrdb.dto.ExperienceDto;
+import com.aug.hrdb.entities.Experience;
+import com.aug.hrdb.services.ExperienceService;
+
+
 
 @Controller
 public class ExperienceController {
@@ -40,8 +45,8 @@ public class ExperienceController {
 			@PathVariable("id") Integer id, 
 			@ModelAttribute ExperienceDto experienceDto) {		
 		
-		experienceDto.setEmployeeId(id);
-		model.addAttribute("id", experienceDto.getEmployeeId());
+		experienceDto.setApplicant(id);;
+		model.addAttribute("id", experienceDto.getApplicant());
 		return "experience/experience";
 	}
 	
@@ -89,7 +94,7 @@ public class ExperienceController {
 //	@Transactional
 	@RequestMapping(value = "/experience/initEdit/{expId}", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody ExperienceDto initEditExperience(@PathVariable("expId") Integer expId) {	
-		Experience experience = experienceService.find(expId);
+		Experience experience = experienceService.findById(expId);
 		return experience.toExperienceDto();
 	}
 	
@@ -97,7 +102,7 @@ public class ExperienceController {
 	@Transactional
 	@RequestMapping(value = "/experience/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody ExperienceDto editExperience(@RequestBody ExperienceDto experienceDto) {
-		Experience experience = experienceService.find(experienceDto.getId());
+		Experience experience = experienceService.findById(experienceDto.getId());
 		Experience experienceEdit = experience.fromExperienceDto(experience, experienceDto);
 		experienceService.update(experienceEdit);
 		return experience.toExperienceDto();

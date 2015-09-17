@@ -44,43 +44,41 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aug.exception.CustomException;
-import com.aug.hr.dto.services.EmployeeDtoService;
-import com.aug.hr.dto.services.AimEmployeeDtoService;
-import com.aug.hr.dto.services.EmployeeCodeDtoService;
-import com.aug.hr.dto.services.EmployeeIdDtoService;
-import com.aug.hr.dto.services.LeaveDtoService;
-import com.aug.hr.entity.Address;
-import com.aug.hr.entity.Employee;
-import com.aug.hr.entity.Leave;
-import com.aug.hr.entity.MasAddressType;
-import com.aug.hr.entity.MasLocation;
-import com.aug.hr.entity.MasProvince;
-import com.aug.hr.entity.MasStaffType;
-import com.aug.hr.entity.Official;
 
-import com.aug.hr.entity.dto.AbilityDto;
-import com.aug.hr.entity.dto.AddressDto;
 import com.aug.hr.entity.dto.AllEmployeeDto;
-import com.aug.hr.entity.dto.EmployeeCodeDto;
-import com.aug.hr.entity.dto.EmployeeDto;
-import com.aug.hr.entity.dto.ReportEmployeeDto;
-import com.aug.hr.entity.dto.ReportLeaveDto;
-import com.aug.hr.entity.dto.ReportStatusEmployeeDto;
 import com.aug.hr.entity.editor.AddressEditor;
-import com.aug.hr.services.AddressService;
-import com.aug.hr.services.EmployeeService;
 import com.aug.hr.services.JoblevelService;
-import com.aug.hr.services.MasAddressTypeService;
-import com.aug.hr.services.MasCoreSkillService;
-import com.aug.hr.services.MasDivisionService;
-import com.aug.hr.services.MasEmploymentService;
-import com.aug.hr.services.MasLocationService;
-import com.aug.hr.services.MasProvinceService;
-import com.aug.hr.services.MasSpecialtyService;
-import com.aug.hr.services.MasStaffTypeService;
 import com.aug.hr.services.ReportService;
-import com.aug.hr.services.masTechnologyService;
 import com.aug.hr.services.utils.UploadService;
+import com.aug.hrdb.services.EmployeeDtoService;
+import com.aug.hrdb.services.AimEmployeeDtoService;
+import com.aug.hrdb.services.EmployeeCodeDtoService;
+import com.aug.hrdb.services.EmployeeIdDtoService;
+import com.aug.hrdb.services.LeaveDtoService;
+
+
+import com.aug.hrdb.dto.AddressDto;
+import com.aug.hrdb.dto.EmployeeCodeDto;
+import com.aug.hrdb.dto.EmployeeDto;
+import com.aug.hrdb.dto.ReportEmployeeDto;
+import com.aug.hrdb.dto.ReportLeaveDto;
+import com.aug.hrdb.dto.ReportStatusEmployeeDto;
+import com.aug.hrdb.entities.Address;
+import com.aug.hrdb.entities.Employee;
+import com.aug.hrdb.entities.Leave;
+import com.aug.hrdb.services.AddressService;
+import com.aug.hrdb.services.EmployeeService;
+import com.aug.hrdb.services.MasAddressTypeService;
+import com.aug.hrdb.services.MasCoreSkillService;
+import com.aug.hrdb.services.MasDivisionService;
+import com.aug.hrdb.services.MasEmploymentService;
+import com.aug.hrdb.services.MasJoblevelService;
+import com.aug.hrdb.services.MasLocationService;
+import com.aug.hrdb.services.MasProvinceService;
+import com.aug.hrdb.services.MasSpecialtyService;
+import com.aug.hrdb.services.MasStaffTypeService;
+import com.aug.hrdb.services.MasTechnologyService;
+
 
 @Controller
 public class EmployeeController {
@@ -92,9 +90,9 @@ public class EmployeeController {
 	@Autowired private MasProvinceService masProvinceService;
 	@Autowired private MasEmploymentService masEmploymentService;
 	@Autowired private MasDivisionService masDivisionService;
-	@Autowired private masTechnologyService masTechnologyService;
+	@Autowired private MasTechnologyService masTechnologyService;
 	@Autowired private MasCoreSkillService masCoreSkillService;
-	@Autowired private JoblevelService joblevelService;
+	@Autowired private MasJoblevelService joblevelService;
 	@Autowired private MasLocationService masLocationService;
 	@Autowired private MasStaffTypeService masStaffTypeService;
 	@Autowired private AddressEditor addressEditor;
