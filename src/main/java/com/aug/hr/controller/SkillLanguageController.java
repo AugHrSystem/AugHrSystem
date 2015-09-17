@@ -29,64 +29,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.services.SkillLanguageDtoService;
-import com.aug.hr.entity.Family;
-import com.aug.hr.entity.MasSkillLanguage;
-import com.aug.hr.entity.SkillLanguage;
-import com.aug.hr.entity.dto.SkillLanguageDto;
+import com.aug.hrdb.services.LanguageDtoService;
+import com.aug.hrdb.entities.Family;
+import com.aug.hrdb.entities.Language;
+import com.aug.hrdb.dto.LanguageDto;
 import com.aug.hr.entity.editor.SkillLanguageEditor;
-import com.aug.hr.services.EmployeeService;
-import com.aug.hr.services.MasSkillLanguageService;
-import com.aug.hr.services.SkillLanguageService;
+import com.aug.hrdb.services.EmployeeService;
+import com.aug.hrdb.services.LanguageService;
 
 
 @Controller
 public class SkillLanguageController {
 	
 	@Autowired
-	private SkillLanguageService skillLanguageService;
-	@Autowired
-	private MasSkillLanguageService masSkillLanguageService;
+	private LanguageService languageService;
 	@Autowired
 	private EmployeeService employeeService;
 	@Autowired
-	private SkillLanguageDtoService skillLanguageDtoService;
+	private LanguageDtoService languageDtoService;
 	@Autowired
 	private SkillLanguageEditor skillLanguageEditor;
 	
 
 	private final static Logger logger = Logger
-			.getLogger(SkillLanguage.class);
+			.getLogger(Language.class);
 	
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		
-		binder.registerCustomEditor(SkillLanguage.class, skillLanguageEditor);
+		binder.registerCustomEditor(Language.class, skillLanguageEditor);
 	
 	}
 	
 	
 	@RequestMapping(value = "/skilllanguage/{id}", method = RequestMethod.GET)
 	public String initSkillLanguage(Locale locale,
-			@ModelAttribute(value = "skillLanguage") SkillLanguage skillLanguage,
+			@ModelAttribute(value = "skillLanguage") Language language,
 			ModelMap model, 
 			@PathVariable("id") Integer id, 
-			@ModelAttribute SkillLanguageDto skillLanguageDto) {
+			@ModelAttribute LanguageDto languageDto) {
 		
 		
 		logger.info("Welcome to skill language locale: " + locale);
-		List<MasSkillLanguage> masSkillLanguageList = masSkillLanguageService.findAll();
-		//List<SkillLanguage> skillLanguageList = skillLanguageService.findAllByEmployee(1);
+		List<Language> languageList = languageService.findAll();
+		//List<SkillLanguage> skillLanguageList = languageService.findAllByEmployee(1);
 		
 		
 		
 		//model.addAttribute("skillLaguageList", skillLanguageList );
-		model.addAttribute("skillLaguage", skillLanguage);
-		model.addAttribute("masSkillLanguageList", masSkillLanguageList);
+		model.addAttribute("skillLaguage", language);
+		model.addAttribute("masSkillLanguageList", languageList);
 		
-		skillLanguageDto.setEmployeeId(id);
-		model.addAttribute("id", skillLanguageDto.getEmployeeId());
+		LanguageDto.setApplicantId(id);
+		model.addAttribute("id", languageDto.getApplicantId());
 		
 		return "/skilllanguage/skilllanguage";
 	}
@@ -96,13 +92,13 @@ public class SkillLanguageController {
 	
 	
 	@RequestMapping(value = "/skilllanguage/list/{id}", method = RequestMethod.POST,produces="application/json")
-	public @ResponseBody List<SkillLanguageDto> findSkillLanguage(Locale locale,
+	public @ResponseBody List<LanguageDto> findSkillLanguage(Locale locale,
 		   //@ModelAttribute(value = "family") Family family,
 			@PathVariable("id") Integer id,
 			ModelMap model)  {
 		
 		
-		List<SkillLanguageDto> skillLanguageList = skillLanguageDtoService.listSkillLanguage(new Integer(id));
+		List<LanguageDto> skillLanguageList = languageDtoService.listSkillLanguage(new Integer(id));
 		
 		return skillLanguageList;
 	
@@ -113,16 +109,16 @@ public class SkillLanguageController {
 	
 
 	@RequestMapping(value = "/skilllanguage/add", method =  {RequestMethod.POST})
-	public @ResponseBody SkillLanguageDto addData(Locale locale,
-				@Valid @ModelAttribute SkillLanguageDto skillLanguageInfo,
+	public @ResponseBody LanguageDto addData(Locale locale,
+				@Valid @ModelAttribute LanguageDto skillLanguageInfo,
 				ModelMap model)  {
 		
-	    SkillLanguageDto skillLanguage = new SkillLanguageDto();
-	    skillLanguage = skillLanguageInfo;
-		logger.info("Info skill language: " + skillLanguage.toString());
-		skillLanguageService.saveByFindEmployee(skillLanguageInfo.getEmployeeId(), skillLanguage);
+	    LanguageDto language = new LanguageDto();
+	    language = skillLanguageInfo;
+		logger.info("Info skill language: " + language.toString());
+		languageService.saveByFindEmployee(skillLanguageInfo.getApplicantId(), language);
 
-		return skillLanguage;
+		return language;
 		
 	}
 	
@@ -130,12 +126,12 @@ public class SkillLanguageController {
 	
 	@RequestMapping(value = "/skilllanguage/initedit", method =  {RequestMethod.POST})
 	public @ResponseBody SkillLanguageDto initEdit(Locale locale,
-				@ModelAttribute SkillLanguageDto skillLanguageInfo,
+				@ModelAttribute LanguageDto skillLanguageInfo,
 				ModelMap model) {
 		
     
-	SkillLanguageDto skillLanguage = new SkillLanguageDto();
-	skillLanguage = skillLanguageService.findSkillLanguageById(skillLanguageInfo.getId());
+	LanguageDto skillLanguage = new LanguageDto();
+	skillLanguage = languageService.findSkillLanguageById(skillLanguageInfo.getId());
 	return skillLanguage;
 	
 		
@@ -148,7 +144,7 @@ public class SkillLanguageController {
 				@ModelAttribute SkillLanguageDto skillLanguage,
 				ModelMap model) {
 	logger.info("info of skill language: "+skillLanguage.toString());
-	skillLanguageService.updateSetSkillLanguage(skillLanguage);
+	languageService.updateSetSkillLanguage(skillLanguage);
 	return skillLanguage;
 	}
 
@@ -159,9 +155,9 @@ public class SkillLanguageController {
 				@ModelAttribute SkillLanguageDto skillLanguage,
 				ModelMap model) {
 	logger.info("info of skill language: "+skillLanguage.toString());
-	SkillLanguage skillLanguageDelete = skillLanguageService.find(skillLanguage.getId());
+	SkillLanguage skillLanguageDelete = languageService.find(skillLanguage.getId());
 	logger.info("info of skill language: "+skillLanguageDelete.getId().toString());
-	skillLanguageService.delete(skillLanguageDelete);
+	languageService.delete(skillLanguageDelete);
 	return skillLanguage;
 	}
 	
@@ -173,7 +169,7 @@ public class SkillLanguageController {
 				ModelMap model,
 				HttpServletResponse response) {
 	logger.info("validate mas skill language");
-	SkillLanguage skillLanguageValidate = skillLanguageService.findJoinMasSkillLanguage(skillLanguage.getMasSkillLanguageId());
+	SkillLanguage skillLanguageValidate = languageService.findJoinMasSkillLanguage(skillLanguage.getMasSkillLanguageId());
 	String msg = null;
 	System.out.println("mas skill lang: "+skillLanguageValidate.getMasSkillLanguage());
 	if(skillLanguageValidate.getMasSkillLanguage()==null){		

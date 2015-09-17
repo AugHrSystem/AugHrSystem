@@ -23,11 +23,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.exception.CustomException;
-import com.aug.hr.dto.services.SiteDtoService;
-import com.aug.hr.entity.Site;
-import com.aug.hr.entity.SkillLanguage;
-import com.aug.hr.entity.dto.SiteDto;
-import com.aug.hr.services.SiteService;
+import com.aug.hrdb.services.SiteDtoService;
+import com.aug.hrdb.entities.Site;
+import com.aug.hrdb.entities.Language;
+import com.aug.hrdb.dto.SiteDto;
+import com.aug.hrdb.services.SiteService;
 
 
 
@@ -36,7 +36,7 @@ public class SiteController {
 	
 
 	private final static Logger logger = Logger
-			.getLogger(SkillLanguage.class);
+			.getLogger(Language.class);
 	
 	@Autowired
 	private SiteDtoService siteDtoService;
