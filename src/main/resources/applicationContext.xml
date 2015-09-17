@@ -22,9 +22,9 @@
 
     <context:annotation-config/>
     <tx:annotation-driven/>
-    <jpa:repositories base-package="com.aug.hr-db"/>
+    <jpa:repositories base-package="com.aug.hrdb"/>
     <context:component-scan base-package="com.aug.hr.controller"/>
-    <context:component-scan base-package="com.aug.hr-db.*"/>
+    <context:component-scan base-package="com.aug.hrdb.*"/>
     
 
     <util:properties id="appProps" location="classpath:ApplicationResources.properties" />
@@ -68,7 +68,7 @@
     <!--Hibernate SessionFactory using p name space -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
          <property name="dataSource" ref="dataSource"/>
-   		 <property name="packagesToScan" value="com.aug.hr-db.entities"/>
+   		 <property name="packagesToScan" value="com.aug.hrdb.entities"/>
      </bean>
 
 
