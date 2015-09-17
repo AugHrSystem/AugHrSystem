@@ -8,7 +8,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.aug.hr.dao.RewardDao;
-import com.aug.hr.entity.Reference;
 import com.aug.hr.entity.Reward;
 import com.aug.hr.entity.dto.RewardDto;
 import com.mysql.jdbc.StringUtils;

@@ -35,6 +35,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.aug.hrdb.entities.Reference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
