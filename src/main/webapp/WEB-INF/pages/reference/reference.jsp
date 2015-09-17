@@ -77,6 +77,18 @@
 					    <div class="form-group " >
 							<label class="required" ><spring:message code="reference.telephoneheader" var="telephoneheader" />${telephoneheader} :</label>
 							<form:input path="tel" type="text" class="form-control" id="tel" placeholder="${telephone}"/>							
+				    	</div>
+				    	
+				    	<spring:message code="reference.address" var="address" />
+				    	<div class="form-group " >
+							<label class="required" ><spring:message code="reference.address" var="address" />${address} :</label>
+							<form:input path="address" type="text" class="form-control" id="address" placeholder="${address}"/>							
+				    	</div>	
+				    	
+				    	<spring:message code="reference.occupation" var="occupation" />
+				    	<div class="form-group " >
+							<label class="required" ><spring:message code="reference.address" var="address" />${occupation} :</label>
+							<form:input path="occupation" type="text" class="form-control" id="occupation" placeholder="${occupation}"/>							
 				    	</div>		
 				    			    			    				  					    
 					    

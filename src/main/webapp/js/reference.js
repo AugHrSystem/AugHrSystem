@@ -53,6 +53,22 @@
 	                }
 	            },
 	            
+	            address: {
+	                validators: {
+	                    notEmpty: {
+	                    	message: $validateaddressreference
+	                    }
+	                }
+	            },
+	            
+	            occupation: {
+	                validators: {
+	                    notEmpty: {
+	                    	message: $validateoccupationreference
+	                    }
+	                }
+	            }
+	            
 	     
 	        }
 	    });
@@ -110,10 +126,10 @@
 
 		function clearModal(){
 			$("#name").val(""),
-		//	$("#address").val(""),
+			$("#address").val(""),
 		//	$("#Unit").val(""),
 			$("#tel").val("");
-		//	$("#occupation").val("");
+			$("#occupation").val("");
 		}
 
 
@@ -126,9 +142,9 @@
 				url : $getContextPath+"/reference/add",
 				data : JSON.stringify({			
 					name : $("#name").val(),
-					/* address :$("#address").val(), */
+					address :$("#address").val(),
 					tel :$("#tel").val(),
-					/* occupation :$("#occupation").val(), */
+					occupation :$("#occupation").val(),
 					employeeId: id 
 				}),
 				type : "POST",
@@ -190,9 +206,9 @@
 					
 								id :referenceid,
 								name: $("#name").val(),	
-								/* address: $("#address").val(), */ 
+								address: $("#address").val(),
 								tel :$("#tel").val(),
-								/* occupation: $("#occupation").val(), */
+								occupation: $("#occupation").val(),
 								employeeId: id 
 												
 					}),
@@ -247,9 +263,9 @@
 				type : "POST", 
 				success : function(data) {
 					$("#name").val(data.name); 
-					/* $("#address").val(data.address); */
+					$("#address").val(data.address);
 					$("#tel").val(data.tel);
-					/* $("#occupation").val(data.occupation); */
+					$("#occupation").val(data.occupation);
 					employeeId: data.employeeId;					
 				},
 				error : function(jqXHR,	textStatus,	error) {	

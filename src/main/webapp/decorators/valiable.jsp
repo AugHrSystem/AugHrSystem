@@ -40,7 +40,9 @@
 
 	/* reference-message validate*/
 	var $validatenamereference = '<spring:message code="reference.required.fullname" />';
-	var $validatetelreference = '<spring:message code="reference.required.telephone" />'
+	var $validatetelreference = '<spring:message code="reference.required.telephone" />';
+	var $validateaddressreference = '<spring:message code="reference.required.address" />';
+	var $validateoccupationreference = '<spring:message code="reference.required.occupation" />';
 	
 		
 	/* reward-message validate*/
