@@ -45,7 +45,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aug.exception.CustomException;
 
-import com.aug.hr.entity.dto.AllEmployeeDto;
+
 import com.aug.hr.entity.editor.AddressEditor;
 import com.aug.hr.services.JoblevelService;
 import com.aug.hr.services.ReportService;
@@ -58,6 +58,7 @@ import com.aug.hrdb.services.LeaveDtoService;
 
 
 import com.aug.hrdb.dto.AddressDto;
+
 import com.aug.hrdb.dto.EmployeeCodeDto;
 import com.aug.hrdb.dto.EmployeeDto;
 import com.aug.hrdb.dto.ReportEmployeeDto;
@@ -130,7 +131,7 @@ public class EmployeeController {
 
 	@RequestMapping(value="/employee",method={RequestMethod.GET,RequestMethod.POST})
 	//@Transactional
-	public String listAll(@ModelAttribute AllEmployeeDto allEmployeeDto,
+	public String listAll(@ModelAttribute EmployeeDto employeeDto,
 						  HttpSession session,
 						  Locale locale,
 						  ModelMap model
@@ -154,8 +155,8 @@ public class EmployeeController {
 		
 		
 		
-		//allEmployeeDto.setId(id);
-		//model.addAttribute("id",allEmployeeDto.getId());
+		//employeeDto.setId(id);
+		//model.addAttribute("id",employeeDto.getId());
 		//model.addAttribute("employeeCodeDto",employeeCodeDtoService.serchRunningNo(1));
 
 
@@ -192,12 +193,12 @@ public class EmployeeController {
 	//findAddress
 	@RequestMapping(value = "/employee/address", method = RequestMethod.POST )
 	public @ResponseBody List<AddressDto> findAddress(@RequestBody AddressDto addressDto,
-			@ModelAttribute("allEmployeeDto") AllEmployeeDto allEmployeeDto,
+			@ModelAttribute("employeeDto") EmployeeDto employeeDto,
 			ModelMap model) {
 			//model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
 			//model.addAttribute("provinceList",masProvinceService.findAll());
 		
-			return addressService.findAddressByEmployeeId(addressDto.getEmployeeId());
+			return addressService.findAddressByApplicantId(addressDto.getApplicantId());
 			//return addressService.searchAddress(addressDto.getEmployeeId());
 	}
 	
@@ -215,14 +216,14 @@ public class EmployeeController {
    //initedit
    @RequestMapping(value = "/employee/init/{id}",method =  RequestMethod.GET )
 		 public String initEditEmployee(@PathVariable("id") Integer empId, 
-				 @ModelAttribute("allEmployeeDto") AllEmployeeDto allEmployeeDto,
+				 @ModelAttribute("employeeDto") EmployeeDto employeeDto,
 				 Model model) {	
 	   
 	   			model.addAttribute("myDate", new Date());
 		     
-	   			System.out.println("date: "+allEmployeeDto.getDateOfBirth());
+	   			System.out.println("date: "+employeeDto.getDateOfBirth());
 	   
-	   			allEmployeeDto = employeeService.findEmployeeByEmployeeIdWithSetToDto(empId);
+	   			employeeDto = employeeService.findEmployeeByEmployeeIdWithSetToDto(empId);
 	   			
 	   			
 	   			model.addAttribute("masAddressTypeList",masAddressTypeService.findAll());
@@ -236,10 +237,10 @@ public class EmployeeController {
     			model.addAttribute("locationList",masLocationService.findAll());
     			model.addAttribute("staffTypeList",masStaffTypeService.findAll());
     			model.addAttribute("aimList",aimEmployeeDtoService.listEmployeeAim());
-				model.addAttribute("allEmployeeDto", allEmployeeDto);
+				model.addAttribute("employeeDto", employeeDto);
 				
-				new SimpleDateFormat("dd-MMM-yyyy").format(allEmployeeDto.getDateOfBirth());
-				System.out.println("date: "+allEmployeeDto.getDateOfBirth());
+				new SimpleDateFormat("dd-MMM-yyyy").format(employeeDto.getDateOfBirth());
+				System.out.println("date: "+employeeDto.getDateOfBirth());
 
 
 				
@@ -298,14 +299,14 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employee/submit", method = RequestMethod.POST )
-	public String manageSubmit(@ModelAttribute AllEmployeeDto allEmployeeDto,
+	public String manageSubmit(@ModelAttribute EmployeeDto employeeDto,
 			Model model,
 			final RedirectAttributes redirectAttributes,
 			HttpServletRequest request,
 			HttpServletResponse response) throws IOException,Exception{
 	
-	   logger.info("infoooo: "+allEmployeeDto);		
-	   logger.info("infoooo: ================================================================>"+allEmployeeDto.getAimempid());
+	   logger.info("infoooo: "+employeeDto);		
+	   logger.info("infoooo: ================================================================>"+employeeDto.getAimempid());
 	  
 	   
 	   
@@ -319,30 +320,30 @@ public class EmployeeController {
 
 	   
 	   
-	   System.out.println("locations: "+ allEmployeeDto.getMasLocation());
-	   //System.out.println("locations: "+ masLocationService.findByLocationCode(allEmployeeDto.getMasLocation()));
+	   System.out.println("locations: "+ employeeDto.getMasLocation());
+	   //System.out.println("locations: "+ masLocationService.findByLocationCode(employeeDto.getMasLocation()));
 	  
 		  
-	    if(allEmployeeDto.getId()==null){	
+	    if(employeeDto.getId()==null){	
 		  
 	    logger.info("create employee");
 		
 		try {
-				if(allEmployeeDto.getFileupload().getOriginalFilename()==null||allEmployeeDto.getFileupload().getOriginalFilename().isEmpty()==true){
+				if(employeeDto.getFileupload().getOriginalFilename()==null||employeeDto.getFileupload().getOriginalFilename().isEmpty()==true){
 					
 					try{
-						employeeCode = employeeService.generateEmployeeCode(allEmployeeDto);
-						employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
+						employeeCode = employeeService.generateEmployeeCode(employeeDto);
+						employee = employeeService.createEmployeeAndReturnId(employeeDto,employeeCode);
 					}catch(JDBCException je){
 						
 						System.out.println("jdbce "+je.getErrorCode());
 						try{
-							employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-							employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
+							employeeCode=employeeService.generateEmployeeCode(employeeDto);
+							employee = employeeService.createEmployeeAndReturnId(employeeDto,employeeCode);
 						}catch(JDBCException jdbce){
 							
 							redirectAttributes.addFlashAttribute("msgerror", "dupicate employeecode");
-							//redirectAttributes.addFlashAttribute("allEmployeeDto", allEmployeeDto);
+							//redirectAttributes.addFlashAttribute("employeeDto", employeeDto);
 
 							return "redirect:/employee";
 
@@ -355,8 +356,8 @@ public class EmployeeController {
 
 					
 					
-				}else if(allEmployeeDto.getFileupload().getOriginalFilename()!=null||allEmployeeDto.getFileupload().getOriginalFilename().isEmpty()==false){
-					String[] result =  StringUtils.split(allEmployeeDto.getFileupload().getOriginalFilename(),'.');
+				}else if(employeeDto.getFileupload().getOriginalFilename()!=null||employeeDto.getFileupload().getOriginalFilename().isEmpty()==false){
+					String[] result =  StringUtils.split(employeeDto.getFileupload().getOriginalFilename(),'.');
 					logger.info("length: "+result.length);
 		
 						if(result.length==2){
@@ -366,19 +367,19 @@ public class EmployeeController {
 						
 							
 							try{
-								employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-								allEmployeeDto.setImage(employeeCode+"."+result[1]);
-								employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
+								employeeCode=employeeService.generateEmployeeCode(employeeDto);
+								employeeDto.setImage(employeeCode+"."+result[1]);
+								employee = employeeService.createEmployeeAndReturnId(employeeDto,employeeCode);
 							}catch(JDBCException jdbce){
 								
 								try{
-									employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-									allEmployeeDto.setImage(employeeCode+"."+result[1]);
-									employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
+									employeeCode=employeeService.generateEmployeeCode(employeeDto);
+									employeeDto.setImage(employeeCode+"."+result[1]);
+									employee = employeeService.createEmployeeAndReturnId(employeeDto,employeeCode);
 								}catch(JDBCException je){
 									
 									redirectAttributes.addFlashAttribute("msgerror", "dupicate employeecode");
-									//redirectAttributes.addFlashAttribute("allEmployeeDto", allEmployeeDto);
+									//redirectAttributes.addFlashAttribute("employeeDto", employeeDto);
 
 									return "redirect:/employee";
 
@@ -390,24 +391,24 @@ public class EmployeeController {
 							if(employee.getId()!=null){
 								
 							
-									uploadService.uploadImage("EMPLOYEE",employeeCode+"."+result[1], allEmployeeDto.getFileupload());
+									uploadService.uploadImage("EMPLOYEE",employeeCode+"."+result[1], employeeDto.getFileupload());
 							
 							}
 
 						}if(result.length==0){
 							
 							try{
-								employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-								employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
+								employeeCode=employeeService.generateEmployeeCode(employeeDto);
+								employee = employeeService.createEmployeeAndReturnId(employeeDto,employeeCode);
 								
 							}catch(JDBCException jdbce){
 								try{
-									employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-									employee = employeeService.createEmployeeAndReturnId(allEmployeeDto,employeeCode);
+									employeeCode=employeeService.generateEmployeeCode(employeeDto);
+									employee = employeeService.createEmployeeAndReturnId(employeeDto,employeeCode);
 								}catch(JDBCException je){
 									
 									redirectAttributes.addFlashAttribute("msgerror", "dupicate employeecode");
-									//redirectAttributes.addFlashAttribute("allEmployeeDto", allEmployeeDto);
+									//redirectAttributes.addFlashAttribute("employeeDto", employeeDto);
 
 									return "redirect:/employee";
 
@@ -438,37 +439,37 @@ public class EmployeeController {
 		
 		
 		
-	  }else if(allEmployeeDto.getId()>0){
+	  }else if(employeeDto.getId()>0){
 		  
 
-		  logger.info("update emp");
+		  //logger.info("update emp");
 		  		  
 		  try{
 			 
-			  System.out.println("empcode: "+allEmployeeDto.getEmployeeCode());
-			  if(allEmployeeDto.getEmployeeCode()==null||allEmployeeDto.getEmployeeCode().isEmpty()==true){
-				  employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-				  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);				 
-			  }else if(allEmployeeDto.getEmployeeCode()!=null||allEmployeeDto.getEmployeeCode().isEmpty()==false){
+			  System.out.println("empcode: "+employeeDto.getEmployeeCode());
+			  if(employeeDto.getEmployeeCode()==null||employeeDto.getEmployeeCode().isEmpty()==true){
+				  employeeCode=employeeService.generateEmployeeCode(employeeDto);
+				  employee = employeeService.updateEmployeeAndReturnId(employeeDto,employeeCode);				 
+			  }else if(employeeDto.getEmployeeCode()!=null||employeeDto.getEmployeeCode().isEmpty()==false){
 				  
-				  employeeCode = allEmployeeDto.getEmployeeCode();
-				  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);
+				  employeeCode = employeeDto.getEmployeeCode();
+				  employee = employeeService.updateEmployeeAndReturnId(employeeDto,employeeCode);
 			  }
-			  //employee.setId(allEmployeeDto.getId());
+			  //employee.setId(employeeDto.getId());
 			  
 		  }catch(DataIntegrityViolationException jdbce){
 			  try{
-				  if(allEmployeeDto.getEmployeeCode()==null||allEmployeeDto.getEmployeeCode().isEmpty()==true){
-					  employeeCode=employeeService.generateEmployeeCode(allEmployeeDto);
-					  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);				 
-				  }else if(allEmployeeDto.getEmployeeCode()!=null||allEmployeeDto.getEmployeeCode().isEmpty()==false){
+				  if(employeeDto.getEmployeeCode()==null||employeeDto.getEmployeeCode().isEmpty()==true){
+					  employeeCode=employeeService.generateEmployeeCode(employeeDto);
+					  employee = employeeService.updateEmployeeAndReturnId(employeeDto,employeeCode);				 
+				  }else if(employeeDto.getEmployeeCode()!=null||employeeDto.getEmployeeCode().isEmpty()==false){
 					  
-					  employeeCode = allEmployeeDto.getEmployeeCode();
-					  employee = employeeService.updateEmployeeAndReturnId(allEmployeeDto,employeeCode);
+					  employeeCode = employeeDto.getEmployeeCode();
+					  employee = employeeService.updateEmployeeAndReturnId(employeeDto,employeeCode);
 				  }
 			  }catch(DataIntegrityViolationException je){
 					redirectAttributes.addFlashAttribute("msgerror", "dupicate employeecode");
-					//redirectAttributes.addFlashAttribute("allEmployeeDto", allEmployeeDto);
+					//redirectAttributes.addFlashAttribute("employeeDto", employeeDto);
 
 					return "redirect:/listemployee";
 
