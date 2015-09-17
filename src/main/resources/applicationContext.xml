@@ -22,8 +22,10 @@
 
     <context:annotation-config/>
     <tx:annotation-driven/>
-    <jpa:repositories base-package="com.aug.hr"/>
-    <context:component-scan base-package="com.aug.hr.*"/>
+    <jpa:repositories base-package="com.aug.hr-db"/>
+    <context:component-scan base-package="com.aug.hr.controller"/>
+    <context:component-scan base-package="com.aug.hr-db.*"/>
+    
 
     <util:properties id="appProps" location="classpath:ApplicationResources.properties" />
 
@@ -54,7 +56,7 @@
         <property name="database" value="MYSQL"/>
     </bean>
     
-<!-- 
+	<!-- 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
@@ -64,10 +66,10 @@
 
 
     <!--Hibernate SessionFactory using p name space -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
-          p:dataSource-ref="dataSource"
-          p:configLocation="classpath:hibernate.cfg.xml"
-          p:packagesToScan="com.aug.hr.entity"/>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+         <property name="dataSource" ref="dataSource"/>
+   		 <property name="packagesToScan" value="com.aug.hr-db.entities"/>
+     </bean>
 
 
     <!--<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"></bean>-->
