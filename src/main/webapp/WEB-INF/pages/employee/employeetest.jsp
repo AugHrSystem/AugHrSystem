@@ -397,7 +397,8 @@
 									 <c:if test="${empty allEmployeeDto.sex}">									
 									  		 <label><input type="radio" name="sex" id="Male" value="Male"><spring:message code="employee.male"></spring:message></label>
 									  		 <label><input type="radio" name="sex" id="Female" value="Female"><spring:message code="employee.female"></spring:message></label>
-									 		<label for="sex" class="error"><spring:message code="employee.required.sex"></spring:message></label>
+									 		<%-- <label for="sex" class="error"><spring:message code="employee.required.sex"></spring:message></label> --%>
+									 		<label id="sex-error" class="error" for="sex"></label>
 									  </c:if>
 									  
 									  
@@ -426,7 +427,8 @@
      									 <label><input type="radio" name="maritalStatus" id="Single" value="Single"><spring:message code="employee.single"></spring:message></label> 
       									 <label><input type="radio" name="maritalStatus" id="Married" value="Married"><spring:message code="employee.married"></spring:message></label>
       									 <label><input type="radio" name="maritalStatus" id="Divorce" value="Divorce"><spring:message code="employee.divorce"></spring:message></label>
-    								  		<label for="maritalStatus" class="error"><spring:message code="employee.required.maritalStatus"></spring:message></label>
+    								  		<%-- <label for="maritalStatus" class="error"><spring:message code="employee.required.maritalStatus"></spring:message></label> --%>
+    								  		<label id="maritalStatus-error" class="error" for="maritalStatus"></label>
     								  </c:if>
     								  <c:if test="${not empty allEmployeeDto.maritalStatus}">
     								        
