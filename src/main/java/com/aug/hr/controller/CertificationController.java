@@ -19,15 +19,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.entity.Certification;
-import com.aug.hr.entity.dto.CertificationDto;
-import com.aug.hr.services.CertificationService;
+import com.aug.hrdb.services.CertificationDtoService;
+import com.aug.hrdb.entities.Certification;
+import com.aug.hrdb.dto.CertificationDto;
+import com.aug.hrdb.services.CertificationService;
 
 @Controller
 public class CertificationController {
 
 	@Autowired
 	private CertificationService certificationService;
+	@Autowired
+	private CertificationDtoService certificationDtoService;
 	
 	@RequestMapping(value = "/certification/{id}", method = { RequestMethod.GET,
 			RequestMethod.POST })
@@ -35,15 +38,15 @@ public class CertificationController {
 			@PathVariable("id") Integer id, 
 			@ModelAttribute CertificationDto certificationDto) {
 		
-		certificationDto.setEmployeeId(id);
-		model.addAttribute("id", certificationDto.getEmployeeId());
+		certificationDto.setApplicantId(id);
+		model.addAttribute("id", certificationDto.getApplicantId());
 		return "/certification/certification";
 	}
 	
 	@RequestMapping(value ="/certification/listAll/{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<CertificationDto> listAll(@PathVariable("id") Integer id){
 		
-		return (List<CertificationDto>) certificationService.searchCertification(id);
+		return (List<CertificationDto>) certificationDtoService.searchCertification(id);
 	}
 	
 	

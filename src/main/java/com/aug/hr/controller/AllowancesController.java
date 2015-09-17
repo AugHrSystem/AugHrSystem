@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.services.AllowancesDtoService;
-import com.aug.hr.entity.Allowances;
-import com.aug.hr.entity.MasAllowances;
-import com.aug.hr.entity.dto.AllowancesDto;
-import com.aug.hr.services.AllowancesService;
-import com.aug.hr.services.MasAllowancesService;
+import com.aug.hrdb.services.AllowancesDtoService;
+import com.aug.hrdb.entities.Allowances;
+import com.aug.hrdb.entities.MasAllowances;
+import com.aug.hrdb.dto.AllowancesDto;
+import com.aug.hrdb.services.AllowancesService;
+import com.aug.hrdb.services.MasAllowancesService;
 
 @Controller
 public class AllowancesController {

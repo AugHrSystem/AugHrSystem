@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aug.hr.dto.services.CardDtoService;
-import com.aug.hr.entity.Card;
-import com.aug.hr.entity.dto.CardDto;
-import com.aug.hr.services.CardService;
+import com.aug.hrdb.services.CardDtoService;
+import com.aug.hrdb.entities.Card;
+import com.aug.hrdb.dto.CardDto;
+import com.aug.hrdb.services.CardService;
 
 @Controller
 public class CardController {

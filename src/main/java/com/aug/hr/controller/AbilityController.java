@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.aug.hr.dto.services.AbilityDtoService;
-import com.aug.hr.entity.Ability;
-import com.aug.hr.entity.dto.AbilityDto;
-import com.aug.hr.services.AbilityService;
-import com.aug.hr.services.MasSpecialtyService;
+import com.aug.hrdb.services.AbilityDtoService;
+import com.aug.hrdb.entities.Ability;
+import com.aug.hrdb.dto.AbilityDto;
+import com.aug.hrdb.services.AbilityService;
+import com.aug.hrdb.services.MasSpecialtyService;
 
 
 @Controller
