@@ -21,18 +21,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.exception.CustomException;
-import com.aug.hr.dto.services.HealthDtoService;
-import com.aug.hr.entity.Health;
-import com.aug.hr.entity.SkillLanguage;
-import com.aug.hr.entity.dto.HealthDto;
-import com.aug.hr.services.HealthService;
+import com.aug.hrdb.services.HealthDtoService;
+import com.aug.hrdb.entities.Health;
+import com.aug.hrdb.entities.Language;
+import com.aug.hrdb.dto.HealthDto;
+import com.aug.hrdb.services.HealthService;
 
 @Controller
 public class HealthController {
 	
 	
 	private final static Logger logger = Logger
-			.getLogger(SkillLanguage.class);
+			.getLogger(Language.class);
 	
 	@Autowired 
 	private HealthService healthService;

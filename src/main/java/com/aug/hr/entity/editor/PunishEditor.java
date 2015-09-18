@@ -4,8 +4,8 @@ import java.beans.PropertyEditorSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.aug.hr.entity.Punish;
-import com.aug.hr.services.PunishService;
+import com.aug.hrdb.entities.Punish;
+import com.aug.hrdb.services.PunishService;
 
 
 @Component

@@ -67,8 +67,8 @@ public class LanguageController {
 		
 		model.addAttribute("skillLaguage", language);
 		
-		languageDto.setEmployeeId(id);
-		model.addAttribute("id", languageDto.getEmployeeId());
+		languageDto.setApplicantId(id);
+		model.addAttribute("id",+languageDto.getApplicantId());
 		
 		return "/skilllanguage/skilllanguage";
 	}
@@ -84,7 +84,7 @@ public class LanguageController {
 			ModelMap model)  {
 		
 		
-		List<LanguageDto> languageList = languageDtoService.listLanguage(new Integer(id));	
+		List<LanguageDto> languageList = languageDtoService.listSkillLanguage(id);	
 		return languageList;
 	
 	}
@@ -101,7 +101,7 @@ public class LanguageController {
 	    LanguageDto LanguageDto = new LanguageDto();
 	    LanguageDto = languageInfo;
 		logger.info("Info skill language: " + LanguageDto.toString());
-		languageService.saveByFindEmployee(languageInfo.getEmployeeId(), LanguageDto);
+		languageService.saveByFindEmployee(languageInfo.getApplicantId(), LanguageDto);
 
 		return LanguageDto;
 		

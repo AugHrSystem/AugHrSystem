@@ -2,7 +2,7 @@ package com.aug.hr.entity.form;
 
 import java.util.List;
 
-import com.aug.hr.entity.Family;
+import com.aug.hrdb.entities.Family;
 
 public class FamilyForm {
 	

@@ -37,15 +37,15 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.aug.exception.CustomException;
 import com.aug.hr.dto.services.FamilyDtoService;
-import com.aug.hr.entity.Family;
-import com.aug.hr.entity.MasRelationType;
-import com.aug.hr.entity.dto.FamilyDto;
+import com.aug.hrdb.entities.Family;
+import com.aug.hrdb.entities.MasRelationType;
+import com.aug.hrdb.dto.FamilyDto;
 import com.aug.hr.entity.dto.Family2Dto;
 import com.aug.hr.entity.editor.FamilyEditor;
 //import com.aug.hr.entity.validator.FamilyValidator;
-import com.aug.hr.services.FamilyService;
-import com.aug.hr.services.EmployeeService;
-import com.aug.hr.services.MasRelationTypeService;
+import com.aug.hrdb.services.FamilyService;
+import com.aug.hrdb.services.EmployeeService;
+import com.aug.hrdb.services.MasRelationTypeService;
 
 
 

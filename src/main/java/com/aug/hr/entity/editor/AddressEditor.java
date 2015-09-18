@@ -10,8 +10,8 @@ import java.beans.PropertyEditorSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.aug.hr.entity.Address;
-import com.aug.hr.services.AddressService;
+import com.aug.hrdb.entities.Address;
+import com.aug.hrdb.services.AddressService;
 
 
 @Component

@@ -4,8 +4,8 @@ import java.beans.PropertyEditorSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.aug.hr.entity.Experience;
-import com.aug.hr.services.ExperienceService;
+import com.aug.hrdb.entities.Experience;
+import com.aug.hrdb.services.ExperienceService;
 
 public class ExperienceEditor extends PropertyEditorSupport {
 
@@ -14,7 +14,7 @@ public class ExperienceEditor extends PropertyEditorSupport {
 	public void setAsText(String text) {
 		this.setValue(null);
 		if (!"".equals(text)) {
-			Experience rs = experienceService.find(Integer.valueOf(text));
+			Experience rs = experienceService.findById(Integer.valueOf(text));
 			this.setValue(rs);
 		}
 

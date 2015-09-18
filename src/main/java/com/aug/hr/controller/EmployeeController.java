@@ -47,7 +47,7 @@ import com.aug.exception.CustomException;
 
 
 import com.aug.hr.entity.editor.AddressEditor;
-import com.aug.hr.services.JoblevelService;
+import com.aug.hrdb.services.MasJoblevelService;
 import com.aug.hr.services.ReportService;
 import com.aug.hr.services.utils.UploadService;
 import com.aug.hrdb.services.EmployeeDtoService;

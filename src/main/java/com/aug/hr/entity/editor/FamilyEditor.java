@@ -14,8 +14,8 @@ import java.beans.PropertyEditorSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.aug.hr.entity.Family;
-import com.aug.hr.services.FamilyService;
+import com.aug.hrdb.entities.Family;
+import com.aug.hrdb.services.FamilyService;
 
 
 

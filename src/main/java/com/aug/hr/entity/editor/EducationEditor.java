@@ -10,8 +10,8 @@ import java.beans.PropertyEditorSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.aug.hr.entity.Education;
-import com.aug.hr.services.EducationService;
+import com.aug.hrdb.entities.Education;
+import com.aug.hrdb.services.EducationService;
 
 
 @Component

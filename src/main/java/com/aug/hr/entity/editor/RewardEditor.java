@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-import com.aug.hr.entity.Reward;
-import com.aug.hr.services.RewardService;
+import com.aug.hrdb.entities.Reward;
+import com.aug.hrdb.services.RewardService;
 
 
 

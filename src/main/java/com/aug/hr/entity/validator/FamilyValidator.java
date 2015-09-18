@@ -15,8 +15,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.aug.hr.entity.Family;
-import com.aug.hr.services.FamilyService;
+import com.aug.hrdb.entities.Family;
+import com.aug.hrdb.services.FamilyService;
 import com.mysql.jdbc.StringUtils;
 
 
@@ -40,10 +40,8 @@ public class FamilyValidator  implements Validator{
 		Family rs = (Family)target;
 		
 		
-		if (rs.getFirstName().isEmpty()==true){
-			errors.rejectValue("firstName", "empFamily.required.firstname");
-		}if(rs.getLastName().isEmpty()==true){
-			errors.rejectValue( "lastName","empFamily.required.lastname");		
+		if (rs.getFamilyName().isEmpty()==true){
+			errors.rejectValue("firstName", "empFamily.required.firstname");	
 		}if(rs.getGender().isEmpty()==true){
 			errors.rejectValue( "gender","empFamily.required.gender");				
 		}if(rs.getAge()==null){
@@ -52,9 +50,9 @@ public class FamilyValidator  implements Validator{
 			errors.rejectValue( "mobile","empFamily.required.mobile");				
 		}if(rs.getAddress().isEmpty()==true){
 			errors.rejectValue( "address","empFamily.required.address");				
-		}if(rs.getMasRelation()==null){
+		}if(rs.getMasRelationType()==null){
 			errors.rejectValue( "relation","empFamily.required.relation");				
-		}if(rs.getEmployee()==null){
+		}if(rs.getApplicant()==null){
 			errors.rejectValue( "employee","empFamily.required.employee");				
 		}
 	}

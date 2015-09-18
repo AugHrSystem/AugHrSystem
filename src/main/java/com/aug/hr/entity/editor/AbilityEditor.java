@@ -9,8 +9,8 @@ import java.beans.PropertyEditorSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.aug.hr.entity.Ability;
-import com.aug.hr.services.AbilityService;
+import com.aug.hrdb.entities.Ability;
+import com.aug.hrdb.services.AbilityService;
 
 
 @Component

@@ -97,7 +97,7 @@ public class LeaveController {
 
 		Leave leave = new Leave();
 		List<Leave> findLeaveTypeAmount =new ArrayList<Leave>();
-		findLeaveTypeAmount=leaveService.findLeaveType(leaveDate.getMasleavetypeId(),leaveDate.getEmployeeId());
+		findLeaveTypeAmount = leaveService.findLeaveType(leaveDate.getMasleavetypeId(),leaveDate.getEmployeeId());
 		
 
 		
